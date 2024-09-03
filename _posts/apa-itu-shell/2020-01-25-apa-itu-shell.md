@@ -26,7 +26,7 @@ Jika kamu pernah menggunakan unix/linux mungkin pernah menggunakan program diata
 User<sup id="user">[[1]](#user-ref)</sup> tidak bisa secara langsung berkomunikasi dengan sebuah hardware komputer, maka dari itu kita membutuhkan sebuah sistem operasi; **Kernel** adalah program yang merupakan inti utama dari sistem operasi komputer.
 
 <figure>
-<img src="/apa-itu-shell/kernel.png" alt="kernel central of operating system">
+<img src="{{site.assets}}{{ page.permalink }}kernel.png" alt="kernel central of operating system">
 <figcaption>Fig 2. bagan kernel.</figcaption>
 </figure>
 
@@ -35,7 +35,7 @@ Kernel memfasilitasi interaksi antara komponen perangkat keras dan perangkat lun
 Ketika kita menginputkan suatu perintah pada terminal emulator, kernel tidak langsung mengerti perintah yang kita ketik, kita membutuhkan suatu interface sebagai perantara menuju kernel yaitu **Shell**.
 
 <figure>
-<img src="/_post/apa-itu-shell/shell.png" alt="shell">
+<img src="{{site.assets}}{{ page.permalink }}shell.png" alt="shell">
 <figcaption>Fig 3. bagan komunikasi shell.</figcaption>
 </figure>
 
@@ -61,14 +61,14 @@ $ (dollar sign)   # sh, ksh, bash
 Shell prompt adalah tempat dimana kita menuliskan suatu perintah, berikut adalah terminologinya ini membantu, jika kamu ingin mengetahui bagian-bagianya.
 
 <figure>
-<img src="/_post/apa-itu-shell/term_shell_prompt.png" alt="shell">
+<img src="{{site.assets}}{{ page.permalink }}term_shell_prompt.png" alt="shell">
 <figcaption>Fig 4. bagian-bagin dari shell prompt.</figcaption>
 </figure>
 
 Dibawah ini salah satu contoh perintah sederhana untuk menampilkan sebuah arsitektur CPU komputer yang sedang saya gunakan.
 
 <figure>
-<img src="/_post/apa-itu-shell/terminal_lscpu.gif" alt="installing nginx in ubuntu">
+<img src="{{site.assets}}{{ page.permalink }}terminal_lscpu.gif" alt="installing nginx in ubuntu">
 <figcaption>Fig 5. menampilkan informasi tentang arsitektur CPU.</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ Dari perintah yang contohkan, ketika user mengetikan suatu inputan perintah di t
 Shell mempunyai beberapa macam dan turunan, berikut yang paling umum.
 
 <figure>
-<img src="/_post/apa-itu-shell/shell_evolution.png" alt="shell evolution">
+<img src="{{site.assets}}{{ page.permalink }}shell_evolution.png" alt="shell evolution">
 <figcaption>Fig 6. evaluasi shell dari tahun ke tahun.</figcaption>
 </figure>
 
