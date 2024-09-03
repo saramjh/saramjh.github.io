@@ -3,7 +3,7 @@ title: "Dieter Rams Style Calculator"
 description: Discover a minimalist calculator designed with simplicity and intuition in mind, inspired by the iconic design philosophy of Dieter Rams.
 date: 2024-09-03
 tags: Dieter Rams, Dieter Rams Style, Online tool, Calculator
-permalink: /dieter-rams-stylec-alculator/
+permalink: /dieter-rams-style-calculator/
 ---
 
 ### Dieter Rams Style Calculator
