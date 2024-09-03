@@ -1,7 +1,10 @@
+---
 title: "What is a shell? \U0001F41A"
 date: 2020-01-25T04:58:47.000Z
 modified: 2020-02-02T09:49:47.000Z
 tags:
+permalink: /apa-itu-shell/
+---
 
 - unix/linux
 - cli
@@ -9,7 +12,7 @@ tags:
   Shell adalah sebuah command-line interpreter; program yang berperan sebagai
   penerjemah perintah yang diinputkan oleh User yang melalui terminal, sehingga
   perintah tersebut bisa dimengerti oleh si Kernel.
-  image: /post/apa-itu-shell/shell_evolution.png
+  image: "/post/apa-itu-shell/shell_evolution.png"
 
 <a href="http://www.youtube.com/watch?v=tc4ROCJYbm0&t=70" target="_blank" rel="noopener">Dulu</a> Sebelum adanya <abbr title="Graphical User Interface">GUI</abbr> cara user berinteraksi dengan komputer menggunakan <abbr title="Command Line Interface">CLI</abbr> yaitu mengetik baris perintah pada sebuah antarmuka dalam bentuk baris teks seperti 👇.
 
