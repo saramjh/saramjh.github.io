@@ -8,9 +8,11 @@ permalink: /english-cefr-b1-b2-level-test/
 
 ### CEFR B1-B2 영어 무료 학습 웹 어플리케이션
 
-<img src="{{site.assets}}{{ page.permalink }}b1b2_a.JPG" alt="CEFR B1-B2 영어 무료 학습 000">
-<img src="{{site.assets}}{{ page.permalink }}b1b2_b.JPG" alt="CEFR B1-B2 영어 무료 학습 001">
-<img src="{{site.assets}}{{ page.permalink }}b1b2_c.JPG" alt="CEFR B1-B2 영어 무료 학습 002">
+<img src="{{site.assets}}{{ page.permalink }}a.JPG" alt="CEFR B1-B2 영어 무료 학습 000">
+
+<img src="{{site.assets}}{{ page.permalink }}b.JPG" alt="CEFR B1-B2 영어 무료 학습 001">
+
+<img src="{{site.assets}}{{ page.permalink }}c.JPG" alt="CEFR B1-B2 영어 무료 학습 002">
 
 **CEFR B1-B2 영어 무료 학습**은 한국인을 대상으로 한 영어 학습 웹 애플리케이션입니다. 이 애플리케이션은 사용자가 CEFR(유럽언어공통참조기준) B1-B2 수준의 영어를 재미있게 학습할 수 있도록 돕는 것을 목표로 합니다. 퀴즈 형식의 문제를 풀면서 실용적인 영어 표현을 익히고, 학습한 내용을 바로 적용할 수 있습니다.
 

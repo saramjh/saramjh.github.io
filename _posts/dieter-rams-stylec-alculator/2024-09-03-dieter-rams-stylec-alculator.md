@@ -9,6 +9,7 @@ permalink: /dieter-rams-stylec-alculator/
 ### Dieter Rams Style Calculator
 
 <img src="{{site.assets}}{{ page.permalink }}dieterrams.JPG" alt="Dieter Rams Style Calculator">
+
 The Dieter Rams Style Calculator is a minimalist and intuitive calculator inspired by the design philosophy of Dieter Rams. This calculator focuses on simplicity and functionality, offering a clean and user-friendly interface for all your calculation needs.
 
 #### Needs
