@@ -3,7 +3,7 @@ title: "CEFR B1-B2 영어 무료 학습"
 description: CEFR B1-B2 영어 무료 학습은 한국인을 대상으로 한 영어 학습 웹 애플리케이션입니다. 이 애플리케이션은 사용자가 CEFR(유럽언어공통참조기준) B1-B2 수준의 영어를 재미있게 학습할 수 있도록 돕는 것을 목표로 합니다. 퀴즈 형식의 문제를 풀면서 실용적인 영어 표현을 익히고, 학습한 내용을 바로 적용할 수 있습니다.
 date: 2024-09-03
 tags: English Study, Level test, CEFR, 일상영어
-permalink: /english-cefr-b1-b2-level-test/
+permalink: /english-cefr-b-level-test/
 ---
 
 ### CEFR B1-B2 영어 무료 학습 웹 어플리케이션
