@@ -23,7 +23,7 @@ author:
 # URL settings
 url: "https://saramjh.github.io/" #
 baseurl:
-assets: "https://saramjh.github.io/_posts/:title/"
+assets: "https://saramjh.github.io/_posts/" + /:title/
 permalink: /:title/
 google_analytics: GTM-W5SPK6M5 # leave it blank if not wish
 fb_appid:
