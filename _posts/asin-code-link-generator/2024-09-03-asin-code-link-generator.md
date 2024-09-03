@@ -21,6 +21,7 @@ tags: AMAZON, ASIN
 3. click generated links with **wheel button** or **Windows** - <kbd>Ctrl</kbd> / **_Mac_** - <kbd>Cmd</kbd>.
 4. Click `Download XLSX` if you want spreadsheet file.
 
-- [Evolution shells in Linux](http://developer.ibm.com/tutorials/l-linux-shells/)
-- [Kernel Defintion](http://www.linfo.org/kernel.html)
-- [The Shell](http://www.cis.rit.edu/class/simg211/unixintro/Shell.html)
+#### Links
+
+- [ASIN CODE URL Generator](https://saramjh.github.io/asinURLGenerator/)
+- [Github Repository: ASIN CODE URL Generator](https://github.com/saramjh/asinURLGenerator)
