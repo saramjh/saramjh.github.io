@@ -25,7 +25,7 @@ url: "https://saramjh.github.io/" #
 baseurl:
 assets: "https://saramjh.github.io/_posts/"
 permalink: /:title/
-google_analytics: GTM-W5SPK6M5 # leave it blank if not wish
+google_analytics: G-4DYFKSNFBG # leave it blank if not wish
 fb_appid:
 
 # Collection setting
