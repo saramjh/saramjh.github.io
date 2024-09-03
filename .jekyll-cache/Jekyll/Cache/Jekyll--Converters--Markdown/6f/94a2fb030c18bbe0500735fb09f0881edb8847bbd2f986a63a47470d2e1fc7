@@ -1,0 +1,10 @@
+I"D<ul>
+  <li>unix/linux</li>
+  <li>cli
+description: &gt;-
+Shell adalah sebuah command-line interpreter; program yang berperan sebagai
+penerjemah perintah yang diinputkan oleh User yang melalui terminal, sehingga
+perintah tersebut bisa dimengerti oleh si Kernel.
+image: “/post/apa-itu-shell/shell_evolution.png”</li>
+</ul>
+:ET
