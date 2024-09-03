@@ -8,7 +8,7 @@ permalink: /recipe-scaling-application/
 
 ### Recipe Scaling Application
 
-<img src="{{site.assets}}{{ page.permalink }}recipe-scaling-application.JPG" alt="Recipe Scaling Application">
+<img src="{{site.assets}}{{ page.permalink }}recipescalingapplication.JPG" alt="Recipe Scaling Application">
 
 #### Needs
 
