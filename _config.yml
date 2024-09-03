@@ -22,7 +22,7 @@ author:
 
 # URL settings
 url: "https://saramjh.github.io/" #
-baseurl:
+baseurl: /:title/
 permalink: /:title/
 google_analytics: # leave it blank if not wish
 fb_appid:
