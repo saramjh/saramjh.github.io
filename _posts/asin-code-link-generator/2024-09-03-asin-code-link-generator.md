@@ -2,6 +2,7 @@
 title: "Amazon ASIN CODE Links Generator"
 date: 2024-09-03
 tags: AMAZON, ASIN
+permalink: /asin-code-link-generator/
 ---
 
 ### AMAZON ASIN CODE Links Generator via HTML, JS, CSS
