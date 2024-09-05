@@ -21,7 +21,7 @@ author:
   avatar: /assets/img/avatar.jpg # change with your own avatar
 
 # URL settings
-url: "https://saramjh.github.io/" #
+url: "https://saramjh.github.io" #
 baseurl:
 assets: "https://saramjh.github.io/posts"
 permalink: /:title/
