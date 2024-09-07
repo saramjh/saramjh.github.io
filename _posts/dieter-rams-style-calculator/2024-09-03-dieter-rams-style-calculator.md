@@ -61,5 +61,5 @@ The calculator is built using standard web technologies:
 
 #### Links
 
-- [Dieter Rams Style Calculator](https://saramjh.github.io/dieterRamsCalc//)
+- [Dieter Rams Style Calculator](https://saramjh.github.io/dieterRamsCalc/)
 - [Github Repository: Dieter Rams Style Calculator](https://github.com/saramjh/dieterRamsCalc)
