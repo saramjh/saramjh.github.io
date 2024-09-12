@@ -1,5 +1,5 @@
 ---
-title: "일정을 남긴 달력을 URL로 공유하세요!"
+title: "메모를 남긴 달력을 URL로 공유하세요!"
 description: 작성한 메모를 포함한 달력 상태를 URL로 공유할 수 있습니다.
 date: 2024-09-12
 tags: utility, sharing via URL, calendar, memo
