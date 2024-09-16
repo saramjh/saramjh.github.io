@@ -48,10 +48,6 @@ permalink: /rich-tester/
 4. 브랜치에 푸시합니다 (`git push origin feature/새로운기능`).
 5. Pull Request를 생성합니다.
 
-## 라이선스
-
-이 프로젝트는 [MIT 라이선스](https://opensource.org/licenses/MIT) 하에 배포됩니다. 자세한 사항은 LICENSE 파일을 참조하세요.
-
 ## 참고
 
 - 이 프로그램은 개인정보를 수집하지 않습니다.

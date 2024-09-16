@@ -96,10 +96,6 @@ permalink: /calendar-sharing-via-URL/
 - **Author**: saramjh
 - **Website**: [saramjh.github.io](https://saramjh.github.io/)
 
-## 라이센스
-
-이 프로젝트는 [MIT 라이센스](LICENSE)에 따라 배포됩니다.
-
 #### Links
 
 - [URL 공유 달력 - 메모 및 일정 관리](https://saramjh.github.io/URLschedule/)
