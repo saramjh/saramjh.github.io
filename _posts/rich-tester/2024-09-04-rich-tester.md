@@ -59,5 +59,5 @@ permalink: /rich-tester/
 
 #### Links
 
-- [인공지능 부자 관상 분석](https://saramjh.github.io/richChecker/)
+- [인공지능 부자 관상 분석](https://saramjh.github.io/richChecker)
 - [Github Repository: 인공지능 부자 관상 분석](https://github.com/saramjh/richChecker)

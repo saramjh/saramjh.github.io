@@ -15,12 +15,12 @@ Take a look at the following code. We have the `Menu` component and its three ch
 
 ```jsx
 const App = () => (
-  <Menu>
-    <Menu.Item>Home</Menu.Item>
-    <Menu.Item>Blog</Menu.Item>
-    <Menu.Item>About</Menu.Item>
-  </Menu>
-);
+	<Menu>
+		<Menu.Item>Home</Menu.Item>
+		<Menu.Item>Blog</Menu.Item>
+		<Menu.Item>About</Menu.Item>
+	</Menu>
+)
 ```
 
 How can we define a component like `Menu`? Where it has some kind of "sub-component" that is accessible through a dot notation.
@@ -41,19 +41,19 @@ export default const Menu = ({ children }) => <ul>{children}</ul>;
 It's just a simple functional component. The `Menu` is the parent with `ul` tag. And the `MenuItem` will act as its children. Now we can use these two components like so:
 
 ```jsx
-import React from "react";
-import { render } from "react-dom";
-import Menu, { MenuItem } from "./menu";
+import React from "react"
+import { render } from "react-dom"
+import Menu, { MenuItem } from "./menu"
 
 const App = () => (
-  <Menu>
-    <MenuItem>Home</MenuItem>
-    <MenuItem>Blog</MenuItem>
-    <MenuItem>About</MenuItem>
-  </Menu>
-);
+	<Menu>
+		<MenuItem>Home</MenuItem>
+		<MenuItem>Blog</MenuItem>
+		<MenuItem>About</MenuItem>
+	</Menu>
+)
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById("root"))
 ```
 
 Where's the dot notation? To make our `MenuItem` component accessible through the dot nation, we can simply attach it to the `Menu` component as a static property. To do so, we can no longer use the functional component for `Menu` and switch to the class component instead:
@@ -78,32 +78,32 @@ export default class Menu extends Component {
 Now we can use the dot notation to declare the `MenuItem` component:
 
 ```jsx
-import React from "react";
-import { render } from "react-dom";
-import Menu from "./menu";
+import React from "react"
+import { render } from "react-dom"
+import Menu from "./menu"
 
 const App = () => (
-  <Menu>
-    <Menu.Item>Home</Menu.Item>
-    <Menu.Item>Blog</Menu.Item>
-    <Menu.Item>About</Menu.Item>
-  </Menu>
-);
+	<Menu>
+		<Menu.Item>Home</Menu.Item>
+		<Menu.Item>Blog</Menu.Item>
+		<Menu.Item>About</Menu.Item>
+	</Menu>
+)
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById("root"))
 ```
 
 You can also put the `MenuItem` component definition directly within the `Menu` class. But this way you can no longer import `MenuItem` individually.
 
 ```jsx
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 export default class Menu extends Component {
-  static Item = ({ children }) => <li>{children}</li>;
+	static Item = ({ children }) => <li>{children}</li>
 
-  render() {
-    return <ul>{this.props.children}</ul>;
-  }
+	render() {
+		return <ul>{this.props.children}</ul>
+	}
 }
 ```
 

@@ -52,5 +52,5 @@ permalink: /recipe-scaling-application/
 
 #### Links
 
-- [Recipe Scaling Application](https://saramjh.github.io/recipeCalc/)
+- [Recipe Scaling Application](https://saramjh.github.io/recipeCalc)
 - [Github Repository: Recipe Scaling Application](https://github.com/saramjh/recipeCalc)

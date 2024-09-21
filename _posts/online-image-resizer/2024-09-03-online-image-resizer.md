@@ -60,5 +60,5 @@ permalink: /online-image-resizer/
 
 #### Links
 
-- [Online Image Resizer](https://saramjh.github.io/resizeIMG/)
+- [Online Image Resizer](https://saramjh.github.io/resizeIMG)
 - [Github Repository: Online Image Resizer](https://github.com/saramjh/resizeIMG)

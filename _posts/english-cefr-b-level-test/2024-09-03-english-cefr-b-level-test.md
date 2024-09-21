@@ -56,5 +56,5 @@ permalink: /english-cefr-b-level-test/
 
 #### Links
 
-- [CEFR B1-B2 영어 무료 학습](https://saramjh.github.io/englishFlashcardQuiz/)
+- [CEFR B1-B2 영어 무료 학습](https://saramjh.github.io/englishFlashcardQuiz)
 - [Github Repository: CEFR B1-B2 영어 무료 학습](https://github.com/saramjh/englishFlashcardQuiz)

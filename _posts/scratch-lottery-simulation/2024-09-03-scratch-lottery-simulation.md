@@ -48,5 +48,5 @@ This project is a scratch lottery experience that allows users to scratch a lott
 
 #### Links
 
-- [Scratch Lottery Simulation](https://saramjh.github.io/scratchLottery/)
+- [Scratch Lottery Simulation](https://saramjh.github.io/scratchLottery)
 - [Github Repository: Scratch Lottery Simulation](https://github.com/saramjh/scratchLottery)

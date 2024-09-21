@@ -10,7 +10,7 @@ The website was made using Jekyll the one of open source static sites generator,
 
 <hr>
 
-All the services are free, source code the site was placed on my [github](https://github.com/piharpi/mahendrata.now.sh) repository and intergration with ~~[netlify](https://netlify.com)~~ service, another service that you can use is [github page](https://pages.github.com/) for hosting your own static site.
+All the services are free, source code the site was placed on my [github](https://github.com/piharpi/mahendrata.now.sh) repository and intergration with ~~[netlify](https://netlify.com)~~ service, another service that you can use is [github page](https://pages.github.com) for hosting your own static site.
 
 <hr>
 
@@ -22,14 +22,14 @@ So, before we start create a site, you need some tools, you can self paced for h
 
 Requirements before we doing magic show.
 
-- [Ruby](https://www.ruby-lang.org/en/downloads/) programming language
+- [Ruby](https://www.ruby-lang.org/en/downloads) programming language
 - [Git](https://git-scm.com) (version control)
 - [Netlify](https://netlify.com) and [Github](https://github.com) account
 - [Bundler](https://bundler.io)
 
 #### Installation
 
-First, you need some [SSG](https://www.staticgen.com/), there are many kind ssg, but in case i'm using Jekyll cause i'm already familiar with it, open your terminal and type command on below
+First, you need some [SSG](https://www.staticgen.com), there are many kind ssg, but in case i'm using Jekyll cause i'm already familiar with it, open your terminal and type command on below
 
 ```bash
 $ bundle install jekyll # installing jekyll in your machine

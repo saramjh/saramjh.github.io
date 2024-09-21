@@ -88,8 +88,8 @@ Sedikit penjelasan dari gambar diatas.
 - Korn shell `ksh` Unix shell yang dikembangkan oleh David Korn di Bell Labs,
   inisialiasi pengembangan ini berdasar pada source code Bourne shell, namun juga memiliki fitur `csh` dan `sh`, pengembanganya pun pada saat saya menulis ini pun terus <a href="http://github.com/att/ast" target="_blank" rel="noopener">terawat</a>.
 - Bourne again shell `bash`
-  adalah proyek ini open source <a href="http://gnu.org/software/bash/" target="_blank" rel="noopener">GNU project</a> memilki kompatibel dengan `sh` yang menggabungkan fitur penting dari `ksh` dan `csh`, dan menjadi salah satu shell yang paling umum digunakan (umumnya menjadi default shell login Linux dan Apple's macOS Mojave).
-- Z shell `zsh` ini mempunyai wadah komunitasnya disebutnya <a href="http://ohmyz.sh/"  target="_blank" rel="noopener">"Oh My Zsh"</a>, plug-in dan theme `zsh` bisa kita temukan di komunitas ini, saya saat ini menggunakan `zsh`, shell ini juga menjadi default dari sistem operasi macOS Catalina, yang menggantikan bash.
+  adalah proyek ini open source <a href="http://gnu.org/software/bash" target="_blank" rel="noopener">GNU project</a> memilki kompatibel dengan `sh` yang menggabungkan fitur penting dari `ksh` dan `csh`, dan menjadi salah satu shell yang paling umum digunakan (umumnya menjadi default shell login Linux dan Apple's macOS Mojave).
+- Z shell `zsh` ini mempunyai wadah komunitasnya disebutnya <a href="http://ohmyz.sh"  target="_blank" rel="noopener">"Oh My Zsh"</a>, plug-in dan theme `zsh` bisa kita temukan di komunitas ini, saya saat ini menggunakan `zsh`, shell ini juga menjadi default dari sistem operasi macOS Catalina, yang menggantikan bash.
 - friendly interactive shell `fish`
   yah sesuai dengan <a href="http://fishshell.com/" target="_blank" rel="noopener">deskripsi</a> di web nya, menurut saya shell ini fun banget, fitur yang saya sukai dari shell ini autosuggestions, dan konfigurasi yang mudah melalui web based.
 
@@ -123,6 +123,6 @@ Terimakasih sudah baca, _penulis menerima kritik dan saran._
 
 ##### Resources
 
-- [Evolution shells in Linux](http://developer.ibm.com/tutorials/l-linux-shells/)
+- [Evolution shells in Linux](http://developer.ibm.com/tutorials/l-linux-shells)
 - [Kernel Defintion](http://www.linfo.org/kernel.html)
 - [The Shell](http://www.cis.rit.edu/class/simg211/unixintro/Shell.html)

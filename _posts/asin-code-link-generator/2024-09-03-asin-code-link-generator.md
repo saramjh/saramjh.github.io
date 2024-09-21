@@ -24,5 +24,5 @@ permalink: /asin-code-link-generator/
 
 #### Links
 
-- [ASIN CODE URL Generator](https://saramjh.github.io/asinURLGenerator/)
+- [ASIN CODE URL Generator](https://saramjh.github.io/asinURLGenerator)
 - [Github Repository: ASIN CODE URL Generator](https://github.com/saramjh/asinURLGenerator)

@@ -94,9 +94,9 @@ permalink: /calendar-sharing-via-URL/
 ## 개발자
 
 - **Author**: saramjh
-- **Website**: [saramjh.github.io](https://saramjh.github.io/)
+- **Website**: [saramjh.github.io](https://saramjh.github.io)
 
 #### Links
 
-- [URL 공유 달력 - 메모 및 일정 관리](https://saramjh.github.io/URLschedule/)
+- [URL 공유 달력 - 메모 및 일정 관리](https://saramjh.github.io/URLschedule)
 - [Github Repository: URL 공유 달력 - 메모 및 일정 관리](https://github.com/saramjh/URLschedule)
