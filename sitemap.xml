@@ -1,128 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
   <loc>https://saramjh.github.io/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/archive/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/about/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://saramjh.github.io/macbook-external-monitor-flickering-solution/</loc>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://saramjh.github.io/kr-macbook-external-monitor-flickering-solution/</loc>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/calendar-sharing-via-URL/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/rich-tester/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/screenshot-painter/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/scratch-lottery-simulation/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/recipe-scaling-application/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/online-image-resizer/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/memo-via-url/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/english-cefr-b-level-test/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://saramjh.github.io/dieter-rams-style-calculator/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://saramjh.github.io/asin-code-link-generator/</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/assets/docs/resume_JihunOh.pdf</loc>
-  <lastmod>2024-09-21T11:38:31+00:00</lastmod>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://saramjh.github.io/dieter-rams-style-calculator/</loc>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://saramjh.github.io/asin-code-link-generator/</loc>
+  <lastmod>2024-09-23T07:57:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://saramjh.github.io/URLschedule/</loc>
-  <lastmod>2024-09-14T11:20:01+00:00</lastmod>
+  <lastmod>2024-09-21T12:13:26+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/richChecker/</loc>
-  <lastmod>2024-09-05T03:28:58+00:00</lastmod>
+  <lastmod>2024-09-21T12:16:41+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/ScreenshotMarker/</loc>
-  <lastmod>2024-09-10T16:01:04+00:00</lastmod>
+  <lastmod>2024-09-21T12:17:19+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/scratchLottery/</loc>
-  <lastmod>2024-09-10T16:48:43+00:00</lastmod>
+  <lastmod>2024-09-21T12:14:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/recipeCalc/</loc>
-  <lastmod>2024-09-10T15:24:48+00:00</lastmod>
+  <lastmod>2024-09-23T05:00:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/resizeIMG/</loc>
-  <lastmod>2024-09-10T15:42:32+00:00</lastmod>
+  <lastmod>2024-09-21T12:15:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/URLmemo/</loc>
-  <lastmod>2024-09-10T15:54:05+00:00</lastmod>
+  <lastmod>2024-09-21T12:17:40+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/englishFlashcardQuiz/</loc>
-  <lastmod>2024-09-10T16:17:34+00:00</lastmod>
+  <lastmod>2024-09-21T12:14:31+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/dieterRamsCalc/</loc>
-  <lastmod>2024-09-05T03:30:09+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2024-09-21T12:13:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://saramjh.github.io/asinURLGenerator/</loc>
-  <lastmod>2024-09-10T15:51:59+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2024-09-21T12:11:47+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 
 
