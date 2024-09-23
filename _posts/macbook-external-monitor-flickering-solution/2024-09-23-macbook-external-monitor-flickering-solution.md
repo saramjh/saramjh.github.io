@@ -37,7 +37,7 @@ NVRAM/PRAM is a memory space where various settings for macOS are stored, includ
 Resetting NVRAM or PRAM on macOS:
 Refer to troubleshooting guides from overseas sites and try the following method:
 
-<img src="{{site.assets}}{{ page.permalink }}%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-03-17_%EC%98%A4%EC%A0%84_10.57.19.png" alt="MacBook External Monitor Flickering Fix">
+<img src="{{site.assets}}{{ page.permalink }}howtoreset.png" alt="MacBook External Monitor Flickering Fix">
 
 ### Reset Method
 

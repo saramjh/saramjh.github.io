@@ -34,7 +34,7 @@ Mac이 노트북 컴퓨터가 아닌 경우 다음 단계를 따릅니다.
 맥os의 여러가지 설정값들이 저장되는 메모리 공간으로 이는 외부 모니터 연결정보도 포함되어 기존과 동일한 모니터로 인식이 될때 기존 정보를 불러와 연결을 돕습니다.
 이때 기존정보와 충돌이 발생하여 모니터에 신호를 제대로 전달하지 못할때가 있습니다.
 
-<img src="{{site.assets}}{{ page.permalink }}%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-03-17_%EC%98%A4%EC%A0%84_10.57.19.png" alt="MacBook External Monitor Flickering Fix">
+<img src="{{site.assets}}{{ page.permalink }}howtoreset.png" alt="MacBook External Monitor Flickering Fix">
 
 ### 리셋 방법
 
