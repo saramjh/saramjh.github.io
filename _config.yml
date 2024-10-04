@@ -22,7 +22,7 @@ author:
 
 # URL settings
 url: "https://saramjh.github.io" #
-baseurl:
+baseurl: "https://saramjh.github.io/"
 assets: "https://saramjh.github.io/posts"
 permalink: /:title/
 google_analytics: G-4DYFKSNFBG # leave it blank if not wish
