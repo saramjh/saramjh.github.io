@@ -41,7 +41,8 @@ kramdown:
 
 comments:
   provider: "disqus" # 블로그 댓글 기능 false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
-  disqus: "devtestudinidae-github-io"
+  disqus:
+    shortname: "devtestudinidae-github-io"
 
 # Default front matter
 defaults:
