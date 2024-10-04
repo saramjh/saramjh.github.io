@@ -3,6 +3,7 @@ title: "Capture & Craft Studio - Screenshot Painter"
 date: 2024-09-03
 tags: Screenshot editor, painter, memo, online tool
 permalink: /screenshot-painter/
+comments: true
 ---
 
 ### Capture & Craft Studio - Screenshot Painter

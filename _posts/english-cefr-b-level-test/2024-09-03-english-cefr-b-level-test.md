@@ -4,6 +4,7 @@ description: CEFR B1-B2 영어 무료 학습은 한국인을 대상으로 한 �
 date: 2024-09-03
 tags: English Study, Level test, CEFR, 일상영어
 permalink: /english-cefr-b-level-test/
+comments: true
 ---
 
 ### CEFR B1-B2 영어 무료 학습 웹 어플리케이션

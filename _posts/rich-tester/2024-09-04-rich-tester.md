@@ -3,6 +3,7 @@ title: "인공지능 부자 관상 분석"
 date: 2024-09-04
 tags: 인공지능, face-api, rich, analysis, forbes rich Korean 50
 permalink: /rich-tester/
+comments: true
 ---
 
 ### 인공지능 부자 관상 분석
