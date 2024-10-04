@@ -40,7 +40,7 @@ kramdown:
   syntax_highlighter: rouge
 
 comments:
-  provider: "disqus" # 블로그 댓글 기능 false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  provider: "disqus"
   disqus:
     shortname: "devtestudinidae-github-io"
 
