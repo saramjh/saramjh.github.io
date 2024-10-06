@@ -5,7 +5,6 @@ date: 2024-09-03
 tags: English Study, Level test, CEFR, 일상영어
 permalink: /english-cefr-b-level-test/
 layout: default
-comments: true
 ---
 
 ### CEFR B1-B2 영어 무료 학습 웹 어플리케이션

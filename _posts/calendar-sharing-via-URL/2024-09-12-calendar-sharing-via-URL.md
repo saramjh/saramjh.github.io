@@ -5,7 +5,6 @@ date: 2024-09-12
 tags: utility, sharing via URL, calendar, memo
 permalink: /calendar-sharing-via-URL/
 layout: default
-comments: true
 ---
 
 # URL 공유 달력 - 메모 및 일정 관리

@@ -5,7 +5,6 @@ date: 2024-09-03
 tags: Recipe, Recipe calculator, ingredient amount
 permalink: /recipe-scaling-application/
 layout: default
-comments: true
 ---
 
 ### Recipe Scaling Application

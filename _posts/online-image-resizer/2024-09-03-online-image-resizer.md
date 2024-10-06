@@ -5,7 +5,6 @@ date: 2024-09-03
 tags: Image resizer, Personal Information secure, Online Utility
 permalink: /online-image-resizer/
 layout: default
-comments: true
 ---
 
 ### Online Image Resizer

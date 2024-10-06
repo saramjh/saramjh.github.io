@@ -5,7 +5,6 @@ date: 2024-09-03
 tags: Lottery, Scratch Lottery, Lottery simulation
 permalink: /scratch-lottery-simulation/
 layout: default
-comments: true
 ---
 
 ### Scratch Lottery Simulation - Try your luck!

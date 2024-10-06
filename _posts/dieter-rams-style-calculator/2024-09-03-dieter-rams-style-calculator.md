@@ -5,7 +5,6 @@ date: 2024-09-03
 tags: Dieter Rams, Dieter Rams Style, Online tool, Calculator
 permalink: /dieter-rams-style-calculator/
 layout: default
-comments: true
 ---
 
 ### Dieter Rams Style Calculator
