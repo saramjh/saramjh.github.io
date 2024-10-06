@@ -3,7 +3,7 @@ title: "Share MEMO via URL easily"
 date: 2024-09-03
 tags: Memo, Note, Share, Util, via URL
 permalink: /memo-via-url/
-layout: default
+layout: compress
 comments: true
 ---
 

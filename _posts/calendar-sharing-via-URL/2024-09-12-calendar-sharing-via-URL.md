@@ -4,7 +4,7 @@ description: 작성한 메모를 포함한 달력 상태를 URL로 공유할 수
 date: 2024-09-12
 tags: utility, sharing via URL, calendar, memo
 permalink: /calendar-sharing-via-URL/
-layout: default
+layout: compress
 comments: true
 ---
 

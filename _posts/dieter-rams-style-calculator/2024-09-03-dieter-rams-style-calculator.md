@@ -4,7 +4,7 @@ description: Discover a minimalist calculator designed with simplicity and intui
 date: 2024-09-03
 tags: Dieter Rams, Dieter Rams Style, Online tool, Calculator
 permalink: /dieter-rams-style-calculator/
-layout: default
+layout: compress
 comments: true
 ---
 

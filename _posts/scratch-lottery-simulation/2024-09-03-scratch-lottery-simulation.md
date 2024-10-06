@@ -4,7 +4,7 @@ description: This program is for simulating probability of scratch lottery. You 
 date: 2024-09-03
 tags: Lottery, Scratch Lottery, Lottery simulation
 permalink: /scratch-lottery-simulation/
-layout: default
+layout: compress
 comments: true
 ---
 
