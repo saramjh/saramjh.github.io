@@ -1,0 +1,47 @@
+I"�<h3 id="macbook-air--macbook-pro--macbook-trackpad-external-monitor-flickering-problem-solution">MacBook Air / MacBook Pro / MacBook Trackpad External Monitor Flickering Problem Solution</h3>
+
+<p>If you’re experiencing flickering issues with your external monitor connected to your MacBook Air, MacBook Pro, you’re not alone. The issue is often caused by the battery being permanently attached to the device, leading to power supply problems.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>Here’s a step-by-step guide to help you resolve the issue:
+<img src="/posts/macbook-external-monitor-flickering-solution/28d26ef777b3e7.webp" alt="MacBook External Monitor Flickering Fix" /></p>
+
+<ol>
+  <li><strong>Use Official Adapter and Cable:</strong> Use the official adapter and cable provided with your MacBook Air or MacBook Pro to connect your external monitor.</li>
+  <li><strong>Turn Off the Power:</strong> Turn off your MacBook Air or MacBook Pro.</li>
+  <li><strong>Press the Keys:</strong> Press the four keys on the left side of your keyboard <code class="language-plaintext highlighter-rouge">Shift</code> + <code class="language-plaintext highlighter-rouge">Control</code> + <code class="language-plaintext highlighter-rouge">Option</code> + <code class="language-plaintext highlighter-rouge">Power</code> simultaneously for about 10 seconds. (Note: For Touch Bar models or later, the Power button is a fingerprint reader.)</li>
+  <li><strong>Release the Keys and Turn On:</strong> Release the keys after 10 seconds and turn on your MacBook Air or MacBook Pro.</li>
+</ol>
+
+<h3 id="for-desktop-computers">For Desktop Computers</h3>
+
+<p>If you’re using a desktop computer, follow these steps:</p>
+
+<p><img src="/posts/macbook-external-monitor-flickering-solution/2e82528b602df.webp" alt="Mac External Monitor Flickering Fix" /></p>
+
+<ol>
+  <li><strong>Shut Down the Mac:</strong> Shut down your Mac and unplug the power cord.</li>
+  <li><strong>Wait for 15 Seconds:</strong> Wait for 15 seconds before plugging the power cord back in.</li>
+  <li><strong>Wait for 5 Seconds:</strong> Wait for 5 seconds before turning on your Mac.</li>
+</ol>
+
+<p>By following these steps, you should be able to resolve the external monitor flickering issue on your MacBook Air, MacBook Pro.</p>
+
+<h3 id="if-the-above-method-does-not-work">If the Above Method Does Not Work</h3>
+
+<p>NVRAM/PRAM is a memory space where various settings for macOS are stored, including external monitor connection information. Sometimes, conflicts can arise when trying to retrieve this information, preventing the proper signal from being sent to the monitor.
+Resetting NVRAM or PRAM on macOS:
+Refer to troubleshooting guides from overseas sites and try the following method:</p>
+
+<p><img src="/posts/macbook-external-monitor-flickering-solution/howtoreset.png" alt="MacBook External Monitor Flickering Fix" /></p>
+
+<h3 id="reset-method">Reset Method</h3>
+
+<ol>
+  <li>Turn off your computer.</li>
+  <li>Turn it back on and immediately press and hold the <code class="language-plaintext highlighter-rouge">option</code> + <code class="language-plaintext highlighter-rouge">command</code> + <code class="language-plaintext highlighter-rouge">P</code> + <code class="language-plaintext highlighter-rouge">R</code> keys.</li>
+  <li>Keep holding the keys until you hear the startup sound (ding~) or see the Apple logo appear and disappear, then release the keys.</li>
+  <li>Done.</li>
+</ol>
+:ET

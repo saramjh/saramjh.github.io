@@ -1,0 +1,70 @@
+I"¢<h3 id="recipe-scaling-application">Recipe Scaling Application</h3>
+
+<p><img src="/posts/recipe-scaling-application/recipescalingapplication.jpg" alt="Recipe Scaling Application" /></p>
+
+<h4 id="needs">Needs</h4>
+
+<ul>
+  <li>Who has not enough an ingredient comparing to recipe.</li>
+  <li>Who wants to cook big amount of dish based on typical recipe.</li>
+  <li>Who needs to calculate amount of ingredient to fix balance.</li>
+  <li>Who wants to maintain the proportion and control the amount of ingredients.</li>
+</ul>
+
+<h4 id="usage">Usage</h4>
+
+<ol>
+  <li>Adding Ingredients</li>
+</ol>
+
+<ul>
+  <li><strong>Single Ingredient</strong>: Enter the name, amount, and unit of the ingredient in the provided fields, then click <code class="language-plaintext highlighter-rouge">Add</code>.</li>
+  <li><strong>Multiple Ingredients</strong>: Enter multiple ingredients at once by typing them in the multiline text area with each ingredient on a new line.</li>
+</ul>
+
+<ol>
+  <li>Scaling the Recipe
+    <ol>
+      <li>Select an ingredient from the dropdown menu.</li>
+      <li>Enter the available amount you have for that ingredient.</li>
+      <li>The app will automatically adjust the amounts of all other ingredients in the recipe.</li>
+    </ol>
+  </li>
+  <li>Editing and Deleting Ingredients</li>
+</ol>
+
+<ul>
+  <li><strong>Edit</strong>: Click the <code class="language-plaintext highlighter-rouge">Edit</code> button next to an ingredient to change its details.</li>
+  <li><strong>Delete</strong>: Click the <code class="language-plaintext highlighter-rouge">Delete</code> button to remove an ingredient from the list.</li>
+</ul>
+
+<ol>
+  <li>Reset the Form
+Use the <code class="language-plaintext highlighter-rouge">Reset</code> button to clear the form and start over.</li>
+</ol>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li><strong>Add Ingredients</strong>: Users can add ingredients with specified amounts and units to a recipe.</li>
+  <li><strong>Multiple Ingredients Input</strong>: Allows bulk input of ingredients with a single input area.</li>
+  <li><strong>Recipe Scaling</strong>: Automatically scales the recipe based on the selected available amount of a specific ingredient.</li>
+  <li><strong>Edit and Delete Ingredients</strong>: Modify or remove ingredients from the recipe.</li>
+  <li><strong>Responsive Design</strong>: Optimized for both desktop and mobile devices.</li>
+</ul>
+
+<h2 id="technologies-used">Technologies Used</h2>
+
+<ul>
+  <li><strong>HTML5</strong>: Structure and content of the web pages.</li>
+  <li><strong>CSS3</strong>: Styling, layout, and responsive design.</li>
+  <li><strong>JavaScript</strong>: Core functionality, including adding, editing, deleting ingredients, and scaling the recipe.</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/recipeCalc">Recipe Scaling Application</a></li>
+  <li><a href="https://github.com/saramjh/recipeCalc">Github Repository: Recipe Scaling Application</a></li>
+</ul>
+:ET

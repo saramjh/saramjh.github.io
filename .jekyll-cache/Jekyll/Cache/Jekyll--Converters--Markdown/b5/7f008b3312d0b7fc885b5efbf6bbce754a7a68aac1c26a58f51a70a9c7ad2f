@@ -1,0 +1,71 @@
+I"�<h3 id="cefr-b1-b2-영어-무료-학습-웹-어플리케이션">CEFR B1-B2 영어 무료 학습 웹 어플리케이션</h3>
+
+<p><img src="/posts/english-cefr-b-level-test/a.jpg" alt="CEFR B1-B2 영어 무료 학습 000" /></p>
+
+<p><img src="/posts/english-cefr-b-level-test/b.jpg" alt="CEFR B1-B2 영어 무료 학습 001" /></p>
+
+<p><img src="/posts/english-cefr-b-level-test/c.jpg" alt="CEFR B1-B2 영어 무료 학습 002" /></p>
+
+<p><strong>CEFR B1-B2 영어 무료 학습</strong>은 한국인을 대상으로 한 영어 학습 웹 애플리케이션입니다. 이 애플리케이션은 사용자가 CEFR(유럽언어공통참조기준) B1-B2 수준의 영어를 재미있게 학습할 수 있도록 돕는 것을 목표로 합니다. 퀴즈 형식의 문제를 풀면서 실용적인 영어 표현을 익히고, 학습한 내용을 바로 적용할 수 있습니다.</p>
+
+<h4 id="주요-기능">주요 기능</h4>
+
+<ul>
+  <li><strong>학습 목표 설정:</strong> 학습할 문제의 수를 설정하고 학습을 시작할 수 있습니다.</li>
+  <li><strong>퀴즈 문제 풀이:</strong> 각 문제는 사용자의 영어 실력을 테스트할 수 있는 질문과 답변 선택지를 포함합니다.</li>
+  <li><strong>실시간 타이머:</strong> 문제를 푸는 동안 실시간 타이머가 동작하여 시간을 측정합니다.</li>
+  <li><strong>결과 요약:</strong> 퀴즈가 종료된 후 정답과 오답 개수, 문제 풀이에 소요된 총 시간과 평균 시간을 요약해 보여줍니다.</li>
+  <li><strong>오답 재학습:</strong> 틀린 문제만 다시 풀어볼 수 있는 기능을 제공합니다.</li>
+</ul>
+
+<h4 id="파일-구조">파일 구조</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── index.html          <span class="c"># 메인 HTML 파일</span>
+├── css/
+│   └── style.css       <span class="c"># 스타일시트 파일</span>
+├── js/
+│   └── script.js       <span class="c"># JavaScript 로직 구현 파일</span>
+└── lib/
+    └── quiz.json       <span class="c"># 퀴즈 데이터가 담긴 JSON 파일</span>
+</code></pre></div></div>
+
+<h4 id="사용-방법">사용 방법</h4>
+
+<ol>
+  <li>
+    <p><strong>학습 목표 설정:</strong></p>
+
+    <ul>
+      <li>퀴즈 시작 전, 학습할 문제의 수를 설정합니다. 총 문제 수 내에서 학습할 문제 갯수를 입력하고 “시작” 버튼을 누르면 퀴즈가 시작됩니다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>문제 풀이:</strong></p>
+
+    <ul>
+      <li>각 문제에 대해 제공된 답변 선택지 중 하나를 선택하세요. 선택 후 정답 여부와 추가 설명이 표시됩니다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>결과 확인:</strong></p>
+
+    <ul>
+      <li>모든 문제를 풀고 나면, 정답과 오답 개수, 문제 풀이에 소요된 총 시간과 평균 시간이 요약된 결과 화면이 나타납니다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>오답 재학습:</strong></p>
+    <ul>
+      <li>오답으로 기록된 문제들을 다시 풀어볼 수 있습니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/englishFlashcardQuiz">CEFR B1-B2 영어 무료 학습</a></li>
+  <li><a href="https://github.com/saramjh/englishFlashcardQuiz">Github Repository: CEFR B1-B2 영어 무료 학습</a></li>
+</ul>
+:ET

@@ -12,7 +12,7 @@ GEM
     ffi (1.17.0-arm64-darwin)
     forwardable-extended (2.6.0)
     http_parser.rb (0.8.0)
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     jekyll (4.1.1)
       addressable (~> 2.4)
@@ -72,6 +72,7 @@ PLATFORMS
   arm64-darwin-23
 
 DEPENDENCIES
+  i18n (~> 1.14.6)
   jekyll (~> 4.1.0)
   jekyll-compose (~> 0.12.0)
   jekyll-feed (~> 0.13)

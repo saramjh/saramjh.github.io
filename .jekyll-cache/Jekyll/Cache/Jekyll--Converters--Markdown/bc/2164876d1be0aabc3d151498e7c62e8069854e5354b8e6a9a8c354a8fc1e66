@@ -1,0 +1,64 @@
+I"Æ<h3 id="scratch-lottery-simulation---try-your-luck">Scratch Lottery Simulation - Try your luck!</h3>
+
+<p><img src="/posts/scratch-lottery-simulation/scratchlottery.JPG" alt="Scratch Lottery Simulation - Try your luck!" /></p>
+
+<p>This project is a scratch lottery experience that allows users to scratch a lottery ticket to see if they win. The user can scratch the lottery ticket to see if they win, and can adjust the odds of winning by setting the odds.</p>
+
+<h4 id="needs">Needs</h4>
+
+<ul>
+  <li>Who wants to simulate lottery ticket.</li>
+  <li>Who wants to bet with friends.</li>
+  <li>Who wants to experience the probability of lottery winning.</li>
+</ul>
+
+<h4 id="project-organization">Project Organization</h4>
+
+<ol>
+  <li>HTML Structure</li>
+</ol>
+
+<ul>
+  <li><strong>header</strong>: The header of the page, where the title of the program is displayed.</li>
+  <li><strong>main</strong>: The main content area, containing the scratch lottery area and the information section.
+    <ul>
+      <li><strong>section.lottery</strong>: The area that displays the scratch lottery, which includes the canvas and buttons for scratching the lottery ticket.</li>
+      <li><strong>section.lotteryInfo</strong>: The area to set the odds of winning and display the winning odds table.</li>
+      <li><strong>section#lotteryBalance</strong>: This is the area that displays the balance information for the lottery.</li>
+      <li><strong>section#recordDisplay</strong>: This section displays the lottery scratch record.</li>
+    </ul>
+  </li>
+  <li><strong>footer</strong>: The footer of the page, which displays additional information when hovered over.</li>
+  <li><strong>div#jackpotModal</strong>: This is the area that displays the winning results in a modal.</li>
+</ul>
+
+<ol>
+  <li>CSS Styles</li>
+</ol>
+
+<ul>
+  <li><strong>Base-style</strong>: Initializes the default style for all elements, sets the font and box model.</li>
+  <li><strong>Layout</strong>: Organizes the overall layout of the page using flexboxes, and sets the styles for each section.</li>
+  <li><strong>Modal and Button Styles</strong>: Set the styles for modals and buttons to improve the user interface.</li>
+  <li><strong>Media Queries</strong>: Includes styling adjustments for mobile resolutions.</li>
+</ul>
+
+<ol>
+  <li>JavaScript Features</li>
+</ol>
+
+<ul>
+  <li>Canvas Initialization: Initializes the canvas of the scratch lottery, adds a gray cover and instructions.</li>
+  <li>Scratch function: Make a certain area of the canvas transparent when the user scratches with the mouse to see if the lottery is won.</li>
+  <li>Calculate winning probability: Calculate the winning probability of each equal number based on the probability set by the user.</li>
+  <li>Display winning results: Display winning results in a modal, which will appear automatically if you win.</li>
+  <li>Multilingual Support: English (EN), Spanish (ES), Chinese (ZH), German (DE), Italian (IT), Vietnamese (VI), Korean (KO), Russian (RU), Japanese (JP), French (FR)</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/scratchLottery">Scratch Lottery Simulation</a></li>
+  <li><a href="https://github.com/saramjh/scratchLottery">Github Repository: Scratch Lottery Simulation</a></li>
+</ul>
+:ET

@@ -1,0 +1,45 @@
+I"�<h3 id="맥북-에어--맥북-프로--맥북-트럭탑-외장-모니터-깜빡임-문제-해결">맥북 에어 / 맥북 프로 / 맥북 트럭탑 외장 모니터 깜빡임 문제 해결</h3>
+
+<p>유니바디(배터리 일체형) 맥북 에어와 맥북 프로는 배터리가 상시 본체에 꽂아 있어 전류 공급 문제가 있을 수 있습니다. 이로 인해 일부 모델에서는 화면 지직 거림, 깜빡임 증상이 일어날 수 있습니다.</p>
+
+<h3 id="해결-방법">해결 방법</h3>
+
+<p><img src="/posts/kr-macbook-external-monitor-flickering-solution/28d26ef777b3e7.webp" alt="MacBook External Monitor Flickering Fix" /></p>
+
+<p>해외 사이트의 트러블 슈팅을 참고하여 다음과 같은 방법을 시도해 보세요.</p>
+
+<ul>
+  <li><strong>정식 어댑터와 케이블 사용:</strong> MacBook 에어 또는 MacBook 프로의 정식 어댑터와 정식 케이블을 사용하여 전원을 연결해 주세요.</li>
+  <li><strong>전원 끄기:</strong> 전원을 끕니다.</li>
+  <li><strong>키 누름:</strong> 사진 속의 빨간 사각형을 친 키 4개(왼쪽에 위치한 <code class="language-plaintext highlighter-rouge">shift</code> + <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">option</code> + <code class="language-plaintext highlighter-rouge">power</code>)를 동시에 약 10초간 누릅니다. (터치 바 모델의 전원 버튼은 지문 인식하는 버튼입니다.)</li>
+  <li><strong>키에서 손을 뗀 후 전원 켜기:</strong> 10초 후 4개의 키에서 손을 뗍니다. 그리고 전원을 켭니다.</li>
+</ul>
+
+<h3 id="데스크탑-컴퓨터의-경우">데스크탑 컴퓨터의 경우</h3>
+
+<p>Mac이 노트북 컴퓨터가 아닌 경우 다음 단계를 따릅니다.</p>
+
+<p><img src="/posts/kr-macbook-external-monitor-flickering-solution/2e82528b602df.webp" alt="Mac External Monitor Flickering Fix" /></p>
+<ul>
+  <li><strong>Mac 시스템 종료:</strong> Mac 시스템을 종료하고 전원 코드를 뽑습니다.</li>
+  <li><strong>15초 후 전원 코드 다시 꽂기:</strong> 15초 후 전원 코드를 다시 꽂습니다.</li>
+  <li><strong>5초 기다리기:</strong> 5초 동안 기다렸다가 전원 버튼을 눌러 Mac을 켭니다.</li>
+</ul>
+
+<h3 id="만약-위-방법으로도-해결이-안되는-경우">만약 위 방법으로도 해결이 안되는 경우</h3>
+
+<p>맥 os의 NVRAM 혹은 PRAM 초기화
+맥os의 여러가지 설정값들이 저장되는 메모리 공간으로 이는 외부 모니터 연결정보도 포함되어 기존과 동일한 모니터로 인식이 될때 기존 정보를 불러와 연결을 돕습니다.
+이때 기존정보와 충돌이 발생하여 모니터에 신호를 제대로 전달하지 못할때가 있습니다.</p>
+
+<p><img src="/posts/kr-macbook-external-monitor-flickering-solution/howtoreset.png" alt="MacBook External Monitor Flickering Fix" /></p>
+
+<h3 id="리셋-방법">리셋 방법</h3>
+
+<ol>
+  <li>컴퓨터 전원을 종료합니다.</li>
+  <li>전원 켠뒤 곧바로 <code class="language-plaintext highlighter-rouge">option</code> + <code class="language-plaintext highlighter-rouge">command</code> + <code class="language-plaintext highlighter-rouge">P</code> + <code class="language-plaintext highlighter-rouge">R</code> 키를 누르고 있는다.</li>
+  <li>시작 사운드(딩~) 가 나거나, 로고가 나타났다가 사라지고나서 몇초후까지 누르고 있는다.</li>
+  <li>끝</li>
+</ol>
+:ET

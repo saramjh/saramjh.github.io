@@ -1,0 +1,47 @@
+I"<p>This project is an online text editor that allows users to create memos, encrypt them, and easily share them in the form of a URL. Users can Base64 encode the memo they write and embed it in a URL, which can be easily shared with other users.</p>
+
+<h3 id="share-memo-via-url-easily">Share MEMO via URL easily</h3>
+
+<p><img src="/posts/memo-via-url/memoViaURL.JPG" alt="MEMO via URL" /></p>
+
+<h4 id="needs">Needs</h4>
+
+<ul>
+  <li>Who needs to share memo only via URL</li>
+  <li>Who wants not to store sensitive personal information in any server.</li>
+  <li>Who wants to share memo between any device that supports web browser.</li>
+</ul>
+
+<h4 id="usage">Usage</h4>
+
+<ol>
+  <li>type text in Memo field.</li>
+  <li>push a button for share left side one on the bottom.</li>
+  <li>You can paste the memo Link onto anywhere by <strong>Window</strong> <kbd>Ctrl</kbd> + <kbd>V</kbd> / <strong>Mac</strong> <kbd>Cmd</kbd> + <kbd>V</kbd></li>
+</ol>
+
+<h4 id="features">Features</h4>
+
+<ul>
+  <li>Create and save notes</li>
+  <li>Base64-encrypt notes and embed them in URLs</li>
+  <li>Copy URL functionality</li>
+  <li>Decrypt and retrieve notes from URLs</li>
+  <li>Provide user feedback via a modal window</li>
+</ul>
+
+<h4 id="technology-stack">Technology Stack</h4>
+
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/URLmemo">Share MEMO via URL</a></li>
+  <li><a href="https://github.com/saramjh/URLmemo">Github Repository: Share MEMO via URL</a></li>
+</ul>
+:ET

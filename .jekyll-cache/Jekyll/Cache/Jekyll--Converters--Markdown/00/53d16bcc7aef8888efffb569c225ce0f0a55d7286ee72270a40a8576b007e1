@@ -1,0 +1,82 @@
+I"<h3 id="online-image-resizer">Online Image Resizer</h3>
+
+<p><img src="/posts/online-image-resizer/onlineImageResizer.JPG" alt="online-image-resizer" /></p>
+
+<h4 id="needs">Needs</h4>
+
+<ul>
+  <li>Who needs to resize resolution of <strong>a lot of image files</strong> formatting <code class="language-plaintext highlighter-rouge">jpg</code>, <code class="language-plaintext highlighter-rouge">gif</code>, <code class="language-plaintext highlighter-rouge">png</code> and <code class="language-plaintext highlighter-rouge">webp</code>.</li>
+  <li>Who worry about <strong><em>leaking personal information</em></strong> through storing a server storage.</li>
+  <li>Who wants to make a lot of image files lighter.</li>
+  <li>Who wants to download image URLs as image file via just a click.</li>
+</ul>
+
+<h4 id="usage">Usage</h4>
+
+<ol>
+  <li><strong>Select Images or Enter URLs</strong>:
+    <ul>
+      <li>Click the file input to select local images or enter image URLs in the provided text area.</li>
+      <li>Sometimes there could be an error for <code class="language-plaintext highlighter-rouge">CORS</code>, then you should download directly and select the file to resize.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Set Resize Options</strong>:</p>
+
+    <ul>
+      <li>Input the desired width and height. You can choose to keep one dimension fixed to maintain the aspect ratio.</li>
+      <li>Choose the desired format for the resized images.</li>
+      <li>Optionally, check the box to add a <code class="language-plaintext highlighter-rouge">resized_</code> prefix to filenames.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Resize Images</strong>:</p>
+
+    <ul>
+      <li>Click the “Resize Images” button to start the resizing process.</li>
+      <li>The progress will be displayed, and once completed, resized images will be shown.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Download Results</strong>:</p>
+
+    <ul>
+      <li>Click the “Download All as ZIP” button to download all resized images in a single ZIP file.</li>
+      <li>Alternatively, click the “Download” button below each image to download it individually.</li>
+    </ul>
+  </li>
+  <li><strong>Reset All</strong>:
+    <ul>
+      <li>Click the “Reset All” button to clear all inputs and selections and reload the page.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="features">Features</h4>
+
+<ul>
+  <li>Only using your browser memeory. never using server storage.</li>
+  <li>Upload Images: Select multiple image files or enter image URLs.</li>
+  <li>Resize Options: Define width and height, select image format (JPG, PNG, GIF, WEBP), and optionally add a prefix to filenames.</li>
+  <li>Progress Tracking: See the progress of the resizing operation.</li>
+  <li>Error Handling: View error messages if any images fail to process.</li>
+  <li>Download Resized Images: Download resized images individually or as a ZIP file.</li>
+  <li>Reset Functionality: Clear all selections and settings to start over.</li>
+  <li>Compatibility: Every Web browser supports this utility.</li>
+</ul>
+
+<h4 id="dependencies">Dependencies</h4>
+
+<ul>
+  <li><strong>JSZip</strong>: Used to create ZIP files for downloading resized images.</li>
+  <li><strong>Font Awesome</strong>: Provides icons used in the interface.</li>
+  <li><strong>Google Analytics</strong>: Tracks usage statistics (optional).</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/resizeIMG">Online Image Resizer</a></li>
+  <li><a href="https://github.com/saramjh/resizeIMG">Github Repository: Online Image Resizer</a></li>
+</ul>
+:ET

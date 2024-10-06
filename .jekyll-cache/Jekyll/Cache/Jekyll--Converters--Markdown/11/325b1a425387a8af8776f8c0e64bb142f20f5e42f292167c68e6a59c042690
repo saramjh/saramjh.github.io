@@ -1,0 +1,52 @@
+I"X<h3 id="capture--craft-studio---screenshot-painter">Capture &amp; Craft Studio - Screenshot Painter</h3>
+
+<p><img src="/posts/screenshot-painter/screenshotpainter.JPG" alt="Capture &amp; Craft Studio - Screenshot Painter" /></p>
+
+<p>Capture &amp; Craft Studio is a versatile web-based tool that allows users to create, edit, and enhance screenshots effortlessly. This project is perfect for office workers, educators, and collaborators who seek to elevate their digital content with customized visual stories.</p>
+
+<h4 id="needs">Needs</h4>
+
+<ul>
+  <li>Who needs to draw on a screenshot.</li>
+  <li>Who wants to note on a screenshot.</li>
+  <li>Who wants to download noting on a screenshot as image file <code class="language-plaintext highlighter-rouge">jpg</code>, <code class="language-plaintext highlighter-rouge">png</code>, <code class="language-plaintext highlighter-rouge">gif</code> and <code class="language-plaintext highlighter-rouge">webp</code>.</li>
+  <li>Who wants to draw without installing painter program.</li>
+</ul>
+
+<h4 id="usage">Usage</h4>
+
+<ul>
+  <li><strong>Brush Tool</strong>: Click on the brush icon or press <code class="language-plaintext highlighter-rouge">B</code> to start drawing.</li>
+  <li><strong>Line Tool</strong>: Click on the line icon or press <code class="language-plaintext highlighter-rouge">L</code> to draw straight lines.</li>
+  <li><strong>Text Tool</strong>: Click on the text icon or press <code class="language-plaintext highlighter-rouge">T</code> to create text object.</li>
+  <li><strong>Select Tool</strong>: Click on the pointer icon or press <code class="language-plaintext highlighter-rouge">S</code> to select and move objects.</li>
+  <li><strong>Change Brush Size</strong>: Use the slider or press <code class="language-plaintext highlighter-rouge">+</code> or <code class="language-plaintext highlighter-rouge">-</code> to adjust the brush size.</li>
+  <li><strong>Change Color</strong>: Click on the color preview to choose a new color, or use the predefined color buttons (0-9).</li>
+  <li><strong>Save Image</strong>: Click the save icon to download your canvas in your chosen format.</li>
+  <li><strong>Paste from Clipboard</strong>: Use the paste icon or press <code class="language-plaintext highlighter-rouge">Ctrl+V</code> (Windows) / <code class="language-plaintext highlighter-rouge">Cmd+V</code> (Mac) to paste an image from your clipboard.</li>
+  <li><strong>Copy to Clipboard</strong>: Click the copy icon or press <code class="language-plaintext highlighter-rouge">Ctrl+C</code> (Windows) / <code class="language-plaintext highlighter-rouge">Cmd+C</code> (Mac) to copy the current canvas to the clipboard.</li>
+  <li><strong>Resize Canvas</strong>: Adjust the width and height fields, then click apply to resize the canvas.</li>
+  <li><strong>Clear Canvas</strong>: Click the clear canvas icon or press <code class="language-plaintext highlighter-rouge">R</code> to reset the canvas.</li>
+</ul>
+
+<h4 id="keyboard-shortcuts">Keyboard Shortcuts</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">B</code> - Select Brush Tool</li>
+  <li><code class="language-plaintext highlighter-rouge">L</code> - Select Line Tool</li>
+  <li><code class="language-plaintext highlighter-rouge">S</code> - Select Pointer Tool</li>
+  <li><code class="language-plaintext highlighter-rouge">T</code> - Select Text Tool</li>
+  <li><code class="language-plaintext highlighter-rouge">+/-</code> - Increase/Decrease Brush Size</li>
+  <li><code class="language-plaintext highlighter-rouge">Ctrl/Cmd + C</code> - Copy to Clipboard</li>
+  <li><code class="language-plaintext highlighter-rouge">Ctrl/Cmd + V</code> - Paste from Clipboard</li>
+  <li><code class="language-plaintext highlighter-rouge">R</code> - Clear Canvas</li>
+  <li><code class="language-plaintext highlighter-rouge">D</code> - Delete Selected Object</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/ScreenshotMarker">Capture &amp; Craft Studio - Screenshot Painter</a></li>
+  <li><a href="https://github.com/saramjh/ScreenshotMarker">Github Repository: Capture &amp; Craft Studio - Screenshot Painter</a></li>
+</ul>
+:ET

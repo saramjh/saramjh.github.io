@@ -13,6 +13,7 @@ layout: default
 ### 해결 방법
 
 <img src="{{site.assets}}{{ page.permalink }}28d26ef777b3e7.webp" alt="MacBook External Monitor Flickering Fix">
+
 해외 사이트의 트러블 슈팅을 참고하여 다음과 같은 방법을 시도해 보세요.
 
 - **정식 어댑터와 케이블 사용:** MacBook 에어 또는 MacBook 프로의 정식 어댑터와 정식 케이블을 사용하여 전원을 연결해 주세요.

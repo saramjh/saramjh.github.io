@@ -6,7 +6,6 @@ layout: compress
 {% include header.html %}
 
 <body data-theme="{{ site.mode }}" class="notransition">
-
   <script>
     const body = document.body;
     const data = body.getAttribute("data-theme");
@@ -20,9 +19,9 @@ layout: compress
         localStorage.setItem("theme", data);
       }
     };
- 
+
     initTheme(localStorage.getItem("theme"));
-    
+
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
@@ -31,8 +30,13 @@ layout: compress
     {% include author.html %}
     <main aria-label="Content">
       {{ content }}
+      <div id="disqus">
+        {% include comments.html %}
+      </div>
     </main>
+
     {% include footer.html %}
   </div>
 </body>
+
 </html>

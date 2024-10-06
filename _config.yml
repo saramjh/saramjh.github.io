@@ -22,8 +22,8 @@ author:
 
 # URL settings
 url: "https://saramjh.github.io" #
-baseurl: "https://saramjh.github.io/"
-assets: "https://saramjh.github.io/posts"
+baseurl:
+assets: "/posts"
 permalink: /:title/
 google_analytics: G-4DYFKSNFBG # leave it blank if not wish
 fb_appid:

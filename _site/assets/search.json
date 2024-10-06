@@ -1,67 +1,99 @@
 [
   
     {
-      "title"    : "Maths Example with Mathjax",
+      "title"    : "MacBook External Monitor Flickering Fix",
       "description" : "",
-      "tags"     : "",
-      "url"      : "/maths-example/",
-      "date"     : "2021-06-17 07:57:49 +0900"
+      "tags"     : "MacBook, External, Monitor, Flickering, Fix,MacBook, Pro, External, Monitor, Flickering, Solution,MacBook, Air, External, Monitor, Flickering, Problem,MacBook, External, Display, Flickering, Issue,MacBook, Pro, External, Display, Flickering, Solution,iMac, External, Monitor, Flickering, Fix,iMac, External, Display, Flickering, Solution",
+      "url"      : "/macbook-external-monitor-flickering-solution/",
+      "date"     : "2024-09-23 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "Welcome to Jekyll!",
+      "title"    : "맥북 에어 / 맥북 프로 / 맥북 트럭탑 외장 모니터 깜빡임 문제 해결",
       "description" : "",
-      "tags"     : "",
-      "url"      : "/welcome-to-jekyll/",
-      "date"     : "2020-08-29 11:29:20 +0900"
+      "tags"     : "맥북에어,, 맥북m1,, 맥북m2,, 화면깜빡임,, 외부모니터깜빡임,, 플리커링,, HDMI연결불량,, 외부모니터깜빡임해결",
+      "url"      : "/kr-macbook-external-monitor-flickering-solution/",
+      "date"     : "2024-09-23 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "Cara ribet memperbarui forked repo",
-      "description" : "Ada dua cara untuk memperbarui forked repository menggunakan web interface yang disediakan oleh github tapi ribet, atau melalui terminal yang lebih ribet lagi.",
-      "tags"     : "tips, git, software",
-      "url"      : "/cara-memperbarui-fork-repository/",
-      "date"     : "2020-01-29 03:00:00 +0900"
+      "title"    : "메모를 남긴 달력을 URL로 공유하세요!",
+      "description" : "작성한 메모를 포함한 달력 상태를 URL로 공유할 수 있습니다.",
+      "tags"     : "utility,, sharing, via, URL,, calendar,, memo",
+      "url"      : "/calendar-sharing-via-URL/",
+      "date"     : "2024-09-12 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "What is a shell? 🐚",
+      "title"    : "인공지능 부자 관상 분석",
       "description" : "",
-      "tags"     : "",
-      "url"      : "/apa-itu-shell/",
-      "date"     : "2020-01-25 13:58:47 +0900"
+      "tags"     : "인공지능,, face-api,, rich,, analysis,, forbes, rich, Korean, 50",
+      "url"      : "/rich-tester/",
+      "date"     : "2024-09-04 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "What is a shell? 🐚",
+      "title"    : "Capture &amp; Craft Studio - Screenshot Painter",
       "description" : "",
-      "tags"     : "",
-      "url"      : "/apa-itu-shell/",
-      "date"     : "2020-01-25 13:58:47 +0900"
+      "tags"     : "Screenshot, editor,, painter,, memo,, online, tool",
+      "url"      : "/screenshot-painter/",
+      "date"     : "2024-09-03 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "How this site was born 👶",
-      "description" : "All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.",
-      "tags"     : "blog, netlify, jekyll, github",
-      "url"      : "/how-this-site-was-made/",
-      "date"     : "2018-09-28 11:45:47 +0900"
+      "title"    : "Scratch Lottery Simulation",
+      "description" : "This program is for simulating probability of scratch lottery. You can adjust the rate of probability and test.",
+      "tags"     : "Lottery,, Scratch, Lottery,, Lottery, simulation",
+      "url"      : "/scratch-lottery-simulation/",
+      "date"     : "2024-09-03 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "Python Notes from Intro to Machine Learning",
-      "description" : "Notes and code snippets of Python that I&#39;ve been collecting so far throughout the &quot;Intro to Machine Learning&quot; course.",
-      "tags"     : "python, machine-learning",
-      "url"      : "/python-notes-from-Intro-to-machine-learning/",
-      "date"     : "2018-04-14 12:00:00 +0900"
+      "title"    : "Recipe Scaling Application",
+      "description" : "Don&#39;t be embarrassed if you have not enough ingredient. This utility helps you cook by calculating each ingredient, how much you have a ingredient.",
+      "tags"     : "Recipe,, Recipe, calculator,, ingredient, amount",
+      "url"      : "/recipe-scaling-application/",
+      "date"     : "2024-09-03 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "React Component with Dot Notation",
-      "description" : "Learn how to define a React component that is accessible through the dot notation. A common component pattern to show a parent-child relation.",
-      "tags"     : "javascript, react",
-      "url"      : "/react-component-with-dot-notation/",
-      "date"     : "2018-04-08 01:04:00 +0900"
+      "title"    : "Online Image Resizer - Don&#39;t worry about your personal information",
+      "description" : "The Online Image Resizer never store any personal information. This Util supports a lot of amount processing.",
+      "tags"     : "Image, resizer,, Personal, Information, secure,, Online, Utility",
+      "url"      : "/online-image-resizer/",
+      "date"     : "2024-09-03 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Share MEMO via URL easily",
+      "description" : "",
+      "tags"     : "Memo,, Note,, Share,, Util,, via, URL",
+      "url"      : "/memo-via-url/",
+      "date"     : "2024-09-03 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "CEFR B1-B2 영어 무료 학습",
+      "description" : "CEFR B1-B2 영어 무료 학습은 한국인을 대상으로 한 영어 학습 웹 애플리케이션입니다. 이 애플리케이션은 사용자가 CEFR(유럽언어공통참조기준) B1-B2 수준의 영어를 재미있게 학습할 수 있도록 돕는 것을 목표로 합니다. 퀴즈 형식의 문제를 풀면서 실용적인 영어 표현을 익히고, 학습한 내용을 바로 적용할 수 있습니다.",
+      "tags"     : "English, Study,, Level, test,, CEFR,, 일상영어",
+      "url"      : "/english-cefr-b-level-test/",
+      "date"     : "2024-09-03 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Dieter Rams Style Calculator",
+      "description" : "Discover a minimalist calculator designed with simplicity and intuition in mind, inspired by the iconic design philosophy of Dieter Rams.",
+      "tags"     : "Dieter, Rams,, Dieter, Rams, Style,, Online, tool,, Calculator",
+      "url"      : "/dieter-rams-style-calculator/",
+      "date"     : "2024-09-03 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Amazon ASIN CODE Links Generator",
+      "description" : "",
+      "tags"     : "AMAZON,, ASIN",
+      "url"      : "/asin-code-link-generator/",
+      "date"     : "2024-09-03 00:00:00 +0900"
     } 
   
 ]
