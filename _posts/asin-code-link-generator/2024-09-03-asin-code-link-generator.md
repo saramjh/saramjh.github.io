@@ -3,7 +3,7 @@ title: "Amazon ASIN CODE Links Generator"
 date: 2024-09-03
 tags: AMAZON, ASIN
 permalink: /asin-code-link-generator/
-layout: compress
+layout: default
 comments: true
 ---
 

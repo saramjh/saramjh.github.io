@@ -4,7 +4,7 @@ description: The Online Image Resizer never store any personal information. This
 date: 2024-09-03
 tags: Image resizer, Personal Information secure, Online Utility
 permalink: /online-image-resizer/
-layout: compress
+layout: default
 comments: true
 ---
 

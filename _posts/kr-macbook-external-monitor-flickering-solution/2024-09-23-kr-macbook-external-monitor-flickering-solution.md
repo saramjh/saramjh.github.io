@@ -3,7 +3,7 @@ title: "맥북 에어 / 맥북 프로 / 맥북 트럭탑 외장 모니터 깜빡
 date: 2024-09-23
 tags: 맥북에어, 맥북m1, 맥북m2, 화면깜빡임, 외부모니터깜빡임, 플리커링, HDMI연결불량, 외부모니터깜빡임해결
 permalink: /kr-macbook-external-monitor-flickering-solution/
-layout: compress
+layout: default
 comments: true
 ---
 
