@@ -1,1 +1,413 @@
-<!DOCTYPE html> <html lang="en-US"> <head prefix="og: http://ogp.me/ns#"> <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="ie=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="mobile-web-app-capable" content="yes" /> <meta name="apple-mobile-web-app-capable" content="yes" /> <meta name="application-name" content="DevTestudinidae" /> <meta name="apple-mobile-web-app-status-bar-style" content="#fff" /> <meta name="apple-mobile-web-app-title" content="DevTestudinidae" /> <title> Share MEMO via URL easily - DevTestudinidae </title> <link rel="alternate" href="http://localhost:4000/memo-via-url/" hreflang="en-US" /> <link rel="canonical" href="http://localhost:4000/memo-via-url/" /> <meta name="description" content="Blogging Experience in Development @github." /> <meta name="referrer" content="no-referrer-when-downgrade" /> <meta property="fb:app_id" content="" /> <meta property="og:site_name" content="Share MEMO via URL easily | DevTestudinidae" /> <meta property="og:title" content="Share MEMO via URL easily | DevTestudinidae" /> <meta property="og:type" content="website" /> <meta property="og:url" content="http://localhost:4000/memo-via-url/" /> <meta property="og:description" content="Blogging Experience in Development @github." /> <meta property="og:image" content="http://localhost:4000/assets/img/ogp.png" /> <meta property="og:image:width" content="640" /> <meta property="og:image:height" content="640" /> <meta name="twitter:card" content="summary" /> <meta name="twitter:title" content="Share MEMO via URL easily | devtestudinidae" /> <meta name="twitter:url" content="http://localhost:4000/memo-via-url/" /> <meta name="twitter:site" content="@devtestudinidae" /> <meta name="twitter:creator" content="@devtestudinidae" /> <meta name="twitter:description" content="Blogging Experience in Development @github." /> <meta name="twitter:image" content="http://localhost:4000/assets/img/ogp.png" /> <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="DevTestudinidae" /> <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" /> <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" /> <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" /> <link rel="manifest" href="/assets/favicons/site.webmanifest" /> <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" /> <meta name="apple-mobile-web-app-title" content="Jekyll Klise" /> <meta name="application-name" content="Jekyll Klise" /> <meta name="msapplication-TileColor" content="#da532c" /> <meta name="theme-color" content="#2c2c2c" /> <link rel="stylesheet" href="/assets/css/style.css" /> <!-- for mathjax support --> </head> <body data-theme="dark" class="notransition"> <script> const body = document.body; const data = body.getAttribute("data-theme"); const initTheme = (state) => { if (state === "dark") { body.setAttribute("data-theme", "dark"); } else if (state === "light") { body.removeAttribute("data-theme"); } else { localStorage.setItem("theme", data); } }; initTheme(localStorage.getItem("theme")); setTimeout(() => body.classList.remove("notransition"), 75); </script> <div class="navbar" role="navigation"> <nav class="menu"> <input type="checkbox" id="menu-trigger" class="menu-trigger" /> <label for="menu-trigger"> <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /> </svg> </span> </label> <a id="mode"> <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>LIGHT</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> <svg class="mode-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>DARK</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> </a> <div class="trigger"> <div class="trigger-container"><a class="menu-link" href="/">home</a><a class="menu-link" href="/archive/">archive</a><a class="menu-link" href="/about/">about</a><a class="menu-link rss" href="/feed.xml"> <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 512 512" fill="#ED812E" > <title>RSS</title> <path d="M108.56,342.78a60.34,60.34,0,1,0,60.56,60.44A60.63,60.63,0,0,0,108.56,342.78Z" /> <path d="M48,186.67v86.55c52,0,101.94,15.39,138.67,52.11s52,86.56,52,138.67h86.66C325.33,312.44,199.67,186.67,48,186.67Z" /> <path d="M48,48v86.56c185.25,0,329.22,144.08,329.22,329.44H464C464,234.66,277.67,48,48,48Z" /> </svg> </a> </div> </div> </nav> </div> <div class="wrapper"> <div class="author"> <img class="author-avatar" src="/assets/img/avatar.jpg" alt="devtestudinidae" /> <h2 class="author-name">DevTestudinidae</h2> <p class="author-bio">I'm growing slowly <a href="https://github.com/saramjh" target="_blank" rel="noopener">@github</a>.</p> </div> <main aria-label="Content"> <p>This project is an online text editor that allows users to create memos, encrypt them, and easily share them in the form of a URL. Users can Base64 encode the memo they write and embed it in a URL, which can be easily shared with other users.</p> <h3 id="share-memo-via-url-easily">Share MEMO via URL easily</h3> <p><img src="/posts/memo-via-url/memoViaURL.JPG" alt="MEMO via URL" /></p> <h4 id="needs">Needs</h4> <ul> <li>Who needs to share memo only via URL</li> <li>Who wants not to store sensitive personal information in any server.</li> <li>Who wants to share memo between any device that supports web browser.</li> </ul> <h4 id="usage">Usage</h4> <ol> <li>type text in Memo field.</li> <li>push a button for share left side one on the bottom.</li> <li>You can paste the memo Link onto anywhere by <strong>Window</strong> <kbd>Ctrl</kbd> + <kbd>V</kbd> / <strong>Mac</strong> <kbd>Cmd</kbd> + <kbd>V</kbd></li> </ol> <h4 id="features">Features</h4> <ul> <li>Create and save notes</li> <li>Base64-encrypt notes and embed them in URLs</li> <li>Copy URL functionality</li> <li>Decrypt and retrieve notes from URLs</li> <li>Provide user feedback via a modal window</li> </ul> <h4 id="technology-stack">Technology Stack</h4> <ul> <li>HTML</li> <li>CSS</li> <li>JavaScript</li> </ul> <h4 id="links">Links</h4> <ul> <li><a href="https://saramjh.github.io/URLmemo">Share MEMO via URL</a></li> <li><a href="https://github.com/saramjh/URLmemo">Github Repository: Share MEMO via URL</a></li> </ul> <div id="disqus"> <div id="disqus_thread"></div> <script> var disqus_config = function () { this.page.url = "http://localhost:4000/memo-via-url/"; // 페이지의 완전한 URL this.page.identifier = "/memo-via-url"; // 페이지의 고유 식별자 }; (function () { // DON'T EDIT BELOW THIS LINE var d = document, s = d.createElement('script'); s.src = 'https://devtestudinidae-github-io.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script> <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> </div> </main> <footer class="footer"> <a class="footer_item" href="/feed.xml">rss</a> <span class="footer_item">&copy; 2024 DevTestudinidae</span> </footer> <script src="/assets/js/main.js" defer="defer"></script><!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DYFKSNFBG"></script> <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-4DYFKSNFBG"); </script> </div> </body> </html>
+<!DOCTYPE html>
+<html lang="en-US">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="DevTestudinidae" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#fff" />
+  <meta name="apple-mobile-web-app-title" content="DevTestudinidae" />
+  <title>
+    Share MEMO via URL easily - DevTestudinidae
+  </title>
+  <link
+    rel="alternate"
+    href="http://localhost:4000/memo-via-url/"
+    hreflang="en-US"
+  />
+  <link
+    rel="canonical"
+    href="http://localhost:4000/memo-via-url/"
+  />
+   
+  <meta
+    name="description"
+    content="Blogging Experience in Development @github."
+  />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <meta property="fb:app_id" content="" />
+  <meta
+    property="og:site_name"
+    content="Share MEMO via URL easily | DevTestudinidae"
+  />
+  <meta
+    property="og:title"
+    content="Share MEMO via URL easily | DevTestudinidae"
+  />
+  
+  <meta property="og:type" content="website" />
+  
+  <meta
+    property="og:url"
+    content="http://localhost:4000/memo-via-url/"
+  />
+  <meta
+    property="og:description"
+    content="Blogging Experience in Development @github."
+  />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/ogp.png" />
+  
+  <meta property="og:image:width" content="640" />
+  <meta property="og:image:height" content="640" />
+  <meta name="twitter:card" content="summary" />
+  <meta
+    name="twitter:title"
+    content="Share MEMO via URL easily | devtestudinidae"
+  />
+  <meta
+    name="twitter:url"
+    content="http://localhost:4000/memo-via-url/"
+  />
+  <meta name="twitter:site" content="@devtestudinidae" />
+  <meta name="twitter:creator" content="@devtestudinidae" />
+  <meta
+    name="twitter:description"
+    content="Blogging Experience in Development @github."
+  />
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/ogp.png" />
+   <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="DevTestudinidae" />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/assets/favicons/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/assets/favicons/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/assets/favicons/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+  <link
+    rel="mask-icon"
+    href="/assets/favicons/safari-pinned-tab.svg"
+    color="#5bbad5"
+  />
+  <meta name="apple-mobile-web-app-title" content="Jekyll Klise" />
+  <meta name="application-name" content="Jekyll Klise" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="theme-color" content="#2c2c2c" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- for mathjax support -->
+  
+    
+</head>
+
+
+<body data-theme="dark" class="notransition">
+  <script>
+    const body = document.body;
+    const data = body.getAttribute("data-theme");
+
+    const initTheme = (state) => {
+      if (state === "dark") {
+        body.setAttribute("data-theme", "dark");
+      } else if (state === "light") {
+        body.removeAttribute("data-theme");
+      } else {
+        localStorage.setItem("theme", data);
+      }
+    };
+
+    initTheme(localStorage.getItem("theme"));
+
+    setTimeout(() => body.classList.remove("notransition"), 75);
+  </script>
+
+  <div class="navbar" role="navigation">
+  <nav class="menu">
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <label for="menu-trigger">
+      <span class="menu-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+          />
+        </svg>
+      </span>
+    </label>
+    <a id="mode">
+      <svg
+        class="mode-sunny"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 512 512"
+      >
+        <title>LIGHT</title>
+        <line
+          x1="256"
+          y1="48"
+          x2="256"
+          y2="96"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="256"
+          y1="416"
+          x2="256"
+          y2="464"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="403.08"
+          y1="108.92"
+          x2="369.14"
+          y2="142.86"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="142.86"
+          y1="369.14"
+          x2="108.92"
+          y2="403.08"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="464"
+          y1="256"
+          x2="416"
+          y2="256"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="96"
+          y1="256"
+          x2="48"
+          y2="256"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="403.08"
+          y1="403.08"
+          x2="369.14"
+          y2="369.14"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="142.86"
+          y1="142.86"
+          x2="108.92"
+          y2="108.92"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <circle
+          cx="256"
+          cy="256"
+          r="80"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+      </svg>
+      <svg
+        class="mode-moon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 512 512"
+      >
+        <title>DARK</title>
+        <line
+          x1="256"
+          y1="48"
+          x2="256"
+          y2="96"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="256"
+          y1="416"
+          x2="256"
+          y2="464"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="403.08"
+          y1="108.92"
+          x2="369.14"
+          y2="142.86"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="142.86"
+          y1="369.14"
+          x2="108.92"
+          y2="403.08"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="464"
+          y1="256"
+          x2="416"
+          y2="256"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="96"
+          y1="256"
+          x2="48"
+          y2="256"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="403.08"
+          y1="403.08"
+          x2="369.14"
+          y2="369.14"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <line
+          x1="142.86"
+          y1="142.86"
+          x2="108.92"
+          y2="108.92"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+        <circle
+          cx="256"
+          cy="256"
+          r="80"
+          style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+        />
+      </svg>
+    </a>
+    <div class="trigger">
+      <div class="trigger-container"><a class="menu-link" href="/">home</a><a class="menu-link" href="/archive/">archive</a><a class="menu-link" href="/about/">about</a><a class="menu-link rss" href="/feed.xml">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 512 512"
+            fill="#ED812E"
+          >
+            <title>RSS</title>
+            <path
+              d="M108.56,342.78a60.34,60.34,0,1,0,60.56,60.44A60.63,60.63,0,0,0,108.56,342.78Z"
+            />
+            <path
+              d="M48,186.67v86.55c52,0,101.94,15.39,138.67,52.11s52,86.56,52,138.67h86.66C325.33,312.44,199.67,186.67,48,186.67Z"
+            />
+            <path
+              d="M48,48v86.56c185.25,0,329.22,144.08,329.22,329.44H464C464,234.66,277.67,48,48,48Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+  <div class="wrapper">
+    <div class="author">
+  <img
+    class="author-avatar"
+    src="/assets/img/avatar.jpg"
+    alt="devtestudinidae"
+  />
+  <h2 class="author-name">DevTestudinidae</h2>
+  <p class="author-bio">I'm growing slowly <a href="https://github.com/saramjh" target="_blank" rel="noopener">@github</a>.</p>
+</div>
+
+    <main aria-label="Content">
+      <p>This project is an online text editor that allows users to create memos, encrypt them, and easily share them in the form of a URL. Users can Base64 encode the memo they write and embed it in a URL, which can be easily shared with other users.</p>
+
+<h3 id="share-memo-via-url-easily">Share MEMO via URL easily</h3>
+
+<p><img src="/posts/memo-via-url/memoViaURL.JPG" alt="MEMO via URL" /></p>
+
+<h4 id="needs">Needs</h4>
+
+<ul>
+  <li>Who needs to share memo only via URL</li>
+  <li>Who wants not to store sensitive personal information in any server.</li>
+  <li>Who wants to share memo between any device that supports web browser.</li>
+</ul>
+
+<h4 id="usage">Usage</h4>
+
+<ol>
+  <li>type text in Memo field.</li>
+  <li>push a button for share left side one on the bottom.</li>
+  <li>You can paste the memo Link onto anywhere by <strong>Window</strong> <kbd>Ctrl</kbd> + <kbd>V</kbd> / <strong>Mac</strong> <kbd>Cmd</kbd> + <kbd>V</kbd></li>
+</ol>
+
+<h4 id="features">Features</h4>
+
+<ul>
+  <li>Create and save notes</li>
+  <li>Base64-encrypt notes and embed them in URLs</li>
+  <li>Copy URL functionality</li>
+  <li>Decrypt and retrieve notes from URLs</li>
+  <li>Provide user feedback via a modal window</li>
+</ul>
+
+<h4 id="technology-stack">Technology Stack</h4>
+
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="https://saramjh.github.io/URLmemo">Share MEMO via URL</a></li>
+  <li><a href="https://github.com/saramjh/URLmemo">Github Repository: Share MEMO via URL</a></li>
+</ul>
+
+
+    </main>
+    <div id="disqus">
+      <div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = "http://localhost:4000/memo-via-url/";  // 페이지의 완전한 URL
+    this.page.identifier = "/memo-via-url"; // 페이지의 고유 식별자
+  };
+
+  (function () { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://devtestudinidae-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+    Disqus.</a></noscript>
+    </div>
+    <footer class="footer">
+  <a class="footer_item" href="/feed.xml">rss</a>
+  <span class="footer_item">&copy; 2024 DevTestudinidae</span>
+</footer>
+<script src="/assets/js/main.js" defer="defer"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DYFKSNFBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-4DYFKSNFBG");
+</script>
+  </div>
+</body>
+
+</html>
