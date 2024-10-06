@@ -40,9 +40,9 @@ kramdown:
   syntax_highlighter: rouge
 
 comments:
-  provider: "disqus"
+  provider: disqus
   disqus:
-    shortname: "devtestudinidae-github-io"
+    shortname: devtestudinidae-github-io
 
 # Default front matter
 defaults:
