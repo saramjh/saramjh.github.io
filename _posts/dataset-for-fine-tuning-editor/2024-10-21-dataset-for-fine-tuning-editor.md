@@ -51,24 +51,11 @@ It's important to note that this editor specifically supports the **JSONL** (JSO
 
 ## Use Cases
 
-1. **Chatbot Training Data Refinement**
-
-   - Edit conversation pairs to improve the quality of responses in chatbot models.
-
-2. **Sentiment Analysis Dataset Creation**
-
-   - Develop and refine datasets containing text samples and corresponding sentiment labels.
-
-3. **Machine Translation Corpus Enhancement**
-
-   - Improve translation pairs for better accuracy in language translation models.
-
-4. **Image Caption Dataset Curation**
-
-   - Edit and refine image descriptions for computer vision models.
-
-5. **Named Entity Recognition Data Preparation**
-   - Create and modify datasets for training NER models with accurately labeled entities.
+1. **Chatbot Training Data Refinement**: Edit conversation pairs to improve the quality of responses in chatbot models.
+1. **Sentiment Analysis Dataset Creation**: Develop and refine datasets containing text samples and corresponding sentiment labels.
+1. **Machine Translation Corpus Enhancement**: Improve translation pairs for better accuracy in language translation models.
+1. **Image Caption Dataset Curation**: Edit and refine image descriptions for computer vision models.
+1. **Named Entity Recognition Data Preparation**: Create and modify datasets for training NER models with accurately labeled entities.
 
 ## Example Workflow
 
