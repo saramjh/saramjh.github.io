@@ -25,7 +25,7 @@ The primary objectives of this tool are:
 
 ### 1. Upload Your Data
 
-- Click the "Choose File" button at the top of the website.
+- Click the "Load" button at the top of the website.
 - Select your JSONL (JSON Lines) format dataset file.
 
 ### 2. Edit Your Data
@@ -36,7 +36,7 @@ The primary objectives of this tool are:
 
 ### 3. Save Changes
 
-- After editing, click the "Save Changes" button to preserve your modifications.
+- After editing, click the "Save" button to preserve your modifications.
 - The updated dataset will be downloaded in JSONL format.
 
 ## File Format Support
