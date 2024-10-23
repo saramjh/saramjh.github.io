@@ -1,7 +1,7 @@
 ---
-title: "n8n 워크플로우 초보자 가이드"
+title: "n8n Workflow Guide for Beginners"
 
-description: n8n은 강력한 워크플로우 자동화 도구로, 다양한 애플리케이션과 서비스를 쉽게 연결할 수 있게 해줍니다. 이 가이드에서는 n8n을 처음 사용하는 분들을 위해 기본적인 사용법을 설명하겠습니다.
+description: n8n is a powerful workflow automation tool that allows you to easily connect various applications and services. This guide will explain the basic usage for those using n8n for the first time.
 
 date: 2024-10-24
 
