@@ -1,15 +1,15 @@
 ---
-title: "Dataset for Fine-tuning Editor: A Game-Changer for AI Model Development"
+title: "Dataset Editor for Fine-tuning: A Game-Changer for AI Model Development"
 description: In the rapidly evolving world of artificial intelligence, having the right tools to manage and refine datasets is crucial. an innovative online platform designed to streamline the process of editing datasets for AI model fine-tuning.
 date: 2024-10-21
-tags: DatasetEditor, AI, Machine-Learning, DataScience, DataManagement, JSONL, Fine-tuning, Artificial-Intelligence, NLP, DataPreparation, ResearchTools, OpenSource, DataEditing
+tags: DatasetEditor, AI, Machine-Learning, DataScience, DataManagement, JSONL, Fine-tuning, Artificial-Intelligence, NLP, DataPreparation, ResearchTools, OpenSource, DataEditing, ChatGPT
 permalink: /dataset-for-fine-tuning-editor/
 layout: default
 ---
 
 ## Introduction
 
-<img src="{{site.assets}}{{ page.permalink }}finetuning.jpg" alt="Dataset for Fine-tuning Editor">
+<img src="{{site.assets}}{{ page.permalink }}finetuning.jpg" alt="Dataset Editor for Fine-tuning">
 
 In the rapidly evolving world of artificial intelligence, having the right tools to manage and refine datasets is crucial. Today, we're excited to introduce you to [Dataset for Fine-tuning Editor](https://saramjh.github.io/datasetForFinetuningEditor/), an innovative online platform designed to streamline the process of editing datasets for AI model fine-tuning.
 
@@ -68,7 +68,7 @@ It's important to note that this editor specifically supports the **JSONL** (JSO
 
 ## Conclusion
 
-The Dataset for Fine-tuning Editor represents a significant step forward in AI development workflows. By providing an accessible, efficient way to manage and edit JSONL datasets, it empowers researchers and developers to focus more on model development and less on data wrangling.
+The Dataset Editor for Fine-tuning represents a significant step forward in AI development workflows. By providing an accessible, efficient way to manage and edit JSONL datasets, it empowers researchers and developers to focus more on model development and less on data wrangling.
 
 Whether you're working on natural language processing, computer vision, or any other AI domain, this tool can help streamline your dataset preparation process. We encourage you to try out the Dataset for Fine-tuning Editor and experience firsthand how it can enhance your AI development workflow.
 
