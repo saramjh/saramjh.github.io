@@ -76,5 +76,5 @@ Remember, the quality of your dataset often directly impacts the performance of 
 
 #### Links
 
-- [GPT Dataset for Fine-tuning Editor](https://saramjh.github.io/datasetForFinetuningEditor/)
-- [Github Repository: GPT Dataset for Fine-tuning Editor](https://github.com/saramjh/datasetForFinetuningEditor/tree/main)
+- [GPT Dataset Editor for Fine-tuning](https://saramjh.github.io/datasetForFinetuningEditor/)
+- [Github Repository: GPT Dataset Editor for Fine-tuning](https://github.com/saramjh/datasetForFinetuningEditor/tree/main)
