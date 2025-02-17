@@ -63,9 +63,8 @@ pomodoroTimer/
 ## 라이선스
 
 이 프로젝트는 MIT 라이선스 하에 배포됩니다.
-XLSX` if you want spreadsheet file.
 
 #### Links
 
-- [ASIN CODE URL Generator](https://saramjh.github.io/asinURLGenerator)
-- [Github Repository: ASIN CODE URL Generator](https://github.com/saramjh/asinURLGenerator)
+- [pomodoro-timer-kr](https://saramjh.github.io/pomodorotimerKR/)
+- [Github Repository: pomodoro-timer-kr](https://github.com/saramjh/pomodorotimerKR/tree/main)
