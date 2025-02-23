@@ -48,7 +48,7 @@ pomodoroTimer/
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/ojihun/pomodoroTimerEN.git
+   git clone https://github.com/saramjh/pomodoroTimerEN.git
    ```
 2. Move to the project directory:
    ```bash
