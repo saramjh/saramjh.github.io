@@ -35,7 +35,7 @@ The Pomodoro Timer consists of a 25-minute focus time and a 5-minute break time 
 ## File Structure
 
 ```
-pomodoroTimer/
+pomodoroTimerEN/
 ├── css/
 │   └── styles.css
 ├── js/
@@ -52,7 +52,7 @@ pomodoroTimer/
    ```
 2. Move to the project directory:
    ```bash
-   cd pomodoroTimer
+   cd pomodoroTimerEN
    ```
 3. Open the `index.html` file in your browser.
 

@@ -35,7 +35,7 @@ layout: default
 ## 파일 구조
 
 ```
-pomodoroTimer/
+pomodoroTimerKR/
 ├── css/
 │   └── styles.css
 ├── js/
@@ -48,11 +48,11 @@ pomodoroTimer/
 
 1. 이 저장소를 클론합니다:
    ```bash
-   git clone https://github.com/saramjh/pomodoroTimer.git
+   git clone https://github.com/saramjh/pomodoroTimerKR.git
    ```
 2. 프로젝트 디렉토리로 이동합니다:
    ```bash
-   cd pomodoroTimer
+   cd pomodoroTimerKR
    ```
 3. `index.html` 파일을 브라우저에서 엽니다.
 
