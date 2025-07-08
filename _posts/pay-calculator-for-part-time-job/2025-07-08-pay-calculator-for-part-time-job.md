@@ -10,17 +10,17 @@ layout: default
 
 **내 시급, 내 근무 기록, 내 수입을 한눈에!**
 
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.38.18.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.39.36.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.39.52.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.40.05.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.40.20.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.40.36.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.41.04.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.41.41.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.41.56.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.42.15.JPG" alt="app view">
-<img src="{{site.assets}}{{ page.permalink }}/Users/ojihun/DEV/saramjh.github.io/posts/pay-calculator-for-part-time-job/Screenshot 2025-07-08 at 23.42.33.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.38.18.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.39.36.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.39.52.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.40.05.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.40.20.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.40.36.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.41.04.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.41.41.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.41.56.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.42.15.JPG" alt="app view">
+<img src="{{site.assets}}{{ page.permalink }}Screenshot 2025-07-08 at 23.42.33.JPG" alt="app view">
 
 시급이요는 여러 아르바이트의 급여를 가장 편리하게 계산하고 관리할 수 있도록 돕는 웹 애플리케이션입니다. 복잡한 엑셀 시트나 수기 계산 없이, 직관적인 UI로 당신의 소중한 시간을 아껴보세요.
 
