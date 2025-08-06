@@ -1,6 +1,6 @@
 ---
 title: "PCIP Framework: How I Fixed AI Coding Assistants with Parenting Psychology"
-description: Got tired of AI coding assistants being absolute garbage at understanding context, so I built a framework based on child psychology that actually works
+description: "Got tired of AI coding assistants being absolute garbage at understanding context, so I built a framework based on child psychology that actually works"
 date: 2025-08-06
 tags: systemprompt,system instruction, instructions, claude code, Gemini cli, cursor
 permalink: /pcip-framework-en/

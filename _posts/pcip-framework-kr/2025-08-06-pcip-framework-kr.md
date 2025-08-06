@@ -1,8 +1,6 @@
 ---
 title: "SOTA AI 코딩 어시스턴트 개답답해서 오은영 박사 육아법으로 만든 시스템 완전 해부"
-description: SOTA모델 AI 코딩 지원 툴들은 사용자의 지시가 불명확할 때, 개발 맥락 무시하고 부분적인 코드 작성이나 중복, 구조 외 코딩, 문법 등 개찐빠 존나 냄.
-- PCIP Framework는 지시 이행 과정에서 프로젝트 아키텍처와 도메인 맥락을 파악하고, 적절한 전문가(부모)를 선택해 최적의 코드 구현을 유도함.
-- 이를 통해 사용자의 추상적인 요청도 안정적이고 일관된 코딩 결과로 연결하며, 외부 지식(RAG 또는 mcp; 툴이 지원을 해야 적용)과 실시간으로 연동해 품질을 보장. 사용법은 맨 마지막에.
+description: "SOTA모델 AI 코딩 지원 툴들은 사용자의 지시가 불명확할 때, 개발 맥락 무시하고 부분적인 코드 작성이나 중복, 구조 외 코딩, 문법 등 개찐빠 존나 냄. PCIP Framework는 지시 이행 과정에서 프로젝트 아키텍처와 도메인 맥락을 파악하고, 적절한 전문가(부모)를 선택해 최적의 코드 구현을 유도함."
 date: 2025-08-06
 tags: systemprompt, 시스템프롬프트,system instruction, instructions, claude code, Gemini cli, cursor
 permalink: /pcip-framework-kr/

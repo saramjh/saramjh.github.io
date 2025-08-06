@@ -93,4 +93,4 @@ exclude:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-postfiles
+  # - jekyll-postfiles  # GitHub Pages에서 지원하지 않는 플러그인
