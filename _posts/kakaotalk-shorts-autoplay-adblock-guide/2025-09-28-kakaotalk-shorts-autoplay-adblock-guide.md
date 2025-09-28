@@ -69,7 +69,6 @@ canonical: /kakaotalk-shorts-autoplay-adblock-guide/
   ||shortformstats.kakao.com^
   ||shopper.kakao.com^
   ```
-  주의: 일부 철자(shorformstats)는 문서에 기재된 그대로이며, 실제 도메인 유효성은 환경에 따라 다를 수 있으므로 차단 로그로 검증을 권장한다.
 
 적용 후 카카오톡을 재실행하면 해당 탭 또는 피드의 리소스가 로드되지 않아 화면 노출이 줄어든다.
 
