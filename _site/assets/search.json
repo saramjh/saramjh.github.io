@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Logi Options+ 무한 로딩 문제 (Apple 기기)",
+      "description" : "현재 Logi Options+ 애플리케이션을 실행하면 인증을 완료하지 못하고 무한 로딩 상태로 유지되는 문제가 발생하고 있습니다. 이로 인해 많은 Apple 기기 사용자들이 Logi Options+의 기능을 정상적으로 이용하지 못하고 있습니다.",
+      "tags"     : "Logi Options+, Apple, 무한 로딩, 해결, 로지텍",
+      "url"      : "/kr-logi-option-infinite-loading/",
+      "date"     : "2026-01-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Logi Options+ Infinite Loading Issue (Apple Devices)",
+      "description" : "Currently, when launching the Logi Options+ application, users are encountering an issue where it fails to complete authentication and remains in an infinite loading state. This prevents many Apple device users from utilizing the features of Logi Options+ normally.",
+      "tags"     : "Logi Options+, Apple, Infinite Loading, Fix, Logitech",
+      "url"      : "/en-logi-option-infinite-loading/",
+      "date"     : "2026-01-07 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "MacBook External Monitor Flickering Fix",
       "description" : "",
       "tags"     : "MacBook, External, Monitor, Flickering, Fix,MacBook, Pro, External, Monitor, Flickering, Solution,MacBook, Air, External, Monitor, Flickering, Problem,MacBook, External, Display, Flickering, Issue,MacBook, Pro, External, Display, Flickering, Solution,iMac, External, Monitor, Flickering, Fix,iMac, External, Display, Flickering, Solution",
