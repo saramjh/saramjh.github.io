@@ -77,9 +77,9 @@
   {% else %}
   <meta property="og:image" content="{{ site.image | absolute_url }}" />
   {% endif %}
-  <meta property="og:image:width" content="640" />
-  <meta property="og:image:height" content="640" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image:width" content="{{ page.image_width | default: site.image_width | default: 640 }}" />
+  <meta property="og:image:height" content="{{ page.image_height | default: site.image_height | default: 640 }}" />
+  <meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}" />
   <meta name="twitter:title" content="{% if page.title %}{{ page.title | escape }} | {{
       site.author.twitter
     }}{% else %}{{ site.title | escape }}{% endif %}" />
