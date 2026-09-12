@@ -4,13 +4,16 @@ date: 2024-09-04
 tags: 인공지능, face-api, rich, analysis, forbes rich Korean 50
 permalink: /rich-tester/
 layout: default
+legacy_asset_url: /posts/rich-tester/
 ---
 
 ### 인공지능 부자 관상 분석
 
-<img src="{{site.assets}}{{ page.permalink }}Screenshot 2024-09-05 at 11.48.24.JPG" alt="인공지능 부자 관상 분석">
+<img src="Screenshot%202024-09-05%20at%2011.48.24.JPG" alt="인공지능 부자 관상 분석">
 
 [사이트 바로가기](https://saramjh.github.io/richChecker)
+
+새 버전 소개 글은 [부자 관상 테스트: AI로 나와 닮은 부자 찾기](/rich-face-test/)에서 확인할 수 있습니다.
 
 ## 프로젝트 개요
 
@@ -26,7 +29,7 @@ layout: default
 
 ## 사용 기술
 
-<img src="{{site.assets}}{{ page.permalink }}191bfa716eb7c1ee.png" alt="인공지능 부자 관상 분석">
+<img src="191bfa716eb7c1ee.png" alt="인공지능 부자 관상 분석">
 
 - **프론트엔드**: HTML, CSS, JavaScript
 - **라이브러리**: face-api.js, html2canvas

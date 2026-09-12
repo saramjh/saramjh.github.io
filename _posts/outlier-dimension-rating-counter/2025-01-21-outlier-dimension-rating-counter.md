@@ -5,11 +5,12 @@ date: 2025-01-21
 tags: CounterProgram, Python, GUI, Tkinter, Productivity, OpenSource, ItemTracking, SoftwareTools, Outlier, Tasks
 permalink: /outlier-dimension-rating-counter/
 layout: default
+legacy_asset_url: /posts/outlier-dimension-rating-counter/
 ---
 
 ## Introduction
 
-<img src="{{site.assets}}{{ page.permalink }}screenshot.png" alt="Outlier Dimension Rating Counter Program">
+<img src="screenshot.png" alt="Outlier Dimension Rating Counter Program">
 
 In today's fast-paced world, keeping track of multiple items can be a challenge. Whether you're managing inventory, tracking tasks, or simply counting items, having a reliable tool is essential. Introducing the [Outlier Dimension Rating Counter Program](https://github.com/saramjh/pycounter), a user-friendly application designed to help you manage and track counts for various items effortlessly.
 

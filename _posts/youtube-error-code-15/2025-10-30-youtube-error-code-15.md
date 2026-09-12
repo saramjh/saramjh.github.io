@@ -5,13 +5,14 @@ date: 2025-10-30
 tags: YouTube, Naver Whale, 브라우저 확장
 permalink: /youtube-error-code-15/
 layout: default
+legacy_asset_url: /posts/youtube-error-code-15/
 ---
 
 ### 네이버 웨일에서 만난 YouTube 오류 코드 15
 
 네이버 웨일 브라우저를 쓰던 중 유튜브 공식 사이트 외부에 임베드된 영상들이 "이 동영상은 볼 수 없습니다. 오류코드: 15" 메시지를 내보내며 재생되지 않는 문제가 한동안 이어졌습니다. 광고 차단이나 보안 기능 때문이라 생각하고 온갖 설정을 뒤져봤지만 쉽게 해결되지 않아 번거로웠습니다.
 
-<img src="{{site.assets}}{{ page.permalink }}youtube-error-code-15-error.jpg" alt="YouTube 오류 코드 15 오류 메시지 스크린샷">
+<img src="youtube-error-code-15-error.jpg" alt="YouTube 오류 코드 15 오류 메시지 스크린샷">
 
 #### 증상과 상황
 
@@ -31,7 +32,7 @@ layout: default
 
 결국 원인은 유튜브 영상 재생 품질을 강제로 지정해 주는 "YouTube™ 비디오 용 HD/4k/8k 모드로 자동 재생 - YouTube™ Auto HD" 확장 기능이었습니다. 임베드된 영상에 적용되는 재생 품질 정책이 꼬이면서 오류 코드 15가 발생한 것으로 보입니다.
 
-<img src="{{site.assets}}{{ page.permalink }}youtube-auto-hd-extension.jpg" alt="YouTube Auto HD 확장 기능 화면 스크린샷">
+<img src="youtube-auto-hd-extension.jpg" alt="YouTube Auto HD 확장 기능 화면 스크린샷">
 
 #### 해결 방법
 

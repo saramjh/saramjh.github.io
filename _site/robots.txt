@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://saramjh.github.io/sitemap.xml

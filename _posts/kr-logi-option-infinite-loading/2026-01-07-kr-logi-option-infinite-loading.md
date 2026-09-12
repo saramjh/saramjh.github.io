@@ -4,10 +4,11 @@ date: 2026-01-07
 tags: Logi Options+, Apple, 무한 로딩, 해결, 로지텍
 permalink: /kr-logi-option-infinite-loading/
 layout: default
+legacy_asset_url: /posts/kr-logi-option-infinite-loading/
 ---
 
 ### Logi Options+ 무한 로딩 문제: Apple 기기 사용자들을 위한 안내
-<img src="{{site.assets}}{{ page.permalink }}001.png" alt="로지텍 무한 로딩">
+<img src="001.png" alt="로지텍 무한 로딩">
 
 현재 Logi Options+ 애플리케이션을 실행하면 인증을 완료하지 못하고 무한 로딩 상태로 유지되는 문제가 발생하고 있습니다. 이로 인해 많은 Apple 기기 사용자들이 Logi Options+의 기능을 정상적으로 이용하지 못하고 있습니다.
 

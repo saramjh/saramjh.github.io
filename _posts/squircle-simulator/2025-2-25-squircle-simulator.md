@@ -5,11 +5,12 @@ date: 2025-02-25
 tags: Squircle, Geometry, Mathematics, Visualization, OnlineTool, Education, Research, OpenSource
 permalink: /squircle-simulator/
 layout: default
+legacy_asset_url: /posts/squircle-simulator/
 ---
 
 ## Introduction
 
-<img src="{{site.assets}}{{ page.permalink }}squircle.jpg" alt="Squircle Simulator">
+<img src="squircle.jpg" alt="Squircle Simulator">
 
 Welcome to the [Squircle Simulator](https://saramjh.github.io/SquircleSimulator), an innovative online platform designed to help you explore and visualize the unique properties of squircles. Squircles are fascinating geometric shapes that blend the characteristics of squares and circles, offering a rich field of study for both enthusiasts and researchers.
 

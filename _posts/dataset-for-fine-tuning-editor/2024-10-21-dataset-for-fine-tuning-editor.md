@@ -5,11 +5,12 @@ date: 2024-10-21
 tags: DatasetEditor, AI, Machine-Learning, DataScience, DataManagement, JSONL, Fine-tuning, Artificial-Intelligence, NLP, DataPreparation, ResearchTools, OpenSource, DataEditing, ChatGPT
 permalink: /dataset-for-fine-tuning-editor/
 layout: default
+legacy_asset_url: /posts/dataset-for-fine-tuning-editor/
 ---
 
 ## Introduction
 
-<img src="{{site.assets}}{{ page.permalink }}finetuning.jpg" alt="Dataset Editor for Fine-tuning">
+<img src="finetuning.jpg" alt="Dataset Editor for Fine-tuning">
 
 In the rapidly evolving world of artificial intelligence, having the right tools to manage and refine datasets is crucial. Today, we're excited to introduce you to [Dataset for Fine-tuning Editor](https://saramjh.github.io/datasetForFinetuningEditor/), an innovative online platform designed to streamline the process of editing datasets for AI model fine-tuning.
 

@@ -5,11 +5,12 @@ date: 2024-09-03
 tags: Lottery, Scratch Lottery, Lottery simulation
 permalink: /scratch-lottery-simulation/
 layout: default
+legacy_asset_url: /posts/scratch-lottery-simulation/
 ---
 
 ### Scratch Lottery Simulation - Try your luck!
 
-<img src="{{site.assets}}{{ page.permalink }}scratchlottery.JPG" alt="Scratch Lottery Simulation - Try your luck!">
+<img src="scratchlottery.JPG" alt="Scratch Lottery Simulation - Try your luck!">
 
 This project is a scratch lottery experience that allows users to scratch a lottery ticket to see if they win. The user can scratch the lottery ticket to see if they win, and can adjust the odds of winning by setting the odds.
 

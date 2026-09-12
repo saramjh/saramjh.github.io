@@ -5,6 +5,7 @@ date: 2025-08-06
 tags: systemprompt,system instruction, instructions, claude code, Gemini cli, cursor
 permalink: /pcip-framework-en/
 layout: default
+legacy_asset_url: /posts/pcip-framework-en/
 ---
 
 ## 🔥 PCIP Framework: How I Fixed AI Coding Assistants with Parenting Psychology 

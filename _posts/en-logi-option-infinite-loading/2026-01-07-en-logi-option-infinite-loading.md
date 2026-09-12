@@ -4,10 +4,11 @@ date: 2026-01-07
 tags: Logi Options+, Apple, Infinite Loading, Fix, Logitech
 permalink: /en-logi-option-infinite-loading/
 layout: default
+legacy_asset_url: /posts/en-logi-option-infinite-loading/
 ---
 
 ### Logi Options+ Infinite Loading Issue: A Guide for Apple Device Users
-<img src="{{site.assets}}{{ page.permalink }}001.png" alt="Logitech Infinite Loading">
+<img src="001.png" alt="Logitech Infinite Loading">
 
 Currently, when launching the Logi Options+ application, users are encountering an issue where it fails to complete authentication and remains in an infinite loading state. This prevents many Apple device users from utilizing the features of Logi Options+ normally.
 

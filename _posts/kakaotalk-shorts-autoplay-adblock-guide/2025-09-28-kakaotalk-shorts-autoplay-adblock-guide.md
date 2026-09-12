@@ -4,6 +4,7 @@ date: 2025-09-28
 tags: KAKAO, 숏폼차단, 자동재생끄기, 광고차단, 쇼핑탭끄기, 업데이트불만, 개인정보, 데이터낭비
 permalink: /kakaotalk-shorts-autoplay-adblock-guide/
 layout: default
+legacy_asset_url: /posts/kakaotalk-shorts-autoplay-adblock-guide/
 description: "카카오톡 대규모 업데이트 이후 강제 숏폼 자동재생, 피드/광고 노출, 쇼핑 탭 노출에 불만인 이용자를 위한 실전 차단/완화 가이드. 설정 기반 자동재생 중지와 네트워크 레벨 도메인 차단(애드블록)까지 단계별로 정리."
 excerpt: "카카오톡 강제 숏폼·자동재생·광고/쇼핑 노출 때문에 불편한가? 설정으로 자동재생을 끄고, 필요 시 도메인 단위 차단으로 숏폼/피드/쇼핑 노출을 억제하는 방법을 단계별로 안내한다."
 seo:
@@ -21,7 +22,7 @@ canonical: /kakaotalk-shorts-autoplay-adblock-guide/
 
 ### 카카오톡 숏폼·쇼핑탭 끄기/차단 완전 가이드
 
-<img src="{{site.assets}}{{ page.permalink }}001.jpg" alt="대표 이미지 위치: 카카오톡 숏폼/피드/쇼핑 탭을 비활성화하는 개념 일러스트">
+<img src="001.jpg" alt="대표 이미지 위치: 카카오톡 숏폼/피드/쇼핑 탭을 비활성화하는 개념 일러스트">
 
 #### Needs
 
@@ -47,8 +48,8 @@ canonical: /kakaotalk-shorts-autoplay-adblock-guide/
 
 적용 결과로 목록 아이템에 재생 버튼이 표시되고 자동 재생이 멈추지만, 스크롤과 탭으로 수동 재생은 여전히 가능하다.
 
-<img src="{{site.assets}}{{ page.permalink }}002.jpg" alt="숏폼 탭 → 우상단 설정">
-<img src="{{site.assets}}{{ page.permalink }}003.jpg" alt="동영상 자동 재생 → 사용 안 함">
+<img src="002.jpg" alt="숏폼 탭 → 우상단 설정">
+<img src="003.jpg" alt="동영상 자동 재생 → 사용 안 함">
 
 ---
 
@@ -72,10 +73,10 @@ canonical: /kakaotalk-shorts-autoplay-adblock-guide/
 
 적용 후 카카오톡을 재실행하면 해당 탭 또는 피드의 리소스가 로드되지 않아 화면 노출이 줄어든다.
 
-<img src="{{site.assets}}{{ page.permalink }}004.jpg" alt="애드가드 DNS 보호 탭">
-<img src="{{site.assets}}{{ page.permalink }}005.jpg" alt="애드가드 DNS 필터">
-<img src="{{site.assets}}{{ page.permalink }}006.jpg" alt="애드가드 DNS 사용자 규칙">
-<img src="{{site.assets}}{{ page.permalink }}007.jpg" alt="애드가드 DNS 사용자 규칙 상세">
+<img src="004.jpg" alt="애드가드 DNS 보호 탭">
+<img src="005.jpg" alt="애드가드 DNS 필터">
+<img src="006.jpg" alt="애드가드 DNS 사용자 규칙">
+<img src="007.jpg" alt="애드가드 DNS 사용자 규칙 상세">
 
 ---
 

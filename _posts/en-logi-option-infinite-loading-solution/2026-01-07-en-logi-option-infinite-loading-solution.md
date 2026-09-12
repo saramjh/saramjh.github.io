@@ -4,10 +4,11 @@ date: 2026-01-07
 tags: Logi Options+, Apple, Infinite Loading, Fix, Logitech
 permalink: /en-logi-option-infinite-loading-solution/
 layout: default
+legacy_asset_url: /posts/en-logi-option-infinite-loading-solution/
 ---
 
 ### Logi Options+ Infinite Loading Issue: Guidance for Apple Device Users
-<img src="{{site.assets}}{{ page.permalink }}001.png" alt="Logitech Infinite Loading">
+<img src="001.png" alt="Logitech Infinite Loading">
 
 The infinite loading issue that has long plagued many Apple device users has been resolved. Logitech has released an official installer that fixes this issue, and you can now use the features normally.
 

@@ -1,9 +1,5 @@
 <head prefix="og: http://ogp.me/ns#">
-  <!-- google adsense-->
-  <meta name="google-adsense-account" content="ca-pub-4410729598083068">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4410729598083068"
-    crossorigin="anonymous"></script>
-  <!-- end google adsense-->
+  {% include adsense.html %}
 
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -19,7 +15,7 @@
   </title>
   <link rel="alternate" href="{{
       page.url | remove: 'index.html' | remove: '.html' | absolute_url
-    }}" hreflang="{{ site.lang }}" />
+    }}" hreflang="{{ page.lang | default: site.lang }}" />
   <link rel="canonical" href="{{
       page.url  | remove: 'index.html' | remove: '.html' | absolute_url
     }}" />
@@ -52,9 +48,16 @@
   <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} | {{
       site.author.name
     }}{% else %}{{ site.title | escape }}{% endif %}" />
-  {% if page.location %}
+  {% if page.date %}
   <meta property="og:type" content="article" />
   <meta property="article:publisher" content="https://web.facebook.com/{{ site.author.facebook }}" />
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:modified_time" content="{{ page.modified | default: page.date | date_to_xmlschema }}" />
+  {% if page.tags %}
+  {% for tag in page.tags %}
+  <meta property="article:tag" content="{{ tag | escape }}" />
+  {% endfor %}
+  {% endif %}
   {% else %}
   <meta property="og:type" content="website" />
   {% endif %}
@@ -97,7 +100,9 @@
   <meta name="twitter:image" content="{{ page.image | absolute_url }}" />
   {% else %}
   <meta name="twitter:image" content="{{ site.image | absolute_url }}" />
-  {% endif %} {% feed_meta %}
+  {% endif %}
+  {% include seo_schema.html %}
+  {% feed_meta %}
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />

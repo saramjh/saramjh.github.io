@@ -4,6 +4,7 @@ date: 2024-09-23
 tags: MacBook External Monitor Flickering Fix,MacBook Pro External Monitor Flickering Solution,MacBook Air External Monitor Flickering Problem,MacBook External Display Flickering Issue,MacBook Pro External Display Flickering Solution,iMac External Monitor Flickering Fix,iMac External Display Flickering Solution
 permalink: /macbook-external-monitor-flickering-solution/
 layout: default
+legacy_asset_url: /posts/macbook-external-monitor-flickering-solution/
 ---
 
 ### MacBook Air / MacBook Pro / MacBook Trackpad External Monitor Flickering Problem Solution
@@ -13,7 +14,7 @@ If you're experiencing flickering issues with your external monitor connected to
 ### Solution
 
 Here's a step-by-step guide to help you resolve the issue:
-<img src="{{site.assets}}{{ page.permalink }}28d26ef777b3e7.webp" alt="MacBook External Monitor Flickering Fix">
+<img src="28d26ef777b3e7.webp" alt="MacBook External Monitor Flickering Fix">
 
 1. **Use Official Adapter and Cable:** Use the official adapter and cable provided with your MacBook Air or MacBook Pro to connect your external monitor.
 2. **Turn Off the Power:** Turn off your MacBook Air or MacBook Pro.
@@ -24,7 +25,7 @@ Here's a step-by-step guide to help you resolve the issue:
 
 If you're using a desktop computer, follow these steps:
 
-<img src="{{site.assets}}{{ page.permalink }}2e82528b602df.webp" alt="Mac External Monitor Flickering Fix">
+<img src="2e82528b602df.webp" alt="Mac External Monitor Flickering Fix">
 
 1. **Shut Down the Mac:** Shut down your Mac and unplug the power cord.
 2. **Wait for 15 Seconds:** Wait for 15 seconds before plugging the power cord back in.
@@ -38,7 +39,7 @@ NVRAM/PRAM is a memory space where various settings for macOS are stored, includ
 Resetting NVRAM or PRAM on macOS:
 Refer to troubleshooting guides from overseas sites and try the following method:
 
-<img src="{{site.assets}}{{ page.permalink }}howtoreset.png" alt="MacBook External Monitor Flickering Fix">
+<img src="howtoreset.png" alt="MacBook External Monitor Flickering Fix">
 
 ### Reset Method
 

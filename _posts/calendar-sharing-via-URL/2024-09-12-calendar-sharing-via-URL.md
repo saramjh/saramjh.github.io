@@ -5,14 +5,15 @@ date: 2024-09-12
 tags: utility, sharing via URL, calendar, memo
 permalink: /calendar-sharing-via-URL/
 layout: default
+legacy_asset_url: /posts/calendar-sharing-via-URL/
 ---
 
 # URL 공유 달력 - 메모 및 일정 관리
 
 ## 소개
 
-<img src="{{site.assets}}{{ page.permalink }}366762842-9ead0fd1-97c8-47e4-9743-111ec526303a.png" alt="달력에 남긴 메모를 URL로 공유하는 페이지">
-<img src="{{site.assets}}{{ page.permalink }}tutorial.gif" alt="달력에 남긴 메모를 URL로 공유하는 페이지 사용법">
+<img src="366762842-9ead0fd1-97c8-47e4-9743-111ec526303a.png" alt="달력에 남긴 메모를 URL로 공유하는 페이지">
+<img src="tutorial.gif" alt="달력에 남긴 메모를 URL로 공유하는 페이지 사용법">
 
 이 프로젝트는 사용자가 일정을 관리하고 메모를 작성할 수 있는 달력 애플리케이션입니다. 사용자는 작성한 메모를 URL로 공유하고, 다른 사용자와 메모를 공유하거나, 자신이 작성한 메모를 언제든지 불러올 수 있습니다. 이 애플리케이션은 메모를 로컬 스토리지에 저장하고, 페이지 URL의 쿼리 파라미터를 통해 데이터를 공유하는 기능을 제공합니다.
 

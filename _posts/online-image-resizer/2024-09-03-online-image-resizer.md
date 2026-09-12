@@ -5,11 +5,12 @@ date: 2024-09-03
 tags: Image resizer, Personal Information secure, Online Utility
 permalink: /online-image-resizer/
 layout: default
+legacy_asset_url: /posts/online-image-resizer/
 ---
 
 ### Online Image Resizer
 
-<img src="{{site.assets}}{{ page.permalink }}onlineImageResizer.JPG" alt="online-image-resizer">
+<img src="onlineImageResizer.JPG" alt="online-image-resizer">
 
 #### Needs
 

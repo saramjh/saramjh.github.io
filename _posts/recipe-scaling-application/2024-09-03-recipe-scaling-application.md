@@ -5,11 +5,12 @@ date: 2024-09-03
 tags: Recipe, Recipe calculator, ingredient amount
 permalink: /recipe-scaling-application/
 layout: default
+legacy_asset_url: /posts/recipe-scaling-application/
 ---
 
 ### Recipe Scaling Application
 
-<img src="{{site.assets}}{{ page.permalink }}recipescalingapplication.jpg" alt="Recipe Scaling Application">
+<img src="recipescalingapplication.jpg" alt="Recipe Scaling Application">
 
 #### Needs
 

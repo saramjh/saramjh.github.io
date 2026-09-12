@@ -5,6 +5,7 @@ date: 2025-08-06
 tags: systemprompt, 시스템프롬프트,system instruction, instructions, claude code, Gemini cli, cursor
 permalink: /pcip-framework-kr/
 layout: default
+legacy_asset_url: /posts/pcip-framework-kr/
 ---
 
 ## 🔥 PCIP Framework 완전 해부: 제작 배경부터 설계 의도까지

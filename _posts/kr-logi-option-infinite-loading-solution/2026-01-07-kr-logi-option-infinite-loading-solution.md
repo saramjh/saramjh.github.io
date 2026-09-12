@@ -4,10 +4,11 @@ date: 2026-01-07
 tags: Logi Options+, Apple, 무한 로딩, 해결, 로지텍
 permalink: /kr-logi-option-infinite-loading-solution/
 layout: default
+legacy_asset_url: /posts/kr-logi-option-infinite-loading-solution/
 ---
 
 ### Logi Options+ 무한 로딩 문제: Apple 기기 사용자들을 위한 안내
-<img src="{{site.assets}}{{ page.permalink }}001.png" alt="로지텍 무한 로딩">
+<img src="001.png" alt="로지텍 무한 로딩">
 
 그동안 많은 Apple 기기 사용자들을 괴롭혔던 Logi Options+ 애플리케이션의 무한 로딩 문제가 해결되었습니다. 로지텍에서 해당 문제를 수정한 공식 인스톨러를 배포하였으며, 이제 정상적으로 기능을 이용하실 수 있습니다.
 

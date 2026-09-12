@@ -5,11 +5,12 @@ date: 2025-02-17
 tags: pomodoro, pomodorotimer, 뽀모도로, 포모도로, 포모도로타이머, 뽀모도로타이머
 permalink: /pomodoro-timer-kr/
 layout: default
+legacy_asset_url: /posts/pomodoro-timer-kr/
 ---
 
 # 뽀모도로 타이머
 
-<img src="{{site.assets}}{{ page.permalink }}thumnail.png" alt="pomodoro-timer-kr" width="40%">
+<img src="thumnail.png" alt="pomodoro-timer-kr" width="40%">
 
 뽀모도로 타이머를 사용하여 집중력을 높이고 생산성을 향상시키세요. 간단한 인터페이스로 작업 시간을 효율적으로 관리할 수 있습니다.
 뽀모도로 타이머는 기본적으로 25분의 집중시간과 5분의 휴식시간으로 이루어져 있습니다.

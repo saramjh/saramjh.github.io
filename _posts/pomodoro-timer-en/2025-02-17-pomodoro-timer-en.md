@@ -5,11 +5,12 @@ date: 2025-02-17
 tags: pomodoro, pomodorotimer, pomodoro, pomodorotimer
 permalink: /pomodoro-timer-en/
 layout: default
+legacy_asset_url: /posts/pomodoro-timer-en/
 ---
 
 # Pomodoro Timer
 
-<img src="{{site.assets}}{{ page.permalink }}thumbnail.png" alt="pomodoro-timer-en" width="40%">
+<img src="thumbnail.png" alt="pomodoro-timer-en" width="40%">
 
 Increase your focus and productivity using the Pomodoro Timer. Manage your work time efficiently with a simple interface.
 The Pomodoro Timer consists of a 25-minute focus time and a 5-minute break time by default.

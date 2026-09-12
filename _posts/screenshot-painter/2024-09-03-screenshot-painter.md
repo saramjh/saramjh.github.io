@@ -4,11 +4,12 @@ date: 2024-09-03
 tags: Screenshot editor, painter, memo, online tool
 permalink: /screenshot-painter/
 layout: default
+legacy_asset_url: /posts/screenshot-painter/
 ---
 
 ### Capture & Craft Studio - Screenshot Painter
 
-<img src="{{site.assets}}{{ page.permalink }}screenshotpainter.JPG" alt="Capture & Craft Studio - Screenshot Painter">
+<img src="screenshotpainter.JPG" alt="Capture & Craft Studio - Screenshot Painter">
 
 Capture & Craft Studio is a versatile web-based tool that allows users to create, edit, and enhance screenshots effortlessly. This project is perfect for office workers, educators, and collaborators who seek to elevate their digital content with customized visual stories.
 

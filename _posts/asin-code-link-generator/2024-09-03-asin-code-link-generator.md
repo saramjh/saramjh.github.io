@@ -4,11 +4,12 @@ date: 2024-09-03
 tags: AMAZON, ASIN
 permalink: /asin-code-link-generator/
 layout: default
+legacy_asset_url: /posts/asin-code-link-generator/
 ---
 
 ### AMAZON ASIN CODE Links Generator via HTML, JS, CSS
 
-<img src="{{site.assets}}{{ page.permalink }}asinCodeLinksGenerator.JPG" alt="AMAZON ASIN CODE Links Generator">
+<img src="asinCodeLinksGenerator.JPG" alt="AMAZON ASIN CODE Links Generator">
 
 #### Needs
 
