@@ -5,6 +5,8 @@ date: 2026-09-15
 permalink: /space-atlas-student/
 layout: default
 lang: ko
+alternate_lang: en
+alternate_url: /space-atlas-student-en/
 tags: 우주과학, 천문학, 3D시뮬레이션, ThreeJS, 인터랙티브학습, 오픈소스, 과학교육, NASA
 image: /space-atlas-student/space-atlas-hero.png
 image_width: 1280
@@ -13,12 +15,16 @@ image_height: 820
 
 # Space Atlas: 3D 인터랙티브 우주 과학 아틀라스
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  <strong>English Version:</strong> Read this article in English at <a href="/space-atlas-student-en/"><strong>Space Atlas: 3D Interactive Astronomy Reference</strong></a>.
+</p>
+
 <img src="space-atlas-hero.png" alt="Space Atlas 3D Solar System Model">
 
 > **"교과서 삽화 속 태양계는 왜 실제 비율과 다를까?"**  
 > **"지구에 사계절이 생기는 진짜 이유는 태양과의 거리 때문일까, 자전축 기울기 때문일까?"**
 
-우주와 천문학을 배울 때 가장 큰 장벽은 **'눈에 보이지 않는 거대한 스케일'**과 **'평면 교과서 다이어그램이 주는 오개념(Misconceptions)'**입니다. 
+우주와 천문학을 배울 때 가장 큰 장벽은 **눈에 보이지 않는 거대한 스케일**과 **평면 교과서 다이어그램이 주는 오개념(Misconceptions)**입니다. 
 
 [Space Atlas 바로가기](https://saramjh.github.io/space_atlas_student/)
 
@@ -26,7 +32,7 @@ image_height: 820
 
 ---
 
-## 🌌 주요 기능 및 시각화 모듈
+## 주요 기능 및 시각화 모듈
 
 Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나누어 제공합니다.
 
@@ -58,7 +64,7 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 ---
 
-## 🎯 Space Atlas만의 교육적 설계 원칙 (Epistemic Structure)
+## Space Atlas만의 교육적 설계 원칙 (Epistemic Structure)
 
 모든 페이지는 단순히 지식을 나열하지 않고, **미국 차세대 과학교육표준(NGSS) 기반의 7단계 학습 프레임워크**를 철저히 따릅니다:
 
@@ -72,7 +78,7 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 ---
 
-## 💡 어떤 경우에 사용하면 가장 좋을까요?
+## 어떤 경우에 사용하면 가장 좋을까요?
 
 * **초·중·고등학생 & 과학교사**:
   * "달의 위상", "사계절의 원인", "행성 크기 비교" 등 교과서 텍스트와 정지된 사진만으로는 설명하기 힘든 수업 시간에 전자칠판이나 태블릿 화면에 띄워 직접 조작해보는 시각화 교구로 활용할 때
@@ -83,7 +89,7 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 ---
 
-## 🛠️ 기술적 특징
+## 기술적 특징
 
 * **Zero-Dependency Architecture**: 빌드 도구로 무거운 번들러 대신 파이썬 표준 라이브러리 기반의 `build.py`를 사용해 CI/CD 파이프라인(GitHub Actions) 빌드 시간을 20초 이내로 단축
 * **Instant Topic Finder**: 키보드 단축키 `/`를 누르면 언제 어디서든 27개 주제를 실시간으로 필터링하여 이동할 수 있는 인스턴트 검색 모달 탑재
@@ -91,7 +97,7 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 ---
 
-## 🔗 관련 링크
+## 관련 링크
 
 * **Space Atlas 웹사이트**: [https://saramjh.github.io/space_atlas_student/](https://saramjh.github.io/space_atlas_student/)
 * **GitHub 저장소**: [https://github.com/saramjh/space_atlas_student](https://github.com/saramjh/space_atlas_student)
