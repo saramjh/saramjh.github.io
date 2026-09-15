@@ -25,6 +25,9 @@ canonical: /epson-waste-ink-pad-reset-without-key/
 
 ### 엡손 프린터 "잉크 패드 서비스 수명 다 됨" 에러를 마주했을 때
 
+<img src="epson-printer.jpg" alt="Epson Inkjet Printer L-Series">
+<p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson L-Series Printer (Photo: Dinkun Chen, CC BY-SA 4.0 via Wikimedia Commons)</p>
+
 엡손 무한잉크 복합기(L3100, L3106, L3150 등 L시리즈 전반)를 오래 쓰다 보면 갑자기 전원 버튼과 잉크/용지 경고등이 번갈아 깜빡이며 인쇄가 전면 중단됩니다.
 
 컴퓨터 화면에는 다음과 같은 절망적인 메시지가 뜹니다.
@@ -40,6 +43,9 @@ canonical: /epson-waste-ink-pad-reset-without-key/
 ---
 
 ### 1. 비용 비교: 통째 교체 vs 흡수재 단독 교체
+
+<img src="epson-maintenance-box.jpg" alt="Epson Ink Maintenance Box with waste ink">
+<p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson Ink Maintenance Box / Waste ink absorber (Photo: Ll1324, CC0 Public Domain via Wikimedia Commons)</p>
 
 폐잉크 패드 플라스틱 통 자체는 영구적인 플라스틱 사출물일 뿐 고장 나는 부품이 아닙니다. 실제로 잉크로 흠뻑 젖어 수명이 다한 것은 **내부 펠트 흡수재(스펀지)**뿐입니다.
 

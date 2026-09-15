@@ -24,6 +24,9 @@ canonical: /en-epson-waste-ink-pad-reset-without-key/
 
 ### When Your Epson Printer Says "Waste Ink Pad Life Expired"
 
+<img src="epson-printer.jpg" alt="Epson Inkjet Printer L-Series">
+<p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson L-Series Printer (Photo: Dinkun Chen, CC BY-SA 4.0 via Wikimedia Commons)</p>
+
 If you own an Epson EcoTank / L-Series printer (such as the L3100, L3106, L3110, L3150, or L4150), after printing a certain number of pages you will inevitably run into this blocking error:
 
 > **"A printer's ink pad is at the end of its service life. Please contact Epson Support."**
@@ -39,6 +42,9 @@ By **replacing only the felt absorption pads** and using an open-source Python t
 ---
 
 ### 1. Cost & Waste Comparison: Full Assembly vs. Felt Pads Only
+
+<img src="epson-maintenance-box.jpg" alt="Epson Ink Maintenance Box with waste ink">
+<p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson Ink Maintenance Box / Waste ink absorber (Photo: Ll1324, CC0 Public Domain via Wikimedia Commons)</p>
 
 The waste ink maintenance box is just a molded plastic container. What actually gets saturated with discarded ink is the **felt absorption pads** inside.
 
