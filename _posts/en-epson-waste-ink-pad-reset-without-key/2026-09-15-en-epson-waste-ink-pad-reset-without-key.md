@@ -28,6 +28,7 @@ seo:
     - Epson error code E-11
     - Epson ink pad nearing the end of its service life
 canonical: /en-epson-waste-ink-pad-reset-without-key/
+image: /en-epson-waste-ink-pad-reset-without-key/epson-printer.jpg
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

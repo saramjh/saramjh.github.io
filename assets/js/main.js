@@ -31,10 +31,18 @@
     });
   }
 
-  // Optimize post images: auto lazy loading & async decoding
-  document.querySelectorAll("main img:not(.author-avatar)").forEach((img) => {
-    if (!img.hasAttribute("loading")) {
-      img.setAttribute("loading", "lazy");
+  // Dynamic Image Contract: Prioritize first image (LCP), lazy-load subsequent images
+  const postImages = document.querySelectorAll("main img:not(.author-avatar)");
+  postImages.forEach((img, index) => {
+    if (index === 0) {
+      if (!img.hasAttribute("fetchpriority")) {
+        img.setAttribute("fetchpriority", "high");
+      }
+      img.setAttribute("loading", "eager");
+    } else {
+      if (!img.hasAttribute("loading")) {
+        img.setAttribute("loading", "lazy");
+      }
     }
     if (!img.hasAttribute("decoding")) {
       img.setAttribute("decoding", "async");

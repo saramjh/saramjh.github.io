@@ -27,6 +27,7 @@ seo:
     - 엡손 E-11 오류
     - Epson ink pad end of service life
 canonical: /epson-waste-ink-pad-reset-without-key/
+image: /epson-waste-ink-pad-reset-without-key/epson-printer.jpg
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
