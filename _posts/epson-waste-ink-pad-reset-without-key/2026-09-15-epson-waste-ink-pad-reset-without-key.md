@@ -31,6 +31,9 @@ canonical: /epson-waste-ink-pad-reset-without-key/
 
 ### 엡손 프린터 잉크 패드 서비스 수명 에러 메시지 정확한 문구와 증상
 
+<img src="epson-printer.jpg" alt="Epson EcoTank Inkjet Printer">
+<p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson EcoTank Printer (Photo: Santeri Viinamäki, CC BY-SA 4.0 via Wikimedia Commons)</p>
+
 엡손 무한잉크 복합기(L3100~L3168, L1110, L5190 등)를 오래 사용하다 보면 갑자기 인쇄가 전면 중단되면서 **전원 램프와 잉크/용지 경고등(빨간불)이 번갈아 깜빡이는 상태(교차 점멸)**가 됩니다.
 
 PC 모니터 화면과 엡손 상태 모니터(EPSON Status Monitor 3)에는 드라이버 버전에 따라 다음과 같은 **정확한 공식 경고 메시지**가 팝업됩니다:

@@ -32,6 +32,9 @@ canonical: /en-epson-waste-ink-pad-reset-without-key/
 
 ### Exact Epson Waste Ink Pad Error Messages & Symptoms
 
+<img src="epson-printer.jpg" alt="Epson EcoTank Inkjet Printer">
+<p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson EcoTank Printer (Photo: Santeri Viinamäki, CC BY-SA 4.0 via Wikimedia Commons)</p>
+
 If you own an Epson EcoTank / L-Series printer (such as the L3100~L3168, L1110, L5190, ET-2710, ET-4700), after printing a certain threshold of pages, printing will suddenly halt with the **Power light and Ink/Paper warning lights flashing alternately**.
 
 Depending on your driver version and OS, EPSON Status Monitor 3 will throw one of these **exact verbatim warning messages**:
