@@ -28,9 +28,6 @@
   <link rel="canonical" href="{{
       page.url  | remove: 'index.html' | remove: '.html' | absolute_url
     }}" />
-  {% if page.image %}
-  <link rel="preload" as="image" href="{{ page.image | absolute_url }}" fetchpriority="high" />
-  {% endif %}
   {% if paginator.previous_page %}
   <link rel="prev" href="{{
       paginator.previous_page_path

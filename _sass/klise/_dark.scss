@@ -57,6 +57,7 @@ body[data-theme="dark"] {
   code {
     &.highlighter-rouge {
       background-color: $dark-light;
+      color: $dark-white;
     }
   }
 
@@ -111,6 +112,7 @@ body[data-theme="dark"] {
   // Blockquote
   blockquote {
     color: $dark-gray;
+    opacity: 1;
     border-color: $dark-light;
   }
 
@@ -240,7 +242,7 @@ body[data-theme="dark"] {
     input[type="search"] {
       color: $dark-text-base-color;
       &::-webkit-input-placeholder {
-        color: rgba(128,128,128,0.8);
+        color: $dark-gray;
       }
     }
   }
