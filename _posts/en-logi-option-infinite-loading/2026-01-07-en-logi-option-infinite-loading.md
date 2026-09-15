@@ -23,3 +23,6 @@ The Logitech development team is aware of this issue, and a solution is currentl
 #### Advice for Users
 
 We understand this is inconvenient, but we kindly ask for your patience until an official update from Logitech is released. It is recommended to check Logitech's official website or support channels for the latest information.
+
+> 🚀 **Update: The issue is now resolved!**  
+> Logitech has officially released the fixed installer. See the fix and download links here: **[Logi Options+ Infinite Loading Fix (Apple Devices)](/en-logi-option-infinite-loading-solution/)**.

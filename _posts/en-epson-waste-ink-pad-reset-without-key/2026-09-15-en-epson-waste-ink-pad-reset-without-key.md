@@ -30,6 +30,10 @@ seo:
 canonical: /en-epson-waste-ink-pad-reset-without-key/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🇰🇷 <strong>한국어 안내:</strong> 한국어 가이드 및 국내 호환 부품 구매 안내는 <a href="/epson-waste-ink-pad-reset-without-key/"><strong>엡손 잉크패드 리셋키 없이 10분 만에 끝내는 법 (한국어)</strong></a> 포스팅을 참고하세요.
+</p>
+
 ### Exact Epson Waste Ink Pad Error Messages & Symptoms
 
 <img src="epson-printer.jpg" alt="Epson EcoTank Inkjet Printer">

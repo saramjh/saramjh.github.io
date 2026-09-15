@@ -1,0 +1,50 @@
+{%- if page.id -%}
+<div class="related-posts" style="margin-top: 3.5rem; margin-bottom: 2rem; border-top: 1px solid rgba(128, 128, 128, 0.2); padding-top: 1.8rem;">
+  <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.2rem;">
+    {%- if page.url contains '/en-' or page.lang == 'en' -%}
+      Recommended Reading
+    {%- else -%}
+      함께 읽으면 좋은 글
+    {%- endif -%}
+  </h3>
+  <ul style="list-style: none; padding-left: 0; margin: 0;">
+    {%- assign max_related = 4 -%}
+    {%- assign count = 0 -%}
+    {%- for post in site.posts -%}
+      {%- if post.url != page.url -%}
+        {%- assign same_lang = false -%}
+        {%- if page.url contains '/en-' and post.url contains '/en-' -%}
+          {%- assign same_lang = true -%}
+        {%- elsif page.url contains '/en-' or post.url contains '/en-' -%}
+          {%- assign same_lang = false -%}
+        {%- else -%}
+          {%- assign same_lang = true -%}
+        {%- endif -%}
+
+        {%- if same_lang -%}
+          {%- assign has_tag = false -%}
+          {%- for tag in page.tags -%}
+            {%- if post.tags contains tag -%}
+              {%- assign has_tag = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if has_tag or count < 2 -%}
+            <li style="margin-bottom: 0.85rem; line-height: 1.45;">
+              <a href="{{ post.url | relative_url }}" style="font-weight: 600; text-decoration: none; font-size: 0.98rem;">
+                {{ post.title }}
+              </a>
+              <span style="font-size: 0.82rem; color: #888; display: block; margin-top: 0.2rem;">
+                {{ post.date | date: "%b %d, %Y" }}
+              </span>
+            </li>
+            {%- assign count = count | plus: 1 -%}
+            {%- if count >= max_related -%}{%- break -%}{%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}

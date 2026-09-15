@@ -31,6 +31,7 @@ layout: compress
     <main aria-label="Content">
       {{ content }}
       {% unless page.url == '/' or page.url == '/about/' or page.url == '/archive/' %}
+      {% include related_posts.html %}
       <div id="disqus">
         {% include comments.html %}
       </div>
