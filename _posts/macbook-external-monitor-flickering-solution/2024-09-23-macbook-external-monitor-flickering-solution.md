@@ -7,6 +7,9 @@ layout: default
 legacy_asset_url: /posts/macbook-external-monitor-flickering-solution/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🇰🇷 <strong>한국어 버전 안내:</strong> 이 글의 한국어 번역 및 국내 환경 가이드는 <a href="/kr-macbook-external-monitor-flickering-solution/"><strong>맥북 외장 모니터 깜빡임 문제 해결 가이드 (한국어)</strong></a>에서 확인하실 수 있습니다.
+</p>
 ### MacBook Air / MacBook Pro / MacBook Trackpad External Monitor Flickering Problem Solution
 
 If you're experiencing flickering issues with your external monitor connected to your MacBook Air, MacBook Pro, you're not alone. The issue is often caused by the battery being permanently attached to the device, leading to power supply problems.

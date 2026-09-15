@@ -36,7 +36,10 @@ image: /epson-waste-ink-pad-reset-without-key/epson-printer.jpg
 
 ### 엡손 프린터 잉크 패드 서비스 수명 에러 메시지 정확한 문구와 증상
 
-<img src="epson-printer.jpg" alt="Epson EcoTank Inkjet Printer">
+<picture>
+  <source type="image/webp" srcset="epson-printer-400.webp 400w, epson-printer-800.webp 800w, epson-printer.webp 1200w" sizes="(max-width: 768px) 100vw, 720px">
+  <img src="epson-printer.jpg" srcset="epson-printer-400.jpg 400w, epson-printer-800.jpg 800w, epson-printer.jpg 1200w" sizes="(max-width: 768px) 100vw, 720px" alt="Epson EcoTank Inkjet Printer" width="1200" height="901" fetchpriority="high" loading="eager" decoding="async">
+</picture>
 <p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson EcoTank Printer (Photo: Santeri Viinamäki, CC BY-SA 4.0 via Wikimedia Commons)</p>
 
 엡손 무한잉크 복합기(L3100~L3168, L1110, L5190 등)를 오래 사용하다 보면 갑자기 인쇄가 전면 중단되면서 **전원 램프와 잉크/용지 경고등(빨간불)이 번갈아 깜빡이는 상태(교차 점멸)**가 됩니다.
@@ -66,7 +69,10 @@ PC 모니터 화면과 엡손 상태 모니터(EPSON Status Monitor 3)에는 드
 
 ### 1. 비용 비교: 통째 교체 vs 흡수재 단독 교체
 
-<img src="epson-maintenance-box.jpg" alt="Epson Ink Maintenance Box with waste ink">
+<picture>
+  <source type="image/webp" srcset="epson-maintenance-box-400.webp 400w, epson-maintenance-box-800.webp 800w, epson-maintenance-box.webp 895w" sizes="(max-width: 768px) 100vw, 720px">
+  <img src="epson-maintenance-box.jpg" srcset="epson-maintenance-box-400.jpg 400w, epson-maintenance-box-800.jpg 800w, epson-maintenance-box.jpg 895w" sizes="(max-width: 768px) 100vw, 720px" alt="Epson Ink Maintenance Box with waste ink" width="895" height="1200" loading="lazy" decoding="async">
+</picture>
 <p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson Ink Maintenance Box / Waste ink absorber (Photo: Ll1324, CC0 Public Domain via Wikimedia Commons)</p>
 
 폐잉크 패드 플라스틱 통 자체는 영구적인 플라스틱 사출물일 뿐 고장 나는 부품이 아닙니다. 실제로 잉크로 흠뻑 젖어 수명이 다한 것은 **내부 펠트 흡수재(스펀지)**뿐입니다.
@@ -110,7 +116,42 @@ PC 모니터 화면과 엡손 상태 모니터(EPSON Status Monitor 3)에는 드
 
 이 방식의 핵심 오픈소스 도구는 **`reinkpy-fix`**입니다. 윈도우 전용 실행 파일(`.exe`)이나 유료 WIC Reset 프로그램 대신, 오픈소스 파이썬 라이브러리를 통해 USB 통신으로 엡손 폐잉크 카운터를 직접 0%로 초기화하는 방식입니다.
 
-터미널에서 직접 실행해도 되고, Codex나 Claude 같은 AI 코딩 하네스에 다음 지시를 맡겨두면 연결 검증부터 코드 패치까지 에이전트가 알아서 일사천리로 처리해 줍니다.
+터미널에서 1~6단계를 직접 타이핑해도 되지만, **Cursor, Claude Code, Codex, Antigravity 같은 AI 코딩 하네스에게 아래 프롬프트를 통째로 복사해서 전달**하면 패키지 설치부터 내부 파일 버그 수정, 프린터 연결 검증, 리셋 스크립트 실행까지 에이전트가 1~2분 만에 알아서 완료해 줍니다.
+
+---
+
+#### 💡 AI 에이전트에게 바로 복사해서 붙여넣는 프롬프트 (Copy & Paste)
+
+터미널이나 AI 코딩 에이전트 대화창에 아래 상자 안의 텍스트를 그대로 복사해 붙여넣으세요. (본인 모델명이 L3106이 아니라면 모델명만 수정하시면 됩니다)
+
+```text
+내 엡손 프린터(모델: L3106 / L3100 계열)가 "잉크 패드 서비스 수명 만료" 에러로 락이 걸렸어.
+맥북(macOS)에 USB로 연결되어 있는데, 아래 절차에 맞춰 폐잉크 카운터 0% 리셋 처리를 완료해줘:
+
+1. https://github.com/LeFZdev/reinkpy-fix 리포지토리를 클론해줘.
+2. Homebrew로 libusb가 설치되어 있는지 확인하고 없으면 brew install libusb를 실행해줘.
+3. python3 -m venv venv 가상환경을 만들고 pyusb, pysnmp, zeroconf 설치 및 pip install -e . 를 실행해줘.
+4. (중요 버그 수정) reinkpy/__init__.py 파일에서 'from usb import UsbIO' 2군데를 찾아서 'from .usbtest import UsbIO'로 치환해줘.
+5. reinkpy/main.py 파일을 아래 코드로 교체해줘:
+```python
+import reinkpy
+printer = reinkpy.Device.from_usb(manufacturer='EPSON')
+driver = printer.epson
+if not driver.spec.model:
+    driver.configure("L3106") # 본인 모델명
+print("연결된 프린터:", printer)
+print("모델:", driver.spec.model)
+driver.reset_waste()
+print("잉크패드 카운터 초기화 완료")
+```
+6. sudo venv/bin/python3 reinkpy/main.py 로 실행해서 프린터 연결 검증 및 폐잉크 카운터 리셋을 수행해줘.
+```
+
+---
+
+#### 🛠 직접 수동으로 진행할 때의 단계별 가이드
+
+AI 없이 터미널에서 직접 실행하실 분들은 다음 6단계를 순서대로 진행하시면 됩니다:
 
 #### 1단계 — 코드 클론
 

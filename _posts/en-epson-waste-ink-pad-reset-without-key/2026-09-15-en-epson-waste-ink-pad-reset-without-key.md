@@ -37,7 +37,10 @@ image: /en-epson-waste-ink-pad-reset-without-key/epson-printer.jpg
 
 ### Exact Epson Waste Ink Pad Error Messages & Symptoms
 
-<img src="epson-printer.jpg" alt="Epson EcoTank Inkjet Printer">
+<picture>
+  <source type="image/webp" srcset="epson-printer-400.webp 400w, epson-printer-800.webp 800w, epson-printer.webp 1200w" sizes="(max-width: 768px) 100vw, 720px">
+  <img src="epson-printer.jpg" srcset="epson-printer-400.jpg 400w, epson-printer-800.jpg 800w, epson-printer.jpg 1200w" sizes="(max-width: 768px) 100vw, 720px" alt="Epson EcoTank Inkjet Printer" width="1200" height="901" fetchpriority="high" loading="eager" decoding="async">
+</picture>
 <p style="font-size:0.8em; color:#888; margin-top:-10px;">Epson EcoTank Printer (Photo: Santeri Viinamäki, CC BY-SA 4.0 via Wikimedia Commons)</p>
 
 If you own an Epson EcoTank / L-Series printer (such as the L3100~L3168, L1110, L5190, ET-2710, ET-4700), after printing a certain threshold of pages, printing will suddenly halt with the **Power light and Ink/Paper warning lights flashing alternately**.
@@ -100,7 +103,44 @@ Physical pad replacement is only half the battle. The internal EEPROM memory in 
 
 Instead of paying for proprietary reset keys or hunting down sketchy Windows-only tools, we use **`reinkpy-fix`**, an open-source Python tool that communicates directly with the printer over low-level USB commands.
 
-You can run these steps directly in your terminal, or pass these instructions to an AI coding agent (like Codex, Claude Code, or Antigravity) to execute and troubleshoot automatically.
+You can run the steps manually in your terminal, or **pass the copy-paste prompt below directly to an AI coding assistant** (such as Claude Code, Cursor, Codex, or Antigravity) to automate environment setup, bug patching, device detection, and EEPROM resetting in under 2 minutes.
+
+---
+
+#### 💡 Ready-to-use AI Agent Prompt (Copy & Paste)
+
+Copy the prompt block below and paste it directly into your AI coding assistant:
+
+```text
+My Epson printer (model: L3106 / L3100 or ET-2710 series) is locked due to "waste ink pad at the end of its service life".
+It is connected via USB to my macOS/Linux machine. Please automate the 0% counter reset following these exact steps:
+
+1. Clone repository: https://github.com/LeFZdev/reinkpy-fix
+2. Ensure libusb is installed (e.g. run 'brew install libusb' on macOS or 'apt-get install libusb-1.0-0-dev' on Linux).
+3. Set up a virtualenv (python3 -m venv venv) and install dependencies:
+   venv/bin/pip install pyusb pysnmp zeroconf
+   venv/bin/pip install -e .
+4. (CRITICAL BUG FIX) In reinkpy/__init__.py, find two occurrences of 'from usb import UsbIO' and replace them with 'from .usbtest import UsbIO'.
+5. Replace reinkpy/main.py with this reset routine:
+```python
+import reinkpy
+printer = reinkpy.Device.from_usb(manufacturer='EPSON')
+driver = printer.epson
+if not driver.spec.model:
+    driver.configure("L3106")  # adjust to your model e.g. L3150, ET-2710
+print("Connected Printer:", printer)
+print("Configured Model:", driver.spec.model)
+driver.reset_waste()
+print("Waste ink pad counter successfully reset to 0%!")
+```
+6. Execute with elevated permissions: sudo venv/bin/python3 reinkpy/main.py and verify reset completion.
+```
+
+---
+
+#### 🛠 Step-by-Step Manual Terminal Guide
+
+If you prefer executing the commands manually without an AI assistant:
 
 #### Step 1 — Clone the Repository
 

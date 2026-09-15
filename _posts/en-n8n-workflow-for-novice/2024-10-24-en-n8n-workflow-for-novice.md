@@ -13,6 +13,9 @@ layout: default
 legacy_asset_url: /posts/en-n8n-workflow-for-novice/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🇰🇷 <strong>한국어 버전 안내:</strong> 이 글의 한국어 번역 및 국내 환경 가이드는 <a href="/n8n-workflow-for-novice/"><strong>초보자를 위한 n8n 워크플로우 가이드 (한국어)</strong></a>에서 확인하실 수 있습니다.
+</p>
 ## n8n Workflow Guide for Beginners
 
 n8n is a powerful workflow automation tool that allows you to easily connect various applications and services. This guide will explain the basic usage for those using n8n for the first time.

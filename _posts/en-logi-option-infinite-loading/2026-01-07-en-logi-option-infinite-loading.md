@@ -7,6 +7,9 @@ layout: default
 legacy_asset_url: /posts/en-logi-option-infinite-loading/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🇰🇷 <strong>한국어 버전 안내:</strong> 이 글의 한국어 번역 및 국내 환경 가이드는 <a href="/kr-logi-option-infinite-loading/"><strong>Logi Options+ 무한 로딩 문제 안내 (한국어)</strong></a>에서 확인하실 수 있습니다.
+</p>
 ### Logi Options+ Infinite Loading Issue: A Guide for Apple Device Users
 <img src="001.png" alt="Logitech Infinite Loading">
 

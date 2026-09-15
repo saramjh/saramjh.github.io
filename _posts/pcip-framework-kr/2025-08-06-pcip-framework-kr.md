@@ -8,6 +8,9 @@ layout: default
 legacy_asset_url: /posts/pcip-framework-kr/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🌐 <strong>English Edition available:</strong> Looking for the English version? Read <a href="/pcip-framework-en/"><strong>PCIP Framework Guide (English Edition)</strong></a>.
+</p>
 ## 🔥 PCIP Framework 완전 해부: 제작 배경부터 설계 의도까지
 ### 제목: SOTA AI 코딩 어시스턴트 개답답해서 오은영 박사 육아법으로 만든 시스템 완전 해부.txt
 **3줄 요약**

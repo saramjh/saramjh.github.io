@@ -13,6 +13,9 @@ layout: default
 legacy_asset_url: /posts/n8n-workflow-for-novice/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🌐 <strong>English Edition available:</strong> Looking for the English version? Read <a href="/en-n8n-workflow-for-novice/"><strong>n8n Workflow Guide for Beginners (English Edition)</strong></a>.
+</p>
 ## n8n 워크플로우 초보자 가이드
 
 n8n은 강력한 워크플로우 자동화 도구로, 다양한 애플리케이션과 서비스를 쉽게 연결할 수 있게 해줍니다. 이 가이드에서는 n8n을 처음 사용하는 분들을 위해 기본적인 사용법을 설명하겠습니다.

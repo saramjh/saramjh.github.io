@@ -7,6 +7,9 @@ layout: default
 legacy_asset_url: /posts/kr-macbook-external-monitor-flickering-solution/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🌐 <strong>English Edition available:</strong> Looking for the English version? Read <a href="/macbook-external-monitor-flickering-solution/"><strong>MacBook External Monitor Flickering Fix (English Edition)</strong></a>.
+</p>
 ### 맥북 에어 / 맥북 프로 / 맥북 트럭탑 외장 모니터 깜빡임 문제 해결
 
 유니바디(배터리 일체형) 맥북 에어와 맥북 프로는 배터리가 상시 본체에 꽂아 있어 전류 공급 문제가 있을 수 있습니다. 이로 인해 일부 모델에서는 화면 지직 거림, 깜빡임 증상이 일어날 수 있습니다.

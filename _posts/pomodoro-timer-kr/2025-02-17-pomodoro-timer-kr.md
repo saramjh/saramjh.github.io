@@ -8,6 +8,9 @@ layout: default
 legacy_asset_url: /posts/pomodoro-timer-kr/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🌐 <strong>English Edition available:</strong> Looking for the English version? Read <a href="/pomodoro-timer-en/"><strong>Pomodoro Timer (English Edition)</strong></a>.
+</p>
 # 뽀모도로 타이머
 
 <img src="thumnail.png" alt="pomodoro-timer-kr" width="40%">

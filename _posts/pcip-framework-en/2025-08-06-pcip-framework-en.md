@@ -8,6 +8,9 @@ layout: default
 legacy_asset_url: /posts/pcip-framework-en/
 ---
 
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
+  🇰🇷 <strong>한국어 버전 안내:</strong> 이 글의 한국어 번역 및 국내 환경 가이드는 <a href="/pcip-framework-kr/"><strong>PCIP 프레임워크 가이드 (한국어)</strong></a>에서 확인하실 수 있습니다.
+</p>
 ## 🔥 PCIP Framework: How I Fixed AI Coding Assistants with Parenting Psychology 
 
 ### TL;DR
