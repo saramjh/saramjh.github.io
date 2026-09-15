@@ -171,23 +171,35 @@ Finally, **turn the printer off and back on**. The flashing warning lights will 
 
 ---
 
-### Supported Epson Printer Models (33 Compatible Models)
+### Supported Epson Printer Models (Asia L-Series & Global EcoTank)
 
-This method is verified not only for L3100 / L3106, but across **all 33 Epson EcoTank / L-Series models** that share the same motherboard architecture and USB EEPROM command mapping:
+The `reinkpy-fix` reset procedure applies **100% identically** across all models sharing the same internal motherboard and USB communication protocol:
 
-#### 1) L3100 / L3110 Series
+#### 1) Asian / Domestic Models (L-Series — 33 Models)
 - **L3100 Models**: L3100, L3101, L3104, L3105, L3106, L3107, L3108, L3109
 - **L3110 Models**: L3110, L3111, L3114, L3115, L3116, L3117, L3118, L3119
+- **L3150 Models (Wi-Fi)**: L3150, L3151, L3152, L3153, L3156, L3158
+- **L3160 Models (with LCD)**: L3160, L3161, L3163, L3165, L3166, L3168
+- **L1110 Models (Single-function)**: L1110, L1118, L1119
+- **L5190 Models (Fax / ADF)**: L5190, L5196, L5198
 
-#### 2) L3150 / L3160 Wi-Fi Series
-- **L3150 Models**: L3150, L3151, L3152, L3153, L3156, L3158
-- **L3160 Models**: L3160, L3161, L3163, L3165, L3166, L3168
+#### 2) North American & European Models (EcoTank / ET Series)
+Global EcoTank models share the exact same firmware / EEPROM architecture:
+- **ET-1110 ~ ET-1118** (Global equivalent of L1110)
+- **ET-2710 ~ ET-2728** (Global equivalent of L3110 / L3150)
+- **ET-4700** (Global equivalent of L5190 Fax All-in-One)
 
-#### 3) L1110 Single Function & L5190 Fax All-in-One Series
-- **L1110 Models**: L1110, L1118, L1119
-- **L5190 Models**: L5190, L5196, L5198
+> **Configuration Note**: In Step 5, simply replace `driver.configure("L3106")` in `main.py` with your exact model string (e.g., `L3150`, `L1110`, `L5190`, `ET-2710`). The driver will target the exact memory register of your printer.
 
-> **Configuration Note**: In Step 5, simply replace `driver.configure("L3106")` in `main.py` with your exact model string (e.g., `L3150`, `L1110`, `L5190`). The driver will target the exact memory register of your printer.
+---
+
+### Important: Physical Disassembly Nuances by Model
+
+While the **software reset is identical** across all models listed above, the **physical teardown process varies slightly by form factor**:
+
+- **L3100 ~ L3119 (including L3106)**: Same generation and identical chassis. The 1-screw lower-right rear panel and slide-out box mechanism described in Step 2 is 100% identical.
+- **L3150 / L3160 Series**: Includes Wi-Fi modules and LCD screens, but the rear lower chassis and waste pad box placement remain virtually the same.
+- **L1110 Series (Compact Single-function)** / **L5190 Series (ADF / Fax)**: Different physical form factors. Screw locations and exterior casing latches may vary, so double-check your model's specific service casing layout before pulling the box out.
 
 ---
 
