@@ -6,6 +6,9 @@ tags: pomodoro, pomodorotimer, pomodoro, pomodorotimer
 permalink: /pomodoro-timer-en/
 layout: default
 legacy_asset_url: /posts/pomodoro-timer-en/
+lang: en
+alternate_lang: ko
+alternate_url: /pomodoro-timer-kr/
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

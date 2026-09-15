@@ -28,6 +28,16 @@ seo:
     - Epson ink pad end of service life
 canonical: /epson-waste-ink-pad-reset-without-key/
 image: /epson-waste-ink-pad-reset-without-key/epson-printer.jpg
+lang: ko
+alternate_lang: en
+alternate_url: /en-epson-waste-ink-pad-reset-without-key/
+faq:
+  - q: "폐잉크 패드 솜(스펀지)을 물로 세척해서 말린 뒤 재사용해도 되나요?"
+    a: "권장하지 않습니다. 펠트 흡수재는 수성 잉크에 절어있어 세척 시 대량의 오수가 발생하고, 완전 건조에 수일이 걸리며, 세척 과정에서 섬유 조직의 흡수 밀도가 떨어져 재장착 시 프린터 하부 누수 위험이 큽니다. 5,700원에 맞춤 재단된 새 흡수재 세트로 교체하는 것이 가장 안전합니다."
+  - q: "소프트웨어 리셋 후에도 빨간 경고등이 계속 번갈아 깜빡입니다."
+    a: "카운터 리셋 직후에는 프린터 전원 플러그를 콘센트에서 완전히 분리한 뒤 약 1분 후 다시 켜보세요. 또한 reinkpy/main.py에서 본인 프린터 모델명이 정확히 설정되었는지, 실행 시 터미널에 '잉크패드 카운터 초기화 완료' 메시지가 정상 출력되었는지 점검하세요."
+  - q: "WIC Reset 유료 리셋키와 오픈소스 reinkpy-fix의 기술적 차이는 무엇인가요?"
+    a: "내부 메커니즘은 동일합니다. 두 방식 모두 USB 양방향 통신(ESC/P-R Vendor Command)을 통해 프린터 메인보드 EEPROM에 기록된 폐잉크 누적 카운터를 0%로 리셋합니다. WIC Reset은 1회 리셋마다 약 1만 원의 상용 키를 결제해야 하고 윈도우 전용인 반면, reinkpy-fix는 오픈소스 파이썬 도구이므로 맥북(macOS), 리눅스, 윈도우 어디서든 무료로 영구 사용이 가능합니다."
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
@@ -274,3 +284,28 @@ sudo venv/bin/python3 reinkpy/main.py
   - 불필요한 플라스틱 케이스 버리지 않고 재사용
 
 프린터 잉크 패드 경고가 떴다고 해서 비싼 출장 수리를 부르거나 유료 키 결제를 고민하지 마세요. 흡수재만 교체하고 AI 하네스를 활용하면 누구나 가장 경제적이고 빠르게 해결할 수 있습니다!
+
+---
+
+### 7. 자주 묻는 질문 (FAQ)
+
+<details style="margin-bottom: 1rem; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; padding: 12px 16px;">
+  <summary style="font-weight: 700; cursor: pointer; color: inherit;">Q1. 폐잉크 패드 솜(스펀지)을 물로 세척해서 말린 뒤 재사용해도 되나요?</summary>
+  <p style="margin-top: 8px; font-size: 0.95rem; line-height: 1.6;">
+    <strong>권장하지 않습니다.</strong> 펠트 흡수재는 수성 잉크에 절어있어 세척 시 대량의 오수가 발생하고, 완전 건조에 수일이 걸립니다. 무엇보다 세척 과정에서 섬유 조직의 흡수 밀도가 떨어져 재장착 시 프린터 하부 누수 위험이 큽니다. 5,700원에 맞춤 재단된 새 흡수재 세트로 교체하는 것이 가장 안전합니다.
+  </p>
+</details>
+
+<details style="margin-bottom: 1rem; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; padding: 12px 16px;">
+  <summary style="font-weight: 700; cursor: pointer; color: inherit;">Q2. 소프트웨어 리셋 후에도 빨간 경고등이 계속 번갈아 깜빡입니다.</summary>
+  <p style="margin-top: 8px; font-size: 0.95rem; line-height: 1.6;">
+    카운터 리셋 직후에는 <strong>프린터 전원 플러그를 콘센트에서 완전히 분리한 뒤 약 1분 후 다시 켜보세요.</strong> 또한 <code>reinkpy/main.py</code>에서 본인 프린터 모델명이 정확히 설정되었는지, 실행 시 터미널에 <code>잉크패드 카운터 초기화 완료</code> 메시지가 정상 출력되었는지 점검하세요.
+  </p>
+</details>
+
+<details style="margin-bottom: 1rem; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; padding: 12px 16px;">
+  <summary style="font-weight: 700; cursor: pointer; color: inherit;">Q3. WIC Reset 유료 리셋키와 오픈소스 reinkpy-fix의 기술적 차이는 무엇인가요?</summary>
+  <p style="margin-top: 8px; font-size: 0.95rem; line-height: 1.6;">
+    내부 메커니즘은 동일합니다. 두 방식 모두 USB 양방향 통신(ESC/P-R Vendor Command)을 통해 프린터 메인보드 EEPROM에 기록된 폐잉크 누적 카운터를 0%로 리셋합니다. WIC Reset은 1회 리셋마다 약 1만 원의 상용 키를 결제해야 하고 윈도우 전용인 반면, <code>reinkpy-fix</code>는 오픈소스 파이썬 도구이므로 맥북(macOS), 리눅스, 윈도우 어디서든 무료로 영구 사용이 가능합니다.
+  </p>
+</details>

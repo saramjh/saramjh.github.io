@@ -6,6 +6,9 @@ tags: systemprompt, 시스템프롬프트, system instruction, instructions, cla
 permalink: /pcip-framework-kr/
 layout: default
 legacy_asset_url: /posts/pcip-framework-kr/
+lang: ko
+alternate_lang: en
+alternate_url: /pcip-framework-en/
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

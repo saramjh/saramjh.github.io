@@ -6,6 +6,9 @@ tags: pomodoro, pomodorotimer, 뽀모도로, 포모도로, 포모도로타이머
 permalink: /pomodoro-timer-kr/
 layout: default
 legacy_asset_url: /posts/pomodoro-timer-kr/
+lang: ko
+alternate_lang: en
+alternate_url: /pomodoro-timer-en/
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

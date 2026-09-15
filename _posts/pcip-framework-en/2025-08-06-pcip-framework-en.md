@@ -6,6 +6,9 @@ tags: systemprompt,system instruction, instructions, claude code, Gemini cli, cu
 permalink: /pcip-framework-en/
 layout: default
 legacy_asset_url: /posts/pcip-framework-en/
+lang: en
+alternate_lang: ko
+alternate_url: /pcip-framework-kr/
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

@@ -48,3 +48,7 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Ping Search Engines
+        run: |
+          curl -sS "https://www.bing.com/ping?sitemap=https%3A%2F%2Fsaramjh.github.io%2Fsitemap.xml" || true
+

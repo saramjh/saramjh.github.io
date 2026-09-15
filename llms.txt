@@ -1,0 +1,24 @@
+# DevTestudinidae Technical Knowledge Base
+
+> Curated technical guides, hardware troubleshooting, automation workflows, and browser-based developer utilities by DevTestudinidae.
+
+## Hardware & macOS Troubleshooting Guides
+- [Epson Waste Ink Pad Reset Without Key (Korean)](https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/): Complete cross-platform guide to resetting Epson waste ink counter for free across 33 models (L3100~L3168, L1110, L5190) on macOS/Linux/Windows using open-source reinkpy-fix and replacing only inner felt pads for ~$4.
+- [How to Reset Epson Waste Ink Counter Free on Mac/Linux/Win (English)](https://saramjh.github.io/en-epson-waste-ink-pad-reset-without-key/): English edition for resetting locked Epson EcoTank printers without paid WIC reset keys.
+- [MacBook External Monitor Flickering Fix (Korean)](https://saramjh.github.io/kr-macbook-external-monitor-flickering-solution/): Troubleshooting external monitor flickering, frequency mismatch, and USB-C display handshake issues on macOS.
+- [MacBook External Monitor Flickering Solution (English)](https://saramjh.github.io/macbook-external-monitor-flickering-solution/): Practical resolution for macOS external monitor signal flickering.
+- [Logitech Options Infinite Loading Fix (Korean)](https://saramjh.github.io/kr-logi-option-infinite-loading-solution/): Resolution for persistent infinite loading screens in Logi Options+ software on macOS/Windows.
+- [Logitech Options Infinite Loading Solution (English)](https://saramjh.github.io/en-logi-option-infinite-loading-solution/): Step-by-step fix for Logi Options+ launch hang.
+- [KakaoTalk Shorts Autoplay Adblock Guide (Korean)](https://saramjh.github.io/kakaotalk-shorts-autoplay-adblock-guide/): How to disable video autoplay, short-form feed clutter, and data-draining shopping tabs in KakaoTalk.
+
+## Automation & AI Workflows
+- [n8n Workflow Automation for Beginners (Korean)](https://saramjh.github.io/n8n-workflow-for-novice/): Introduction to setting up open-source n8n workflow automation with trigger and action nodes.
+- [n8n Workflow Automation for Beginners (English)](https://saramjh.github.io/en-n8n-workflow-for-novice/): Getting started with self-hosted n8n workflow automation.
+- [AI-assisted Coding Harness Prompts](https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/#-ai-에이전트에게-바로-복사해서-붙여넣는-프롬프트-copy--paste): Copy-paste prompt routines for automated bug-patching and device interaction via Claude Code, Codex, Cursor, and Antigravity.
+
+## Web Utilities & Interactive Tools
+- [Dieter Rams Style Calculator](https://saramjh.github.io/dieter-rams-style-calculator/): Minimalist web calculator inspired by Dieter Rams and Braun ET66 design principles.
+- [Online Image Resizer](https://saramjh.github.io/online-image-resizer/): In-browser client-side image resizing and format conversion utility without server uploads.
+- [Amazon ASIN Code Link Generator](https://saramjh.github.io/asin-code-link-generator/): Rapid ASIN extraction and clean affiliate link formatting utility.
+- [AI Rich Face Tester](https://saramjh.github.io/rich-tester/): AI-powered facial feature analysis application.
+- [Calendar Sharing via URL](https://saramjh.github.io/calendar-sharing-via-URL/): Client-side calendar event generator and sharable URL encoder.

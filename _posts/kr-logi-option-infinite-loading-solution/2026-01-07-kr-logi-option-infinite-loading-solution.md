@@ -5,6 +5,9 @@ tags: Logi Options+, Apple, 무한 로딩, 해결, 로지텍
 permalink: /kr-logi-option-infinite-loading-solution/
 layout: default
 legacy_asset_url: /posts/kr-logi-option-infinite-loading-solution/
+lang: ko
+alternate_lang: en
+alternate_url: /en-logi-option-infinite-loading-solution/
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

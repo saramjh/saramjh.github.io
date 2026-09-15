@@ -5,6 +5,9 @@ tags: Logi Options+, Apple, Infinite Loading, Fix, Logitech
 permalink: /en-logi-option-infinite-loading-solution/
 layout: default
 legacy_asset_url: /posts/en-logi-option-infinite-loading-solution/
+lang: en
+alternate_lang: ko
+alternate_url: /kr-logi-option-infinite-loading-solution/
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">

@@ -22,9 +22,20 @@
     {% if page.title %}{{ page.title | escape }} - {{ site.title }}{% else %}{{
     site.title | escape }}{% endif %}
   </title>
-  <link rel="alternate" href="{{
-      page.url | remove: 'index.html' | remove: '.html' | absolute_url
-    }}" hreflang="{{ page.lang | default: site.lang }}" />
+  {%- assign page_canonical_url = page.url | remove: 'index.html' | remove: '.html' | absolute_url -%}
+  {%- assign page_locale = page.lang | default: site.lang | default: 'ko' -%}
+  {%- if page.alternate_url and page.alternate_lang -%}
+  {%- assign alt_canonical_url = page.alternate_url | remove: 'index.html' | remove: '.html' | absolute_url -%}
+  <link rel="alternate" href="{{ page_canonical_url }}" hreflang="{{ page_locale }}" />
+  <link rel="alternate" href="{{ alt_canonical_url }}" hreflang="{{ page.alternate_lang }}" />
+  {%- if page_locale == 'en' -%}
+  <link rel="alternate" href="{{ page_canonical_url }}" hreflang="x-default" />
+  {%- elsif page.alternate_lang == 'en' -%}
+  <link rel="alternate" href="{{ alt_canonical_url }}" hreflang="x-default" />
+  {%- endif -%}
+  {%- else -%}
+  <link rel="alternate" href="{{ page_canonical_url }}" hreflang="{{ page_locale }}" />
+  {%- endif -%}
   <link rel="canonical" href="{{
       page.url  | remove: 'index.html' | remove: '.html' | absolute_url
     }}" />
