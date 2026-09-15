@@ -15,9 +15,9 @@ image_height: 820
 
 # Space Atlas: 3D 인터랙티브 우주 과학 아틀라스
 
-<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
-  <strong>English Version:</strong> Read this article in English at <a href="/space-atlas-student-en/"><strong>Space Atlas: 3D Interactive Astronomy Reference</strong></a>.
-</p>
+<div style="background: rgba(0, 120, 212, 0.12); border: 1px solid #0078d4; border-left: 5px solid #0078d4; padding: 12px 16px; margin: 18px 0 26px; border-radius: 4px; font-size: 0.96rem; line-height: 1.5;">
+  <strong>English Version:</strong> Looking for the English edition? Read <a href="/space-atlas-student-en/" style="color: #4da3ff; font-weight: 700; text-decoration: underline;">Space Atlas: 3D Interactive Astronomy Reference (English) →</a>
+</div>
 
 <img src="space-atlas-hero.png" alt="Space Atlas 3D Solar System Model">
 
@@ -101,3 +101,5 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 * **Space Atlas 웹사이트**: [https://saramjh.github.io/space_atlas_student/](https://saramjh.github.io/space_atlas_student/)
 * **GitHub 저장소**: [https://github.com/saramjh/space_atlas_student](https://github.com/saramjh/space_atlas_student)
+* **영문 포스팅 (English Edition)**: [Space Atlas: 3D Interactive Astronomy Reference](/space-atlas-student-en/)
+
