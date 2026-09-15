@@ -78,26 +78,88 @@ canonical: /epson-waste-ink-pad-reset-without-key/
 
 ---
 
-### 4. 해결책: AI 에이전트(Codex 등)에게 맡기는 크로스플랫폼 리셋
+### 4. 해결책: reinkpy-fix + AI 하네스로 끝내는 6단계 리셋
 
-이 문제는 **Codex, Claude, Antigravity 같은 AI 코딩 하네스/에이전트**를 이용하면 OS 상관없이 매우 쉽게 해결할 수 있습니다.
+이 방식의 핵심 오픈소스 도구는 **`reinkpy-fix`**입니다. 윈도우 전용 실행 파일(`.exe`)이나 유료 WIC Reset 프로그램 대신, 오픈소스 파이썬 라이브러리를 통해 USB 통신으로 엡손 폐잉크 카운터를 직접 0%로 초기화하는 방식입니다.
 
-파이썬(`pyusb`, `python-escpos` 등)이나 오픈소스 프린터 제어 CLI를 구동할 수 있는 환경에서 에이전트에게 상황을 전달하면 됩니다.
+터미널에서 직접 실행해도 되고, Codex나 Claude 같은 AI 코딩 하네스에 다음 지시를 맡겨두면 연결 검증부터 코드 패치까지 에이전트가 알아서 일사천리로 처리해 줍니다.
 
-#### 프롬프트 요청 예시
-```text
-"내 엡손 L3100(혹은 사용 중인 모델명) 프린터가 폐잉크 패드(Waste Ink Pad) 카운터 만료로 락이 걸렸어.
-맥북(macOS)에 USB로 연결되어 있는데, 추가 유료 리셋키 구매 없이
-프린터 USB 연결 상태를 검증하고, 폐잉크 카운터 조회 및 0% 리셋 처리를 완료해줘."
+#### 1단계 — 코드 클론
+
+오픈소스 저장소를 로컬로 내려받습니다.
+
+```bash
+git clone https://github.com/LeFZdev/reinkpy-fix
+cd reinkpy-fix
 ```
 
-#### AI 에이전트가 처리해 주는 자동화 워크플로우
-1. **장치 연결 식별**: 시스템 USB 버스에서 엡손 프린터의 Vendor ID(`0x04b8`) 및 Product ID를 스캔하여 케이블 연결 및 통신 권한을 검증합니다.
-2. **카운터 상태 읽기**: 엡손 서비스 커맨드 쿼리를 전송해 메인 패드 카운터(Main Pad Counter)와 플래튼 패드 카운터(Platen Pad Counter)의 수치 및 100% 초과 여부를 확인합니다.
-3. **EEPROM 카운터 0 초기화**: 해당 모델에 맞는 리셋 명령 패킷을 생성해 프린터로 전송하고, 카운터가 0%로 초기화되었는지 즉시 검증합니다.
-4. **재부팅 안내 및 복구 완료**: 프린터 전원을 껐다 켜면 경고등 점멸이 사라지고 정상 인쇄 상태로 돌아옵니다.
+#### 2단계 — libusb 설치
 
-맥북이든, 리눅스든, 윈도우든 터미널 환경이 갖춰진 곳이라면 에이전트가 알아서 포트 점유 해제, 권한 설정, 통신 패킷 송수신을 대행해 주므로 사용자가 복잡한 조작을 할 필요가 없습니다.
+맥북(macOS)과 리눅스 환경에서 프린터와 USB 저수준 통신을 하기 위해 필수적인 라이브러리입니다.
+
+```bash
+brew install libusb
+```
+
+#### 3단계 — 가상환경 생성 및 의존성 패키지 설치
+
+시스템 파이썬과 격리된 venv 환경을 만들고 필요한 라이브러리를 설치합니다.
+
+```bash
+python3 -m venv venv
+venv/bin/pip install pyusb pysnmp zeroconf
+venv/bin/pip install -e .
+```
+
+#### 4단계 — 라이브러리 내부 임포트 버그 수정 (★ 핵심 포인트)
+
+현재 `reinkpy-fix` 저장소 최신 커밋 기준으로, 설치 후 바로 실행하면 `ImportError`가 발생합니다. 소스코드 내부에서 `usb.py`가 `usbtest.py`로 이름이 바뀌었는데 `reinkpy/__init__.py`의 임포트 경로가 미처 갱신되지 않은 버그입니다. 
+
+`reinkpy/__init__.py` 파일을 열고 `from usb import UsbIO`를 검색하면 나오는 **두 줄을 모두 아래와 같이 수정**합니다.
+
+```python
+# 수정 전
+from usb import UsbIO
+
+# 수정 후
+from .usbtest import UsbIO
+```
+
+> **AI 에이전트에게 맡길 때의 장점**: 사람이 직접 파일 열어서 고치려면 번거롭지만, AI 하네스에 "reinkpy-fix 클론해서 초기화 준비해줘"라고 전달하면 이런 내부 파일 버그까지 에이전트가 파일 검색 및 치환으로 즉시 수정해 줍니다.
+
+#### 5단계 — main.py를 USB 통신 코드로 교체
+
+`reinkpy/main.py` 파일의 기존 내용을 지우고, 내 프린터와 USB로 통신하여 폐잉크 카운터를 리셋하도록 아래 코드로 교체합니다. (L3100, L3106 등 본인 모델명 지정)
+
+```python
+import reinkpy
+
+# EPSON 제조사 USB 디바이스 탐색
+printer = reinkpy.Device.from_usb(manufacturer='EPSON')
+
+driver = printer.epson
+if not driver.spec.model:
+    driver.configure("L3106")  # L3100 계열 호환 모델 지정
+
+print("연결된 프린터:", printer)
+print("모델:", driver.spec.model)
+
+# 폐잉크 카운터 0 초기화 실행
+driver.reset_waste()
+print("잉크패드 카운터 초기화 완료")
+```
+
+#### 6단계 — 관리자 권한으로 실행
+
+USB 디바이스 제어 권한(Raw USB Access)을 위해 `sudo` 권한으로 실행합니다.
+
+```bash
+sudo venv/bin/python3 reinkpy/main.py
+```
+
+실행하면 터미널에 프린터 모델명과 연결 상태가 출력된 뒤, `잉크패드 카운터 초기화 완료` 메시지가 뜹니다.
+
+작업이 끝난 후 프린터 전원을 껐다가 다시 켜면, 빨간 경고등 깜빡임이 사라지고 정상 인쇄 대기 상태로 즉시 복구됩니다!
 
 ---
 
