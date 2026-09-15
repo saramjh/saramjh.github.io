@@ -6,7 +6,7 @@ permalink: /space-atlas-student/
 layout: default
 lang: ko
 tags: 우주과학, 천문학, 3D시뮬레이션, ThreeJS, 인터랙티브학습, 오픈소스, 과학교육, NASA
-image: /posts/space-atlas-student/space-atlas-hero.png
+image: /space-atlas-student/space-atlas-hero.png
 image_width: 1280
 image_height: 820
 ---
