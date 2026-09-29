@@ -33,8 +33,10 @@ When students learn astronomy, the two biggest hurdles are the **unimaginable ph
 * [Moon Phase Simulator — interactive Sun-Earth-Moon model](https://saramjh.github.io/space_atlas_student/moon/phases/)
 * [Seasons Simulator — compare Earth's 23.5° tilt with 0° tilt](https://saramjh.github.io/space_atlas_student/earth/seasons/)
 * [Mars Weight Calculator — compare your weight on every planet](https://saramjh.github.io/space_atlas_student/solar-system/gravity-comparison/)
+* [Age on Other Planets Calculator — convert your Earth age using each planet's orbital period](https://saramjh.github.io/space_atlas_student/solar-system/orbital-periods/)
 * [Interactive Planet Size Comparison — Earth vs Jupiter, Mars, Venus, and more](https://saramjh.github.io/space_atlas_student/solar-system/planet-size-comparison/)
 * [Solar System Scale Model — calculate real planet distances](https://saramjh.github.io/space_atlas_student/solar-system/distance-scale/)
+* [Exoplanet Transit Simulator — move a planet across a star and read the light curve](https://saramjh.github.io/space_atlas_student/exoplanets/transit-method/)
 * [Tidal Locking Simulator — why we always see nearly the same side of the Moon](https://saramjh.github.io/space_atlas_student/moon/tidal-locking/)
 
 Built to solve these problems, **Space Atlas (Student Reference)** is an interactive astronomy encyclopedia where students manipulate simulation variables, rotate 3D viewpoints, and discover physical relationships firsthand.
