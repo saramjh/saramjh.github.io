@@ -1,6 +1,8 @@
 ---
 title: "Billionaire Lookalike Test: Which Billionaire Do You Look Like?"
 date: 2026-09-12
+modified: 2026-09-30
+last_modified_at: 2026-09-30
 permalink: /billionaire-lookalike-test/
 layout: default
 tags: AI face match, billionaire lookalike, face analysis, Forbes billionaires, richChecker

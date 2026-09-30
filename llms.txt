@@ -20,5 +20,6 @@
 - [Dieter Rams Style Calculator](https://saramjh.github.io/dieter-rams-style-calculator/): Minimalist web calculator inspired by Dieter Rams and Braun ET66 design principles.
 - [Online Image Resizer](https://saramjh.github.io/online-image-resizer/): In-browser client-side image resizing and format conversion utility without server uploads.
 - [Amazon ASIN Code Link Generator](https://saramjh.github.io/asin-code-link-generator/): Rapid ASIN extraction and clean affiliate link formatting utility.
-- [AI Rich Face Tester](https://saramjh.github.io/rich-tester/): AI-powered facial feature analysis application.
+- [Korean Rich Face Match](https://saramjh.github.io/richChecker/): Browser-based AI face match against a focused 47-person Korean rich-list sample, with Top 3 results and six facial proportions.
+- [Billionaire Face Match](https://saramjh.github.io/richChecker-us/): Focused celebrity-lookalike edition comparing six facial proportions with a 100-person billionaire sample.
 - [Calendar Sharing via URL](https://saramjh.github.io/calendar-sharing-via-URL/): Client-side calendar event generator and sharable URL encoder.

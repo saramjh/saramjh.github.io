@@ -1,6 +1,8 @@
 ---
 title: "부자 관상 테스트: AI로 나와 닮은 부자 찾기"
 date: 2026-09-12
+modified: 2026-09-30
+last_modified_at: 2026-09-30
 permalink: /rich-face-test/
 layout: default
 lang: ko
@@ -89,4 +91,3 @@ image_height: 900
 - [부자 관상 테스트](https://saramjh.github.io/richChecker/)
 - [Global Billionaire Face Match](https://saramjh.github.io/richChecker-us/)
 - [Github Repository: richChecker](https://github.com/saramjh/richChecker)
-- [초기 프로젝트 기록: 인공지능 부자 관상 분석](/rich-tester/)

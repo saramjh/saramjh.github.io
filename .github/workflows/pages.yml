@@ -21,6 +21,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Validate growth ownership
+        run: python3 scripts/check_growth_ownership.py
       - name: Build
         run: bundle exec jekyll build --trace
         env:

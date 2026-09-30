@@ -37,7 +37,29 @@ if sitemap.file?
     metadata = YAML.safe_load(post.read.split(/^---[ \t]*$/, 3)[1], permitted_classes: [Date, Time])
     next if metadata['published'] == false || Date.parse(metadata['date'].to_s) > Time.now.getlocal('+09:00').to_date
     permalink = metadata.fetch('permalink')
-    errors << "Missing post in sitemap: #{permalink}" unless locations.include?("https://saramjh.github.io#{permalink}")
+    sitemap_url = "https://saramjh.github.io#{permalink}"
+    if metadata['sitemap'] == false
+      errors << "Excluded post leaked into sitemap: #{permalink}" if locations.include?(sitemap_url)
+    else
+      errors << "Missing post in sitemap: #{permalink}" unless locations.include?(sitemap_url)
+    end
+
+    redirect_target = metadata['redirect_to']
+    if redirect_target
+      output = permalink.end_with?('/') ? root.join(permalink.delete_prefix('/'), 'index.html') : root.join(permalink.delete_prefix('/'))
+      if output.file?
+        redirect_doc = Nokogiri::HTML(output.read)
+        canonical = redirect_doc.at_css('link[rel="canonical"]')&.[]('href')
+        robots = redirect_doc.at_css('meta[name="robots"]')&.[]('content').to_s.downcase
+        refresh = redirect_doc.at_css('meta[http-equiv="refresh"]')&.[]('content').to_s
+        errors << "Redirect canonical mismatch: #{permalink}" unless canonical == redirect_target
+        errors << "Redirect must be noindex: #{permalink}" unless robots.include?('noindex')
+        errors << "Redirect refresh target mismatch: #{permalink}" unless refresh.include?(redirect_target)
+      else
+        errors << "Redirect output missing: #{permalink}"
+      end
+    end
+
     legacy = metadata['legacy_asset_url']
     next unless legacy
     post.dirname.glob('**/*').select(&:file?).each do |asset|

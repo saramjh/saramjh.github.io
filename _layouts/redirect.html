@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{{ page.redirect_to }}">
+  <meta http-equiv="refresh" content="0; url={{ page.redirect_to }}">
+  <title>{{ page.title | escape }}</title>
+  <script>window.location.replace({{ page.redirect_to | jsonify }});</script>
+</head>
+<body>
+  <p>이 페이지는 현재 버전으로 이동했습니다. <a href="{{ page.redirect_to }}">현재 부자 관상 테스트 열기</a></p>
+</body>
+</html>
