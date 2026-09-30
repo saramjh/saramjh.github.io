@@ -24,6 +24,12 @@ Billionaire Face Match is a browser-based entertainment app. It detects facial l
 
 The app is inspired by the visual theme of Korean face reading, or gwansang, but it does not predict wealth, personality, or future success. Matching is based on measured facial proportions.
 
+## How is this different from a general celebrity lookalike test?
+
+A general celebrity lookalike finder searches a broad entertainment roster. This edition deliberately narrows the comparison to a 100-person billionaire sample. It also shows the Top 3 overall matches and the six measured facial proportions behind the result instead of presenting a single unexplained celebrity match.
+
+So this is not a replacement for a general celebrity lookalike search. It is a focused face-match edition for people specifically curious about billionaire lookalikes and the facial proportions behind the ranking.
+
 ## What do you get?
 
 - Top 3 overall matches based on six facial proportions

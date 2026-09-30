@@ -27,7 +27,7 @@ Up front: this series is not a "we did X and traffic went up" case study. I don'
 I deploy everything from a single GitHub account, `github.com/saramjh`. Alongside this blog (`saramjh.github.io`), I've shipped a handful of small tools as GitHub Pages project pages whenever I needed one, for example:
 
 - [scratchLottery](https://saramjh.github.io/scratchLottery) — a scratch-lottery simulator
-- [richChecker](https://saramjh.github.io/richChecker/) / [richChecker-us](https://saramjh.github.io/richChecker-us/) — a wealth-tier checker
+- [richChecker](https://saramjh.github.io/richChecker/) / [richChecker-us](https://saramjh.github.io/richChecker-us/) — a billionaire face-match tool
 - [SquircleSimulator](https://saramjh.github.io/SquircleSimulator) — a squircle shape simulator
 - [pomodorotimerKR](https://saramjh.github.io/pomodorotimerKR/) / [pomodorotimerEN](https://saramjh.github.io/pomodorotimerEN/) — a pomodoro timer
 - [resizeIMG](https://saramjh.github.io/resizeIMG) — an image resizer

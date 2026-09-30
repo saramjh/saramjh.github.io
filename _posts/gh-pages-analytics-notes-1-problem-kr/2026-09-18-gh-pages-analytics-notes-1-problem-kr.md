@@ -27,7 +27,7 @@ alternate_url: /gh-pages-analytics-notes-1-problem-en/
 저는 `github.com/saramjh` 계정 하나로 이 블로그(`saramjh.github.io`)와 함께, 그때그때 필요해서 만든 작은 도구들을 GitHub Pages 프로젝트 페이지로 배포해왔습니다. 예를 들면:
 
 - [scratchLottery](https://saramjh.github.io/scratchLottery) — 복권 시뮬레이터
-- [richChecker](https://saramjh.github.io/richChecker/) / [richChecker-us](https://saramjh.github.io/richChecker-us/) — 자산 등급 체커
+- [richChecker](https://saramjh.github.io/richChecker/) / [richChecker-us](https://saramjh.github.io/richChecker-us/) — 부자 관상·얼굴 매치 도구
 - [SquircleSimulator](https://saramjh.github.io/SquircleSimulator) — 스퀴클 도형 시뮬레이터
 - [pomodorotimerKR](https://saramjh.github.io/pomodorotimerKR/) / [pomodorotimerEN](https://saramjh.github.io/pomodorotimerEN/) — 뽀모도로 타이머
 - [resizeIMG](https://saramjh.github.io/resizeIMG) — 이미지 리사이저
