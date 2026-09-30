@@ -4,7 +4,7 @@ date: 2026-09-12
 permalink: /billionaire-lookalike-test/
 layout: default
 tags: AI face match, billionaire lookalike, face analysis, Forbes billionaires, richChecker
-description: "Try a free AI billionaire lookalike test inspired by Korean face-reading (gwansang). Upload a photo, compare six facial proportions with Forbes billionaires, and get a shareable match card — all processed on your device."
+description: "Try a free billionaire lookalike test. Compare six facial proportions with a 100-person billionaire sample, see your Top 3 matches, and get a shareable result card."
 image: /billionaire-lookalike-test/billionaire-lookalike-test-preview.png
 image_width: 1200
 image_height: 630
@@ -12,55 +12,66 @@ image_height: 630
 
 # Billionaire Lookalike Test: Which Billionaire Do You Look Like?
 
-![Billionaire Face Match preview](billionaire-lookalike-test-preview.png)
+[Start the free Billionaire Lookalike Test](https://saramjh.github.io/richChecker-us/)
 
-[Try the Billionaire Lookalike Test](https://saramjh.github.io/richChecker-us/)
+Upload one photo to compare six facial proportions with a 100-person billionaire sample. The result shows your Top 3 closest overall matches, your standout facial feature, and a result card you can save or share. No sign-up is required.
+
+![Billionaire Face Match preview](billionaire-lookalike-test-preview.png)
 
 ## What is this?
 
-Billionaire Face Match is a free AI face comparison app that analyzes a photo you upload and finds which Forbes billionaire your face is closest to. It compares six facial proportions and shows a match percentage, a breakdown by feature (eyes, nose, mouth, face shape), and a shareable match card.
+Billionaire Face Match is a browser-based entertainment app. It detects facial landmarks, calculates six facial proportions, and compares them with the current 100-person billionaire sample.
 
-It isn't a wealth predictor or a real physiognomy reading. It's a playful entertainment project built on top of face landmark detection, loosely inspired by the Korean tradition of face reading known as **gwansang**.
+The app is inspired by the visual theme of Korean face reading, or gwansang, but it does not predict wealth, personality, or future success. Matching is based on measured facial proportions.
+
+## What do you get?
+
+- Top 3 overall matches based on six facial proportions
+- A feature-by-feature comparison
+- A standout facial feature and the closest person on that feature
+- A result card that can be saved or shared
+- No account or sign-up requirement
 
 ## How it works
 
-1. **Add a photo.** Use a clear, well-lit photo facing the camera.
-2. **Scan features.** The app detects facial landmarks and calculates a feature vector for six proportions.
-3. **Find a match.** Your features are compared against a sample of Forbes billionaires to find the closest match.
-4. **Share your card.** Save the result or share it through your device's share sheet.
+1. **Choose a photo.** A clear, well-lit, front-facing image works best.
+2. **Detect landmarks.** MediaPipe Face Landmarker identifies facial landmarks in your browser.
+3. **Compare six proportions.** The app compares forehead height, eye spacing, nose length, mouth width, lower-face length, and face aspect ratio.
+4. **Rank the matches.** The three closest overall matches are shown in distance order.
+5. **Save or share.** You can create a result card from the result screen.
 
 ## Privacy
 
-Your photo is analyzed entirely on your device. This is a static site with no backend, so there is no server to upload your photo to, and the face-matching model and comparison data all run in the browser.
+Your face-match photo is processed locally in your browser and is not uploaded or stored by the site for matching. The site uses Google Analytics and Google AdSense, so normal site-access and advertising data may be handled under Google's policies, but the photo itself is not sent to those services for face matching.
 
-Google Analytics and Google AdSense are used for basic usage stats and ads, so standard web analytics and advertising cookies from Google may apply — but your photo itself is never sent anywhere for analysis.
+## Korean edition
 
-## Who it's for
+There is also a separate Korean edition using a 47-person Korean rich-list sample.
 
-Anyone who wants a quick, shareable face comparison to send to friends, anyone curious which billionaire they resemble, or anyone curious how a browser-only AI face analysis app works under the hood.
-
-Treat the result as a fun conversation starter, not a serious judgment — your face doesn't determine your fortune, personality, or potential.
+[Try the Korean Rich Match edition](https://saramjh.github.io/richChecker/)
 
 ## FAQ
 
 **Is the billionaire lookalike test free?**
 
-Yes. No sign-up is required — it runs directly in your browser.
+Yes. No sign-up is required.
 
 **Is my photo stored on a server?**
 
-No. Face analysis runs entirely in your browser, and the site doesn't operate a server that stores photos.
+No. The face-match photo is processed in your browser and is not uploaded or stored by this site for matching.
 
 **Does the result predict real wealth or success?**
 
-No. The result is a playful comparison of facial similarity and has no bearing on actual wealth, personality, or future success.
+No. It is an entertainment comparison of six facial proportions.
 
-**Are the billionaire photos real?**
+**Are the billionaire result portraits real photos?**
 
-No — matches are shown using AI-generated caricatures, not real photographs of the named individuals.
+No. Match portraits shown in the result UI are AI-generated caricatures. Matching features are based on the project's curated source-photo dataset, with the documented fallback described in the project repository.
+
+[Start the Billionaire Lookalike Test](https://saramjh.github.io/richChecker-us/)
 
 #### Links
 
-- [Billionaire Face Match (English)](https://saramjh.github.io/richChecker-us/)
-- [부자 관상 테스트 (Korean version)](https://saramjh.github.io/richChecker/)
+- [Billionaire Face Match](https://saramjh.github.io/richChecker-us/)
+- [Korean Rich Match](https://saramjh.github.io/richChecker/)
 - [Github Repository: richChecker-us](https://github.com/saramjh/richChecker-us)

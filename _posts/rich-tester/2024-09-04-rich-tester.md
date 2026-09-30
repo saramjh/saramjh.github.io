@@ -1,67 +1,55 @@
 ---
 title: "인공지능 부자 관상 분석"
 date: 2024-09-04
-tags: 인공지능, face-api, rich, analysis, forbes rich Korean 50
+tags: 인공지능, face analysis, rich, analysis, forbes rich Korean
 permalink: /rich-tester/
 layout: default
 legacy_asset_url: /posts/rich-tester/
+description: "부자 관상 테스트의 초기 프로젝트 기록과 현재 포브스 2026 한국 부자 47인 비교 버전으로 바로 가는 안내 페이지입니다."
 ---
 
 ### 인공지능 부자 관상 분석
 
-<img src="Screenshot%202024-09-05%20at%2011.48.24.JPG" alt="인공지능 부자 관상 분석">
+> 이 페이지는 2024년에 만든 초기 버전의 기록입니다. 현재 **부자 관상 테스트**는 포브스 2026 한국 부자 47인 표본과 6가지 얼굴 비율을 비교해 가장 가까운 Top 3와 두드러진 특징을 보여주는 버전으로 운영됩니다.
 
-[사이트 바로가기](https://saramjh.github.io/richChecker)
+[현재 부자 관상 테스트 시작하기](https://saramjh.github.io/richChecker/)
 
-새 버전 소개 글은 [부자 관상 테스트: AI로 나와 닮은 부자 찾기](/rich-face-test/)에서 확인할 수 있습니다.
+[현재 버전 설명 보기](/rich-face-test/)
 
-## 프로젝트 개요
+<img src="Screenshot%202024-09-05%20at%2011.48.24.JPG" alt="2024년 인공지능 부자 관상 분석 초기 버전 화면">
 
-이 프로젝트는 대한민국의 재벌, 정치 및 경제인들의 관상을 분석하여 사용자의 관상과의 일치율을 비교해주는 인공지능 기반 웹 애플리케이션입니다.
-사용자는 자신의 사진을 업로드하고, 성별을 선택한 후, 대한민국 부자들의 관상과 자신의 관상이 얼마나 유사한지 확인할 수 있습니다.
+## 현재 부자 관상 테스트
 
-### 주요 기능
+현재 버전은 사진 한 장에서 얼굴 랜드마크를 찾고, 이마 높이, 눈 사이 거리, 코 길이, 입 너비, 하안부 길이, 얼굴 종횡비를 계산합니다. 이 6가지 비율을 포브스 2026 한국 부자 47인 표본과 비교해 전체 비율이 가까운 Top 3를 보여줍니다.
 
-- 사용자의 사진을 업로드하여 관상 분석.
-- 대한민국 주요 인물들의 데이터베이스와 비교.
-- 사용자의 관상과 부자들의 관상 일치율 계산.
-- 결과를 이미지로 저장할 수 있습니다.
+- 성별 선택 없이 하나의 통합 표본으로 비교
+- 전체 6개 얼굴 비율 기준 Top 3 제공
+- 가장 두드러진 얼굴 특징과 특징별 가까운 인물 표시
+- 결과 카드 저장 및 기기 공유 지원
+- 별도 가입 없음
+- 얼굴 매칭용 사진은 서버에 업로드하지 않고 브라우저에서 처리
 
-## 사용 기술
+[사진 한 장으로 현재 부자 관상 테스트 해보기](https://saramjh.github.io/richChecker/)
 
-<img src="191bfa716eb7c1ee.png" alt="인공지능 부자 관상 분석">
+## 2024년 초기 버전 기록
 
-- **프론트엔드**: HTML, CSS, JavaScript
-- **라이브러리**: face-api.js, html2canvas
-- **스타일링**: Neumorphism UI 디자인 적용
+초기 버전은 대한민국 주요 부자와 경제인 표본을 대상으로 사용자의 얼굴 특징을 비교하는 실험적인 웹 애플리케이션이었습니다. 당시에는 성별을 먼저 선택하고 사진을 업로드한 뒤 단일 결과를 확인하는 흐름이었습니다.
 
-## 사용 방법
+### 초기 버전 주요 기능
 
-1. 웹 페이지에 접속하여 성별을 선택합니다.
-2. 자신의 사진을 업로드합니다.
-3. "분석" 버튼을 클릭하여 관상 분석을 시작합니다.
-4. 결과가 화면에 표시되면, 결과를 소셜 미디어에 공유할 수 있습니다.
+- 사용자 사진 업로드
+- 성별 선택 후 비교
+- 얼굴 특징 유사도 계산
+- 결과 이미지 저장
 
-## 기여 방법
+## 현재 구현
 
-기여를 환영합니다! 다음 단계에 따라 프로젝트에 기여할 수 있습니다:
+현재 서비스는 MediaPipe Face Landmarker를 사용해 얼굴 랜드마크를 분석하고, 브라우저에서 계산한 6개 얼굴 비율을 사전 계산된 표본과 비교합니다. 결과는 얼굴 비율의 엔터테인먼트용 비교이며 재산, 성격, 성공 가능성을 예측하지 않습니다.
 
-1. 이 저장소를 Fork합니다.
-2. 새로운 브랜치를 생성합니다 (`git checkout -b feature/새로운기능`).
-3. 변경 사항을 커밋합니다 (`git commit -am 'Add some 새로운기능'`).
-4. 브랜치에 푸시합니다 (`git push origin feature/새로운기능`).
-5. Pull Request를 생성합니다.
-
-## 참고
-
-- 이 프로그램은 개인정보를 수집하지 않습니다.
-- 분석 결과는 재미로만 봐주세요.
-
-## 문의
-
-프로젝트에 대한 문의 사항은 [devTestudinidae@gmail.com](mailto:devTestudinidae@gmail.com)으로 연락해 주세요.
+얼굴 분석용 사진 자체는 매칭 목적으로 서버에 업로드하지 않습니다. 사이트 이용 통계와 광고에는 Google Analytics와 Google AdSense가 사용될 수 있습니다.
 
 #### Links
 
-- [인공지능 부자 관상 분석](https://saramjh.github.io/richChecker)
-- [Github Repository: 인공지능 부자 관상 분석](https://github.com/saramjh/richChecker)
+- [현재 부자 관상 테스트](https://saramjh.github.io/richChecker/)
+- [현재 버전 소개 글](/rich-face-test/)
+- [Github Repository: richChecker](https://github.com/saramjh/richChecker)
