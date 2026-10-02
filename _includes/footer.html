@@ -102,7 +102,8 @@
 
       const copyBtn = header.querySelector(".code-copy-btn");
       copyBtn.addEventListener("click", async () => {
-        const codeText = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+        const codeEl = pre.querySelector("code");
+        const codeText = codeEl ? codeEl.innerText : pre.innerText;
         try {
           await navigator.clipboard.writeText(codeText);
           copyBtn.classList.add("copied");
@@ -116,34 +117,56 @@
         }
       });
 
-      wrapper.insertBefore(header, pre);
+      wrapper.insertBefore(header, wrapper.firstChild);
     });
   });
 </script>
 <style>
+  /* 코드 영역 외곽 카드 컨테이너 */
   .highlighter-rouge {
-    position: relative;
-    margin: 1.8rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #d0d7de;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    position: relative !important;
+    margin: 1.8rem 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid #d0d7de !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+    background-color: #f6f8fa !important;
   }
   body[data-theme="dark"] .highlighter-rouge {
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45) !important;
+    background-color: #1a1e27 !important;
   }
-  .highlighter-rouge pre {
+
+  /* pre 내부 여백 및 음수 마진 방지 */
+  .highlighter-rouge pre.highlight,
+  .highlighter-rouge pre,
+  .highlight pre {
     margin: 0 !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+    padding: 16px 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    overflow-x: auto !important;
   }
+  .highlighter-rouge pre > code {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    display: block !important;
+  }
+
+  /* 상단 헤더 바 */
   .code-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 14px;
+    padding: 8px 16px;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -160,7 +183,7 @@
   .code-copy-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     background: transparent;
     border: 1px solid transparent;
     border-radius: 4px;
