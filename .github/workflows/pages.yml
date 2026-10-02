@@ -46,11 +46,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v6
       - uses: actions/configure-pages@v5
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Ping Search Engines
-        run: |
-          curl -sS "https://www.bing.com/ping?sitemap=https%3A%2F%2Fsaramjh.github.io%2Fsitemap.xml" || true
+      - name: Notify Search Engines (Bing API & IndexNow)
+        run: python3 scripts/submit_search_engines.py
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY || '6c9119e1be3a49e2851073f16d11fee7' }}
+
 
