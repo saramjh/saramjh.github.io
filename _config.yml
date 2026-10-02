@@ -26,6 +26,7 @@ baseurl:
 permalink: /:title/
 google_analytics: G-4DYFKSNFBG # leave it blank if not wish
 google_adsense: ca-pub-4410729598083068 # leave it blank if not wish
+naver_site_verification: 7c9f31d4d0aad1444db757e80b29f882 # Naver Search Advisor
 fb_appid:
 
 # Collection setting

@@ -11,6 +11,9 @@
   {% include adsense.html %}
 
   <meta charset="UTF-8" />
+  {% if site.naver_site_verification %}
+  <meta name="naver-site-verification" content="{{ site.naver_site_verification }}" />
+  {% endif %}
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="mobile-web-app-capable" content="yes" />
