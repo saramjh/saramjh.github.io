@@ -22,7 +22,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#fff" />
   <meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
   <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title }}{% else %}{{
+    {% if page.seo.title %}{{ page.seo.title | escape }}{% elsif page.title %}{{ page.title | escape }} - {{ site.title }}{% else %}{{
     site.title | escape }}{% endif %}
   </title>
   {%- assign page_canonical_url = page.url | remove: 'index.html' | remove: '.html' | absolute_url -%}
@@ -56,7 +56,8 @@
     }}" />
   {% endif %}
   <meta name="description" content="{{
-      page.description
+      page.seo.description
+        | default: page.description
         | default: site.description
         | strip_html
         | normalize_whitespace
@@ -65,10 +66,10 @@
     }}" />
   <meta name="referrer" content="no-referrer-when-downgrade" />
   <meta property="fb:app_id" content="{{ site.fb_appid }}" />
-  <meta property="og:site_name" content="{% if page.title %}{{ page.title | escape }} | {{
+  <meta property="og:site_name" content="{% if page.seo.title %}{{ page.seo.title | escape }}{% elsif page.title %}{{ page.title | escape }} | {{
       site.author.name
     }}{% else %}{{ site.title | escape }}{% endif %}" />
-  <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} | {{
+  <meta property="og:title" content="{% if page.seo.title %}{{ page.seo.title | escape }}{% elsif page.title %}{{ page.title | escape }} | {{
       site.author.name
     }}{% else %}{{ site.title | escape }}{% endif %}" />
   {% if page.date %}
@@ -88,7 +89,8 @@
       page.url | remove: 'index.html' | remove: '.html' | absolute_url
     }}" />
   <meta property="og:description" content="{{
-      page.description
+      page.seo.description
+        | default: page.description
         | default: site.description
         | strip_html
         | normalize_whitespace
@@ -103,7 +105,7 @@
   <meta property="og:image:width" content="{{ page.image_width | default: site.image_width | default: 640 }}" />
   <meta property="og:image:height" content="{{ page.image_height | default: site.image_height | default: 640 }}" />
   <meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}" />
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title | escape }} | {{
+  <meta name="twitter:title" content="{% if page.seo.title %}{{ page.seo.title | escape }}{% elsif page.title %}{{ page.title | escape }} | {{
       site.author.twitter
     }}{% else %}{{ site.title | escape }}{% endif %}" />
   <meta name="twitter:url" content="{{
@@ -112,7 +114,8 @@
   <meta name="twitter:site" content="@{{ site.author.twitter }}" />
   <meta name="twitter:creator" content="@{{ site.author.twitter }}" />
   <meta name="twitter:description" content="{{
-      page.description
+      page.seo.description
+        | default: page.description
         | default: site.description
         | strip_html
         | normalize_whitespace
