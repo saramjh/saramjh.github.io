@@ -53,11 +53,28 @@ body[data-theme="dark"] {
     }
   }
 
-  // Syntax
+  // Syntax & Code Blocks
   code {
-    &.highlighter-rouge {
-      background-color: $dark-light;
-      color: $dark-white;
+    &.highlighter-rouge,
+    p &,
+    li &,
+    td &,
+    blockquote & {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #ff9da4;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  pre.highlight, pre {
+    background-color: #1c202a;
+    color: #e6edf3;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+
+    > code {
+      background: transparent !important;
+      color: #e6edf3;
     }
   }
 

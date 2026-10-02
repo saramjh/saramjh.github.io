@@ -74,3 +74,111 @@
     display: inline-block;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".highlighter-rouge").forEach((wrapper) => {
+      if (wrapper.querySelector(".code-header") || wrapper.classList.contains("language-mermaid")) return;
+      const pre = wrapper.querySelector("pre");
+      if (!pre) return;
+
+      let lang = "";
+      wrapper.classList.forEach((cls) => {
+        if (cls.startsWith("language-")) {
+          lang = cls.replace("language-", "").toUpperCase();
+        }
+      });
+      if (!lang || lang === "PLAINTEXT") lang = "CODE";
+
+      const header = document.createElement("div");
+      header.className = "code-header";
+      header.innerHTML = `
+        <span class="code-lang">${lang}</span>
+        <button class="code-copy-btn" type="button" aria-label="Copy code">
+          <svg class="copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span class="copy-text">Copy</span>
+        </button>
+      `;
+
+      const copyBtn = header.querySelector(".code-copy-btn");
+      copyBtn.addEventListener("click", async () => {
+        const codeText = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+        try {
+          await navigator.clipboard.writeText(codeText);
+          copyBtn.classList.add("copied");
+          copyBtn.querySelector(".copy-text").innerText = "Copied!";
+          setTimeout(() => {
+            copyBtn.classList.remove("copied");
+            copyBtn.querySelector(".copy-text").innerText = "Copy";
+          }, 2000);
+        } catch (e) {
+          console.error("Copy failed", e);
+        }
+      });
+
+      wrapper.insertBefore(header, pre);
+    });
+  });
+</script>
+<style>
+  .highlighter-rouge {
+    position: relative;
+    margin: 1.8rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #d0d7de;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  }
+  body[data-theme="dark"] .highlighter-rouge {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  .highlighter-rouge pre {
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 14px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background-color: #eaeef2;
+    color: #57606a;
+    border-bottom: 1px solid #d0d7de;
+    user-select: none;
+  }
+  body[data-theme="dark"] .code-header {
+    background-color: #242933;
+    color: #9da7b3;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .code-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .code-copy-btn:hover {
+    background: rgba(128, 128, 128, 0.18);
+    color: #24292f;
+  }
+  body[data-theme="dark"] .code-copy-btn:hover {
+    color: #f0f6fc;
+  }
+  .code-copy-btn.copied {
+    color: #2da44e !important;
+    font-weight: 700;
+  }
+</style>
