@@ -25,7 +25,7 @@ faq:
   - q: "Are ordinary ChatGPT text chats really unlimited?"
     a: "As of October 5, 2026, the pricing ladder shows unlimited everyday text chat under the personal plans, subject to abuse-prevention safeguards. Files, images, voice, advanced reasoning models and tools can have separate limits."
   - q: "How many Codex messages do I get with ChatGPT Plus?"
-    a: "There is no single fixed count. OpenAI currently publishes estimated Plus ranges by model, including GPT-6.1 Sol 15–160, GPT-6 Astra 5–45, GPT-6 Sol 15–150, GPT-6 Luna 350–3,000, GPT-5.6 Sol 10–100 and GPT-5.6 Luna 250–2,000. Actual usage varies by workload."
+    a: "There is no single fixed or monthly count. OpenAI publishes estimated Plus ranges by model, while its current GPT-6 usage guidance describes those GPT-6-series ranges as local-message estimates within a five-hour window. Actual usage varies by workload, and weekly limits may also apply."
   - q: "Do local Codex messages and cloud chats use separate limits?"
     a: "No. OpenAI says local messages and cloud chats share your plan's usage allowance, and weekly limits may also apply."
   - q: "If ChatGPT chats are unlimited, is Codex unlimited too?"
@@ -105,7 +105,7 @@ The Codex pricing page has an explicit **usage limits** table. As of October 5, 
 | GPT-5.6 Luna | 250–2,000 |
 | GPT-5.5 | 15–80 |
 
-These are **estimated ranges, not guaranteed message counts**. Usage varies with model, task complexity, context, reasoning, where the task runs and the tools involved. OpenAI also states that **local messages and cloud chats share the plan allowance, and weekly limits may apply**.
+These are **current usage estimates, not monthly totals or guaranteed message counts**. OpenAI's separate usage guidance describes the current GPT-6-series Plus ranges as estimates for **local messages within a five-hour window**. Actual consumption varies with model, task complexity, context, reasoning, where the task runs and the tools involved. **Local messages and cloud chats share the plan allowance, and weekly limits may also apply.**
 
 So the best answer to “how many Codex messages do I get on Plus?” is: **it depends on the model and workload, and your usage dashboard is the authoritative current value**. In an active Codex CLI session, `/status` shows the remaining allowance.
 
