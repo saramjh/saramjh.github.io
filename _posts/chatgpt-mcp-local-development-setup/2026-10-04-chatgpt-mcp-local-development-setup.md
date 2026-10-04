@@ -225,8 +225,8 @@ ChatGPT가 파일을 읽을 수 있어도 **"왜 이렇게 만들었는지", "�
 
 ## 이어서 읽기
 
-- [웹 ChatGPT 일반 텍스트 채팅은 무제한* — Codex 사용량과 다른 점](/chatgpt-unlimited-text-vs-codex-limits/)
-- [Serena·Ponytail·claude-mem을 깔았는데도 새 세션은 프로젝트를 잊었다](/ai-coding-context-continuity-cokacremote/)
+- [ChatGPT 메시지 제한 vs Codex Plus 사용량 한도 (2026)](/chatgpt-unlimited-text-vs-codex-limits/)
+- [AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 유지 방법](/ai-coding-context-continuity-cokacremote/)
 
 ## 참고한 공식 문서
 

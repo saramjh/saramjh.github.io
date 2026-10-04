@@ -223,8 +223,8 @@ No. A tunnel provides connectivity, not authorization. A write-capable MCP serve
 
 ## Continue reading
 
-- [ChatGPT Text Chats Are Unlimited* — Codex Usage Is Not](/en-chatgpt-unlimited-text-vs-codex-limits/)
-- [I Installed Serena, Ponytail and claude-mem. New Sessions Still Forgot the Project.](/en-ai-coding-context-continuity-cokacremote/)
+- [ChatGPT Message Limits vs Codex Usage Limits (Plus, 2026)](/en-chatgpt-unlimited-text-vs-codex-limits/)
+- [How to Keep AI Coding Agent Context Across Sessions](/en-ai-coding-context-continuity-cokacremote/)
 
 ## References
 

@@ -1,5 +1,5 @@
 ---
-title: "ChatGPT Text Chats Are Unlimited* — Codex Usage Is Not"
+title: "ChatGPT Message Limits vs Codex Usage Limits (Plus, 2026)"
 date: 2026-10-05
 tags: ChatGPT, unlimited ChatGPT, ChatGPT text chats, Codex, Codex usage limits, Codex credits, AI coding, MCP
 permalink: /en-chatgpt-unlimited-text-vs-codex-limits/
@@ -7,50 +7,64 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /chatgpt-unlimited-text-vs-codex-limits/
-description: "OpenAI's current pricing table marks everyday text chats as unlimited* on Free, Go, Plus and Pro, while Codex has separate usage limits and credits. Here is what is actually unlimited and what is not."
-excerpt: "The ordinary ChatGPT conversation UI and Codex do not use the same allowance structure. This post separates unlimited everyday text chats from model, tool and Codex limits using current OpenAI documentation."
+description: "As of October 2026, ordinary ChatGPT text chats and Codex do not share the same limit. This guide covers current Plus Codex model ranges, shared local/cloud usage, weekly limits and where to check remaining usage."
+excerpt: "ChatGPT everyday text chats are unlimited* under the personal-plan ladder, while Codex has separate model-dependent usage limits. Here are the current Plus ranges and how to check your actual allowance."
 seo:
-  title: "ChatGPT Unlimited Text Chats vs Codex Usage Limits"
-  description: "ChatGPT everyday text chats are unlimited* on personal plans, while Codex has separate usage limits. The exact difference between chat, tools, reasoning models and Codex."
+  title: "ChatGPT Message Limits vs Codex Usage Limits (Plus, 2026)"
+  description: "ChatGPT text chat limits are not Codex limits. See current Plus Codex usage ranges, shared local/cloud allowance, weekly limits and /status checks for 2026."
   keywords:
     - ChatGPT unlimited messages
     - ChatGPT unlimited text chats
+    - ChatGPT Plus Codex usage limit
+    - Codex Plus limits 2026
     - ChatGPT message limit
     - Codex usage limits
     - Codex credits
     - ChatGPT vs Codex
 faq:
-  - q: "Are ChatGPT text chats really unlimited?"
-    a: "As of October 2026, OpenAI's pricing table marks Everyday text chats as Unlimited for Free, Go, Plus and Pro, subject to abuse-prevention guardrails. Files, images, voice, advanced reasoning models, tools and Codex can have separate limits."
+  - q: "Are ordinary ChatGPT text chats really unlimited?"
+    a: "As of October 5, 2026, the pricing ladder shows unlimited everyday text chat under the personal plans, subject to abuse-prevention safeguards. Files, images, voice, advanced reasoning models and tools can have separate limits."
+  - q: "How many Codex messages do I get with ChatGPT Plus?"
+    a: "There is no single fixed count. OpenAI currently publishes estimated Plus ranges by model, including GPT-6.1 Sol 15–160, GPT-6 Astra 5–45, GPT-6 Sol 15–150, GPT-6 Luna 350–3,000, GPT-5.6 Sol 10–100 and GPT-5.6 Luna 250–2,000. Actual usage varies by workload."
+  - q: "Do local Codex messages and cloud chats use separate limits?"
+    a: "No. OpenAI says local messages and cloud chats share your plan's usage allowance, and weekly limits may also apply."
   - q: "If ChatGPT chats are unlimited, is Codex unlimited too?"
-    a: "No. Codex included with personal ChatGPT plans has separate usage limits that vary by plan, model and task. When you reach a limit you may need to wait for a reset or use credits if they are available to your account."
+    a: "No. Codex has a separate usage-limit and credit structure. Check the Codex usage dashboard or /status in Codex CLI for your current remaining allowance and reset timing."
   - q: "Does unlimited chat mean one thread has unlimited context?"
-    a: "No. Message allowance and context length are different. A long conversation is still subject to context, memory and session behavior; unlimited chat does not mean infinite memory in one thread."
+    a: "No. Message allowance and context length are different. Unlimited chat does not mean infinite memory in one thread."
 image: /en-chatgpt-unlimited-text-vs-codex-limits/chatgpt-vs-codex-og.png
 image_width: 1200
 image_height: 630
 ---
 
-# ChatGPT everyday text chats are unlimited*
+# ChatGPT message limits vs Codex usage limits
 
-**Codex usage is not. Those two limits are easy to conflate because they live under the same ChatGPT account.**
+**As of October 5, 2026, ordinary ChatGPT text chat and Codex do not use the same allowance model. Codex has separate model-dependent usage limits, and local messages plus cloud chats draw from the same plan allowance.**
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
-  🌐 <strong>한국어 버전:</strong> <a href="/chatgpt-unlimited-text-vs-codex-limits/">웹 ChatGPT 일반 텍스트 채팅은 무제한이다*</a>
+  🌐 <strong>한국어 버전:</strong> <a href="/chatgpt-unlimited-text-vs-codex-limits/">ChatGPT 메시지 제한 vs Codex Plus 사용량 한도</a>
 </p>
 
-While writing about [using the ChatGPT web app as a control surface for my local Mac](/en-chatgpt-mcp-local-development-setup/), I rechecked a distinction that seems surprisingly easy to miss.
+If you searched for `ChatGPT message limit`, `ChatGPT Plus Codex limit`, or `Codex usage limits`, the short answer is:
 
-**The ordinary text-chat experience in ChatGPT is currently listed as unlimited* in OpenAI's pricing table.** Free, Go, Plus and Pro all show `Unlimited*` for `Everyday text chats`.
+| Question | Answer as of Oct. 5, 2026 |
+|---|---|
+| Ordinary ChatGPT text chat | **Unlimited*** under the personal-plan ladder, subject to abuse-prevention safeguards |
+| Codex on ChatGPT Plus | **Not unlimited.** OpenAI publishes model-specific estimated usage ranges |
+| Local Codex messages vs cloud chats | **They share the plan allowance** |
+| Weekly limits | **May also apply** |
+| Where to check the real remaining limit | Codex usage dashboard or **`/status`** in Codex CLI |
 
-**Codex has a separate usage system.** Even when Codex is included in the same ChatGPT subscription, its allowance depends on plan, model, task complexity and the usage pool available to the account.
+So the practical mistake is treating every request under one ChatGPT subscription as if it came out of one message bucket. **Ordinary browser ChatGPT conversation and Codex are separate usage surfaces.**
+
+I ran into this distinction while [using the ChatGPT web app as a control surface for my local Mac](/en-chatgpt-mcp-local-development-setup/).
 
 <picture>
   <source media="(max-width: 600px)" srcset="chat-vs-codex-mobile.svg">
   <img src="chat-vs-codex.svg" alt="Comparison between unlimited everyday ChatGPT text chats and separate Codex usage limits" width="1200" height="660" style="width:100%;height:auto;">
 </picture>
 
-## What "unlimited" actually means
+## What "unlimited ChatGPT text chat" actually means
 
 The unlimited item in OpenAI's pricing table is **everyday text chats**.
 
@@ -77,11 +91,25 @@ It is not.
 
 File uploads, image generation, voice, data analysis, deep research, some advanced reasoning models and tools can have their own limits. OpenAI's Help Center explicitly separates unlimited everyday text chats from these other allowances.
 
-## Codex uses a different allowance structure
+## How many Codex messages does ChatGPT Plus actually include?
 
-The Codex pricing page has an explicit **usage limits** table.
+The Codex pricing page has an explicit **usage limits** table. As of October 5, 2026, the English pricing page publishes these estimated Plus ranges:
 
-For personal plans, Codex usage varies with the selected model and the work being done. The usage dashboard shows the remaining allowance and reset state. If you run out, the available options can include switching to a cheaper model, waiting for a reset, or using additional credits when the account is eligible.
+| Codex model | Plus estimated usage |
+|---|---:|
+| GPT-6.1 Sol | 15–160 |
+| GPT-6 Astra | 5–45 |
+| GPT-6 Sol | 15–150 |
+| GPT-6 Luna | 350–3,000 |
+| GPT-5.6 Sol | 10–100 |
+| GPT-5.6 Luna | 250–2,000 |
+| GPT-5.5 | 15–80 |
+
+These are **estimated ranges, not guaranteed message counts**. Usage varies with model, task complexity, context, reasoning, where the task runs and the tools involved. OpenAI also states that **local messages and cloud chats share the plan allowance, and weekly limits may apply**.
+
+So the best answer to “how many Codex messages do I get on Plus?” is: **it depends on the model and workload, and your usage dashboard is the authoritative current value**. In an active Codex CLI session, `/status` shows the remaining allowance.
+
+If you run out, the available options can include switching to a lower-cost model, waiting for the reset, or using credits when your account offers them.
 
 A useful mental model is:
 

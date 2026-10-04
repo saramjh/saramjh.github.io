@@ -1,5 +1,5 @@
 ---
-title: "웹 ChatGPT 일반 텍스트 채팅은 무제한이다* — Codex 사용량과 다른 점"
+title: "ChatGPT 메시지 제한은 무제한? Codex Plus 사용량 한도는 별도다 (2026)"
 date: 2026-10-05
 tags: ChatGPT, ChatGPT 무제한, ChatGPT 텍스트 채팅, Codex, Codex 사용량, Codex 한도, AI 코딩, MCP
 permalink: /chatgpt-unlimited-text-vs-codex-limits/
@@ -7,51 +7,65 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /en-chatgpt-unlimited-text-vs-codex-limits/
-description: "OpenAI 공식 가격표에서 ChatGPT의 일상적인 텍스트 채팅은 Free·Go·Plus·Pro 모두 무제한*으로 표시됩니다. 반면 Codex는 별도 사용 한도와 크레딧 구조를 가집니다. 무엇이 정말 무제한이고 무엇이 아닌지 정리합니다."
-excerpt: "웹 ChatGPT의 일반 텍스트 채팅과 Codex는 같은 구독 안에서도 사용량 구조가 다릅니다. 공식 문서를 기준으로 무제한의 범위와 실제 개발 워크플로우에서 의미하는 바를 구분합니다."
+description: "2026년 10월 기준 ChatGPT의 일반 텍스트 채팅과 Codex 사용량은 같은 한도가 아닙니다. Plus Codex 모델별 예상 사용량, 로컬·클라우드 공유 한도, 주간 제한과 확인 방법까지 공식 자료 기준으로 정리합니다."
+excerpt: "ChatGPT 일반 텍스트 채팅은 무제한*이지만 Codex는 별도 사용량 한도를 씁니다. Plus 기준 모델별 예상 사용량과 실제 한도 확인 방법을 공식 자료 기준으로 정리합니다."
 seo:
-  title: "ChatGPT 텍스트 채팅 무제한? Codex 사용량 제한과 정확한 차이"
-  description: "웹 ChatGPT의 일상 텍스트 채팅은 무제한*이지만 Codex는 별도 사용량 한도가 있습니다. 파일·도구·추론 모델까지 무제한은 아닌 이유와 실제 차이."
+  title: "ChatGPT 메시지 제한 vs Codex 사용량 한도 (Plus 기준, 2026)"
+  description: "ChatGPT 일반 텍스트 채팅은 무제한*이지만 Codex Plus는 모델별 별도 사용량 한도가 있습니다. 2026년 공식 예상 범위, 주간 한도, /status 확인법까지 정리."
   keywords:
     - ChatGPT 무제한
     - ChatGPT 텍스트 채팅 무제한
+    - ChatGPT Plus Codex 사용량
+    - ChatGPT Plus Codex 한도
     - ChatGPT 메시지 제한
     - Codex 사용량
     - Codex 사용 한도
     - Codex 크레딧
     - ChatGPT Codex 차이
 faq:
-  - q: "ChatGPT 채팅은 정말 무제한인가요?"
-    a: "2026년 10월 현재 OpenAI 가격표는 Free, Go, Plus, Pro의 Everyday text chats를 Unlimited로 표시합니다. 다만 악용 방지 가드레일이 적용되고 파일, 이미지, 음성, 고급 추론 모델, Codex 등에는 별도 한도가 있을 수 있습니다."
+  - q: "ChatGPT 일반 텍스트 채팅은 정말 무제한인가요?"
+    a: "2026년 10월 5일 현재 ChatGPT 가격표는 Free의 일상적인 텍스트 대화를 무제한으로 표시하고, Go는 Free 기능을, Plus는 Go 기능을, Pro는 Plus 기능을 포함합니다. 다만 악용 방지 가드레일이 적용되고 파일, 이미지, 음성, 고급 추론 모델과 도구에는 별도 한도가 있을 수 있습니다."
+  - q: "ChatGPT Plus에서 Codex는 몇 번 사용할 수 있나요?"
+    a: "고정 횟수가 아닙니다. 2026년 10월 5일 현재 OpenAI Codex 가격 페이지는 Plus에서 GPT-6 Astra 5~45, GPT-6 Sol 15~150, GPT-6 Luna 350~3,000, GPT-5.6 Sol 10~100, GPT-5.6 Luna 250~2,000 등의 예상 범위를 공개합니다. 실제 소비량은 모델과 작업 복잡도에 따라 달라집니다."
+  - q: "Codex 로컬 메시지와 클라우드 작업은 한도를 따로 쓰나요?"
+    a: "아닙니다. OpenAI는 로컬 메시지와 클라우드 채팅이 플랜의 사용량을 공유한다고 설명하며 주간 한도가 적용될 수도 있다고 명시합니다."
   - q: "ChatGPT가 무제한이면 Codex도 무제한인가요?"
-    a: "아닙니다. 개인용 ChatGPT 플랜에 포함된 Codex는 플랜과 모델에 따라 별도의 사용량 한도가 있고, 한도에 도달하면 리셋을 기다리거나 이용 가능한 경우 크레딧을 추가해야 합니다."
+    a: "아닙니다. Codex는 별도 사용량 한도와 크레딧 구조를 사용합니다. 현재 잔여량과 리셋 시점은 Codex 사용량 대시보드나 CLI의 /status에서 확인하는 것이 가장 정확합니다."
   - q: "무제한 텍스트 채팅이면 한 스레드의 컨텍스트도 무한한가요?"
-    a: "아닙니다. 메시지 사용량과 컨텍스트 길이는 다른 개념입니다. 긴 대화는 모델의 컨텍스트와 메모리 정책에 영향을 받으며, 무제한 채팅은 한 대화가 무한한 기억을 가진다는 뜻이 아닙니다."
+    a: "아닙니다. 메시지 사용량과 컨텍스트 길이는 다른 개념입니다. 무제한 채팅은 한 대화가 무한한 기억을 가진다는 뜻이 아닙니다."
 image: /chatgpt-unlimited-text-vs-codex-limits/chatgpt-vs-codex-og.png
 image_width: 1200
 image_height: 630
 ---
 
-# 웹 ChatGPT의 일반 텍스트 채팅은 무제한이다*
+# ChatGPT 메시지 제한은 무제한? Codex Plus 사용량 한도는 별도다
 
-**그런데 Codex 사용량은 별도다. 이 둘을 같은 한도로 생각하면 계산이 완전히 달라진다.**
+**2026년 10월 5일 기준 결론부터 말하면, 일반 ChatGPT 텍스트 채팅과 Codex는 같은 사용량 풀로 계산하지 않습니다. Codex는 모델별 별도 사용량 한도가 있고 로컬 메시지와 클라우드 채팅이 그 한도를 공유합니다.**
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
-  🌐 <strong>English version:</strong> <a href="/en-chatgpt-unlimited-text-vs-codex-limits/">ChatGPT Text Chats Are Unlimited* — Codex Usage Is Not</a>
+  🌐 <strong>English version:</strong> <a href="/en-chatgpt-unlimited-text-vs-codex-limits/">ChatGPT Message Limits vs Codex Usage Limits</a>
 </p>
 
-최근 [웹 ChatGPT를 MCP로 제 Mac에 연결해서 쓰는 방식](/chatgpt-mcp-local-development-setup/)을 정리하다가 의외로 많이 놓치고 있는 차이를 다시 확인했습니다.
+검색 의도부터 바로 답하면 이렇습니다.
 
-**브라우저에서 `chatgpt.com`을 열어 쓰는 일반 ChatGPT의 일상적인 텍스트 채팅은 현재 공식 가격표에서 무제한*으로 표시됩니다.** Free, Go, Plus, Pro 모두 가격 비교표의 `Everyday text chats` 항목이 `Unlimited*`입니다.
+| 궁금한 것 | 2026년 10월 5일 기준 답 |
+|---|---|
+| ChatGPT 일반 텍스트 채팅 | **무제한***. 가격표에서 Free는 무제한으로 표시되고 Go는 Free 기능을, Plus는 Go 기능을, Pro는 Plus 기능을 포함합니다. |
+| ChatGPT Plus의 Codex | **무제한 아님.** 모델별 예상 사용량 범위가 따로 공개됩니다. |
+| Codex 로컬 메시지와 클라우드 채팅 | **같은 플랜 사용량을 공유**합니다. |
+| 주간 한도 | **적용될 수 있음.** 현재 잔여량과 리셋 시점은 계정의 사용량 화면이 최종 기준입니다. |
+| Codex 한도 확인 | Codex 사용량 대시보드 또는 CLI의 **`/status`** |
 
-반면 **Codex는 별도의 사용량 체계**를 가집니다. 같은 ChatGPT 구독에 포함되어 있어도 Codex는 모델, 작업 복잡도, 플랜에 따라 사용량을 소모하고 한도에 도달할 수 있습니다.
+따라서 `ChatGPT 메시지 제한`, `ChatGPT Plus Codex 한도`, `Codex 사용량`을 같은 숫자로 찾으면 답이 꼬입니다. **브라우저에서 `chatgpt.com`을 열어 쓰는 일반 텍스트 채팅의 한도와, Codex 코딩 에이전트의 한도는 별도로 봐야 합니다.**
+
+이 차이를 확인한 계기는 [웹 ChatGPT를 MCP로 제 Mac에 연결해서 쓰는 방식](/chatgpt-mcp-local-development-setup/)을 정리하면서였습니다.
 
 <picture>
   <source media="(max-width: 600px)" srcset="chat-vs-codex-mobile.svg">
   <img src="chat-vs-codex.svg" alt="웹 ChatGPT의 일상 텍스트 채팅 무제한과 Codex 별도 사용량 구조 비교" width="1200" height="660" style="width:100%;height:auto;">
 </picture>
 
-## 먼저 '무제한'이 정확히 무엇인지
+## ChatGPT에서 '무제한 텍스트 채팅'이 정확히 무엇인지
 
 OpenAI 가격표에서 말하는 무제한은 **일상적인 텍스트 채팅**입니다.
 
@@ -78,11 +92,24 @@ OpenAI 가격표에서 말하는 무제한은 **일상적인 텍스트 채팅**�
 
 파일 업로드, 이미지 생성, 음성, 데이터 분석, 심층 리서치, 일부 고급 추론 모델과 도구에는 별도 한도가 적용될 수 있습니다. OpenAI 도움말도 Free/Go의 무제한 일상 텍스트 채팅과 도구 한도를 명시적으로 분리합니다.
 
-## Codex는 왜 다르게 느껴지나
+## ChatGPT Plus에서 Codex 사용량은 실제로 얼마나 되나
 
-Codex 가격 페이지는 아예 **사용 한도 표**를 제공합니다.
+Codex 가격 페이지는 아예 **사용 한도 표**를 제공합니다. 2026년 10월 5일 현재 한국어 가격 페이지에서 Plus의 예상 사용량 범위는 다음처럼 공개되어 있습니다.
 
-예를 들어 개인 플랜의 Codex는 선택한 모델과 작업에 따라 사용량이 달라지고, 사용량 대시보드에서 남은 한도와 리셋 상태를 확인할 수 있습니다. 한도에 도달하면 더 저렴한 모델로 바꾸거나, 리셋을 기다리거나, 계정에서 제공되는 경우 추가 크레딧을 사용할 수 있습니다.
+| Codex 모델 | Plus 예상 사용량 |
+|---|---:|
+| GPT-6 Astra | 5~45 |
+| GPT-6 Sol | 15~150 |
+| GPT-6 Luna | 350~3,000 |
+| GPT-5.6 Sol | 10~100 |
+| GPT-5.6 Luna | 250~2,000 |
+| GPT-5.5 | 15~80 |
+
+이 숫자는 **고정 보장 메시지 수가 아니라 OpenAI가 공개한 예상 범위**입니다. 실제 소비량은 모델, 작업 복잡도, 컨텍스트, 추론 수준, 실행 위치와 도구 사용에 따라 달라집니다. OpenAI는 또 **로컬 메시지와 클라우드 채팅이 같은 플랜 사용량을 공유하며 주간 한도가 적용될 수 있다**고 명시합니다.
+
+따라서 "Plus면 Codex를 몇 번 쓸 수 있나?"의 가장 정확한 답은 **모델마다 다르고, 계정의 사용량 대시보드가 최종값**이라는 것입니다. 활성 Codex CLI에서는 `/status`로 잔여 한도를 확인할 수 있습니다.
+
+한도에 가까워지면 더 저렴한 모델로 바꾸거나, 리셋을 기다리거나, 계정에서 제공되는 경우 크레딧을 사용할 수 있습니다.
 
 즉 구조적으로는 이렇습니다.
 

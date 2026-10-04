@@ -1,5 +1,5 @@
 ---
-title: "Serena·Ponytail·claude-mem을 깔았는데도 새 세션은 프로젝트를 잊었다"
+title: "AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 유지 방법"
 date: 2026-10-05
 tags: Serena, Ponytail, claude-mem, cokacremote, ChatGPT MCP, AI 코딩, 컨텍스트 유지, 세션 컨텍스트, 개발 에이전트, 프로젝트 메모리
 permalink: /ai-coding-context-continuity-cokacremote/
@@ -7,13 +7,17 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /en-ai-coding-context-continuity-cokacremote/
-description: "Serena, Ponytail, claude-mem을 설치했지만 새 AI 코딩 세션의 프로젝트 컨텍스트가 자동으로 이어지지는 않았습니다. cokacremote에 bootstrap·checkpoint·on-demand recall 구조를 넣어 해결한 과정을 정리합니다."
-excerpt: "컨텍스트 도구를 여러 개 설치하는 것과 실제 세션 연속성을 보장하는 것은 달랐습니다. Git과 현재 문서를 최우선으로 두고 checkpoint와 선택적 recall을 결합한 구조를 실제 구현 기준으로 설명합니다."
+description: "AI 코딩 에이전트의 새 세션에서 프로젝트 맥락이 사라지는 이유와 세션 간 컨텍스트를 유지하는 방법을 정리합니다. Persistent memory, instruction file, checkpoint, Serena·claude-mem·cokacremote의 역할을 실제 구현으로 비교합니다."
+excerpt: "AI 코딩 에이전트의 persistent memory는 컨텍스트 윈도우나 AGENTS.md 같은 instruction file과 다릅니다. 새 세션이 실제 프로젝트 상태를 이어받게 만든 bootstrap·checkpoint·recall 구조를 설명합니다."
 seo:
-  title: "AI 코딩 세션 컨텍스트 유지: Serena·claude-mem·cokacremote 실전 구조"
-  description: "Serena·Ponytail·claude-mem을 설치해도 새 세션은 자동으로 이어지지 않았습니다. cokacremote에 bootstrap, checkpoint, deep recall을 넣어 해결한 실제 구조."
+  title: "AI 코딩 에이전트 세션 컨텍스트 유지 방법: Persistent Memory 실전"
+  description: "AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 persistent memory 설계 방법. instruction file, checkpoint, Serena·claude-mem·cokacremote를 실제 구조로 비교합니다."
   keywords:
     - AI 코딩 컨텍스트 유지
+    - AI 코딩 에이전트 메모리
+    - AI 코딩 에이전트 세션 유지
+    - persistent memory
+    - context engineering
     - ChatGPT 세션 컨텍스트
     - Serena memory
     - claude-mem
@@ -22,39 +26,49 @@ seo:
     - MCP context
     - coding agent memory
 faq:
+  - q: "AI 코딩 에이전트는 왜 새 세션에서 이전 프로젝트 컨텍스트를 잊나요?"
+    a: "컨텍스트 윈도우는 현재 세션의 작업 메모리이고 새 세션에 자동으로 영구 이전되지 않기 때문입니다. 세션을 넘어 유지하려면 instruction file, checkpoint, persistent memory 같은 별도 저장·복구 경로가 필요합니다."
+  - q: "AGENTS.md나 CLAUDE.md만 있으면 세션 컨텍스트 유지가 해결되나요?"
+    a: "프로젝트의 반복 규칙과 명령에는 유용하지만 진행 중인 작업, 폐기한 접근, blocker, 검증 결과 같은 동적 상태까지 자동으로 최신화해 주는 것은 아닙니다. 규칙과 프로젝트 상태를 분리해 관리하는 편이 안전합니다."
+  - q: "Persistent memory와 context window는 같은 건가요?"
+    a: "아닙니다. Context window는 현재 추론에서 모델이 볼 수 있는 정보 범위이고, persistent memory는 세션 밖에 저장했다가 다음 세션에서 다시 가져오는 장기 상태입니다."
   - q: "Serena나 claude-mem을 설치하면 새 AI 세션이 자동으로 이전 프로젝트를 기억하나요?"
-    a: "설치만으로는 보장되지 않습니다. 어떤 클라이언트가 언제 어떤 메모리를 읽는지, 현재 코드와 과거 메모리가 충돌할 때 무엇을 우선하는지, 중요한 결정을 언제 저장하는지에 대한 lifecycle이 필요합니다."
+    a: "설치만으로는 보장되지 않습니다. 언제 저장하고 언제 읽으며 현재 코드와 과거 메모리가 충돌할 때 무엇을 우선할지 정하는 lifecycle이 필요합니다."
   - q: "Ponytail은 프로젝트 메모리 도구인가요?"
-    a: "제가 쓰는 Ponytail은 YAGNI, 기존 코드 재사용, 최소 변경 같은 구현 정책을 제공하는 역할입니다. 프로젝트의 과거 상태를 기억하는 source of truth로 사용하지 않습니다."
-  - q: "현재 구조에서 Serena와 claude-mem은 버렸나요?"
-    a: "아닙니다. Serena와 claude-mem은 필요할 때 과거 맥락을 찾는 보조 retrieval 계층으로 남겼습니다. 기본 bootstrap은 Git, 현재 문서, checkpoint와 로컬 정책만 빠르게 읽고 deep recall은 필요할 때만 실행합니다."
+    a: "제가 쓰는 Ponytail은 YAGNI, 기존 코드 재사용, 최소 변경 같은 구현 정책 계층입니다. 프로젝트의 과거 상태를 기억하는 source of truth로 사용하지 않습니다."
 image: /ai-coding-context-continuity-cokacremote/context-continuity-og.png
 image_width: 1200
 image_height: 630
 ---
 
-# 툴을 깔았는데도 새 세션은 프로젝트를 잊었다
+# AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 유지 방법
 
-**Serena·Ponytail·claude-mem을 무작정 설치한 뒤, 실제 세션 연속성 문제를 cokacremote 안에서 다시 설계한 기록.**
+**핵심은 메모리 도구를 많이 설치하는 게 아니라, 새 세션이 무엇을 다시 읽고 어떤 상태를 저장하며 과거 메모리와 현재 Git이 충돌할 때 무엇을 믿을지 정하는 것입니다. Serena·Ponytail·claude-mem을 설치해 놓고도 실패했던 이유를 실제 구현으로 정리했습니다.**
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
-  🌐 <strong>English version:</strong> <a href="/en-ai-coding-context-continuity-cokacremote/">I Installed Serena, Ponytail and claude-mem. New Sessions Still Forgot the Project.</a>
+  🌐 <strong>English version:</strong> <a href="/en-ai-coding-context-continuity-cokacremote/">How to Keep AI Coding Agent Context Across Sessions</a>
 </p>
 
-[웹 ChatGPT를 MCP로 제 Mac에 붙여 로컬 프로젝트를 직접 다루게 만든 뒤](/chatgpt-mcp-local-development-setup/), 예상보다 빨리 다음 문제가 드러났습니다.
+`AI 코딩 에이전트 메모리`, `세션 컨텍스트 유지`, `persistent memory`, `context engineering`을 검색할 때 먼저 구분해야 할 것은 세 가지입니다.
 
-**도구가 프로젝트 파일을 볼 수 있는 것과, 새 채팅이 이전 세션의 의도·금지사항·폐기안·검증 결과를 정확히 이어받는 것은 완전히 다른 문제였습니다.**
+| 개념 | 무엇을 저장/제공하나 | 세션을 넘나드나 |
+|---|---|---|
+| **Context window** | 지금 모델이 한 번에 볼 수 있는 대화·파일·도구 결과 | 기본적으로 현재 세션 중심 |
+| **Instruction file** | `AGENTS.md`, `CLAUDE.md` 같은 반복 규칙·명령 | 파일이 다시 로드되면 유지 가능 |
+| **Persistent project memory** | 결정, 폐기안, blocker, 검증 결과, 다음 작업처럼 이어져야 할 의미 상태 | 별도 저장·복구 lifecycle이 있어야 함 |
 
-저는 그 전에 Serena, Ponytail, claude-mem 같은 도구를 설치해 둔 상태였습니다. 이름과 설명만 보면 "이제 세션이 달라져도 알아서 프로젝트를 기억하겠지"라고 생각하기 쉽습니다.
+즉 **큰 컨텍스트 윈도우가 persistent memory를 대신하지 않고, instruction file도 진행 중인 프로젝트 상태 전체를 대신하지 않습니다.** 검색 상위 결과들도 이 차이를 중심으로 설명하고 있었고, 제 경우 실제 실패 지점도 정확히 여기였습니다.
 
-실제로는 그렇지 않았습니다.
+[웹 ChatGPT를 MCP로 제 Mac에 붙여 로컬 프로젝트를 직접 다루게 만든 뒤](/chatgpt-mcp-local-development-setup/), 이 문제는 더 위험해졌습니다. 도구가 프로젝트 파일을 볼 수 있어도 새 채팅이 이전 세션의 의도·금지사항·폐기안·검증 결과를 정확히 이어받는 것은 별개이기 때문입니다.
+
+저는 그 전에 Serena, Ponytail, claude-mem을 설치해 둔 상태였습니다. 하지만 **설치된 도구가 있다는 사실만으로는 새 세션에 올바른 프로젝트 상태가 자동 복구되지 않았습니다.**
 
 <picture>
   <source media="(max-width: 600px)" srcset="before-context-mobile.svg">
   <img src="before-context.svg" alt="Serena Ponytail claude-mem을 설치했지만 각각의 역할이 분리되어 새 세션에 자동 컨텍스트가 주입되지 않는 상태" width="1200" height="700" style="width:100%;height:auto;">
 </picture>
 
-## 처음 착각했던 것: 도구가 있으면 컨텍스트가 이어질 것
+## 왜 AI 코딩 에이전트는 새 세션에서 프로젝트를 잊는가
 
 문제는 각 도구의 역할부터 달랐습니다.
 
@@ -100,7 +114,7 @@ MCP를 통해 웹 ChatGPT가 로컬 파일과 터미널을 직접 다루기 시�
 4. 과거 이유가 정말 필요할 때만 느린 검색을 할 수 있는가?
 5. 매번 Serena·claude-mem을 다 돌리지 않고도 빠르게 시작할 수 있는가?
 
-## 해결의 핵심은 메모리 도구를 더 추가하는 게 아니었다
+## 세션 간 컨텍스트 유지의 핵심은 capture → authority → restore였다
 
 결국 cokacremote 안에 별도의 **project context lifecycle**을 넣었습니다.
 
@@ -327,6 +341,17 @@ branch나 HEAD가 바뀌거나, 오래 비활성 상태가 되거나, 서버가 
 브라우저의 일반 ChatGPT 채팅을 장기간 개발 컨트롤 플레인으로 쓰려면 단순히 메시지를 많이 보낼 수 있는 것보다 **세션을 갈아타도 프로젝트 의미가 이어지는가**가 훨씬 중요합니다.
 
 제가 처음에는 Serena, Ponytail, claude-mem이라는 개별 도구에 그 문제를 맡기려 했다면, 지금은 **cokacremote가 lifecycle을 소유하고 개별 도구는 각자 잘하는 역할만 하게 하는 쪽**으로 바뀌었습니다.
+
+## 개념과 도구를 확인한 1차 자료
+
+이 글에서 말하는 `context window`, 세션 메모리, 프로젝트 메모리의 구분과 각 도구의 역할은 다음 1차 자료도 함께 확인했습니다.
+
+- [OpenAI Cookbook — Short-Term Memory Management with Sessions](https://developers.openai.com/cookbook/examples/agents_sdk/session_memory): 세션 단위로 대화 이력을 유지·관리하는 방법과 context management 예시
+- [Serena — official repository](https://github.com/oraios/serena): 코드베이스 semantic retrieval/editing과 project memory를 제공하는 MCP 기반 도구
+- [claude-mem — official repository](https://github.com/thedotmack/claude-mem): 세션 사이의 관찰·요약을 저장하고 검색하는 persistent context 도구
+- [Ponytail — official repository](https://github.com/DietrichGebert/ponytail): YAGNI → reuse → stdlib/native → minimum working code 순의 구현 정책. 이 글에서는 프로젝트 메모리로 분류하지 않습니다.
+
+이 자료들이 **제 cokacremote 구조 자체를 정답이라고 보증하는 것은 아닙니다.** 위의 구현과 성능 수치는 제 로컬 환경에서 직접 검증한 부분이고, 링크는 개념과 개별 도구의 원래 역할을 확인하기 위한 자료입니다.
 
 ## 공개하지 않은 것
 

@@ -1,5 +1,5 @@
 ---
-title: "I Installed Serena, Ponytail and claude-mem. New Sessions Still Forgot the Project."
+title: "How to Keep AI Coding Agent Context Across Sessions (Persistent Memory)"
 date: 2026-10-05
 tags: Serena, Ponytail, claude-mem, cokacremote, ChatGPT MCP, AI coding, context continuity, coding agent memory, project memory
 permalink: /en-ai-coding-context-continuity-cokacremote/
@@ -7,13 +7,17 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /ai-coding-context-continuity-cokacremote/
-description: "I had Serena, Ponytail and claude-mem installed, but new AI coding sessions still did not reliably resume the project. I solved it by adding bootstrap, checkpoint and on-demand recall to cokacremote."
-excerpt: "Installing memory/context tools is not the same as having a working continuity lifecycle. I ended up making Git and current project docs authoritative, checkpointing meaningful changes, and using memory retrieval only when needed."
+description: "Why AI coding agents lose project context between sessions, and how to preserve it with persistent memory, instruction files, checkpoints and on-demand recall. Includes the real Serena, claude-mem, Ponytail and cokacremote design I ended up using."
+excerpt: "Persistent coding-agent memory is not the same as a large context window or an AGENTS.md file. This is the bootstrap, checkpoint and recall lifecycle I built so a fresh session can resume the actual project state."
 seo:
-  title: "AI Coding Context Continuity: Serena, claude-mem & cokacremote"
-  description: "Serena, Ponytail and claude-mem did not automatically preserve project context across sessions. Here is the bootstrap, checkpoint and deep-recall structure I built into cokacremote."
+  title: "How to Keep AI Coding Agent Context Across Sessions (Persistent Memory)"
+  description: "Keep AI coding agent context across sessions with persistent memory, instruction files and checkpoints. A practical design using Git truth, Serena, claude-mem and cokacremote."
   keywords:
     - AI coding context continuity
+    - AI coding agent persistent memory
+    - keep context across coding sessions
+    - coding agent memory
+    - context engineering
     - ChatGPT session context
     - Serena memory
     - claude-mem
@@ -22,39 +26,49 @@ seo:
     - MCP context
     - coding agent memory
 faq:
+  - q: "Why do AI coding agents lose project context between sessions?"
+    a: "A context window is working memory for the current run, not durable project state. A fresh session needs a separate path to reload rules, checkpoints, decisions and any persistent memory that should survive the previous session."
+  - q: "Is AGENTS.md or CLAUDE.md enough for cross-session context?"
+    a: "They are useful for durable instructions and project conventions, but they do not automatically track dynamic state such as the active task, rejected approaches, blockers, verification results and next actions."
+  - q: "Is persistent memory the same thing as a context window?"
+    a: "No. The context window is what the model can see during the current inference or session. Persistent memory is information stored outside that window and deliberately restored into a later session."
   - q: "Does installing Serena or claude-mem automatically make new AI sessions remember a project?"
-    a: "No. You still need a lifecycle that decides when to read memory, when to save meaningful state, and what wins if historical memory conflicts with the current code."
+    a: "No. You still need a lifecycle that decides when to capture state, when to retrieve it, and what wins if historical memory conflicts with the current code."
   - q: "Is Ponytail a project-memory system?"
     a: "Not in my setup. Ponytail provides implementation discipline such as YAGNI, reuse and minimum-diff rules. I do not use it as a source of project history."
-  - q: "Did you remove Serena and claude-mem from the final design?"
-    a: "No. They remain optional retrieval layers. Fast bootstrap starts from Git, current project documents, checkpoints and local policy; deeper Serena or claude-mem retrieval runs only when the current state is insufficient."
 image: /en-ai-coding-context-continuity-cokacremote/context-continuity-og.png
 image_width: 1200
 image_height: 630
 ---
 
-# I installed context tools. New sessions still forgot the project.
+# How to keep AI coding agent context across sessions
 
-**Serena, Ponytail and claude-mem were already on my machine. The missing piece was the lifecycle connecting them to real session boundaries.**
+**The missing piece was not another memory package. It was a lifecycle that decides what a fresh session reloads, what gets checkpointed, and which source wins when historical memory conflicts with the current repository.**
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
   🌐 <strong>한국어 버전:</strong> <a href="/ai-coding-context-continuity-cokacremote/">툴을 깔았는데도 새 세션은 프로젝트를 잊었다</a>
 </p>
 
-After I [connected the ChatGPT web app to my Mac through MCP](/en-chatgpt-mcp-local-development-setup/), the next failure mode became obvious very quickly.
+If you searched for `AI coding agent memory`, `persistent memory`, `keep context across coding sessions`, or `context engineering`, start by separating three different things:
 
-**Being able to see the project files is not the same as carrying the project's intent, rejected approaches, constraints and verified state into a new conversation.**
+| Layer | What it provides | Does it survive a fresh session? |
+|---|---|---|
+| **Context window** | Conversation, files and tool results the model can see right now | Primarily current-session state |
+| **Instruction file** | Repeatable rules in files such as `AGENTS.md` or `CLAUDE.md` | Yes, when the client reloads the file |
+| **Persistent project memory** | Decisions, rejected approaches, blockers, verification state and next actions | Only if you build a capture-and-restore lifecycle |
 
-I already had Serena, Ponytail and claude-mem installed. It is easy to look at names like those and assume that session continuity has effectively been solved.
+A larger context window does **not** replace persistent memory, and a repository instruction file does **not** automatically represent the current state of an in-progress project. That distinction is also the dominant pattern in current search results about coding-agent memory and cross-session continuity.
 
-It had not.
+After I [connected the ChatGPT web app to my Mac through MCP](/en-chatgpt-mcp-local-development-setup/), this became more than an inconvenience. Being able to see the repository is not the same as carrying intent, rejected approaches, constraints and verification state into a new conversation.
+
+I already had Serena, Ponytail and claude-mem installed. **Their presence did not automatically make a fresh session resume the right project state.**
 
 <picture>
   <source media="(max-width: 600px)" srcset="before-context-mobile.svg">
   <img src="before-context.svg" alt="Serena Ponytail and claude-mem installed as separate tools while a fresh ChatGPT session still lacks a deterministic project-context bootstrap" width="1200" height="700" style="width:100%;height:auto;">
 </picture>
 
-## The first mistake: assuming installed tools meant persistent context
+## Why coding agents lose project context between sessions
 
 The roles were different from what I had mentally grouped together.
 
@@ -100,7 +114,7 @@ I needed a system that could answer five practical questions:
 4. Can deep historical retrieval happen only when it is actually needed?
 5. Can the normal startup path stay fast without spawning every memory tool?
 
-## The solution was not another memory tool
+## Cross-session continuity needs capture → authority → restore
 
 I added a **project-context lifecycle** directly into cokacremote.
 
@@ -335,6 +349,17 @@ If the ordinary browser ChatGPT UI is going to act as a long-running development
 The hard part is whether a fresh session can safely resume the project.
 
 At first I expected Serena, Ponytail and claude-mem to solve that individually. The design I use now is the opposite: **cokacremote owns the lifecycle, and each helper is allowed to do only the job it is actually good at.**
+
+## Primary references for the concepts and tools
+
+I cross-checked the distinction between context windows, session memory, project memory, and the intended roles of the tools against their primary sources:
+
+- [OpenAI Cookbook — Short-Term Memory Management with Sessions](https://developers.openai.com/cookbook/examples/agents_sdk/session_memory): session history and context-management patterns
+- [Serena — official repository](https://github.com/oraios/serena): MCP-based semantic code retrieval/editing and project memory
+- [claude-mem — official repository](https://github.com/thedotmack/claude-mem): persistent observations and summaries across sessions
+- [Ponytail — official repository](https://github.com/DietrichGebert/ponytail): an implementation-policy stack centered on YAGNI, reuse, standard/native options and minimum working code; I do not classify it as project memory
+
+These sources do **not** validate my cokacremote design as a universal solution. The implementation details and performance measurements in this post come from my local setup; the links above establish the concepts and the intended roles of the individual tools.
 
 ## What I intentionally left out
 
