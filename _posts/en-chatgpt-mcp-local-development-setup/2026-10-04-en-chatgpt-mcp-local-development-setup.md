@@ -44,6 +44,8 @@ image_height: 630
   🌐 <strong>한국어 버전:</strong> <a href="/chatgpt-mcp-local-development-setup/">웹 ChatGPT로 Mac 제어</a>
 </p>
 
+By **the ChatGPT web app**, I mean the ordinary ChatGPT conversation UI at **`chatgpt.com` opened in an internet browser such as Chrome, Safari or Edge**. I do not mean the ChatGPT desktop app, Codex, the OpenAI API, Codex CLI, or OpenAI models in general.
+
 This is **not about using an OpenAI model in the abstract, nor a separate local coding agent such as Codex CLI**. The subject here is the **ChatGPT web app running in my browser**.
 
 From a normal ChatGPT conversation, I can point at a project and use the connected MCP to read the real directory on my Mac, run terminal commands, edit files, execute tests, and inspect the Git diff.
@@ -152,7 +154,7 @@ The key rule is that old memory never gets to override the repository.
 
 At a project or session boundary I run a fast bootstrap that reads the current Git state and the small amount of current project context needed to resume work. Meaningful decisions and material changes are checkpointed back into the repository. Deeper historical recall is optional instead of being loaded on every prompt.
 
-I'm still testing this part. **A feature working is not the same thing as proving that it reduces total token or time cost**, so I'm deliberately not claiming that the context layer is already an optimal solution.
+I wrote a [separate implementation note on how Serena, Ponytail and claude-mem ended up fitting into this lifecycle, including sanitized code excerpts](/en-ai-coding-context-continuity-cokacremote/). **A working context layer is still not proof of lower total token or time cost**, so I keep the continuity claim separate from any cost-savings claim.
 
 ## What changed in day-to-day use
 
@@ -219,8 +221,14 @@ Yes. In this setup, file operations, shell execution, Git inspection, builds, te
 
 No. A tunnel provides connectivity, not authorization. A write-capable MCP server needs authentication and careful permission handling. My setup therefore checks the public health and OAuth metadata and also verifies that an unauthenticated request to /mcp is rejected with 401.
 
+## Continue reading
+
+- [ChatGPT Text Chats Are Unlimited* — Codex Usage Is Not](/en-chatgpt-unlimited-text-vs-codex-limits/)
+- [I Installed Serena, Ponytail and claude-mem. New Sessions Still Forgot the Project.](/en-ai-coding-context-continuity-cokacremote/)
+
 ## References
 
+- [OpenAI — What is ChatGPT: FAQ (web = chatgpt.com)](https://help.openai.com/en/articles/12677804-what-is-chatgpt-faq)
 - [OpenAI Plugins Quickstart — connect an MCP server](https://developers.openai.com/plugins/quickstart)
 - [OpenAI — MCP server authentication](https://developers.openai.com/plugins/build/auth)
 - [Cloudflare Docs — Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/)

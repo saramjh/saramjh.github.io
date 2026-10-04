@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="t d">
+<title id="t">ChatGPT everyday text chats versus Codex usage</title>
+<desc id="d">Comparison showing unlimited everyday ChatGPT text chats and separate Codex usage limits and credits.</desc>
+<defs><style>
+.bg{fill:#111418}.panel{fill:#181d23;stroke:#303842;stroke-width:2}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.accent{fill:#277fb9}.ok{fill:#1f9d7a}.warn{fill:#c28a34}.h{font-size:30px;font-weight:760}.b{font-size:21px;font-weight:650}.s{font-size:17px}
+</style></defs>
+<rect class="bg" width="1200" height="660" rx="24"/>
+<text x="70" y="74" class="text h">Same ChatGPT account, different allowance models</text>
+<text x="70" y="108" class="muted s">Based on OpenAI public pricing in October 2026</text>
+<rect x="70" y="160" width="500" height="390" rx="22" class="panel"/>
+<circle cx="115" cy="205" r="13" class="ok"/>
+<text x="145" y="214" class="text h">ChatGPT Web</text>
+<text x="110" y="260" class="text b">Everyday text chats</text>
+<text x="110" y="316" class="text" style="font-size:48px;font-weight:800">Unlimited*</text>
+<text x="110" y="362" class="muted s">Free · Go · Plus · Pro</text>
+<line x1="110" y1="396" x2="530" y2="396" stroke="#303842" stroke-width="2"/>
+<text x="110" y="435" class="muted s">* Subject to abuse-prevention guardrails</text>
+<text x="110" y="470" class="muted s">Files, images, voice and some models/tools have separate limits</text>
+<text x="110" y="505" class="muted s">Does not mean infinite context</text>
+<rect x="630" y="160" width="500" height="390" rx="22" class="panel"/>
+<circle cx="675" cy="205" r="13" class="warn"/>
+<text x="705" y="214" class="text h">Codex</text>
+<text x="670" y="260" class="text b">Coding-agent usage</text>
+<text x="670" y="314" class="text" style="font-size:42px;font-weight:800">Separate limits</text>
+<text x="670" y="360" class="muted s">Usage varies by plan, model and task complexity</text>
+<line x1="670" y1="396" x2="1090" y2="396" stroke="#303842" stroke-width="2"/>
+<text x="670" y="435" class="muted s">Usage dashboard / reset timing</text>
+<text x="670" y="470" class="muted s">Additional credits may be available</text>
+<text x="670" y="505" class="muted s">Long tasks can consume more usage</text>
+<text x="600" y="608" text-anchor="middle" class="muted s">Unlimited chat ≠ unlimited everything in ChatGPT ≠ unlimited Codex</text>
+</svg>

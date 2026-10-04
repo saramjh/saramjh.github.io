@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d">
+<title id="t">What is unlimited in ChatGPT and what has separate limits</title>
+<desc id="d">Diagram separating unlimited everyday text chats from files, images, voice, advanced reasoning and Codex limits.</desc>
+<defs><style>
+.bg{fill:#111418}.row{fill:#181d23;stroke:#303842;stroke-width:2}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.ok{fill:#1f9d7a}.warn{fill:#c28a34}.h{font-size:29px;font-weight:760}.b{font-size:20px;font-weight:650}.s{font-size:16px}
+</style></defs>
+<rect class="bg" width="1200" height="640" rx="24"/>
+<text x="70" y="72" class="text h">Do not expand “unlimited” beyond the line item</text>
+<text x="70" y="106" class="muted s">The pricing table's Unlimited* label applies to Everyday text chats.</text>
+<rect x="90" y="160" width="1020" height="94" rx="18" class="row"/>
+<circle cx="135" cy="207" r="13" class="ok"/>
+<text x="170" y="200" class="text b">Everyday text chats</text>
+<text x="170" y="228" class="muted s">Free · Go · Plus · Pro — Unlimited*</text>
+<text x="1020" y="214" text-anchor="end" class="text" style="font-size:26px;font-weight:800">Unlimited*</text>
+<rect x="90" y="280" width="1020" height="94" rx="18" class="row"/>
+<circle cx="135" cy="327" r="13" class="warn"/>
+<text x="170" y="320" class="text b">Files · images · voice · data analysis · deep research</text>
+<text x="170" y="348" class="muted s">Separate limits depending on feature and plan</text>
+<text x="1020" y="334" text-anchor="end" class="text b">Separate limits</text>
+<rect x="90" y="400" width="1020" height="94" rx="18" class="row"/>
+<circle cx="135" cy="447" r="13" class="warn"/>
+<text x="170" y="440" class="text b">Advanced reasoning models · Codex · agentic features</text>
+<text x="170" y="468" class="muted s">모델/플랜/작업량에 따라 한도와 크레딧 적용 가능</text>
+<text x="1020" y="454" text-anchor="end" class="text b">Separate limits</text>
+<text x="600" y="558" text-anchor="middle" class="muted s">Message allowance and the context length of one thread are separate problems.</text>
+</svg>

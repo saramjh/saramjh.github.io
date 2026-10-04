@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="t d">
+<title id="t">프로젝트 컨텍스트 권위 순서</title>
+<desc id="d">현재 코드와 Git이 최우선이며 현재 문서, 확정 결정, Serena, claude-mem, 오래된 채팅 기억 순으로 우선순위가 낮아지는 구조.</desc>
+<defs><style>
+.bg{fill:#111418}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.h{font-size:28px;font-weight:760}.b{font-size:18px;font-weight:700}.s{font-size:15px}
+</style></defs>
+<rect class="bg" width="1200" height="680" rx="24"/>
+<text x="70" y="68" class="text h">과거 기억은 현재 코드를 이길 수 없다</text>
+<text x="70" y="102" class="muted s">위에 있을수록 권위가 높다.</text>
+<rect x="120" y="145" width="960" height="70" rx="14" fill="#1d5e50"/>
+<text x="600" y="188" text-anchor="middle" class="text b">1. 현재 실행 코드 · runtime · Git working tree</text>
+<rect x="165" y="230" width="870" height="70" rx="14" fill="#205466"/>
+<text x="600" y="273" text-anchor="middle" class="text b">2. CURRENT · source-of-truth · checkpoint · handoff</text>
+<rect x="210" y="315" width="780" height="70" rx="14" fill="#28485d"/>
+<text x="600" y="358" text-anchor="middle" class="text b">3. 확정된 결정 · 아키텍처 계약</text>
+<rect x="255" y="400" width="690" height="70" rx="14" fill="#303d50"/>
+<text x="600" y="443" text-anchor="middle" class="text b">4. Serena memory</text>
+<rect x="300" y="485" width="600" height="70" rx="14" fill="#383746"/>
+<text x="600" y="528" text-anchor="middle" class="text b">5. claude-mem historical memory</text>
+<rect x="345" y="570" width="510" height="60" rx="14" fill="#40323d"/>
+<text x="600" y="607" text-anchor="middle" class="text b">6. 오래된 채팅 기억</text>
+</svg>

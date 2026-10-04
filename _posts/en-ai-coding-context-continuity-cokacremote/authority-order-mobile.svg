@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1050" viewBox="0 0 720 1050"><style>
+.bg{fill:#111418}.t{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.m{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.h{font-size:30px;font-weight:760}.b{font-size:22px;font-weight:700}.s{font-size:20px}</style>
+<rect class="bg" width="720" height="1050" rx="24"/><text x="45" y="65" class="t h">Historical memory cannot override current code</text><text x="45" y="105" class="m s">Higher means more authoritative.</text>
+<rect x="45" y="155" width="630" height="115" rx="18" fill="#1d5e50"/><text x="360" y="205" text-anchor="middle" class="t b">1. Current code · runtime · Git</text><text x="360" y="240" text-anchor="middle" class="m s">implementation truth</text>
+<rect x="65" y="295" width="590" height="115" rx="18" fill="#205466"/><text x="360" y="345" text-anchor="middle" class="t b">2. CURRENT · checkpoint · handoff</text>
+<rect x="85" y="435" width="550" height="115" rx="18" fill="#28485d"/><text x="360" y="485" text-anchor="middle" class="t b">3. Accepted decisions · architecture</text>
+<rect x="105" y="575" width="510" height="105" rx="18" fill="#303d50"/><text x="360" y="638" text-anchor="middle" class="t b">4. Serena memory</text>
+<rect x="125" y="705" width="470" height="105" rx="18" fill="#383746"/><text x="360" y="768" text-anchor="middle" class="t b">5. claude-mem history</text>
+<rect x="145" y="835" width="430" height="105" rx="18" fill="#40323d"/><text x="360" y="898" text-anchor="middle" class="t b">6. Old chat recollection</text>
+<text x="360" y="1000" text-anchor="middle" class="m s">Memory is reference material.</text></svg>

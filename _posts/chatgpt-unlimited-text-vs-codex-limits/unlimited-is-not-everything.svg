@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d">
+<title id="t">ChatGPT에서 무제한인 것과 별도 한도가 있는 것</title>
+<desc id="d">일상적인 텍스트 채팅 무제한과 파일, 이미지, 음성, 고급 추론, Codex 등 별도 사용량을 구분하는 계층도.</desc>
+<defs><style>
+.bg{fill:#111418}.row{fill:#181d23;stroke:#303842;stroke-width:2}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.ok{fill:#1f9d7a}.warn{fill:#c28a34}.h{font-size:29px;font-weight:760}.b{font-size:20px;font-weight:650}.s{font-size:16px}
+</style></defs>
+<rect class="bg" width="1200" height="640" rx="24"/>
+<text x="70" y="72" class="text h">“무제한”을 어디까지 확대해석하면 안 되는가</text>
+<text x="70" y="106" class="muted s">가격표의 Unlimited*는 Everyday text chats 항목을 가리킨다.</text>
+<rect x="90" y="160" width="1020" height="94" rx="18" class="row"/>
+<circle cx="135" cy="207" r="13" class="ok"/>
+<text x="170" y="200" class="text b">일상적인 텍스트 채팅</text>
+<text x="170" y="228" class="muted s">Free · Go · Plus · Pro — Unlimited*</text>
+<text x="1020" y="214" text-anchor="end" class="text" style="font-size:26px;font-weight:800">무제한*</text>
+<rect x="90" y="280" width="1020" height="94" rx="18" class="row"/>
+<circle cx="135" cy="327" r="13" class="warn"/>
+<text x="170" y="320" class="text b">파일 · 이미지 · 음성 · 데이터 분석 · 심층 리서치</text>
+<text x="170" y="348" class="muted s">기능과 플랜에 따라 별도 사용 한도</text>
+<text x="1020" y="334" text-anchor="end" class="text b">별도 한도</text>
+<rect x="90" y="400" width="1020" height="94" rx="18" class="row"/>
+<circle cx="135" cy="447" r="13" class="warn"/>
+<text x="170" y="440" class="text b">고급 추론 모델 · Codex · agentic 기능</text>
+<text x="170" y="468" class="muted s">모델/플랜/작업량에 따라 한도와 크레딧 적용 가능</text>
+<text x="1020" y="454" text-anchor="end" class="text b">별도 한도</text>
+<text x="600" y="558" text-anchor="middle" class="muted s">그리고 메시지 사용량과 한 스레드의 컨텍스트 길이는 서로 다른 문제다.</text>
+</svg>

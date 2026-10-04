@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="t d">
+<title id="t">웹 ChatGPT 일반 텍스트 채팅과 Codex 사용량 비교</title>
+<desc id="d">웹 ChatGPT의 일상적인 텍스트 채팅은 무제한 별표로 표시되지만 Codex는 별도 사용량 한도와 크레딧 구조를 가진다는 비교.</desc>
+<defs><style>
+.bg{fill:#111418}.panel{fill:#181d23;stroke:#303842;stroke-width:2}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.accent{fill:#277fb9}.ok{fill:#1f9d7a}.warn{fill:#c28a34}.h{font-size:30px;font-weight:760}.b{font-size:21px;font-weight:650}.s{font-size:17px}
+</style></defs>
+<rect class="bg" width="1200" height="660" rx="24"/>
+<text x="70" y="74" class="text h">같은 ChatGPT 계정, 다른 사용량 구조</text>
+<text x="70" y="108" class="muted s">2026년 10월 OpenAI 공개 가격표 기준</text>
+<rect x="70" y="160" width="500" height="390" rx="22" class="panel"/>
+<circle cx="115" cy="205" r="13" class="ok"/>
+<text x="145" y="214" class="text h">웹 ChatGPT</text>
+<text x="110" y="260" class="text b">일상적인 텍스트 채팅</text>
+<text x="110" y="316" class="text" style="font-size:48px;font-weight:800">무제한*</text>
+<text x="110" y="362" class="muted s">Free · Go · Plus · Pro</text>
+<line x1="110" y1="396" x2="530" y2="396" stroke="#303842" stroke-width="2"/>
+<text x="110" y="435" class="muted s">* 악용 방지 가드레일 적용</text>
+<text x="110" y="470" class="muted s">파일·이미지·음성·일부 모델/도구는 별도 한도</text>
+<text x="110" y="505" class="muted s">무한 컨텍스트를 의미하지 않음</text>
+<rect x="630" y="160" width="500" height="390" rx="22" class="panel"/>
+<circle cx="675" cy="205" r="13" class="warn"/>
+<text x="705" y="214" class="text h">Codex</text>
+<text x="670" y="260" class="text b">코딩 에이전트 사용량</text>
+<text x="670" y="314" class="text" style="font-size:42px;font-weight:800">별도 한도</text>
+<text x="670" y="360" class="muted s">플랜 · 모델 · 작업 복잡도에 따라 소모</text>
+<line x1="670" y1="396" x2="1090" y2="396" stroke="#303842" stroke-width="2"/>
+<text x="670" y="435" class="muted s">사용량 대시보드 / 리셋 시간</text>
+<text x="670" y="470" class="muted s">계정에 따라 추가 크레딧 사용 가능</text>
+<text x="670" y="505" class="muted s">긴 작업은 더 많은 사용량을 소비할 수 있음</text>
+<text x="600" y="608" text-anchor="middle" class="muted s">무제한 채팅 ≠ 모든 ChatGPT 기능 무제한 ≠ Codex 무제한</text>
+</svg>

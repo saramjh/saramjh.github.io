@@ -44,7 +44,9 @@ image_height: 630
   🌐 <strong>English version:</strong> <a href="/en-chatgpt-mcp-local-development-setup/">ChatGPT Web App + MCP on Mac</a>
 </p>
 
-이 글은 **OpenAI 모델 일반이나 Codex 같은 별도 로컬 코딩 에이전트 이야기가 아닙니다.** 주체는 브라우저에서 열어 쓰는 **ChatGPT 웹 자체**입니다.
+이 글에서 말하는 **웹 ChatGPT**는 정확히 **Chrome, Safari, Edge 같은 인터넷 브라우저에서 `chatgpt.com`을 열어 사용하는 일반 ChatGPT 채팅 화면**을 뜻합니다. ChatGPT 데스크톱 앱, Codex, OpenAI API, Codex CLI 같은 별도 제품이나 클라이언트를 뭉뚱그려 부르는 말이 아닙니다.
+
+즉 **OpenAI 모델 일반이나 Codex 같은 별도 로컬 코딩 에이전트 이야기가 아닙니다.** 주체는 브라우저에서 열어 쓰는 **ChatGPT 웹 자체**입니다.
 
 브라우저의 웹 ChatGPT에서 프로젝트를 지정하면, 연결해 둔 MCP를 통해 제 Mac의 실제 디렉터리를 읽고 터미널 명령을 실행합니다. 파일을 수정하고 테스트를 돌린 뒤 Git diff까지 확인할 수 있습니다.
 
@@ -153,7 +155,7 @@ ChatGPT가 파일을 읽을 수 있어도 **"왜 이렇게 만들었는지", "�
 
 중요한 결정이나 구현이 끝났을 때는 프로젝트 안의 checkpoint를 갱신하고, 새 채팅에서는 전체 히스토리를 매번 다 읽는 대신 현재 상태부터 짧게 복구합니다. 더 오래된 이유가 정말 필요한 경우에만 별도의 recall을 하도록 해 두었습니다.
 
-이 부분은 최근 계속 손보는 중이라 **아직 "완성된 정답"이라고 말할 단계는 아닙니다.** 기능이 되는 것과 실제 토큰/시간 비용이 줄어드는 것은 다른 문제라서, 둘을 따로 검증하고 있습니다.
+이 구조를 만들게 된 과정과 Serena·Ponytail·claude-mem을 실제로 어떻게 분리해서 쓰게 됐는지는 [별도 글에서 현재 구현과 코드 일부까지 정리했습니다](/ai-coding-context-continuity-cokacremote/). 다만 **컨텍스트 구조가 동작한다는 것과 총 토큰/시간 비용이 줄었다는 것은 별개의 주장**이라 비용 절감 효과는 과장하지 않습니다.
 
 ## 실제로 써보니 좋은 점
 
@@ -221,8 +223,14 @@ ChatGPT가 파일을 읽을 수 있어도 **"왜 이렇게 만들었는지", "�
 
 아닙니다. Tunnel은 로컬 서비스를 외부에서 접근 가능하게 만드는 경로이지 인증을 대신하지 않습니다. 특히 쉘과 파일 쓰기 권한이 있는 MCP라면 인증과 권한 검증이 먼저입니다. 그래서 제 셋업 스크립트는 공개 /health, OAuth discovery뿐 아니라 **인증 없는 /mcp 요청이 401로 거절되는지까지 확인**합니다.
 
+## 이어서 읽기
+
+- [웹 ChatGPT 일반 텍스트 채팅은 무제한* — Codex 사용량과 다른 점](/chatgpt-unlimited-text-vs-codex-limits/)
+- [Serena·Ponytail·claude-mem을 깔았는데도 새 세션은 프로젝트를 잊었다](/ai-coding-context-continuity-cokacremote/)
+
 ## 참고한 공식 문서
 
+- [OpenAI — ChatGPT란 무엇인가요: FAQ (웹 = chatgpt.com)](https://help.openai.com/ko-kr/articles/12677804-what-is-chatgpt-faq)
 - [OpenAI Plugins Quickstart — MCP 서버 연결](https://developers.openai.com/plugins/quickstart)
 - [OpenAI — MCP server authentication](https://developers.openai.com/plugins/build/auth)
 - [Cloudflare Docs — Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/)

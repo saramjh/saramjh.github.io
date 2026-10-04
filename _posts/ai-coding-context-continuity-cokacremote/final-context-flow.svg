@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="t d">
+<title id="t">cokacremote 프로젝트 컨텍스트 lifecycle</title>
+<desc id="d">새 웹 ChatGPT 세션에서 fast bootstrap, 현재 Git과 문서, context handle, 작업, checkpoint, 필요 시 deep recall로 이어지는 구조.</desc>
+<defs><style>
+.bg{fill:#111418}.box{fill:#181d23;stroke:#303842;stroke-width:2}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.fast{fill:#1f9d7a}.deep{fill:#277fb9}.line{stroke:#6c7885;stroke-width:3;fill:none}.dash{stroke-dasharray:8 8}.h{font-size:28px;font-weight:760}.b{font-size:19px;font-weight:700}.s{font-size:15px}
+</style><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10z" fill="#6c7885"/></marker></defs>
+<rect class="bg" width="1200" height="760" rx="24"/>
+<text x="65" y="70" class="text h">현재 구조: 빠른 기본 경로 + 필요할 때만 깊은 검색</text>
+<rect x="70" y="125" width="230" height="105" rx="16" class="box"/>
+<text x="185" y="165" text-anchor="middle" class="text b">웹 ChatGPT 새 세션</text>
+<text x="185" y="194" text-anchor="middle" class="muted s">chatgpt.com</text>
+<path d="M300 177 H375" class="line" marker-end="url(#a)"/>
+<rect x="390" y="125" width="260" height="105" rx="16" class="box"/>
+<circle cx="420" cy="155" r="10" class="fast"/>
+<text x="520" y="165" text-anchor="middle" class="text b">fast bootstrap</text>
+<text x="520" y="194" text-anchor="middle" class="muted s">project_context_bootstrap</text>
+<path d="M650 177 H725" class="line" marker-end="url(#a)"/>
+<rect x="740" y="105" width="390" height="145" rx="16" class="box"/>
+<text x="935" y="145" text-anchor="middle" class="text b">현재 사실부터</text>
+<text x="780" y="178" class="muted s">Git · HEAD · working tree</text>
+<text x="780" y="204" class="muted s">CURRENT · checkpoint · handoff</text>
+<text x="780" y="230" class="muted s">Ponytail policy · Serena local pointer</text>
+<path d="M935 250 V330" class="line" marker-end="url(#a)"/>
+<rect x="740" y="350" width="390" height="110" rx="16" class="box"/>
+<text x="935" y="392" text-anchor="middle" class="text b">실제 작업</text>
+<text x="935" y="424" text-anchor="middle" class="muted s">파일 · shell · Git · 테스트 · 브라우저</text>
+<path d="M935 460 V535" class="line" marker-end="url(#a)"/>
+<rect x="740" y="555" width="390" height="105" rx="16" class="box"/>
+<text x="935" y="596" text-anchor="middle" class="text b">checkpoint</text>
+<text x="935" y="626" text-anchor="middle" class="muted s">결정 · 폐기안 · 제약 · 검증 · handoff</text>
+<path d="M740 405 H600" class="line dash" marker-end="url(#a)"/>
+<rect x="190" y="350" width="390" height="110" rx="16" class="box"/>
+<circle cx="225" cy="382" r="10" class="deep"/>
+<text x="385" y="392" text-anchor="middle" class="text b">정보가 부족할 때만 deep recall</text>
+<text x="385" y="424" text-anchor="middle" class="muted s">Serena + corpus가 있을 때 claude-mem</text>
+<path d="M385 460 V535" class="line" marker-end="url(#a)"/>
+<rect x="190" y="555" width="390" height="105" rx="16" class="box"/>
+<text x="385" y="596" text-anchor="middle" class="text b">역사적 참고자료</text>
+<text x="385" y="626" text-anchor="middle" class="muted s">현재 Git/문서를 덮어쓸 수 없음</text>
+<text x="600" y="714" text-anchor="middle" class="muted s">fast path는 외부 memory subprocess를 매번 띄우지 않는다.</text>
+</svg>

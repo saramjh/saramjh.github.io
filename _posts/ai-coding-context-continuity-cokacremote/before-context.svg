@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+<title id="t">컨텍스트 도구를 설치했지만 세션 연속성이 없는 상태</title>
+<desc id="d">Serena, claude-mem, Ponytail이 각각 존재하지만 새 웹 ChatGPT 세션에 현재 프로젝트 컨텍스트를 자동으로 주입하는 lifecycle이 없는 상태.</desc>
+<defs><style>
+.bg{fill:#111418}.box{fill:#181d23;stroke:#303842;stroke-width:2}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.bad{fill:#b95858}.warn{fill:#c28a34}.line{stroke:#56616d;stroke-width:3;fill:none;stroke-dasharray:8 8}.h{font-size:28px;font-weight:760}.b{font-size:20px;font-weight:700}.s{font-size:16px}
+</style></defs>
+<rect class="bg" width="1200" height="700" rx="24"/>
+<text x="70" y="74" class="text h">설치는 되어 있었다. 연결 규칙은 없었다.</text>
+<text x="70" y="108" class="muted s">각 도구가 존재한다고 해서 새 세션이 자동으로 프로젝트 상태를 이어받는 것은 아니었다.</text>
+<rect x="70" y="165" width="300" height="150" rx="18" class="box"/>
+<text x="220" y="215" text-anchor="middle" class="text b">Serena</text>
+<text x="220" y="250" text-anchor="middle" class="muted s">프로젝트/메모리 검색 가능</text>
+<text x="220" y="278" text-anchor="middle" class="muted s">자동 session bootstrap은 별도 문제</text>
+<rect x="450" y="165" width="300" height="150" rx="18" class="box"/>
+<text x="600" y="215" text-anchor="middle" class="text b">claude-mem</text>
+<text x="600" y="250" text-anchor="middle" class="muted s">설치됨</text>
+<text x="600" y="278" text-anchor="middle" class="text" style="font-size:17px;font-weight:700">현재 corpus: 0 records</text>
+<rect x="830" y="165" width="300" height="150" rx="18" class="box"/>
+<text x="980" y="215" text-anchor="middle" class="text b">Ponytail</text>
+<text x="980" y="250" text-anchor="middle" class="muted s">YAGNI · reuse · minimum diff</text>
+<text x="980" y="278" text-anchor="middle" class="muted s">메모리가 아니라 구현 정책</text>
+<path d="M220 315 V390" class="line"/>
+<path d="M600 315 V390" class="line"/>
+<path d="M980 315 V390" class="line"/>
+<rect x="255" y="410" width="690" height="155" rx="22" class="box"/>
+<circle cx="315" cy="458" r="15" class="bad"/>
+<text x="350" y="466" class="text h">새 웹 ChatGPT 세션</text>
+<text x="310" y="512" class="muted s">어떤 도구를 언제 읽을지 · 무엇을 현재 사실로 볼지 · 어떤 결정을 저장할지</text>
+<text x="310" y="542" class="muted s">정해진 lifecycle이 없으면 “설치된 메모리 도구”는 자동 연속성이 아니다.</text>
+<text x="600" y="630" text-anchor="middle" class="muted s">문제는 메모리 도구의 개수가 아니라 capture → authority → restore 흐름이었다.</text>
+</svg>

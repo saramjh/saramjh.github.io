@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1200" viewBox="0 0 720 1200"><style>
+.bg{fill:#111418}.box{fill:#181d23;stroke:#303842;stroke-width:2}.t{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.m{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.bad{fill:#b95858}.h{font-size:30px;font-weight:760}.b{font-size:25px;font-weight:700}.s{font-size:21px}</style>
+<rect class="bg" width="720" height="1200" rx="24"/><text x="45" y="65" class="t h">설치는 되어 있었다</text><text x="45" y="105" class="m s">하지만 세션 lifecycle은 없었다</text>
+<rect x="45" y="150" width="630" height="200" rx="20" class="box"/><text x="85" y="205" class="t b">Serena</text><text x="85" y="252" class="m s">프로젝트·메모리 검색 가능</text><text x="85" y="292" class="m s">자동 session bootstrap은 별도 문제</text>
+<rect x="45" y="390" width="630" height="200" rx="20" class="box"/><text x="85" y="445" class="t b">claude-mem</text><text x="85" y="492" class="m s">설치됨</text><text x="85" y="535" class="t b">현재 corpus: 0 records</text>
+<rect x="45" y="630" width="630" height="200" rx="20" class="box"/><text x="85" y="685" class="t b">Ponytail</text><text x="85" y="732" class="m s">YAGNI · reuse · minimum diff</text><text x="85" y="772" class="m s">메모리가 아니라 구현 정책</text>
+<rect x="45" y="885" width="630" height="195" rx="20" class="box"/><circle cx="90" cy="938" r="13" class="bad"/><text x="120" y="948" class="t b">새 웹 ChatGPT 세션</text><text x="85" y="1000" class="m s">capture · authority · restore 규칙이 없으면</text><text x="85" y="1040" class="m s">설치된 도구만으로 연속성은 생기지 않는다.</text>
+<text x="360" y="1148" text-anchor="middle" class="m s">문제는 도구 수가 아니라 연결 규칙이었다.</text></svg>

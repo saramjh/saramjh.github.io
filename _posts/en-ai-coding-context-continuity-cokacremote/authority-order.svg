@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="t d">
+<title id="t">Project-context authority order</title>
+<desc id="d">Current code and Git are authoritative, followed by current docs, accepted decisions, Serena, claude-mem and old chat recollection.</desc>
+<defs><style>
+.bg{fill:#111418}.text{fill:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a7b0ba;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.h{font-size:28px;font-weight:760}.b{font-size:18px;font-weight:700}.s{font-size:15px}
+</style></defs>
+<rect class="bg" width="1200" height="680" rx="24"/>
+<text x="70" y="68" class="text h">Historical memory cannot override current code</text>
+<text x="70" y="102" class="muted s">Higher means more authoritative.</text>
+<rect x="120" y="145" width="960" height="70" rx="14" fill="#1d5e50"/>
+<text x="600" y="188" text-anchor="middle" class="text b">1. Current executable code · runtime · Git working tree</text>
+<rect x="165" y="230" width="870" height="70" rx="14" fill="#205466"/>
+<text x="600" y="273" text-anchor="middle" class="text b">2. CURRENT · source-of-truth · checkpoint · handoff</text>
+<rect x="210" y="315" width="780" height="70" rx="14" fill="#28485d"/>
+<text x="600" y="358" text-anchor="middle" class="text b">3. Accepted decisions · architecture contracts</text>
+<rect x="255" y="400" width="690" height="70" rx="14" fill="#303d50"/>
+<text x="600" y="443" text-anchor="middle" class="text b">4. Serena memory</text>
+<rect x="300" y="485" width="600" height="70" rx="14" fill="#383746"/>
+<text x="600" y="528" text-anchor="middle" class="text b">5. claude-mem historical memory</text>
+<rect x="345" y="570" width="510" height="60" rx="14" fill="#40323d"/>
+<text x="600" y="607" text-anchor="middle" class="text b">6. Old chat recollection</text>
+</svg>

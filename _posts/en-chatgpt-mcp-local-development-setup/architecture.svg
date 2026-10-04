@@ -11,10 +11,10 @@
 </defs>
 <rect class="bg" width="1200" height="700" rx="24"/>
 <text x="70" y="72" class="text label">The setup I actually use</text>
-<text x="70" y="102" class="muted small">ChatGPT as the control surface, my Mac as the execution environment</text>
+<text x="70" y="102" class="muted small">chatgpt.com in a browser as the control surface, my Mac as the execution environment</text>
 <rect x="70" y="165" width="250" height="140" rx="18" class="panel"/>
-<text x="195" y="220" text-anchor="middle" class="text label">ChatGPT</text>
-<text x="195" y="252" text-anchor="middle" class="muted small">MCP client</text>
+<text x="195" y="220" text-anchor="middle" class="text label">ChatGPT Web</text>
+<text x="195" y="252" text-anchor="middle" class="muted small">chatgpt.com in browser</text>
 <text x="195" y="278" text-anchor="middle" class="muted tiny">conversation + tool calls</text>
 <rect x="475" y="165" width="250" height="140" rx="18" class="panel"/>
 <text x="600" y="214" text-anchor="middle" class="text label">Cloudflare</text>
