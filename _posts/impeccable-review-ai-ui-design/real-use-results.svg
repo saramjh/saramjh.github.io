@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1180" viewBox="0 0 720 1180" role="img" aria-labelledby="t d">
+<title id="t">두 실제 프로젝트에서의 Impeccable 결과</title><desc id="d">Spoonie critique 21점과 Profit Scratch 별도 컨셉 critique 24점, detector zero 이후에도 release blocker가 남았다는 실제 사용 결과.</desc>
+<style>.bg{fill:#111418}.box{fill:#181d23;stroke:#333c47;stroke-width:2}.text{fill:#f3f5f7;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a9b2bc;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.orange{fill:#c77a33}.green{fill:#1f9d7a}.h{font-size:31px;font-weight:760}.b{font-size:24px;font-weight:700}.s{font-size:20px}</style>
+<rect class="bg" width="720" height="1180" rx="24"/>
+<text x="45" y="66" class="text h">실사용에서 나온 결과</text>
+<text x="45" y="105" class="muted s">점수보다 중요한 건 어떤 문제를 구분해냈는가였습니다.</text>
+<rect x="55" y="150" width="610" height="395" rx="20" class="box"/>
+<circle cx="100" cy="200" r="12" class="orange"/><text x="130" y="210" class="text b">Spoonie · whole-src critique</text>
+<text x="95" y="270" class="text" style="font-size:48px;font-weight:820">21 / 40</text>
+<text x="95" y="322" class="muted s">P0 1 · P1 3 · CLI warnings 7</text>
+<text x="95" y="375" class="text s">• generic social-feed 문법</text>
+<text x="95" y="412" class="text s">• recipe / post 정보구조가 약함</text>
+<text x="95" y="449" class="text s">• contrast · accessibility · font fallback</text>
+<text x="95" y="496" class="muted s">일부 detector warning은 false positive로 분류</text>
+<rect x="55" y="590" width="610" height="410" rx="20" class="box"/>
+<circle cx="100" cy="640" r="12" class="green"/><text x="130" y="650" class="text b">Profit Scratch · concept + CI detector</text>
+<text x="95" y="710" class="text" style="font-size:48px;font-weight:820">24 / 40</text>
+<text x="95" y="762" class="muted s">별도 UX concept critique</text>
+<text x="95" y="815" class="text s">• domain contract mismatch 발견</text>
+<text x="95" y="852" class="text s">• pre-reveal DOM 접근성 문제</text>
+<text x="95" y="889" class="text s">• mobile vertical travel / repeat-use gap</text>
+<text x="95" y="936" class="muted s">실제 UI 수정 후 static detector: 0 findings</text>
+<text x="360" y="1085" text-anchor="middle" class="text b">0 findings ≠ release-ready</text>
+<text x="360" y="1123" text-anchor="middle" class="muted s">제품 정책 · 실제 E2E · 기기 · 접근성 검증은 별도</text>
+</svg>

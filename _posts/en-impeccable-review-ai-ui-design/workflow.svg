@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1250" viewBox="0 0 720 1250" role="img" aria-labelledby="t d">
+<title id="t">A bounded Impeccable workflow</title><desc id="d">Start from product/design rules, critique once, classify findings, make targeted fixes, run detector/browser QA, then stop.</desc>
+<style>.bg{fill:#111418}.box{fill:#181d23;stroke:#333c47;stroke-width:2}.text{fill:#f3f5f7;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a9b2bc;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.line{stroke:#657382;stroke-width:3;fill:none}.stop{fill:#9d514f}.h{font-size:31px;font-weight:760}.b{font-size:24px;font-weight:700}.s{font-size:20px}</style><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10z" fill="#657382"/></marker></defs>
+<rect class="bg" width="720" height="1250" rx="24"/>
+<text x="45" y="66" class="text h">The bounded workflow I use now</text>
+<text x="45" y="105" class="muted s">The point is to avoid an endless polish loop.</text>
+<rect x="100" y="155" width="520" height="110" rx="18" class="box"/><text x="360" y="202" text-anchor="middle" class="text b">1. PRODUCT / DESIGN / platform</text><text x="360" y="238" text-anchor="middle" class="muted s">Lock the existing contracts first</text>
+<path d="M360 265 V320" class="line" marker-end="url(#a)"/>
+<rect x="100" y="340" width="520" height="110" rx="18" class="box"/><text x="360" y="387" text-anchor="middle" class="text b">2. critique or audit</text><text x="360" y="423" text-anchor="middle" class="muted s">Collect issues in one bounded pass</text>
+<path d="M360 450 V505" class="line" marker-end="url(#a)"/>
+<rect x="100" y="525" width="520" height="125" rx="18" class="box"/><text x="360" y="572" text-anchor="middle" class="text b">3. keep / fix / reject</text><text x="360" y="610" text-anchor="middle" class="muted s">Classify findings with project context</text>
+<path d="M360 650 V705" class="line" marker-end="url(#a)"/>
+<rect x="100" y="725" width="520" height="125" rx="18" class="box"/><text x="360" y="772" text-anchor="middle" class="text b">4. targeted fix only</text><text x="360" y="810" text-anchor="middle" class="muted s">Only the harden · adapt · polish work needed</text>
+<path d="M360 850 V905" class="line" marker-end="url(#a)"/>
+<rect x="100" y="925" width="520" height="110" rx="18" class="box"/><text x="360" y="972" text-anchor="middle" class="text b">5. detector + browser QA</text><text x="360" y="1008" text-anchor="middle" class="muted s">desktop · mobile · keyboard · states</text>
+<path d="M360 1035 V1090" class="line" marker-end="url(#a)"/>
+<rect x="210" y="1110" width="300" height="85" rx="18" fill="#412526" stroke="#9d514f" stroke-width="2"/><circle cx="255" cy="1152" r="11" class="stop"/><text x="375" y="1160" text-anchor="middle" class="text b">6. STOP</text>
+</svg>

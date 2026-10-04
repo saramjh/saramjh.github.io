@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1040" viewBox="0 0 720 1040" role="img" aria-labelledby="t d">
+<title id="t">How I actually used Impeccable</title><desc id="d">Product contracts stay authoritative; critique/design vocabulary and the deterministic detector feed into browser QA.</desc>
+<style>
+.bg{fill:#111418}.box{fill:#181d23;stroke:#333c47;stroke-width:2}.text{fill:#f3f5f7;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.muted{fill:#a9b2bc;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif}.accent{fill:#2b86bd}.good{fill:#1f9d7a}.line{stroke:#657382;stroke-width:3;fill:none}.h{font-size:31px;font-weight:760}.b{font-size:24px;font-weight:700}.s{font-size:20px}
+</style><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10z" fill="#657382"/></marker></defs>
+<rect class="bg" width="720" height="1040" rx="24"/>
+<text x="45" y="66" class="text h">Impeccable ≠ magic designer</text>
+<text x="45" y="105" class="muted s">The useful role was design discipline + QA.</text>
+<rect x="80" y="155" width="560" height="115" rx="18" class="box"/>
+<text x="360" y="203" text-anchor="middle" class="text b">PRODUCT / DESIGN / platform rules</text>
+<text x="360" y="238" text-anchor="middle" class="muted s">Project contracts stay authoritative</text>
+<path d="M360 270 V325" class="line" marker-end="url(#a)"/>
+<rect x="80" y="345" width="560" height="145" rx="18" class="box"/>
+<circle cx="125" cy="390" r="11" class="accent"/>
+<text x="360" y="395" text-anchor="middle" class="text b">critique / audit / harden / adapt</text>
+<text x="360" y="432" text-anchor="middle" class="muted s">Scopes the job instead of “make it pretty”</text>
+<text x="360" y="462" text-anchor="middle" class="muted s">Flow · accessibility · responsive · hierarchy</text>
+<path d="M360 490 V545" class="line" marker-end="url(#a)"/>
+<rect x="80" y="565" width="560" height="145" rx="18" class="box"/>
+<circle cx="125" cy="610" r="11" class="good"/>
+<text x="360" y="615" text-anchor="middle" class="text b">deterministic detector</text>
+<text x="360" y="652" text-anchor="middle" class="muted s">Checks recurring UI anti-patterns in code</text>
+<text x="360" y="682" text-anchor="middle" class="muted s">Fits into a repeatable CI gate</text>
+<path d="M360 710 V765" class="line" marker-end="url(#a)"/>
+<rect x="80" y="785" width="560" height="130" rx="18" class="box"/>
+<text x="360" y="832" text-anchor="middle" class="text b">desktop + mobile browser QA</text>
+<text x="360" y="870" text-anchor="middle" class="muted s">Recheck real screens, keyboard and states</text>
+<text x="360" y="982" text-anchor="middle" class="muted s">A clean detector is evidence, not release approval.</text>
+</svg>
