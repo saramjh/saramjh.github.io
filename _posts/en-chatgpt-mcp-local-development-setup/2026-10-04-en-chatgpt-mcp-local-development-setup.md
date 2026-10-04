@@ -1,29 +1,46 @@
 ---
-title: "How I Connected ChatGPT to My Mac for Local Development with MCP"
+title: "How I Let ChatGPT Control My Mac with MCP: Files, Terminal, Git & Browser"
 date: 2026-10-04
-tags: ChatGPT, MCP, Model Context Protocol, Cloudflare Tunnel, Quick Tunnel, cokacremote, AI coding, local development, developer workflow
+tags: ChatGPT, MCP, Model Context Protocol, ChatGPT local computer control, ChatGPT local files, ChatGPT terminal, ChatGPT MCP server, Cloudflare Tunnel, Quick Tunnel, cokacremote, AI coding
 permalink: /en-chatgpt-mcp-local-development-setup/
 layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /chatgpt-mcp-local-development-setup/
-description: "A practical write-up of the MCP setup I use to let ChatGPT work directly with files, shell commands, Git, browser automation and project context on my Mac through cokacremote, Cloudflare Quick Tunnel and OAuth."
-excerpt: "Instead of copying code into ChatGPT, I connected ChatGPT to the actual projects on my Mac through MCP. This is the setup I now use for real development work."
+description: "How I let ChatGPT control my local Mac through MCP: read and edit files, run terminal commands, use Git, run tests and browser automation with cokacremote, Cloudflare Tunnel and OAuth."
+excerpt: "This is not just using ChatGPT as a coding assistant. Through MCP, ChatGPT can work on the real files, terminal and Git repositories on my Mac. Here is the setup I actually use."
 seo:
-  title: "ChatGPT MCP Local Development Setup: Mac, Cloudflare Tunnel & cokacremote"
-  description: "How I connect ChatGPT to my Mac with MCP, Cloudflare Quick Tunnel and OAuth so it can work with local files, shell, Git, browser automation and project context."
+  title: "Let ChatGPT Control Your Mac with MCP: Files, Terminal & Git"
+  description: "Connect ChatGPT to your local Mac with MCP so it can read and edit files, run terminal commands, Git, tests and browser automation through an authenticated tunnel."
+  keywords:
+    - ChatGPT MCP
+    - ChatGPT MCP server
+    - ChatGPT local computer
+    - ChatGPT local files
+    - ChatGPT terminal access
+    - ChatGPT control Mac
+    - ChatGPT MCP local development
+    - MCP Cloudflare Tunnel
+    - ChatGPT local coding agent
+faq:
+  - q: "Can ChatGPT read and edit files directly on my local Mac?"
+    a: "Yes, if you expose those capabilities through an authenticated MCP server. ChatGPT on the web does not simply connect to localhost, so the setup needs a reachable remote MCP endpoint or supported secure tunnel. In this setup, cokacremote exposes the local tools and Cloudflare Tunnel plus OAuth provides the connection."
+  - q: "Can ChatGPT run terminal commands, Git and tests through MCP?"
+    a: "Yes, when the MCP server exposes those tools and the connection is allowed to use them. This setup can execute shell commands, modify files, inspect Git, run builds and tests, and use browser automation on the local Mac."
+  - q: "Is a Cloudflare Quick Tunnel enough to make a powerful MCP server safe?"
+    a: "No. A tunnel provides connectivity, not authorization. A write-capable MCP server needs authentication and permission controls; this setup explicitly verifies that unauthenticated requests to /mcp are rejected."
 image: /en-chatgpt-mcp-local-development-setup/mcp-local-development-og.png
 image_width: 1200
 image_height: 630
 ---
 
-# How I Connected ChatGPT to My Mac for Local Development with MCP
+# How I Let ChatGPT Control My Mac with MCP: Files, Terminal, Git & Browser
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
-  🌐 <strong>한국어 버전:</strong> <a href="/chatgpt-mcp-local-development-setup/">ChatGPT에 MCP로 내 Mac을 연결해서 로컬 프로젝트를 직접 개발하게 만든 방법</a>
+  🌐 <strong>한국어 버전:</strong> <a href="/chatgpt-mcp-local-development-setup/">ChatGPT가 내 Mac을 직접 제어하게 만들기: MCP로 파일·터미널·Git 연결</a>
 </p>
 
-The part of AI-assisted coding that annoyed me most wasn't generating code. It was the boundary between a ChatGPT conversation and the project actually sitting on my machine.
+<strong>This is not a story about me using ChatGPT as a coding assistant.</strong> In this setup, I can point ChatGPT at a project and it can use MCP to read the real directory on my Mac, run terminal commands, edit files, execute tests, and inspect the Git diff.\n\n<strong>This is not a story about me using ChatGPT as a coding assistant.</strong> In this setup, I can point ChatGPT at a project and it can use MCP to read the real directory on my Mac, run terminal commands, edit files, execute tests, and inspect the Git diff.\n\nThe part of AI-assisted coding that annoyed me most wasn't generating code. It was the boundary between a ChatGPT conversation and the project actually sitting on my machine.
 
 I would check <code>git status</code>, open a file, copy the relevant section into ChatGPT, paste the answer back into the repository, run tests, and then repeat the same explanation in a new chat: what the project is, what changed, what must not be touched, and what I already tried.
 
@@ -33,7 +50,7 @@ Eventually I inverted the workflow.
 
 <img src="architecture.svg" alt="Architecture connecting ChatGPT through a Cloudflare Quick Tunnel and MCP to cokacremote on a local Mac" width="1200" height="700">
 
-## The setup I actually use
+## The MCP setup that lets ChatGPT control my local Mac
 
 The core is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server. Mine is based on [cokacremote](https://github.com/kstost/cokacremote), running locally on my Mac.
 
@@ -57,7 +74,7 @@ OpenAI's current developer documentation supports connecting an HTTPS <code>/mcp
 
 One point matters more than the convenience: <strong>the tunnel is not the security boundary.</strong> My MCP server can execute commands and modify or delete files with the permissions of the local process. I therefore run it behind OAuth and make the setup script explicitly verify that an unauthenticated <code>/mcp</code> request gets <code>401</code>.
 
-## Why this became much more useful than I expected
+## What changes when ChatGPT can access local files and the terminal
 
 My original goal was basically "remote shell access from ChatGPT." In practice, the useful part isn't the shell by itself.
 
@@ -175,6 +192,20 @@ If you're building something similar, leave a comment with the specific part you
 - keeping a local MCP service running on macOS.
 
 If I can share the relevant part safely, I'll post the actual configuration or a reduced code sample in the comments. If the same question keeps coming up, I'll move it into this article or make it a follow-up post.
+
+## FAQ
+
+### Can ChatGPT read and edit files directly on my local Mac?
+
+Yes, if those capabilities are exposed through an authenticated MCP server. ChatGPT on the web does not simply connect to your machine's localhost; the setup needs a reachable remote MCP endpoint or a supported secure tunnel. In my setup, **cokacremote exposes the local tools and Cloudflare Tunnel plus OAuth provides the connection**.
+
+### Can ChatGPT run terminal commands, Git and tests through MCP?
+
+Yes. In this setup, file operations, shell execution, Git inspection, builds, tests and browser automation are exposed as MCP tools. ChatGPT is not merely suggesting a terminal command: **it can invoke the tool on the local Mac and read the result back into the conversation**.
+
+### Is a Cloudflare Quick Tunnel enough to secure this?
+
+No. A tunnel provides connectivity, not authorization. A write-capable MCP server needs authentication and careful permission handling. My setup therefore checks the public health and OAuth metadata and also verifies that an unauthenticated request to /mcp is rejected with 401.
 
 ## References
 
