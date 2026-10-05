@@ -99,13 +99,11 @@ Codex 가격 페이지는 아예 **사용 한도 표**를 제공합니다. 2026�
 | Codex 모델 | Plus 예상 사용량 |
 |---|---:|
 | GPT-6 Astra | 5~45 |
+| GPT-6.1 Sol | 15~160 |
 | GPT-6 Sol | 15~150 |
 | GPT-6 Luna | 350~3,000 |
-| GPT-5.6 Sol | 10~100 |
-| GPT-5.6 Luna | 250~2,000 |
-| GPT-5.5 | 15~80 |
 
-이 숫자는 **월간 총 메시지 수나 고정 보장 횟수가 아니라 OpenAI 가격 페이지의 현재 사용량 예상 범위**입니다. 별도 사용량 문서에서는 현재 GPT-6 계열의 Plus 범위를 **5시간 윈도우 안의 로컬 메시지 추정치**로 설명합니다. 실제 소비량은 모델, 작업 복잡도, 컨텍스트, 추론 수준, 실행 위치와 도구 사용에 따라 달라지고, **로컬 메시지와 클라우드 채팅은 같은 플랜 사용량을 공유하며 주간 한도도 적용될 수 있습니다.**
+이 숫자는 **월간 총 메시지 수나 고정 보장 횟수가 아니라, 현재 OpenAI가 공개하는 5시간 윈도우의 로컬 메시지 추정치**입니다. GPT-5.6 계열과 GPT-5.5도 별도 크레딧 요율표에는 남아 있지만, 현재 Plus 로컬 메시지 예상 범위 표에는 포함되지 않습니다. 실제 소비량은 모델, 작업 복잡도, 컨텍스트, 추론 수준, 실행 위치와 도구 사용에 따라 달라지고, **로컬 메시지와 클라우드 채팅은 같은 플랜 사용량을 공유하며 주간 한도도 적용될 수 있습니다.**
 
 따라서 "Plus면 Codex를 몇 번 쓸 수 있나?"의 가장 정확한 답은 **모델마다 다르고, 계정의 사용량 대시보드가 최종값**이라는 것입니다. 활성 Codex CLI에서는 `/status`로 잔여 한도를 확인할 수 있습니다.
 
@@ -185,7 +183,7 @@ OpenAI는 가격과 사용 한도를 바꿀 수 있으므로 이 글의 숫자�
 ## 공식 자료
 
 - [ChatGPT 가격 — 개인 플랜 비교](https://chatgpt.com/ko-KR/pricing/)
-- [Codex 가격 및 사용 한도](https://chatgpt.com/ko-KR/codex/pricing/)
+- [ChatGPT Learn — Work·Codex 가격 및 사용 한도](https://learn.chatgpt.com/docs/pricing)
 - [OpenAI 도움말 — ChatGPT 플랜에서 Codex 사용하기](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan)
 - [OpenAI 도움말 — ChatGPT란 무엇인가요? 웹은 chatgpt.com](https://help.openai.com/ko-kr/articles/12677804-what-is-chatgpt-faq)
 - [OpenAI 릴리스 노트 — 무제한 텍스트 채팅과 Work/Codex 구분](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
