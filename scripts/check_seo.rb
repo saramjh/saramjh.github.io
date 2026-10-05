@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'pathname'
 require 'yaml'
 require 'date'
+require 'cgi'
 
 site_root = Pathname.new(ARGV.fetch(0, '_site')).expand_path
 source_root = Pathname.new(File.expand_path('..', __dir__))
@@ -158,6 +159,33 @@ end
 home = Nokogiri::HTML(site_root.join('index.html').read)
 errors << 'Homepage must contain exactly one H1' unless home.css('h1').length == 1
 errors << 'Tags page must be linked from primary navigation' unless home.at_css('nav a[href="/tags/"]')
+
+theme_control = home.at_css('#mode')
+errors << 'Theme control must be a button' unless theme_control&.name == 'button'
+errors << 'Theme control requires an accessible label' if theme_control&.[]('aria-label').to_s.strip.empty?
+
+menu_control = home.at_css('#menu-trigger')
+errors << 'Mobile menu control requires an accessible label' if menu_control&.[]('aria-label').to_s.strip.empty?
+errors << 'Mobile menu control must reference its navigation target' unless menu_control&.[]('aria-controls') == 'primary-navigation'
+errors << 'Mobile navigation target missing' unless home.at_css('#primary-navigation')
+
+tags_file = site_root.join('tags', 'index.html')
+if tags_file.file?
+  tags_doc = Nokogiri::HTML(tags_file.read)
+  tag_ids = tags_doc.css('main h2[id]').map { |node| node['id'].to_s }
+  errors << 'Tags page contains duplicate tag IDs' unless tag_ids.uniq.length == tag_ids.length
+  tag_ids.each do |id|
+    errors << "Tags page has unsafe whitespace in tag ID #{id.inspect}" if id.match?(/[[:space:]]/)
+  end
+
+  tags_doc.css('.archive-tags a.tag-item[href^="#"]').each do |link|
+    href = link['href'].to_s
+    next if href == '#'
+    errors << "Tags page has whitespace in tag href #{href.inspect}" if href.match?(/[[:space:]]/)
+    fragment = CGI.unescape(href.delete_prefix('#'))
+    errors << "Tags page fragment has no matching section: #{href}" unless tag_ids.include?(fragment)
+  end
+end
 
 {
   'About page' => site_root.join('about', 'index.html'),

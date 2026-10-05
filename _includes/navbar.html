@@ -1,6 +1,6 @@
 <div class="navbar" role="navigation">
   <nav class="menu">
-    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" aria-label="Toggle navigation menu" aria-controls="primary-navigation" />
     <label for="menu-trigger">
       <span class="menu-icon">
         <svg
@@ -15,7 +15,7 @@
         </svg>
       </span>
     </label>
-    <a id="mode">
+    <button type="button" id="mode" aria-label="Toggle color theme">
       <svg
         class="mode-sunny"
         xmlns="http://www.w3.org/2000/svg"
@@ -158,8 +158,8 @@
           style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
         />
       </svg>
-    </a>
-    <div class="trigger">
+    </button>
+    <div class="trigger" id="primary-navigation">
       <div class="trigger-container">
         {%- assign url = page.url -%}
         {%- assign menus = site.data.menus -%}

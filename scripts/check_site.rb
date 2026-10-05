@@ -10,6 +10,16 @@ abort "Build directory missing: #{root}" unless root.directory?
 errors = []
 count = 0
 
+home = root.join('index.html')
+if home.file?
+  home_doc = Nokogiri::HTML(home.read)
+  stylesheet = home_doc.at_css('link[rel="stylesheet"][href*="/assets/css/style.css"]')
+  errors << 'Primary stylesheet link missing' unless stylesheet
+  errors << 'Primary stylesheet uses a build-time cache-busting query' if stylesheet&.[]('href').to_s.include?('?')
+else
+  errors << 'index.html missing'
+end
+
 robots = root.join('robots.txt')
 if robots.file?
   robots_text = robots.read

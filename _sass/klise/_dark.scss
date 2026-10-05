@@ -143,7 +143,7 @@ body[data-theme="dark"] {
   .navbar {
     border-color: $dark-light;
     .menu {
-      a#mode {
+      #mode {
         .mode-sunny {
           display: block;
         }
@@ -158,6 +158,10 @@ body[data-theme="dark"] {
       @include media-query($on-mobile) {
         background-color: $dark-black;
         border-color: $dark-light;
+
+        .menu-trigger:focus-visible + label .menu-icon {
+          outline-color: $dark-white;
+        }
 
         .menu-icon {
           > svg {
