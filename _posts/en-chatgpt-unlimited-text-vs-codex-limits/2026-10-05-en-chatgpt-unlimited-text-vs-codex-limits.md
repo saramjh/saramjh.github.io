@@ -82,16 +82,19 @@ File uploads, image generation, voice, data analysis, deep research, some advanc
 
 ## How many Codex messages does ChatGPT Plus actually include?
 
-The Codex pricing page has an explicit **usage limits** table. As of October 5, 2026, the English pricing page publishes these estimated Plus ranges:
+The Codex product pricing page has an explicit **usage limits** table. As of October 5, 2026, it publishes these estimated Plus ranges:
 
 | Codex model | Plus estimated usage |
 |---|---:|
-| GPT-6 Astra | 5–45 |
 | GPT-6.1 Sol | 15–160 |
+| GPT-6 Astra | 5–45 |
 | GPT-6 Sol | 15–150 |
 | GPT-6 Luna | 350–3,000 |
+| GPT-5.6 Sol | 10–100 |
+| GPT-5.6 Luna | 250–2,000 |
+| GPT-5.5 | 15–80 |
 
-These are **current estimates for local messages within a five-hour window, not monthly totals or guaranteed message counts**. GPT-5.6-family models and GPT-5.5 still appear in the separate credit-rate table, but they are not in the current Plus local-message estimate table. Actual consumption varies with model, task complexity, context, reasoning, where the task runs and the tools involved. **Local messages and cloud chats share the plan allowance, and weekly limits may also apply.**
+These are **current local-message usage estimates, not monthly totals or guaranteed message counts**. OpenAI's own current pages are not perfectly synchronized: the product-specific Codex pricing page lists the seven rows above, while the ChatGPT Learn five-hour local-message table currently shows only the four GPT-6-family rows. For a particular model, **your usage dashboard is therefore the safest source for the allowance and reset time that actually apply to your account**. Actual consumption varies with model, task complexity, context, reasoning, where the task runs and the tools involved. **Local messages and cloud chats share the plan allowance, and weekly limits may also apply.**
 
 So the best answer to “how many Codex messages do I get on Plus?” is: **it depends on the model and workload, and your usage dashboard is the authoritative current value**. In an active Codex CLI session, `/status` shows the remaining allowance.
 
@@ -170,6 +173,7 @@ OpenAI can change pricing and allowances, so this is not a permanent rule. The o
 
 ## Official sources
 
+- [Codex pricing — usage limits](https://chatgpt.com/codex/pricing/)
 - [ChatGPT pricing — personal plans](https://chatgpt.com/pricing/)
 - [ChatGPT Learn — Work and Codex pricing and usage limits](https://learn.chatgpt.com/docs/pricing)
 - [OpenAI Help — Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan)
