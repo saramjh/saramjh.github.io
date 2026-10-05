@@ -19,6 +19,23 @@ module Blog
     def url
       @asset_url
     end
+
+    # One source file can be published to both its canonical post URL and a
+    # legacy alias. Jekyll's default StaticFile cache is keyed only by source
+    # path, so after the first destination is written the second can be
+    # incorrectly treated as unchanged on subsequent builds. Key the cache by
+    # source + destination URL so every alias is refreshed independently.
+    def write(dest)
+      dest_path = destination(dest)
+      cache_key = [path, @asset_url]
+      return false if File.exist?(dest_path) && self.class.mtimes[cache_key] == mtime
+
+      self.class.mtimes[cache_key] = mtime
+      FileUtils.mkdir_p(File.dirname(dest_path))
+      FileUtils.rm(dest_path) if File.exist?(dest_path)
+      copy_file(dest_path)
+      true
+    end
   end
 
   class PostAssets < Jekyll::Generator

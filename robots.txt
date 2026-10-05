@@ -5,3 +5,4 @@ Sitemap: https://saramjh.github.io/sitemap.xml
 Sitemap: https://saramjh.github.io/space_atlas_student/sitemap.xml
 Sitemap: https://saramjh.github.io/richChecker/sitemap.xml
 Sitemap: https://saramjh.github.io/richChecker-us/sitemap.xml
+Sitemap: https://saramjh.github.io/scratchLottery/sitemap.xml

@@ -24,6 +24,18 @@ Dir.mktmpdir('blog-assets-test') do |root|
     assert(!File.exist?(File.join(destination, prefix, '.private')), 'Hidden file published')
   end
   assert(File.read(File.join(destination, 'renamed', 'index.html')).include?('nested/image%20one.png'), 'Relative image reference changed')
+
+  asset = File.join(folder, 'nested', 'image one.png')
+  File.binwrite(asset, 'updated image bytes')
+  future = Time.now + 2
+  File.utime(future, future, asset)
+  Jekyll::Site.new(config).process
+  %w[renamed posts/original].each do |prefix|
+    assert(
+      File.binread(File.join(destination, prefix, 'nested', 'image one.png')) == 'updated image bytes',
+      "Updated asset did not refresh #{prefix}"
+    )
+  end
   File.write(File.join(folder, 'index.html'), 'collision')
   begin
     Jekyll::Site.new(config).process

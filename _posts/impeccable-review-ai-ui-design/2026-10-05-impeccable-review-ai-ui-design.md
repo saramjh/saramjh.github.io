@@ -150,7 +150,7 @@ Profit Scratch에서는 Impeccable을 더 체계적으로 사용했습니다.
 
 당시 Profit Scratch에는 여전히 실제 Shopify E2E, 접근성, 테마/기기 검증, coupon policy 등 별도의 release blocker가 남아 있었습니다.
 
-<img src="profit-scratch-review.webp" alt="Profit Scratch의 Impeccable review 과정에서 사용한 실제 로컬 QA 화면" width="1200" height="889" style="width:100%;height:auto;">
+<img src="profit-scratch-review-720.webp" srcset="profit-scratch-review-720.webp 720w, profit-scratch-review.webp 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="Profit Scratch의 Impeccable review 과정에서 사용한 실제 로컬 QA 화면" width="1200" height="889" style="width:100%;height:auto;">
 
 이 점 때문에 저는 Impeccable을 **release authority가 아니라 quality signal**로 두는 게 맞다고 봅니다.
 

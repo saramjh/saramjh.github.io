@@ -85,6 +85,31 @@ posts.each do |permalink, metadata|
   source_lang = metadata['lang'].to_s.split('-').first
   errors << "#{permalink}: rendered lang #{html_lang.inspect} != source #{source_lang.inspect}" unless html_lang == source_lang
 
+  source_tags = Array(metadata['tags'])
+  semantic_candidates = posts.select do |target_url, target|
+    next false if target_url == permalink || target['published'] == false || target['redirect_to']
+    target_lang = target['lang'].to_s.split('-').first
+    target_lang == source_lang && !(source_tags & Array(target['tags'])).empty?
+  end
+
+  related = doc.css('.related-posts a[href]')
+  errors << "#{permalink}: related section missing despite semantic matches" if !semantic_candidates.empty? && related.empty?
+  errors << "#{permalink}: unrelated section rendered without semantic matches" if semantic_candidates.empty? && doc.at_css('.related-posts')
+
+  related.each do |link|
+    target_url = link['href'].to_s
+    target = posts[target_url]
+    if target.nil?
+      errors << "#{permalink}: related link target is not a published post: #{target_url}"
+      next
+    end
+    target_lang = target['lang'].to_s.split('-').first
+    errors << "#{permalink}: related link language mismatch: #{target_url}" unless target_lang == source_lang
+    errors << "#{permalink}: related link has no shared tag: #{target_url}" if (source_tags & Array(target['tags'])).empty?
+  end
+
+  errors << "#{permalink}: more than 4 related links rendered" if related.length > 4
+
   headings = doc.css('main h1, main h2, main h3, main h4, main h5, main h6')
   h1_count = headings.count { |heading| heading.name == 'h1' }
   errors << "#{permalink}: expected exactly one H1, found #{h1_count}" unless h1_count == 1
@@ -132,6 +157,7 @@ end
 
 home = Nokogiri::HTML(site_root.join('index.html').read)
 errors << 'Homepage must contain exactly one H1' unless home.css('h1').length == 1
+errors << 'Tags page must be linked from primary navigation' unless home.at_css('nav a[href="/tags/"]')
 
 {
   'About page' => site_root.join('about', 'index.html'),

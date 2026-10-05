@@ -155,7 +155,7 @@ But there is an important caveat.
 The project still had separate blockers around accessibility, real Shopify E2E, representative themes/devices and coupon-policy correctness.
 
 <figure>
-  <img src="profit-scratch-review.webp" alt="Profit Scratch local QA screen used during the Impeccable review process" width="1200" height="889" style="width:100%;height:auto;">
+  <img src="profit-scratch-review-720.webp" srcset="profit-scratch-review-720.webp 720w, profit-scratch-review.webp 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="Profit Scratch local QA screen used during the Impeccable review process" width="1200" height="889" style="width:100%;height:auto;">
   <figcaption>Actual local QA evidence from Profit Scratch. It uses synthetic test data; no real coupon or checkout action was performed.</figcaption>
 </figure>
 

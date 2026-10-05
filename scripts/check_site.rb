@@ -10,6 +10,23 @@ abort "Build directory missing: #{root}" unless root.directory?
 errors = []
 count = 0
 
+robots = root.join('robots.txt')
+if robots.file?
+  robots_text = robots.read
+  expected_sitemaps = %w[
+    https://saramjh.github.io/sitemap.xml
+    https://saramjh.github.io/space_atlas_student/sitemap.xml
+    https://saramjh.github.io/richChecker/sitemap.xml
+    https://saramjh.github.io/richChecker-us/sitemap.xml
+    https://saramjh.github.io/scratchLottery/sitemap.xml
+  ]
+  expected_sitemaps.each do |url|
+    errors << "robots.txt missing sitemap: #{url}" unless robots_text.include?("Sitemap: #{url}")
+  end
+else
+  errors << 'robots.txt missing'
+end
+
 %w[AGENTS.md CLAUDE.md].each do |local_only|
   errors << "Local-only artifact leaked into build: #{local_only}" if root.join(local_only).exist?
 end
