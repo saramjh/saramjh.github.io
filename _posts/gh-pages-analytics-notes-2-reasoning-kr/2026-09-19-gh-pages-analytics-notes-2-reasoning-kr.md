@@ -2,7 +2,7 @@
 title: "혼자 여러 GitHub Pages를 굴리다 보니 생긴 애널리틱스 고민 (2) — 근거 탐색"
 description: "GA4 속성을 합칠지 나눌지, Search Console은 도메인 단위인지 프로젝트 단위인지. AI와의 논의에서 나온 근거를 실제 인용이 아니라 GA4/SEO의 일반 원리로 재구성해서 정리합니다."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-2-reasoning-kr/
 layout: default
 lang: ko

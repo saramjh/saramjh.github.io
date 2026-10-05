@@ -1,11 +1,12 @@
 ---
 title: "How to Fix Logi Options+ Infinite Loading Issue (Apple Devices)"
 date: 2026-01-07
-tags: Logi Options+, Apple, Infinite Loading, Fix, Logitech
+tags: ["Logi Options+", "Apple", "Infinite Loading", "Fix", "Logitech"]
 permalink: /en-logi-option-infinite-loading-solution/
 layout: default
 legacy_asset_url: /posts/en-logi-option-infinite-loading-solution/
 lang: en
+image: /en-logi-option-infinite-loading-solution/001.png
 alternate_lang: ko
 alternate_url: /kr-logi-option-infinite-loading-solution/
 ---

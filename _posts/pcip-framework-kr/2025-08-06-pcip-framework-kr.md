@@ -2,7 +2,7 @@
 title: "AI 코딩 어시스턴트의 한계를 넘어: 오은영 박사 훈육법에서 착안한 PCIP Framework 완전 해부"
 description: "최신 AI 코딩 도구들은 지시가 모호할 때 개발 맥락을 놓치거나 중복/구조 외 코드를 양산하곤 합니다. PCIP Framework는 프로젝트 아키텍처와 도메인 맥락을 사전에 파악하고 적절한 전문가 역할을 부여하여 견고한 코드 구현을 이끌어냅니다."
 date: 2025-08-06
-tags: systemprompt, 시스템프롬프트, system instruction, instructions, claude code, Gemini cli, cursor, PCIP
+tags: ["systemprompt", "시스템프롬프트", "system instruction", "instructions", "claude code", "Gemini cli", "cursor", "PCIP"]
 permalink: /pcip-framework-kr/
 layout: default
 legacy_asset_url: /posts/pcip-framework-kr/

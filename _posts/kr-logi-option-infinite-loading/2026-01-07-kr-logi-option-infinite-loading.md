@@ -1,9 +1,11 @@
 ---
 title: "Logi Options+ 무한 로딩 문제 (Apple 기기)"
 date: 2026-01-07
-tags: Logi Options+, Apple, 무한 로딩, 해결, 로지텍
+tags: ["Logi Options+", "Apple", "무한 로딩", "해결", "로지텍"]
 permalink: /kr-logi-option-infinite-loading/
 layout: default
+lang: ko
+image: /kr-logi-option-infinite-loading/001.png
 legacy_asset_url: /posts/kr-logi-option-infinite-loading/
 ---
 

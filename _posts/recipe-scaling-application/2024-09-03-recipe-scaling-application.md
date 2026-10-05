@@ -2,9 +2,11 @@
 title: "Recipe Scaling Application"
 description: Don't be embarrassed if you have not enough ingredient. This utility helps you cook by calculating each ingredient, how much you have a ingredient.
 date: 2024-09-03
-tags: Recipe, Recipe calculator, ingredient amount
+tags: ["Recipe", "Recipe calculator", "ingredient amount"]
 permalink: /recipe-scaling-application/
 layout: default
+lang: en
+image: /recipe-scaling-application/recipescalingapplication.jpg
 legacy_asset_url: /posts/recipe-scaling-application/
 ---
 

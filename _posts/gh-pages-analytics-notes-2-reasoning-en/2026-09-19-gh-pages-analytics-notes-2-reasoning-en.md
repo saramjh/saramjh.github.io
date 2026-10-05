@@ -2,7 +2,7 @@
 title: "Running Several GitHub Pages Sites Solo: An Analytics Dilemma (Part 2 — The Reasoning)"
 description: "Merge or split GA4 properties? Is Search Console verified per domain or per project? Reconstructing the reasoning behind that decision from GA4/Search Console/Clarity's general principles, not a verbatim transcript."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-2-reasoning-en/
 layout: default
 lang: en

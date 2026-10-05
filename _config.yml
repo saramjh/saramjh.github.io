@@ -1,7 +1,7 @@
 # Site settings
 title: DevTestudinidae # site title
 description: >- # site description
-  Blogging Experience in Development <a href="https://github.com/saramjh" target="_blank" rel="noopener">@github</a>.
+  Practical notes on AI-assisted development, automation, web tools, and troubleshooting, based on reproducible experiments and real projects.
 lang: en-US # default lang
 timezone: Asia/Seoul # set your timezone
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
@@ -12,13 +12,16 @@ mode: dark # default theme "dark" | "light"
 author:
   name: DevTestudinidae # author name
   bio: >- # tell to the world
-    I'm growing slowly <a href="https://github.com/saramjh" target="_blank" rel="noopener">@github</a>.
+    Independent developer writing practical notes on AI-assisted development, automation, troubleshooting, and small web tools.
   username: devtestudinidae # general username
   github: saramjh # github username
   twitter: devtestudinidae # twitter username
   facebook: devtestudinidae # facebook username
-  email: saramjh@email.com # email adress
+  email: devtestudinidae@gmail.com # public contact email
   avatar: /assets/img/avatar.jpg # change with your own avatar
+  url: /about/
+  same_as:
+    - https://github.com/saramjh
 
 # URL settings
 url: "https://saramjh.github.io" #
@@ -66,6 +69,10 @@ include:
   - .htaccess
 
 exclude:
+  - .context
+  - .serena
+  - AGENTS.md
+  - CLAUDE.md
   - scripts
   - tests
   - vendor

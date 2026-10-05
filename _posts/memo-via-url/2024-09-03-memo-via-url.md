@@ -1,9 +1,11 @@
 ---
 title: "Share MEMO via URL easily"
 date: 2024-09-03
-tags: Memo, Note, Share, Util, via URL
+tags: ["Memo", "Note", "Share", "Util", "via URL"]
 permalink: /memo-via-url/
 layout: default
+lang: en
+image: /memo-via-url/memoViaURL.JPG
 legacy_asset_url: /posts/memo-via-url/
 ---
 

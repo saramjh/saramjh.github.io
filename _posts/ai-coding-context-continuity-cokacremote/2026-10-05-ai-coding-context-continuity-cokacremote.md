@@ -1,7 +1,7 @@
 ---
 title: "AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 유지 방법"
 date: 2026-10-05
-tags: Serena, Ponytail, claude-mem, cokacremote, ChatGPT MCP, AI 코딩, 컨텍스트 유지, 세션 컨텍스트, 개발 에이전트, 프로젝트 메모리
+tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI 코딩", "컨텍스트 유지", "세션 컨텍스트", "개발 에이전트", "프로젝트 메모리"]
 permalink: /ai-coding-context-continuity-cokacremote/
 layout: default
 lang: ko

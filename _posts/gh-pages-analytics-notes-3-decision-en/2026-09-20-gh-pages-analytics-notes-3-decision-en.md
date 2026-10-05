@@ -2,7 +2,7 @@
 title: "Running Several GitHub Pages Sites Solo: An Analytics Dilemma (Part 3 — The Decision)"
 description: "In September 2026 I merged separate per-project GA4 properties into one. What actually changed, why I stopped short of changing more, and what I'm still not confident about."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-3-decision-en/
 layout: default
 lang: en

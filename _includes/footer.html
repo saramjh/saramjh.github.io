@@ -4,18 +4,56 @@
 </footer>
 <script src="/assets/js/main.js" defer="defer"></script>
 {%- if site.google_analytics -%}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     dataLayer.push(arguments);
   }
   gtag("js", new Date());
-
   gtag("config", "{{ site.google_analytics }}");
+
+  (function (w, d, id) {
+    function loadAnalytics() {
+      if (d.querySelector('script[data-blog-ga]')) return;
+      var s = d.createElement("script");
+      s.async = true;
+      s.dataset.blogGa = "true";
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+      d.head.appendChild(s);
+    }
+    if ("requestIdleCallback" in w) {
+      w.requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    } else {
+      w.addEventListener("load", function () {
+        setTimeout(loadAnalytics, 0);
+      }, { once: true });
+    }
+  })(window, document, "{{ site.google_analytics }}");
 </script>
 {%- endif -%}
+
+<script>
+  (function (w, d, name, id) {
+    w[name] = w[name] || function () {
+      (w[name].q = w[name].q || []).push(arguments);
+    };
+    function loadClarity() {
+      if (d.querySelector('script[data-blog-clarity]')) return;
+      var s = d.createElement("script");
+      s.async = true;
+      s.dataset.blogClarity = "true";
+      s.src = "https://www.clarity.ms/tag/" + id;
+      d.head.appendChild(s);
+    }
+    if ("requestIdleCallback" in w) {
+      w.requestIdleCallback(loadClarity, { timeout: 3000 });
+    } else {
+      w.addEventListener("load", function () {
+        setTimeout(loadClarity, 500);
+      }, { once: true });
+    }
+  })(window, document, "clarity", "yiij6vbnl0");
+</script>
 {%- if page.url == '/archive/' -%}
 <script src="/assets/js/search.min.js"></script>
 <script>
@@ -72,6 +110,9 @@
     max-width: 100%;
     height: auto;
     display: inline-block;
+  }
+  body[data-theme="dark"] .mermaid .edgeLabel {
+    color: #fff !important;
   }
 </style>
 

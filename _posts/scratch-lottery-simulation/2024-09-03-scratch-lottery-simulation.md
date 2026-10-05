@@ -3,9 +3,11 @@ title: "Scratch Lottery Simulation"
 description: A free scratch-off lottery simulator modeled on real games — Powerball, US $5 scratch-offs, and Korea's Speetto 1000/2000 — with a CDF-based odds engine, fast-forward simulation, and a sourced lottery tax calculator. No real money involved.
 date: 2024-09-03
 modified: 2026-09-18
-tags: Lottery, Scratch Lottery, Lottery simulation, Powerball, Speetto, RTP, Lottery tax calculator
+tags: ["Lottery", "Scratch Lottery", "Lottery simulation", "Powerball", "Speetto", "RTP", "Lottery tax calculator"]
 permalink: /scratch-lottery-simulation/
 layout: default
+lang: en
+image: /scratch-lottery-simulation/scratchlottery-2026-desktop.png
 legacy_asset_url: /posts/scratch-lottery-simulation/
 ---
 

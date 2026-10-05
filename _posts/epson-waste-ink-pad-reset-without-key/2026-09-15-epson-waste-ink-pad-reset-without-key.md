@@ -1,7 +1,7 @@
 ---
 title: "엡손 잉크패드 리셋키 없이 10분 만에 끝내는 법 (L3100~L3168, L1110~L1119, L5190 전 모델 공통)"
 date: 2026-09-15
-tags: 엡손프린터, 엡손잉크패드리셋, 폐잉크패드교체, 엡손리셋키없이, 맥북엡손리셋, L3100, L3106, L3150, L3160, L1110, L5190, 프린터자가수리, reinkpy
+tags: ["엡손프린터", "엡손잉크패드리셋", "폐잉크패드교체", "엡손리셋키없이", "맥북엡손리셋", "L3100", "L3106", "L3150", "L3160", "L1110", "L5190", "프린터자가수리", "reinkpy"]
 permalink: /epson-waste-ink-pad-reset-without-key/
 layout: default
 legacy_asset_url: /posts/epson-waste-ink-pad-reset-without-key/
@@ -31,6 +31,7 @@ image: /epson-waste-ink-pad-reset-without-key/epson-printer.jpg
 lang: ko
 alternate_lang: en
 alternate_url: /en-epson-waste-ink-pad-reset-without-key/
+faq_schema: true
 faq:
   - q: "폐잉크 패드 솜(스펀지)을 물로 세척해서 말린 뒤 재사용해도 되나요?"
     a: "권장하지 않습니다. 펠트 흡수재는 수성 잉크에 절어있어 세척 시 대량의 오수가 발생하고, 완전 건조에 수일이 걸리며, 세척 과정에서 섬유 조직의 흡수 밀도가 떨어져 재장착 시 프린터 하부 누수 위험이 큽니다. 5,700원에 맞춤 재단된 새 흡수재 세트로 교체하는 것이 가장 안전합니다."

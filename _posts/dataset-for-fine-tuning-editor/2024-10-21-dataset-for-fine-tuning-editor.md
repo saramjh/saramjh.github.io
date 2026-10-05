@@ -2,9 +2,11 @@
 title: "Dataset Editor for Fine-tuning: A Game-Changer for AI Model Development"
 description: In the rapidly evolving world of artificial intelligence, having the right tools to manage and refine datasets is crucial. an innovative online platform designed to streamline the process of editing datasets for AI model fine-tuning.
 date: 2024-10-21
-tags: DatasetEditor, AI, Machine-Learning, DataScience, DataManagement, JSONL, Fine-tuning, Artificial-Intelligence, NLP, DataPreparation, ResearchTools, OpenSource, DataEditing, ChatGPT
+tags: ["DatasetEditor", "AI", "Machine-Learning", "DataScience", "DataManagement", "JSONL", "Fine-tuning", "Artificial-Intelligence", "NLP", "DataPreparation", "ResearchTools", "OpenSource", "DataEditing", "ChatGPT"]
 permalink: /dataset-for-fine-tuning-editor/
 layout: default
+lang: en
+image: /dataset-for-fine-tuning-editor/finetuning.jpg
 legacy_asset_url: /posts/dataset-for-fine-tuning-editor/
 ---
 

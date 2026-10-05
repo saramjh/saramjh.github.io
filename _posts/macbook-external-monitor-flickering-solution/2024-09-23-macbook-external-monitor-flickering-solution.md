@@ -1,11 +1,12 @@
 ---
 title: "MacBook External Monitor Flickering Fix"
 date: 2024-09-23
-tags: MacBook External Monitor Flickering Fix,MacBook Pro External Monitor Flickering Solution,MacBook Air External Monitor Flickering Problem,MacBook External Display Flickering Issue,MacBook Pro External Display Flickering Solution,iMac External Monitor Flickering Fix,iMac External Display Flickering Solution
+tags: ["MacBook External Monitor Flickering Fix", "MacBook Pro External Monitor Flickering Solution", "MacBook Air External Monitor Flickering Problem", "MacBook External Display Flickering Issue", "MacBook Pro External Display Flickering Solution", "iMac External Monitor Flickering Fix", "iMac External Display Flickering Solution"]
 permalink: /macbook-external-monitor-flickering-solution/
 layout: default
 legacy_asset_url: /posts/macbook-external-monitor-flickering-solution/
 lang: en
+image: /macbook-external-monitor-flickering-solution/28d26ef777b3e7.webp
 alternate_lang: ko
 alternate_url: /kr-macbook-external-monitor-flickering-solution/
 ---

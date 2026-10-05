@@ -2,9 +2,11 @@
 title: "Outlier Dimension Rating Counter Program: A Handy Tool for Outlier CBs"
 description: Discover a straightforward and efficient counter program designed to help Outlier CBs manage and track counts for various items with ease.
 date: 2025-01-21
-tags: CounterProgram, Python, GUI, Tkinter, Productivity, OpenSource, ItemTracking, SoftwareTools, Outlier, Tasks
+tags: ["CounterProgram", "Python", "GUI", "Tkinter", "Productivity", "OpenSource", "ItemTracking", "SoftwareTools", "Outlier", "Tasks"]
 permalink: /outlier-dimension-rating-counter/
 layout: default
+lang: en
+image: /outlier-dimension-rating-counter/screenshot.png
 legacy_asset_url: /posts/outlier-dimension-rating-counter/
 ---
 

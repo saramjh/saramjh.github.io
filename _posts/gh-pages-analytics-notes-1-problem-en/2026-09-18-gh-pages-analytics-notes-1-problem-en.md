@@ -2,7 +2,7 @@
 title: "Running Several GitHub Pages Sites Solo: An Analytics Dilemma (Part 1 — The Problem)"
 description: "Run several GitHub Pages project pages without custom domains, and every one of them is already sharing the same root domain. Should GA4 properties stay split or merge? Where should Search Console and Clarity live? Notes from a solo developer working through the question."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-1-problem-en/
 layout: default
 lang: en

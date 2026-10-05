@@ -6,7 +6,8 @@ import sys
 import urllib.request
 import urllib.error
 
-BING_API_KEY = os.environ.get("BING_API_KEY", "6c9119e1be3a49e2851073f16d11fee7")
+BING_API_KEY = os.environ.get("BING_API_KEY", "").strip()
+INDEXNOW_KEY = "6c9119e1be3a49e2851073f16d11fee7"  # Public verification key; served at /<key>.txt.
 HOST = "saramjh.github.io"
 BASE_URL = f"https://{HOST}"
 
@@ -71,7 +72,7 @@ def submit_bing_api(urls):
         print(f"[Bing API] Error: {e}")
 
 def submit_indexnow(urls):
-    key = BING_API_KEY
+    key = INDEXNOW_KEY
     batch = urls[:100]
     payload = {
         "host": HOST,

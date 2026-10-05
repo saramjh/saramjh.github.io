@@ -1,7 +1,7 @@
 ---
 title: "Impeccable Review 2026: I Used It on Two Real AI-Coded Products"
 date: 2026-10-05
-tags: Impeccable, AI UI, AI coding, UI UX, frontend design, Codex, Claude Code, Cursor, AI slop, design review
+tags: ["Impeccable", "AI UI", "AI coding", "UI UX", "frontend design", "Codex", "Claude Code", "Cursor", "AI slop", "design review"]
 permalink: /en-impeccable-review-ai-ui-design/
 layout: default
 lang: en
@@ -100,7 +100,7 @@ The report called out issues such as:
 - product-specific concepts such as recipe vs. recipeed/citation not being explained strongly enough
 
 <figure>
-  <img src="spoonie-review.png" alt="Spoonie recipe detail captured as a real Impeccable review artifact" width="700" height="1200" style="width:100%;height:auto;">
+  <img src="spoonie-review.webp" alt="Spoonie recipe detail captured as a real Impeccable review artifact" width="700" height="1200" style="width:100%;height:auto;">
   <figcaption>A real Impeccable review artifact from Spoonie. At the time, the desktop recipe detail still behaved like a long narrow single-column surface.</figcaption>
 </figure>
 
@@ -155,7 +155,7 @@ But there is an important caveat.
 The project still had separate blockers around accessibility, real Shopify E2E, representative themes/devices and coupon-policy correctness.
 
 <figure>
-  <img src="profit-scratch-review.png" alt="Profit Scratch local QA screen used during the Impeccable review process" width="1200" height="889" style="width:100%;height:auto;">
+  <img src="profit-scratch-review.webp" alt="Profit Scratch local QA screen used during the Impeccable review process" width="1200" height="889" style="width:100%;height:auto;">
   <figcaption>Actual local QA evidence from Profit Scratch. It uses synthetic test data; no real coupon or checkout action was performed.</figcaption>
 </figure>
 

@@ -5,7 +5,8 @@ modified: 2026-09-30
 last_modified_at: 2026-09-30
 permalink: /billionaire-lookalike-test/
 layout: default
-tags: AI face match, billionaire lookalike, face analysis, Forbes billionaires, richChecker
+lang: en
+tags: ["AI face match", "billionaire lookalike", "face analysis", "Forbes billionaires", "richChecker"]
 description: "Try a free billionaire lookalike test. Compare six facial proportions with a 100-person billionaire sample, see your Top 3 matches, and get a shareable result card."
 image: /billionaire-lookalike-test/billionaire-lookalike-test-preview.png
 image_width: 1200

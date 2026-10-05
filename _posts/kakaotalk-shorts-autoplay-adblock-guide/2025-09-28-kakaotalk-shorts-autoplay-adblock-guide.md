@@ -1,9 +1,11 @@
 ---
 title: "카카오톡 강제 숏폼·자동재생·광고 차단 가이드 (업데이트 분노 해법)"
 date: 2025-09-28
-tags: KAKAO, 숏폼차단, 자동재생끄기, 광고차단, 쇼핑탭끄기, 업데이트불만, 개인정보, 데이터낭비
+tags: ["KAKAO", "숏폼차단", "자동재생끄기", "광고차단", "쇼핑탭끄기", "업데이트불만", "개인정보", "데이터낭비"]
 permalink: /kakaotalk-shorts-autoplay-adblock-guide/
 layout: default
+lang: ko
+image: /kakaotalk-shorts-autoplay-adblock-guide/001.jpg
 legacy_asset_url: /posts/kakaotalk-shorts-autoplay-adblock-guide/
 description: "카카오톡 대규모 업데이트 이후 강제 숏폼 자동재생, 피드/광고 노출, 쇼핑 탭 노출에 불만인 이용자를 위한 실전 차단/완화 가이드. 설정 기반 자동재생 중지와 네트워크 레벨 도메인 차단(애드블록)까지 단계별로 정리."
 excerpt: "카카오톡 강제 숏폼·자동재생·광고/쇼핑 노출 때문에 불편한가? 설정으로 자동재생을 끄고, 필요 시 도메인 단위 차단으로 숏폼/피드/쇼핑 노출을 억제하는 방법을 단계별로 안내한다."

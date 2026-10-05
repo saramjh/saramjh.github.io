@@ -71,6 +71,13 @@
 .page-content {
   padding-top: 8px;
 
+  p a,
+  li a {
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+    text-decoration-thickness: 0.06em;
+  }
+
   iframe {
     text-align: center;
   }

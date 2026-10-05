@@ -2,7 +2,7 @@
 title: "혼자 여러 GitHub Pages를 굴리다 보니 생긴 애널리틱스 고민 (4) — 지금 상태와 열린 질문"
 description: "속성을 병합한 지 얼마 안 됐기 때문에 '효과가 있었다'고 말할 수 있는 데이터는 아직 없습니다. 지금 보이는 스냅샷과, 여전히 답을 모르는 채로 남은 질문들을 정리하며 시리즈를 마칩니다."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-4-open-kr/
 layout: default
 lang: ko

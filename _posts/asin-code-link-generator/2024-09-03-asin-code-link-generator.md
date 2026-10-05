@@ -1,9 +1,11 @@
 ---
 title: "Amazon ASIN CODE Links Generator"
 date: 2024-09-03
-tags: AMAZON, ASIN
+tags: ["AMAZON", "ASIN"]
 permalink: /asin-code-link-generator/
 layout: default
+lang: en
+image: /asin-code-link-generator/asinCodeLinksGenerator.JPG
 legacy_asset_url: /posts/asin-code-link-generator/
 ---
 

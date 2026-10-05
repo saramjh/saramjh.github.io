@@ -1,7 +1,9 @@
 {%- assign page_title = page.title | default: site.title -%}
-{%- assign page_description = page.description | default: site.description | strip_html | normalize_whitespace -%}
+{%- assign page_description = page.seo.description | default: page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace -%}
 {%- assign page_url = page.url | remove: 'index.html' | remove: '.html' | absolute_url -%}
 {%- assign page_image = page.image | default: site.image | absolute_url -%}
+{%- assign author_url = site.author.url | default: '/about/' | absolute_url -%}
+{%- assign author_id = author_url | append: '#person' -%}
 {%- if page.date -%}
 <script type="application/ld+json">
 {
@@ -17,18 +19,23 @@
   "image": [{{ page_image | jsonify }}],
   "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
   "dateModified": {{ page.modified | default: page.date | date_to_xmlschema | jsonify }},
+  "inLanguage": {{ page.lang | default: site.lang | jsonify }},
   "author": {
     "@type": "Person",
+    "@id": {{ author_id | jsonify }},
     "name": {{ site.author.name | jsonify }},
-    "url": {{ site.url | jsonify }}
+    "url": {{ author_url | jsonify }},
+    "sameAs": {{ site.author.same_as | jsonify }}
   },
   "publisher": {
     "@type": "Person",
-    "name": {{ site.author.name | jsonify }}
+    "@id": {{ author_id | jsonify }},
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ author_url | jsonify }}
   }
 }
 </script>
-{%- if page.faq -%}
+{%- if page.faq and page.faq_schema == true -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,14 +55,48 @@
 }
 </script>
 {%- endif -%}
-{%- else -%}
+{%- elsif page.url == '/about/' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page_description | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "mainEntity": {
+    "@type": "Person",
+    "@id": {{ author_id | jsonify }},
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ author_url | jsonify }},
+    "sameAs": {{ site.author.same_as | jsonify }}
+  }
+}
+</script>
+{%- elsif page.url == '/' -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": {{ site.title | jsonify }},
   "description": {{ site.description | strip_html | normalize_whitespace | jsonify }},
-  "url": {{ site.url | jsonify }}
+  "url": {{ site.url | jsonify }},
+  "author": {
+    "@type": "Person",
+    "@id": {{ author_id | jsonify }},
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ author_url | jsonify }}
+  }
+}
+</script>
+{%- else -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ page_title | jsonify }},
+  "description": {{ page_description | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "inLanguage": {{ page.lang | default: site.lang | jsonify }}
 }
 </script>
 {%- endif -%}

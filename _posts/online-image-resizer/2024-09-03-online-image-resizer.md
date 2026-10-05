@@ -2,9 +2,11 @@
 title: "Online Image Resizer - Don't worry about your personal information"
 description: The Online Image Resizer never store any personal information. This Util supports a lot of amount processing.
 date: 2024-09-03
-tags: Image resizer, Personal Information secure, Online Utility
+tags: ["Image resizer", "Personal Information secure", "Online Utility"]
 permalink: /online-image-resizer/
 layout: default
+lang: en
+image: /online-image-resizer/onlineImageResizer.JPG
 legacy_asset_url: /posts/online-image-resizer/
 ---
 

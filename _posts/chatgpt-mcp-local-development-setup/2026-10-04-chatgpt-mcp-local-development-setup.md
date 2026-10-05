@@ -1,7 +1,7 @@
 ---
 title: "웹 ChatGPT가 내 Mac을 직접 조작한다: MCP 로컬 연결"
 date: 2026-10-04
-tags: ChatGPT, MCP, Model Context Protocol, ChatGPT로컬컴퓨터제어, ChatGPT로컬파일, ChatGPT터미널, ChatGPTMCP서버, Cloudflare Tunnel, Quick Tunnel, cokacremote, AI코딩, 개발자동화
+tags: ["ChatGPT", "MCP", "Model Context Protocol", "ChatGPT로컬컴퓨터제어", "ChatGPT로컬파일", "ChatGPT터미널", "ChatGPTMCP서버", "Cloudflare Tunnel", "Quick Tunnel", "cokacremote", "AI코딩", "개발자동화"]
 permalink: /chatgpt-mcp-local-development-setup/
 layout: default
 lang: ko

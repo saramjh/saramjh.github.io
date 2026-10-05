@@ -1,7 +1,7 @@
 ---
 title: "How to Reset Epson Waste Ink Counter Free: 33 Models Supported (L3100-L3168, L1110, L5190 on Mac/Win/Linux)"
 date: 2026-09-15
-tags: Epson, L3100, L3106, L3110, L3150, L3160, L1110, L5190, Waste Ink Pad Reset, WIC Reset Alternative, reinkpy, Mac Epson Reset, DIY Printer Repair
+tags: ["Epson", "L3100", "L3106", "L3110", "L3150", "L3160", "L1110", "L5190", "Waste Ink Pad Reset", "WIC Reset Alternative", "reinkpy", "Mac Epson Reset", "DIY Printer Repair"]
 permalink: /en-epson-waste-ink-pad-reset-without-key/
 layout: default
 legacy_asset_url: /posts/en-epson-waste-ink-pad-reset-without-key/
@@ -32,6 +32,7 @@ image: /en-epson-waste-ink-pad-reset-without-key/epson-printer.jpg
 lang: en
 alternate_lang: ko
 alternate_url: /epson-waste-ink-pad-reset-without-key/
+faq_schema: true
 faq:
   - q: "Can I wash and reuse the old waste ink felt pads with water?"
     a: "Not recommended. Saturated felt pads produce significant hazardous runoff when washed, take days to dry thoroughly, and lose fiber density during washing. Lower fiber density drastically increases the risk of ink leakage onto your desk or printer base. Replacing them with a pre-cut replacement felt pad set (~$5) is by far the safest and cleanest approach."

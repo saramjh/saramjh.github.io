@@ -2,7 +2,7 @@
 title: "혼자 여러 GitHub Pages를 굴리다 보니 생긴 애널리틱스 고민 (1) — 문제 정의"
 description: "커스텀 도메인 없이 GitHub Pages 프로젝트 페이지를 여러 개 운영하면, 사실은 이미 모든 서비스가 같은 루트 도메인을 공유하고 있습니다. GA4 속성을 나눌지 합칠지, Search Console과 Clarity는 어디에 걸어야 할지 — 1인 개발자가 실제로 부딪힌 고민을 정리합니다."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-1-problem-kr/
 layout: default
 lang: ko

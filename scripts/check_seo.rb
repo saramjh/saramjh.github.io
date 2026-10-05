@@ -1,0 +1,177 @@
+require 'json'
+require 'nokogiri'
+require 'pathname'
+require 'yaml'
+require 'date'
+
+site_root = Pathname.new(ARGV.fetch(0, '_site')).expand_path
+source_root = Pathname.new(File.expand_path('..', __dir__))
+abort "Build directory missing: #{site_root}" unless site_root.directory?
+
+errors = []
+posts = {}
+strict_heading_since = Date.new(2026, 10, 1)
+
+source_root.glob('_posts/**/*.md').sort.each do |post|
+  parts = post.read.split(/^---[ 	]*$/, 3)
+  metadata = YAML.safe_load(parts[1].to_s, permitted_classes: [Date, Time], aliases: true) || {}
+  permalink = metadata['permalink']
+  next unless permalink
+
+  posts[permalink] = metadata
+  next if metadata['published'] == false
+
+  errors << "#{post}: explicit lang is required" if metadata['lang'].to_s.strip.empty?
+
+  if metadata.key?('tags')
+    tags = metadata['tags']
+    errors << "#{post}: tags must be a YAML array" unless tags.is_a?(Array)
+    if tags.is_a?(Array)
+      tags.each do |tag|
+        value = tag.to_s
+        errors << "#{post}: malformed tag #{value.inspect}" if value.strip.empty? || value != value.strip || value.end_with?(',')
+      end
+    end
+  end
+end
+
+posts.each do |permalink, metadata|
+  next if metadata['published'] == false
+
+  if (alternate = metadata['alternate_url'])
+    target = posts[alternate]
+    if target.nil?
+      errors << "#{permalink}: alternate target missing: #{alternate}"
+    elsif target['alternate_url'] != permalink
+      errors << "#{permalink}: alternate target is not reciprocal: #{alternate}"
+    end
+  end
+
+  output = permalink.end_with?('/') ?
+    site_root.join(permalink.delete_prefix('/'), 'index.html') :
+    site_root.join(permalink.delete_prefix('/'))
+
+  unless output.file?
+    errors << "#{permalink}: rendered page missing"
+    next
+  end
+
+  doc = Nokogiri::HTML(output.read)
+
+  if metadata['redirect_to']
+    next
+  end
+
+  expected_canonical = "https://saramjh.github.io#{permalink}"
+  canonical = doc.at_css('link[rel="canonical"]')&.[]('href')
+  errors << "#{permalink}: canonical mismatch: #{canonical.inspect}" unless canonical == expected_canonical
+
+  description = doc.at_css('meta[name="description"]')&.[]('content').to_s.strip
+  errors << "#{permalink}: meta description missing" if description.empty?
+
+  og_image = doc.at_css('meta[property="og:image"]')&.[]('content').to_s.strip
+  errors << "#{permalink}: og:image missing" if og_image.empty?
+
+  og_site_name = doc.at_css('meta[property="og:site_name"]')&.[]('content').to_s
+  errors << "#{permalink}: og:site_name must equal DevTestudinidae" unless og_site_name == 'DevTestudinidae'
+
+  robots = doc.at_css('meta[name="robots"]')&.[]('content').to_s.downcase
+  errors << "#{permalink}: max-image-preview:large missing" unless robots.include?('max-image-preview:large')
+
+  author_link = doc.at_css('link[rel="author"]')&.[]('href')
+  errors << "#{permalink}: rel=author must point to /about/" unless author_link == 'https://saramjh.github.io/about/'
+
+  html_lang = doc.at_css('html')&.[]('lang').to_s.split('-').first
+  source_lang = metadata['lang'].to_s.split('-').first
+  errors << "#{permalink}: rendered lang #{html_lang.inspect} != source #{source_lang.inspect}" unless html_lang == source_lang
+
+  headings = doc.css('main h1, main h2, main h3, main h4, main h5, main h6')
+  h1_count = headings.count { |heading| heading.name == 'h1' }
+  errors << "#{permalink}: expected exactly one H1, found #{h1_count}" unless h1_count == 1
+
+  published_on = Date.parse(metadata['date'].to_s)
+  if published_on >= strict_heading_since
+    levels = headings.map { |heading| heading.name.delete_prefix('h').to_i }
+    levels.each_cons(2) do |current, following|
+      if following > current + 1
+        errors << "#{permalink}: heading level jumps from H#{current} to H#{following}"
+        break
+      end
+    end
+  end
+
+  json_ld = doc.css('script[type="application/ld+json"]').map do |node|
+    begin
+      JSON.parse(node.text)
+    rescue JSON::ParserError => e
+      errors << "#{permalink}: invalid JSON-LD: #{e.message}"
+      nil
+    end
+  end.compact
+
+  types = json_ld.flat_map do |obj|
+    type = obj['@type']
+    type.is_a?(Array) ? type : [type]
+  end.compact
+
+  errors << "#{permalink}: BlogPosting JSON-LD missing" unless types.include?('BlogPosting')
+
+  faq_present = types.include?('FAQPage')
+  faq_expected = metadata['faq_schema'] == true
+  if faq_present != faq_expected
+    errors << "#{permalink}: FAQPage schema presence #{faq_present} != faq_schema #{faq_expected}"
+  end
+
+  if (blog = json_ld.find { |obj| Array(obj['@type']).include?('BlogPosting') })
+    author = blog['author'] || {}
+    errors << "#{permalink}: BlogPosting author must link to /about/" unless author['url'] == 'https://saramjh.github.io/about/'
+    same_as = Array(author['sameAs'])
+    errors << "#{permalink}: BlogPosting author sameAs missing GitHub" unless same_as.include?('https://github.com/saramjh')
+  end
+end
+
+home = Nokogiri::HTML(site_root.join('index.html').read)
+errors << 'Homepage must contain exactly one H1' unless home.css('h1').length == 1
+
+{
+  'About page' => site_root.join('about', 'index.html'),
+  'Archive page' => site_root.join('archive', 'index.html'),
+  'Tags page' => site_root.join('tags', 'index.html')
+}.each do |label, file|
+  if file.file?
+    page_doc = Nokogiri::HTML(file.read)
+    errors << "#{label} must contain exactly one H1" unless page_doc.css('h1').length == 1
+  else
+    errors << "#{label} output missing"
+  end
+end
+
+error_file = site_root.join('404.html')
+if error_file.file?
+  error_doc = Nokogiri::HTML(error_file.read)
+  error_robots = error_doc.at_css('meta[name="robots"]')&.[]('content').to_s.downcase
+  errors << '404 page must contain exactly one H1' unless error_doc.css('h1').length == 1
+  errors << '404 page must be noindex' unless error_robots.include?('noindex')
+else
+  errors << '404 page output missing'
+end
+
+about_file = site_root.join('about', 'index.html')
+if about_file.file?
+  about = Nokogiri::HTML(about_file.read)
+  begin
+    about_types = about.css('script[type="application/ld+json"]').map { |n| JSON.parse(n.text)['@type'] }
+    errors << 'About page ProfilePage schema missing' unless about_types.include?('ProfilePage')
+  rescue JSON::ParserError => e
+    errors << "About page invalid JSON-LD: #{e.message}"
+  end
+else
+  errors << 'About page output missing'
+end
+
+header_source = source_root.join('_includes', 'header.html').read
+errors << 'Stale Jekyll Klise app metadata returned' if header_source.include?('Jekyll Klise')
+
+abort errors.join("
+") unless errors.empty?
+puts "SEO contract passed for #{posts.count { |_url, metadata| metadata['published'] != false && !metadata['redirect_to'] }} rendered posts."

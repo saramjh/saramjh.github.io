@@ -7,7 +7,7 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /space-atlas-student/
-tags: astronomy, space-science, 3D-simulation, ThreeJS, interactive-learning, open-source, STEM-education, NASA
+tags: ["astronomy", "space-science", "3D-simulation", "ThreeJS", "interactive-learning", "open-source", "STEM-education", "NASA"]
 image: /space-atlas-student-en/space-atlas-hero.png
 image_width: 1280
 image_height: 820

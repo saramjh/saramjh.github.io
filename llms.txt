@@ -2,6 +2,9 @@
 
 > Curated technical guides, hardware troubleshooting, automation workflows, and browser-based developer utilities by DevTestudinidae.
 
+## About
+- [About DevTestudinidae](https://saramjh.github.io/about/): Author identity, editorial scope, GitHub profile, and contact information for this technical knowledge base.
+
 ## Hardware & macOS Troubleshooting Guides
 - [Epson Waste Ink Pad Reset Without Key (Korean)](https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/): Complete cross-platform guide to resetting Epson waste ink counter for free across 33 models (L3100~L3168, L1110, L5190) on macOS/Linux/Windows using open-source reinkpy-fix and replacing only inner felt pads for ~$4.
 - [How to Reset Epson Waste Ink Counter Free on Mac/Linux/Win (English)](https://saramjh.github.io/en-epson-waste-ink-pad-reset-without-key/): English edition for resetting locked Epson EcoTank printers without paid WIC reset keys.
@@ -12,6 +15,8 @@
 - [KakaoTalk Shorts Autoplay Adblock Guide (Korean)](https://saramjh.github.io/kakaotalk-shorts-autoplay-adblock-guide/): How to disable video autoplay, short-form feed clutter, and data-draining shopping tabs in KakaoTalk.
 
 ## Automation & AI Workflows
+- [유튜브 맛집 리스트를 네이버 지도에 일괄 저장하는 방법 (Korean)](https://saramjh.github.io/youtube-restaurant-list-naver-map-save-guide/): 유튜브 설명란·고정 댓글에서 맛집 데이터를 정리하고, 로그인된 브라우저와 Playwright CDP를 이용해 네이버 지도 저장 작업을 줄이는 실제 워크플로.
+- [네이버 지도 저장 목록 일괄 정리·이동 방법 (Korean)](https://saramjh.github.io/naver-map-save-list-bulk-reorganize-guide/): 저장 핀·목록 관리부터 영업 요일별 폴더 구성과 브라우저 자동화까지 단계별로 정리한 실전 가이드.
 - [웹 ChatGPT가 내 Mac을 직접 조작한다 — MCP (Korean)](https://saramjh.github.io/chatgpt-mcp-local-development-setup/): 브라우저에서 쓰는 웹 ChatGPT가 MCP를 통해 로컬 Mac의 파일, 터미널, Git, 테스트, 브라우저를 직접 다루는 실제 구성과 OAuth/Cloudflare Quick Tunnel 운영 기록.
 - [ChatGPT Web App + MCP: Control Your Mac (English)](https://saramjh.github.io/en-chatgpt-mcp-local-development-setup/): Practical setup for letting the ChatGPT web app read and edit local files, run terminal commands, use Git, tests and browser automation on a Mac through cokacremote, OAuth and Cloudflare Tunnel.
 - [ChatGPT 메시지 제한 vs Codex Plus 사용량 한도 (Korean)](https://saramjh.github.io/chatgpt-unlimited-text-vs-codex-limits/): 2026년 공식 자료 기준으로 일반 ChatGPT 텍스트 채팅과 Codex 사용량을 분리하고 Plus 모델별 예상 범위, 로컬·클라우드 공유 한도, /status 확인법을 정리합니다.

@@ -1,7 +1,7 @@
 ---
 title: "How to Keep AI Coding Agent Context Across Sessions (Persistent Memory)"
 date: 2026-10-05
-tags: Serena, Ponytail, claude-mem, cokacremote, ChatGPT MCP, AI coding, context continuity, coding agent memory, project memory
+tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI coding", "context continuity", "coding agent memory", "project memory"]
 permalink: /en-ai-coding-context-continuity-cokacremote/
 layout: default
 lang: en

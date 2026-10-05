@@ -1,9 +1,11 @@
 ---
 title: "네이버 지도 저장 목록 일괄 정리 및 리스트 이동 방법 (기본 팁·Playwright 자동화)"
 date: 2026-10-02
-tags: 네이버지도, 네이버지도저장, 네이버지도목록정리, 저장리스트이동, 네이버지도일괄편집, Playwright, 자동화, 구글지도비교
+tags: ["네이버지도", "네이버지도저장", "네이버지도목록정리", "저장리스트이동", "네이버지도일괄편집", "Playwright", "자동화", "구글지도비교"]
 permalink: /naver-map-save-list-bulk-reorganize-guide/
 layout: default
+lang: ko
+image: /naver-map-save-list-bulk-reorganize-guide/001.png
 legacy_asset_url: /posts/naver-map-save-list-bulk-reorganize-guide/
 description: "네이버 지도 저장 목록이 너무 많아 정리가 필요한 분들을 위한 실전 가이드. 앱 내 기본 편집 팁과 지도 핀 관리법부터, 대량 북마크를 요일별로 3분 만에 일괄 재분류하는 브라우저 자동화(Playwright CDP) 방법까지 한 번에 정리합니다."
 excerpt: "네이버 지도에 쌓여있는 수많은 맛집과 장소들, 기본 기능으로 깔끔하게 정리하는 법과 수백 번의 클릭 없이 한꺼번에 요일별 폴더로 일괄 이동시키는 실전 자동화 노하우를 소개합니다."
@@ -23,9 +25,9 @@ seo:
 canonical: /naver-map-save-list-bulk-reorganize-guide/
 ---
 
-### 네이버 지도 저장 목록을 관리할 때 겪는 4가지 핵심 문제
+## 네이버 지도 저장 목록을 관리할 때 겪는 4가지 핵심 문제
 
-<img src="001.png" alt="네이버 지도 요일별 저장 목록 및 북마크 정리 화면">
+<img src="001-720.webp" srcset="001-720.webp 720w, 001.webp 1648w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="네이버 지도 요일별 저장 목록 및 북마크 정리 화면" width="1648" height="2436" fetchpriority="high" loading="eager" decoding="async">
 
 네이버 지도에 가보고 싶은 장소를 열심히 모아두었지만, 실제로 쓰려고 할 때 다음과 같은 불편과 비효율을 겪어보셨을 겁니다:
 
@@ -40,7 +42,7 @@ canonical: /naver-map-save-list-bulk-reorganize-guide/
 
 ---
 
-### 💡 본 가이드에서 다루는 단계별 해결책 (User Flow)
+## 💡 본 가이드에서 다루는 단계별 해결책 (User Flow)
 
 이 글에서는 위 4가지 문제를 가장 확실하게 해결할 수 있는 **2단계 솔루션**을 단계별로 제공합니다:
 
@@ -53,16 +55,16 @@ canonical: /naver-map-save-list-bulk-reorganize-guide/
 
 ---
 
-### ⚡ 딱 3분 만에 해결하는 퀵 가이드 (원하는 것만 쏙 골라 하세요!)
+## ⚡ 딱 3분 만에 해결하는 퀵 가이드 (원하는 것만 쏙 골라 하세요!)
 
 수백 개 맛집을 일일이 검색하고 수작업으로 옮길 필요 없습니다. 본인의 상황에 맞춰 아래 방법 중 하나를 선택하세요:
 
-#### 1. 앱에서 10초 만에 화면 정리하기 (기본 기능)
+### 1. 앱에서 10초 만에 화면 정리하기 (기본 기능)
 - **지도를 덮은 핀 숨기기**: 지도 우측 툴바의 **[별(⭐) 아이콘]**을 한 번 터치하면 저장 핀이 깔끔하게 숨겨져 쾌적하게 길을 찾을 수 있습니다.
 - **망한 집 걸러내기**: [저장] 탭 상단의 **[정보가 없거나 위치가 변경된 장소]** 알림을 눌러 이미 폐업한 식당을 원클릭으로 정리하세요.
 - **핵심 정리법**: '휴무일' 폴더를 지우고, **`월요일 영업` ~ `일요일 영업` 7개 폴더**를 만들어 두세요. 금요일엔 그냥 `금요일 영업` 폴더만 켜면 고민이 0초로 줄어듭니다.
 
-#### 2. 100개 맛집을 7개 요일에 한 번에 자동 배속하기 (AI 비서 3분 컷)
+### 2. 100개 맛집을 7개 요일에 한 번에 자동 배속하기 (AI 비서 3분 컷)
 식당 100곳을 화~일 영업 요일에 손가락으로 체크하려면 **500번이 넘는 클릭 노가다**를 해야 합니다.  
 요즘 무료로 쓸 수 있는 AI 코딩 에이전트(Cursor, Windsurf, Claude Code 등)에게 **명령어 한 줄과 프롬프트 하나만 복사해서 던지면, 3분 만에 내 계정의 모든 맛집이 영업 요일별로 자동 중복 배속**됩니다. (자세한 프롬프트는 아래 Part 4 참조)
 
@@ -96,7 +98,7 @@ canonical: /naver-map-save-list-bulk-reorganize-guide/
 
 ## Part 2. 한계 직면: 90개 장소를 7개 요일에 중복 배속하려면?
 
-<img src="002.png" alt="네이버 지도 플레이스 상세 저장 팝업에서 복수 영업 요일을 체크하는 화면">
+<img src="002-720.webp" srcset="002-720.webp 720w, 002.webp 1648w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="네이버 지도 플레이스 상세 저장 팝업에서 복수 영업 요일을 체크하는 화면" width="1648" height="2436" loading="lazy" decoding="async">
 
 문제는 **데이터의 양과 네이버 지도의 UI 구조**입니다.
 - 주 1회 정기휴무인 식당은 **6개 요일 폴더에 동시에 체크**되어야 합니다.
@@ -137,7 +139,7 @@ HTTP/1.1 500 Internal Server Error
    - 예: `틸로소피` (휴무: 화, 수, 일) → 목표 영업 폴더: `[월요일 영업, 목요일 영업, 금요일 영업, 토요일 영업]`
 3. **Playwright 브라우저 DOM 에뮬레이션 (O(N))**: 이미 로그인된 본인의 Chrome 브라우저에 원격 접속(CDP)하여 각 장소의 상세 URL(`map.naver.com/p/entry/place/{sid}`)로 진입, 저장 팝업의 요일 체크박스를 정밀 클릭.
 
-<img src="003.png" alt="AI 코딩 에이전트와 Playwright를 통한 실시간 동기화 터미널 화면">
+<img src="003-720.webp" srcset="003-720.webp 720w, 003.webp 2140w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="AI 코딩 에이전트와 Playwright를 통한 실시간 동기화 터미널 화면" width="2140" height="2712" loading="lazy" decoding="async">
 
 ### 3. 데이터 규모별 소요 시간 예측 (O(N))
 장소당 상세 페이지 로딩 및 체크박스 인터랙션 시간은 약 **1.8초**가 소요됩니다.

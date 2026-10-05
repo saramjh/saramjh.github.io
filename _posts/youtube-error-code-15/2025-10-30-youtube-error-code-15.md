@@ -2,9 +2,11 @@
 title: "YouTube 오류 코드 15 해결기"
 description: 네이버 웨일에서 유튜브 임베드 영상이 오류 코드 15로 막혔을 때 확장 기능을 정리해 해결한 경험 공유.
 date: 2025-10-30
-tags: YouTube, Naver Whale, 브라우저 확장
+tags: ["YouTube", "Naver Whale", "브라우저 확장"]
 permalink: /youtube-error-code-15/
 layout: default
+lang: ko
+image: /youtube-error-code-15/youtube-error-code-15-error.jpg
 legacy_asset_url: /posts/youtube-error-code-15/
 ---
 

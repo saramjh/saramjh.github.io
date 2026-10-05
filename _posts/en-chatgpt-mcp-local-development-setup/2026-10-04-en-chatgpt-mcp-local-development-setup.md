@@ -1,7 +1,7 @@
 ---
 title: "The ChatGPT Web App Controls My Mac: MCP Setup"
 date: 2026-10-04
-tags: ChatGPT, MCP, Model Context Protocol, ChatGPT local computer control, ChatGPT local files, ChatGPT terminal, ChatGPT MCP server, Cloudflare Tunnel, Quick Tunnel, cokacremote, AI coding
+tags: ["ChatGPT", "MCP", "Model Context Protocol", "ChatGPT local computer control", "ChatGPT local files", "ChatGPT terminal", "ChatGPT MCP server", "Cloudflare Tunnel", "Quick Tunnel", "cokacremote", "AI coding"]
 permalink: /en-chatgpt-mcp-local-development-setup/
 layout: default
 lang: en

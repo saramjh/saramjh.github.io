@@ -2,7 +2,7 @@
 title: "혼자 여러 GitHub Pages를 굴리다 보니 생긴 애널리틱스 고민 (3) — 결정과 적용"
 description: "2026년 9월, 프로젝트마다 나눠뒀던 GA4 속성을 하나로 병합했습니다. 무엇을 바꿨고, 왜 이 정도까지만 바꿨는지, 그리고 여전히 자신 없는 부분은 무엇인지 기록합니다."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-3-decision-kr/
 layout: default
 lang: ko

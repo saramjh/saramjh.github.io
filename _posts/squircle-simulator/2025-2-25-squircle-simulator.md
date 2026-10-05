@@ -2,9 +2,11 @@
 title: "Squircle Simulator: A Unique Tool for Geometric Exploration"
 description: Discover the fascinating world of squircles with our innovative Squircle Simulator. This online platform allows you to explore and visualize the properties of squircles, a blend of squares and circles.
 date: 2025-02-25
-tags: Squircle, Geometry, Mathematics, Visualization, OnlineTool, Education, Research, OpenSource
+tags: ["Squircle", "Geometry", "Mathematics", "Visualization", "OnlineTool", "Education", "Research", "OpenSource"]
 permalink: /squircle-simulator/
 layout: default
+lang: en
+image: /squircle-simulator/squircle.jpg
 legacy_asset_url: /posts/squircle-simulator/
 ---
 

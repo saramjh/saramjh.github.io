@@ -6,7 +6,7 @@ last_modified_at: 2026-09-30
 permalink: /rich-face-test/
 layout: default
 lang: ko
-tags: 인공지능, 관상 테스트, 부자 관상, 얼굴 분석, richChecker
+tags: ["인공지능", "관상 테스트", "부자 관상", "얼굴 분석", "richChecker"]
 description: "포브스 2026 한국 부자 47인과 6가지 얼굴 비율을 비교해 가장 가까운 Top 3와 두드러진 특징을 확인하는 무료 부자 관상 테스트를 소개합니다."
 image: /rich-face-test/rich-face-test-preview.png
 image_width: 472

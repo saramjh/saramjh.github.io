@@ -9,9 +9,31 @@ root = Pathname.new(ARGV.fetch(0, '_site')).expand_path
 abort "Build directory missing: #{root}" unless root.directory?
 errors = []
 count = 0
+
+%w[AGENTS.md CLAUDE.md].each do |local_only|
+  errors << "Local-only artifact leaked into build: #{local_only}" if root.join(local_only).exist?
+end
+%w[.context .serena].each do |local_only|
+  errors << "Local-only directory leaked into build: #{local_only}" if root.join(local_only).exist?
+end
+
 root.glob('**/*.html').each do |file|
   page_url = '/' + file.relative_path_from(root).to_s
   doc = Nokogiri::HTML(file.read)
+  doc.css('a[href]').each do |node|
+    href = node['href'].to_s
+    if href.start_with?('/http://', '/https://')
+      errors << "#{page_url}: malformed absolute link #{href}"
+    end
+  end
+  ids = Hash.new(0)
+  doc.css('[id]').each do |node|
+    id = node['id'].to_s
+    ids[id] += 1 unless id.empty?
+  end
+  ids.each do |id, occurrences|
+    errors << "#{page_url}: duplicate id #{id} (#{occurrences} occurrences)" if occurrences > 1
+  end
   doc.css('img[src], meta[property="og:image"], meta[name="twitter:image"]').each do |node|
     src = node['src'] || node['content']
     next if src.nil? || src.empty? || src.start_with?('data:')
@@ -23,6 +45,21 @@ root.glob('**/*.html').each do |file|
       errors << "#{page_url}: missing image #{src}" unless path.to_s.start_with?(root.to_s + '/') && path.file?
     rescue URI::InvalidURIError
       errors << "#{page_url}: invalid image URL #{src}"
+    end
+  end
+  doc.css('img[srcset], source[srcset]').each do |node|
+    node['srcset'].to_s.split(',').each do |candidate|
+      src = candidate.strip.split(/\s+/, 2).first
+      next if src.nil? || src.empty? || src.start_with?('data:')
+      begin
+        url = URI.join("https://saramjh.github.io#{page_url}", src.gsub(' ', '%20'))
+        next unless url.host == 'saramjh.github.io'
+        count += 1
+        path = root.join(URI::DEFAULT_PARSER.unescape(url.path).delete_prefix('/')).cleanpath
+        errors << "#{page_url}: missing srcset image #{src}" unless path.to_s.start_with?(root.to_s + '/') && path.file?
+      rescue URI::InvalidURIError
+        errors << "#{page_url}: invalid srcset image URL #{src}"
+      end
     end
   end
 end

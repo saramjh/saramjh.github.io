@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT 메시지 제한은 무제한? Codex Plus 사용량 한도는 별도다 (2026)"
 date: 2026-10-05
-tags: ChatGPT, ChatGPT 무제한, ChatGPT 텍스트 채팅, Codex, Codex 사용량, Codex 한도, AI 코딩, MCP
+tags: ["ChatGPT", "ChatGPT 무제한", "ChatGPT 텍스트 채팅", "Codex", "Codex 사용량", "Codex 한도", "AI 코딩", "MCP"]
 permalink: /chatgpt-unlimited-text-vs-codex-limits/
 layout: default
 lang: ko

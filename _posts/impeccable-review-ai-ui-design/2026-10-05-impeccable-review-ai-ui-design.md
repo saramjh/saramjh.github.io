@@ -1,7 +1,7 @@
 ---
 title: "Impeccable 사용 후기: AI 코딩 UI 디자인에 실제로 써보니"
 date: 2026-10-05
-tags: Impeccable, AI UI, AI 코딩, UI UX, frontend design, Codex, Claude Code, Cursor, AI slop, 디자인 리뷰
+tags: ["Impeccable", "AI UI", "AI 코딩", "UI UX", "frontend design", "Codex", "Claude Code", "Cursor", "AI slop", "디자인 리뷰"]
 permalink: /impeccable-review-ai-ui-design/
 layout: default
 lang: ko
@@ -100,7 +100,7 @@ Spoonie 전체 `src`를 critique했을 때 결과는 **21/40**, P0 1개, P1 3개
 - 레시피/레시피드/인용 같은 서비스 고유 개념이 제대로 설명되지 않음
 
 <figure>
-  <img src="spoonie-review.png" alt="Impeccable 리뷰 당시 Spoonie 레시피 상세 화면 캡처" width="700" height="1200" style="width:100%;height:auto;">
+  <img src="spoonie-review.webp" alt="Impeccable 리뷰 당시 Spoonie 레시피 상세 화면 캡처" width="700" height="1200" style="width:100%;height:auto;">
   <figcaption>실제 Impeccable review artifact. 데스크톱에서도 좁은 단일 컬럼에 레시피 상세가 길게 이어지던 시점의 화면입니다.</figcaption>
 </figure>
 
@@ -150,7 +150,7 @@ Profit Scratch에서는 Impeccable을 더 체계적으로 사용했습니다.
 
 당시 Profit Scratch에는 여전히 실제 Shopify E2E, 접근성, 테마/기기 검증, coupon policy 등 별도의 release blocker가 남아 있었습니다.
 
-<img src="profit-scratch-review.png" alt="Profit Scratch의 Impeccable review 과정에서 사용한 실제 로컬 QA 화면" width="1200" height="889" style="width:100%;height:auto;">
+<img src="profit-scratch-review.webp" alt="Profit Scratch의 Impeccable review 과정에서 사용한 실제 로컬 QA 화면" width="1200" height="889" style="width:100%;height:auto;">
 
 이 점 때문에 저는 Impeccable을 **release authority가 아니라 quality signal**로 두는 게 맞다고 봅니다.
 

@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT Message Limits vs Codex Usage Limits (Plus, 2026)"
 date: 2026-10-05
-tags: ChatGPT, unlimited ChatGPT, ChatGPT text chats, Codex, Codex usage limits, Codex credits, AI coding, MCP
+tags: ["ChatGPT", "unlimited ChatGPT", "ChatGPT text chats", "Codex", "Codex usage limits", "Codex credits", "AI coding", "MCP"]
 permalink: /en-chatgpt-unlimited-text-vs-codex-limits/
 layout: default
 lang: en

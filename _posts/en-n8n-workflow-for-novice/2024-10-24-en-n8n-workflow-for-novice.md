@@ -5,13 +5,13 @@ description: n8n is a powerful workflow automation tool that allows you to easil
 
 date: 2024-10-24
 
-tags: n8n, LangChain, workflow, for novice, guide, framework, LLM, artificial intelligence
-
+tags: ["n8n", "LangChain", "workflow", "for novice", "guide", "framework", "LLM", "artificial intelligence"]
 permalink: /en-n8n-workflow-for-novice/
 
 layout: default
 legacy_asset_url: /posts/en-n8n-workflow-for-novice/
 lang: en
+image: /en-n8n-workflow-for-novice/l1-c4-nathans-workflow.png
 alternate_lang: ko
 alternate_url: /n8n-workflow-for-novice/
 ---

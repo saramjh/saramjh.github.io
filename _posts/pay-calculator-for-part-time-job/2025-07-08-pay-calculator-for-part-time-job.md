@@ -1,9 +1,11 @@
 ---
 title: "💰 시급이요 - 아르바이트 시급/근무/수입 계산기"
 date: 2025-07-08
-tags: wage, 시급, 아르바이트, 급여계산기
+tags: ["wage", "시급", "아르바이트", "급여계산기"]
 permalink: /pay-calculator-for-part-time-job/
 layout: default
+lang: ko
+image: /pay-calculator-for-part-time-job/Screenshot%202025-07-08%20at%2023.38.18.JPG
 legacy_asset_url: /posts/pay-calculator-for-part-time-job/
 ---
 

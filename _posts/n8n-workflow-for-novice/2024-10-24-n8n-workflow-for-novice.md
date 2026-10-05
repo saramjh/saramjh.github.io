@@ -5,13 +5,13 @@ description: n8n은 강력한 워크플로우 자동화 도구로, 다양한 애
 
 date: 2024-10-24
 
-tags: n8n, LangChain, workflow, for novice, guide, framework, LLM, artificial intelligence
-
+tags: ["n8n", "LangChain", "workflow", "for novice", "guide", "framework", "LLM", "artificial intelligence"]
 permalink: /n8n-workflow-for-novice/
 
 layout: default
 legacy_asset_url: /posts/n8n-workflow-for-novice/
 lang: ko
+image: /n8n-workflow-for-novice/l1-c4-nathans-workflow.png
 alternate_lang: en
 alternate_url: /en-n8n-workflow-for-novice/
 ---

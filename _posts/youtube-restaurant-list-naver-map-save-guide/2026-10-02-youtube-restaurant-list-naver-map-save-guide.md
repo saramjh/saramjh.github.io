@@ -1,9 +1,11 @@
 ---
 title: "유튜브 맛집 리스트 네이버 지도 일괄 저장 방법 (댓글 텍스트 추출·AI 자동화)"
 date: 2026-10-02
-tags: 유튜브맛집, 네이버지도, 네이버지도저장, 맛집리스트일괄등록, 카카오맵, AI에이전트, Playwright, 노코드자동화
+tags: ["유튜브맛집", "네이버지도", "네이버지도저장", "맛집리스트일괄등록", "카카오맵", "AI에이전트", "Playwright", "노코드자동화"]
 permalink: /youtube-restaurant-list-naver-map-save-guide/
 layout: default
+lang: ko
+image: /youtube-restaurant-list-naver-map-save-guide/001.png
 legacy_asset_url: /posts/youtube-restaurant-list-naver-map-save-guide/
 description: "성시경의 먹을텐데, 또간집, 백종원 유튜브 영상 더보기란이나 댓글에 있는 맛집 목록을 하나씩 검색하지 않고 네이버 지도에 한 번에 저장하는 실전 가이드. 비전공자도 그대로 따라 할 수 있는 초간단 AI 에이전트 지시법부터 개발자용 고속 파이프라인까지 정리합니다."
 excerpt: "유튜브 영상에 소개된 20개 맛집, 일일이 네이버 지도에 검색해서 저장하느라 지치셨나요? 텍스트 복사 한 번과 AI 에이전트 지시로 3분 만에 내 지도 폴더에 일괄 저장하는 방법을 소개합니다."
@@ -22,9 +24,9 @@ seo:
 canonical: /youtube-restaurant-list-naver-map-save-guide/
 ---
 
-### 유튜브 맛집을 지도에 저장할 때 겪는 4가지 핵심 문제
+## 유튜브 맛집을 지도에 저장할 때 겪는 4가지 핵심 문제
 
-<img src="001.png" alt="유튜브 맛집을 네이버 지도 상세 페이지에서 원클릭으로 저장하는 화면">
+<img src="001-720.webp" srcset="001-720.webp 720w, 001.webp 1426w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="유튜브 맛집을 네이버 지도 상세 페이지에서 원클릭으로 저장하는 화면" width="1426" height="2444" fetchpriority="high" loading="eager" decoding="async">
 
 성시경의 먹을텐데, 또간집, 백종원 등 유튜브 맛집 영상을 챙겨보면서 장소를 저장하려 할 때 다음과 같은 비효율과 한계를 겪어보셨을 겁니다:
 
@@ -39,7 +41,7 @@ canonical: /youtube-restaurant-list-naver-map-save-guide/
 
 ---
 
-### 💡 본 가이드에서 다루는 단계별 해결책 (User Flow)
+## 💡 본 가이드에서 다루는 단계별 해결책 (User Flow)
 
 이 글에서는 위 문제들을 완벽히 해결하여, **영상 링크 복사 한 번으로 3분 만에 내 네이버 지도 폴더에 모든 맛집을 일괄 등록하는 2단계 파이프라인**을 제공합니다:
 
@@ -50,7 +52,7 @@ canonical: /youtube-restaurant-list-naver-map-save-guide/
 
 ---
 
-### ⚡ 30초 퀵 스타트: 딱 이것만 따라 하세요 (No-Code)
+## ⚡ 30초 퀵 스타트: 딱 이것만 따라 하세요 (No-Code)
 
 요즘 많이 쓰시는 AI 코딩 도구(Cursor, Windsurf, Claude Code, VS Code Copilot)는 개발자 전유물이 아닙니다. **내 컴퓨터의 브라우저를 대신 조작해 주는 똑똑한 개인 비서**로 쓰면 일상의 노가다가 1분 만에 사라집니다.
 
@@ -130,7 +132,7 @@ canonical: /youtube-restaurant-list-naver-map-save-guide/
 
 엔지니어링 관점에서 이 작업이 어떻게 무결하게 동작하는지 내부 메커니즘을 짚어보겠습니다.
 
-<img src="002.png" alt="Playwright CDP와 고속 API를 결합한 터미널 실행 화면">
+<img src="002-720.webp" srcset="002-720.webp 720w, 002.webp 2140w" sizes="(max-width: 700px) calc(100vw - 40px), 660px" alt="Playwright CDP와 고속 API를 결합한 터미널 실행 화면" width="2140" height="2712" loading="lazy" decoding="async">
 
 ### 1. 유튜브 설명란·댓글 자동 크롤링 메커니즘
 영상 URL만 주어졌을 때 에이전트는 영상 페이지의 정적/동적 DOM을 통해 텍스트를 수집합니다:

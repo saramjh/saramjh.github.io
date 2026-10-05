@@ -12,6 +12,10 @@
       decoding="async"
     />
   </picture>
-  <h2 class="author-name">{{ site.author.name }}</h2>
+  {% if page.url == '/' %}
+  <h1 class="author-name">{{ site.author.name }}</h1>
+  {% else %}
+  <p class="author-name">{{ site.author.name }}</p>
+  {% endif %}
   <p class="author-bio">{{ site.author.bio }}</p>
 </div>

@@ -2,7 +2,7 @@
 title: "Running Several GitHub Pages Sites Solo: An Analytics Dilemma (Part 4 — Current State & Open Questions)"
 description: "The merge happened too recently to claim it 'worked.' Closing the series with the current data snapshot and the questions I still don't have answers to."
 date: 2026-09-18
-tags: GA4, Google Analytics, Search Console, Microsoft Clarity, GitHub Pages, SEO
+tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-4-open-en/
 layout: default
 lang: en

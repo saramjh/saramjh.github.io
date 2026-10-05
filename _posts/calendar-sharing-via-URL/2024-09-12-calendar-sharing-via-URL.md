@@ -2,9 +2,11 @@
 title: "메모를 남긴 달력을 URL로 공유하세요!"
 description: 작성한 메모를 포함한 달력 상태를 URL로 공유할 수 있습니다.
 date: 2024-09-12
-tags: utility, sharing via URL, calendar, memo
+tags: ["utility", "sharing via URL", "calendar", "memo"]
 permalink: /calendar-sharing-via-URL/
 layout: default
+lang: ko
+image: /calendar-sharing-via-URL/366762842-9ead0fd1-97c8-47e4-9743-111ec526303a.png
 legacy_asset_url: /posts/calendar-sharing-via-URL/
 ---
 

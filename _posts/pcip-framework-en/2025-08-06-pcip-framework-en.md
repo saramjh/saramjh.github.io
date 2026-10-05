@@ -2,7 +2,7 @@
 title: "PCIP Framework: How I Fixed AI Coding Assistants with Parenting Psychology"
 description: "Got tired of AI coding assistants being absolute garbage at understanding context, so I built a framework based on child psychology that actually works"
 date: 2025-08-06
-tags: systemprompt,system instruction, instructions, claude code, Gemini cli, cursor
+tags: ["systemprompt", "system instruction", "instructions", "claude code", "Gemini cli", "cursor"]
 permalink: /pcip-framework-en/
 layout: default
 legacy_asset_url: /posts/pcip-framework-en/
@@ -382,7 +382,7 @@ Bit slower at first but much faster overall
 
 ## Usage ##
 
-Apply the [SystemPromptEN.md](/https://github.com/saramjh/PCIP/blob/main/SystemPrompt.md) prompt as system prompt (instructions) and start coding.
+Apply the [SystemPromptEN.md](https://github.com/saramjh/PCIP/blob/main/SystemPrompt.md) prompt as system prompt (instructions) and start coding.
 
 In Cursor, use User Rules or Project Rules. If it seems like the AI doesn't get it, just paste the prompt directly and tell it to use it as system prompt.
 
