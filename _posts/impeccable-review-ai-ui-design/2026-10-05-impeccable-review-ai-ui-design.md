@@ -23,15 +23,6 @@ seo:
     - npx impeccable install
     - AI slop detector
     - Codex UI design
-faq:
-  - q: "Impeccable은 무엇을 하는 도구인가요?"
-    a: "AI 코딩 에이전트에 UI/UX 디자인 규칙과 명령 체계를 추가하고, HTML·CSS·JSX·TSX 등에서 반복적인 AI UI 반패턴을 deterministic rule로 검사하는 design skill/CLI입니다. 단순 이미지 생성기나 완전 자동 디자이너는 아닙니다."
-  - q: "Impeccable을 쓰면 AI가 만든 UI가 자동으로 좋아지나요?"
-    a: "자동으로 보장되지는 않습니다. 실제 사용에서는 critique가 제품 문제를 잘 드러냈고 detector가 일부 구현 반패턴을 잡았지만 false positive도 있었습니다. 프로젝트의 PRODUCT/DESIGN 규칙과 실제 브라우저 검증이 함께 있어야 효과가 좋았습니다."
-  - q: "Impeccable detector가 0이면 UI 출시 준비가 끝난 건가요?"
-    a: "아닙니다. Profit Scratch에서는 detector 0 이후에도 접근성, 실제 Shopify E2E, 테마·기기 검증과 제품 정책 blocker가 남아 있었습니다. Clean detector는 하나의 품질 신호이지 release approval이 아닙니다."
-  - q: "Impeccable은 어떻게 설치하나요?"
-    a: "공식 문서의 기본 설치는 프로젝트 루트에서 npx impeccable install을 실행한 뒤 사용하는 AI 코딩 도구에서 Impeccable을 초기화하는 방식입니다. 설치 방식과 호출 문법은 Codex, Claude Code, Cursor 등 도구에 따라 다를 수 있습니다."
 image: /impeccable-review-ai-ui-design/impeccable-review-og.png
 image_width: 1200
 image_height: 630

@@ -23,15 +23,6 @@ seo:
     - AI slop detector
     - Codex UI design
     - Claude Code design skill
-faq:
-  - q: "What does Impeccable actually do?"
-    a: "Impeccable adds UI/UX design guidance and named design workflows to AI coding agents, plus a deterministic detector for recurring frontend anti-patterns in HTML, CSS, JSX, TSX and related files. It is not simply an image generator or a fully autonomous designer."
-  - q: "Does Impeccable automatically make AI-generated UI good?"
-    a: "No. In my projects, critique exposed useful product and UX problems and the detector caught some implementation anti-patterns, but there were also false positives. It worked best when the project's own PRODUCT/DESIGN rules and browser QA remained authoritative."
-  - q: "If the Impeccable detector reports zero findings, is the UI release-ready?"
-    a: "No. Profit Scratch reached zero detector findings while accessibility, real Shopify E2E, theme/device validation and product-policy blockers still remained. A clean detector is one quality signal, not release approval."
-  - q: "How do you install Impeccable?"
-    a: "The official getting-started flow uses npx impeccable install from the project root, followed by initialization inside the supported coding tool. Invocation differs by harness; official docs currently show $impeccable for Codex and /impeccable for many other agents."
 image: /en-impeccable-review-ai-ui-design/impeccable-review-og.png
 image_width: 1200
 image_height: 630

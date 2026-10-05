@@ -25,17 +25,6 @@ seo:
     - cokacremote
     - MCP context
     - coding agent memory
-faq:
-  - q: "AI 코딩 에이전트는 왜 새 세션에서 이전 프로젝트 컨텍스트를 잊나요?"
-    a: "컨텍스트 윈도우는 현재 세션의 작업 메모리이고 새 세션에 자동으로 영구 이전되지 않기 때문입니다. 세션을 넘어 유지하려면 instruction file, checkpoint, persistent memory 같은 별도 저장·복구 경로가 필요합니다."
-  - q: "AGENTS.md나 CLAUDE.md만 있으면 세션 컨텍스트 유지가 해결되나요?"
-    a: "프로젝트의 반복 규칙과 명령에는 유용하지만 진행 중인 작업, 폐기한 접근, blocker, 검증 결과 같은 동적 상태까지 자동으로 최신화해 주는 것은 아닙니다. 규칙과 프로젝트 상태를 분리해 관리하는 편이 안전합니다."
-  - q: "Persistent memory와 context window는 같은 건가요?"
-    a: "아닙니다. Context window는 현재 추론에서 모델이 볼 수 있는 정보 범위이고, persistent memory는 세션 밖에 저장했다가 다음 세션에서 다시 가져오는 장기 상태입니다."
-  - q: "Serena나 claude-mem을 설치하면 새 AI 세션이 자동으로 이전 프로젝트를 기억하나요?"
-    a: "설치만으로는 보장되지 않습니다. 언제 저장하고 언제 읽으며 현재 코드와 과거 메모리가 충돌할 때 무엇을 우선할지 정하는 lifecycle이 필요합니다."
-  - q: "Ponytail은 프로젝트 메모리 도구인가요?"
-    a: "제가 쓰는 Ponytail은 YAGNI, 기존 코드 재사용, 최소 변경 같은 구현 정책 계층입니다. 프로젝트의 과거 상태를 기억하는 source of truth로 사용하지 않습니다."
 image: /ai-coding-context-continuity-cokacremote/context-continuity-og.png
 image_width: 1200
 image_height: 630

@@ -24,13 +24,6 @@ seo:
     - ChatGPT MCP local development
     - MCP Cloudflare Tunnel
     - ChatGPT local coding agent
-faq:
-  - q: "Can the ChatGPT web app read and edit files directly on my local Mac?"
-    a: "Yes, if you expose those capabilities through an authenticated MCP server. ChatGPT on the web does not simply connect to localhost, so the setup needs a reachable remote MCP endpoint or supported secure tunnel. In this setup, cokacremote exposes the local tools and Cloudflare Tunnel plus OAuth provides the connection."
-  - q: "Can ChatGPT run terminal commands, Git and tests through MCP?"
-    a: "Yes, when the MCP server exposes those tools and the connection is allowed to use them. This setup can execute shell commands, modify files, inspect Git, run builds and tests, and use browser automation on the local Mac."
-  - q: "Is a Cloudflare Quick Tunnel enough to make a powerful MCP server safe?"
-    a: "No. A tunnel provides connectivity, not authorization. A write-capable MCP server needs authentication and permission controls; this setup explicitly verifies that unauthenticated requests to /mcp are rejected."
 image: /en-chatgpt-mcp-local-development-setup/mcp-local-development-og.png
 image_width: 1200
 image_height: 630

@@ -25,17 +25,6 @@ seo:
     - cokacremote
     - MCP context
     - coding agent memory
-faq:
-  - q: "Why do AI coding agents lose project context between sessions?"
-    a: "A context window is working memory for the current run, not durable project state. A fresh session needs a separate path to reload rules, checkpoints, decisions and any persistent memory that should survive the previous session."
-  - q: "Is AGENTS.md or CLAUDE.md enough for cross-session context?"
-    a: "They are useful for durable instructions and project conventions, but they do not automatically track dynamic state such as the active task, rejected approaches, blockers, verification results and next actions."
-  - q: "Is persistent memory the same thing as a context window?"
-    a: "No. The context window is what the model can see during the current inference or session. Persistent memory is information stored outside that window and deliberately restored into a later session."
-  - q: "Does installing Serena or claude-mem automatically make new AI sessions remember a project?"
-    a: "No. You still need a lifecycle that decides when to capture state, when to retrieve it, and what wins if historical memory conflicts with the current code."
-  - q: "Is Ponytail a project-memory system?"
-    a: "Not in my setup. Ponytail provides implementation discipline such as YAGNI, reuse and minimum-diff rules. I do not use it as a source of project history."
 image: /en-ai-coding-context-continuity-cokacremote/context-continuity-og.png
 image_width: 1200
 image_height: 630

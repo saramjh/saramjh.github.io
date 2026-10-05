@@ -24,13 +24,6 @@ seo:
     - ChatGPT Mac 제어
     - ChatGPT 로컬 개발
     - MCP Cloudflare Tunnel
-faq:
-  - q: "웹 ChatGPT가 내 Mac의 로컬 파일을 직접 읽고 수정할 수 있나요?"
-    a: "가능합니다. 다만 ChatGPT 웹이 localhost에 직접 연결하는 구조는 아니므로, 접근 가능한 원격 MCP 엔드포인트와 인증이 필요합니다. 이 글의 구성에서는 cokacremote가 파일·쉘·Git 도구를 제공하고 Cloudflare Tunnel과 OAuth를 통해 ChatGPT에 연결합니다."
-  - q: "ChatGPT MCP로 터미널 명령, Git, 테스트까지 실행할 수 있나요?"
-    a: "MCP 서버가 해당 도구를 제공하고 권한이 허용되어 있다면 가능합니다. 이 글에서 사용하는 구성은 쉘 실행, 파일 수정, Git 확인, 빌드와 테스트, 브라우저 작업을 실제 로컬 Mac에서 수행합니다."
-  - q: "Cloudflare Quick Tunnel만 열면 안전한가요?"
-    a: "아닙니다. Tunnel은 연결 경로일 뿐 인증 자체를 대신하지 않습니다. 특히 쉘과 파일 쓰기 권한이 있는 MCP는 강한 권한을 가지므로 인증을 적용하고 익명 /mcp 요청이 차단되는지 검증해야 합니다."
 image: /chatgpt-mcp-local-development-setup/mcp-local-development-og.png
 image_width: 1200
 image_height: 630

@@ -21,17 +21,6 @@ seo:
     - Codex usage limits
     - Codex credits
     - ChatGPT vs Codex
-faq:
-  - q: "Are ordinary ChatGPT text chats really unlimited?"
-    a: "As of October 5, 2026, the pricing ladder shows unlimited everyday text chat under the personal plans, subject to abuse-prevention safeguards. Files, images, voice, advanced reasoning models and tools can have separate limits."
-  - q: "How many Codex messages do I get with ChatGPT Plus?"
-    a: "There is no single fixed or monthly count. OpenAI publishes estimated Plus ranges by model, while its current GPT-6 usage guidance describes those GPT-6-series ranges as local-message estimates within a five-hour window. Actual usage varies by workload, and weekly limits may also apply."
-  - q: "Do local Codex messages and cloud chats use separate limits?"
-    a: "No. OpenAI says local messages and cloud chats share your plan's usage allowance, and weekly limits may also apply."
-  - q: "If ChatGPT chats are unlimited, is Codex unlimited too?"
-    a: "No. Codex has a separate usage-limit and credit structure. Check the Codex usage dashboard or /status in Codex CLI for your current remaining allowance and reset timing."
-  - q: "Does unlimited chat mean one thread has unlimited context?"
-    a: "No. Message allowance and context length are different. Unlimited chat does not mean infinite memory in one thread."
 image: /en-chatgpt-unlimited-text-vs-codex-limits/chatgpt-vs-codex-og.png
 image_width: 1200
 image_height: 630

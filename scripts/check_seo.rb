@@ -24,6 +24,10 @@ source_root.glob('_posts/**/*.md').sort.each do |post|
 
   errors << "#{post}: explicit lang is required" if metadata['lang'].to_s.strip.empty?
 
+  if metadata.key?('faq') && metadata['faq_schema'] != true
+    errors << "#{post}: faq metadata is unused unless faq_schema is true"
+  end
+
   if metadata.key?('tags')
     tags = metadata['tags']
     errors << "#{post}: tags must be a YAML array" unless tags.is_a?(Array)
