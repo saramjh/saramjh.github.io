@@ -61,7 +61,7 @@ bundle exec ruby tests/post_assets_test.rb
 - `_site/`: 자동 생성 결과. 수정하거나 Git에 추가하지 않습니다.
 - `sitemap.xml`, `feed.xml`: 빌드 시 자동 생성. 루트에 수동 파일을 만들지 않습니다.
 - `_config.yml`: 사이트 공통 설정.
-- `_includes/adsense.html`: `google_adsense` 값이 있을 때만 AdSense 자동 광고 스크립트를 삽입합니다.
+- `_includes/adsense.html`: production 빌드에서 `google_adsense` 값이 있고 `ads: false`가 아닌 페이지에만 AdSense 자동 광고 스크립트를 삽입합니다. 로컬 개발 빌드는 실제 광고 요청을 보내지 않습니다.
 - `_includes/seo_schema.html`: 글에는 `BlogPosting`, 일반 페이지에는 `WebSite` JSON-LD를 삽입합니다.
 - `.github/workflows/pages.yml`: PR에서 빌드·검사, main에서 검사 후 배포.
 

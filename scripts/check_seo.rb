@@ -210,6 +210,7 @@ if error_file.file?
   error_robots = error_doc.at_css('meta[name="robots"]')&.[]('content').to_s.downcase
   errors << '404 page must contain exactly one H1' unless error_doc.css('h1').length == 1
   errors << '404 page must be noindex' unless error_robots.include?('noindex')
+  errors << '404 page must not load AdSense' if error_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || error_doc.at_css('meta[name="google-adsense-account"]')
 else
   errors << '404 page output missing'
 end

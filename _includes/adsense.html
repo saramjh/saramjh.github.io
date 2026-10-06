@@ -1,4 +1,4 @@
-{%- if site.google_adsense -%}
+{%- if site.google_adsense and jekyll.environment == 'production' and page.ads != false -%}
 <meta name="google-adsense-account" content="{{ site.google_adsense }}">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.google_adsense }}"
   crossorigin="anonymous"></script>
