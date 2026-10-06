@@ -212,7 +212,7 @@ if error_file.file?
   errors << '404 page must be noindex' unless error_robots.include?('noindex')
   errors << '404 page must not load AdSense' if error_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || error_doc.at_css('meta[name="google-adsense-account"]')
 
-  privacy_path = File.join(site_dir, 'privacy', 'index.html')
+  privacy_path = site_root.join('privacy', 'index.html')
   unless File.exist?(privacy_path)
     errors << 'privacy page is missing'
   else
