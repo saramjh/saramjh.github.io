@@ -211,6 +211,19 @@ if error_file.file?
   errors << '404 page must contain exactly one H1' unless error_doc.css('h1').length == 1
   errors << '404 page must be noindex' unless error_robots.include?('noindex')
   errors << '404 page must not load AdSense' if error_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || error_doc.at_css('meta[name="google-adsense-account"]')
+
+  privacy_path = File.join(site_dir, 'privacy', 'index.html')
+  unless File.exist?(privacy_path)
+    errors << 'privacy page is missing'
+  else
+    privacy_doc = Nokogiri::HTML(File.read(privacy_path))
+    errors << 'privacy page must contain exactly one H1' unless privacy_doc.css('h1').length == 1
+    errors << 'privacy page must not load AdSense' if privacy_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || privacy_doc.at_css('meta[name="google-adsense-account"]')
+    errors << 'privacy page must disclose Google AdSense' unless privacy_doc.text.include?('Google AdSense')
+    errors << 'privacy page must disclose Google Analytics' unless privacy_doc.text.include?('Google Analytics')
+    errors << 'privacy page must disclose Microsoft Clarity' unless privacy_doc.text.include?('Microsoft Clarity')
+    errors << 'privacy page must disclose Disqus' unless privacy_doc.text.include?('Disqus')
+  end
 else
   errors << '404 page output missing'
 end
