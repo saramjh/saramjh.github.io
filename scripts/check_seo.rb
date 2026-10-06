@@ -219,8 +219,19 @@ if error_file.file?
     privacy_doc = Nokogiri::HTML(File.read(privacy_path))
     errors << 'privacy page must contain exactly one H1' unless privacy_doc.css('h1').length == 1
     errors << 'privacy page must not load AdSense' if privacy_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || privacy_doc.at_css('meta[name="google-adsense-account"]')
-    errors << 'privacy page must not load Google Analytics' if privacy_doc.at_css('script[src*="googletagmanager.com/gtag/js"]') || privacy_doc.text.include?('G-4DYFKSNFBG')
-    errors << 'privacy page must not load Microsoft Clarity' if privacy_doc.at_css('script[src*="clarity.ms"]') || privacy_doc.text.include?('yiij6vbnl0')
+    privacy_scripts = privacy_doc.css('script')
+    privacy_loads_ga = privacy_scripts.any? do |script|
+      script['src']&.include?('googletagmanager.com/gtag/js') ||
+        script.text.include?("gtag('config'") ||
+        script.text.include?('G-4DYFKSNFBG')
+    end
+    privacy_loads_clarity = privacy_scripts.any? do |script|
+      script['src']&.include?('clarity.ms') ||
+        script.text.include?('clarity.ms/tag') ||
+        script.text.include?('yiij6vbnl0')
+    end
+    errors << 'privacy page must not load Google Analytics' if privacy_loads_ga
+    errors << 'privacy page must not load Microsoft Clarity' if privacy_loads_clarity
     errors << 'privacy page must disclose Google AdSense' unless privacy_doc.text.include?('Google AdSense')
     errors << 'privacy page must disclose Google Analytics' unless privacy_doc.text.include?('Google Analytics')
     errors << 'privacy page must disclose Microsoft Clarity' unless privacy_doc.text.include?('Microsoft Clarity')
