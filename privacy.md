@@ -6,6 +6,7 @@ lang: en
 description: "Privacy information for DevTestudinidae, including analytics, advertising, comments, local storage, and contact."
 comments: false
 ads: false
+tracking: false
 ---
 
 Last updated: **October 6, 2026**

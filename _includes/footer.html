@@ -4,7 +4,7 @@
   <span class="footer_item">&copy; {{ site.time | date: "%Y" }} {{site.author.name}}</span>
 </footer>
 <script src="/assets/js/main.js" defer="defer"></script>
-{%- if site.google_analytics -%}
+{%- if site.google_analytics and page.tracking != false -%}
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -33,6 +33,7 @@
 </script>
 {%- endif -%}
 
+{%- if page.tracking != false -%}
 <script>
   (function (w, d, name, id) {
     w[name] = w[name] || function () {
@@ -55,6 +56,7 @@
     }
   })(window, document, "clarity", "yiij6vbnl0");
 </script>
+{%- endif -%}
 {%- if page.url == '/archive/' -%}
 <script src="/assets/js/search.min.js"></script>
 <script>
