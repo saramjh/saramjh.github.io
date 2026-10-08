@@ -245,6 +245,13 @@
   }
 }
 
+// In-article display ads use publisher-controlled placements, never the author header.
+.blog-inline-ad {
+  width: 100%;
+  max-width: 100%;
+  margin: 2.5rem auto;
+}
+
 // Content
 .posts-item-note {
   font-size: $base-font-size;

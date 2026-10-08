@@ -34,7 +34,23 @@ layout: compress
       <h1 class="header-title">{{ page.title | escape }}</h1>
       {% endunless %}
       {% endif %}
+      {% if page.date and page.redirect_to == nil and page.ads != false and site.google_adsense and jekyll.environment == 'production' %}
+      {% assign post_sections = content | split: '</p>' %}
+      {% assign paragraph_count = post_sections.size | minus: 1 %}
+      {% for section in post_sections %}
+      {{ section }}{% unless forloop.last %}</p>{% endunless %}
+      {% if forloop.index == 4 and paragraph_count >= 6 %}
+      {% include article_ad.html slot='4504279768' %}
+      {% elsif forloop.index == 12 and paragraph_count >= 20 %}
+      {% include article_ad.html slot='8251953086' %}
+      {% endif %}
+      {% endfor %}
+      {% if paragraph_count < 6 %}
+      {% include article_ad.html slot='4504279768' %}
+      {% endif %}
+      {% else %}
       {{ content }}
+      {% endif %}
       {% unless page.url == '/' or page.url == '/about/' or page.url == '/archive/' %}
       {% include related_posts.html %}
       <div id="disqus">

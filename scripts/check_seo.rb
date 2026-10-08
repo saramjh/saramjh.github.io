@@ -76,6 +76,17 @@ posts.each do |permalink, metadata|
     errors << "#{permalink}: missing conditional privacy choices link" unless doc.at_css('a#privacy-choices[hidden][href="#"]')
     privacy_api = doc.css('script').any? { |script| script.text.include?('showRevocationMessage') && script.text.include?('CONSENT_API_READY') }
     errors << "#{permalink}: consent revocation API is missing" unless privacy_api
+
+    if metadata['layout'] == 'default'
+      units = doc.css('main aside.blog-inline-ad ins.adsbygoogle')
+      slots = units.map { |unit| unit['data-ad-slot'] }
+      errors << "#{permalink}: expected primary in-article ad unit" unless slots.count('4504279768') == 1
+      errors << "#{permalink}: unexpected in-article ad count" unless (1..2).cover?(slots.length)
+      errors << "#{permalink}: unknown in-article ad slot" unless (slots - %w[4504279768 8251953086]).empty?
+      errors << "#{permalink}: author profile must not contain ad units" if doc.at_css('.author ins.adsbygoogle')
+      first_elements = doc.css('main h1, main aside.blog-inline-ad')
+      errors << "#{permalink}: first in-article ad must follow H1" unless first_elements.first&.name == 'h1'
+    end
   end
 
   expected_canonical = "https://saramjh.github.io#{permalink}"

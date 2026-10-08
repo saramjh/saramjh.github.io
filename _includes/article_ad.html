@@ -1,0 +1,13 @@
+{%- if site.google_adsense and jekyll.environment == 'production' and page.ads != false and page.date and page.redirect_to == nil -%}
+<aside class="blog-inline-ad" aria-label="Advertisement">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="{{ site.google_adsense }}"
+       data-ad-slot="{{ include.slot }}"
+       data-ad-format="auto"
+       data-full-width-responsive="false"></ins>
+</aside>
+<script>
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+{%- endif -%}
