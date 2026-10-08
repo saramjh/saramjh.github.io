@@ -15,7 +15,7 @@ alternate_url: /gh-pages-analytics-notes-1-problem-kr/
 </p>
 
 <p style="background: rgba(120, 90, 0, 0.08); border-left: 4px solid #b8860b; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.9rem;">
-  📚 <strong>Series</strong> — Part 1 <strong>The Problem</strong> (this post) · <a href="/gh-pages-analytics-notes-2-reasoning-en/">Part 2: Reasoning</a> · <a href="/gh-pages-analytics-notes-3-decision-en/">Part 3: The Decision</a> · <a href="/gh-pages-analytics-notes-4-open-en/">Part 4: Current State &amp; Open Questions</a>
+  📚 <strong>Series</strong> — Part 1 <strong>The Problem</strong> (this post) · <a href="/gh-pages-analytics-notes-2-reasoning-en/">Part 2: Reasoning</a> · <a href="/gh-pages-analytics-notes-3-decision-en/">Part 3: The Decision</a> · <a href="/gh-pages-analytics-notes-4-open-en/">Part 4: Current State &amp; Open Questions</a> · <a href="/gh-pages-analytics-notes-5-followup-en/">Part 5: After a Naver #2 Placement and a Traffic Spike</a>
 </p>
 
 ## This is a record of the deliberation, not a proven playbook

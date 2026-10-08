@@ -14,7 +14,13 @@ image_height: 816
 published: true
 ---
 
-[English version](/gh-pages-analytics-notes-5-followup-en/) · [1편: 문제 정의](/gh-pages-analytics-notes-1-problem-kr/) · [2편: 근거 탐색](/gh-pages-analytics-notes-2-reasoning-kr/) · [3편: 결정과 적용](/gh-pages-analytics-notes-3-decision-kr/) · [4편: 당시 상태와 열린 질문](/gh-pages-analytics-notes-4-open-kr/)
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 16px; border-radius: 4px; font-size: 0.95rem;">
+  🌐 <strong>English Edition available:</strong> Read the English version at <a href="/gh-pages-analytics-notes-5-followup-en/"><strong>Analytics Notes (English Edition)</strong></a>.
+</p>
+
+<p style="background: rgba(120, 90, 0, 0.08); border-left: 4px solid #b8860b; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.9rem;">
+  📚 <strong>시리즈 목차</strong> — <a href="/gh-pages-analytics-notes-1-problem-kr/">1편 문제 정의</a> · <a href="/gh-pages-analytics-notes-2-reasoning-kr/">2편 근거 탐색</a> · <a href="/gh-pages-analytics-notes-3-decision-kr/">3편 결정과 적용</a> · <a href="/gh-pages-analytics-notes-4-open-kr/">4편 지금 상태와 열린 질문</a> · 5편 <strong>네이버 2위와 트래픽 증가 이후</strong> (현재 글)
+</p>
 
 9월 18일, 혼자 여러 GitHub Pages 프로젝트를 운영하면서 생긴 애널리틱스 고민을 썼습니다. GA4 속성을 프로젝트마다 나눌지, Search Console은 어디까지 묶어서 볼지, 블로그에서 도구로 넘어가는 흐름을 어떻게 확인할지가 당시의 질문이었습니다.
 
@@ -128,3 +134,5 @@ Search Console에서는 새 글 일부가 아직 Google에 발견되지 않은 �
 다음 기록에서는 네이버 순위가 유지되는지, 검색에서 온 사람이 관상체크를 실제로 사용하는지, 블로그의 새 글이 검색 유입을 만드는지, KoreAves의 유입이 기록·출처 탐색으로 이어지는지를 보고 싶습니다.
 
 9월에는 측정 도구를 어디에 붙일지가 고민이었습니다. 지금은 들어오기 시작한 방문을 어떻게 읽고, 어디에 시간을 더 쓸지가 고민입니다. 아직 성공 공식이라고 부를 수는 없지만, 다시 들여다볼 이유가 생겼다는 점은 꽤 기쁩니다.
+
+← [4편: 지금 상태와 열린 질문 다시 보기](/gh-pages-analytics-notes-4-open-kr/)

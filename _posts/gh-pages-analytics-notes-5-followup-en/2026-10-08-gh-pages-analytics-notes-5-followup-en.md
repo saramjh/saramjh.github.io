@@ -14,7 +14,13 @@ image_height: 816
 published: true
 ---
 
-[한국어 글](/gh-pages-analytics-notes-5-followup-kr/) · [Part 1: The problem](/gh-pages-analytics-notes-1-problem-en/) · [Part 2: The reasoning](/gh-pages-analytics-notes-2-reasoning-en/) · [Part 3: The decision](/gh-pages-analytics-notes-3-decision-en/) · [Part 4: The earlier snapshot](/gh-pages-analytics-notes-4-open-en/)
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 16px; border-radius: 4px; font-size: 0.95rem;">
+  🌐 <strong>한국어 버전:</strong> Read the Korean version at <a href="/gh-pages-analytics-notes-5-followup-kr/"><strong>애널리틱스 고민 노트 (한국어)</strong></a>.
+</p>
+
+<p style="background: rgba(120, 90, 0, 0.08); border-left: 4px solid #b8860b; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.9rem;">
+  📚 <strong>Series</strong> — <a href="/gh-pages-analytics-notes-1-problem-en/">Part 1: The Problem</a> · <a href="/gh-pages-analytics-notes-2-reasoning-en/">Part 2: Reasoning</a> · <a href="/gh-pages-analytics-notes-3-decision-en/">Part 3: The Decision</a> · <a href="/gh-pages-analytics-notes-4-open-en/">Part 4: Current State &amp; Open Questions</a> · Part 5 <strong>After a Naver #2 Placement and a Traffic Spike</strong> (this post)
+</p>
 
 On September 18, I wrote about the analytics questions that appeared as I started running several GitHub Pages projects on my own. Should each tool have its own GA4 property? How much should Search Console consolidate? How could I see people moving from a blog post to the tool it described?
 
@@ -128,3 +134,5 @@ The Naver placement and KoreAves traffic increase happened while these changes w
 For the next update, I want to see whether the Naver position persists, whether search visitors actually use RichChecker, whether new blog posts attract search traffic, and whether KoreAves visits lead to exploration of records and sources.
 
 In September, I was asking where to place the measurement tools. Now I am asking how to interpret the visits arriving and where to spend more time. I do not have a success formula yet, but I am glad there is something new to examine.
+
+← [Back to Part 4: Current State & Open Questions](/gh-pages-analytics-notes-4-open-en/)

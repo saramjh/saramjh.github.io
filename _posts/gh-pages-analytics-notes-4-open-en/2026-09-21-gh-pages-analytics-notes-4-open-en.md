@@ -15,7 +15,7 @@ alternate_url: /gh-pages-analytics-notes-4-open-kr/
 </p>
 
 <p style="background: rgba(120, 90, 0, 0.08); border-left: 4px solid #b8860b; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.9rem;">
-  📚 <strong>Series</strong> — <a href="/gh-pages-analytics-notes-1-problem-en/">Part 1: The Problem</a> · <a href="/gh-pages-analytics-notes-2-reasoning-en/">Part 2: Reasoning</a> · <a href="/gh-pages-analytics-notes-3-decision-en/">Part 3: The Decision</a> · Part 4 <strong>Current State &amp; Open Questions</strong> (this post)
+  📚 <strong>Series</strong> — <a href="/gh-pages-analytics-notes-1-problem-en/">Part 1: The Problem</a> · <a href="/gh-pages-analytics-notes-2-reasoning-en/">Part 2: Reasoning</a> · <a href="/gh-pages-analytics-notes-3-decision-en/">Part 3: The Decision</a> · Part 4 <strong>Current State &amp; Open Questions</strong> (this post) · <a href="/gh-pages-analytics-notes-5-followup-en/">Part 5: After a Naver #2 Placement and a Traffic Spike</a>
 </p>
 
 ## To be clear upfront: this is not a validation
@@ -52,3 +52,5 @@ If you're running several GitHub Pages project pages without custom domains, at 
 This series doesn't hand you a definitive answer, but I think those three questions are worth checking for yourself regardless. If traffic grows or I learn something that changes the picture, I'll keep adding to this record.
 
 ← [Back to Part 1](/gh-pages-analytics-notes-1-problem-en/)
+
+→ [Continue to Part 5: After a Naver #2 Placement and a Traffic Spike](/gh-pages-analytics-notes-5-followup-en/)

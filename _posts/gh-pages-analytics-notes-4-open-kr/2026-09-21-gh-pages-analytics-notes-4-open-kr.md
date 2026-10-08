@@ -15,7 +15,7 @@ alternate_url: /gh-pages-analytics-notes-4-open-en/
 </p>
 
 <p style="background: rgba(120, 90, 0, 0.08); border-left: 4px solid #b8860b; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.9rem;">
-  📚 <strong>시리즈 목차</strong> — <a href="/gh-pages-analytics-notes-1-problem-kr/">1편 문제 정의</a> · <a href="/gh-pages-analytics-notes-2-reasoning-kr/">2편 근거 탐색</a> · <a href="/gh-pages-analytics-notes-3-decision-kr/">3편 결정과 적용</a> · 4편 <strong>지금 상태와 열린 질문</strong> (현재 글)
+  📚 <strong>시리즈 목차</strong> — <a href="/gh-pages-analytics-notes-1-problem-kr/">1편 문제 정의</a> · <a href="/gh-pages-analytics-notes-2-reasoning-kr/">2편 근거 탐색</a> · <a href="/gh-pages-analytics-notes-3-decision-kr/">3편 결정과 적용</a> · 4편 <strong>지금 상태와 열린 질문</strong> (현재 글) · <a href="/gh-pages-analytics-notes-5-followup-kr/">5편 네이버 2위와 트래픽 증가 이후</a>
 </p>
 
 ## 먼저 분명히 할 것: 이건 "효과 검증"이 아닙니다
@@ -52,3 +52,5 @@ alternate_url: /gh-pages-analytics-notes-4-open-en/
 이 시리즈가 정답을 제시하지는 못했지만, 적어도 이 세 가지 질문 자체는 확인해볼 가치가 있다고 생각합니다. 저도 트래픽이 늘거나 새로운 사실을 알게 되면, 이 시리즈에 이어서 다시 기록을 남기겠습니다.
 
 ← [1편부터 다시 보기](/gh-pages-analytics-notes-1-problem-kr/)
+
+→ [5편: 네이버 2위와 트래픽 증가 이후로 이어집니다](/gh-pages-analytics-notes-5-followup-kr/)

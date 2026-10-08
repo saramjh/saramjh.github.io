@@ -15,7 +15,7 @@ alternate_url: /gh-pages-analytics-notes-1-problem-en/
 </p>
 
 <p style="background: rgba(120, 90, 0, 0.08); border-left: 4px solid #b8860b; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.9rem;">
-  📚 <strong>시리즈 목차</strong> — 1편 <strong>문제 정의</strong> (현재 글) · <a href="/gh-pages-analytics-notes-2-reasoning-kr/">2편 근거 탐색</a> · <a href="/gh-pages-analytics-notes-3-decision-kr/">3편 결정과 적용</a> · <a href="/gh-pages-analytics-notes-4-open-kr/">4편 지금 상태와 열린 질문</a>
+  📚 <strong>시리즈 목차</strong> — 1편 <strong>문제 정의</strong> (현재 글) · <a href="/gh-pages-analytics-notes-2-reasoning-kr/">2편 근거 탐색</a> · <a href="/gh-pages-analytics-notes-3-decision-kr/">3편 결정과 적용</a> · <a href="/gh-pages-analytics-notes-4-open-kr/">4편 지금 상태와 열린 질문</a> · <a href="/gh-pages-analytics-notes-5-followup-kr/">5편 네이버 2위와 트래픽 증가 이후</a>
 </p>
 
 ## 이건 "노하우 공유"가 아니라 "고민 기록"입니다
