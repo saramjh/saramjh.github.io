@@ -3,6 +3,7 @@ title: About DevTestudinidae
 permalink: /about/
 layout: page
 lang: en
+ads: false
 description: "About DevTestudinidae, an independent developer documenting AI-assisted development, automation, troubleshooting, and small web tools through reproducible experiments."
 comments: false
 ---

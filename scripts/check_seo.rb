@@ -10,6 +10,10 @@ source_root = Pathname.new(File.expand_path('..', __dir__))
 abort "Build directory missing: #{site_root}" unless site_root.directory?
 
 errors = []
+adsense_present = lambda do |doc|
+  doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') ||
+    doc.at_css('meta[name="google-adsense-account"]')
+end
 posts = {}
 strict_heading_since = Date.new(2026, 10, 1)
 
@@ -65,6 +69,10 @@ posts.each do |permalink, metadata|
 
   if metadata['redirect_to']
     next
+  end
+
+  if metadata['ads'] != false && !adsense_present.call(doc)
+    errors << "#{permalink}: production post must retain AdSense"
   end
 
   expected_canonical = "https://saramjh.github.io#{permalink}"
@@ -162,6 +170,7 @@ end
 
 home = Nokogiri::HTML(site_root.join('index.html').read)
 errors << 'Homepage must contain exactly one H1' unless home.css('h1').length == 1
+errors << 'Homepage must not load AdSense' if adsense_present.call(home)
 errors << 'Tags page must be linked from primary navigation' unless home.at_css('nav a[href="/tags/"]')
 
 theme_control = home.at_css('#mode')
@@ -199,6 +208,7 @@ end
   if file.file?
     page_doc = Nokogiri::HTML(file.read)
     errors << "#{label} must contain exactly one H1" unless page_doc.css('h1').length == 1
+    errors << "#{label} must not load AdSense" if adsense_present.call(page_doc)
   else
     errors << "#{label} output missing"
   end
@@ -210,7 +220,7 @@ if error_file.file?
   error_robots = error_doc.at_css('meta[name="robots"]')&.[]('content').to_s.downcase
   errors << '404 page must contain exactly one H1' unless error_doc.css('h1').length == 1
   errors << '404 page must be noindex' unless error_robots.include?('noindex')
-  errors << '404 page must not load AdSense' if error_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || error_doc.at_css('meta[name="google-adsense-account"]')
+  errors << '404 page must not load AdSense' if adsense_present.call(error_doc)
 
   privacy_path = site_root.join('privacy', 'index.html')
   unless File.exist?(privacy_path)
@@ -218,7 +228,7 @@ if error_file.file?
   else
     privacy_doc = Nokogiri::HTML(File.read(privacy_path))
     errors << 'privacy page must contain exactly one H1' unless privacy_doc.css('h1').length == 1
-    errors << 'privacy page must not load AdSense' if privacy_doc.at_css('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]') || privacy_doc.at_css('meta[name="google-adsense-account"]')
+    errors << 'privacy page must not load AdSense' if adsense_present.call(privacy_doc)
     privacy_scripts = privacy_doc.css('script')
     privacy_loads_ga = privacy_scripts.any? do |script|
       script['src']&.include?('googletagmanager.com/gtag/js') ||
