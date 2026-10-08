@@ -1,0 +1,163 @@
+{
+  "recorded_at_kst": "2026-10-08T12:50:20+09:00",
+  "cloudflare": {
+    "source": "Cloudflare Web Analytics / rumPageloadEventsAdaptiveGroups",
+    "filter": "bot=0; not classified as bot, not unique human users",
+    "intervals_utc": [
+      [
+        "oct5",
+        "2026-10-04T15:00:00Z",
+        "2026-10-05T15:00:00Z"
+      ],
+      [
+        "oct6",
+        "2026-10-05T15:00:00Z",
+        "2026-10-06T15:00:00Z"
+      ],
+      [
+        "oct7",
+        "2026-10-06T15:00:00Z",
+        "2026-10-07T15:00:00Z"
+      ],
+      [
+        "oct8_partial",
+        "2026-10-07T15:00:00Z",
+        "2026-10-08T03:50:20Z"
+      ]
+    ],
+    "daily_pageviews": [
+      65,
+      343,
+      132,
+      40
+    ],
+    "daily_visits": [
+      54,
+      104,
+      95,
+      28
+    ],
+    "total_pageviews": 580,
+    "total_visits": 281,
+    "final_day_partial": true
+  },
+  "blog_ga4": {
+    "timezone": "America/Los_Angeles",
+    "date_ranges": [
+      {
+        "startDate": "2026-09-12",
+        "endDate": "2026-09-18",
+        "name": "around_original_post"
+      },
+      {
+        "startDate": "2026-09-30",
+        "endDate": "2026-10-06",
+        "name": "recent_complete_week"
+      }
+    ],
+    "metrics": [
+      "screenPageViews",
+      "activeUsers",
+      "sessions"
+    ],
+    "values": {
+      "around_original_post": [
+        196,
+        99,
+        105
+      ],
+      "recent_complete_week": [
+        122,
+        114,
+        114
+      ]
+    },
+    "dimension_filter": {
+      "andGroup": {
+        "expressions": [
+          {
+            "filter": {
+              "fieldName": "hostName",
+              "stringFilter": {
+                "matchType": "EXACT",
+                "value": "saramjh.github.io"
+              }
+            }
+          },
+          {
+            "filter": {
+              "fieldName": "pagePath",
+              "inListFilter": {
+                "values": [
+                  "/",
+                  "/about/",
+                  "/ai-coding-context-continuity-cokacremote/",
+                  "/archive/",
+                  "/asin-code-link-generator/",
+                  "/billionaire-lookalike-test/",
+                  "/calendar-sharing-via-URL/",
+                  "/chatgpt-mcp-local-development-setup/",
+                  "/chatgpt-unlimited-text-vs-codex-limits/",
+                  "/dataset-for-fine-tuning-editor/",
+                  "/dieter-rams-style-calculator/",
+                  "/en-ai-coding-context-continuity-cokacremote/",
+                  "/en-chatgpt-mcp-local-development-setup/",
+                  "/en-chatgpt-unlimited-text-vs-codex-limits/",
+                  "/en-epson-waste-ink-pad-reset-without-key/",
+                  "/en-impeccable-review-ai-ui-design/",
+                  "/en-logi-option-infinite-loading-solution/",
+                  "/en-logi-option-infinite-loading/",
+                  "/en-n8n-workflow-for-novice/",
+                  "/english-cefr-b-level-test/",
+                  "/epson-waste-ink-pad-reset-without-key/",
+                  "/gh-pages-analytics-notes-1-problem-en/",
+                  "/gh-pages-analytics-notes-1-problem-kr/",
+                  "/gh-pages-analytics-notes-2-reasoning-en/",
+                  "/gh-pages-analytics-notes-2-reasoning-kr/",
+                  "/gh-pages-analytics-notes-3-decision-en/",
+                  "/gh-pages-analytics-notes-3-decision-kr/",
+                  "/gh-pages-analytics-notes-4-open-en/",
+                  "/gh-pages-analytics-notes-4-open-kr/",
+                  "/impeccable-review-ai-ui-design/",
+                  "/kakaotalk-shorts-autoplay-adblock-guide/",
+                  "/kr-logi-option-infinite-loading-solution/",
+                  "/kr-logi-option-infinite-loading/",
+                  "/kr-macbook-external-monitor-flickering-solution/",
+                  "/macbook-external-monitor-flickering-solution/",
+                  "/memo-via-url/",
+                  "/n8n-workflow-for-novice/",
+                  "/naver-map-save-list-bulk-reorganize-guide/",
+                  "/online-image-resizer/",
+                  "/outlier-dimension-rating-counter/",
+                  "/pay-calculator-for-part-time-job/",
+                  "/pcip-framework-en/",
+                  "/pcip-framework-kr/",
+                  "/pomodoro-timer-en/",
+                  "/pomodoro-timer-kr/",
+                  "/privacy/",
+                  "/recipe-scaling-application/",
+                  "/rich-face-test/",
+                  "/rich-tester/",
+                  "/scratch-lottery-simulation/",
+                  "/screenshot-painter/",
+                  "/space-atlas-student-en/",
+                  "/space-atlas-student/",
+                  "/squircle-simulator/",
+                  "/tags/",
+                  "/youtube-error-code-15/",
+                  "/youtube-restaurant-list-naver-map-save-guide/"
+                ],
+                "caseSensitive": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "screenshots": {
+    "naver": "2026-10-08; query 부자관상; standalone website-result group",
+    "cloudflare": "2026-10-08; fixed interval 2026-10-05 00:00 to 2026-10-08 12:50 GMT+9; exclude bots Yes",
+    "ga4": "2026-10-08; 2026-09-10 through 2026-10-07; ALL USERS/shared property, not blog-only"
+  }
+}
