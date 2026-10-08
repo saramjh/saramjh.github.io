@@ -1,8 +1,40 @@
 <footer class="footer">
   <a class="footer_item" href="/feed.xml">rss</a>
   <a class="footer_item" href="/privacy/">privacy</a>
+  {%- if site.google_adsense and jekyll.environment == 'production' and page.ads != false and page.date and page.redirect_to == nil %}
+  <a class="footer_item" href="#" id="privacy-choices" hidden>privacy choices</a>
+  {%- endif %}
   <span class="footer_item">&copy; {{ site.time | date: "%Y" }} {{site.author.name}}</span>
 </footer>
+{%- if site.google_adsense and jekyll.environment == 'production' and page.ads != false and page.date and page.redirect_to == nil %}
+<script>
+  (function () {
+    var link = document.getElementById("privacy-choices");
+    if (!link) return;
+
+    window.googlefc = window.googlefc || {};
+    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+    window.googlefc.callbackQueue.push({
+      CONSENT_API_READY: function () {
+        if (typeof window.__tcfapi !== "function") return;
+        window.__tcfapi("addEventListener", 0, function (tcData, success) {
+          if (success && tcData && tcData.gdprApplies &&
+              typeof window.googlefc.showRevocationMessage === "function") {
+            link.hidden = false;
+          }
+        });
+      }
+    });
+
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (typeof window.googlefc.showRevocationMessage === "function") {
+        window.googlefc.showRevocationMessage();
+      }
+    });
+  })();
+</script>
+{%- endif %}
 <script src="/assets/js/main.js" defer="defer"></script>
 {%- if site.google_analytics and page.tracking != false -%}
 <script>

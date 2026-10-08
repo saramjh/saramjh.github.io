@@ -9,7 +9,7 @@ ads: false
 tracking: false
 ---
 
-Last updated: **October 6, 2026**
+Last updated: **October 8, 2026**
 
 This page explains the third-party services used by **DevTestudinidae** (saramjh.github.io) and the information those services may process when you use the root blog.
 
@@ -51,7 +51,9 @@ Third-party services listed above may use cookies or other browser storage accor
 
 ## Advertising and consent choices
 
-Where required, Google may present privacy or consent controls for advertising. Available controls depend on your region and the Google consent configuration active for this site.
+For visitors in the EEA, UK, and Switzerland, Google's Privacy & messaging system provides advertising consent choices, including **Consent**, **Do not consent**, and **Manage options**. The message appears where the regional rules apply, on pages that load AdSense.
+
+To change a previous advertising-consent decision, use **privacy choices** in the footer of an advertising-enabled blog post. This link appears when Google's consent API confirms that European regulations apply to your visit. This policy page itself does not load AdSense or analytics scripts.
 
 You can also manage or delete cookies and site storage using your browser settings. Blocking or deleting storage may affect analytics, advertising, comments, or saved site preferences.
 

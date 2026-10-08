@@ -71,8 +71,11 @@ posts.each do |permalink, metadata|
     next
   end
 
-  if metadata['ads'] != false && !adsense_present.call(doc)
-    errors << "#{permalink}: production post must retain AdSense"
+  if metadata['ads'] != false
+    errors << "#{permalink}: production post must retain AdSense" unless adsense_present.call(doc)
+    errors << "#{permalink}: missing conditional privacy choices link" unless doc.at_css('a#privacy-choices[hidden][href="#"]')
+    privacy_api = doc.css('script').any? { |script| script.text.include?('showRevocationMessage') && script.text.include?('CONSENT_API_READY') }
+    errors << "#{permalink}: consent revocation API is missing" unless privacy_api
   end
 
   expected_canonical = "https://saramjh.github.io#{permalink}"
@@ -171,6 +174,7 @@ end
 home = Nokogiri::HTML(site_root.join('index.html').read)
 errors << 'Homepage must contain exactly one H1' unless home.css('h1').length == 1
 errors << 'Homepage must not load AdSense' if adsense_present.call(home)
+errors << 'Homepage must not expose privacy choices without AdSense' if home.at_css('#privacy-choices')
 errors << 'Tags page must be linked from primary navigation' unless home.at_css('nav a[href="/tags/"]')
 
 theme_control = home.at_css('#mode')
@@ -229,6 +233,7 @@ if error_file.file?
     privacy_doc = Nokogiri::HTML(File.read(privacy_path))
     errors << 'privacy page must contain exactly one H1' unless privacy_doc.css('h1').length == 1
     errors << 'privacy page must not load AdSense' if adsense_present.call(privacy_doc)
+    errors << 'privacy page must not load consent controls' if privacy_doc.at_css('#privacy-choices')
     privacy_scripts = privacy_doc.css('script')
     privacy_loads_ga = privacy_scripts.any? do |script|
       script['src']&.include?('googletagmanager.com/gtag/js') ||
