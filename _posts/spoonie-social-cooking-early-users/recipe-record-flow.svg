@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+<title id="title">Recipe와 Recipeed의 참조 관계</title>
+<desc id="desc">공개된 원본 레시피를 따라 요리한 경험이 새 Recipeed 기록으로 남고, 그 기록이 원본의 출처 관계에 연결되는 개념도입니다.</desc>
+<rect width="1200" height="400" rx="22" fill="#1f2326"/>
+<text x="58" y="68" font-family="Apple SD Gothic Neo,Arial,sans-serif" font-size="23" font-weight="700" fill="#ffa56b">요리 경험을 원본과 연결하는 방식</text>
+<g font-family="Apple SD Gothic Neo,Arial,sans-serif" text-anchor="middle">
+<rect x="50" y="126" width="300" height="142" rx="15" fill="#353b40" stroke="#697175"/>
+<text x="200" y="179" font-size="28" font-weight="800" fill="#ffffff">원본 Recipe</text>
+<text x="200" y="219" font-size="20" fill="#d7dadd">재료 · 조리법 · 작성자</text>
+<rect x="450" y="126" width="300" height="142" rx="15" fill="#353b40" stroke="#697175"/>
+<text x="600" y="179" font-size="28" font-weight="800" fill="#ffffff">내가 직접 요리</text>
+<text x="600" y="219" font-size="20" fill="#d7dadd">따라 만들기 · 응용하기</text>
+<rect x="850" y="126" width="300" height="142" rx="15" fill="#ff6900"/>
+<text x="1000" y="179" font-size="28" font-weight="800" fill="#ffffff">내 Recipeed</text>
+<text x="1000" y="219" font-size="20" fill="#fff4e8">완성 사진 · 짧은 이야기</text>
+</g>
+<g stroke="#ff9b59" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M368 197 H431"/><path d="m415 185 16 12-16 12"/>
+<path d="M768 197 H831"/><path d="m815 185 16 12-16 12"/>
+<path d="M993 275 C993 349 218 349 218 277"/><path d="m207 293 11-16 12 16"/>
+</g>
+<text x="600" y="332" text-anchor="middle" font-family="Apple SD Gothic Neo,Arial,sans-serif" font-size="18" font-weight="700" fill="#ffba8a">참고한 원본과 작성 기록의 관계가 남습니다</text>
+<text x="60" y="374" font-family="Apple SD Gothic Neo,Arial,sans-serif" font-size="16" fill="#b1b7ba">구조 설명용 도식 · 실제 이용자 관계나 확산 통계가 아닙니다</text>
+</svg>
