@@ -7,6 +7,7 @@ redirect = (root / "_layouts/redirect.html").read_text()
 kr = (root / "_posts/rich-face-test/2026-09-12-rich-face-test.md").read_text()
 en = (root / "_posts/billionaire-lookalike-test/2026-09-12-billionaire-lookalike-test.md").read_text()
 llms = (root / "llms.txt").read_text()
+home = (root / "_layouts/home.html").read_text()
 
 checks = [
     ("layout: redirect" in legacy, "legacy page must use redirect layout"),
@@ -21,6 +22,8 @@ checks = [
     ("https://saramjh.github.io/richChecker/" in llms, "current Korean app missing from llms.txt"),
     ("https://saramjh.github.io/richChecker-us/" in llms, "current global app missing from llms.txt"),
     ("https://saramjh.github.io/rich-tester/" not in llms, "legacy URL must not remain in llms.txt"),
+    ('aria-label="Interactive projects"' in home, "root homepage must expose an accessible project discovery group"),
+    (all(f'href="{href}"' in home for href in ("/scratchLottery/", "/space_atlas_student/", "/richChecker/", "/richChecker-us/")), "root homepage must link to all four live interactive projects"),
 ]
 errors = [message for ok, message in checks if not ok]
 if errors:
