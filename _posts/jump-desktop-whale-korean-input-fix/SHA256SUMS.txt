@@ -1,0 +1,2 @@
+418d794b8128bd0edf5d4a9159e06000f4600fa346e5d3459207ecd6e7470ace  JumpInputGuard-2.0.3-macos-universal.zip
+c6b9dcc2933f585ef5ff1d4b67d006b44a63ec4339474f27232ee0509d232d41  JumpHangulWhale-0.1.1.zip
