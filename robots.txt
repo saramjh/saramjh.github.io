@@ -9,3 +9,4 @@ Sitemap: https://saramjh.github.io/scratchLottery/sitemap.xml
 Sitemap: https://saramjh.github.io/recipeCalc/sitemap.xml
 Sitemap: https://saramjh.github.io/ScreenshotMarker/sitemap.xml
 Sitemap: https://saramjh.github.io/SquircleSimulator/sitemap.xml
+Sitemap: https://saramjh.github.io/cokacremote-desktop/sitemap.xml
