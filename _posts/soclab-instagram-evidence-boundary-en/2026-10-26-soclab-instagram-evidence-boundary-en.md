@@ -104,8 +104,10 @@ The answer should eventually come from authentic operator feedback, not from fab
 
 For a provider-maintained overview of Instagram account categories and the applicable API permission model, see [Meta's public Instagram API collection](https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api). The claims about this specific local pilot are grounded in its own development evidence, not implied by the API documentation itself.
 
+If this is a problem you face too, you can discuss the context you need on the [maker's Threads profile](https://www.threads.com/@devtestudinidae). This is an invitation to exchange ideas, not a product signup or an available account connection.
+
 Other writing is available through the [blog index](/). Read the matching [한국어 글](/soclab-instagram-evidence-boundary-ko/), and connect to a later related installment only when one has genuinely been published.
 
 ---
 
-*Editorial draft pending source, media, and deployment review. The described pilot remains explicitly bounded to its dated development evidence; the article should be revised if verified implementation status changes.*
+*Published October 26, 2026. This note describes a bounded local pilot, not a public beta or a generally available account connection. I will update it when a changed implementation can be verified.*
