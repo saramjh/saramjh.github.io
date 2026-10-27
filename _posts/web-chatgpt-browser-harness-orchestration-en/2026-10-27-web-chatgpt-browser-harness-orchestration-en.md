@@ -73,6 +73,29 @@ A prompt being submitted does not prove a post was published. A delivered email 
 
 That is why the system tracks **local activity**, **provider-verifiable external actions**, and **real-world outcomes** separately. Ambiguous external actions require inspection before retrying, especially when duplicates could cause harm.
 
+## Did any of this lead to real-world results?
+
+Yes. In one small independent information project supported by this operating experiment, the work progressed beyond drafts and outreach attempts to **external publication and substantive professional relationships**.
+
+The project prepared specialist material, researched relevant publications and experts, and explored appropriate opportunities for collaboration. Its externally observable outcomes included:
+
+- A contributed article actually published by an international specialist publication.
+- A public resource link added by an external specialist organization.
+- Content usage permission granted by a subject-matter expert.
+- An unsolicited follow-up proposal from an expert for additional content and potential collaboration.
+- A separate editorial collaboration that advanced beyond initial contact, without claiming final publication.
+
+<figure>
+  <img src="/assets/img/web-chatgpt-browser-harness-orchestration/external-outcomes.svg" alt="Anonymized progression from outreach to publication, expert trust, and new collaboration opportunities" width="1100" height="600" loading="lazy" style="width:100%;height:auto;">
+  <figcaption>Figure 4. A privacy-preserving overview of externally verified milestones, not a measured conversion funnel or causal impact chart.</figcaption>
+</figure>
+
+The most interesting shift was **from approaching experts to receiving a new collaboration proposal initiated by an external expert**. That is a relationship outcome, not just another completed prompt.
+
+These milestones do not prove the AI acted autonomously throughout. Human judgment, contributors, permissions, and editorial processes all mattered. They also do not prove mass adoption or formal institutional endorsement.
+
+Project and partner names, subject area, URLs, and dates are intentionally omitted to avoid identification. The defensible claim is that **real external outcomes occurred during AI-assisted operations**, not that the harness alone caused them.
+
 ## What has been difficult in practice?
 
 **A changing web UI.** Browser automation needs observations and verified receipts, not assumptions based on a button click.
