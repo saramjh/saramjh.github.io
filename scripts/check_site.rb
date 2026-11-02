@@ -25,7 +25,6 @@ if robots.file?
   robots_text = robots.read
   expected_sitemaps = %w[
     https://saramjh.github.io/sitemap.xml
-    https://saramjh.github.io/space_atlas_student/sitemap.xml
     https://saramjh.github.io/richChecker/sitemap.xml
     https://saramjh.github.io/richChecker-us/sitemap.xml
     https://saramjh.github.io/scratchLottery/sitemap.xml

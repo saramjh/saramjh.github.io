@@ -23,7 +23,7 @@ checks = [
     ("https://saramjh.github.io/richChecker-us/" in llms, "current global app missing from llms.txt"),
     ("https://saramjh.github.io/rich-tester/" not in llms, "legacy URL must not remain in llms.txt"),
     ('aria-label="Interactive projects"' in home, "root homepage must expose an accessible project discovery group"),
-    (all(f'href="{href}"' in home for href in ("/scratchLottery/", "/space_atlas_student/", "/richChecker/", "/richChecker-us/")), "root homepage must link to all four live interactive projects"),
+    (all(f'href="{href}"' in home for href in ("/scratchLottery/", "https://spaceatlasedu.org/", "/richChecker/", "/richChecker-us/")), "root homepage must link to all four live interactive projects"),
 ]
 errors = [message for ok, message in checks if not ok]
 if errors:

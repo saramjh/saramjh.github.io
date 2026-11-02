@@ -26,18 +26,18 @@ image_height: 820
 
 우주와 천문학을 배울 때 가장 큰 장벽은 **눈에 보이지 않는 거대한 스케일**과 **평면 교과서 다이어그램이 주는 오개념(Misconceptions)**입니다. 
 
-[Space Atlas 바로가기](https://saramjh.github.io/space_atlas_student/)
+[Space Atlas 바로가기](https://spaceatlasedu.org/)
 
 ### 주요 인터랙티브 도구 바로가기
 
-* [달 위상 시뮬레이터 (Moon Phase Simulator)](https://saramjh.github.io/space_atlas_student/moon/phases/)
-* [계절 시뮬레이터 — 지구 자전축 23.5°와 0° 비교](https://saramjh.github.io/space_atlas_student/earth/seasons/)
-* [화성 체중 계산기 — 행성별 중력과 체중 비교](https://saramjh.github.io/space_atlas_student/solar-system/gravity-comparison/)
-* [다른 행성에서의 나이 계산기 — 행성별 공전주기로 지구 나이 환산](https://saramjh.github.io/space_atlas_student/solar-system/orbital-periods/)
-* [행성 크기 비교 도구 — 지구·목성·화성·금성 비교](https://saramjh.github.io/space_atlas_student/solar-system/planet-size-comparison/)
-* [태양계 축척 모델 — 실제 행성 거리 계산](https://saramjh.github.io/space_atlas_student/solar-system/distance-scale/)
-* [외계행성 통과 시뮬레이터 — 행성 통과와 광도곡선(light curve) 읽기](https://saramjh.github.io/space_atlas_student/exoplanets/transit-method/)
-* [조석 고정 시뮬레이터 — 달의 같은 면이 보이는 이유](https://saramjh.github.io/space_atlas_student/moon/tidal-locking/)
+* [달 위상 시뮬레이터 (Moon Phase Simulator)](https://spaceatlasedu.org/moon/phases/)
+* [계절 시뮬레이터 — 지구 자전축 23.5°와 0° 비교](https://spaceatlasedu.org/earth/seasons/)
+* [화성 체중 계산기 — 행성별 중력과 체중 비교](https://spaceatlasedu.org/solar-system/gravity-comparison/)
+* [다른 행성에서의 나이 계산기 — 행성별 공전주기로 지구 나이 환산](https://spaceatlasedu.org/solar-system/orbital-periods/)
+* [행성 크기 비교 도구 — 지구·목성·화성·금성 비교](https://spaceatlasedu.org/solar-system/planet-size-comparison/)
+* [태양계 축척 모델 — 실제 행성 거리 계산](https://spaceatlasedu.org/solar-system/distance-scale/)
+* [외계행성 통과 시뮬레이터 — 행성 통과와 광도곡선(light curve) 읽기](https://spaceatlasedu.org/exoplanets/transit-method/)
+* [조석 고정 시뮬레이터 — 달의 같은 면이 보이는 이유](https://spaceatlasedu.org/moon/tidal-locking/)
 
 이러한 물음에서 출발해 개발된 **Space Atlas (Student Reference)**는 단순한 읽을거리 웹페이지가 아니라, **학생이 직접 시뮬레이션의 변수를 조작하고 3D 뷰포트를 회전하며 인과관계를 체득할 수 있도록 설계된 인터랙티브 우주 과학 백과**입니다.
 
@@ -110,7 +110,7 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 ## 관련 링크
 
-* **Space Atlas 웹사이트**: [https://saramjh.github.io/space_atlas_student/](https://saramjh.github.io/space_atlas_student/)
+* **Space Atlas 웹사이트**: [https://spaceatlasedu.org/](https://spaceatlasedu.org/)
 * **GitHub 저장소**: [https://github.com/saramjh/space_atlas_student](https://github.com/saramjh/space_atlas_student)
 * **영문 포스팅 (English Edition)**: [Space Atlas: 3D Interactive Astronomy Reference](/space-atlas-student-en/)
 
