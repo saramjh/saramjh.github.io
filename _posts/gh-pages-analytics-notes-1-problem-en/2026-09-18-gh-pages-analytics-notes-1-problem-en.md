@@ -31,9 +31,9 @@ I deploy everything from a single GitHub account, `github.com/saramjh`. Alongsid
 - [SquircleSimulator](https://saramjh.github.io/SquircleSimulator) — a squircle shape simulator
 - [pomodorotimerKR](https://saramjh.github.io/pomodorotimerKR/) / [pomodorotimerEN](https://saramjh.github.io/pomodorotimerEN/) — a pomodoro timer
 - [resizeIMG](https://saramjh.github.io/resizeIMG) — an image resizer
-- [space_atlas_student](https://saramjh.github.io/space_atlas_student/) — a 3D astronomy learning tool
+- [space_atlas_student](https://spaceatlasedu.org/) — a 3D astronomy learning tool (moved to its own domain in November 2026)
 
-Each one is a separate repository, shares no code with the others, and was built for a different reason. But because none of them has a custom domain attached, GitHub Pages' default behavior puts every single one at `saramjh.github.io/<repo-name>/` — **already under one root domain**. I didn't design that; it's just what happens when you don't bother attaching a custom domain.
+Each one is a separate repository, shares no code with the others, and was built for a different reason. At the time, none had a custom domain, so GitHub Pages' default behavior put every one at `saramjh.github.io/<repo-name>/` — **already under one root domain**. I didn't design that; it's just what happens without a custom domain.
 
 Once that clicked, a bunch of settings I'd been repeating on autopilot every time I shipped a new tool suddenly looked worth questioning.
 

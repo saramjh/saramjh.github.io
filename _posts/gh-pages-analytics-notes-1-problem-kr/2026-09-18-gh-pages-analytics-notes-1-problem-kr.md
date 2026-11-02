@@ -31,9 +31,9 @@ alternate_url: /gh-pages-analytics-notes-1-problem-en/
 - [SquircleSimulator](https://saramjh.github.io/SquircleSimulator) — 스퀴클 도형 시뮬레이터
 - [pomodorotimerKR](https://saramjh.github.io/pomodorotimerKR/) / [pomodorotimerEN](https://saramjh.github.io/pomodorotimerEN/) — 뽀모도로 타이머
 - [resizeIMG](https://saramjh.github.io/resizeIMG) — 이미지 리사이저
-- [space_atlas_student](https://saramjh.github.io/space_atlas_student/) — 3D 천문 학습 도구
+- [space_atlas_student](https://spaceatlasedu.org/) — 3D 천문 학습 도구 (2026년 11월 독립 도메인으로 이전)
 
-각각은 별도의 레포지토리이고, 서로 코드를 공유하지 않고, 만든 목적도 다 다릅니다. 그런데 커스텀 도메인을 하나도 연결하지 않았기 때문에, GitHub Pages의 기본 규칙에 따라 이 도구들은 전부 `saramjh.github.io/<레포이름>/` 형태로 **이미 하나의 루트 도메인 아래** 놓여 있었습니다. 이건 제가 설계한 구조가 아니라, 커스텀 도메인을 안 붙였을 뿐인데 자동으로 그렇게 된 것입니다.
+각각은 별도의 레포지토리이고, 서로 코드를 공유하지 않고, 만든 목적도 다 다릅니다. 당시에는 커스텀 도메인을 연결하지 않았기 때문에, GitHub Pages의 기본 규칙에 따라 이 도구들은 전부 `saramjh.github.io/<레포이름>/` 형태로 **이미 하나의 루트 도메인 아래** 놓여 있었습니다. 이건 제가 설계한 구조가 아니라, 커스텀 도메인을 안 붙였을 뿐인데 자동으로 그렇게 된 것입니다.
 
 이 사실을 뒤늦게 자각하고 나서야, 지금까지 도구를 하나 만들 때마다 별생각 없이 반복해왔던 세팅들이 눈에 밟히기 시작했습니다.
 
