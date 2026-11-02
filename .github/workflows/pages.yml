@@ -15,7 +15,8 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Playwright 1.56.x supports Ubuntu 24.04 Chromium dependencies; do not float to 26.04.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
