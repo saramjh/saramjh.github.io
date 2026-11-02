@@ -168,3 +168,40 @@
 .portfolio-body .navbar #mode{display:none!important}
 .portfolio-body .navbar .folio-nav-brand{left:28px}
 @media(max-width:780px){.portfolio-body .navbar .folio-nav-brand{left:19px}}
+
+/* Legacy Jekyll Klise styles inject ol li::before counters (and ul bullets), which
+   become real CSS-grid children and shift every column. Explicitly isolate all
+   portfolio lists; do not rely on removing list-style alone. */
+.portfolio-body .folio .folio-evidence-list>li::before,
+.portfolio-body .folio .folio-stack-tools>li::before,
+.portfolio-body .folio .folio-tech-list>li::before{content:none!important;display:none!important;counter-increment:none!important}
+.portfolio-body .folio .folio-evidence-list>li{counter-increment:none!important}
+
+/* Source-linked recognition ledger: category | evidence | date. */
+.portfolio-body .folio .folio-evidence-item{
+ display:grid;grid-template-columns:170px minmax(0,1fr) 118px;
+ align-items:start;column-gap:31px;row-gap:8px;padding:27px 0 29px;
+ min-height:112px;position:relative;list-style:none
+}
+.portfolio-body .folio .folio-evidence-kind{
+ display:inline-flex;align-items:center;justify-self:start;grid-column:1;grid-row:1;
+ margin-top:1px;padding:7px 11px;border:1px solid #53617c;border-radius:3px;
+ color:#c4d3ff;background:#21283a;font:600 11px var(--folio-mono);letter-spacing:.015em;line-height:1.3;
+ white-space:nowrap
+}
+.portfolio-body .folio .folio-evidence-main{grid-column:2;grid-row:1;min-width:0;max-width:800px}
+.portfolio-body .folio .folio-evidence-main h3{font-size:19px;line-height:1.4;letter-spacing:-.02em;margin:0 0 7px}
+.portfolio-body .folio .folio-evidence-main .folio-evidence-description{max-width:760px;color:var(--folio-muted)!important}
+.portfolio-body .folio .folio-evidence-date{grid-column:3;grid-row:1;justify-self:end;padding-top:8px;width:auto;white-space:nowrap}
+.portfolio-body .folio .folio-evidence-source{color:var(--folio-accent)!important;font:600 11px var(--folio-mono);letter-spacing:.045em;margin:0 0 8px!important}
+.portfolio-body .folio .folio-external-arrow{color:var(--folio-accent);font-size:16px;margin-left:4px;white-space:nowrap}
+@media(max-width:940px){
+ .portfolio-body .folio .folio-evidence-item{grid-template-columns:142px minmax(0,1fr) 101px;column-gap:18px}
+ .portfolio-body .folio .folio-evidence-main h3{font-size:17px}
+}
+@media(max-width:680px){
+ .portfolio-body .folio .folio-evidence-item{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:25px 0;min-height:0}
+ .portfolio-body .folio .folio-evidence-kind{grid-column:1;grid-row:1;margin:0;font-size:10px;padding:6px 9px}
+ .portfolio-body .folio .folio-evidence-main{grid-column:1;grid-row:2;width:100%}
+ .portfolio-body .folio .folio-evidence-date{grid-column:1;grid-row:3;justify-self:start;padding:0}
+}

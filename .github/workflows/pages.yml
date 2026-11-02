@@ -36,6 +36,20 @@ jobs:
         run: bundle exec ruby scripts/check_seo.rb
       - name: Check ad-free portfolio contract
         run: bundle exec ruby scripts/check_portfolio.rb
+      - name: Install portfolio browser-test dependencies
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install Chromium for responsive visual geometry checks
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Verify portfolio layout in real browser
+        run: |
+          python -m http.server 4317 --directory _site > /tmp/portfolio-preview-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          python tests/portfolio_layout_smoke.py
       - name: Test post assets
         run: bundle exec ruby tests/post_assets_test.rb
       - uses: actions/upload-pages-artifact@v4
