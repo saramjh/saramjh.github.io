@@ -7,13 +7,13 @@ ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / '_layouts/home.html'
 LAYOUT = ROOT / '_sass/klise/_layout.scss'
 DARK = ROOT / '_sass/klise/_dark.scss'
-TARGETS = ('/scratchLottery/', 'https://spaceatlasedu.org/', '/richChecker/', '/richChecker-us/')
+TARGETS = ('https://koreaves.com/', 'https://spoonie.kr/', 'https://sigub.kr/', '/scratchLottery/', 'https://spaceatlasedu.org/', '/richChecker/', '/richChecker-us/')
 
 class ProjectShowcaseTests(unittest.TestCase):
-    def test_semantic_directory_with_four_crawlable_destinations(self):
+    def test_semantic_directory_with_crawlable_destinations(self):
         html = HOME.read_text(encoding='utf-8')
         self.assertIn('<section class="project-showcase" aria-labelledby="projects-heading">', html)
-        self.assertIn('<nav aria-label="Interactive projects">', html)
+        self.assertIn('<nav aria-label="Projects and services">', html)
         self.assertIn('<ul class="project-showcase-list">', html)
         self.assertIn('</ul>', html)
         self.assertEqual(html.count('class="project-showcase-link"'), len(TARGETS))
@@ -23,6 +23,10 @@ class ProjectShowcaseTests(unittest.TestCase):
         self.assertIn('class="project-showcase-description"', html)
         self.assertIn('class="project-showcase-arrow" aria-hidden="true"', html)
         self.assertIn('id="projects-heading"', html)
+        icons = re.findall(r'src="(/assets/images/project-icons/[^"]+)" alt=""', html)
+        self.assertEqual(len(icons), len(TARGETS))
+        for icon in icons:
+            self.assertTrue((ROOT / icon.lstrip('/')).is_file(), icon)
 
     def test_keyboard_mobile_and_dark_styles(self):
         light = LAYOUT.read_text(encoding='utf-8')
