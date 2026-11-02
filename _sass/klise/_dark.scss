@@ -268,3 +268,34 @@ body[data-theme="dark"] {
     }
   }
 }
+
+// Home project directory retains clear contrast in the dark palette.
+body[data-theme="dark"] {
+  .project-showcase {
+    .project-showcase-heading {
+      h2 { color: $dark-white; }
+      p { color: $dark-gray; }
+    }
+
+    .project-showcase-link {
+      color: $dark-white;
+      background-color: $dark-light;
+      border-color: $dark-smoke;
+
+      &:hover {
+        color: $dark-white;
+        background-color: rgba(255, 255, 255, 0.07);
+        border-color: $dark-gray;
+      }
+
+      &:focus-visible {
+        outline-color: $dark-text-link-blue;
+      }
+    }
+
+    .project-showcase-description,
+    .project-showcase-arrow {
+      color: #aeb6bf;
+    }
+  }
+}
