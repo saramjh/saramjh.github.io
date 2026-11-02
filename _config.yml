@@ -58,6 +58,16 @@ defaults:
     values:
       layout: default
       comments: true
+  # Keep the entire portfolio namespace ad-free by default, including future project records.
+  - scope:
+      path: "portfolio"
+    values:
+      ads: false
+  - scope:
+      path: ""
+      type: projects
+    values:
+      ads: false
 
 # Homepage limit posts
 number_of_posts: 100

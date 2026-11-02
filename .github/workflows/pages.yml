@@ -34,6 +34,8 @@ jobs:
         run: bundle exec ruby scripts/check_site.rb
       - name: Check SEO contracts
         run: bundle exec ruby scripts/check_seo.rb
+      - name: Check ad-free portfolio contract
+        run: bundle exec ruby scripts/check_portfolio.rb
       - name: Test post assets
         run: bundle exec ruby tests/post_assets_test.rb
       - uses: actions/upload-pages-artifact@v4

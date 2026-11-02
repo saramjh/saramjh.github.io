@@ -1,4 +1,6 @@
-{%- if site.google_adsense and jekyll.environment == 'production' and page.ads != false -%}
+{%- assign portfolio_ad_excluded = false -%}
+{%- if page.url == "/portfolio/" or page.url contains "/portfolio/" -%}{%- assign portfolio_ad_excluded = true -%}{%- endif -%}
+{%- if site.google_adsense and jekyll.environment == 'production' and page.ads != false and portfolio_ad_excluded == false -%}
 <meta name="google-adsense-account" content="{{ site.google_adsense }}">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.google_adsense }}"
   crossorigin="anonymous"></script>
