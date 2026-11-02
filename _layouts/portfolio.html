@@ -1,0 +1,15 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+{% include header.html %}
+<body data-theme="{{ site.mode }}" class="portfolio-body notransition">
+  <script>try{if(localStorage.getItem('theme')==='light')document.body.removeAttribute('data-theme')}catch(e){}</script>
+  {% include navbar.html %}
+  <main class="folio" id="main-content" aria-label="{{ page.title | escape }}">{{ content }}</main>
+  <div class="folio-footer"><div class="folio-footer-inner">{% include footer.html %}</div></div>
+  <script src="/assets/js/portfolio.js" defer></script>
+  <script>setTimeout(function(){document.body.classList.remove('notransition')},75)</script>
+</body>
+</html>

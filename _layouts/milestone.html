@@ -1,0 +1,32 @@
+---
+layout: portfolio
+portfolio_ui: true
+---
+<article class="folio-container milestone" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="folio-backline"><a href="/portfolio/">← Portfolio</a><span> / Field notes</span></div>
+  <header class="milestone-header">
+    <div class="milestone-heading">
+      <p class="folio-kicker">{{ page.kicker | default: 'Field notes / milestone' | escape }}</p>
+      <h1 itemprop="headline">{{ page.title | escape }}</h1>
+      <p class="folio-lede">{{ page.description | escape }}</p>
+      <div class="milestone-meta"><time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time><span>{{ site.author.name }}</span>{% if page.alternate_url %}<a href="{{ page.alternate_url }}" lang="{{ page.alternate_lang }}">{% if page.lang == 'ko' %}Read in English{% else %}한국어로 읽기{% endif %} ↗</a>{% endif %}</div>
+    </div>
+    {% if page.image %}<figure class="milestone-cover"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}" width="1440" height="900"><figcaption>{{ page.image_caption | default: 'Screenshot from the project, not a photograph of an external endorsement.' | escape }}</figcaption></figure>{% endif %}
+  </header>
+  <div class="milestone-content-grid"><div class="prose milestone-prose" itemprop="articleBody">{{ content }}</div>
+    <aside class="milestone-aside" aria-label="Article navigation and context">
+      <p class="folio-aside-label">Article context</p>
+      <a href="/portfolio/" class="milestone-side-link">Selected work ↗</a>
+      {% if page.project_id %}{% assign related_project = site.projects | where: 'slug', page.project_id | first %}{% if related_project %}<a href="{{ related_project.url }}" class="milestone-side-link">{{ related_project.name }} case study ↗</a>{% endif %}{% endif %}
+      <p class="folio-small-note">Public claims below link to their original source. Correspondence and pending editorial discussions are not represented as confirmed partnerships.</p>
+    </aside>
+  </div>
+  {% if page.project_id %}
+  <section class="folio-section milestone-evidence" aria-labelledby="article-sources">
+    <div class="folio-section-heading"><p class="folio-kicker">Primary evidence</p><h2 id="article-sources">Original references</h2><p>Source URLs are kept separate from interpretation and personal reflection.</p></div>
+    <ol class="folio-evidence-list">{% include portfolio-evidence.html project=page.project_id ids=page.evidence_ids %}</ol>
+  </section>
+  {% endif %}
+  <section class="folio-related-reading" aria-label="Related articles">{% include related_posts.html %}</section>
+  <div class="folio-next"><a href="/portfolio/">Selected work <span aria-hidden="true">→</span></a><a href="/portfolio/recognition/">All external records <span aria-hidden="true">→</span></a></div>
+</article>

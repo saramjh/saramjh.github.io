@@ -1,0 +1,39 @@
+---
+layout: portfolio
+portfolio_ui: true
+permalink: /portfolio/
+title: Selected work and public milestones
+description: Project case studies, engineering methods, and documented external publications and resource listings by an independent developer.
+lang: en
+---
+<div class="folio-container">
+  <header class="folio-hero">
+    <div class="folio-hero-main"><p class="folio-kicker">DevTestudinidae · Independent engineering</p><h1>Work that made it <em>out into the world.</em></h1><p class="folio-lede">I build small, useful products across biodiversity, science education and AI-assisted software operations. This is a record of the work itself—and of what happened after it was published.</p><div class="folio-cta-group"><a href="#selected-work" class="folio-primary-cta">Selected projects <span aria-hidden="true">↘</span></a><a href="#external-records" class="folio-text-cta">External records →</a></div></div>
+    <div class="folio-hero-media" aria-label="Visual samples of public projects"><a class="folio-hero-tile folio-hero-tile-large" href="/portfolio/koreaves/"><img src="/assets/images/portfolio/koreaves-desktop.jpg" width="1440" height="900" alt="KoreAves live interface screenshot"><span>KoreAves <small>Source-linked biodiversity</small></span></a><a class="folio-hero-tile folio-hero-tile-small" href="/portfolio/space-atlas/"><img src="/assets/images/portfolio/space-atlas-desktop.jpg" width="1440" height="900" alt="Space Atlas interactive Moon phases screenshot"><span>Space Atlas <small>Learning by exploring</small></span></a></div>
+  </header>
+  <section class="folio-section" id="selected-work" aria-labelledby="selected-heading">
+    <div class="folio-section-heading"><p class="folio-kicker">01 / Selected work</p><h2 id="selected-heading">A few things I have built.</h2><p>Each case study describes the problem, implementation choices, technology used where documented, and the next open questions.</p></div>
+    {% assign sorted_projects = site.projects | sort: 'order' %}
+    <div class="folio-projects">{% for project in sorted_projects %}
+      <article class="folio-project-card {% if forloop.first %}folio-project-featured{% endif %}"><a class="folio-project-image" href="{{ project.url }}"><img src="{{ project.image | relative_url }}" alt="{{ project.image_alt | escape }}" width="1440" height="900" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"></a><div class="folio-project-card-body"><div class="folio-project-card-topline"><span>{{ project.field | escape }}</span><span>{{ project.status | escape }}</span></div><h3><a href="{{ project.url }}">{{ project.name | escape }} <span aria-hidden="true">↗</span></a></h3><p>{{ project.summary | escape }}</p>{% if project.stack and project.stack.size > 0 %}<p class="folio-project-stack">{% for tech in project.stack limit: 4 %}<span>{{ tech | escape }}</span>{% endfor %}</p>{% endif %}</div></article>
+    {% endfor %}</div>
+  </section>
+  <section class="folio-section folio-stack-focus" aria-labelledby="stack-heading">
+    <div class="folio-section-heading"><p class="folio-kicker">02 / Stack &amp; approach</p><h2 id="stack-heading">Technology follows the question.</h2><p>Tools are shown in the context of actual project decisions—not as an unqualified wall of logos.</p></div>
+    <div class="folio-stack-rows">
+      {% for focus in site.data.stack_focus %}{% assign focus_project = site.projects | where: 'slug', focus.project | first %}{% if focus_project %}
+      <div class="folio-stack-row"><span class="folio-stack-row-num">0{{ forloop.index }}</span><div><h3><a href="{{ focus_project.url }}">{{ focus.label | escape }} <span aria-hidden="true">↗</span></a></h3><p>{{ focus.context | escape }}</p><a class="folio-stack-project-link" href="{{ focus_project.url }}">In {{ focus_project.name | escape }}</a></div><ul class="folio-stack-tools">{% for tool in focus_project.stack %}<li>{{ tool | escape }}</li>{% endfor %}</ul></div>
+      {% endif %}{% endfor %}
+    </div>
+  </section>
+  <section class="folio-section folio-recognition-preview" id="external-records" aria-labelledby="external-records-heading">
+    <div class="folio-section-heading"><p class="folio-kicker">03 / Recognition &amp; publications</p><h2 id="external-records-heading">An evidence trail, not a trophy cabinet.</h2><p>Published writing, independent resource lists and database records are different kinds of outcomes. Each is labelled accordingly and links to its source.</p></div>
+    <ol class="folio-evidence-list">{% include portfolio-evidence.html %}</ol>
+    <div class="folio-section-end"><a href="/portfolio/recognition/">Browse the full evidence archive, including collaboration status <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="folio-section folio-writing" aria-labelledby="writing-heading">
+    <div class="folio-section-heading"><p class="folio-kicker">04 / Notes from the field</p><h2 id="writing-heading">What it took to get there.</h2><p>Long-form records explain decisions, trade-offs and the difference between an internal milestone and an independently verifiable result.</p></div>
+    <div class="folio-writing-grid"><a class="folio-writing-card" href="/koreaves-external-resources-en/"><img src="/assets/images/portfolio/koreaves-desktop.jpg" alt="KoreAves interface" loading="lazy"><span>Independent listings / case note</span><strong>How KoreAves found its way into birding resource lists</strong><span class="folio-writing-arrow">Read story →</span></a><a class="folio-writing-card" href="/koreaves-published-contributions-en/"><img src="/assets/images/portfolio/koreaves-gis.jpg" alt="Actual KoreAves regional evidence page" loading="lazy"><span>Publishing / editorial process</span><strong>Two contributions published on 10,000 Birds</strong><span class="folio-writing-arrow">Read story →</span></a></div>
+  </section>
+  <div class="folio-bottom-note"><span>Working principle</span><p>Build clearly. Share sources. Make the next version easier to improve.</p><a href="/about/">About the developer ↗</a></div>
+</div>

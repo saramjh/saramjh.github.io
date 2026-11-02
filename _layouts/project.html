@@ -1,0 +1,36 @@
+---
+layout: portfolio
+portfolio_ui: true
+---
+<div class="folio-container folio-project-page">
+  <div class="folio-backline"><a href="/portfolio/" aria-label="Back to portfolio">← Portfolio</a><span> / Project study</span></div>
+  <header class="folio-project-header">
+    <div class="folio-project-header-copy">
+      <p class="folio-kicker">{{ page.field | escape }}</p>
+      <h1>{{ page.name | escape }}</h1>
+      <p class="folio-lede">{{ page.subtitle | escape }}</p>
+      <p class="folio-project-summary">{{ page.summary | escape }}</p>
+      <div class="folio-cta-group">
+        {% if page.site_url %}<a class="folio-primary-cta" href="{{ page.site_url | escape }}" target="_blank" rel="noopener noreferrer">Visit live project <span aria-hidden="true">↗</span></a>{% endif %}
+        {% if page.writing_url %}<a class="folio-text-cta" href="{{ page.writing_url }}">Technical notes →</a>{% endif %}
+      </div>
+    </div>
+    <div class="folio-project-hero"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="1440" height="900"></div>
+  </header>
+  <div class="folio-project-columns">
+    <div class="folio-project-article prose">{{ content }}</div>
+    <aside class="folio-project-aside" aria-label="Project details">
+      <div class="folio-aside-block"><span class="folio-aside-label">Stage</span><strong>{{ page.status | escape }}</strong></div>
+      <div class="folio-aside-block"><span class="folio-aside-label">Area</span><strong>{{ page.field | escape }}</strong></div>
+      <div class="folio-aside-block"><span class="folio-aside-label">Technology &amp; methods</span>
+        {% if page.stack and page.stack.size > 0 %}<ul class="folio-tech-list">{% for technology in page.stack %}<li>{{ technology | escape }}</li>{% endfor %}</ul>{% else %}<p class="folio-small-note">Stack not publicly documented yet; no framework claims added.</p>{% endif %}
+      </div>
+    </aside>
+  </div>
+  <section class="folio-section folio-project-evidence" aria-labelledby="project-evidence-heading">
+    <div class="folio-section-heading"><p class="folio-kicker">Evidence and external reach</p><h2 id="project-evidence-heading">Independent references</h2><p>These records describe a publication, directory inclusion or data-use entry. None implies institutional endorsement.</p></div>
+    {% assign matches = site.data.recognitions | where: 'project', page.slug | where: 'status', 'confirmed' %}
+    {% if matches.size > 0 %}<ol class="folio-evidence-list">{% include portfolio-evidence.html project=page.slug %}</ol>{% else %}<p class="folio-empty-note">No third-party source recorded for this project yet. Its absence is not a judgement about the project.</p>{% endif %}
+  </section>
+  <div class="folio-next"><a href="/portfolio/">Explore all projects <span aria-hidden="true">→</span></a><a href="/portfolio/recognition/">Explore recognition archive <span aria-hidden="true">→</span></a></div>
+</div>

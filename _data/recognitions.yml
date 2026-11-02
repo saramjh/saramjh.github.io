@@ -1,0 +1,54 @@
+# Public evidence ledger. Add only verifiable claims and exact external proof URLs.
+# type: publication | listing | dataset_record | collaboration
+# status: confirmed (public); pending entries are not shown anywhere publicly.
+# Dates should be omitted unless the source confirms the date.
+- id: birds-photo-10000
+  project: koreaves
+  type: publication
+  status: confirmed
+  date: 2026-10-06
+  source: "10,000 Birds"
+  title: "The Bird Photo I Could Use Was Not The Bird Photo I Wanted"
+  detail: "Guest contribution credited to Jihun Oh."
+  url: "https://www.10000birds.com/the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm"
+- id: suncheon-10000
+  project: koreaves
+  type: publication
+  status: confirmed
+  date: 2026-10-30
+  source: "10,000 Birds"
+  title: "Suncheon Bay Wetland, South Korea — Profile for Birders"
+  detail: "Published location profile with an author credit to Jihun Oh."
+  url: "https://www.10000birds.com/suncheon-bay-wetland-south-korea-profile-for-birders.htm"
+- id: beary-resource
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Beary Birding"
+  title: "Online Field Guides resource listing"
+  detail: "KoreAves appears in the online field-guide list."
+  url: "https://www.bearybirding.com/resources"
+- id: nzbirds-resource
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "New Zealand Birds"
+  title: "International links listing"
+  detail: "KoreAves appears in the site's birding links directory."
+  url: "https://www.nzbirds.com/bar/links.html"
+- id: fmhy-resource
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "FMHY Educational Wiki"
+  title: "Biology learning resource listing"
+  detail: "KoreAves is linked among bird information resources."
+  url: "https://github.com/fmhy/FMHY/wiki/Educational"
+- id: gbif-literature
+  project: koreaves
+  type: dataset_record
+  status: confirmed
+  source: "GBIF Literature"
+  title: "KoreAves web resource recorded in data-use literature"
+  detail: "A literature/data-use catalogue record; not an academic publication, award, or endorsement."
+  url: "https://api.gbif.org/v1/literature/dc2c4f8b-062c-3eb1-8073-8a15529823b5"
