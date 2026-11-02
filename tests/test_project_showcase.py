@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / '_layouts/home.html'
 LAYOUT = ROOT / '_sass/klise/_layout.scss'
 DARK = ROOT / '_sass/klise/_dark.scss'
-TARGETS = ('/scratchLottery/', '/space_atlas_student/', '/richChecker/', '/richChecker-us/')
+TARGETS = ('/scratchLottery/', 'https://spaceatlasedu.org/', '/richChecker/', '/richChecker-us/')
 
 class ProjectShowcaseTests(unittest.TestCase):
     def test_semantic_directory_with_four_crawlable_destinations(self):
