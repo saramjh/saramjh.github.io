@@ -422,3 +422,110 @@
     background-color: rgba(128, 128, 128, 0.1);
   }
 }
+
+// Home only: a compact editorial directory of independently hosted projects.
+.project-showcase {
+  margin: 0 0 2.8rem;
+
+  .project-showcase-heading {
+    margin-bottom: 0.85rem;
+
+    h2 {
+      color: $black;
+      font-size: 1.06rem;
+      line-height: 1.4;
+      margin: 0 0 0.2rem;
+    }
+
+    p {
+      color: $gray;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  .project-showcase-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  .project-showcase-link {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 6.25rem;
+    height: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid $light;
+    border-radius: 8px;
+    background-color: rgba(104, 116, 130, 0.045);
+    color: $black;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $gray;
+      background-color: rgba(104, 116, 130, 0.085);
+      color: $black;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $text-link-blue;
+      outline-offset: 3px;
+    }
+  }
+
+  .project-showcase-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .project-showcase-name {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: $bold-weight;
+  }
+
+  .project-showcase-description {
+    color: $gray;
+    font-size: 0.81rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .project-showcase-arrow {
+    flex: none;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: $gray;
+  }
+
+  @include media-query($on-mobile) {
+    .project-showcase-list {
+      grid-template-columns: 1fr;
+    }
+
+    .project-showcase-link {
+      min-height: 0;
+      padding: 0.8rem 0.9rem;
+    }
+  }
+}

@@ -3,14 +3,52 @@ layout: default
 home: true
 ---
 
-<nav aria-label="Interactive projects" class="project-links">
-  <p>Interactive projects:
-    <a href="/scratchLottery/">Scratch-off probability simulator</a> ·
-    <a href="/space_atlas_student/">Space Atlas science models</a> ·
-    <a href="/richChecker/">Korean billionaire lookalike</a> ·
-    <a href="/richChecker-us/">Global billionaire face match</a>
-  </p>
-</nav>
+<section class="project-showcase" aria-labelledby="projects-heading">
+  <div class="project-showcase-heading">
+    <h2 id="projects-heading">Explore the projects</h2>
+    <p>Interactive tools and experiments from independent projects.</p>
+  </div>
+  <nav aria-label="Interactive projects">
+    <ul class="project-showcase-list">
+      <li>
+        <a class="project-showcase-link" href="/scratchLottery/">
+          <span class="project-showcase-copy">
+            <span class="project-showcase-name">Scratch Lottery</span>
+            <span class="project-showcase-description">Try a scratch-off simulator and explore the odds.</span>
+          </span>
+          <span class="project-showcase-arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      <li>
+        <a class="project-showcase-link" href="/space_atlas_student/">
+          <span class="project-showcase-copy">
+            <span class="project-showcase-name">Space Atlas</span>
+            <span class="project-showcase-description">Explore space science through interactive models.</span>
+          </span>
+          <span class="project-showcase-arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      <li>
+        <a class="project-showcase-link" href="/richChecker/">
+          <span class="project-showcase-copy">
+            <span class="project-showcase-name">Billionaire Lookalike · KR</span>
+            <span class="project-showcase-description">A Korean-language face resemblance experiment.</span>
+          </span>
+          <span class="project-showcase-arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      <li>
+        <a class="project-showcase-link" href="/richChecker-us/">
+          <span class="project-showcase-copy">
+            <span class="project-showcase-name">Billionaire Lookalike · Global</span>
+            <span class="project-showcase-description">Explore the international face-matching edition.</span>
+          </span>
+          <span class="project-showcase-arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
 
 <h2 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h2>
 {%- for post in site.posts limit: site.number_of_posts -%}
