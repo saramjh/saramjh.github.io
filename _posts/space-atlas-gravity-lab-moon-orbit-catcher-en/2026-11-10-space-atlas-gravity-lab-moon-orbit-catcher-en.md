@@ -73,4 +73,4 @@ The Space Atlas site describes itself as a student reference for grades 4 to 8. 
 
 The public learning pages use Google Analytics 4 and may display Google AdSense ads. The site advises against unsupervised use by children under 13 while age-related data handling is under review. Educators and families should check their school and household privacy policies.
 
-The [Space Atlas updates log](https://spaceatlasedu.org/updates/) records public release dates and related changes. The earlier [Space Atlas overview](/space-atlas-student/) introduces the astronomy reference.
+The [Space Atlas updates log](https://spaceatlasedu.org/updates/) records public release dates and related changes. The earlier [Space Atlas overview](/space-atlas-student/) introduces the astronomy reference. The [Space Atlas project case study](/portfolio/space-atlas/) summarises the engineering choices and links to the live learning models.
