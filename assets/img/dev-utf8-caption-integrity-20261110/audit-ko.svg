@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">UTF-8 / 문안 품질 검사</title><desc id="desc">385 bytes, 116 ASCII question marks and zero Hangul syllables. The observed file hash matched the stored digest.</desc>
+<rect width="1200" height="630" fill="#F6F5F2"/><rect width="12" height="630" fill="#20323C"/>
+<text x="62" y="78" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="31" font-weight="600" fill="#405360">UTF-8 / 문안 품질 검사</text>
+<path d="M62 110H1140" stroke="#A8B0B2" stroke-width="2"/>
+<text x="62" y="165" font-family="Arial, sans-serif" font-size="26" letter-spacing="1.5" fill="#62747D">BYTE INTEGRITY</text>
+<text x="62" y="239" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="51" font-weight="700" fill="#1D715C">해시 일치</text>
+<text x="654" y="165" font-family="Arial, sans-serif" font-size="26" letter-spacing="1.5" fill="#62747D">TEXT QUALITY</text>
+<text x="654" y="239" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="51" font-weight="700" fill="#AA4536">문안 보류</text>
+<path d="M62 270H1140" stroke="#A8B0B2" stroke-width="2"/>
+<text x="62" y="390" font-family="Arial, sans-serif" font-size="100" font-weight="800" fill="#22343E">385</text>
+<text x="65" y="438" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="29" fill="#53656E">바이트</text>
+<text x="462" y="390" font-family="Arial, sans-serif" font-size="100" font-weight="800" fill="#22343E">116</text>
+<text x="465" y="438" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="29" fill="#53656E">물음표  ?</text>
+<text x="897" y="390" font-family="Arial, sans-serif" font-size="100" font-weight="800" fill="#AA4536">0</text>
+<text x="901" y="438" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="29" fill="#53656E">한글 완성형</text>
+<path d="M62 486H1140" stroke="#A8B0B2" stroke-width="2"/>
+<text x="62" y="551" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="33" font-weight="650" fill="#22343E">해시가 일치해도 원문 검수는 끝나지 않는다.</text>
+<text x="62" y="596" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="23" fill="#657681">실제 파일 수치로 재구성 · 플랫폼 화면 아님</text>
+</svg>
