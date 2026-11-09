@@ -52,3 +52,21 @@
   title: "KoreAves web resource recorded in data-use literature"
   detail: "A literature/data-use catalogue record; not an academic publication, award, or endorsement."
   url: "https://api.gbif.org/v1/literature/dc2c4f8b-062c-3eb1-8073-8a15529823b5"
+- id: one-earth-koreaves-feature
+  project: koreaves
+  type: publication
+  status: confirmed
+  date: 2026-10-28
+  source: "One Earth"
+  title: "Mapping South Korea's birdlife, one observation at a time"
+  detail: "Published One Earth article crediting Jihun Oh as an author; not a partnership, adoption, or endorsement claim."
+  url: "https://www.oneearth.org/koreaves/"
+- id: webapps-spoonie-listing
+  project: spoonie
+  type: listing
+  status: confirmed
+  date: 2026-10-25
+  source: "Web Apps Directory"
+  title: "Spoonie web app — nothing to download"
+  detail: "Public directory entry for Spoonie. Listing alone does not verify user adoption or independent editorial endorsement."
+  url: "https://webapps.directory/directory/spooniespoonie"
