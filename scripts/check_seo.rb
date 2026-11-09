@@ -179,6 +179,7 @@ posts.each do |permalink, metadata|
     errors << "#{permalink}: BlogPosting author must link to /about/" unless author['url'] == 'https://saramjh.github.io/about/'
     same_as = Array(author['sameAs'])
     errors << "#{permalink}: BlogPosting author sameAs missing GitHub" unless same_as.include?('https://github.com/saramjh')
+    errors << "#{permalink}: BlogPosting author sameAs missing verified Threads" unless same_as.include?('https://www.threads.com/@devtestudinidae')
   end
 end
 
@@ -223,6 +224,18 @@ end
   if file.file?
     page_doc = Nokogiri::HTML(file.read)
     errors << "#{label} must contain exactly one H1" unless page_doc.css('h1').length == 1
+    if label == 'About page'
+      profile_json = page_doc.css('script[type="application/ld+json"]').map do |node|
+        begin
+          JSON.parse(node.text)
+        rescue JSON::ParserError => e
+          errors << "About page invalid JSON-LD: #{e.message}"
+          nil
+        end
+      end.compact.find { |item| item['@type'] == 'ProfilePage' }
+      same_as = Array(profile_json&.dig('mainEntity', 'sameAs'))
+      errors << 'About ProfilePage missing verified Threads identity' unless same_as.include?('https://www.threads.com/@devtestudinidae')
+    end
     errors << "#{label} must not load AdSense" if adsense_present.call(page_doc)
   else
     errors << "#{label} output missing"
