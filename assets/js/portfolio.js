@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   // Measure a visitor's selection of a public evidence link, not use of its destination.
-  // The existing site's GA4 setup owns consent and transport. No extra tracker is loaded.
+  // Reuse the existing site's GA4 integration. No extra tracker is loaded.
   Array.from(document.querySelectorAll('.folio-evidence-item')).forEach(function(entry){
     var link=entry.querySelector('.folio-evidence-main h3 a[href]');
     if(!link)return;
