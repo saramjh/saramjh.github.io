@@ -44,7 +44,7 @@ faq:
 ---
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
-  🇰🇷 <strong>한국어 안내:</strong> 한국어 가이드 및 국내 호환 부품 구매 안내는 <a href="/epson-waste-ink-pad-reset-without-key/"><strong>엡손 잉크패드 리셋키 없이 10분 만에 끝내는 법 (한국어)</strong></a> 포스팅을 참고하세요.
+  🇰🇷 <strong>한국어 안내:</strong> 한국어 가이드 및 국내 호환 부품 구매 안내는 <a href="/epson-waste-ink-pad-reset-without-key/"><strong>엡손 잉크패드 리셋: L3106 작업 사례와 모델별 주의 (한국어)</strong></a> 포스팅을 참고하세요.
 </p>
 
 > **Compatibility and servicing note (9 Nov 2026):** The [reinkpy-fix repository](https://github.com/LeFZdev/reinkpy-fix) describes a tool for some Epson printers, with confirmed operation on the L3060 series and similar devices. It does not verify support for every one of the 33 variants previously listed here. The L3106 sequence below is the author's original account. [Epson's ink-pad guidance](https://epson.com/support/wa00369) explains that the physical pads may require servicing, and some are not user-serviceable. A software counter reset does not replace physical maintenance. If exact model support is unclear, consult an authorized technician.
@@ -74,7 +74,7 @@ Depending on your driver version and OS, EPSON Status Monitor 3 will throw one o
 If you found this page after receiving an ink-pad service alert, the steps below document one reported approach. Your model may require professional service, and resetting a counter cannot replace saturated ink pads.
 
 When searching for solutions online, users typically hit two frustrating roadblocks:
-1. **Expensive and scammy software resets**: Tools like WIC Reset require you to buy a one-time reset key for \$10–\$15. Free alternatives like the Epson Adjustment Program (AdjProg) are 99% Windows-only `.exe` binaries, often flagged by antiviruses and unusable on **macOS (MacBook)** or **Linux**.
+1. **Software and platform limits**: Commercial reset utilities may charge for a key. Some free alternatives are Windows `.exe` files, which may be difficult to run directly on macOS or Linux. Check vendor documentation and the exact model before selecting software.
 2. **Overpriced plastic assembly**: Buying the entire plastic cartridge housing costs significantly more and creates unnecessary plastic waste, even though the plastic case itself is completely intact and reusable.
 
 In the documented case, felt-pad work and an open-source counter-reset attempt were used. The reported cost was about $4–$5 and the process took roughly 10 minutes for that case. Neither the timing nor compatibility is established for other models.
@@ -91,14 +91,14 @@ In the documented case, felt-pad work and an open-source counter-reset attempt w
 
 A maintenance box or waste ink pad assembly can differ by printer model. Felt pads collect discarded ink, and the owner should not assume every casing is reusable or every ink pad is a user-serviceable part.
 
-| Aspect | Full Maintenance Box Assembly | Felt Absorber Pads Only (Recommended) |
+| Aspect | Full Maintenance Box Assembly | Felt Absorber Pads Only (model-dependent) |
 | :--- | :--- | :--- |
 | **Typical Cost** | \$7 – \$10 + shipping | **\$4 – \$5 (Free shipping available online)** |
 | **Hardware Work** | Remove 1 screw, swap box | Remove 1 screw, swap inner felt pads |
-| **Time Needed** | ~3 minutes | ~5 minutes |
+| **Time in the example** | ~3 minutes | ~5 minutes |
 | **Eco Impact** | Throws away durable plastic | Reuses plastic housing, zero extra plastic waste |
 
-You only need to buy pre-cut replacement sponge pads for your model (e.g. L3100 / L3110 / L3150) from online marketplaces like Amazon, AliExpress, or local vendors.
+Replacement pads and access procedures differ by model. Verify whether the service is intended for users before purchasing parts or opening the printer. The costs shown above are historical examples, not current prices.
 
 ---
 
