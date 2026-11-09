@@ -38,4 +38,6 @@ A collection of interactive learning models, including Moon phases, Earth season
 
 ## Explore a model
 
-Open [Moon Phases](https://spaceatlasedu.org/moon/phases/) or read the [original technical introduction](/space-atlas-student-en/).
+Open [Gravity Lab](https://spaceatlasedu.org/solar-system/gravity-lab/) to compare a 3.0 m/s jump across worlds, or try [Moon Phases](https://spaceatlasedu.org/moon/phases/) to explore lunar illumination.
+
+The new [English case study](/space-atlas-gravity-lab-moon-orbit-catcher-en/) and [한국어 개발 기록](/space-atlas-gravity-lab-moon-orbit-catcher-ko/) explain the Gravity Lab comparison, the separate Flight Trials game and Moon Orbit Catcher. They also cover where the simplified models stop matching the physical systems. The [original introduction](/space-atlas-student-en/) describes the initial project scope.

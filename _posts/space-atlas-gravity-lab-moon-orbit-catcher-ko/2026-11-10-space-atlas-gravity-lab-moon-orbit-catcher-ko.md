@@ -73,4 +73,4 @@ Space Atlas 사이트는 Grades 4 to 8 학생 참조 자료로 소개된다. Moo
 
 공개 학습 페이지는 Google Analytics 4를 사용하며 Google AdSense 광고를 표시할 수 있다. 연령 관련 데이터 처리를 검토하는 동안 13세 미만 아동의 비감독 단독 사용은 권장하지 않는다. 교사와 보호자는 학교와 가정의 개인정보 정책을 확인해야 한다.
 
-[Space Atlas 업데이트 기록](https://spaceatlasedu.org/updates/)에서 공개 기능의 날짜와 관련 변경 기록을 확인할 수 있다. 기존 [Space Atlas 개요 글](/space-atlas-student/)에는 초기 천문학 참조 도구의 구성이 정리돼 있다.
+[Space Atlas 업데이트 기록](https://spaceatlasedu.org/updates/)에서 공개 기능의 날짜와 관련 변경 기록을 확인할 수 있다. 기존 [Space Atlas 개요 글](/space-atlas-student/)에는 초기 천문학 참조 도구의 구성이 정리돼 있다. [Space Atlas 프로젝트 사례](/portfolio/space-atlas/)에서는 기술 선택과 실제 학습 모델을 연결해 볼 수 있다.
