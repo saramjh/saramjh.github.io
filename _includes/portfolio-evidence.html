@@ -6,7 +6,7 @@
     {% if include.ids and include.ids contains record.id %}{% else %}{% if include.ids %}{% assign should_show = false %}{% endif %}{% endif %}
     {% if should_show %}
     {% assign proof_count = proof_count | plus: 1 %}
-    <li class="folio-evidence-item" data-evidence-type="{{ record.type | escape }}">
+    <li class="folio-evidence-item" data-evidence-id="{{ record.id | escape }}" data-evidence-type="{{ record.type | escape }}">
       <span class="folio-evidence-kind">{% case record.type %}{% when 'publication' %}Publication{% when 'listing' %}Directory listing{% when 'dataset_record' %}Data record{% when 'collaboration' %}Collaboration{% endcase %}</span>
       <div class="folio-evidence-main">
         <p class="folio-evidence-source">{{ record.source | escape }} <span class="folio-dot-sep" aria-hidden="true">·</span> {% case record.type %}{% when 'publication' %}Published contribution{% when 'listing' %}External listing{% when 'dataset_record' %}Catalogue record{% when 'collaboration' %}Documented collaboration{% endcase %}</p>
