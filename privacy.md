@@ -27,7 +27,7 @@ Google's information about how it uses data from sites and apps that use its ser
 
 ### Google Analytics
 
-This blog uses **Google Analytics 4** (G-4DYFKSNFBG) to understand traffic and usage patterns such as pages viewed, referral source, device category, and engagement. Analytics data is used to evaluate site performance and improve content. On portfolio pages, opening a documented external evidence link can also trigger a GA4 `select_content` event with the public record ID. This is an on-site link-selection measure, not evidence that the destination was used or that a visitor adopted a product.
+This blog uses **Google Analytics 4** (G-4DYFKSNFBG) to understand traffic and usage patterns such as pages viewed, referral source, device category, and engagement. Analytics data is used to evaluate site performance and improve content. On portfolio pages, selecting a documented external evidence link can also trigger a GA4 `select_content` event with the public record ID. This is an on-site link-selection measure, not evidence that the destination was used or that a visitor adopted a product.
 
 Google's privacy information is available at [Google Privacy & Terms](https://policies.google.com/privacy).
 
