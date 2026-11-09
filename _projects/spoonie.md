@@ -32,3 +32,5 @@ Spoonie combines recipe discovery, recipe books, and community-oriented cooking 
 - Separate product hypotheses from validated user behaviour.
 
 Implementation frameworks are intentionally omitted until a verifiable public technical reference is available.
+
+The [Korean author-header case study](/spoonie-author-header-consistency-ko/) and [English edition](/spoonie-author-header-consistency-en/) document a recent detail-page design change, with public Recipe and Recipeed examples and the limits of the checks performed.

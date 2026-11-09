@@ -49,4 +49,6 @@ seo:
 
 Spoonie UI 전반을 다룬 [이전 리뷰](/impeccable-review-ai-ui-design/)도 함께 볼 수 있다. 이 글은 이후 상세 화면에서 정리된 작성자 헤더에 집중한다.
 
+[Spoonie 프로젝트 사례](/portfolio/spoonie/)에서는 레시피 탐색과 커뮤니티를 포함한 제품의 전체 방향을 볼 수 있다.
+
 [Spoonie 열기](https://spoonie.kr/)

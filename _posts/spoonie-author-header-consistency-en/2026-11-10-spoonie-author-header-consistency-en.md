@@ -49,4 +49,6 @@ The check covered public HTML and the rendered author row. Screen-reader testing
 
 For an earlier broader review of Spoonie UI, see the [hands-on design review](/en-impeccable-review-ai-ui-design/). This note focuses on the author header on the two detail pages.
 
+The [Spoonie project case study](/portfolio/spoonie/) covers the wider recipe-discovery and community context.
+
 [Open Spoonie](https://spoonie.kr/)
