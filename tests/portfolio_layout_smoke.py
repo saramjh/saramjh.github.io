@@ -83,6 +83,25 @@ with sync_playwright() as p:
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
             if path == '/portfolio/recognition/':
+                # Synthetic click: verify an event without opening a real external tab.
+                evidence_event = page.evaluate("""() => {
+                  const item = document.querySelector('.folio-evidence-item');
+                  const link = item.querySelector('.folio-evidence-main h3 a');
+                  const calls = [];
+                  const prior = window.gtag;
+                  window.gtag = function() { calls.push(Array.from(arguments)); };
+                  link.addEventListener('click', function(e) { e.preventDefault(); }, {once: true});
+                  link.click();
+                  window.gtag = prior;
+                  return {id: item.dataset.evidenceId, href: link.href, target: link.target, calls: calls};
+                }""")
+                assert evidence_event['id'] in {item['id'] for item in EVIDENCE}, (viewport, 'unknown evidence ID')
+                assert evidence_event['target'] == '_blank', (viewport, 'external navigation contract')
+                assert len(evidence_event['calls']) == 1, (viewport, 'GA4 event not emitted once')
+                assert evidence_event['calls'][0] == ['event', 'select_content', {
+                    'content_type': 'portfolio_external_evidence',
+                    'item_id': evidence_event['id']
+                }], (viewport, 'event lacks exact source ID')
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)
                 page.locator('[data-filter="publication"]').click()
                 assert page.locator('.folio-evidence-item:visible').count() == sum(item['type'] == 'publication' for item in EVIDENCE)

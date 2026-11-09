@@ -1,5 +1,21 @@
 (function(){
   'use strict';
+  // Measure a visitor's selection of a public evidence link, not use of its destination.
+  // Reuse the existing site's GA4 integration. No extra tracker is loaded.
+  Array.from(document.querySelectorAll('.folio-evidence-item')).forEach(function(entry){
+    var link=entry.querySelector('.folio-evidence-main h3 a[href]');
+    if(!link)return;
+    link.addEventListener('click',function(){
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
+      if(typeof window.gtag!=='function')return;
+      var id=entry.getAttribute('data-evidence-id');
+      if(!id)return;
+      window.gtag('event','select_content',{
+        content_type:'portfolio_external_evidence',
+        item_id:id
+      });
+    });
+  });
   var buttons=Array.from(document.querySelectorAll('.folio-filter'));
   var entries=Array.from(document.querySelectorAll('#folio-records .folio-evidence-item'));
   if(!buttons.length||!entries.length)return;
