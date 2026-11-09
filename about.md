@@ -16,6 +16,8 @@ I also write about AI-assisted development, automation, browser tooling and trou
 
 For independent records, see the [external publications and listings archive](/portfolio/recognition/). It separates credited writing, directory listings and catalogue entries. My [10,000 Birds guest article](https://www.10000birds.com/the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm) appears under the byline Jihun Oh; [One Earth published a KoreAves feature](https://www.oneearth.org/koreaves/). These records document publication and inclusion; they do not measure readership or product adoption.
 
+I share shorter project notes on [Threads (@devtestudinidae)](https://www.threads.com/@devtestudinidae). The [Suncheon Bay Wetland update](https://www.threads.com/@devtestudinidae/post/DfgMbvdkni7) links to my credited 10,000 Birds article.
+
 Source code and public projects: [github.com/saramjh](https://github.com/saramjh).
 
 Contact: **devtestudinidae@gmail.com**
