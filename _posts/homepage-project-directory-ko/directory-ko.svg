@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">한 홈, 일곱 목적지</title>
+  <desc id="desc">루트 Jekyll 홈페이지의 Projects and Services 디렉터리가 네 개의 별도 도메인과 세 개의 공유 호스트 경로로 연결되는 구조도.</desc>
+  <rect width="1200" height="720" fill="#f4f2ec"/>
+  <text x="72" y="78" fill="#172b3a" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="38" font-weight="700">한 홈, 일곱 목적지</text>
+  <text x="72" y="116" fill="#52616b" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="18">프로젝트를 찾는 입구는 하나로 정리하고, 목적지 URL은 그대로 유지했다.</text>
+  <rect x="72" y="148" width="1056" height="76" rx="12" fill="#203746"/>
+  <text x="104" y="181" fill="#ffffff" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="21" font-weight="700">saramjh.github.io · Projects &amp; Services</text>
+  <text x="104" y="205" fill="#d8e1e5" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="14">루트 Jekyll 홈페이지 디렉터리</text>
+  <path d="M600 224 V246 H326 V266 M600 246 H874 V266" fill="none" stroke="#84939b" stroke-width="2"/>
+  <rect x="72" y="266" width="510" height="350" rx="14" fill="#ebe9e1" stroke="#d2d0c8"/>
+  <rect x="620" y="266" width="508" height="350" rx="14" fill="#ebe9e1" stroke="#d2d0c8"/>
+  <text x="100" y="308" fill="#263d4a" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="20" font-weight="700">별도 도메인 · 4개</text>
+  <text x="648" y="308" fill="#263d4a" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="20" font-weight="700">공유 호스트 경로 · 3개</text>
+  <g font-family="Pretendard, Apple SD Gothic Neo, sans-serif">
+    <rect x="96" y="332" width="220" height="104" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="116" y="372" fill="#172b3a" font-size="18" font-weight="700">KoreAves</text>
+    <text x="116" y="402" fill="#596a73" font-size="14">koreaves.com</text>
+    <rect x="338" y="332" width="220" height="104" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="358" y="372" fill="#172b3a" font-size="18" font-weight="700">Spoonie</text>
+    <text x="358" y="402" fill="#596a73" font-size="14">spoonie.kr</text>
+    <rect x="96" y="452" width="220" height="104" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="116" y="492" fill="#172b3a" font-size="18" font-weight="700">Sigub</text>
+    <text x="116" y="522" fill="#596a73" font-size="14">sigub.kr</text>
+    <rect x="338" y="452" width="220" height="104" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="358" y="492" fill="#172b3a" font-size="18" font-weight="700">Space Atlas</text>
+    <text x="358" y="522" fill="#596a73" font-size="14">spaceatlasedu.org</text>
+    <rect x="646" y="332" width="456" height="80" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="670" y="366" fill="#172b3a" font-size="17" font-weight="700">Scratch Lottery</text>
+    <text x="670" y="391" fill="#596a73" font-size="14">/scratchLottery/</text>
+    <rect x="646" y="432" width="456" height="80" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="670" y="466" fill="#172b3a" font-size="17" font-weight="700">Billionaire Lookalike · KR</text>
+    <text x="670" y="491" fill="#596a73" font-size="14">/richChecker/</text>
+    <rect x="646" y="532" width="456" height="80" rx="9" fill="#ffffff" stroke="#cbd2d2"/>
+    <text x="670" y="566" fill="#172b3a" font-size="17" font-weight="700">Billionaire Lookalike · Global</text>
+    <text x="670" y="591" fill="#596a73" font-size="14">/richChecker-us/</text>
+  </g>
+  <path d="M72 646 H1128" stroke="#c8c7bf" stroke-width="1"/>
+  <text x="72" y="680" fill="#52616b" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="16">이번 배포는 루트 디렉터리의 링크·표현만 변경했다. 목적지 앱 코드는 수정하지 않았다.</text>
+</svg>
