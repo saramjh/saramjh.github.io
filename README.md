@@ -3,6 +3,19 @@
 Jekyll 블로그. 글과 첨부 파일은 `_posts/<slug>/` 한 폴더에서 관리합니다.
 GitHub Actions가 빌드·검사 후 GitHub Pages에 배포합니다.
 
+## 공개 프로젝트 / Public work
+
+이 저장소에서 운영하는 블로그와 함께 실제 개발 사례를 [포트폴리오](https://saramjh.github.io/portfolio/)에 정리하고 있습니다.
+
+- [Spoonie](https://saramjh.github.io/portfolio/spoonie/) — 레시피를 찾고 공유하는 웹 제품
+- [KoreAves](https://saramjh.github.io/portfolio/koreaves/) — 한국 조류 정보의 영문·국문 아틀라스
+- [Space Atlas](https://saramjh.github.io/portfolio/space-atlas/) — 우주과학 학습을 위한 인터랙티브 자료
+
+외부 기고와 소개 기록은 [검증 가능한 출처 목록](https://saramjh.github.io/portfolio/recognition/)에서 구분해 볼 수 있습니다. [10,000 Birds 기고](https://www.10000birds.com/the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm)는 Jihun Oh 이름으로 게재됐고, [One Earth의 KoreAves 소개](https://www.oneearth.org/koreaves/)도 공개돼 있습니다. 기고와 목록 등재는 제품 사용량이나 기관 채택을 입증하지 않습니다.
+
+[개발자 소개](https://saramjh.github.io/about/) · [전체 글](https://saramjh.github.io/)
+
+
 ## 새 글 작성
 
 ```sh
