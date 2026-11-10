@@ -67,7 +67,7 @@ Moon Orbit Catcher는 세 단계로 진행한다. 첫 단계에서는 빛나는 
 
 Space Atlas 업데이트 기록은 2026년 11월 4일 NCASE(National Coalition for Aviation and Space Education)의 공개 Programs 목록에서 Space Atlas 항목을 확인했다고 기록한다. 최초 등재일은 확인되지 않았다. 이 기록이 보여주는 것은 공개 디렉터리에 항목이 있다는 사실이다. 인증, 공식 보증, NASA 제휴 또는 교실 효과 평가를 의미하지 않는다.
 
-NCASE 목록에 있던 이전 GitHub Pages 주소는 현재 Space Atlas 도메인으로 리디렉션된다. 업데이트 기록에는 링크 수정 요청을 보냈다고 적혀 있으나, 게시자가 변경을 확인하지는 않았다.
+2026년 11월 10일 확인한 NCASE 목록은 현재 Space Atlas 도메인으로 직접 연결된다. [NCASE 등재 성과와 개발 배경을 정리한 글](/space-atlas-ncase-programs-ko/)에서 이 교육용 도구를 만든 과정과 활용 가능성을 살펴볼 수 있다.
 
 Space Atlas 사이트는 Grades 4 to 8 학생 참조 자료로 소개된다. Moon Phases에는 Grades 3 to 5 대상 30 to 35분 활동도 제안돼 있다. 이 활동은 교실에서 시험한 수업이 아니며, 측정된 학생 성과도 없다.
 
