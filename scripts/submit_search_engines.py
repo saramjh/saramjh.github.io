@@ -72,28 +72,41 @@ def submit_bing_api(urls):
         print(f"[Bing API] Error: {e}")
 
 def submit_indexnow(urls):
-    key = INDEXNOW_KEY
-    batch = urls[:100]
-    payload = {
-        "host": HOST,
-        "key": key,
-        "keyLocation": f"{BASE_URL}/{key}.txt",
-        "urlList": batch
-    }
-    data = json.dumps(payload).encode("utf-8")
-    endpoints = [
-        "https://api.indexnow.org/indexnow",
-        "https://www.bing.com/indexnow"
-    ]
-    for ep in endpoints:
-        req = urllib.request.Request(ep, data=data, headers={"Content-Type": "application/json; charset=utf-8"})
+    """Send each sitemap URL once per batch through IndexNow's global endpoint.
+
+    IndexNow permits up to 10,000 URLs in one POST. The old 100-URL cap
+    silently omitted pages once the site grew beyond that limit.
+    """
+    if not urls:
+        print("[IndexNow] No URLs to submit.")
+        return
+
+    endpoint = "https://api.indexnow.org/indexnow"
+    batch_size = 10000
+    total_batches = (len(urls) + batch_size - 1) // batch_size
+    for offset in range(0, len(urls), batch_size):
+        batch = urls[offset:offset + batch_size]
+        batch_number = offset // batch_size + 1
+        payload = {
+            "host": HOST,
+            "key": INDEXNOW_KEY,
+            "keyLocation": f"{BASE_URL}/{INDEXNOW_KEY}.txt",
+            "urlList": batch,
+        }
+        req = urllib.request.Request(
+            endpoint,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json; charset=utf-8"},
+        )
+        label = f"[IndexNow] Batch {batch_number}/{total_batches} ({len(batch)} URLs)"
         try:
             with urllib.request.urlopen(req, timeout=15) as res:
-                print(f"[IndexNow] ({ep}) Response {res.status}: Success")
+                print(f"{label} Response {res.status}: Accepted")
         except urllib.error.HTTPError as e:
-            print(f"[IndexNow] ({ep}) HTTP Error {e.code}: {e.read().decode('utf-8')}")
+            print(f"{label} HTTP Error {e.code}: {e.read().decode('utf-8')}")
         except Exception as e:
-            print(f"[IndexNow] ({ep}) Error: {e}")
+            # Do not retry a request with an uncertain provider outcome.
+            print(f"{label} Error: {e}")
 
 if __name__ == "__main__":
     url_list = get_urls()
