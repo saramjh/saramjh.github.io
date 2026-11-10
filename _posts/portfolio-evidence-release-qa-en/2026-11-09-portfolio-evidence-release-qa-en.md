@@ -16,7 +16,7 @@ published: true
 
 > **한국어:** [외부 성과 6건이 8건이 되자 브라우저 테스트가 실패했다](/portfolio-evidence-release-qa-ko/)
 
-On November 9, I added two source-backed records to my [project portfolio](/portfolio/): a KoreAves article published by One Earth and a directory entry for Spoonie. I kept the publication and the listing in separate categories in the [evidence archive](/portfolio/recognition/).
+On November 9, I added two source-backed records to my [project portfolio](/portfolio/): a [KoreAves article published by One Earth](/koreaves-oneearth-author-achievement-en/) and a directory entry for Spoonie. I kept the publication and the listing in separate categories in the [evidence archive](/portfolio/recognition/).
 
 Jekyll built the site after the data change, but [the first GitHub Actions run for PR #12](https://github.com/saramjh/saramjh.github.io/actions/runs/42596906716) failed. The Playwright smoke test expected six evidence cards at the 390px viewport. The source ledger had eight. A content count had been hard-coded into a layout test.
 
