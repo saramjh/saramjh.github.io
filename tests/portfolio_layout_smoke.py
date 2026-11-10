@@ -2,6 +2,7 @@
 Run with: python3.9 tests/portfolio_layout_smoke.py [base_url]
 Requires playwright + chromium in local development environment.
 """
+import os
 import re
 import sys
 from pathlib import Path
@@ -44,7 +45,10 @@ def expected_evidence_count(path):
     return 0
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)
+    # CI checks against the browser already installed on the GitHub runner.
+    # Local runs keep Playwright's bundled Chromium unless explicitly opted in.
+    browser_channel = os.environ.get("BLOG_TEST_BROWSER_CHANNEL") or None
+    browser = p.chromium.launch(headless=True, channel=browser_channel)
     for viewport in (390, 768, 1440):
         for path in PAGES:
             page = browser.new_page(viewport={'width': viewport, 'height': 900})
