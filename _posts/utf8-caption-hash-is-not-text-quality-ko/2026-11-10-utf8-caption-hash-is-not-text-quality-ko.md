@@ -8,7 +8,7 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /utf8-caption-hash-is-not-text-quality-en/
-image: /assets/img/dev-utf8-caption-integrity-20261110/audit-ko.svg
+image: /assets/img/dev-utf8-caption-integrity-20261110/audit-ko-og.png
 image_width: 1200
 image_height: 630
 published: true

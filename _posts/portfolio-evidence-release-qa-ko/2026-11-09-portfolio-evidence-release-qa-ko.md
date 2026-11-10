@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /portfolio-evidence-release-qa-en/
-image: /assets/img/dev-evidence-event-qa/record-count-and-click-event.svg
+image: /assets/img/dev-evidence-event-qa/record-count-and-click-event-og.png
 image_width: 1200
-image_height: 700
+image_height: 630
 published: true
 ---
 

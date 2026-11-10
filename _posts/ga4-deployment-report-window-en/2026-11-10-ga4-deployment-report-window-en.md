@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /ga4-deployment-report-window-ko/
-image: /assets/img/dev-ga4-report-window-20261110/timeline-en.svg
+image: /assets/img/dev-ga4-report-window-20261110/timeline-en-og.png
 image_width: 1200
-image_height: 620
+image_height: 630
 published: true
 ---
 

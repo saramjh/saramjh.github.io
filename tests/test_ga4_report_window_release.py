@@ -63,13 +63,15 @@ class ReleaseContract(unittest.TestCase):
         namespace = "{http://www.w3.org/2000/svg}"
         for lang in ("ko", "en"):
             metadata, body = load_post(lang)
-            image = f"/assets/img/dev-ga4-report-window-20261110/timeline-{lang}.svg"
-            self.assertEqual(metadata["image"], image)
+            svg_image = f"/assets/img/dev-ga4-report-window-20261110/timeline-{lang}.svg"
+            social_image = f"/assets/img/dev-ga4-report-window-20261110/timeline-{lang}-og.png"
+            self.assertEqual(metadata["image"], social_image)
             self.assertEqual(metadata["image_width"], "1200")
-            self.assertEqual(metadata["image_height"], "620")
+            self.assertEqual(metadata["image_height"], "630")
+            self.assertIn(svg_image, body)
             self.assertIn('alt="', body)
             self.assertIn("<figcaption>", body)
-            path = ROOT / image.lstrip("/")
+            path = ROOT / svg_image.lstrip("/")
             xml = ET.parse(path).getroot()
             self.assertEqual(xml.attrib["viewBox"], "0 0 1200 620")
             self.assertIsNotNone(xml.find(f"{namespace}title"))
@@ -77,6 +79,15 @@ class ReleaseContract(unittest.TestCase):
             svg = path.read_text(encoding="utf-8")
             self.assertNotIn("<script", svg.lower())
             self.assertNotIn("<image", svg.lower())
+
+            png = (ROOT / social_image.lstrip("/")).read_bytes()
+            self.assertEqual(png[:8], b"\x89PNG\r\n\x1a\n")
+            self.assertEqual(png[12:16], b"IHDR")
+            self.assertEqual(
+                tuple(int.from_bytes(png[i:i + 4], "big") for i in (16, 20)),
+                (1200, 630),
+            )
+            self.assertEqual(png[24:26], b"\x08\x02")  # 8-bit RGB
 
 if __name__ == "__main__":
     unittest.main()
