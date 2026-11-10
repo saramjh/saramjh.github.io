@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTFOLIO = ROOT / "portfolio" / "index.html"
 EXPECTED = [
     (
+        "/playwright-github-actions-runner-chrome-en/",
+        "/assets/img/dev-playwright-ci-runner-chrome-20261110/setup-comparison-en.png",
+    ),
+    (
         "/jekyll-dnt-analytics-compress-regression-en/",
         "/assets/img/dev-dnt-analytics-20261110/loader-gate-en.png",
     ),
@@ -74,17 +78,18 @@ class NotesParser(HTMLParser):
 
 
 class PortfolioEngineeringNotesTest(unittest.TestCase):
-    def test_six_distinct_source_linked_notes(self):
+    def test_seven_distinct_source_linked_notes(self):
         parser = NotesParser()
         parser.feed(PORTFOLIO.read_text(encoding="utf-8"))
-        self.assertEqual(len(parser.cards), 6)
+        self.assertEqual(len(parser.cards), 7)
         self.assertEqual(
             [(card["href"], card["img"]) for card in parser.cards], EXPECTED
         )
-        self.assertEqual(len(set(card["href"] for card in parser.cards)), 6)
+        self.assertEqual(len(set(card["href"] for card in parser.cards)), 7)
         self.assertEqual(
             [card["id"] for card in parser.cards],
             [
+                "playwright_runner_chrome_ci",
                 "jekyll_dnt_analytics_loader",
                 "utf8_caption_integrity",
                 "jekyll_og_png_ci_regression",
@@ -93,13 +98,13 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
                 "koreaves_published_contributions",
             ],
         )
-        self.assertEqual(len(set(card["id"] for card in parser.cards)), 6)
+        self.assertEqual(len(set(card["id"] for card in parser.cards)), 7)
         for card in parser.cards:
             self.assertTrue(card["alt"])
             self.assertEqual(card["loading"], "lazy")
 
     def test_new_preview_assets_and_story_pages_exist(self):
-        for href, image in EXPECTED[:4]:
+        for href, image in EXPECTED[:5]:
             slug = href.strip("/")
             post = ROOT / "_posts" / slug / ("2026-11-10-" + slug + ".md")
             self.assertTrue(post.is_file(), post)
