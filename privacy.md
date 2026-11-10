@@ -9,7 +9,7 @@ ads: false
 tracking: false
 ---
 
-Last updated: **October 8, 2026**
+Last updated: **November 10, 2026**
 
 This page explains the third-party services used by **DevTestudinidae** (saramjh.github.io) and the information those services may process when you use the root blog.
 
@@ -27,7 +27,7 @@ Google's information about how it uses data from sites and apps that use its ser
 
 ### Google Analytics
 
-This blog uses **Google Analytics 4** (G-4DYFKSNFBG) to understand traffic and usage patterns such as pages viewed, referral source, device category, and engagement. Analytics data is used to evaluate site performance and improve content. On portfolio pages, selecting a documented external evidence link can also trigger a GA4 `select_content` event with the public record ID. This is an on-site link-selection measure, not evidence that the destination was used or that a visitor adopted a product.
+This blog uses **Google Analytics 4** (G-4DYFKSNFBG) to understand traffic and usage patterns such as pages viewed, referral source, device category, and engagement. Analytics data is used to evaluate site performance and improve content. On portfolio pages, selecting a documented external evidence link or case-study card can also trigger a GA4 `select_content` event with its fixed public record or case ID, when analytics is available and the browser has not requested Do Not Track. These events record on-site link selections. They do not establish that the destination was read, used, or led to product adoption.
 
 Google's privacy information is available at [Google Privacy & Terms](https://policies.google.com/privacy).
 

@@ -16,6 +16,19 @@
       });
     });
   });
+  // Record selections of the four existing public case studies. No new tracker.
+  Array.from(document.querySelectorAll('.folio-writing-card[data-case-id]')).forEach(function(link){
+    link.addEventListener('click',function(){
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
+      if(typeof window.gtag!=='function')return;
+      var id=link.getAttribute('data-case-id');
+      if(!id)return;
+      window.gtag('event','select_content',{
+        content_type:'portfolio_case_study',
+        item_id:id
+      });
+    });
+  });
   var buttons=Array.from(document.querySelectorAll('.folio-filter'));
   var entries=Array.from(document.querySelectorAll('#folio-records .folio-evidence-item'));
   if(!buttons.length||!entries.length)return;
