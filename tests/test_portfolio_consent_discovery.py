@@ -2,6 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 import re
+import subprocess
 import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -28,7 +29,25 @@ class PortfolioConsentLinkTest(unittest.TestCase):
         self.assertEqual(len(parsed.targets),1)
         self.assertEqual(len(parsed.cards),7)
         self.assertTrue(all(card.get("href")!=TARGET for card in parsed.cards))
-        self.assertRegex(src,re.compile(r'folio-section-end[^>]*><a href="'+re.escape(TARGET)))
+        self.assertRegex(src,re.compile(r'folio-section-end[^>]*><a[^>]*href="'+re.escape(TARGET)))
+    def test_context_link_tracking_reuses_existing_dnt_safe_ga4_event(self):
+        source = PORTFOLIO.read_text(encoding="utf-8")
+        self.assertEqual(source.count('data-case-id="jekyll_eu_consent_revocation"'), 1)
+        self.assertIn('class="folio-context-case-link"', source)
+        self.assertIn("<script data-dev-context-case-tracking>", source)
+        self.assertIn("navigator.doNotTrack === '1'", source)
+        self.assertIn("window.doNotTrack === '1'", source)
+        self.assertIn("typeof window.gtag !== 'function'", source)
+        js = (ROOT / "assets" / "js" / "portfolio.js").read_text(encoding="utf-8")
+        self.assertIn("document.querySelectorAll('.folio-writing-card[data-case-id]')", js)
+        policy = (ROOT / "privacy.md").read_text(encoding="utf-8")
+        self.assertIn("or related case-study link", policy)
+        test = ROOT / "tests" / "portfolio_context_selection_runtime.cjs"
+        result = subprocess.run(["node", str(test)], cwd=ROOT,
+                                capture_output=True, text=True, timeout=12)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("PASS 7 prior cards + 1 context link", result.stdout)
+
     def test_actual_source_article_exists(self):
         path=ROOT / "_posts" / "jekyll-eu-consent-revocation-en" / "2026-11-10-jekyll-eu-consent-revocation-en.md"
         self.assertTrue(path.is_file())

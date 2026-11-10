@@ -98,7 +98,25 @@ lang: en
         <span class="folio-writing-arrow">Read story →</span>
       </a>
     </div>
-    <div class="folio-section-end"><a href="/jekyll-eu-consent-revocation-en/">Read the related privacy engineering note: making an earlier ad-consent choice accessible again <span aria-hidden="true">↗</span></a></div>
+    <div class="folio-section-end"><a class="folio-context-case-link" data-case-id="jekyll_eu_consent_revocation" href="/jekyll-eu-consent-revocation-en/">Read the related privacy engineering note: making an earlier ad-consent choice accessible again <span aria-hidden="true">↗</span></a></div>
+    <script data-dev-context-case-tracking>
+      (function () {
+        'use strict';
+        // Only this published, first-party context link needs this extra listener.
+        var link = document.querySelector('.folio-context-case-link[data-case-id]');
+        if (!link) return;
+        link.addEventListener('click', function () {
+          if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+          if (typeof window.gtag !== 'function') return;
+          var id = link.getAttribute('data-case-id');
+          if (!id) return;
+          window.gtag('event', 'select_content', {
+            content_type: 'portfolio_case_study',
+            item_id: id
+          });
+        });
+      })();
+    </script>
   </section>
   <div class="folio-bottom-note"><span>Working principle</span><p>Build clearly. Share sources. Make the next version easier to improve.</p><a href="/about/">About the developer ↗</a></div>
 </div>
