@@ -16,7 +16,7 @@ published: true
 
 > **English:** [When two new portfolio records broke a browser test](/portfolio-evidence-release-qa-en/)
 
-11월 9일, [프로젝트 포트폴리오](/portfolio/)의 외부 성과 목록에 원본 출처가 있는 기록 두 개를 추가했습니다. [One Earth에 게재된 KoreAves 기고문](/koreaves-oneearth-author-achievement-ko/)과 Spoonie의 Web Apps Directory 등재입니다. [외부 성과 아카이브](/portfolio/recognition/)에서는 이를 기고와 디렉터리 등재로 구분해 표시합니다.
+11월 9일, [프로젝트 포트폴리오](/portfolio/)의 외부 성과 목록에 원본 출처가 있는 기록 두 개를 추가했습니다. One Earth에 실린 KoreAves 기사와 Spoonie의 Web Apps Directory 등재입니다. [외부 성과 아카이브](/portfolio/recognition/)에서는 이를 기고와 디렉터리 등재로 구분해 표시합니다.
 
 변경 파일은 YAML 하나였고 Jekyll 사이트도 빌드됐습니다. 하지만 [PR #12의 첫 GitHub Actions 실행](https://github.com/saramjh/saramjh.github.io/actions/runs/42596906716)은 실패했습니다. 모바일 너비 390px에서 성과 카드가 여섯 개라고 가정한 Playwright 검사 때문이었습니다. 실제 원본 데이터에는 여덟 개가 있었습니다.
 
@@ -49,4 +49,4 @@ published: true
 
 **실제 GA4 이벤트 건수는 아직 조회하지 않았습니다.** 따라서 클릭 수나 전환율, 방문자 증가 수치를 제시하지 않습니다. 다음 확인 대상은 날짜 범위와 공개 기록 ID를 지정한 GA4 이벤트 보고서입니다.
 
-이번 작업으로 확보한 것은 [정확히 표시되는 외부 성과 8건](/portfolio/recognition/), 변경에 맞춰 동작하는 브라우저 검사, 출처 링크 선택을 구분할 수 있는 코드입니다.
+이번 작업으로 확보한 것은 [정확히 표시되는 외부 성과 8건](/portfolio/recognition/), 변경에 맞춰 동작하는 브라우저 검사, 출처 링크 선택을 구분할 수 있는 코드입니다. [One Earth에 게재된 KoreAves 기고](/koreaves-oneearth-author-achievement-ko/)에서는 지역별 관찰 근거를 지도에 표시할 때 지켜야 할 기준을 설명했습니다.

@@ -16,7 +16,7 @@ published: true
 
 > **한국어:** [외부 성과 6건이 8건이 되자 브라우저 테스트가 실패했다](/portfolio-evidence-release-qa-ko/)
 
-On November 9, I added two source-backed records to my [project portfolio](/portfolio/): a [KoreAves article published by One Earth](/koreaves-oneearth-author-achievement-en/) and a directory entry for Spoonie. I kept the publication and the listing in separate categories in the [evidence archive](/portfolio/recognition/).
+On November 9, I added two source-backed records to my [project portfolio](/portfolio/): a KoreAves article published by One Earth and a directory entry for Spoonie. I kept the publication and the listing in separate categories in the [evidence archive](/portfolio/recognition/).
 
 Jekyll built the site after the data change, but [the first GitHub Actions run for PR #12](https://github.com/saramjh/saramjh.github.io/actions/runs/42596906716) failed. The Playwright smoke test expected six evidence cards at the 390px viewport. The source ledger had eight. A content count had been hard-coded into a layout test.
 
@@ -49,4 +49,4 @@ The new code can distinguish **which documented external source was selected**, 
 
 I have **not retrieved real <code>select_content</code> totals** from GA4. There is no verified click-through rate, audience lift or conversion result to report. That requires a dated GA4 event report grouped by public record ID.
 
-The finished work is an [eight-record public portfolio](/portfolio/recognition/), a browser regression that can grow with the source data, and an outbound link-selection event that has a narrower meaning than adoption.
+The finished work is an [eight-record public portfolio](/portfolio/recognition/), a browser regression that can grow with the source data, and an outbound link-selection event that has a narrower meaning than adoption. The [One Earth contribution](/koreaves-oneearth-author-achievement-en/) discusses the source-tracing choices behind the KoreAves entry.
