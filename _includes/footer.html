@@ -39,14 +39,17 @@
 <script src="/assets/js/main.js" defer="defer"></script>
 {%- if site.google_analytics and page.tracking != false -%}
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "{{ site.google_analytics }}");
-
   (function (w, d, id) {
+    /* Match the portfolio event guard before loading analytics. */
+    if (navigator.doNotTrack === "1" || w.doNotTrack === "1" ||
+        navigator.msDoNotTrack === "1") return;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () {
+      w.dataLayer.push(arguments);
+    };
+    w.gtag("js", new Date());
+    w.gtag("config", id);
+
     function loadAnalytics() {
       if (d.querySelector('script[data-blog-ga]')) return;
       var s = d.createElement("script");
@@ -69,6 +72,8 @@
 {%- if page.tracking != false -%}
 <script>
   (function (w, d, name, id) {
+    if (navigator.doNotTrack === "1" || w.doNotTrack === "1" ||
+        navigator.msDoNotTrack === "1") return;
     w[name] = w[name] || function () {
       (w[name].q = w[name].q || []).push(arguments);
     };

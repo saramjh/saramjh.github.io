@@ -165,5 +165,36 @@ with sync_playwright() as p:
                 raise AssertionError((viewport,path,errors))
             print('PASS',viewport,path)
             page.close()
+    # Root-portfolio analytics must respect an explicit browser Do Not Track signal.
+    # No real analytics network calls or production clicks are made by this check.
+    for dnt in ('1', '0'):
+        context = browser.new_context()
+        init = """(() => {
+          const dnt = '__DNT__';
+          Object.defineProperty(navigator, 'doNotTrack', {configurable:true, get: () => dnt});
+          window.doNotTrack = dnt;
+          window.requestIdleCallback = (callback) => {
+            callback({didTimeout:false,timeRemaining:() => 50});
+            return 1;
+          };
+        })();""".replace('__DNT__', dnt)
+        context.add_init_script(init)
+        page = context.new_page()
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        response = page.goto(BASE + '/portfolio/', wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, ('DNT browser setup', dnt)
+        info = page.evaluate("""() => ({
+          dnt: navigator.doNotTrack,
+          ga: document.querySelectorAll('script[data-blog-ga]').length,
+          clarity: document.querySelectorAll('script[data-blog-clarity]').length,
+          hasGtag: typeof window.gtag === 'function'
+        })""")
+        assert info['dnt'] == dnt, ('DNT browser signal', info)
+        assert info['ga'] == (0 if dnt == '1' else 1), ('GA loader DNT contract', info)
+        assert info['clarity'] == (0 if dnt == '1' else 1), ('Clarity DNT contract', info)
+        assert info['hasGtag'] == (dnt == '0'), ('gtag DNT contract', info)
+        print('PASS root analytics DNT', dnt, info)
+        context.close()
     browser.close()
 print('PASS all browser geometry checks')
