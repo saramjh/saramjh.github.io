@@ -16,7 +16,7 @@
       });
     });
   });
-  // Record selections of the four existing public case studies. No new tracker.
+  // Record selections of the published first-party case studies. No new tracker.
   Array.from(document.querySelectorAll('.folio-writing-card[data-case-id]')).forEach(function(link){
     link.addEventListener('click',function(){
       if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;

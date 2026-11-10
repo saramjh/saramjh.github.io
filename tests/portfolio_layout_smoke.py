@@ -117,20 +117,32 @@ with sync_playwright() as p:
                   };
                 }""")
                 ids = [
+                    'jekyll_dnt_analytics_loader',
+                    'utf8_caption_integrity',
                     'jekyll_og_png_ci_regression',
                     'spoonie_author_header',
                     'koreaves_resource_lists',
                     'koreaves_published_contributions'
                 ]
                 assert tracked['ids'] == ids, (viewport, 'portfolio case IDs', tracked)
-                assert len(tracked['emitted']) == 4, (viewport, 'portfolio case events count', tracked)
+                expected_hrefs = [
+                    '/jekyll-dnt-analytics-compress-regression-en/',
+                    '/utf8-caption-hash-is-not-text-quality-en/',
+                    '/jekyll-svg-to-png-og-ci-regression-en/',
+                    '/spoonie-author-header-consistency-en/',
+                    '/koreaves-external-resources-en/',
+                    '/koreaves-published-contributions-en/'
+                ]
+                assert tracked['hrefs'] == expected_hrefs, (viewport, 'portfolio case links', tracked)
+                assert len(set(tracked['ids'])) == len(ids), (viewport, 'duplicate case ID')
+                assert len(tracked['emitted']) == 6, (viewport, 'portfolio case events count', tracked)
                 assert tracked['emitted'] == [
                     ['event', 'select_content', {
                         'content_type': 'portfolio_case_study', 'item_id': item_id
                     }] for item_id in ids
                 ], (viewport, 'portfolio case source IDs', tracked)
-                assert tracked['countAfterDnt'] == 4, (viewport, 'DNT guard failed', tracked)
-                assert tracked['totalCount'] == 4, (viewport, 'gtag unavailable guard failed', tracked)
+                assert tracked['countAfterDnt'] == 6, (viewport, 'DNT guard failed', tracked)
+                assert tracked['totalCount'] == 6, (viewport, 'gtag unavailable guard failed', tracked)
             if path == '/portfolio/recognition/':
                 # Synthetic click: verify an event without opening a real external tab.
                 evidence_event = page.evaluate("""() => {

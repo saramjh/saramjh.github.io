@@ -9,6 +9,14 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTFOLIO = ROOT / "portfolio" / "index.html"
 EXPECTED = [
     (
+        "/jekyll-dnt-analytics-compress-regression-en/",
+        "/assets/img/dev-dnt-analytics-20261110/loader-gate-en.png",
+    ),
+    (
+        "/utf8-caption-hash-is-not-text-quality-en/",
+        "/assets/img/dev-utf8-caption-integrity-20261110/audit-en-og.png",
+    ),
+    (
         "/jekyll-svg-to-png-og-ci-regression-en/",
         "/assets/img/dev-ga4-report-window-20261110/timeline-en-og.png",
     ),
@@ -66,30 +74,32 @@ class NotesParser(HTMLParser):
 
 
 class PortfolioEngineeringNotesTest(unittest.TestCase):
-    def test_four_distinct_source_linked_notes(self):
+    def test_six_distinct_source_linked_notes(self):
         parser = NotesParser()
         parser.feed(PORTFOLIO.read_text(encoding="utf-8"))
-        self.assertEqual(len(parser.cards), 4)
+        self.assertEqual(len(parser.cards), 6)
         self.assertEqual(
             [(card["href"], card["img"]) for card in parser.cards], EXPECTED
         )
-        self.assertEqual(len(set(card["href"] for card in parser.cards)), 4)
+        self.assertEqual(len(set(card["href"] for card in parser.cards)), 6)
         self.assertEqual(
             [card["id"] for card in parser.cards],
             [
+                "jekyll_dnt_analytics_loader",
+                "utf8_caption_integrity",
                 "jekyll_og_png_ci_regression",
                 "spoonie_author_header",
                 "koreaves_resource_lists",
                 "koreaves_published_contributions",
             ],
         )
-        self.assertEqual(len(set(card["id"] for card in parser.cards)), 4)
+        self.assertEqual(len(set(card["id"] for card in parser.cards)), 6)
         for card in parser.cards:
             self.assertTrue(card["alt"])
             self.assertEqual(card["loading"], "lazy")
 
     def test_new_preview_assets_and_story_pages_exist(self):
-        for href, image in EXPECTED[:2]:
+        for href, image in EXPECTED[:4]:
             slug = href.strip("/")
             post = ROOT / "_posts" / slug / ("2026-11-10-" + slug + ".md")
             self.assertTrue(post.is_file(), post)
