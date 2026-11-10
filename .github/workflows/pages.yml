@@ -69,6 +69,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
       - uses: actions/configure-pages@v5
       - name: Deploy
         id: deployment
@@ -77,5 +79,7 @@ jobs:
         run: python3 scripts/submit_search_engines.py
         env:
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          INDEXNOW_BEFORE_SHA: ${{ github.event.before }}
+          INDEXNOW_AFTER_SHA: ${{ github.sha }}
 
 
