@@ -47,7 +47,7 @@ class NotesParser(HTMLParser):
         if tag == "div":
             self.note_depth += 1
         if tag == "a" and "folio-writing-card" in attrs.get("class", "").split():
-            self.current_card = {"href": attrs.get("href"), "img": None, "alt": None}
+            self.current_card = {"href": attrs.get("href"), "id": attrs.get("data-case-id"), "img": None, "alt": None}
             self.cards.append(self.current_card)
         if tag == "img" and self.current_card is not None:
             self.current_card["img"] = attrs.get("src")
@@ -74,6 +74,16 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             [(card["href"], card["img"]) for card in parser.cards], EXPECTED
         )
         self.assertEqual(len(set(card["href"] for card in parser.cards)), 4)
+        self.assertEqual(
+            [card["id"] for card in parser.cards],
+            [
+                "jekyll_og_png_ci_regression",
+                "spoonie_author_header",
+                "koreaves_resource_lists",
+                "koreaves_published_contributions",
+            ],
+        )
+        self.assertEqual(len(set(card["id"] for card in parser.cards)), 4)
         for card in parser.cards:
             self.assertTrue(card["alt"])
             self.assertEqual(card["loading"], "lazy")

@@ -82,6 +82,55 @@ with sync_playwright() as p:
                         assert coords['label']['bottom'] <= coords['main']['top'], (viewport, path, 'mobile metadata overlap', coords)
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
+            if path == '/portfolio/':
+                # Synthetic selections only. Prevent real navigation and network measurement.
+                tracked = page.evaluate("""() => {
+                  const cards = Array.from(document.querySelectorAll('.folio-writing-card'));
+                  const calls = [];
+                  const priorGtag = window.gtag;
+                  const priorDoNotTrack = window.doNotTrack;
+                  window.doNotTrack = '0';
+                  window.gtag = function() { calls.push(Array.from(arguments)); };
+                  cards.forEach(function(link) {
+                    link.addEventListener('click', e => e.preventDefault(), {once:true});
+                    link.click();
+                  });
+                  const collected = calls.slice();
+                  // The existing privacy guard must suppress events for a DNT request.
+                  window.doNotTrack = '1';
+                  cards[0].addEventListener('click', e => e.preventDefault(), {once:true});
+                  cards[0].click();
+                  const countAfterDnt = calls.length;
+                  // No gtag should remain a valid browsing configuration.
+                  window.doNotTrack = '0';
+                  window.gtag = undefined;
+                  cards[0].addEventListener('click', e => e.preventDefault(), {once:true});
+                  cards[0].click();
+                  window.gtag = priorGtag;
+                  window.doNotTrack = priorDoNotTrack;
+                  return {
+                    ids: cards.map(e => e.dataset.caseId),
+                    hrefs: cards.map(e => e.getAttribute('href')),
+                    emitted: collected,
+                    countAfterDnt: countAfterDnt,
+                    totalCount: calls.length
+                  };
+                }""")
+                ids = [
+                    'jekyll_og_png_ci_regression',
+                    'spoonie_author_header',
+                    'koreaves_resource_lists',
+                    'koreaves_published_contributions'
+                ]
+                assert tracked['ids'] == ids, (viewport, 'portfolio case IDs', tracked)
+                assert len(tracked['emitted']) == 4, (viewport, 'portfolio case events count', tracked)
+                assert tracked['emitted'] == [
+                    ['event', 'select_content', {
+                        'content_type': 'portfolio_case_study', 'item_id': item_id
+                    }] for item_id in ids
+                ], (viewport, 'portfolio case source IDs', tracked)
+                assert tracked['countAfterDnt'] == 4, (viewport, 'DNT guard failed', tracked)
+                assert tracked['totalCount'] == 4, (viewport, 'gtag unavailable guard failed', tracked)
             if path == '/portfolio/recognition/':
                 # Synthetic click: verify an event without opening a real external tab.
                 evidence_event = page.evaluate("""() => {
