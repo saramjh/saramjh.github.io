@@ -16,7 +16,7 @@ published: true
 
 > **English:** [When two new portfolio records broke a browser test](/portfolio-evidence-release-qa-en/)
 
-11월 9일, [프로젝트 포트폴리오](/portfolio/)의 외부 성과 목록에 원본 출처가 있는 기록 두 개를 추가했습니다. One Earth에 실린 KoreAves 기사와 Spoonie의 Web Apps Directory 등재입니다. [외부 성과 아카이브](/portfolio/recognition/)에서는 이를 기고와 디렉터리 등재로 구분해 표시합니다.
+11월 9일, [프로젝트 포트폴리오](/portfolio/)의 외부 성과 목록에 원본 출처가 있는 기록 두 개를 추가했습니다. One Earth에 실린 KoreAves 기사와 Spoonie의 Web Apps Directory 등재입니다. [외부 성과 아카이브](/portfolio/recognition/)에서는 이를 기고와 디렉터리 등재로 구분해 표시합니다. [Spoonie 외부 디렉터리 등재 사례](/spoonie-webapps-directory-ko/)에는 어떤 제품 기능을 개발했고 왜 이 등재가 새로운 발견 경로인지 따로 정리했습니다.
 
 변경 파일은 YAML 하나였고 Jekyll 사이트도 빌드됐습니다. 하지만 [PR #12의 첫 GitHub Actions 실행](https://github.com/saramjh/saramjh.github.io/actions/runs/42596906716)은 실패했습니다. 모바일 너비 390px에서 성과 카드가 여섯 개라고 가정한 Playwright 검사 때문이었습니다. 실제 원본 데이터에는 여덟 개가 있었습니다.
 
