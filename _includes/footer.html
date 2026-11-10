@@ -40,7 +40,7 @@
 {%- if site.google_analytics and page.tracking != false -%}
 <script>
   (function (w, d, id) {
-    // Match the site's portfolio event guard before loading analytics.
+    /* Match the portfolio event guard before loading analytics. */
     if (navigator.doNotTrack === "1" || w.doNotTrack === "1" ||
         navigator.msDoNotTrack === "1") return;
     w.dataLayer = w.dataLayer || [];
