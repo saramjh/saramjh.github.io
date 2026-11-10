@@ -13,7 +13,7 @@ image_width: 1280
 image_height: 820
 published: true
 seo:
-  title: "Space Atlas joins the NCASE education resource directory"
+  title: "Space Atlas in the NCASE education resource directory"
   description: "Space Atlas, my free astronomy learning project, is listed in NCASE's Programs directory. How I designed interactive Moon phases and seasons lessons for educators."
 ---
 
@@ -47,5 +47,7 @@ I also published a [predict–test–explain worksheet on Share My Lesson](https
 NCASE's Programs directory gives Space Atlas a route into an existing educator resource collection. I can now point a prospective education collaborator to a third-party directory entry and to the actual interactive lessons, rather than asking them to judge the project from a feature list.
 
 The demonstrated capability is taking a difficult scientific subject through interface design and engineering to a usable public web product. The possible next step is for an educator to evaluate a lesson, test it with a class under their own policies, or propose a better explanation. The [NCASE listing](https://ncase.org/programs/) was confirmed on November 10, 2026; its original inclusion date is unknown. Directory inclusion establishes an external discovery route, not accreditation or measured classroom adoption.
+
+The [Moon Phases worksheet I published on Share My Lesson](/space-atlas-share-my-lesson-en/) is a separate resource: it turns the interactive model into a predict–test–explain activity for teachers.
 
 See the [earlier Space Atlas project overview](/space-atlas-student-en/), the [Gravity Lab and Moon Orbit Catcher engineering note](/space-atlas-gravity-lab-moon-orbit-catcher-en/), or [open Space Atlas](https://spaceatlasedu.org/).

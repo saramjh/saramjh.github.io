@@ -50,4 +50,6 @@ NCASE 목록은 Space Atlas가 해외 교육자에게 발견될 수 있는 새�
 
 [NCASE 원문 목록](https://ncase.org/programs/)은 2026년 11월 10일 다시 확인했다. 최초 등재일은 알 수 없다. 등재 사실은 외부에서 제품을 발견할 경로를 확인해주지만, 기관 인증이나 실제 교실 도입을 입증하지는 않는다.
 
+[Share My Lesson에 공개한 달 위상 활동지](/space-atlas-share-my-lesson-ko/)는 별도의 교육 자료 성과다. 학생이 예측하고 시뮬레이터로 확인한 뒤 설명하도록 구성한 과정을 소개한다.
+
 관련 내용은 [Space Atlas 초기 소개](/space-atlas-student/), [Gravity Lab과 Moon Orbit Catcher 개발 기록](/space-atlas-gravity-lab-moon-orbit-catcher-ko/), [Space Atlas 실제 사이트](https://spaceatlasedu.org/)에서 확인할 수 있다.
