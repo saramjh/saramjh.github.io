@@ -121,6 +121,7 @@ with sync_playwright() as p:
                   };
                 }""")
                 ids = [
+                    'playwright_runner_chrome_ci',
                     'jekyll_dnt_analytics_loader',
                     'utf8_caption_integrity',
                     'jekyll_og_png_ci_regression',
@@ -130,6 +131,7 @@ with sync_playwright() as p:
                 ]
                 assert tracked['ids'] == ids, (viewport, 'portfolio case IDs', tracked)
                 expected_hrefs = [
+                    '/playwright-github-actions-runner-chrome-en/',
                     '/jekyll-dnt-analytics-compress-regression-en/',
                     '/utf8-caption-hash-is-not-text-quality-en/',
                     '/jekyll-svg-to-png-og-ci-regression-en/',
@@ -139,14 +141,14 @@ with sync_playwright() as p:
                 ]
                 assert tracked['hrefs'] == expected_hrefs, (viewport, 'portfolio case links', tracked)
                 assert len(set(tracked['ids'])) == len(ids), (viewport, 'duplicate case ID')
-                assert len(tracked['emitted']) == 6, (viewport, 'portfolio case events count', tracked)
+                assert len(tracked['emitted']) == 7, (viewport, 'portfolio case events count', tracked)
                 assert tracked['emitted'] == [
                     ['event', 'select_content', {
                         'content_type': 'portfolio_case_study', 'item_id': item_id
                     }] for item_id in ids
                 ], (viewport, 'portfolio case source IDs', tracked)
-                assert tracked['countAfterDnt'] == 6, (viewport, 'DNT guard failed', tracked)
-                assert tracked['totalCount'] == 6, (viewport, 'gtag unavailable guard failed', tracked)
+                assert tracked['countAfterDnt'] == 7, (viewport, 'DNT guard failed', tracked)
+                assert tracked['totalCount'] == 7, (viewport, 'gtag unavailable guard failed', tracked)
             if path == '/portfolio/recognition/':
                 # Synthetic click: verify an event without opening a real external tab.
                 evidence_event = page.evaluate("""() => {
