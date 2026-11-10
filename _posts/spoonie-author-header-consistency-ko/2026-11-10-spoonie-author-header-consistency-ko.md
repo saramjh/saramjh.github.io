@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-author-header-consistency-en/
-image: /spoonie-author-header-consistency-ko/author-header-ko.svg
+image: /spoonie-author-header-consistency-ko/author-header-ko-og.png
 image_width: 1200
-image_height: 720
+image_height: 630
 published: true
 seo:
   title: "Spoonie Recipe·Recipeed 작성자 헤더 통일"

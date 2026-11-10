@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /spoonie-author-header-consistency-ko/
-image: /spoonie-author-header-consistency-en/author-header-en.svg
+image: /spoonie-author-header-consistency-en/author-header-en-og.png
 image_width: 1200
-image_height: 720
+image_height: 630
 published: true
 seo:
   title: "Spoonie Recipe and Recipeed Author Header Design"
