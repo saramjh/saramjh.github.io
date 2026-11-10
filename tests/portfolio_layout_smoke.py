@@ -90,6 +90,8 @@ with sync_playwright() as p:
                 # Synthetic selections only. Prevent real navigation and network measurement.
                 tracked = page.evaluate("""() => {
                   const cards = Array.from(document.querySelectorAll('.folio-writing-card'));
+                  const contextual = document.querySelector('.folio-section-end a[data-case-id]');
+                  if (!contextual) throw new Error('Missing the source-backed contextual case link');
                   const calls = [];
                   const priorGtag = window.gtag;
                   const priorDoNotTrack = window.doNotTrack;
@@ -99,15 +101,21 @@ with sync_playwright() as p:
                     link.addEventListener('click', e => e.preventDefault(), {once:true});
                     link.click();
                   });
+                  contextual.addEventListener('click', e => e.preventDefault(), {once:true});
+                  contextual.click();
                   const collected = calls.slice();
-                  // The existing privacy guard must suppress events for a DNT request.
+                  // Both link types must honor Do Not Track, including the new context link.
                   window.doNotTrack = '1';
+                  contextual.addEventListener('click', e => e.preventDefault(), {once:true});
+                  contextual.click();
                   cards[0].addEventListener('click', e => e.preventDefault(), {once:true});
                   cards[0].click();
                   const countAfterDnt = calls.length;
                   // No gtag should remain a valid browsing configuration.
                   window.doNotTrack = '0';
                   window.gtag = undefined;
+                  contextual.addEventListener('click', e => e.preventDefault(), {once:true});
+                  contextual.click();
                   cards[0].addEventListener('click', e => e.preventDefault(), {once:true});
                   cards[0].click();
                   window.gtag = priorGtag;
@@ -115,6 +123,8 @@ with sync_playwright() as p:
                   return {
                     ids: cards.map(e => e.dataset.caseId),
                     hrefs: cards.map(e => e.getAttribute('href')),
+                    contextId: contextual.dataset.caseId,
+                    contextHref: contextual.getAttribute('href'),
                     emitted: collected,
                     countAfterDnt: countAfterDnt,
                     totalCount: calls.length
@@ -141,14 +151,16 @@ with sync_playwright() as p:
                 ]
                 assert tracked['hrefs'] == expected_hrefs, (viewport, 'portfolio case links', tracked)
                 assert len(set(tracked['ids'])) == len(ids), (viewport, 'duplicate case ID')
-                assert len(tracked['emitted']) == 7, (viewport, 'portfolio case events count', tracked)
+                assert tracked['contextId'] == 'jekyll_eu_consent_revocation', (viewport, 'contextual ID', tracked)
+                assert tracked['contextHref'] == '/jekyll-eu-consent-revocation-en/', (viewport, 'contextual target', tracked)
+                assert len(tracked['emitted']) == 8, (viewport, 'case events count', tracked)
                 assert tracked['emitted'] == [
                     ['event', 'select_content', {
                         'content_type': 'portfolio_case_study', 'item_id': item_id
-                    }] for item_id in ids
-                ], (viewport, 'portfolio case source IDs', tracked)
-                assert tracked['countAfterDnt'] == 7, (viewport, 'DNT guard failed', tracked)
-                assert tracked['totalCount'] == 7, (viewport, 'gtag unavailable guard failed', tracked)
+                    }] for item_id in ids + ['jekyll_eu_consent_revocation']
+                ], (viewport, 'case and contextual source IDs', tracked)
+                assert tracked['countAfterDnt'] == 8, (viewport, 'DNT guard failed', tracked)
+                assert tracked['totalCount'] == 8, (viewport, 'gtag unavailable guard failed', tracked)
             if path == '/portfolio/recognition/':
                 # Synthetic click: verify an event without opening a real external tab.
                 evidence_event = page.evaluate("""() => {
