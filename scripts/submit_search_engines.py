@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+import subprocess
 import urllib.request
 import urllib.error
 
@@ -28,17 +29,8 @@ def get_urls():
             print(f"[URLs] Warning: Failed to fetch live sitemap: {e}")
     
     if not urls:
-        # Fallback to key landing pages and latest posts
-        urls = [
-            f"{BASE_URL}/",
-            f"{BASE_URL}/naver-map-save-list-bulk-reorganize-guide/",
-            f"{BASE_URL}/youtube-restaurant-list-naver-map-save-guide/",
-            f"{BASE_URL}/kakaotalk-shorts-autoplay-adblock-guide/",
-            f"{BASE_URL}/kr-macbook-external-monitor-flickering-solution/",
-            f"{BASE_URL}/epson-waste-ink-pad-reset-without-key/",
-            f"{BASE_URL}/rich-tester/",
-            f"{BASE_URL}/scratchLottery/"
-        ]
+        print("[URLs] No verifiable sitemap; skipping unsupported fallback URLs.")
+        return []
     # Unique and remove anchors or unwanted assets
     cleaned = []
     seen = set()
@@ -48,6 +40,94 @@ def get_urls():
             seen.add(u)
             cleaned.append(u)
     return cleaned
+
+def _permalink_from_source(path, revision):
+    """Resolve a Jekyll page permalink from an exact current or prior source blob."""
+    if path == "index.md":
+        return f"{BASE_URL}/"
+    content = subprocess.check_output(
+        ["git", "show", f"{revision}:{path}"], text=True,
+        stderr=subprocess.PIPE,
+    )
+    match = re.match(r"\A---\s*\n(.*?)\n---", content, re.S)
+    if match is None:
+        return None
+    permalink = re.search(
+        r"(?m)^permalink:\s*['\"]?(/[^'\"\s]+)", match.group(1)
+    )
+    if permalink is None:
+        return None
+    return f"{BASE_URL}{permalink.group(1)}"
+
+
+def _skip_only_source(path):
+    """Changes to these files do not update the served blog content."""
+    return path.startswith((".github/", "scripts/", "tests/", ".context/", ".serena/")) or path in {
+        "AGENTS.md", "CLAUDE.md", "README.md",
+        ".gitignore", ".nojekyll",
+    }
+
+
+def changed_urls(before, after):
+    """Return affected URLs, or None for a broad site change.
+
+    An invalid commit comparison raises an exception and must never authorize
+    a fallback full-site provider request.
+    """
+    if not all(re.fullmatch(r"[0-9a-f]{40}", x or "") for x in (before, after)):
+        raise ValueError("Missing or invalid deploy before/after commit SHA")
+    rows = subprocess.check_output(
+        ["git", "diff", "--name-status", "--no-renames", before, after],
+        text=True, stderr=subprocess.PIPE,
+    )
+    touched = set()
+    for line in rows.splitlines():
+        status, sep, file_path = line.partition("\t")
+        if not sep or status not in ("M", "A", "D", "T"):
+            raise ValueError("Unrecognized git diff record; no provider write")
+        if _skip_only_source(file_path):
+            continue
+        # Any change to a shared template, global data, style or asset can
+        # affect more than one generated page. Preserve complete coverage.
+        if file_path.startswith(("_data/", "_includes/", "_layouts/", "_sass/", "assets/", "css/")) or file_path in ("_config.yml",):
+            return None
+        try:
+            if file_path == "index.md" or file_path.endswith((".md", ".markdown", ".html")):
+                if status != "A":
+                    old = _permalink_from_source(file_path, before)
+                    if old is None:
+                        return None
+                    touched.add(old)
+                if status != "D":
+                    current = _permalink_from_source(file_path, after)
+                    if current is None:
+                        return None
+                    touched.add(current)
+                if file_path.startswith("_posts/"):
+                    touched.add(f"{BASE_URL}/")  # Recent Posts are on the home page.
+            else:
+                return None
+        except (OSError, subprocess.CalledProcessError, UnicodeError):
+            raise ValueError("Cannot resolve an exact changed page URL") from None
+    return sorted(touched)
+
+
+def get_deploy_urls():
+    """Fail closed if the release's previous and current commit cannot be proven."""
+    before = os.environ.get("INDEXNOW_BEFORE_SHA", "").strip().lower()
+    after = os.environ.get("INDEXNOW_AFTER_SHA", "").strip().lower()
+    try:
+        selected = changed_urls(before, after)
+    except (ValueError, subprocess.CalledProcessError) as exc:
+        print(f"[URLs] Skipping notification: unverified release diff: {exc}")
+        return []
+    if selected is None:
+        full = get_urls()
+        print(f"[URLs] Shared layout/data/assets changed: {len(full)} sitemap URLs")
+        return full
+    print(f"[URLs] Changed page URLs: {len(selected)}")
+    return selected
+
 
 def submit_bing_api(urls):
     if not BING_API_KEY:
@@ -109,7 +189,10 @@ def submit_indexnow(urls):
             print(f"{label} Error: {e}")
 
 if __name__ == "__main__":
-    url_list = get_urls()
-    print(f"Total discovered URLs: {len(url_list)}")
+    url_list = get_deploy_urls()
+    if not url_list:
+        print("[URLs] No qualified changed URLs; skipping Bing and IndexNow.")
+        sys.exit(0)
+    print(f"Total qualified URLs: {len(url_list)}")
     submit_bing_api(url_list)
     submit_indexnow(url_list)
