@@ -96,6 +96,21 @@ if sitemap.file?
   errors.concat(xml.errors.map(&:message))
   locations = xml.xpath('//*[local-name()="loc"]').map(&:text)
   source_root = Pathname.new(File.expand_path('..', __dir__))
+
+  # Ownership verification documents must remain usable, but not be listed as articles.
+  %w[google5bb82d7c87a25782.html naver7c9f31d4d0aad1444db757e80b29f882.html].each do |token|
+    errors << "Verification token present in sitemap: #{token}" if locations.include?("https://saramjh.github.io/#{token}")
+    published = root.join(token)
+    original = source_root.join(token)
+    if !published.file? || !original.file? ||
+       Digest::SHA256.file(published).hexdigest != Digest::SHA256.file(original).hexdigest
+      errors << "Verification token missing or altered: #{token}"
+    end
+  end
+  # The existing public resume PDF remains a deliberate searchable document.
+  resume = 'https://saramjh.github.io/assets/docs/resume_JihunOh.pdf'
+  errors << 'Public resume PDF missing from sitemap' unless locations.include?(resume)
+
   source_root.glob('_posts/**/*.md').each do |post|
     metadata = YAML.safe_load(post.read.split(/^---[ \t]*$/, 3)[1], permitted_classes: [Date, Time])
     next if metadata['published'] == false || Date.parse(metadata['date'].to_s) > Time.now.getlocal('+09:00').to_date

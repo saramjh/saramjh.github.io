@@ -69,6 +69,15 @@ defaults:
       type: projects
     values:
       ads: false
+  # Sitemap-only exclusions: keep verification files publicly reachable and byte-for-byte intact.
+  - scope:
+      path: "google5bb82d7c87a25782.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "naver7c9f31d4d0aad1444db757e80b29f882.html"
+    values:
+      sitemap: false
 
 # Homepage limit posts
 number_of_posts: 100

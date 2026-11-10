@@ -99,6 +99,28 @@ class ChangeScopeTest(unittest.TestCase):
                           "https://saramjh.github.io/case-one-revised/",
                           "https://saramjh.github.io/case-one/"])
 
+    def test_exact_static_verification_sitemap_exclusion_has_no_provider_urls(self):
+        self.write("_config.yml", "defaults:\n  - scope:\n      path: \"\"\n    values:\n      layout: default\n")
+        original = self.commit("baseline sitemap config")
+        self.write("_config.yml", (
+            "defaults:\n  - scope:\n      path: \"\"\n    values:\n      layout: default\n"
+            + "\n".join(sender._VERIFICATION_SITEMAP_ONLY_ADDITIONS) + "\n"
+        ))
+        after = self.commit("exclude verification tokens from sitemap only")
+        self.assertEqual(sender.changed_urls(original, after), [])
+        with patch.dict(os.environ, {"INDEXNOW_BEFORE_SHA": original,
+                                     "INDEXNOW_AFTER_SHA": after}):
+            with patch.object(sender, "get_urls",
+                              side_effect=AssertionError("full site replay is prohibited")):
+                self.assertEqual(sender.get_deploy_urls(), [])
+
+    def test_unrelated_config_change_remains_broad(self):
+        self.write("_config.yml", "title: before\n")
+        original = self.commit("baseline global config")
+        self.write("_config.yml", "title: after\n")
+        after = self.commit("global site update")
+        self.assertIsNone(sender.changed_urls(original, after))
+
     def test_shared_layout_change_keeps_full_site_coverage(self):
         self.write("_includes/footer.html", "Shared footer modified\n")
         after = self.commit("sitewide change")

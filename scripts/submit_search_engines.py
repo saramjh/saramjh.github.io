@@ -111,6 +111,33 @@ def _page_urls_for_asset(path, revision):
     return pages or None
 
 
+_VERIFICATION_SITEMAP_ONLY_ADDITIONS = [
+    "  # Sitemap-only exclusions: keep verification files publicly reachable and byte-for-byte intact.",
+    "  - scope:",
+    '      path: "google5bb82d7c87a25782.html"',
+    "    values:",
+    "      sitemap: false",
+    "  - scope:",
+    '      path: "naver7c9f31d4d0aad1444db757e80b29f882.html"',
+    "    values:",
+    "      sitemap: false",
+]
+
+
+def _verification_sitemap_only_config_edit(before, after):
+    """Recognize only the exact two static-file exclusions, not a general config change."""
+    diff = subprocess.check_output(
+        ["git", "diff", "--no-ext-diff", "--unified=0", before, after,
+         "--", "_config.yml"],
+        text=True, stderr=subprocess.PIPE,
+    )
+    added = [line[1:] for line in diff.splitlines()
+             if line.startswith("+") and not line.startswith("+++")]
+    removed = [line for line in diff.splitlines()
+               if line.startswith("-") and not line.startswith("---")]
+    return not removed and added == _VERIFICATION_SITEMAP_ONLY_ADDITIONS
+
+
 def changed_urls(before, after):
     """Return affected URLs, or None for a broad site change.
 
@@ -129,6 +156,10 @@ def changed_urls(before, after):
         if not sep or status not in ("M", "A", "D", "T"):
             raise ValueError("Unrecognized git diff record; no provider write")
         if _skip_only_source(file_path):
+            continue
+        # Removing two static verification tokens from sitemap membership does
+        # not change the content of a submitted URL. No mass replay.
+        if file_path == "_config.yml" and _verification_sitemap_only_config_edit(before, after):
             continue
         # For referenced images only, resolve every affected source page.
         # A shared/unknown reference still conservatively uses the sitemap.
