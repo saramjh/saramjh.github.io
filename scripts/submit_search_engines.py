@@ -68,6 +68,49 @@ def _skip_only_source(path):
     }
 
 
+
+def _page_urls_for_asset(path, revision):
+    """Map an image to exact source pages or return None for shared/unknown use.
+
+    A matching source in a shared template, CSS, JavaScript or another
+    unmapped collection means we cannot safely narrow the scope.
+    """
+    if not path.startswith("assets/") or not path.lower().endswith(
+        (".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg")
+    ):
+        return None
+
+    # Include the leading slash, matching the public URL in Markdown/HTML.
+    # git grep -I skips binary blobs; a missing match is not proof of
+    # non-use because a layout could construct the path dynamically.
+    proc = subprocess.run(
+        ["git", "grep", "-I", "-l", "-F", "-e", f"/{path}",
+         revision, "--"],
+        text=True, capture_output=True,
+    )
+    if proc.returncode not in (0, 1):
+        raise ValueError("Cannot inspect image references for changed page URL")
+    pages = set()
+    for line in proc.stdout.splitlines():
+        prefix, separator, source = line.partition(":")
+        if not separator or prefix != revision or not source:
+            raise ValueError("Unrecognized image reference record")
+        if _skip_only_source(source):
+            continue
+        if not source.endswith((".md", ".markdown", ".html")):
+            return None
+        try:
+            page = _permalink_from_source(source, revision)
+        except (OSError, subprocess.CalledProcessError, UnicodeError):
+            raise ValueError("Cannot resolve image reference page") from None
+        if page is None:
+            return None
+        pages.add(page)
+        if source.startswith("_posts/"):
+            pages.add(f"{BASE_URL}/")  # Conservative home-preview coverage.
+    return pages or None
+
+
 def changed_urls(before, after):
     """Return affected URLs, or None for a broad site change.
 
@@ -87,9 +130,24 @@ def changed_urls(before, after):
             raise ValueError("Unrecognized git diff record; no provider write")
         if _skip_only_source(file_path):
             continue
-        # Any change to a shared template, global data, style or asset can
-        # affect more than one generated page. Preserve complete coverage.
-        if file_path.startswith(("_data/", "_includes/", "_layouts/", "_sass/", "assets/", "css/")) or file_path in ("_config.yml",):
+        # For referenced images only, resolve every affected source page.
+        # A shared/unknown reference still conservatively uses the sitemap.
+        if file_path.startswith("assets/"):
+            try:
+                pages = set()
+                for revision in (before, after):
+                    referenced = _page_urls_for_asset(file_path, revision)
+                    if referenced is not None:
+                        pages.update(referenced)
+                if not pages:
+                    return None
+                touched.update(pages)
+            except ValueError:
+                raise
+            continue
+        # Shared site data, layouts, styles and assets without known page
+        # dependencies may affect many pages. Preserve complete coverage.
+        if file_path.startswith(("_data/", "_includes/", "_layouts/", "_sass/", "css/")) or file_path in ("_config.yml",):
             return None
         try:
             if file_path == "index.md" or file_path.endswith((".md", ".markdown", ".html")):

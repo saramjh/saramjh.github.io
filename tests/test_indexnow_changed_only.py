@@ -119,6 +119,49 @@ class ChangeScopeTest(unittest.TestCase):
                         with contextlib.redirect_stdout(io.StringIO()):
                             self.assertEqual(sender.get_deploy_urls(), [])
 
+    def test_referenced_image_and_portfolio_edit_only_notify_portfolio(self):
+        self.write("portfolio/index.html",
+                   '---\npermalink: /portfolio/\n---\n'
+                   '<img src="/assets/img/ci-preview.png" alt="Measured CI time">\n')
+        self.write("assets/img/ci-preview.png", "PNG fixture, no image sent")
+        self.write("scripts/render_preview.swift", "// only generator changed")
+        self.write("tests/preview_test.py", "# same preview check")
+        after = self.commit("one page with owned preview")
+        self.assertEqual(sender.changed_urls(self.base, after),
+                         ["https://saramjh.github.io/portfolio/"])
+        with patch.dict(os.environ, {"INDEXNOW_BEFORE_SHA": self.base,
+                                     "INDEXNOW_AFTER_SHA": after}):
+            with patch.object(sender, "get_urls",
+                              side_effect=AssertionError("must not resubmit entire sitemap")):
+                self.assertEqual(sender.get_deploy_urls(),
+                                 ["https://saramjh.github.io/portfolio/"])
+
+    def test_image_referenced_in_two_pages_maps_both_urls(self):
+        self.write("portfolio/index.html",
+                   '---\npermalink: /portfolio/\n---\n'
+                   '<img src="/assets/img/shared-card.png">\n')
+        self.write("_posts/case-one/2026-11-10-case-one.md",
+                   '---\npermalink: /case-one/\n---\n'
+                   '![First-party illustration](/assets/img/shared-card.png)\n')
+        self.write("assets/img/shared-card.png", "PNG fixture")
+        after = self.commit("same image on two specific pages")
+        self.assertEqual(sender.changed_urls(self.base, after),
+                         ["https://saramjh.github.io/",
+                          "https://saramjh.github.io/case-one/",
+                          "https://saramjh.github.io/portfolio/"])
+
+    def test_global_template_reference_retains_full_site_fallback(self):
+        self.write("_includes/header.html",
+                   '<img src="/assets/img/site-logo.svg">\n')
+        self.write("assets/img/site-logo.svg", "<svg></svg>")
+        after = self.commit("global image")
+        self.assertIsNone(sender.changed_urls(self.base, after))
+
+    def test_unknown_asset_does_not_silently_drop_notifications(self):
+        self.write("assets/img/new-diagram.svg", "<svg></svg>")
+        after = self.commit("unreferenced graphic")
+        self.assertIsNone(sender.changed_urls(self.base, after))
+
     def test_unmapped_page_content_changes_use_conservative_full_site_scope(self):
         self.write("assets/img/new-diagram.svg", '<svg xmlns="http://www.w3.org/2000/svg"></svg>\n')
         after = self.commit("shared asset changed")
