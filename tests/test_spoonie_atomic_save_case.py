@@ -58,5 +58,26 @@ class SpoonieAtomicSaveCaseTest(unittest.TestCase):
             self.assertIn("/portfolio/spoonie/",text)
             self.assertIn(f"/spoonie-live-polls-{lang}/",text)
 
+    def test_follow_up_cleanup_is_source_bound_and_fails_closed(self):
+        """PR26 updates existing bilingual case rather than inventing a new release."""
+        for lang in ("ko", "en"):
+            slug = f"spoonie-atomic-poll-data-{lang}"
+            post = ROOT / "_posts" / slug / f"2026-11-11-{slug}.md"
+            body = post.read_text(encoding="utf8")
+            self.assertIn("https://github.com/saramjh/spoonie/pull/26", body)
+            for evidence in ("media_cleanup_pending", "404", "24", "369", "83"):
+                self.assertIn(evidence, body)
+            self.assertEqual(body.count("https://github.com/saramjh/spoonie/pull/26"), 1)
+            self.assertEqual(body.count("<figure>"), 1)
+            self.assertNotIn("\ufffd", body)
+            self.assertNotIn("????", body)
+            if lang == "ko":
+                self.assertIn("주간", body)
+                self.assertIn("실제 운영", body)
+            else:
+                self.assertIn("existing weekly", body)
+                self.assertIn("not independently verified", body)
+
+
 if __name__=="__main__":
     unittest.main()
