@@ -42,6 +42,14 @@ The new route checks the current user, the server-side secret and storage-read a
 
 This is deliberately not described as a distributed transaction: the database operation and Storage API cleanup still have a boundary between them.
 
+## A follow-up safeguard for files left after deletion
+
+The database can finish deleting an account while a later Storage cleanup fails. The `media_cleanup_pending` result makes that partial outcome visible, but it does not remove the remaining files by itself. In [follow-up PR #26](https://github.com/saramjh/spoonie/pull/26), I extended Spoonie's **existing weekly orphan-image cleanup** so that it can also examine images and avatars left behind by deleted accounts. This reuses the original scheduled function rather than introducing a new scheduler or paid service.
+
+The deletion test is deliberately narrow. The function treats an account as deleted only when Supabase Auth Admin returns an **explicit HTTP 404**. A still-active account, an unsuccessful check or an uncertain response cannot authorize file deletion. Immediately before removing an eligible image, it checks database references again and retains files created during the preceding **24 hours**. This is a cautious follow-up cleanup path, not an atomic transaction spanning PostgreSQL and the Storage API.
+
+The merged PR #26 reports **369 passing Vitest tests across 83 files** and **six additional Node safety scenarios**. Those source-level checks do not establish that the first scheduled production sweep has run successfully, or that a destructive end-to-end deletion has been performed on a real member account. I have not independently verified either outcome.
+
 ## What I could verify
 
 The original PR records **363 passing Vitest tests across 82 files**, a TypeScript check and a successful Next.js 16 production build. It also documents a read-only check of the operating Supabase permissions and the applied migration for the new database function. I have not independently verified that the newly merged frontend code is active in the production member flow.
