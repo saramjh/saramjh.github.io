@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="650" viewBox="0 0 1280 650" role="img" aria-labelledby="title desc">
+<title id="title">Spoonie | Repairing two data boundaries</title><desc id="desc">Nov 11, 2026 · Developer diagram based on merged PR #25. Limit: no destructive live-user E2E. Storage cleanup still happens after the DB transaction.</desc>
+<rect width="1280" height="650" fill="#F9FAF6"/><rect width="1280" height="132" fill="#123A31"/>
+<g font-family="Arial, Noto Sans KR, Apple SD Gothic Neo, sans-serif"><text x="52" y="68" font-size="34" font-weight="700" fill="#F7FCF8">Spoonie | Repairing two data boundaries</text><text x="52" y="108" font-size="18" font-weight="400" fill="#CDE8D7">Nov 11, 2026 · Developer diagram based on merged PR #25</text>
+<rect x="52" y="162" width="1176" height="195" rx="16" fill="#FFFFFF" stroke="#D8E3DA" stroke-width="2"/>
+<rect x="52" y="377" width="1176" height="195" rx="16" fill="#FFFFFF" stroke="#D8E3DA" stroke-width="2"/>
+<text x="76" y="199" font-size="23" font-weight="700" fill="#244939">Saving a post with a poll</text><text x="76" y="414" font-size="23" font-weight="700" fill="#244939">Deleting an account</text>
+<rect x="76" y="220" width="524" height="110" rx="10" fill="#F9F1ED"/>
+<rect x="684" y="220" width="522" height="110" rx="10" fill="#EEF5EF"/>
+<rect x="76" y="435" width="524" height="110" rx="10" fill="#F9F1ED"/>
+<rect x="684" y="435" width="522" height="110" rx="10" fill="#EEF5EF"/>
+<text x="96" y="253" font-size="20" font-weight="700" fill="#814C3B">Before: two separate writes</text><text x="96" y="285" font-size="17" font-weight="400" fill="#5C4C43">Post committed, poll RPC failed: partial result possible</text>
+<text x="707" y="253" font-size="20" font-weight="700" fill="#1C6651">After: one PostgreSQL transaction</text><text x="707" y="285" font-size="17" font-weight="400" fill="#3F5F52">Commit post and poll together, or roll both back</text>
+<text x="96" y="468" font-size="20" font-weight="700" fill="#814C3B">Before: remove files first</text><text x="96" y="500" font-size="17" font-weight="400" fill="#5C4C43">A DB failure could leave photos already deleted</text>
+<text x="707" y="468" font-size="20" font-weight="700" fill="#1C6651">After: commit account DB work first</text><text x="707" y="500" font-size="17" font-weight="400" fill="#3F5F52">DB failure leaves files alone; later cleanup errors are reported</text>
+<path d="M610 272h64m-14-12 14 12-14 12M610 487h64m-14-12 14 12-14 12" stroke="#6A927D" fill="none" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="52" y="606" font-size="17" font-weight="500" fill="#385B4A">Limit: no destructive live-user E2E. Storage cleanup still happens after the DB transaction.</text><text x="52" y="633" font-size="15" font-weight="400" fill="#63796D">Source: github.com/saramjh/spoonie/pull/25</text>
+</g></svg>
