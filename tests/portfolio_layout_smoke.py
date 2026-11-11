@@ -131,23 +131,23 @@ with sync_playwright() as p:
                   };
                 }""")
                 ids = [
-                    'playwright_runner_chrome_ci',
-                    'jekyll_dnt_analytics_loader',
-                    'utf8_caption_integrity',
-                    'jekyll_og_png_ci_regression',
-                    'spoonie_author_header',
+                    'koreaves_published_contributions',
                     'koreaves_resource_lists',
-                    'koreaves_published_contributions'
+                    'spoonie_author_header',
+                    'utf8_caption_integrity',
+                    'jekyll_dnt_analytics_loader',
+                    'playwright_runner_chrome_ci',
+                    'jekyll_og_png_ci_regression'
                 ]
                 assert tracked['ids'] == ids, (viewport, 'portfolio case IDs', tracked)
                 expected_hrefs = [
-                    '/playwright-github-actions-runner-chrome-en/',
-                    '/jekyll-dnt-analytics-compress-regression-en/',
-                    '/utf8-caption-hash-is-not-text-quality-en/',
-                    '/jekyll-svg-to-png-og-ci-regression-en/',
-                    '/spoonie-author-header-consistency-en/',
+                    '/koreaves-published-contributions-en/',
                     '/koreaves-external-resources-en/',
-                    '/koreaves-published-contributions-en/'
+                    '/spoonie-author-header-consistency-en/',
+                    '/utf8-caption-hash-is-not-text-quality-en/',
+                    '/jekyll-dnt-analytics-compress-regression-en/',
+                    '/playwright-github-actions-runner-chrome-en/',
+                    '/jekyll-svg-to-png-og-ci-regression-en/'
                 ]
                 assert tracked['hrefs'] == expected_hrefs, (viewport, 'portfolio case links', tracked)
                 assert len(set(tracked['ids'])) == len(ids), (viewport, 'duplicate case ID')

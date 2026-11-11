@@ -9,32 +9,32 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTFOLIO = ROOT / "portfolio" / "index.html"
 EXPECTED = [
     (
-        "/playwright-github-actions-runner-chrome-en/",
-        "/assets/img/dev-playwright-ci-runner-chrome-20261110/setup-comparison-en.png",
-    ),
-    (
-        "/jekyll-dnt-analytics-compress-regression-en/",
-        "/assets/img/dev-dnt-analytics-20261110/loader-gate-en.png",
-    ),
-    (
-        "/utf8-caption-hash-is-not-text-quality-en/",
-        "/assets/img/dev-utf8-caption-integrity-20261110/audit-en-og.png",
-    ),
-    (
-        "/jekyll-svg-to-png-og-ci-regression-en/",
-        "/assets/img/dev-ga4-report-window-20261110/timeline-en-og.png",
-    ),
-    (
-        "/spoonie-author-header-consistency-en/",
-        "/spoonie-author-header-consistency-en/author-header-en-og.png",
+        "/koreaves-published-contributions-en/",
+        "/assets/images/portfolio/koreaves-gis.jpg",
     ),
     (
         "/koreaves-external-resources-en/",
         "/assets/images/portfolio/koreaves-desktop.jpg",
     ),
     (
-        "/koreaves-published-contributions-en/",
-        "/assets/images/portfolio/koreaves-gis.jpg",
+        "/spoonie-author-header-consistency-en/",
+        "/spoonie-author-header-consistency-en/author-header-en-og.png",
+    ),
+    (
+        "/utf8-caption-hash-is-not-text-quality-en/",
+        "/assets/img/dev-utf8-caption-integrity-20261110/audit-en-og.png",
+    ),
+    (
+        "/jekyll-dnt-analytics-compress-regression-en/",
+        "/assets/img/dev-dnt-analytics-20261110/loader-gate-en.png",
+    ),
+    (
+        "/playwright-github-actions-runner-chrome-en/",
+        "/assets/img/dev-playwright-ci-runner-chrome-20261110/setup-comparison-en.png",
+    ),
+    (
+        "/jekyll-svg-to-png-og-ci-regression-en/",
+        "/assets/img/dev-ga4-report-window-20261110/timeline-en-og.png",
     ),
 ]
 
@@ -89,13 +89,13 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
         self.assertEqual(
             [card["id"] for card in parser.cards],
             [
-                "playwright_runner_chrome_ci",
-                "jekyll_dnt_analytics_loader",
-                "utf8_caption_integrity",
-                "jekyll_og_png_ci_regression",
-                "spoonie_author_header",
-                "koreaves_resource_lists",
                 "koreaves_published_contributions",
+                "koreaves_resource_lists",
+                "spoonie_author_header",
+                "utf8_caption_integrity",
+                "jekyll_dnt_analytics_loader",
+                "playwright_runner_chrome_ci",
+                "jekyll_og_png_ci_regression",
             ],
         )
         self.assertEqual(len(set(card["id"] for card in parser.cards)), 7)
@@ -104,7 +104,13 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             self.assertEqual(card["loading"], "lazy")
 
     def test_new_preview_assets_and_story_pages_exist(self):
-        for href, image in EXPECTED[:5]:
+        external_cases = {
+            "/koreaves-published-contributions-en/",
+            "/koreaves-external-resources-en/",
+        }
+        for href, image in EXPECTED:
+            if href in external_cases:
+                continue
             slug = href.strip("/")
             post = ROOT / "_posts" / slug / ("2026-11-10-" + slug + ".md")
             self.assertTrue(post.is_file(), post)
