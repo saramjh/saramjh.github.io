@@ -36,6 +36,21 @@ class SpoonieSearchDiscoveryCaseTest(unittest.TestCase):
             self.assertNotIn("????", text)
             self.assertGreater(len(text), 2800)
 
+    def test_spoonie_project_case_links_search_in_both_languages(self):
+        project = (ROOT / "_projects" / "spoonie.md").read_text(encoding="utf-8")
+        for needed in (
+            "https://github.com/saramjh/spoonie/pull/31",
+            "https://spoonie.kr/search",
+            "/spoonie-search-discovery-en/",
+            "/spoonie-search-discovery-ko/",
+            "up to twenty",
+            "ten-item",
+        ):
+            self.assertIn(needed, project)
+        self.assertEqual(project.count("/spoonie-search-discovery-en/"), 1)
+        self.assertEqual(project.count("/spoonie-search-discovery-ko/"), 1)
+        self.assertIn("/spoonie-live-polls-en/", project)
+
     def test_diagrams_are_distinct_original_accessible_svgs(self):
         visuals = []
         for language in ("ko", "en"):
