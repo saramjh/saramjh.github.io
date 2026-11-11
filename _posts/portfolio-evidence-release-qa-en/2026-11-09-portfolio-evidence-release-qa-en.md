@@ -49,4 +49,4 @@ The new code can distinguish **which documented external source was selected**, 
 
 I have **not retrieved real <code>select_content</code> totals** from GA4. There is no verified click-through rate, audience lift or conversion result to report. That requires a dated GA4 event report grouped by public record ID.
 
-The finished work is an [eight-record public portfolio](/portfolio/recognition/), a browser regression that can grow with the source data, and an outbound link-selection event that has a narrower meaning than adoption.
+The finished work is an [eight-record public portfolio](/portfolio/recognition/), a browser regression that can grow with the source data, and an outbound link-selection event that has a narrower meaning than adoption. The [One Earth contribution](/koreaves-oneearth-author-achievement-en/) discusses the source-tracing choices behind the KoreAves entry.
