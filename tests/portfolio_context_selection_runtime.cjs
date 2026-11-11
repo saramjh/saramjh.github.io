@@ -15,7 +15,7 @@ class Link {
   click(){for(const fn of this.listeners.get('click')||[])fn({preventDefault(){throw new Error('Unexpected navigation interception')}});}
 }
 function setup(compact=false) {
-  const cards=['koreaves_published_contributions','koreaves_resource_lists','spoonie_author_header','utf8_caption_integrity','jekyll_dnt_analytics_loader','playwright_runner_chrome_ci','jekyll_og_png_ci_regression'].map(id=>new Link(id));
+  const cards=['koreaves_published_contributions','koreaves_resource_lists','spoonie_public_recipe_poll','utf8_caption_integrity','jekyll_dnt_analytics_loader','playwright_runner_chrome_ci','jekyll_og_png_ci_regression'].map(id=>new Link(id));
   const contextual=new Link('jekyll_eu_consent_revocation');
   const links=[...cards,contextual];const calls=[];
   const document={
