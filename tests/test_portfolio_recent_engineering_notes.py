@@ -17,8 +17,8 @@ EXPECTED = [
         "/assets/images/portfolio/koreaves-desktop.jpg",
     ),
     (
-        "/spoonie-author-header-consistency-en/",
-        "/spoonie-author-header-consistency-en/author-header-en-og.png",
+        "/spoonie-live-polls-en/",
+        "/spoonie-live-polls-en/spoonie-poll-flow.svg",
     ),
     (
         "/utf8-caption-hash-is-not-text-quality-en/",
@@ -91,7 +91,7 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             [
                 "koreaves_published_contributions",
                 "koreaves_resource_lists",
-                "spoonie_author_header",
+                "spoonie_public_recipe_poll",
                 "utf8_caption_integrity",
                 "jekyll_dnt_analytics_loader",
                 "playwright_runner_chrome_ci",
@@ -112,22 +112,30 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             if href in external_cases:
                 continue
             slug = href.strip("/")
-            post = ROOT / "_posts" / slug / ("2026-11-10-" + slug + ".md")
+            post = ROOT / "_posts" / slug / (("2026-11-11-" if slug == "spoonie-live-polls-en" else "2026-11-10-") + slug + ".md")
             self.assertTrue(post.is_file(), post)
             content = post.read_text(encoding="utf-8")
             self.assertIn("permalink: " + href, content)
             asset = (
                 ROOT / "_posts" / image.lstrip("/")
-                if image.startswith("/spoonie-author-header-consistency-")
+                if image.startswith("/spoonie-live-polls-")
                 else ROOT / image.lstrip("/")
             )
             self.assertTrue(asset.is_file(), asset)
-            png = asset.read_bytes()
-            self.assertEqual(png[:8], b"\x89PNG\r\n\x1a\n")
-            self.assertEqual(
-                (int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")),
-                (1200, 630),
-            )
+            data = asset.read_bytes()
+            if slug == "spoonie-live-polls-en":
+                self.assertTrue(data.startswith(b"<svg"), "Original SVG diagram expected")
+                self.assertIn(b'width="1280" height="560"', data)
+                self.assertIn(b'PR #19', data)
+                self.assertIn(b'PR #20', data)
+                self.assertIn("/spoonie-live-polls-ko/", content)
+                self.assertIn("https://spoonie.kr/recipes/", content)
+            else:
+                self.assertEqual(data[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(
+                    (int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")),
+                    (1200, 630),
+                )
 
 
 if __name__ == "__main__":

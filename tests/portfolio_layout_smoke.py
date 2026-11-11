@@ -133,7 +133,7 @@ with sync_playwright() as p:
                 ids = [
                     'koreaves_published_contributions',
                     'koreaves_resource_lists',
-                    'spoonie_author_header',
+                    'spoonie_public_recipe_poll',
                     'utf8_caption_integrity',
                     'jekyll_dnt_analytics_loader',
                     'playwright_runner_chrome_ci',
@@ -143,7 +143,7 @@ with sync_playwright() as p:
                 expected_hrefs = [
                     '/koreaves-published-contributions-en/',
                     '/koreaves-external-resources-en/',
-                    '/spoonie-author-header-consistency-en/',
+                    '/spoonie-live-polls-en/',
                     '/utf8-caption-hash-is-not-text-quality-en/',
                     '/jekyll-dnt-analytics-compress-regression-en/',
                     '/playwright-github-actions-runner-chrome-en/',
