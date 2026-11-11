@@ -70,21 +70,27 @@ def _skip_only_source(path):
 
 
 def _page_urls_for_asset(path, revision):
-    """Map an image to exact source pages or return None for shared/unknown use.
+    """Resolve first-party site and post-local images to exact source pages.
 
-    A matching source in a shared template, CSS, JavaScript or another
-    unmapped collection means we cannot safely narrow the scope.
+    Shared/unknown references stay conservative. Jekyll publishes an image
+    under _posts/<slug>/ at /<slug>/, without the _posts segment.
     """
-    if not path.startswith("assets/") or not path.lower().endswith(
+    if not path.lower().endswith(
         (".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg")
     ):
         return None
+    if path.startswith("assets/"):
+        public_asset_path = f"/{path}"
+    elif path.startswith("_posts/") and path.count("/") >= 2:
+        public_asset_path = f"/{path[len('_posts/'):]}"
+    else:
+        return None
 
-    # Include the leading slash, matching the public URL in Markdown/HTML.
+    # Match the actual public image URL used in Markdown/HTML.
     # git grep -I skips binary blobs; a missing match is not proof of
     # non-use because a layout could construct the path dynamically.
     proc = subprocess.run(
-        ["git", "grep", "-I", "-l", "-F", "-e", f"/{path}",
+        ["git", "grep", "-I", "-l", "-F", "-e", public_asset_path,
          revision, "--"],
         text=True, capture_output=True,
     )
@@ -163,7 +169,10 @@ def changed_urls(before, after):
             continue
         # For referenced images only, resolve every affected source page.
         # A shared/unknown reference still conservatively uses the sitemap.
-        if file_path.startswith("assets/"):
+        if file_path.startswith("assets/") or (
+            file_path.startswith("_posts/")
+            and file_path.lower().endswith((".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"))
+        ):
             try:
                 pages = set()
                 for revision in (before, after):
