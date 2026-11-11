@@ -55,6 +55,28 @@ def _permalink_from_source(path, revision):
     permalink = re.search(
         r"(?m)^permalink:\s*['\"]?(/[^'\"\s]+)", match.group(1)
     )
+    if permalink is None and path.startswith("_projects/"):
+        # Jekyll collection projects use /portfolio/:name/ without a per-file
+        # permalink. Resolve only the verified existing project source shape.
+        project = re.fullmatch(r"_projects/([a-z0-9][a-z0-9-]*)\.(?:md|html)", path)
+        if project is None:
+            return None
+        front = match.group(1)
+        if not re.search(r"(?m)^layout: project\s*$", front):
+            return None
+        slug = re.search(r"(?m)^slug:\s*([a-z0-9-]+)\s*$", front)
+        if slug is None or slug.group(1) != project.group(1):
+            return None
+        config = subprocess.check_output(
+            ["git", "show", f"{revision}:_config.yml"],
+            text=True, stderr=subprocess.PIPE,
+        )
+        if not re.search(
+            r"(?m)^  projects:\n    output: true\n    permalink: /portfolio/:name/$",
+            config,
+        ):
+            return None
+        return f"{BASE_URL}/portfolio/{project.group(1)}/"
     if permalink is None:
         return None
     return f"{BASE_URL}{permalink.group(1)}"

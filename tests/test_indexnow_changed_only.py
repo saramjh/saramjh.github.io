@@ -75,6 +75,36 @@ class ChangeScopeTest(unittest.TestCase):
         self.assertEqual(sender.changed_urls(self.base, after),
                          ["https://saramjh.github.io/portfolio/"])
 
+    def test_collection_project_edit_notifies_only_original_project_page(self):
+        self.write("_config.yml",
+                   "collections:\n  projects:\n    output: true\n    permalink: /portfolio/:name/\n")
+        self.write("_projects/spoonie.md",
+                   "---\nlayout: project\nslug: spoonie\n---\nOriginal case\n")
+        before = self.commit("bounded project collection baseline")
+        self.write("_projects/spoonie.md",
+                   "---\nlayout: project\nslug: spoonie\n---\n"
+                   "New source-bound links to KO and EN engineering articles.\n")
+        after = self.commit("one original project case edit")
+        expected = ["https://saramjh.github.io/portfolio/spoonie/"]
+        self.assertEqual(sender.changed_urls(before, after), expected)
+        with patch.dict(os.environ, {
+            "INDEXNOW_BEFORE_SHA": before, "INDEXNOW_AFTER_SHA": after,
+        }):
+            with patch.object(sender, "get_urls",
+                              side_effect=AssertionError("full sitemap replay is not needed")):
+                self.assertEqual(sender.get_deploy_urls(), expected)
+
+    def test_collection_project_slug_drift_is_not_guessed(self):
+        self.write("_config.yml",
+                   "collections:\n  projects:\n    output: true\n    permalink: /portfolio/:name/\n")
+        self.write("_projects/spoonie.md",
+                   "---\nlayout: project\nslug: spoonie\n---\nOriginal\n")
+        before = self.commit("baseline collection route")
+        self.write("_projects/spoonie.md",
+                   "---\nlayout: project\nslug: unexpected\n---\nChanged\n")
+        after = self.commit("unknown project path")
+        self.assertIsNone(sender.changed_urls(before, after))
+
     def test_post_added_notifies_post_and_home_page(self):
         self.write("_posts/case-two/2026-11-10-case-two.md",
                    "---\npermalink: /case-two/\n---\nCase two\n")
