@@ -61,6 +61,15 @@
   title: "Mapping South Korea's birdlife, one observation at a time"
   detail: "Published One Earth article crediting Jihun Oh as an author; not a partnership, adoption, or endorsement claim."
   url: "https://www.oneearth.org/koreaves/"
+- id: unsustainable-koreaves-bird-map
+  project: koreaves
+  type: publication
+  status: confirmed
+  date: 2026-11-06
+  source: "Unsustainable Magazine"
+  title: "Why a Bird Map Is Not a Bird Count"
+  detail: "Published contributor essay credited to Jihun Oh, explaining the evidence limits of bird observation maps; not scientific peer review or verified adoption."
+  url: "https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/"
 - id: webapps-spoonie-listing
   project: spoonie
   type: listing

@@ -48,4 +48,6 @@ tags: [KoreAves, 해외기고, 기술블로그, 포트폴리오, 조류]
 
 새로운 기고나 외부 등재가 확인되면 원문 링크와 성과 유형을 분리해 기록할 예정이다. 지금 가장 중요한 과제는 여전히 KoreAves의 데이터 정합성과 출처 설명, 그리고 사용 가능한 이미지의 품질을 개선하는 것이다.
 
+이후 [Unsustainable Magazine에 게재된 조류 지도 해석 글](/koreaves-unsustainable-bird-map-ko/)에서는 지역별 관찰 자료로 판단할 수 있는 범위를 설명했다.
+
 기술 배경은 [KoreAves 프로젝트 사례](/portfolio/koreaves/)에서, 해외 리소스 목록의 다른 성격은 [외부 등재 회고](/koreaves-external-resources-ko/)에서 확인할 수 있다.

@@ -48,4 +48,6 @@ Writing for an external audience prompted me to make the reasoning understandabl
 
 I want to make KoreAves more useful as a reference that visitors can question and verify. That means documenting sources, correcting uncertain identities, and refusing to let attractive presentation substitute for a defensible record.
 
+A later [Unsustainable Magazine article on interpreting bird maps](/koreaves-unsustainable-bird-map-en/) extends the same source-and-evidence work into a different environmental publication.
+
 The [KoreAves project case study](/portfolio/koreaves/) collects the technical context; the [external resource-listing article](/koreaves-external-resources-en/) tracks a different kind of milestone.
