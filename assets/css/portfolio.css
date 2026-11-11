@@ -193,7 +193,7 @@
 .portfolio-body .folio .folio-evidence-main h3{font-size:19px;line-height:1.4;letter-spacing:-.02em;margin:0 0 7px}
 .portfolio-body .folio .folio-evidence-main .folio-evidence-description{max-width:760px;color:var(--folio-muted)!important}
 .portfolio-body .folio .folio-evidence-date{grid-column:3;grid-row:1;justify-self:end;padding-top:8px;width:auto;white-space:nowrap}
-.portfolio-body .folio .folio-evidence-context{margin:9px 0 0;font-size:12px;line-height:1.7;color:var(--folio-muted)}
+.portfolio-body .folio .folio-evidence-context{display:inline;margin-left:5px;font-size:inherit;line-height:inherit;color:var(--folio-muted)}
 .portfolio-body .folio .folio-evidence-context a{color:var(--folio-accent)!important;text-decoration:underline;text-underline-offset:3px}
 .portfolio-body .folio .folio-evidence-context a:focus-visible{outline:2px solid var(--folio-accent);outline-offset:3px}
 .portfolio-body .folio .folio-evidence-source{color:var(--folio-accent)!important;font:600 11px var(--folio-mono);letter-spacing:.045em;margin:0 0 8px!important}
