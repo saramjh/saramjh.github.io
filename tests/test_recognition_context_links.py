@@ -16,6 +16,8 @@ EXPECTED = {
     "unsustainable-koreaves-bird-map": "koreaves-unsustainable-bird-map",
     "webapps-spoonie-listing": "spoonie-webapps-directory",
     "eusci-space-atlas-diagrams": "space-atlas-eusci-diagrams",
+    "ncase-space-atlas-programs": "space-atlas-education-resource-paths",
+    "sharemylesson-space-atlas-moon-phases": "space-atlas-education-resource-paths",
     "disquiet-spoonie-first-record": "spoonie-disquiet-first-record",
 }
 
@@ -42,7 +44,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 12)
+        self.assertEqual(len(records), 14)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -95,6 +97,47 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 if "alternate_url:" in post:
                     self.assertIn("alternate_url: " + records[record_id][f"case_{opposite}"], post)
 
+    def test_ncase_listing_and_share_my_lesson_are_distinct_proof_kinds(self):
+        records = parse_records()
+        ncase = records["ncase-space-atlas-programs"]
+        lesson = records["sharemylesson-space-atlas-moon-phases"]
+        self.assertEqual(ncase["type"], "listing")
+        self.assertEqual(lesson["type"], "publication")
+        self.assertEqual(ncase["project"], lesson["project"])
+        self.assertEqual(ncase["project"], "space-atlas")
+        self.assertEqual(ncase["source"], "NCASE Programs")
+        self.assertEqual(lesson["source"], "Share My Lesson")
+        self.assertEqual(ncase["url"], "https://ncase.org/programs/")
+        self.assertTrue(lesson["url"].startswith("https://sharemylesson.com/teaching-resource/moon-phases"))
+        self.assertNotIn("date", ncase)
+        self.assertNotIn("date", lesson)
+        self.assertIn("not accreditation", ncase["detail"])
+        self.assertIn("Creator-contributed", lesson["detail"])
+        self.assertEqual(ncase["case_ko"], lesson["case_ko"])
+        self.assertEqual(ncase["case_en"], lesson["case_en"])
+
+        for lang in ("ko", "en"):
+            path = ROOT / "_posts" / f"space-atlas-education-resource-paths-{lang}" / f"2026-11-11-space-atlas-education-resource-paths-{lang}.md"
+            body = path.read_text(encoding="utf8")
+            self.assertIn("published: true", body)
+            self.assertIn("https://ncase.org/programs/", body)
+            self.assertIn(lesson["url"], body)
+            self.assertIn("Jihun Oh", body)
+            self.assertIn("CC BY-NC-ND", body)
+            self.assertIn("Google AdSense", body)
+            self.assertIn("GA4", body)
+            self.assertIn("/space-atlas-student/space-atlas-hero.png", body)
+            self.assertNotIn("sharemylesson.com/sites/default/files", body)
+            self.assertNotIn("ncase.org/wp-content/uploads", body)
+            self.assertNotIn("???", body)
+            self.assertNotIn("\\ufffd", body)
+            if lang == "ko":
+                self.assertIn("처음 등재된 날짜는 알 수 없다", body)
+                self.assertIn("교육기관 인증이나 실제 수업 효과의 증거는 아니다", body)
+            else:
+                self.assertIn("original listing date is not established", body)
+                self.assertIn("Neither record establishes classroom uptake", body)
+
     def test_10000birds_approved_public_response_is_context_not_audience(self):
         link = ("https://www.10000birds.com/"
                 "the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm"
@@ -117,7 +160,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 12)
+        self.assertEqual(len(records), 14)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -152,7 +195,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 12)
+        self.assertEqual(len(records), 14)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -174,7 +217,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 12)
+        self.assertEqual(len(records), 14)
 
     def test_shared_evidence_component_preserves_external_and_internal_destinations(self):
         include = INCLUDE.read_text(encoding="utf8")
