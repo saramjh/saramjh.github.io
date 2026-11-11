@@ -12,6 +12,14 @@
         <p class="folio-evidence-source">{{ record.source | escape }} <span class="folio-dot-sep" aria-hidden="true">·</span> {% case record.type %}{% when 'publication' %}Published contribution{% when 'listing' %}External listing{% when 'dataset_record' %}Catalogue record{% when 'collaboration' %}Documented collaboration{% endcase %}</p>
         <h3><a href="{{ record.url | escape }}" target="_blank" rel="noopener noreferrer">{{ record.title | escape }} <span class="folio-external-arrow" aria-hidden="true">↗</span></a></h3>
         <p class="folio-evidence-description">{{ record.detail | escape }}</p>
+        {% if record.case_ko or record.case_en %}
+          <p class="folio-evidence-context">
+            <span>Developer notes:</span>
+            {% if record.case_ko %}<a href="{{ record.case_ko | relative_url | escape }}">한국어</a>{% endif %}
+            {% if record.case_ko and record.case_en %}<span aria-hidden="true"> / </span>{% endif %}
+            {% if record.case_en %}<a href="{{ record.case_en | relative_url | escape }}">English</a>{% endif %}
+          </p>
+        {% endif %}
       </div>
       {% if record.date %}<time class="folio-evidence-date" datetime="{{ record.date }}">{{ record.date | date: '%b %-d, %Y' }}</time>{% endif %}
     </li>

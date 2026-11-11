@@ -10,6 +10,8 @@
   source: "10,000 Birds"
   title: "The Bird Photo I Could Use Was Not The Bird Photo I Wanted"
   detail: "Guest contribution credited to Jihun Oh."
+  case_ko: "/koreaves-published-contributions-ko/"
+  case_en: "/koreaves-published-contributions-en/"
   url: "https://www.10000birds.com/the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm"
 - id: suncheon-10000
   project: koreaves
@@ -19,6 +21,8 @@
   source: "10,000 Birds"
   title: "Suncheon Bay Wetland, South Korea — Profile for Birders"
   detail: "Published location profile with an author credit to Jihun Oh."
+  case_ko: "/koreaves-published-contributions-ko/"
+  case_en: "/koreaves-published-contributions-en/"
   url: "https://www.10000birds.com/suncheon-bay-wetland-south-korea-profile-for-birders.htm"
 - id: beary-resource
   project: koreaves
@@ -60,6 +64,8 @@
   source: "One Earth"
   title: "Mapping South Korea's birdlife, one observation at a time"
   detail: "Published One Earth article crediting Jihun Oh as an author; not a partnership, adoption, or endorsement claim."
+  case_ko: "/koreaves-oneearth-author-achievement-ko/"
+  case_en: "/koreaves-oneearth-author-achievement-en/"
   url: "https://www.oneearth.org/koreaves/"
 - id: unsustainable-koreaves-bird-map
   project: koreaves
@@ -69,6 +75,8 @@
   source: "Unsustainable Magazine"
   title: "Why a Bird Map Is Not a Bird Count"
   detail: "Published contributor essay credited to Jihun Oh, explaining the evidence limits of bird observation maps; not scientific peer review or verified adoption."
+  case_ko: "/koreaves-unsustainable-bird-map-ko/"
+  case_en: "/koreaves-unsustainable-bird-map-en/"
   url: "https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/"
 - id: webapps-spoonie-listing
   project: spoonie
@@ -78,4 +86,18 @@
   source: "Web Apps Directory"
   title: "Spoonie web app — nothing to download"
   detail: "Public directory entry for Spoonie. Listing alone does not verify user adoption or independent editorial endorsement."
+  case_ko: "/spoonie-webapps-directory-ko/"
+  case_en: "/spoonie-webapps-directory-en/"
   url: "https://webapps.directory/directory/spooniespoonie"
+
+- id: disquiet-spoonie-first-record
+  project: spoonie
+  type: publication
+  status: confirmed
+  date: 2026-10-13
+  source: "Disquiet"
+  title: "레시피 SNS를 만들고 깨달은 것: 기능보다 먼저 ‘첫 기록의 이유’가 필요했다"
+  detail: "Self-authored DevTestudinidae developer-community article about Spoonie's first contributor. Not independent press coverage or measured adoption."
+  case_ko: "/spoonie-disquiet-first-record-ko/"
+  case_en: "/spoonie-disquiet-first-record-en/"
+  url: "https://disquiet.io/articles/MVsxQv"
