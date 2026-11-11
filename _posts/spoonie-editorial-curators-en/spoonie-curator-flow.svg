@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="600" viewBox="0 0 1280 600" role="img" aria-labelledby="title desc">
+<title id="title">Spoonie's editorial profile directory</title>
+<desc id="desc">How verified platform-owned profiles reach a public directory. Observed Nov 11, 2026 · These are platform-owned profiles, not 18 chefs, active users, or published recipes.</desc>
+<rect width="1280" height="600" fill="#F7F8F3"/>
+<rect width="1280" height="142" fill="#123C31"/>
+<rect y="137" width="1280" height="5" fill="#B3C9A7"/>
+<g font-family="Arial, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<text x="54" y="68" fill="#F7FAF5" font-size="36" font-weight="700" >Spoonie's editorial profile directory</text>
+<text x="56" y="111" fill="#CEE5D5" font-size="20" font-weight="400" >How verified platform-owned profiles reach a public directory</text>
+<rect x="54" y="184" width="362" height="286" rx="18" fill="#FFFFFF" stroke="#B8CEC2" stroke-width="2"/>
+<rect x="473" y="184" width="363" height="286" rx="18" fill="#FFFFFF" stroke="#B8CEC2" stroke-width="2"/>
+<rect x="894" y="184" width="332" height="286" rx="18" fill="#FFFFFF" stroke="#B8CEC2" stroke-width="2"/>
+<text x="82" y="231" fill="#1F5546" font-size="22" font-weight="700" >Owned editorial identities</text>
+<text x="84" y="325" fill="#123C31" font-size="82" font-weight="700" >18</text>
+<text x="84" y="371" fill="#314D43" font-size="21" font-weight="550" >Spoonie-operated accounts</text>
+<text x="84" y="421" fill="#54685F" font-size="18" font-weight="400" >Pinned public IDs and handles</text>
+<text x="506" y="233" fill="#1F5546" font-size="23" font-weight="700" >Checks before display</text>
+<text x="534" y="284" fill="#4B7764" font-size="13" font-weight="600" >●</text><text x="553" y="284" fill="#1C3B30" font-size="20" font-weight="500" >Exact registered public ID</text>
+<text x="534" y="339" fill="#4B7764" font-size="13" font-weight="600" >●</text><text x="553" y="339" fill="#1C3B30" font-size="20" font-weight="500" >Handle + organization type match</text>
+<text x="534" y="394" fill="#4B7764" font-size="13" font-weight="600" >●</text><text x="553" y="394" fill="#1C3B30" font-size="20" font-weight="500" >Public profile and editorial label</text>
+<text x="927" y="231" fill="#1F5546" font-size="22" font-weight="700" >Public directory</text>
+<rect x="922" y="256" width="258" height="48" rx="10" fill="#E5EFE6"/><text x="944" y="287" fill="#1C3B30" font-size="23" font-weight="600" >Cooking 10</text>
+<rect x="922" y="318" width="258" height="48" rx="10" fill="#E5EFE6"/><text x="944" y="349" fill="#1C3B30" font-size="23" font-weight="600" >Desserts 4</text>
+<rect x="922" y="380" width="258" height="48" rx="10" fill="#E5EFE6"/><text x="944" y="411" fill="#1C3B30" font-size="23" font-weight="600" >Drinks 4</text>
+<path d="M426 324h34m-10-10 10 10-10 10" fill="none" stroke="#7C9B8B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M846 324h36m-10-10 10 10-10 10" fill="none" stroke="#7C9B8B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="921" y="449" fill="#52655D" font-size="15" font-weight="400" >Links to existing profile pages</text>
+<line x1="54" y1="505" x2="1226" y2="505" stroke="#D7E1D9" stroke-width="2"/>
+<text x="54" y="539" fill="#334F45" font-size="17" font-weight="550" >Observed Nov 11, 2026 · These are platform-owned profiles, not 18 chefs, active users, or published recipes</text>
+<text x="54" y="568" fill="#65796E" font-size="15" font-weight="400" >Sources: Spoonie PR #16 / spoonie.kr/curators</text>
+</g>
+</svg>
