@@ -78,6 +78,18 @@
   case_ko: "/koreaves-unsustainable-bird-map-ko/"
   case_en: "/koreaves-unsustainable-bird-map-en/"
   url: "https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/"
+- id: eusci-space-atlas-diagrams
+  project: space-atlas
+  type: publication
+  status: confirmed
+  date: 2026-11-10
+  source: "EUSci"
+  title: "Three Space Diagrams, Three Missing Clues"
+  detail: "Jihun Oh is credited as author; EUSci identifies Priscilla Wong as editor. External publication, not university endorsement or classroom adoption."
+  case_ko: "/space-atlas-eusci-diagrams-ko/"
+  case_en: "/space-atlas-eusci-diagrams-en/"
+  url: "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
+
 - id: webapps-spoonie-listing
   project: spoonie
   type: listing
