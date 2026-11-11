@@ -6,7 +6,7 @@
     var link=entry.querySelector('.folio-evidence-main h3 a[href]');
     if(!link)return;
     link.addEventListener('click',function(){
-      if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
       if(typeof window.gtag!=='function')return;
       var id=entry.getAttribute('data-evidence-id');
       if(!id)return;
@@ -15,11 +15,26 @@
         item_id:id
       });
     });
+    // The source stays the primary evidence. Track the reader's selection of
+    // the corresponding developer explanation as a separate on-site action.
+    Array.from(entry.querySelectorAll('.folio-evidence-context a[data-case-lang]')).forEach(function(caseLink){
+      caseLink.addEventListener('click',function(){
+        if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
+        if(typeof window.gtag!=='function')return;
+        var id=entry.getAttribute('data-evidence-id');
+        var lang=caseLink.getAttribute('data-case-lang');
+        if(!id||(lang!=='ko'&&lang!=='en'))return;
+        window.gtag('event','select_content',{
+          content_type:'portfolio_evidence_case',
+          item_id:id+':'+lang
+        });
+      });
+    });
   });
   // Record selections of the published first-party case studies. No new tracker.
   Array.from(document.querySelectorAll('.folio-writing-card[data-case-id]')).forEach(function(link){
     link.addEventListener('click',function(){
-      if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
       if(typeof window.gtag!=='function')return;
       var id=link.getAttribute('data-case-id');
       if(!id)return;
