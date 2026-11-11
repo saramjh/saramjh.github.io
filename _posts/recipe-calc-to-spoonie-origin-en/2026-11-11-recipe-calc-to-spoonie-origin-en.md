@@ -25,7 +25,7 @@ The public development timeline gives the story a few fixed points. I created th
 
 ## A calculator for the ingredient you actually have
 
-A recipe rarely fits every cooking situation. Someone may have less of a key ingredient than the instructions require or want to prepare a larger batch. Changing one number means recalculating the others to preserve the intended ratios. Doing that repeatedly by hand was a small but worthwhile problem to remove.
+The original use case was adjusting quantities in dessert-café recipes. A recipe rarely fits every cooking situation. Someone may have less of a key ingredient than the instructions require or want to prepare a larger batch. Changing one number means recalculating the others to preserve the intended ratios. Doing that repeatedly by hand was a small but worthwhile problem to remove.
 
 In recipeCalc, I could enter ingredient names, quantities and units, choose a reference ingredient, and calculate the adjusted quantities. I also added bulk ingredient entry and basic editing and deletion. The [original source repository](https://github.com/saramjh/recipeCalc) and the [2024 feature walkthrough](/recipe-scaling-application/) document those choices. The tool is still available as a [standalone web app](https://saramjh.github.io/recipeCalc/).
 
@@ -38,7 +38,7 @@ The calculator answered the question in front of me. But I kept coming back to a
 
 ## Why a recipe needed a home
 
-Seeing a notebook of recipes collected by hand over a long time made me think about what a calculator leaves behind. A quantity adjustment is useful in the moment. The recipe itself may need to be kept, read again, and prepared another day. I am not reproducing the notebook or identifying its writer here.
+During a move, I came across a handwritten recipe notebook. It had become worn from use and was eventually discarded. I regretted losing access to the recipes inside. A calculator could adjust ingredient quantities, but it could not keep the original recipe somewhere I could return to. That loss made the idea of a lasting recipe book much more concrete. I am not reproducing the notebook or identifying its writer here.
 
 That led me toward a recipe book and eventually a separate product. The Spoonie repository, created in July 2025, marks the point when the work had its own codebase. I was no longer designing only an input form and a calculation. I needed to represent ingredients and instructions as reusable content, make them readable to other people, and think about how someone would use the recipe during cooking.
 
