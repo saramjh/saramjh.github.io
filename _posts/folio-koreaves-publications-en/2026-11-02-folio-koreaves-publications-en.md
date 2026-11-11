@@ -30,6 +30,8 @@ The central tension is familiar to anyone who works with public datasets and ima
 
 It was a useful opportunity to turn an engineering trade-off into something a birding reader could understand without knowing the system architecture.
 
+**A visible reader response.** A public comment dated October 9 appears under the photo essay. The displayed name is David Tomlinson, and the short reply acknowledges the effort behind the work. I checked [the original comment](https://www.10000birds.com/the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm#comment-7017451) on November 11. It documents one response to the essay; it tells me nothing reliable about total readership or KoreAves adoption.
+
 ## October 30: a place rather than a feature
 
 On **October 30, 2026**, the site published [*Suncheon Bay Wetland, South Korea — Profile for Birders*](https://www.10000birds.com/suncheon-bay-wetland-south-korea-profile-for-birders.htm). The page is posted under the site's editorial byline but includes the internal credit **“By Jihun Oh.”**

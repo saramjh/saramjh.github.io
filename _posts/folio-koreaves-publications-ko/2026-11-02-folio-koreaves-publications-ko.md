@@ -30,6 +30,8 @@ tags: [KoreAves, 해외기고, 기술블로그, 포트폴리오, 조류]
 
 보기 좋은 이미지를 무조건 채우는 대신, 출처·라이선스·동정 근거를 설명할 수 있는 표현을 선택해야 했다. 기술 개발에서 만난 이 문제를 일반 독자도 이해할 수 있는 이야기로 정리한 글이다.
 
+**게시 후 확인한 댓글.** 10월 9일, 이 글에 공개 댓글 한 건이 달렸다. 댓글 작성자 표시가 David Tomlinson인 독자는 사진을 고르는 과정에 들인 노력과 끝까지 작업한 점을 짧게 격려했다. 11월 11일에 [원문 댓글](https://www.10000birds.com/the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm#comment-7017451)을 확인했다. 글에 반응이 하나 있었다는 사실이지, 조회수나 KoreAves 사용을 측정한 결과는 아니다.
+
 ## 10월 30일 — 기능이 아닌 장소의 이야기
 
 두 번째 글 [*Suncheon Bay Wetland, South Korea — Profile for Birders*](https://www.10000birds.com/suncheon-bay-wetland-south-korea-profile-for-birders.htm)은 **2026년 10월 30일** 게시됐다. 사이트 상단의 게시자 표기는 Editor지만, 글 본문에는 **“By Jihun Oh”**가 명시되어 있다.
