@@ -47,3 +47,13 @@ seo:
 - [EUSci 기고문 원문과 편집자 표기](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/)
 - [NASA: 달 위상의 원리](https://science.nasa.gov/moon/moon-phases/)
 - [Space Atlas 개발 사례](/portfolio/space-atlas/) 및 [기존 기술 소개](/space-atlas-student/)
+
+## 직접 만든 요약 카드
+
+기고 내용을 바탕으로 내가 새로 만든 세 장의 카드다. EUSci에 실린 사진이나 원문 도해를 가져오지 않았다. 달 위상 그림은 이해를 돕는 도식이며 실제 크기·거리를 나타내지 않는다.
+
+<div class="eusci-original-visuals" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;align-items:start;">
+<figure style="margin:0;"><a href="/assets/images/dev/eusci-20261111/card-01.jpg"><img src="/assets/images/dev/eusci-20261111/card-01.jpg" width="1200" height="1500" loading="lazy" alt="검증 가능한 영문 기고 실적을 소개하는 자체 편집 카드" style="display:block;width:100%;height:auto;border-radius:8px;"></a><figcaption style="margin-top:0.4rem;font-size:0.9rem;">기고문 발표 기록</figcaption></figure>
+<figure style="margin:0;"><a href="/assets/images/dev/eusci-20261111/card-02.jpg"><img src="/assets/images/dev/eusci-20261111/card-02.jpg" width="1200" height="1500" loading="lazy" alt="달 위상을 관찰자의 시점으로 설명하는 축척 없는 개발자 도식" style="display:block;width:100%;height:auto;border-radius:8px;"></a><figcaption style="margin-top:0.4rem;font-size:0.9rem;">관찰자의 위치</figcaption></figure>
+<figure style="margin:0;"><a href="/assets/images/dev/eusci-20261111/card-03.jpg"><img src="/assets/images/dev/eusci-20261111/card-03.jpg" width="1200" height="1500" loading="lazy" alt="인터랙티브 과학 모델의 설명을 영문 글로 확장한 과정을 표현한 자체 그림" style="display:block;width:100%;height:auto;border-radius:8px;"></a><figcaption style="margin-top:0.4rem;font-size:0.9rem;">개발 모델에서 설명 글까지</figcaption></figure>
+</div>

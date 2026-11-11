@@ -47,3 +47,13 @@ The article discloses AI assistance during drafting and editing and says its sci
 - [Read the EUSci article and editorial credit](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/)
 - [NASA Science: Moon phases](https://science.nasa.gov/moon/moon-phases/)
 - [Space Atlas project case](/portfolio/space-atlas/) and [earlier engineering overview](/space-atlas-student-en/)
+
+## Three original summary cards
+
+I made these cards to summarise the published essay and the model-design work behind it. They use my own new artwork, with no photographs or figures reproduced from EUSci. The Moon-phase scene is schematic and is not drawn to scale.
+
+<div class="eusci-original-visuals" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;align-items:start;">
+<figure style="margin:0;"><a href="/assets/images/dev/eusci-20261111/card-01.jpg"><img src="/assets/images/dev/eusci-20261111/card-01.jpg" width="1200" height="1500" loading="lazy" alt="External science-article byline, represented in an original developer-designed publication card" style="display:block;width:100%;height:auto;border-radius:8px;"></a><figcaption style="margin-top:0.4rem;font-size:0.9rem;">Published byline</figcaption></figure>
+<figure style="margin:0;"><a href="/assets/images/dev/eusci-20261111/card-02.jpg"><img src="/assets/images/dev/eusci-20261111/card-02.jpg" width="1200" height="1500" loading="lazy" alt="Original schematic of the observer viewpoint in Moon phases, with no real scale" style="display:block;width:100%;height:auto;border-radius:8px;"></a><figcaption style="margin-top:0.4rem;font-size:0.9rem;">Observer viewpoint</figcaption></figure>
+<figure style="margin:0;"><a href="/assets/images/dev/eusci-20261111/card-03.jpg"><img src="/assets/images/dev/eusci-20261111/card-03.jpg" width="1200" height="1500" loading="lazy" alt="Original model-to-article illustration; not a real software screenshot" style="display:block;width:100%;height:auto;border-radius:8px;"></a><figcaption style="margin-top:0.4rem;font-size:0.9rem;">From model to explanation</figcaption></figure>
+</div>
