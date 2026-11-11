@@ -193,10 +193,13 @@
 .portfolio-body .folio .folio-evidence-main h3{font-size:19px;line-height:1.4;letter-spacing:-.02em;margin:0 0 7px}
 .portfolio-body .folio .folio-evidence-main .folio-evidence-description{max-width:760px;color:var(--folio-muted)!important}
 .portfolio-body .folio .folio-evidence-date{grid-column:3;grid-row:1;justify-self:end;padding-top:8px;width:auto;white-space:nowrap}
+.portfolio-body .folio .folio-evidence-context{display:inline;margin-left:5px;font-size:inherit;line-height:inherit;color:var(--folio-muted)}
+.portfolio-body .folio .folio-evidence-context a{color:var(--folio-accent)!important;text-decoration:underline;text-underline-offset:3px}
+.portfolio-body .folio .folio-evidence-context a:focus-visible{outline:2px solid var(--folio-accent);outline-offset:3px}
 .portfolio-body .folio .folio-evidence-source{color:var(--folio-accent)!important;font:600 11px var(--folio-mono);letter-spacing:.045em;margin:0 0 8px!important}
 .portfolio-body .folio .folio-external-arrow{color:var(--folio-accent);font-size:16px;margin-left:4px;white-space:nowrap}
 @media(max-width:940px){
- .portfolio-body .folio .folio-evidence-item{grid-template-columns:142px minmax(0,1fr) 101px;column-gap:18px}
+ .portfolio-body .folio .folio-evidence-item{grid-template-columns:142px minmax(0,1fr) 101px;column-gap:18px;padding:18px 0}
  .portfolio-body .folio .folio-evidence-main h3{font-size:17px}
 }
 @media(max-width:680px){
