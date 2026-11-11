@@ -136,6 +136,26 @@ class EvidenceContextLinksTest(unittest.TestCase):
             self.assertIn("Priscilla Wong", post)
             self.assertIn("published: true", post)
 
+    def test_unsustainable_publisher_editor_credit_without_peer_review_claim(self):
+        original = "https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/"
+        for language in ("ko", "en"):
+            page = ROOT / f"_posts/koreaves-unsustainable-bird-map-{language}" / f"2026-11-10-koreaves-unsustainable-bird-map-{language}.md"
+            source = page.read_text(encoding="utf8")
+            self.assertIn(original, source)
+            self.assertIn("Jihun Oh", source)
+            self.assertEqual(source.count("Brett Stadelmann"), 1)
+            self.assertIn("Edited and reviewed by Brett Stadelmann", source)
+            self.assertIn("/assets/images/portfolio/koreaves-gis.jpg", source)
+            self.assertNotIn("wp-content/uploads", source)
+            if language == "ko":
+                self.assertIn("학술 동료심사를 받은 연구라는 뜻은 아니다", source)
+            else:
+                self.assertIn("not evidence of scientific peer review", source)
+        records = parse_records()
+        self.assertEqual(len(records), 12)
+        self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
+        self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
+
     def test_eusci_original_published_figure_credit_is_evidence_bounded(self):
         # The original article credits its Figure 1 drawing to Jihun Oh.
         # We cite the credit only; article images are not imported.

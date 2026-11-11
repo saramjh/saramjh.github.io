@@ -19,7 +19,7 @@ seo:
 
 > English version: [My KoreAves bird-map essay was published in Unsustainable Magazine](/koreaves-unsustainable-bird-map-en/)
 
-2026년 11월 6일, **[Unsustainable Magazine에 *Why a Bird Map Is Not a Bird Count* 기고문](https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/)**이 실렸다. 원문에는 작성자가 Jihun Oh로 명시돼 있고, 이 글의 배경이 된 프로젝트로 KoreAves가 소개돼 있다.
+2026년 11월 6일, **[Unsustainable Magazine에 *Why a Bird Map Is Not a Bird Count* 기고문](https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/)**이 실렸다. 원문에는 작성자가 Jihun Oh로 명시돼 있고, **“Edited and reviewed by Brett Stadelmann”**이라는 편집·검토 크레딧도 표시돼 있다. 이 글의 배경이 된 프로젝트로 KoreAves가 소개돼 있다. 매체에 게재된 기고문과 편집자 표기는 확인할 수 있지만, 학술 동료심사를 받은 연구라는 뜻은 아니다.
 
 한국의 새를 출처와 함께 탐색하는 [KoreAves](https://koreaves.com/)를 만들면서 반복해서 부딪힌 문제가 글의 출발점이었다. 어느 지역에서 관찰 기록을 찾았다는 사실과 그 지역에 새가 몇 마리 사는지는 전혀 다른 정보다. 그런데 지도를 보기 좋게 만들수록 그 차이가 화면에서 쉽게 가려진다.
 
