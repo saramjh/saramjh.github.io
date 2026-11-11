@@ -137,6 +137,17 @@ posts.each do |permalink, metadata|
 
   errors << "#{permalink}: more than 4 related links rendered" if related.length > 4
 
+  # Hand-authored localized post links are not part of the related-posts check.
+  # Only match root blog-style slugs; independently deployed projects have other paths.
+  doc.css('main a[href]').each do |link|
+    href = link['href'].to_s
+    target_path = href.split(/[?#]/, 2).first
+    next unless target_path.match?(%r{\A/[^/]+-(?:en|ko|kr)/\z})
+
+    target_file = site_root.join(target_path.delete_prefix('/'), 'index.html')
+    errors << "#{permalink}: localized post link missing: #{href}" unless target_file.file?
+  end
+
   headings = doc.css('main h1, main h2, main h3, main h4, main h5, main h6')
   h1_count = headings.count { |heading| heading.name == 'h1' }
   errors << "#{permalink}: expected exactly one H1, found #{h1_count}" unless h1_count == 1
