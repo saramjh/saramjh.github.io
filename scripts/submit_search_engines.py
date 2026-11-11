@@ -117,6 +117,74 @@ def _page_urls_for_asset(path, revision):
     return pages or None
 
 
+def _page_urls_for_recognitions(revision):
+    """Map the source-linked evidence ledger to its real page consumers.
+
+    The two direct pages, project collection and milestone layout are checked
+    against the committed dependency graph. Unknown new consumers use the
+    existing broad fallback, never a guessed subset.
+    """
+    def tracked(needle, regex=False):
+        proc = subprocess.run(
+            ["git", "grep", "-I", "-l", "-E" if regex else "-F", "-e", needle,
+             revision, "--"], text=True, capture_output=True,
+        )
+        if proc.returncode not in (0, 1):
+            raise ValueError("Cannot inspect recognition dependencies")
+        found = set()
+        for line in proc.stdout.splitlines():
+            prefix, sep, source = line.partition(":")
+            if not sep or prefix != revision or not source:
+                raise ValueError("Unrecognized recognition reference")
+            if not _skip_only_source(source):
+                found.add(source)
+        return found
+
+    data_users = {"_includes/portfolio-evidence.html", "_layouts/project.html"}
+    include_users = {"_layouts/project.html", "_layouts/milestone.html",
+                     "portfolio/index.html", "portfolio/recognition/index.html"}
+    if tracked("site.data.recognitions") != data_users:
+        return None
+    if tracked("portfolio-evidence.html") != include_users:
+        return None
+
+    config = subprocess.check_output(
+        ["git", "show", f"{revision}:_config.yml"],
+        text=True, stderr=subprocess.PIPE,
+    )
+    if not re.search(
+        r"(?m)^  projects:\n    output: true\n    permalink: /portfolio/:name/$",
+        config,
+    ):
+        return None
+
+    layouts = tracked(r"^layout: (project|milestone)$", regex=True)
+    project_sources = {source for source in layouts if source.startswith("_projects/")}
+    milestone_sources = {source for source in layouts if source.startswith("_posts/")}
+    if layouts != project_sources | milestone_sources:
+        return None
+
+    listed_projects = subprocess.check_output(
+        ["git", "ls-tree", "-r", "--name-only", revision, "--", "_projects"],
+        text=True, stderr=subprocess.PIPE,
+    ).splitlines()
+    if set(listed_projects) != project_sources or not listed_projects:
+        return None
+
+    urls = set()
+    for source in {"portfolio/index.html", "portfolio/recognition/index.html"} | milestone_sources:
+        page = _permalink_from_source(source, revision)
+        if page is None:
+            return None
+        urls.add(page)
+    for source in project_sources:
+        stem = source.removeprefix("_projects/")
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*\.(md|html)", stem):
+            return None
+        urls.add(f"{BASE_URL}/portfolio/{stem.rsplit('.', 1)[0]}/")
+    return urls
+
+
 _VERIFICATION_SITEMAP_ONLY_ADDITIONS = [
     "  # Sitemap-only exclusions: keep verification files publicly reachable and byte-for-byte intact.",
     "  - scope:",
@@ -185,8 +253,18 @@ def changed_urls(before, after):
             except ValueError:
                 raise
             continue
-        # Shared site data, layouts, styles and assets without known page
-        # dependencies may affect many pages. Preserve complete coverage.
+        # The recognition ledger renders through one checked include used by
+        # two fixed pages. Unknown consumers retain the full-site fallback.
+        if file_path == "_data/recognitions.yml":
+            pages = set()
+            for revision in (before, after):
+                resolved = _page_urls_for_recognitions(revision)
+                if resolved is None:
+                    return None
+                pages.update(resolved)
+            touched.update(pages)
+            continue
+        # Other shared data and templates may affect every page.
         if file_path.startswith(("_data/", "_includes/", "_layouts/", "_sass/", "css/")) or file_path in ("_config.yml",):
             return None
         try:

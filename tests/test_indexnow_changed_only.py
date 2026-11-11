@@ -131,6 +131,48 @@ class ChangeScopeTest(unittest.TestCase):
                               return_value=["https://saramjh.github.io/", "https://saramjh.github.io/portfolio/"]):
                 self.assertEqual(len(sender.get_deploy_urls()), 2)
 
+    def recognition_fixture(self):
+        self.write("_config.yml",
+                   "collections:\n  projects:\n    output: true\n    permalink: /portfolio/:name/\n")
+        self.write("_includes/portfolio-evidence.html",
+                   "{% for record in site.data.recognitions %}{{ record.title }}{% endfor %}\n")
+        self.write("_layouts/project.html",
+                   "{% assign matches = site.data.recognitions %}\n"
+                   "{% include portfolio-evidence.html project=page.slug %}\n")
+        self.write("_layouts/milestone.html",
+                   "{% include portfolio-evidence.html project=page.project_id %}\n")
+        self.write("portfolio/index.html",
+                   "---\npermalink: /portfolio/\n---\n{% include portfolio-evidence.html %}\n")
+        self.write("portfolio/recognition/index.html",
+                   "---\npermalink: /portfolio/recognition/\n---\n{% include portfolio-evidence.html %}\n")
+        self.write("_projects/koreaves.md",
+                   "---\nlayout: project\nslug: koreaves\n---\n")
+        self.write("_posts/folio-koreaves/2026-11-11-folio-koreaves.md",
+                   "---\nlayout: milestone\npermalink: /koreaves-evidence/\n---\n")
+        self.write("_data/recognitions.yml", "- id: before\n")
+        return self.commit("original bounded recognition consumers")
+
+    def test_recognition_data_change_only_notifies_verified_consumers(self):
+        before = self.recognition_fixture()
+        self.write("_data/recognitions.yml", "- id: after\n")
+        after = self.commit("one new external achievement record")
+        expected = ["https://saramjh.github.io/koreaves-evidence/",
+                    "https://saramjh.github.io/portfolio/",
+                    "https://saramjh.github.io/portfolio/koreaves/",
+                    "https://saramjh.github.io/portfolio/recognition/"]
+        self.assertEqual(sender.changed_urls(before, after), expected)
+        with patch.dict(os.environ, {"INDEXNOW_BEFORE_SHA": before,
+                                     "INDEXNOW_AFTER_SHA": after}):
+            with patch.object(sender, "get_urls", side_effect=AssertionError("no sitemap replay")):
+                self.assertEqual(sender.get_deploy_urls(), expected)
+
+    def test_recognition_data_unknown_new_template_keeps_conservative_scope(self):
+        before = self.recognition_fixture()
+        self.write("_includes/footer.html", "{{ site.data.recognitions.size }}\n")
+        self.write("_data/recognitions.yml", "- id: after\n")
+        after = self.commit("new footer consumer requires full coverage")
+        self.assertIsNone(sender.changed_urls(before, after))
+
     def test_empty_or_unknown_commit_never_requests_sitemap(self):
         after = self.base
         for before in ("", "a" * 40):
