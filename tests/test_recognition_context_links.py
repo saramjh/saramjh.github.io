@@ -136,6 +136,26 @@ class EvidenceContextLinksTest(unittest.TestCase):
             self.assertIn("Priscilla Wong", post)
             self.assertIn("published: true", post)
 
+    def test_eusci_original_published_figure_credit_is_evidence_bounded(self):
+        # The original article credits its Figure 1 drawing to Jihun Oh.
+        # We cite the credit only; article images are not imported.
+        for language in ("ko", "en"):
+            p = ROOT / f"_posts/space-atlas-eusci-diagrams-{language}" / f"2026-11-11-space-atlas-eusci-diagrams-{language}.md"
+            post = p.read_text(encoding="utf8")
+            self.assertEqual(post.count("Original illustration by Jihun Oh"), 1)
+            self.assertIn("Priscilla Wong", post)
+            self.assertIn("https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/", post)
+            self.assertNotIn("i0.wp.com", post)
+            self.assertNotIn("wp-content/uploads", post)
+            self.assertIn("/assets/images/dev/eusci-20261111/card-02.jpg", post)
+            if language == "ko":
+                self.assertIn("원문 Figure 1의 천문학 설명 도해", post)
+            else:
+                self.assertIn("Figure 1 caption reads", post)
+        # This is one article, not a new external publication or directory record.
+        records = parse_records()
+        self.assertEqual(len(records), 12)
+
     def test_shared_evidence_component_preserves_external_and_internal_destinations(self):
         include = INCLUDE.read_text(encoding="utf8")
         css = CSS.read_text(encoding="utf8")
