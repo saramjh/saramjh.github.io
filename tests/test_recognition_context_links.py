@@ -15,6 +15,7 @@ EXPECTED = {
     "one-earth-koreaves-feature": "koreaves-oneearth-author-achievement",
     "unsustainable-koreaves-bird-map": "koreaves-unsustainable-bird-map",
     "webapps-spoonie-listing": "spoonie-webapps-directory",
+    "eusci-space-atlas-diagrams": "space-atlas-eusci-diagrams",
     "disquiet-spoonie-first-record": "spoonie-disquiet-first-record",
 }
 
@@ -39,15 +40,22 @@ def parse_records():
 
 
 class EvidenceContextLinksTest(unittest.TestCase):
-    def test_six_canonical_records_only_and_original_source_retained(self):
+    def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 10)
+        self.assertEqual(len(records), 11)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
             self.assertTrue(item["url"].startswith("https://"))
             self.assertEqual(item["case_ko"], f"/{slug}-ko/")
             self.assertEqual(item["case_en"], f"/{slug}-en/")
+        self.assertEqual(
+            records["eusci-space-atlas-diagrams"]["url"],
+            "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/",
+        )
+        self.assertEqual(records["eusci-space-atlas-diagrams"]["date"], "2026-11-10")
+        self.assertEqual(records["eusci-space-atlas-diagrams"]["type"], "publication")
+        self.assertIn("not university endorsement", records["eusci-space-atlas-diagrams"]["detail"])
         self.assertEqual(
             records["disquiet-spoonie-first-record"]["url"],
             "https://disquiet.io/articles/MVsxQv",
@@ -75,6 +83,22 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("published: true", post)
                 if "alternate_url:" in post:
                     self.assertIn("alternate_url: " + records[record_id][f"case_{opposite}"], post)
+
+    def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
+        original = "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
+        owned_image = "/space-atlas-student/space-atlas-hero.png"
+        self.assertTrue((ROOT / "_posts/space-atlas-student/space-atlas-hero.png").is_file())
+        for language in ("ko", "en"):
+            p = ROOT / f"_posts/space-atlas-eusci-diagrams-{language}" / f"2026-11-11-space-atlas-eusci-diagrams-{language}.md"
+            post = p.read_text(encoding="utf-8")
+            self.assertIn(original, post)
+            self.assertIn(f"image: {owned_image}", post)
+            self.assertIn(f'<img src="{owned_image}"', post)
+            self.assertNotIn("i0.wp.com", post)
+            self.assertNotIn("commons.wikimedia.org/wiki/File:Solar", post)
+            self.assertIn("Jihun Oh", post)
+            self.assertIn("Priscilla Wong", post)
+            self.assertIn("published: true", post)
 
     def test_shared_evidence_component_preserves_external_and_internal_destinations(self):
         include = INCLUDE.read_text(encoding="utf8")
