@@ -199,7 +199,7 @@
 .portfolio-body .folio .folio-evidence-source{color:var(--folio-accent)!important;font:600 11px var(--folio-mono);letter-spacing:.045em;margin:0 0 8px!important}
 .portfolio-body .folio .folio-external-arrow{color:var(--folio-accent);font-size:16px;margin-left:4px;white-space:nowrap}
 @media(max-width:940px){
- .portfolio-body .folio .folio-evidence-item{grid-template-columns:142px minmax(0,1fr) 101px;column-gap:18px}
+ .portfolio-body .folio .folio-evidence-item{grid-template-columns:142px minmax(0,1fr) 101px;column-gap:18px;padding:18px 0}
  .portfolio-body .folio .folio-evidence-main h3{font-size:17px}
 }
 @media(max-width:680px){
