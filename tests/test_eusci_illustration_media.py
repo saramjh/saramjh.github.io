@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FOLDER = ROOT / "assets/images/dev/eusci-20261111"
 FILES = {
     "card-01.jpg": "7edf2ec62ff630cabb350897c3dcffa9593b078a337a1cf71e16b4aca4a6a7ea",
-    "card-02.jpg": "44dd00153ce6e7d2b819847e07bdcd30717646c340a91c99ac78bf5f73882632",
+    "card-02.jpg": "3134dc63125b1dc4642b9d53d119cf81a1d650db340e638d9d24f69e67f26eb6",
     "card-03.jpg": "594ca8f8949ead0392c71c4fe17970dcd5aa7720f4b3fadea63a5272c89fbc3a",
 }
 
