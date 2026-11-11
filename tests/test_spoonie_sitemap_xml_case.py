@@ -28,5 +28,17 @@ class SpoonieSitemapXmlCaseTest(unittest.TestCase):
                 self.assertNotIn("\ufffd",text)
                 self.assertNotIn("my wife",text.lower())
                 self.assertIn("색인 증가나 검색 유입 증가" if lang=="ko" else "does not establish indexing",text)
+    def test_english_context_link_reaches_a_real_published_english_post(self):
+        case = ROOT / "_posts/spoonie-sitemap-xml-image-escaping-en/2026-11-11-spoonie-sitemap-xml-image-escaping-en.md"
+        text = case.read_text(encoding="utf8")
+        target = "/spoonie-disquiet-first-record-en/"
+        self.assertIn("[my English note on Spoonie's first-record problem](" + target + ")", text)
+        self.assertNotIn("/spoonie-social-cooking-early-users-en/", text)
+        target_file = ROOT / "_posts/spoonie-disquiet-first-record-en/2026-11-11-spoonie-disquiet-first-record-en.md"
+        body = target_file.read_text(encoding="utf8")
+        self.assertIn("permalink: " + target, body)
+        self.assertIn("lang: en", body)
+        self.assertIn("published: true", body)
+
 if __name__=="__main__":
     unittest.main()
