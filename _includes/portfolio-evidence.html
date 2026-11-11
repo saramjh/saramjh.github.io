@@ -15,9 +15,9 @@
           {% if record.case_ko or record.case_en %}
             <span class="folio-evidence-context">
               <span>Developer notes:</span>
-              {% if record.case_ko %}<a href="{{ record.case_ko | relative_url | escape }}">한국어</a>{% endif %}
+              {% if record.case_ko %}<a data-case-lang="ko" href="{{ record.case_ko | relative_url | escape }}">한국어</a>{% endif %}
               {% if record.case_ko and record.case_en %}<span aria-hidden="true"> / </span>{% endif %}
-              {% if record.case_en %}<a href="{{ record.case_en | relative_url | escape }}">English</a>{% endif %}
+              {% if record.case_en %}<a data-case-lang="en" href="{{ record.case_en | relative_url | escape }}">English</a>{% endif %}
             </span>
           {% endif %}
         </p>

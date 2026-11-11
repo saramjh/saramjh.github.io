@@ -162,6 +162,57 @@ with sync_playwright() as p:
                 assert tracked['countAfterDnt'] == 8, (viewport, 'DNT guard failed', tracked)
                 assert tracked['totalCount'] == 8, (viewport, 'gtag unavailable guard failed', tracked)
             if path == '/portfolio/recognition/':
+                # New c431 bilingual developer-note links reuse the existing GA4
+                # event route; every test click stays inside this page.
+                case_event = page.evaluate("""() => {
+                  const item = document.querySelector('.folio-evidence-item[data-evidence-id="birds-photo-10000"]');
+                  const sourceLink = item.querySelector('.folio-evidence-main h3 a');
+                  const ko = item.querySelector('.folio-evidence-context a[data-case-lang="ko"]');
+                  const en = item.querySelector('.folio-evidence-context a[data-case-lang="en"]');
+                  if (!sourceLink || !ko || !en) throw new Error('Missing source-bound bilingual evidence links');
+                  const calls = [];
+                  const oldGtag = window.gtag;
+                  const oldDnt = window.doNotTrack;
+                  window.doNotTrack = '0';
+                  window.gtag = function(){ calls.push(Array.from(arguments)); };
+                  function safeClick(link) {
+                    link.addEventListener('click', event => event.preventDefault(), {once:true});
+                    link.click();
+                  }
+                  safeClick(sourceLink); safeClick(ko); safeClick(en);
+                  const enabledCalls = calls.slice();
+                  window.doNotTrack = '1';
+                  safeClick(ko); safeClick(en);
+                  const afterDnt = calls.length;
+                  window.doNotTrack = '0';
+                  window.gtag = undefined;
+                  safeClick(ko); safeClick(en);
+                  const afterMissingGA4 = calls.length;
+                  window.gtag = oldGtag;
+                  window.doNotTrack = oldDnt;
+                  return {enabledCalls,afterDnt,afterMissingGA4,hrefs:[ko.getAttribute('href'),en.getAttribute('href')]};
+                }""")
+                assert case_event['enabledCalls'] == [
+                    ['event', 'select_content', {
+                        'content_type': 'portfolio_external_evidence',
+                        'item_id': 'birds-photo-10000'
+                    }],
+                    ['event', 'select_content', {
+                        'content_type': 'portfolio_evidence_case',
+                        'item_id': 'birds-photo-10000:ko'
+                    }],
+                    ['event', 'select_content', {
+                        'content_type': 'portfolio_evidence_case',
+                        'item_id': 'birds-photo-10000:en'
+                    }]
+                ], (viewport, 'source and case selection events', case_event)
+                assert case_event['afterDnt'] == 3, (viewport, 'case DNT failed', case_event)
+                assert case_event['afterMissingGA4'] == 3, (viewport, 'case missing GA4 guard failed', case_event)
+                assert case_event['hrefs'] == [
+                    '/koreaves-published-contributions-ko/',
+                    '/koreaves-published-contributions-en/'
+                ], (viewport, 'source-bounded case hrefs', case_event)
+                # Original source-selection / archive filtering contract remains.
                 # Synthetic click: verify an event without opening a real external tab.
                 evidence_event = page.evaluate("""() => {
                   const item = document.querySelector('.folio-evidence-item');
