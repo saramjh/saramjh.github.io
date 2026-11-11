@@ -40,7 +40,7 @@ For each lesson, I chose the relationships a learner needed to inspect and docum
 
 ## What the publication demonstrates
 
-The result is a [publicly accessible article with an author credit and a named editor](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/). It gives educators, reviewers and potential collaborators a way to examine my explanation of a problem, then compare it with a working [Moon Phases lesson](https://spaceatlasedu.org/moon/phases/). The byline provides a concrete writing sample alongside the software.
+The result is a [publicly accessible article with an author credit and a named editor](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/). EUSci’s Figure 1 caption reads “Original illustration by Jihun Oh.” I drew it to connect the observer’s viewpoint, Earth’s axial direction and the Moon’s inclined orbit in a single schematic. It gives educators, reviewers and potential collaborators a way to examine my explanation of a problem, then compare it with a working [Moon Phases lesson](https://spaceatlasedu.org/moon/phases/). The byline provides a concrete writing sample alongside the software.
 
 The article discloses AI assistance during drafting and editing and says its scientific explanations were checked against linked NASA references. Publication by EUSci is the verified achievement. It does not demonstrate formal university endorsement, classroom adoption or measured learning gains.
 
