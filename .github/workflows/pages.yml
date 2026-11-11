@@ -65,6 +65,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
+      contents: read
+      deployments: read
       pages: write
       id-token: write
     environment:
@@ -73,8 +75,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - uses: actions/configure-pages@v5
+      - name: Verify last successful Pages revision
+        id: predecessor
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/resolve_pages_predecessor.py
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
@@ -82,7 +89,7 @@ jobs:
         run: python3 scripts/submit_search_engines.py
         env:
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
-          INDEXNOW_BEFORE_SHA: ${{ github.event.before }}
+          INDEXNOW_BEFORE_SHA: ${{ steps.predecessor.outputs.before_sha }}
           INDEXNOW_AFTER_SHA: ${{ github.sha }}
 
 

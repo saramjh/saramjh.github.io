@@ -189,6 +189,50 @@ class ChangeScopeTest(unittest.TestCase):
         after = self.commit("shared asset changed")
         self.assertIsNone(sender.changed_urls(self.base, after))
 
+    def test_post_local_svg_added_with_own_post_limits_notification_to_two_urls(self):
+        self.write(
+            "_posts/atomic-ko/2026-11-11-atomic-ko.md",
+            '---\npermalink: /atomic-ko/\n---\n'
+            '<img src="/atomic-ko/atomic-flow.svg" alt="Own source diagram">\n',
+        )
+        self.write("_posts/atomic-ko/atomic-flow.svg", "<svg></svg>\n")
+        after = self.commit("new original bilingual article and local image")
+        expected = ["https://saramjh.github.io/", "https://saramjh.github.io/atomic-ko/"]
+        self.assertEqual(sender.changed_urls(self.base, after), expected)
+        with patch.dict(os.environ, {
+            "INDEXNOW_BEFORE_SHA": self.base, "INDEXNOW_AFTER_SHA": after,
+        }):
+            with patch.object(sender, "get_urls", side_effect=AssertionError("no sitemap replay")):
+                self.assertEqual(sender.get_deploy_urls(), expected)
+
+    def test_post_local_svg_only_change_limits_notification_to_its_page(self):
+        self.write(
+            "_posts/case-one/2026-11-10-case-one.md",
+            '---\npermalink: /case-one/\n---\n'
+            '<img src="/case-one/case-flow.svg">\n',
+        )
+        self.write("_posts/case-one/case-flow.svg", "<svg>original</svg>\n")
+        old = self.commit("original post owns image")
+        self.write("_posts/case-one/case-flow.svg", "<svg>edited</svg>\n")
+        after = self.commit("update one local image")
+        self.assertEqual(sender.changed_urls(old, after), [
+            "https://saramjh.github.io/", "https://saramjh.github.io/case-one/"
+        ])
+
+    def test_unreferenced_post_local_asset_uses_conservative_full_site_scope(self):
+        self.write("_posts/case-one/unreferenced.svg", "<svg></svg>\n")
+        after = self.commit("unreferenced post-local asset")
+        self.assertIsNone(sender.changed_urls(self.base, after))
+
+    def test_post_local_asset_used_in_shared_template_is_not_narrowed(self):
+        self.write(
+            "_includes/header.html",
+            '<img src="/case-one/local-asset.svg">\n',
+        )
+        self.write("_posts/case-one/local-asset.svg", "<svg></svg>\n")
+        after = self.commit("shared template uses local asset")
+        self.assertIsNone(sender.changed_urls(self.base, after))
+
 
 if __name__ == "__main__":
     unittest.main()
