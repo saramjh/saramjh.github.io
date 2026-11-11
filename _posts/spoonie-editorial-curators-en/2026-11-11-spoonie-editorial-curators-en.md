@@ -48,4 +48,11 @@ The practical achievement is an identity-aware directory integrated with an exis
 
 The next meaningful evidence will come from recipes published with their own source and image rights intact, followed by real reader behavior. I use the same distinction in my [Spoonie recipe-poll implementation](/spoonie-live-polls-en/): shipped code and a working public example can be verified, while adoption requires separate measurement.
 
+## Four original visual notes
+
+I drew four diagrams of the implemented path from verified editorial account to directory and public profile. These are schematic illustrations, not the actual curators' portraits, Spoonie avatars, or product screenshots.
+
+[18 platform-operated profiles](/assets/img/dev-spoonie-curators-ig-20261111/card-01.jpg) · [Cooking, desserts and drinks](/assets/img/dev-spoonie-curators-ig-20261111/card-02.jpg) · [Public identity checks](/assets/img/dev-spoonie-curators-ig-20261111/card-03.jpg) · [Directory to existing follow flow](/assets/img/dev-spoonie-curators-ig-20261111/card-04.jpg)
+
+
 Sources: [live Spoonie editorial directory](https://spoonie.kr/curators), [original merged implementation PR #16](https://github.com/saramjh/spoonie/pull/16), [Spoonie project case](/portfolio/spoonie/).

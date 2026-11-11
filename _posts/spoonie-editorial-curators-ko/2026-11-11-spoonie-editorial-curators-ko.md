@@ -46,4 +46,11 @@ PR #16이 병합될 당시 이 운영 계정들에는 새 레시피가 발행되
 
 그다음 과제는 계정 수를 늘리는 일이 아니다. 원본과 이미지 사용 권한을 확인한 실제 레시피를 발행하고, 사용자가 그 콘텐츠를 유용하게 읽거나 기록하는지 별도로 살펴야 한다. 이전에 만든 [공개 레시피 투표 기능](/spoonie-live-polls-ko/) 역시 코드와 공개 페이지의 존재, 실제 이용 성과를 구분해 기록했다.
 
+## 네 장의 구현 도식
+
+공개 계정 검증에서 실제 프로필 탐색으로 이어지는 개발 흐름을 네 장의 그림으로 정리했다. Spoonie 운영 큐레이터의 실제 얼굴이나 아바터, 서비스 화면을 복제한 이미지는 아니다.
+
+[18개 운영 프로필](/assets/img/dev-spoonie-curators-ig-20261111/card-01.jpg) · [요리·디저트·음료 분류](/assets/img/dev-spoonie-curators-ig-20261111/card-02.jpg) · [공개 계정 확인](/assets/img/dev-spoonie-curators-ig-20261111/card-03.jpg) · [프로필·팔로우 탐색](/assets/img/dev-spoonie-curators-ig-20261111/card-04.jpg)
+
+
 근거: [Spoonie 공식 큐레이터 페이지](https://spoonie.kr/curators), [병합된 구현 PR #16](https://github.com/saramjh/spoonie/pull/16), [Spoonie 개발 프로젝트 기록](/portfolio/spoonie/).
