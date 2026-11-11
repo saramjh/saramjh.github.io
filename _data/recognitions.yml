@@ -48,6 +48,14 @@
   title: "Biology learning resource listing"
   detail: "KoreAves is linked among bird information resources."
   url: "https://github.com/fmhy/FMHY/wiki/Educational"
+- id: greenus-koreaves-community-tool
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "GREENUS Resources & Tools"
+  title: "KoreAves — Explore bird occurrence evidence across South Korea"
+  detail: "Community-submitted mapping tool publicly listed with Jihun Oh as its independent creator. Listing does not establish editorial endorsement, partnership, or classroom adoption."
+  url: "https://greenus.upb.ro/resources.php?rp=2"
 - id: gbif-literature
   project: koreaves
   type: dataset_record

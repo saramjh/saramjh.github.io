@@ -42,13 +42,24 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 11)
+        self.assertEqual(len(records), 12)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
             self.assertTrue(item["url"].startswith("https://"))
             self.assertEqual(item["case_ko"], f"/{slug}-ko/")
             self.assertEqual(item["case_en"], f"/{slug}-en/")
+        greenus = records["greenus-koreaves-community-tool"]
+        self.assertEqual(greenus["status"], "confirmed")
+        self.assertEqual(greenus["type"], "listing")
+        self.assertEqual(greenus["project"], "koreaves")
+        self.assertEqual(greenus["url"], "https://greenus.upb.ro/resources.php?rp=2")
+        self.assertIn("Community-submitted", greenus["detail"])
+        self.assertIn("Jihun Oh", greenus["detail"])
+        self.assertIn("does not establish editorial endorsement", greenus["detail"])
+        self.assertNotIn("date", greenus)
+        self.assertNotIn("case_ko", greenus)
+        self.assertNotIn("case_en", greenus)
         self.assertEqual(
             records["eusci-space-atlas-diagrams"]["url"],
             "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/",
