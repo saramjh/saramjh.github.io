@@ -67,7 +67,7 @@ The game requires JavaScript. The phase table and scientific explanation remain 
 
 The Space Atlas updates log records a check of the National Coalition for Aviation and Space Education (NCASE) public Programs index on November 4, 2026. The listing's first-publication date is unknown. The record establishes that Space Atlas had an entry in the public directory. It does not establish certification, endorsement, a NASA affiliation or classroom effectiveness.
 
-The listing still uses the previous GitHub Pages address, which redirects to the current Space Atlas domain. The updates log says a link-correction request was sent. The publisher has not confirmed a change.
+On November 11, 2026, the [NCASE Programs listing](https://ncase.org/programs/) linked directly to the current Space Atlas domain, spaceatlasedu.org. The date NCASE updated that link is unknown.
 
 The Space Atlas site describes itself as a student reference for grades 4 to 8. The Moon Phases lesson also proposes a 30 to 35 minute activity for grades 3 to 5. That activity has not been tested in a classroom, and no pupil outcomes have been measured.
 
