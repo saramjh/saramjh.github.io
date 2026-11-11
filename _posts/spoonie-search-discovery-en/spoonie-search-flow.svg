@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="530" viewBox="0 0 1280 530" role="img" aria-labelledby="title desc">
+<title id="title">A path to more results</title>
+<desc id="desc">Exact titles first · distinct authors and IDs. Recipes · 20 per page, Recipeed · 20 per page. Reference picker: 10 per batch.</desc>
+<rect width="1280" height="530" fill="#f6f4ee"/>
+<path d="M54 37 H1226" stroke="#b7b5af" stroke-width="2"/>
+<text x="60" y="103" font-size="57" font-family="Arial,sans-serif" font-weight="700" fill="#20313a">A path to more results</text>
+<text x="62" y="159" font-size="39" font-family="Arial,sans-serif" fill="#40565e">Exact titles first · distinct authors and IDs</text>
+<rect x="60" y="205" width="360" height="114" rx="13" stroke="#9caeb1" fill="#ffffff" stroke-width="3"/>
+<text x="87" y="276" font-size="46" font-family="Arial,sans-serif" font-weight="700" fill="#20313a">Search query</text>
+<path d="M429 262 H486" fill="none" stroke="#52787d" stroke-width="7"/>
+<path d="M467 250 L488 262 L467 274" fill="none" stroke="#52787d" stroke-width="7"/>
+<rect x="500" y="205" width="720" height="114" rx="13" stroke="#8aa9a0" fill="#e2ede8" stroke-width="3"/>
+<text x="529" y="276" font-size="46" font-family="Arial,sans-serif" font-weight="700" fill="#20313a">Server search</text>
+<path d="M860 319 V347 H320 V370 M860 347 H960 V370" fill="none" stroke="#8aa9a0" stroke-width="5"/>
+<rect x="60" y="372" width="550" height="89" rx="13" stroke="#a6b4b4" fill="#ffffff" stroke-width="2"/>
+<rect x="670" y="372" width="550" height="89" rx="13" stroke="#a6b4b4" fill="#ffffff" stroke-width="2"/>
+<text x="87" y="432" font-size="45" font-family="Arial,sans-serif" font-weight="700" fill="#20313a">Recipes · 20 per page</text>
+<text x="697" y="432" font-size="45" font-family="Arial,sans-serif" font-weight="700" fill="#20313a">Recipeed · 20 per page</text>
+<text x="61" y="503" font-size="32" font-family="Arial,sans-serif" fill="#40565e">Reference picker: 10 per batch</text>
+<text x="1220" y="516" text-anchor="end" font-size="18" font-family="Arial,sans-serif" fill="#647579">PR #31 diagram · not a product screenshot</text>
+</svg>
