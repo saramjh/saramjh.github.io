@@ -50,4 +50,4 @@ At **23:29 KST on November 11, 2026**, the [live sitemap](https://spoonie.kr/sit
 
 [Google's Search Console guidance](https://support.google.com/webmasters/answer/7451001) identifies unescaped URL characters as a common sitemap parsing problem. Passing an XML parser establishes that the deployed document is well-formed. It **does not establish indexing, improved search impressions or user growth**.
 
-The [source PR](https://github.com/saramjh/spoonie/pull/29), [Next.js sitemap reference](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap) and [my earlier Spoonie engineering note](/spoonie-social-cooking-early-users-en/) provide the code and product context.
+The [source PR](https://github.com/saramjh/spoonie/pull/29), [Next.js sitemap reference](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap) and [my English note on Spoonie's first-record problem](/spoonie-disquiet-first-record-en/) provide the code and product context.
