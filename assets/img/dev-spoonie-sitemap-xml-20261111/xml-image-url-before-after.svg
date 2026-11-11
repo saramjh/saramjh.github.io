@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="t d">
+<title id="t">Why one image URL can break sitemap XML</title>
+<desc id="d">Two code examples. A raw ampersand inside the image location is invalid XML. Escaping the ampersand keeps the decoded image URL intact.</desc>
+<rect width="1200" height="620" fill="#f6f4ef"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="64" y="78" font-size="38" fill="#20333b" font-weight="700">One URL. Two XML representations.</text>
+<text x="64" y="111" font-size="19" fill="#5e6b73">Spoonie image-sitemap serialization fix · November 11, 2026</text>
+<rect x="64" y="151" width="1072" height="157" rx="12" fill="#fff" stroke="#d2ceca" stroke-width="2"/>
+<rect x="64" y="151" width="11" height="157" rx="5" fill="#ae5545"/>
+<text x="97" y="193" font-size="22" fill="#a04435" font-weight="700">BEFORE · XML parse error</text>
+<text x="98" y="266" font-size="21" fill="#253742" font-family="Menlo, Consolas, monospace">&lt;image:loc&gt;…?auto=compress&amp;fit=crop&lt;/image:loc&gt;</text>
+<path d="M600 328 V372 M587 359 L600 374 L613 359" fill="none" stroke="#73838b" stroke-width="3" stroke-linecap="round"/>
+<rect x="64" y="394" width="1072" height="158" rx="12" fill="#fff" stroke="#d2ceca" stroke-width="2"/>
+<rect x="64" y="394" width="11" height="158" rx="5" fill="#42866b"/>
+<text x="97" y="436" font-size="22" fill="#277554" font-weight="700">AFTER · well-formed XML</text>
+<text x="98" y="510" font-size="21" fill="#253742" font-family="Menlo, Consolas, monospace">&lt;image:loc&gt;…?auto=compress&amp;amp;fit=crop&lt;/image:loc&gt;</text>
+<text x="66" y="596" font-size="16" fill="#66767d">Original explanatory diagram. Illustrative URL, not a screenshot of user data.</text>
+</g>
+</svg>
