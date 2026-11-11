@@ -19,7 +19,7 @@ seo:
 
 > 한국어판: [KoreAves 개발자의 조류 지도 해석 기고, Unsustainable Magazine에 게재](/koreaves-unsustainable-bird-map-ko/)
 
-On November 6, 2026, **[Unsustainable Magazine published my article, *Why a Bird Map Is Not a Bird Count*](https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/)**. Its original page credits Jihun Oh as the author and identifies KoreAves as the project behind the work.
+On November 6, 2026, **[Unsustainable Magazine published my article, *Why a Bird Map Is Not a Bird Count*](https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/)**. Its original page credits Jihun Oh as the author, notes **“Edited and reviewed by Brett Stadelmann”**, and identifies KoreAves as the project behind the work. That is an editorial credit for a published contribution, not evidence of scientific peer review.
 
 The article came from a problem I kept meeting while building [KoreAves](https://koreaves.com/), a public, source-linked reference for South Korean birds. A map can make a collection of records look complete. Without context about when, where and how those records were collected, readers can mistake it for a direct measure of the birds living in an area.
 
