@@ -95,6 +95,31 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 if "alternate_url:" in post:
                     self.assertIn("alternate_url: " + records[record_id][f"case_{opposite}"], post)
 
+    def test_10000birds_approved_public_response_is_context_not_audience(self):
+        link = ("https://www.10000birds.com/"
+                "the-bird-photo-i-could-use-was-not-the-bird-photo-i-wanted.htm"
+                "#comment-7017451")
+        posts = {
+            "ko": ROOT / "_posts/folio-koreaves-publications-ko/2026-11-02-folio-koreaves-publications-ko.md",
+            "en": ROOT / "_posts/folio-koreaves-publications-en/2026-11-02-folio-koreaves-publications-en.md",
+        }
+        for lang, file in posts.items():
+            text = file.read_text(encoding="utf8")
+            self.assertEqual(text.count(link), 1)
+            self.assertIn("David Tomlinson", text)
+            if lang == "ko":
+                self.assertIn("10월 9일", text)
+                self.assertIn("11월 11일", text)
+                self.assertIn("조회수나 KoreAves 사용을 측정한 결과는 아니다", text)
+            else:
+                self.assertIn("October 9", text)
+                self.assertIn("November 11", text)
+                self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
+        # A comment is not an additional externally published author contribution.
+        records = parse_records()
+        self.assertEqual(len(records), 12)
+        self.assertEqual(records["birds-photo-10000"]["type"], "publication")
+
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
         original = "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
         owned_image = "/space-atlas-student/space-atlas-hero.png"
