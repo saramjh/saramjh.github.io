@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="650" viewBox="0 0 1280 650" role="img" aria-labelledby="title desc">
+<title id="title">Spoonie | 저장·탈퇴 데이터 경계 정비</title><desc id="desc">2026.11.11 원본 PR #25 · 구현 근거를 설명하는 개발자 도식. 제약: 회원 계정의 파괴적 운영 E2E 미실시. DB 성공 뒤 Storage 정리는 여전히 별도 단계입니다.</desc>
+<rect width="1280" height="650" fill="#F9FAF6"/><rect width="1280" height="132" fill="#123A31"/>
+<g font-family="Arial, Noto Sans KR, Apple SD Gothic Neo, sans-serif"><text x="52" y="68" font-size="34" font-weight="700" fill="#F7FCF8">Spoonie | 저장·탈퇴 데이터 경계 정비</text><text x="52" y="108" font-size="18" font-weight="400" fill="#CDE8D7">2026.11.11 원본 PR #25 · 구현 근거를 설명하는 개발자 도식</text>
+<rect x="52" y="162" width="1176" height="195" rx="16" fill="#FFFFFF" stroke="#D8E3DA" stroke-width="2"/>
+<rect x="52" y="377" width="1176" height="195" rx="16" fill="#FFFFFF" stroke="#D8E3DA" stroke-width="2"/>
+<text x="76" y="199" font-size="23" font-weight="700" fill="#244939">투표 포함 글 저장</text><text x="76" y="414" font-size="23" font-weight="700" fill="#244939">회원 탈퇴</text>
+<rect x="76" y="220" width="524" height="110" rx="10" fill="#F9F1ED"/>
+<rect x="684" y="220" width="522" height="110" rx="10" fill="#EEF5EF"/>
+<rect x="76" y="435" width="524" height="110" rx="10" fill="#F9F1ED"/>
+<rect x="684" y="435" width="522" height="110" rx="10" fill="#EEF5EF"/>
+<text x="96" y="253" font-size="20" font-weight="700" fill="#814C3B">기존: 연속된 두 번의 저장</text><text x="96" y="285" font-size="17" font-weight="400" fill="#5C4C43">글 확정 후 투표 RPC 실패 → 일부만 남을 위험</text>
+<text x="707" y="253" font-size="20" font-weight="700" fill="#1C6651">개선: 한 PostgreSQL 트랜잭션</text><text x="707" y="285" font-size="17" font-weight="400" fill="#3F5F52">글과 투표를 함께 확정하거나 함께 롤백</text>
+<text x="96" y="468" font-size="20" font-weight="700" fill="#814C3B">기존: 사진 먼저 삭제</text><text x="96" y="500" font-size="17" font-weight="400" fill="#5C4C43">DB 실패 시 이미지를 되돌릴 수 없음</text>
+<text x="707" y="468" font-size="20" font-weight="700" fill="#1C6651">개선: 계정 DB 작업 우선</text><text x="707" y="500" font-size="17" font-weight="400" fill="#3F5F52">DB 실패 시 사진 보존 · 이후 사진 정리 실패는 별도 보고</text>
+<path d="M610 272h64m-14-12 14 12-14 12M610 487h64m-14-12 14 12-14 12" stroke="#6A927D" fill="none" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="52" y="606" font-size="17" font-weight="500" fill="#385B4A">제약: 회원 계정의 파괴적 운영 E2E 미실시. DB 성공 뒤 Storage 정리는 여전히 별도 단계입니다.</text><text x="52" y="633" font-size="15" font-weight="400" fill="#63796D">근거: github.com/saramjh/spoonie/pull/25</text>
+</g></svg>
