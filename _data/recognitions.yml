@@ -98,6 +98,26 @@
   case_en: "/space-atlas-eusci-diagrams-en/"
   url: "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
 
+- id: ncase-space-atlas-programs
+  project: space-atlas
+  type: listing
+  status: confirmed
+  source: "NCASE Programs"
+  title: "Space Atlas — interactive astronomy models"
+  detail: "NCASE lists Space Atlas by Jihun Oh; a directory entry, not accreditation, endorsement or proven classroom use."
+  case_ko: "/space-atlas-education-resource-paths-ko/"
+  case_en: "/space-atlas-education-resource-paths-en/"
+  url: "https://ncase.org/programs/"
+- id: sharemylesson-space-atlas-moon-phases
+  project: space-atlas
+  type: publication
+  status: confirmed
+  source: "Share My Lesson"
+  title: "Moon Phases: Predict, Test, Explain (Grades 4–8)"
+  detail: "Creator-contributed two-page Moon-phases activity by Jihun Oh; no proven classroom use or measured learning gains."
+  case_ko: "/space-atlas-education-resource-paths-ko/"
+  case_en: "/space-atlas-education-resource-paths-en/"
+  url: "https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086"
 - id: webapps-spoonie-listing
   project: spoonie
   type: listing
