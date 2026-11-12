@@ -130,6 +130,16 @@
   case_en: "/spoonie-webapps-directory-en/"
   url: "https://webapps.directory/directory/spooniespoonie"
 
+- id: launchfree-spoonie-beta-listing
+  project: spoonie
+  type: listing
+  status: confirmed
+  date: 2026-10-12
+  source: "LaunchFree.io"
+  title: "Spoonie — practical recipes and cooking notes"
+  detail: "Spoonie appears as a Community / Beta product in LaunchFree's public launch directory; this listing does not establish independent endorsement or product adoption."
+  url: "https://launchfree.io/listings/spoonie.html"
+
 - id: disquiet-spoonie-first-record
   project: spoonie
   type: publication

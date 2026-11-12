@@ -44,7 +44,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 14)
+        self.assertEqual(len(records), 15)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -81,6 +81,24 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertIn("Not independent press", records["disquiet-spoonie-first-record"]["detail"])
         self.assertTrue(
             all(("case_ko" in r) == ("case_en" in r) for r in records.values())
+        )
+
+    def test_launchfree_spoonie_listing_is_a_precise_directory_record(self):
+        records = parse_records()
+        listing = records["launchfree-spoonie-beta-listing"]
+        self.assertEqual(listing["project"], "spoonie")
+        self.assertEqual(listing["type"], "listing")
+        self.assertEqual(listing["status"], "confirmed")
+        self.assertEqual(listing["date"], "2026-10-12")
+        self.assertEqual(listing["source"], "LaunchFree.io")
+        self.assertEqual(listing["url"], "https://launchfree.io/listings/spoonie.html")
+        self.assertIn("Community / Beta", listing["detail"])
+        self.assertIn("does not establish independent endorsement or product adoption", listing["detail"])
+        self.assertNotIn("case_ko", listing)
+        self.assertNotIn("case_en", listing)
+        self.assertEqual(
+            sum(record["url"] == listing["url"] for record in records.values()),
+            1,
         )
 
     def test_each_target_has_a_real_published_bilingual_jekyll_page(self):
@@ -161,7 +179,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 14)
+        self.assertEqual(len(records), 15)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -196,7 +214,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 14)
+        self.assertEqual(len(records), 15)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -218,7 +236,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 14)
+        self.assertEqual(len(records), 15)
 
     def test_shared_evidence_component_preserves_external_and_internal_destinations(self):
         include = INCLUDE.read_text(encoding="utf8")
