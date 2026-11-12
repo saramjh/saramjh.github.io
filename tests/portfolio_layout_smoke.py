@@ -241,11 +241,23 @@ with sync_playwright() as p:
                 }], (viewport, 'event lacks exact source ID')
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)
                 page.locator('[data-filter="publication"]').click()
-                assert page.locator('.folio-evidence-item:visible').count() == sum(item['type'] == 'publication' for item in EVIDENCE)
+                pub_count = sum(item['type'] == 'publication' for item in EVIDENCE)
+                assert page.url.endswith('/portfolio/recognition/#publication')
+                assert page.locator('.folio-evidence-item:visible').count() == pub_count
                 page.locator('[data-filter="collaboration"]').click()
+                assert page.url.endswith('/portfolio/recognition/#collaboration')
                 assert page.locator('.folio-evidence-item:visible').count() == 0
                 assert page.locator('#folio-filter-empty').is_visible()
+                # A shared URL and browser history must restore the same view.
+                page.go_back()
+                page.wait_for_function("document.querySelector('[data-filter=publication]').getAttribute('aria-pressed') === 'true'")
+                assert page.url.endswith('/portfolio/recognition/#publication')
+                assert page.locator('.folio-evidence-item:visible').count() == pub_count
+                page.goto(BASE + '/portfolio/recognition/#listing', wait_until='domcontentloaded')
+                page.wait_for_function("document.querySelector('[data-filter=listing]').getAttribute('aria-pressed') === 'true'")
+                assert page.locator('.folio-evidence-item:visible').count() == sum(item['type'] == 'listing' for item in EVIDENCE)
                 page.locator('[data-filter="all"]').click()
+                assert page.url.endswith('/portfolio/recognition/#all')
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)
                 page.locator('.folio-evidence-list').scroll_into_view_if_needed()
                 page.screenshot(path=f'/tmp/folio-evidence-fixed-{viewport}.png')
