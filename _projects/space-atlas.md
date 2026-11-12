@@ -36,6 +36,10 @@ A collection of interactive learning models, including Moon phases, Earth season
 - Use 3D where spatial reasoning is useful and 2D where it is clearer.
 - Keep controls usable on smaller screens.
 
+## Scientific claims in the live lessons
+
+In [PR #2](https://github.com/saramjh/space_atlas_student/pull/2), I corrected four astronomy explanations, including the scale of the illustrative solar-system model and the uncertainty of a Milky Way–Andromeda merger. The revised text is on the live site. My [English development note](/space-atlas-science-accuracy-en/) and [Korean edition](/space-atlas-science-accuracy-ko/) link the exact pages and NASA evidence. This was a lesson-copy correction, not a physics-engine change.
+
 ## Published writing and educator discovery
 
 [EUSci published my astronomy essay, *Three Space Diagrams, Three Missing Clues*, on November 10, 2026](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/). It carries my author credit and explains missing viewpoints in familiar diagrams of Moon phases, seasons and eclipses. I developed those explanations while building the Space Atlas learning models. The [English development note](/space-atlas-eusci-diagrams-en/) and [Korean edition](/space-atlas-eusci-diagrams-ko/) connect the published article to the interactive lessons.
