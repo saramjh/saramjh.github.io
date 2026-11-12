@@ -32,6 +32,14 @@
   title: "Online Field Guides resource listing"
   detail: "KoreAves appears in the online field-guide list."
   url: "https://www.bearybirding.com/resources"
+- id: kartoza-awesome-geodata-koreaves
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Kartoza Awesome Geodata"
+  title: "South Korea geospatial data sources"
+  detail: "KoreAves is linked in the South Korea section of a public geodata resource list. Inclusion does not establish endorsement or measured use."
+  url: "https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr"
 - id: nzbirds-resource
   project: koreaves
   type: listing
