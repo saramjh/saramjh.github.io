@@ -44,6 +44,21 @@
       });
     });
   });
+  // Project reading links have a separate selection event from source citations.
+  // Track only first-party static paths; no destination text, query or user data.
+  Array.from(document.querySelectorAll('.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')).forEach(function(link){
+    var href=link.getAttribute('href');
+    if(!href||!/^\/[a-z0-9][a-z0-9-]*\/$/.test(href))return;
+    var slug=href.slice(1,-1);
+    link.addEventListener('click',function(){
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
+      if(typeof window.gtag!=='function')return;
+      window.gtag('event','select_content',{
+        content_type:'portfolio_project_note',
+        item_id:slug
+      });
+    });
+  });
   var buttons=Array.from(document.querySelectorAll('.folio-filter'));
   var entries=Array.from(document.querySelectorAll('#folio-records .folio-evidence-item'));
   if(!buttons.length||!entries.length)return;

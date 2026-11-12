@@ -25,6 +25,7 @@ function setup(initialHash){
  const document={
    querySelectorAll(selector){
      if(selector==='.folio-evidence-item')return [];
+     if(selector==='.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')return [];
      if(selector==='.folio-writing-card[data-case-id]')return [];
      if(selector==='.folio-filter')return buttons;
      if(selector==='#folio-records .folio-evidence-item')return entries;

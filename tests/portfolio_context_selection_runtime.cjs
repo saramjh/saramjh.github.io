@@ -21,6 +21,7 @@ function setup(compact=false) {
   const document={
     querySelectorAll(selector) {
       if(selector==='.folio-evidence-item'||selector==='.folio-filter'||selector==='#folio-records .folio-evidence-item')return [];
+      if(selector==='.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')return [];
       if(selector==='.folio-writing-card[data-case-id]')return cards;
       throw new Error('Unexpected DOM query: '+selector);
     },
