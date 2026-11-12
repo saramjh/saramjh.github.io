@@ -15,7 +15,7 @@ image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "KoreAves 조류 데이터 사이트의 실제 데스크톱 화면"
 image_caption: "직접 개발한 KoreAves의 화면. 외부 등재 여부는 본문과 하단의 원문 링크에서 확인할 수 있습니다."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, gbif-literature]
+evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, gbif-literature]
 tags: [KoreAves, 개발회고, 포트폴리오, 조류데이터, 해외등재]
 ---
 
@@ -31,14 +31,15 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 
 ![실제 KoreAves 사이트 화면](/assets/images/portfolio/koreaves-desktop.jpg)
 
-## 외부에서 확인되는 네 가지 연결
+## 외부에서 확인되는 다섯 가지 연결
 
 - **[Beary Birding](https://www.bearybirding.com/resources)**: *Online Field Guides* 항목에서 KoreAves를 소개한다. 해당 페이지에는 다른 국제 조류 관찰 도구도 함께 정리되어 있다.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)**: 외부 조류 관련 링크 목록에 KoreAves를 한국 조류 증거 아틀라스로 연결해 놓았다.
 - **[FMHY Educational Wiki](https://github.com/fmhy/FMHY/wiki/Educational)**: 교육 위키의 생물학 리소스 목록에서 KoreAves를 볼 수 있다.
 - **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)**: 한국 지리공간 자료를 모은 공개 README에 KoreAves 링크가 있다. 해당 설명은 지역별 GIS 화면과 출처를 확인할 수 있는 조류 출현 기록 아틀라스라고 소개한다. 지리공간 자료를 찾는 사람에게도 프로젝트로 이어지는 경로가 생긴 셈이다. 목록에 있다는 사실만으로 추천이나 실사용을 입증할 수는 없다.
+- **[Nav-AI](https://nav-ai.net/ai/koreaves)**: 소프트웨어 디렉터리에 KoreAves 소개와 공식 사이트로 향하는 링크가 있다. 설명은 공개 홈페이지 정보를 기반으로 작성돼 실제 기능의 독립 평가나 이용자 증가를 입증하지는 않는다.
 
-Kartoza 목록은 GIS 자료를 찾는 사람을 위한 것이고, 다른 세 페이지는 탐조나 생물학 학습 자료를 모아 둔 곳이다. 네 곳 모두 KoreAves로 이어지는 독립된 링크를 제공한다. 링크를 통해 실제로 몇 명이 방문했는지는 확인되지 않았으며, 등재일을 알 수 없는 항목에는 날짜를 붙이지 않았다.
+Nav-AI는 소프트웨어 디렉터리, Kartoza는 지리공간 자료 목록이고 나머지 세 곳은 탐조나 생물학 학습 자료를 다룬다. 다섯 곳 모두 KoreAves로 향하는 링크가 있으나 실제 방문·이용 규모는 확인되지 않았다. 게재일 근거가 없는 목록에는 날짜를 붙이지 않았다.
 
 ## GBIF Literature 기록은 무엇을 뜻할까
 

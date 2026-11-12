@@ -15,7 +15,7 @@ image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "Actual KoreAves website displayed in a desktop browser"
 image_caption: "KoreAves public interface. The independent directory listings are documented in the source links below."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, gbif-literature]
+evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, gbif-literature]
 tags: [KoreAves, biodiversity, portfolio, milestones, birding]
 ---
 
@@ -33,14 +33,15 @@ The atlas covers a reference of 597 species and 20 subspecies, 617 taxa in total
 
 ## Where the project appears
 
-Four examples are directly visible in external resource lists:
+Five external pages link readers to KoreAves, each with a different focus:
 
 - **[Beary Birding](https://www.bearybirding.com/resources)** includes KoreAves under *Online Field Guides*, alongside other bird-reference tools. This is an external resource listing, not a review or formal endorsement.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)** links to the project on its birding links page and labels it a Korean bird evidence atlas.
 - **[FMHY Educational Wiki](https://github.com/fmhy/FMHY/wiki/Educational)** includes KoreAves in its biology learning resources. This is a community-maintained directory entry.
 - **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)** links to KoreAves in its South Korea section. The public README describes a free bird occurrence-evidence atlas with regional GIS views and source links. Its geodata focus gives GIS readers a different way to encounter the atlas. The listing does not document a formal endorsement or measured use.
+- **[Nav-AI](https://nav-ai.net/ai/koreaves)** has a public KoreAves software-directory entry with a direct link to the live atlas. Its overview draws on the project's published homepage. It does not establish independently tested functionality, user reviews, or adoption.
 
-The Kartoza link places KoreAves among South Korean geospatial data sources, while the other lists serve birders or people looking for biology references. All four are public routes into the same project. None gives a count of people who followed the link.
+Nav-AI is a software-directory entry, Kartoza serves readers looking for geodata, and the other three lists serve birders or biology learners. All five link to KoreAves. None shows how many readers followed the link or used the project.
 
 ## A separate kind of record: GBIF Literature
 

@@ -10,6 +10,7 @@ INCLUDE = ROOT / "_includes" / "portfolio-evidence.html"
 CSS = ROOT / "assets" / "css" / "portfolio.css"
 
 EXPECTED = {
+    "nav-ai-koreaves-directory": "koreaves-external-resources",
     "kartoza-awesome-geodata-koreaves": "koreaves-external-resources",
     "birds-photo-10000": "koreaves-published-contributions",
     "suncheon-10000": "koreaves-published-contributions",
@@ -45,7 +46,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 16)
+        self.assertEqual(len(records), 17)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -118,6 +119,26 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertEqual(
             sum(r["url"] == entry["url"] for r in records.values()), 1
         )
+
+    def test_nav_ai_source_bound_listing_and_bilingual_context(self):
+        records = parse_records()
+        item = records["nav-ai-koreaves-directory"]
+        self.assertEqual(item["project"], "koreaves")
+        self.assertEqual(item["type"], "listing")
+        self.assertEqual(item["status"], "confirmed")
+        self.assertEqual(item["source"], "Nav-AI")
+        self.assertEqual(item["url"], "https://nav-ai.net/ai/koreaves")
+        self.assertNotIn("date", item)
+        self.assertIn("does not establish independent product testing", item["detail"])
+        for lang in ("en", "ko"):
+            self.assertEqual(item[f"case_{lang}"], f"/koreaves-external-resources-{lang}/")
+            body = (ROOT / "_posts" / f"folio-koreaves-resources-{lang}" /
+                    f"2026-11-02-folio-koreaves-resources-{lang}.md").read_text(encoding="utf8")
+            self.assertIn(item["url"], body)
+            self.assertIn("nav-ai-koreaves-directory", body)
+            self.assertNotIn("�", body)
+            self.assertNotIn("????", body)
+        self.assertEqual(sum(item["url"] == entry["url"] for entry in records.values()), 1)
 
     def test_kartoza_article_context_is_bilingual_and_distinct_from_publication(self):
         entry = parse_records()["kartoza-awesome-geodata-koreaves"]
@@ -214,7 +235,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 16)
+        self.assertEqual(len(records), 17)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -249,7 +270,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 16)
+        self.assertEqual(len(records), 17)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -271,14 +292,14 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 16)
+        self.assertEqual(len(records), 17)
 
     def test_homepage_shows_published_work_before_full_evidence_archive(self):
         records = parse_records()
         published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
         self.assertEqual(len(published), 7)
-        self.assertEqual(len(records), 16)
-        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 8)
+        self.assertEqual(len(records), 17)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 9)
         self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
         homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
