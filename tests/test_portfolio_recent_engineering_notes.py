@@ -21,8 +21,8 @@ EXPECTED = [
         "/assets/images/portfolio/koreaves-desktop.jpg",
     ),
     (
-        "/spoonie-live-polls-en/",
-        "/spoonie-live-polls-en/spoonie-poll-flow.svg",
+        "/spoonie-privacy-cache-transition-en/",
+        "/assets/images/portfolio/spoonie-desktop.jpg",
     ),
     (
         "/utf8-caption-hash-is-not-text-quality-en/",
@@ -92,7 +92,7 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
                 "space_atlas_eusci_essay",
                 "koreaves_published_contributions",
                 "koreaves_resource_lists",
-                "spoonie_public_recipe_poll",
+                "spoonie_privacy_cache_transition",
                 "utf8_caption_integrity",
                 "jekyll_dnt_analytics_loader",
                 "playwright_runner_chrome_ci",
@@ -112,7 +112,7 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             if href in external_cases:
                 continue
             slug = href.strip("/")
-            post_date = "2026-11-11-" if slug in ("spoonie-live-polls-en", "space-atlas-eusci-diagrams-en") else "2026-11-10-"
+            post_date = "2026-11-12-" if slug == "spoonie-privacy-cache-transition-en" else ("2026-11-11-" if slug == "space-atlas-eusci-diagrams-en" else "2026-11-10-")
             post = ROOT / "_posts" / slug / (post_date + slug + ".md")
             self.assertTrue(post.is_file(), post)
             content = post.read_text(encoding="utf-8")
@@ -132,13 +132,11 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
                     content,
                 )
                 self.assertIn("Moon Phases model", content)
-            elif slug == "spoonie-live-polls-en":
-                self.assertTrue(data.startswith(b"<svg"), "Original SVG diagram expected")
-                self.assertIn(b'width="1280" height="560"', data)
-                self.assertIn(b'PR #19', data)
-                self.assertIn(b'PR #20', data)
-                self.assertIn("/spoonie-live-polls-ko/", content)
-                self.assertIn("https://spoonie.kr/recipes/", content)
+            elif slug == "spoonie-privacy-cache-transition-en":
+                self.assertTrue(data.startswith(b"\xff\xd8\xff"), "Original Spoonie JPEG screenshot expected")
+                self.assertIn("/spoonie-privacy-cache-transition-ko/", content)
+                self.assertIn("https://github.com/saramjh/spoonie/pull/38", content)
+                self.assertIn("No two-account mutation test", content)
             else:
                 self.assertEqual(data[:8], b"\x89PNG\r\n\x1a\n")
                 self.assertEqual(
