@@ -12,7 +12,7 @@ summary: Browser-based space-science models that let students change variables a
 image: /assets/images/portfolio/space-atlas-desktop.jpg
 image_alt: Screenshot of the Space Atlas Moon phases learning simulator
 site_url: https://spaceatlasedu.org/
-writing_url: /space-atlas-student-en/
+writing_url: /space-atlas-eusci-diagrams-en/
 status: Publicly available
 stack:
   - JavaScript
@@ -35,6 +35,14 @@ A collection of interactive learning models, including Moon phases, Earth season
 - Pair interactive scenes with explanatory text and the next relevant topic.
 - Use 3D where spatial reasoning is useful and 2D where it is clearer.
 - Keep controls usable on smaller screens.
+
+## Published writing and educator discovery
+
+[EUSci published my astronomy essay, *Three Space Diagrams, Three Missing Clues*, on November 10, 2026](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/). It carries my author credit and explains missing viewpoints in familiar diagrams of Moon phases, seasons and eclipses. I developed those explanations while building the Space Atlas learning models. The [English development note](/space-atlas-eusci-diagrams-en/) and [Korean edition](/space-atlas-eusci-diagrams-ko/) connect the published article to the interactive lessons.
+
+Space Atlas also appears in the [NCASE Programs directory](https://ncase.org/programs/). The listing gives educators another way to find the project. I published a separate [Moon Phases activity on Share My Lesson](/space-atlas-share-my-lesson-en/) in October 2026, pairing the simulator with a prediction and explanation worksheet for grades 4 to 8. The [directory record](/space-atlas-ncase-programs-en/) explains the listing and its limits.
+
+These are verifiable publications and discovery routes. They do not establish school endorsement, classroom adoption or learning outcomes. For the original engineering overview, see [English](/space-atlas-student-en/) or [Korean](/space-atlas-student/).
 
 ## Explore a model
 
