@@ -35,7 +35,9 @@ POST_EVIDENCE_IDS = {value.strip() for value in EVIDENCE_IDS_MATCH.group(1).spli
 
 
 def expected_evidence_count(path):
-    if path in ('/portfolio/', '/portfolio/recognition/'):
+    if path == '/portfolio/':
+        return sum(item['type'] == 'publication' for item in EVIDENCE)
+    if path == '/portfolio/recognition/':
         return len(EVIDENCE)
     if path == '/koreaves-external-resources-ko/':
         return sum(item['project'] == 'koreaves' and item['id'] in POST_EVIDENCE_IDS for item in EVIDENCE)
@@ -87,6 +89,11 @@ with sync_playwright() as p:
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
             if path == '/portfolio/':
+                # The homepage emphasizes original published contributions. The archive
+                # still retains the full independently documented evidence inventory.
+                home_types = page.locator('.folio-evidence-item').evaluate_all(
+                    '(items) => items.map(item => item.dataset.evidenceType)')
+                assert home_types == ['publication'] * expected, (viewport, 'homepage evidence types', home_types)
                 # Synthetic selections only. Prevent real navigation and network measurement.
                 tracked = page.evaluate("""() => {
                   const cards = Array.from(document.querySelectorAll('.folio-writing-card'));

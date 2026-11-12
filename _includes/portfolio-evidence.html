@@ -3,6 +3,7 @@
   {% if record.status == 'confirmed' %}
     {% assign should_show = true %}
     {% if include.project and record.project != include.project %}{% assign should_show = false %}{% endif %}
+    {% if include.type and record.type != include.type %}{% assign should_show = false %}{% endif %}
     {% if include.ids and include.ids contains record.id %}{% else %}{% if include.ids %}{% assign should_show = false %}{% endif %}{% endif %}
     {% if should_show %}
     {% assign proof_count = proof_count | plus: 1 %}

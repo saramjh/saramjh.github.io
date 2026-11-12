@@ -255,6 +255,27 @@ class EvidenceContextLinksTest(unittest.TestCase):
         records = parse_records()
         self.assertEqual(len(records), 16)
 
+    def test_homepage_shows_published_work_before_full_evidence_archive(self):
+        records = parse_records()
+        published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
+        self.assertEqual(len(published), 7)
+        self.assertEqual(len(records), 16)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 8)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
+        homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
+        archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
+        include = INCLUDE.read_text(encoding="utf8")
+        self.assertEqual(homepage.count('{% include portfolio-evidence.html type="publication" %}'), 1)
+        self.assertEqual(archive.count('{% include portfolio-evidence.html %}'), 1)
+        self.assertIn('include.type and record.type != include.type', include)
+        self.assertIn('Resource listings and catalogue entries are in the full archive.', homepage)
+        self.assertIn('/portfolio/recognition/', homepage)
+        self.assertNotIn('type="publication"', archive)
+        for record_id in ("eusci-space-atlas-diagrams", "one-earth-koreaves-feature",
+                          "unsustainable-koreaves-bird-map", "suncheon-10000",
+                          "sharemylesson-space-atlas-moon-phases"):
+            self.assertEqual(records[record_id]["type"], "publication")
+
     def test_shared_evidence_component_preserves_external_and_internal_destinations(self):
         include = INCLUDE.read_text(encoding="utf8")
         css = CSS.read_text(encoding="utf8")
