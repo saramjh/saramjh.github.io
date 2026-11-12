@@ -10,6 +10,7 @@ INCLUDE = ROOT / "_includes" / "portfolio-evidence.html"
 CSS = ROOT / "assets" / "css" / "portfolio.css"
 
 EXPECTED = {
+    "kartoza-awesome-geodata-koreaves": "koreaves-external-resources",
     "birds-photo-10000": "koreaves-published-contributions",
     "suncheon-10000": "koreaves-published-contributions",
     "one-earth-koreaves-feature": "koreaves-oneearth-author-achievement",
@@ -112,11 +113,28 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertIn("South Korea section", entry["detail"])
         self.assertIn("does not establish endorsement or measured use", entry["detail"])
         self.assertNotIn("date", entry)
-        self.assertNotIn("case_ko", entry)
-        self.assertNotIn("case_en", entry)
+        self.assertEqual(entry["case_ko"], "/koreaves-external-resources-ko/")
+        self.assertEqual(entry["case_en"], "/koreaves-external-resources-en/")
         self.assertEqual(
             sum(r["url"] == entry["url"] for r in records.values()), 1
         )
+
+    def test_kartoza_article_context_is_bilingual_and_distinct_from_publication(self):
+        entry = parse_records()["kartoza-awesome-geodata-koreaves"]
+        self.assertEqual(entry["type"], "listing")
+        self.assertNotIn("date", entry)
+        for lang in ("ko", "en"):
+            article = (ROOT / f"_posts/folio-koreaves-resources-{lang}"
+                       / f"2026-11-02-folio-koreaves-resources-{lang}.md").read_text(encoding="utf8")
+            self.assertIn("kartoza-awesome-geodata-koreaves", article)
+            self.assertIn(entry["url"], article)
+            self.assertIn("modified: 2026-11-13", article)
+            self.assertNotIn("\ufffd", article)
+            self.assertNotIn("????", article)
+            self.assertIn("koreaves.com", article)
+        self.assertGreaterEqual(sum("가" <= c <= "힣" for c in (
+            ROOT / "_posts/folio-koreaves-resources-ko/2026-11-02-folio-koreaves-resources-ko.md"
+        ).read_text(encoding="utf8")), 300)
 
     def test_each_target_has_a_real_published_bilingual_jekyll_page(self):
         records = parse_records()

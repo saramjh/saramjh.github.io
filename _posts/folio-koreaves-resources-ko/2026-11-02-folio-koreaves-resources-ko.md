@@ -3,18 +3,19 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
+modified: 2026-11-13
 lang: ko
 alternate_lang: en
 alternate_url: /koreaves-external-resources-en/
 permalink: /koreaves-external-resources-ko/
-title: "KoreAves가 해외 탐조 자료 목록에 소개되기까지"
-description: "국제 조류 자료 디렉터리와 GBIF 기록에 실제로 남은 KoreAves의 외부 링크를 원문으로 확인하고, 등재와 기관의 공식 승인 사이의 차이를 짚는다."
+title: "KoreAves가 해외 탐조·지리공간 자료 목록에 소개되기까지"
+description: "해외 탐조·교육 리소스와 한국 지리공간 자료 목록에 실린 KoreAves의 출처 링크, 별도의 GBIF 카탈로그 기록을 실제 원문으로 확인한다."
 kicker: "KoreAves / 해외 자료 목록"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "KoreAves 조류 데이터 사이트의 실제 데스크톱 화면"
 image_caption: "직접 개발한 KoreAves의 화면. 외부 등재 여부는 본문과 하단의 원문 링크에서 확인할 수 있습니다."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, gbif-literature]
+evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, gbif-literature]
 tags: [KoreAves, 개발회고, 포트폴리오, 조류데이터, 해외등재]
 ---
 
@@ -30,13 +31,14 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 
 ![실제 KoreAves 사이트 화면](/assets/images/portfolio/koreaves-desktop.jpg)
 
-## 외부에서 확인되는 세 가지 연결
+## 외부에서 확인되는 네 가지 연결
 
 - **[Beary Birding](https://www.bearybirding.com/resources)**: *Online Field Guides* 항목에서 KoreAves를 소개한다. 해당 페이지에는 다른 국제 조류 관찰 도구도 함께 정리되어 있다.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)**: 외부 조류 관련 링크 목록에 KoreAves를 한국 조류 증거 아틀라스로 연결해 놓았다.
 - **[FMHY Educational Wiki](https://github.com/fmhy/FMHY/wiki/Educational)**: 교육 위키의 생물학 리소스 목록에서 KoreAves를 볼 수 있다.
+- **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)**: 한국 지리공간 자료를 모은 공개 README에 KoreAves 링크가 있다. 해당 설명은 지역별 GIS 화면과 출처를 확인할 수 있는 조류 출현 기록 아틀라스라고 소개한다. 지리공간 자료를 찾는 사람에게도 프로젝트로 이어지는 경로가 생긴 셈이다. 목록에 있다는 사실만으로 추천이나 실사용을 입증할 수는 없다.
 
-세 사례는 성격이 조금씩 다르다. 그러나 모두 **프로젝트 자체가 아닌 독립된 웹페이지에서 KoreAves로 향하는 링크가 공개되어 있다**는 점에서 의미가 있다. 등재 당시 날짜까지 확인되지 않은 항목에는 임의의 날짜를 붙이지 않았다.
+Kartoza 목록은 GIS 자료를 찾는 사람을 위한 것이고, 다른 세 페이지는 탐조나 생물학 학습 자료를 모아 둔 곳이다. 네 곳 모두 KoreAves로 이어지는 독립된 링크를 제공한다. 링크를 통해 실제로 몇 명이 방문했는지는 확인되지 않았으며, 등재일을 알 수 없는 항목에는 날짜를 붙이지 않았다.
 
 ## GBIF Literature 기록은 무엇을 뜻할까
 
