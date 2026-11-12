@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTFOLIO = ROOT / "portfolio" / "index.html"
 EXPECTED = [
     (
+        "/space-atlas-eusci-diagrams-en/",
+        "/assets/images/portfolio/space-atlas-moon-phases.png",
+    ),
+    (
         "/koreaves-published-contributions-en/",
         "/assets/images/portfolio/koreaves-gis.jpg",
     ),
@@ -31,10 +35,6 @@ EXPECTED = [
     (
         "/playwright-github-actions-runner-chrome-en/",
         "/assets/img/dev-playwright-ci-runner-chrome-20261110/setup-comparison-en.png",
-    ),
-    (
-        "/jekyll-svg-to-png-og-ci-regression-en/",
-        "/assets/img/dev-ga4-report-window-20261110/timeline-en-og.png",
     ),
 ]
 
@@ -89,13 +89,13 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
         self.assertEqual(
             [card["id"] for card in parser.cards],
             [
+                "space_atlas_eusci_essay",
                 "koreaves_published_contributions",
                 "koreaves_resource_lists",
                 "spoonie_public_recipe_poll",
                 "utf8_caption_integrity",
                 "jekyll_dnt_analytics_loader",
                 "playwright_runner_chrome_ci",
-                "jekyll_og_png_ci_regression",
             ],
         )
         self.assertEqual(len(set(card["id"] for card in parser.cards)), 7)
@@ -112,7 +112,8 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             if href in external_cases:
                 continue
             slug = href.strip("/")
-            post = ROOT / "_posts" / slug / (("2026-11-11-" if slug == "spoonie-live-polls-en" else "2026-11-10-") + slug + ".md")
+            post_date = "2026-11-11-" if slug in ("spoonie-live-polls-en", "space-atlas-eusci-diagrams-en") else "2026-11-10-"
+            post = ROOT / "_posts" / slug / (post_date + slug + ".md")
             self.assertTrue(post.is_file(), post)
             content = post.read_text(encoding="utf-8")
             self.assertIn("permalink: " + href, content)
@@ -123,7 +124,15 @@ class PortfolioEngineeringNotesTest(unittest.TestCase):
             )
             self.assertTrue(asset.is_file(), asset)
             data = asset.read_bytes()
-            if slug == "spoonie-live-polls-en":
+            if slug == "space-atlas-eusci-diagrams-en":
+                self.assertEqual(data[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertIn("/space-atlas-eusci-diagrams-ko/", content)
+                self.assertIn(
+                    "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/",
+                    content,
+                )
+                self.assertIn("Moon Phases model", content)
+            elif slug == "spoonie-live-polls-en":
                 self.assertTrue(data.startswith(b"<svg"), "Original SVG diagram expected")
                 self.assertIn(b'width="1280" height="560"', data)
                 self.assertIn(b'PR #19', data)
