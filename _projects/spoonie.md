@@ -29,6 +29,12 @@ A community is difficult to build before users can consistently find something w
 
 Spoonie combines recipe discovery, recipe books, and community-oriented cooking records. Recent product decisions have focused on recipe usefulness and responsible curation rather than growth claims.
 
+## An outside directory listing
+
+On October 25, 2026, [Web Apps Directory catalogued Spoonie](https://webapps.directory/directory/spooniespoonie). The entry links to the live Korean-language service and describes recipe search, serving adjustments and cooking records. I built those features around the Recipe and Recipeed workflow so a visitor can find a dish and keep a record of cooking it. Referral traffic and repeat use from the directory have not been measured.
+
+The development case and original source are available in [English](/spoonie-webapps-directory-en/) and [Korean](/spoonie-webapps-directory-ko/).
+
 ## Engineering and editorial decisions
 
 - Keep source credit for curated recipes visible.
