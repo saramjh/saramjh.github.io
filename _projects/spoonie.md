@@ -12,7 +12,7 @@ summary: A cooking-oriented web product exploring useful recipe discovery, perso
 image: /assets/images/portfolio/spoonie-desktop.jpg
 image_alt: Screenshot of the Spoonie cooking and recipes homepage
 site_url: https://spoonie.kr/
-writing_url: /spoonie-live-polls-en/
+writing_url: /spoonie-privacy-cache-transition-en/
 status: Product in development
 stack:
   - Next.js 16
@@ -35,6 +35,14 @@ Spoonie combines recipe discovery, recipe books, and community-oriented cooking 
 - Produce original explanatory text rather than copying creators' directions.
 - Reuse imagery only with appropriate permissions.
 - Separate product hypotheses from validated user behaviour.
+
+## Keeping private recipes out of other accounts
+
+A recipe can become private while another viewer still has a cached copy of its public details. In [PR #38](https://github.com/saramjh/spoonie/pull/38), I updated those caches when visibility changes. The author's private recipe book keeps the post while public and other-viewer caches drop it. Save responses that arrive after an account switch stay tied to the account that started the request.
+
+The earlier [PR #37](https://github.com/saramjh/spoonie/pull/37) separated viewer-specific likes and bookmarks. The cache changes in PR #38 cover a different point in the flow: privacy changes and delayed account responses. Both fixes are merged, and the production recipe route was checked against PR #38's deployed browser assets. Authenticated cross-account use in production and audience retention have not been measured.
+
+Read the implementation note in [English](/spoonie-privacy-cache-transition-en/) or [Korean](/spoonie-privacy-cache-transition-ko/). The [viewer-cache follow-up](/spoonie-viewer-cache-isolation-en/) has the earlier source and tests.
 
 ## Finding recipes beyond the first page
 
