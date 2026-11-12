@@ -56,6 +56,23 @@
     if(count)count.textContent=visible+' documented '+(visible===1?'record':'records')+' shown';
     if(empty)empty.hidden=visible!==0;
   }
-  buttons.forEach(function(button){button.addEventListener('click',function(){applyFilter(button.dataset.filter);});});
-  applyFilter('all');
+  // Category links should remain useful when copied or reached with Back/Forward.
+  // Only existing filter values are accepted; unrelated fragments show all records.
+  function categoryFromUrl(){
+    var hash=window.location.hash.slice(1);
+    return buttons.some(function(button){return button.dataset.filter===hash;})?hash:'all';
+  }
+  function restoreFilter(){applyFilter(categoryFromUrl());}
+  buttons.forEach(function(button){
+    button.addEventListener('click',function(){
+      var category=button.dataset.filter;
+      if(window.location.hash!=='#'+category){
+        window.history.pushState(null,'','#'+category);
+      }
+      applyFilter(category);
+    });
+  });
+  window.addEventListener('popstate',restoreFilter);
+  window.addEventListener('hashchange',restoreFilter);
+  restoreFilter();
 })();
