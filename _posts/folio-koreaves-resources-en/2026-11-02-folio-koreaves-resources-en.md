@@ -3,18 +3,19 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
+modified: 2026-11-13
 lang: en
 alternate_lang: ko
 alternate_url: /koreaves-external-resources-ko/
 permalink: /koreaves-external-resources-en/
-title: "How KoreAves became a link in international birding resources"
-description: "A source-linked account of KoreAves appearing in independent birding directories and a biodiversity data-use record, without conflating a listing with endorsement."
+title: "Where KoreAves appears in international birding and geodata resources"
+description: "Direct evidence of KoreAves in birding, education and South Korean geodata directories, plus a separate GBIF catalogue record."
 kicker: "KoreAves / independent listings"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "Actual KoreAves website displayed in a desktop browser"
 image_caption: "KoreAves public interface. The independent directory listings are documented in the source links below."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, gbif-literature]
+evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, gbif-literature]
 tags: [KoreAves, biodiversity, portfolio, milestones, birding]
 ---
 
@@ -32,13 +33,14 @@ The atlas covers a reference of 597 species and 20 subspecies, 617 taxa in total
 
 ## Where the project appears
 
-Three examples are directly visible in external resource lists:
+Four examples are directly visible in external resource lists:
 
 - **[Beary Birding](https://www.bearybirding.com/resources)** includes KoreAves under *Online Field Guides*, alongside other bird-reference tools. This is an external resource listing, not a review or formal endorsement.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)** links to the project on its birding links page and labels it a Korean bird evidence atlas.
 - **[FMHY Educational Wiki](https://github.com/fmhy/FMHY/wiki/Educational)** includes KoreAves in its biology learning resources. This is a community-maintained directory entry.
+- **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)** links to KoreAves in its South Korea section. The public README describes a free bird occurrence-evidence atlas with regional GIS views and source links. Its geodata focus gives GIS readers a different way to encounter the atlas. The listing does not document a formal endorsement or measured use.
 
-These are different editorial environments with different purposes. What they have in common is that a reader looking for bird information can now encounter KoreAves through a source other than the project itself.
+The Kartoza link places KoreAves among South Korean geospatial data sources, while the other lists serve birders or people looking for biology references. All four are public routes into the same project. None gives a count of people who followed the link.
 
 ## A separate kind of record: GBIF Literature
 

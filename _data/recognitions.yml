@@ -39,6 +39,8 @@
   source: "Kartoza Awesome Geodata"
   title: "South Korea geospatial data sources"
   detail: "KoreAves is linked in the South Korea section of a public geodata resource list. Inclusion does not establish endorsement or measured use."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
   url: "https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr"
 - id: nzbirds-resource
   project: koreaves
