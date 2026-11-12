@@ -5,6 +5,20 @@
 ## About
 - [About DevTestudinidae](https://saramjh.github.io/about/): Author identity, editorial scope, GitHub profile, and contact information for this technical knowledge base.
 
+## Developer projects and public evidence
+- [Selected developer projects](https://saramjh.github.io/portfolio/): First-party case studies with implementation context and links to documented outcomes.
+- [External evidence archive](https://saramjh.github.io/portfolio/recognition/): External writing, resource listings and catalogue records, each classified by the available source.
+- [Space Atlas engineering case](https://saramjh.github.io/portfolio/space-atlas/): Interactive astronomy learning models and their implementation choices.
+- [KoreAves engineering case](https://saramjh.github.io/portfolio/koreaves/): Evidence-linked English/Korean birding reference for Korean species.
+- [Spoonie engineering case](https://saramjh.github.io/portfolio/spoonie/): Recipe-sharing product development and implemented interaction details.
+- [EUSci astronomy essay and development note (English)](https://saramjh.github.io/space-atlas-eusci-diagrams-en/): Credited external science article on missing information in astronomy diagrams, linked to Space Atlas models.
+- [EUSci 기고와 개발 기록 (한국어)](https://saramjh.github.io/space-atlas-eusci-diagrams-ko/): 위 기고문의 출처 및 달 위상·계절·식 모델과의 연결을 정리한 한국어판.
+- [NCASE Space Atlas program listing (English)](https://saramjh.github.io/space-atlas-ncase-programs-en/): A public programs-directory entry and its recorded scope.
+- [NCASE 프로그램 목록 기록 (한국어)](https://saramjh.github.io/space-atlas-ncase-programs-ko/): Space Atlas 외부 프로그램 목록 수록 사실과 확인 가능한 범위.
+- [Share My Lesson Moon phases resource (English)](https://saramjh.github.io/space-atlas-share-my-lesson-en/): An author-contributed teaching resource and the related interactive model.
+- [Share My Lesson 달 위상 자료 (한국어)](https://saramjh.github.io/space-atlas-share-my-lesson-ko/): 작성자 등록 자료와 Space Atlas 달 위상 모델에 관한 한국어 기록.
+- [KoreAves credited external writing](https://saramjh.github.io/koreaves-published-contributions-en/): Source-linked bylined contributions to an external birding publication.
+
 ## Hardware & macOS Troubleshooting Guides
 - [Epson Waste Ink Pad Reset Without Key (Korean)](https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/): Complete cross-platform guide to resetting Epson waste ink counter for free across 33 models (L3100~L3168, L1110, L5190) on macOS/Linux/Windows using open-source reinkpy-fix and replacing only inner felt pads for ~$4.
 - [How to Reset Epson Waste Ink Counter Free on Mac/Linux/Win (English)](https://saramjh.github.io/en-epson-waste-ink-pad-reset-without-key/): English edition for resetting locked Epson EcoTank printers without paid WIC reset keys.
