@@ -16,8 +16,8 @@ EXPECTED = {
     "unsustainable-koreaves-bird-map": "koreaves-unsustainable-bird-map",
     "webapps-spoonie-listing": "spoonie-webapps-directory",
     "eusci-space-atlas-diagrams": "space-atlas-eusci-diagrams",
-    "ncase-space-atlas-programs": "space-atlas-education-resource-paths",
-    "sharemylesson-space-atlas-moon-phases": "space-atlas-education-resource-paths",
+    "ncase-space-atlas-programs": "space-atlas-ncase-programs",
+    "sharemylesson-space-atlas-moon-phases": "space-atlas-share-my-lesson",
     "disquiet-spoonie-first-record": "spoonie-disquiet-first-record",
 }
 
@@ -113,8 +113,9 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertNotIn("date", lesson)
         self.assertIn("not accreditation", ncase["detail"])
         self.assertIn("Creator-contributed", lesson["detail"])
-        self.assertEqual(ncase["case_ko"], lesson["case_ko"])
-        self.assertEqual(ncase["case_en"], lesson["case_en"])
+        for lang in ("ko", "en"):
+            self.assertEqual(ncase[f"case_{lang}"], f"/space-atlas-ncase-programs-{lang}/")
+            self.assertEqual(lesson[f"case_{lang}"], f"/space-atlas-share-my-lesson-{lang}/")
 
         for lang in ("ko", "en"):
             path = ROOT / "_posts" / f"space-atlas-education-resource-paths-{lang}" / f"2026-11-11-space-atlas-education-resource-paths-{lang}.md"
