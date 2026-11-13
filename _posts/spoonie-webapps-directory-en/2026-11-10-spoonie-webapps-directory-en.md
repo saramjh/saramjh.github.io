@@ -40,12 +40,14 @@ I worked on the boundary between these experiences: a recipe needs a reliable so
 
 The directory adds a discovery route alongside Spoonie’s own pages and direct links: its [Food & Drink catalogue](https://webapps.directory/directory/spooniespoonie) now contains an entry describing the product and linking to the actual service. It also classifies Spoonie as a browser app, so a visitor knows that the product can be opened from a web browser.
 
+A second original record, [LaunchFree.io's Spoonie listing](https://launchfree.io/listings/spoonie.html), categorizes Spoonie as **Community / Beta**, dates the entry **October 12, 2026**, and links to the live service.
+
 This gives a prospective collaborator or international reader a public, independently hosted reference to examine alongside the working product. Someone evaluating a recipe platform can check whether the directory's description matches the experience on Spoonie. It is also a modest exercise in making a Korean-language product understandable to an audience that may first discover it through an English catalogue.
 
-I can point to the listing as evidence of **external discoverability**. It does not establish a change in registrations, repeated cooking records or referrals from the directory. The current Korean-language interface also limits immediate use by people who do not read Korean.
+I can point to both listings as evidence of **external discoverability**. Neither listing establishes changes in registrations, repeated cooking records or referral traffic. The current Korean-language interface also limits immediate use by people who do not read Korean.
 
 ## What I would measure next
 
 The next question is whether someone who discovers a recipe follows it, leaves a cooking record and returns for another dish. The product can support that sequence; user retention requires separate, real usage evidence.
 
-For the original record, see the [Web Apps Directory entry](https://webapps.directory/directory/spooniespoonie) and the [source-linked portfolio archive](/portfolio/recognition/). The earlier [Spoonie Recipe and Recipeed development note](/spoonie-social-cooking-early-users/) explains the social-cooking model in more detail. [Open Spoonie](https://spoonie.kr/) to inspect the current interface.
+For the original records, see [Web Apps Directory](https://webapps.directory/directory/spooniespoonie), [LaunchFree.io](https://launchfree.io/listings/spoonie.html) and the [source-linked portfolio archive](/portfolio/recognition/). The earlier [Spoonie Recipe and Recipeed development note](/spoonie-social-cooking-early-users/) explains the social-cooking model in more detail. [Open Spoonie](https://spoonie.kr/) to inspect the current interface.

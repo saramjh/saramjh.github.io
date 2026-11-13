@@ -40,12 +40,14 @@ Spoonie에서는 두 종류의 콘텐츠를 구분해 설계했다. **Recipe**�
 
 Spoonie 공식 사이트와 직접 링크에 이어, 이제 [Web Apps Directory 원문](https://webapps.directory/directory/spooniespoonie)에도 Spoonie가 브라우저에서 이용하는 요리 분야 서비스로 소개돼 있다. 처음 접한 방문자가 서비스 설명을 읽고 실제 Spoonie 화면으로 이동할 수 있는 공개 경로가 하나 더 생겼다.
 
+[LaunchFree.io의 Spoonie 등재 페이지](https://launchfree.io/listings/spoonie.html)에도 **Community / Beta**로 분류되어 있으며, 등록일은 **2026년 10월 12일**로 표시된다. 이 페이지에서도 실제 Spoonie 사이트로 이동할 수 있다.
+
 개발자나 협업 상대가 제품을 평가할 때 제3자 웹앱 목록의 설명과 실제 서비스를 대조할 수 있다는 점도 도움이 된다. 한국어 전용 서비스가 영어로 작성된 목록에 실렸다는 사실은 해외에서 발견될 가능성을 넓히지만, 한국어를 모르는 사람이 곧바로 모든 기능을 편하게 쓸 수 있다는 뜻은 아니다.
 
-이번에 확인된 성과는 **외부 목록에 실리고 실제 제품으로 연결되는 경로**다. 이 등재를 통해 가입자가 늘었는지, 다시 요리 기록을 남겼는지는 별도의 사용 기록으로 확인해야 한다.
+확인된 성과는 **외부 목록 두 곳에서 실제 제품으로 연결되는 경로**다. 두 곳의 등재가 실제 가입이나 반복 요리 기록으로 이어졌는지는 별도의 사용 기록으로 확인해야 한다.
 
 ## 이후에 확인할 사용자 행동
 
 레시피를 발견한 사람이 실제로 만들고, 자신의 기록을 남기고, 다음 요리를 찾으러 돌아오는지 살펴보려 한다. 원본과 요리 경험을 연결한 구조가 반복 사용에 도움이 되는지는 이런 실제 흐름이 있어야 판단할 수 있다.
 
-[Web Apps Directory 원문](https://webapps.directory/directory/spooniespoonie)과 [외부 성과 원본 목록](/portfolio/recognition/)에서 등재 사실을 확인할 수 있다. Recipe와 Recipeed 구조를 처음 설계한 과정은 [Spoonie 요리 SNS 개발일지](/spoonie-social-cooking-early-users/)에 정리했다. [실제 Spoonie](https://spoonie.kr/)에서 현재 제공되는 기능도 확인할 수 있다.
+[Web Apps Directory 원문](https://webapps.directory/directory/spooniespoonie), [LaunchFree.io 원문](https://launchfree.io/listings/spoonie.html)과 [외부 성과 원본 목록](/portfolio/recognition/)에서 등재 사실을 확인할 수 있다. Recipe와 Recipeed 구조를 처음 설계한 과정은 [Spoonie 요리 SNS 개발일지](/spoonie-social-cooking-early-users/)에 정리했다. [실제 Spoonie](https://spoonie.kr/)에서 현재 제공되는 기능도 확인할 수 있다.
