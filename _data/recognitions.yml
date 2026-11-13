@@ -42,6 +42,16 @@
   case_ko: "/koreaves-external-resources-ko/"
   case_en: "/koreaves-external-resources-en/"
   url: "https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr"
+- id: nav-ai-koreaves-directory
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Nav-AI"
+  title: "KoreAves: An Evidence-First Atlas of South Korean Birds"
+  detail: "Directory entry based on KoreAves homepage text; no independent testing or measured adoption."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
+  url: "https://nav-ai.net/ai/koreaves"
 - id: nzbirds-resource
   project: koreaves
   type: listing
