@@ -134,7 +134,7 @@
 /* Archive with category filter and accessible empty state */
 .portfolio-body .folio-archive-header{padding:44px 0 64px}.portfolio-body .folio-archive-header .folio-lede{max-width:750px}
 .portfolio-body .folio-filterbar{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:23px;border-bottom:1px solid var(--folio-border)}
-.portfolio-body .folio .folio-filter{font:550 12px Inter,system-ui,sans-serif;cursor:pointer;background:transparent!important;color:var(--folio-secondary)!important;border:1px solid #535a6c!important;border-radius:2px;padding:10px 14px}
+.portfolio-body .folio .folio-filter{font:550 12px Inter,system-ui,sans-serif;cursor:pointer;transition:none!important;background:transparent!important;color:var(--folio-secondary)!important;border:1px solid #535a6c!important;border-radius:2px;padding:10px 14px}
 .portfolio-body .folio .folio-filter[aria-pressed="false"]:hover{background:var(--folio-raised)!important;color:var(--folio-text)!important;border-color:var(--folio-accent)!important}
 .portfolio-body .folio .folio-filter[aria-pressed="true"]{background:var(--folio-accent)!important;color:var(--folio-accent-ink)!important;border-color:var(--folio-accent)!important}
 .portfolio-body .folio-filter-count{font:500 11px var(--folio-mono);margin:28px 0 16px;color:var(--folio-muted)}

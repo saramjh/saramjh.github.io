@@ -23,6 +23,11 @@ class ArchiveFilterContrastTest(unittest.TestCase):
         self.assertIn("color:var(--folio-text)!important", rule)
         self.assertNotIn("background:var(--folio-accent)!important", rule)
 
+    def test_no_intermediate_low_contrast_from_blog_wide_background_transition(self):
+        selector = '.portfolio-body .folio .folio-filter'
+        rule = CSS.split(selector + "{", 1)[1].split("}", 1)[0]
+        self.assertIn("transition:none!important", rule)
+
     def test_no_legacy_hover_active_conflation(self):
         self.assertNotIn(".folio-filter:hover,.portfolio-body .folio .folio-filter.is-active", CSS)
 
