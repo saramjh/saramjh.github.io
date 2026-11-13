@@ -196,6 +196,38 @@ class ChangeScopeTest(unittest.TestCase):
             with patch.object(sender, "get_urls", side_effect=AssertionError("no sitemap replay")):
                 self.assertEqual(sender.get_deploy_urls(), expected)
 
+    def test_recognition_seo_schema_is_exact_project_only_consumer(self):
+        self.recognition_fixture()
+        guarded = (
+            "{%- if page.layout == 'project' and page.site_url and page.slug -%}\\n"
+            "{%- assign verified_listings = site.data.recognitions"
+            " | where: 'project', page.slug | where: 'type', 'listing'"
+            " | where: 'status', 'confirmed' -%}\\n"
+            "{%- elsif page.date -%}\\n"
+            "<script type=\\\"application/ld+json\\\">{}<\\/script>\\n"
+            "{%- endif -%}\\n"
+        )
+        self.write("_includes/seo_schema.html", guarded)
+        before = self.commit("project-scoped recognition JSON-LD")
+        self.write("_data/recognitions.yml", "- id: after\\n")
+        after = self.commit("one confirmed listing")
+        expected = [
+            "https://saramjh.github.io/koreaves-evidence/",
+            "https://saramjh.github.io/portfolio/",
+            "https://saramjh.github.io/portfolio/koreaves/",
+            "https://saramjh.github.io/portfolio/recognition/",
+        ]
+        self.assertEqual(sender.changed_urls(before, after), expected)
+
+        # An unguarded JSON-LD consumer could affect every post. Keep
+        # the original conservative fallback rather than inventing scope.
+        self.write("_includes/seo_schema.html",
+                   "{{ site.data.recognitions }}\\n")
+        new_base = self.commit("unscoped new template consumer")
+        self.write("_data/recognitions.yml", "- id: another\\n")
+        after_unscoped = self.commit("subsequent listing")
+        self.assertIsNone(sender.changed_urls(new_base, after_unscoped))
+
     def test_recognition_data_unknown_new_template_keeps_conservative_scope(self):
         before = self.recognition_fixture()
         self.write("_includes/footer.html", "{{ site.data.recognitions.size }}\n")

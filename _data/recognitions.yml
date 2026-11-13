@@ -138,6 +138,25 @@
   case_en: "/space-atlas-eusci-diagrams-en/"
   url: "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
 
+- id: awesome-homeschooling-space-atlas
+  project: space-atlas
+  type: listing
+  status: confirmed
+  date: 2026-11-06
+  source: "Awesome Homeschooling"
+  title: "Space Atlas in homeschooling science resources"
+  detail: "Creator-submitted Space Atlas resource link merged by the list maintainer. A community science listing, not verified classroom use or institutional endorsement."
+  url: "https://github.com/muriloime/awesome-homeschooling/blob/master/README.md#science"
+- id: awesome-physics-space-atlas
+  project: space-atlas
+  type: listing
+  status: confirmed
+  date: 2026-11-05
+  source: "Awesome Physics"
+  title: "Space Atlas in the astrophysics resource list"
+  detail: "Creator-submitted link to the original open-source astronomy models merged by the list maintainer. A community directory entry, not scientific peer review or measured adoption."
+  url: "https://github.com/wbierbower/awesome-physics/blob/master/README.md#astrophysics"
+
 - id: worldlytribe-space-atlas-worldschooling
   project: space-atlas
   type: listing
