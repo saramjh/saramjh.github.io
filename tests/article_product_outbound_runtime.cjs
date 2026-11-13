@@ -29,12 +29,14 @@ const h=makeHarness();
 assert.equal(h.calls.length,0,'No event before a real user click');
 h.links.forEach(a=>a.click());
 assert.deepEqual(h.calls.map(a=>JSON.parse(JSON.stringify(a))),[
- ['event','select_content',{content_type:'developer_article_live_product',item_id:'spoonie_curators'}],
- ['event','select_content',{content_type:'developer_article_live_product',item_id:'spoonie_search'}],
- ['event','select_content',{content_type:'developer_article_live_product',item_id:'spoonie_recipe'}]
+ ['event','select_content',{content_type:'developer_article_live_product',content_id:'spoonie_curators'}],
+ ['event','select_content',{content_type:'developer_article_live_product',content_id:'spoonie_search'}],
+ ['event','select_content',{content_type:'developer_article_live_product',content_id:'spoonie_recipe'}]
 ]);
 for(const flag of [['window','doNotTrack'],['navigator','doNotTrack'],['navigator','msDoNotTrack']]){
  const obj=h[flag[0]];obj[flag[1]]='1';h.links[0].click();assert.equal(h.calls.length,3,flag.join('.'));obj[flag[1]]='0';
 }
 h.window.gtag=undefined;h.links[0].click();assert.equal(h.calls.length,3,'No GA loader means no tracking');
 console.log('article-product-outbound: PASS click-only allowlist, DNT, no navigation changes');
+
+assert.ok(h.calls.every(([_, event, data]) => !Object.hasOwn(data, 'item_id')), 'Reserved ecommerce item_id must not leak into select_content');
