@@ -118,6 +118,16 @@
   case_en: "/space-atlas-eusci-diagrams-en/"
   url: "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
 
+- id: worldlytribe-space-atlas-worldschooling
+  project: space-atlas
+  type: listing
+  status: confirmed
+  source: "WorldlyTribe"
+  title: "Online homeschool programs for travelling families"
+  detail: "WorldlyTribe lists Space Atlas as a free science resource for ages 9–14 in its travelling-family guide."
+  case_ko: "/space-atlas-worldschooling-guide-ko/"
+  case_en: "/space-atlas-worldschooling-guide-en/"
+  url: "https://worldlytribe.com/the-complete-guide-to-online-programs-for-homeschoolers-worldschoolers/"
 - id: ncase-space-atlas-programs
   project: space-atlas
   type: listing

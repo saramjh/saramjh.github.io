@@ -7,7 +7,7 @@ const vm=require('node:vm');
 const src=fs.readFileSync(path.join(__dirname,'../assets/js/portfolio.js'),'utf8');
 const ledger=fs.readFileSync(path.join(__dirname,'../_data/recognitions.yml'),'utf8');
 const types=[...ledger.matchAll(/^  type: (publication|listing|dataset_record|collaboration)$/gm)].map(m=>m[1]);
-assert.equal(types.length,17,'source archive count');
+assert.equal(types.length,18,'source archive count');
 function setup(initialHash){
  const events={};
  const categories=['all','publication','listing','dataset_record','collaboration'];
@@ -46,9 +46,9 @@ function setup(initialHash){
  return {window,events,buttons,entries,count,empty,historyCalls,visible,active,click};
 }
 const initial=setup('#listing');
-assert.equal(initial.visible(),9);
+assert.equal(initial.visible(),10);
 assert.deepEqual(initial.active(),['listing']);
-assert.equal(initial.count.textContent,'9 documented records shown');
+assert.equal(initial.count.textContent,'10 documented records shown');
 initial.click('publication');
 assert.equal(initial.window.location.hash,'#publication');
 assert.equal(initial.visible(),7);
@@ -68,12 +68,12 @@ const prior=initial.historyCalls.length;
 initial.click('dataset_record');
 assert.equal(initial.historyCalls.length,prior,'no duplicate history entry for same category');
 initial.click('all');
-assert.equal(initial.visible(),17);
+assert.equal(initial.visible(),18);
 assert.equal(initial.window.location.hash,'#all');
 const invalid=setup('#not-a-filter');
-assert.equal(invalid.visible(),17);
+assert.equal(invalid.visible(),18);
 assert.deepEqual(invalid.active(),['all']);
 const noHash=setup('');
-assert.equal(noHash.visible(),17);
+assert.equal(noHash.visible(),18);
 assert.deepEqual(noHash.active(),['all']);
 console.log('PASS archive deep link, exact source counts, selected state, empty category, history, unknown hash, no duplicate navigation and no network');
