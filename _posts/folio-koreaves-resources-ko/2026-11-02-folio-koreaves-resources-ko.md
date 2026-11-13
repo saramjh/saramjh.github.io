@@ -9,13 +9,13 @@ alternate_lang: en
 alternate_url: /koreaves-external-resources-en/
 permalink: /koreaves-external-resources-ko/
 title: "KoreAves가 해외 탐조·지리공간 자료 목록에 소개되기까지"
-description: "해외 탐조·교육 리소스와 한국 지리공간 자료 목록에 실린 KoreAves의 출처 링크, 별도의 GBIF 카탈로그 기록을 실제 원문으로 확인한다."
+description: "Bird Album, 일본 탐조 링크, 해외 지리공간·생물학 자료 목록에 실린 KoreAves의 원문 링크와 검증 범위를 확인한다."
 kicker: "KoreAves / 해외 자료 목록"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "KoreAves 조류 데이터 사이트의 실제 데스크톱 화면"
 image_caption: "직접 개발한 KoreAves의 화면. 외부 등재 여부는 본문과 하단의 원문 링크에서 확인할 수 있습니다."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, gbif-literature]
+evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, birdalbum-koreaves-further-reading, kantorilode-koreaves-legacy-links, gbif-literature]
 tags: [KoreAves, 개발회고, 포트폴리오, 조류데이터, 해외등재]
 ---
 
@@ -31,7 +31,7 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 
 ![실제 KoreAves 사이트 화면](/assets/images/portfolio/koreaves-desktop.jpg)
 
-## 외부에서 확인되는 다섯 가지 연결
+## 외부에서 확인되는 일곱 가지 연결
 
 - **[Beary Birding](https://www.bearybirding.com/resources)**: *Online Field Guides* 항목에서 KoreAves를 소개한다. 해당 페이지에는 다른 국제 조류 관찰 도구도 함께 정리되어 있다.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)**: 외부 조류 관련 링크 목록에 KoreAves를 한국 조류 증거 아틀라스로 연결해 놓았다.
@@ -39,7 +39,10 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 - **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)**: 한국 지리공간 자료를 모은 공개 README에 KoreAves 링크가 있다. 해당 설명은 지역별 GIS 화면과 출처를 확인할 수 있는 조류 출현 기록 아틀라스라고 소개한다. 지리공간 자료를 찾는 사람에게도 프로젝트로 이어지는 경로가 생긴 셈이다. 목록에 있다는 사실만으로 추천이나 실사용을 입증할 수는 없다.
 - **[Nav-AI](https://nav-ai.net/ai/koreaves)**: 소프트웨어 디렉터리에 KoreAves 소개와 공식 사이트로 향하는 링크가 있다. 설명은 공개 홈페이지 정보를 기반으로 작성돼 실제 기능의 독립 평가나 이용자 증가를 입증하지는 않는다.
 
-Nav-AI는 소프트웨어 디렉터리, Kartoza는 지리공간 자료 목록이고 나머지 세 곳은 탐조나 생물학 학습 자료를 다룬다. 다섯 곳 모두 KoreAves로 향하는 링크가 있으나 실제 방문·이용 규모는 확인되지 않았다. 게재일 근거가 없는 목록에는 날짜를 붙이지 않았다.
+- **[Bird Album 한국 페이지](https://birdalbum.com/countries/kr/)** (birdalbum-koreaves-further-reading): *Further reading* 항목에서 KoreAves 공식 사이트를 연결한다. 실제 공개 화면에서 [영어](https://birdalbum.com/countries/kr/), [한국어](https://birdalbum.com/ko/countries/kr/), [일본어](https://birdalbum.com/ja/countries/kr/), [프랑스어](https://birdalbum.com/fr/countries/kr/) 네 언어판의 링크를 확인했다. 네 언어에서 보인다고 별도 추천 네 건으로 계산하지 않는다.
+- **[Kantorilode의 기존 Birds of Japan 링크 페이지](https://kantorilode.weebly.com/links.html)** (kantorilode-koreaves-legacy-links): *East Asia and beyond*에 KoreAves가 등장한다. 그러나 [현재 기본 도메인의 링크 페이지](https://kantorilode.com/links.html)에는 같은 항목이 아직 보이지 않았다. 실제 확인된 Weebly 페이지에 한정해 기록한다.
+
+각 목록의 독자는 다르다. Bird Album의 국가별 조류 정보 페이지는 기존 소프트웨어·지리공간 자료 목록과 다른 방식으로 KoreAves를 발견할 경로다. [Bird Album의 자료 설명](https://birdalbum.com/about/)은 IOC 15.2 목록을 사용한다고 밝히고, [KoreAves 데이터 설명](https://koreaves.com/dataset/)은 한국 국가목록을 기준으로 한다. 두 사이트가 연결됐다고 동일한 분류 개념을 적용한다는 뜻은 아니다. 링크를 통한 실제 방문이나 사용자 수는 확인되지 않았다. 최초 게재일 근거가 없는 항목에는 날짜를 붙이지 않았다.
 
 ## GBIF Literature 기록은 무엇을 뜻할까
 

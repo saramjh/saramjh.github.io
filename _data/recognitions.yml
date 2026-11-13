@@ -68,6 +68,26 @@
   title: "Biology learning resource listing"
   detail: "KoreAves is linked among bird information resources."
   url: "https://github.com/fmhy/FMHY/wiki/Educational"
+- id: birdalbum-koreaves-further-reading
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Bird Album"
+  title: "South Korea — Further reading"
+  detail: "The South Korea country page links to KoreAves under Further reading; English, Korean, Japanese and French variants were directly checked. A discovery link, not an endorsement or proven use."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
+  url: "https://birdalbum.com/countries/kr/"
+- id: kantorilode-koreaves-legacy-links
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Kantorilode"
+  title: "Birds of Japan — East Asia and beyond links (legacy Weebly page)"
+  detail: "The legacy Weebly links page includes KoreAves. The primary .com links page did not show it at verification; no claim of current primary-domain listing or measured use."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
+  url: "https://kantorilode.weebly.com/links.html"
 - id: greenus-koreaves-community-tool
   project: koreaves
   type: listing

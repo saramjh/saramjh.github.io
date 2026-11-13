@@ -9,13 +9,13 @@ alternate_lang: ko
 alternate_url: /koreaves-external-resources-ko/
 permalink: /koreaves-external-resources-en/
 title: "Where KoreAves appears in international birding and geodata resources"
-description: "Direct evidence of KoreAves in birding, education and South Korean geodata directories, plus a separate GBIF catalogue record."
+description: "Verified KoreAves links in Bird Album, international birding and geodata resources, with original URLs and clear limits on what a listing proves."
 kicker: "KoreAves / independent listings"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "Actual KoreAves website displayed in a desktop browser"
 image_caption: "KoreAves public interface. The independent directory listings are documented in the source links below."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, gbif-literature]
+evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, birdalbum-koreaves-further-reading, kantorilode-koreaves-legacy-links, gbif-literature]
 tags: [KoreAves, biodiversity, portfolio, milestones, birding]
 ---
 
@@ -33,7 +33,7 @@ The atlas covers a reference of 597 species and 20 subspecies, 617 taxa in total
 
 ## Where the project appears
 
-Five external pages link readers to KoreAves, each with a different focus:
+Seven public source pages link readers to KoreAves, with different audiences and publication status:
 
 - **[Beary Birding](https://www.bearybirding.com/resources)** includes KoreAves under *Online Field Guides*, alongside other bird-reference tools. This is an external resource listing, not a review or formal endorsement.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)** links to the project on its birding links page and labels it a Korean bird evidence atlas.
@@ -41,7 +41,10 @@ Five external pages link readers to KoreAves, each with a different focus:
 - **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)** links to KoreAves in its South Korea section. The public README describes a free bird occurrence-evidence atlas with regional GIS views and source links. Its geodata focus gives GIS readers a different way to encounter the atlas. The listing does not document a formal endorsement or measured use.
 - **[Nav-AI](https://nav-ai.net/ai/koreaves)** has a public KoreAves software-directory entry with a direct link to the live atlas. Its overview draws on the project's published homepage. It does not establish independently tested functionality, user reviews, or adoption.
 
-Nav-AI is a software-directory entry, Kartoza serves readers looking for geodata, and the other three lists serve birders or biology learners. All five link to KoreAves. None shows how many readers followed the link or used the project.
+- **[Bird Album — South Korea](https://birdalbum.com/countries/kr/)** (birdalbum-koreaves-further-reading) includes KoreAves as a *Further reading* link to the live atlas. I checked that same link in four public editions: [English](https://birdalbum.com/countries/kr/), [Korean](https://birdalbum.com/ko/countries/kr/), [Japanese](https://birdalbum.com/ja/countries/kr/) and [French](https://birdalbum.com/fr/countries/kr/). This is one inclusion presented in several languages, not four separate endorsements.
+- **[Kantorilode's legacy Birds of Japan links page](https://kantorilode.weebly.com/links.html)** (kantorilode-koreaves-legacy-links) includes KoreAves under *East Asia and beyond*. The [current primary-domain links page](https://kantorilode.com/links.html) did not display the link when checked. I am recording the specific working Weebly page, not claiming the newer domain has been updated.
+
+These lists serve different readers. Bird Album's country reference offers a bird-information route alongside the older software and geodata directories. Bird Album's [data-source explanation](https://birdalbum.com/about/) uses IOC World Bird List 15.2, while the [KoreAves dataset notes](https://koreaves.com/dataset/) describe a Korean national checklist foundation. A link between the projects does not make their taxon concepts identical. None of these listings measures actual reader visits to KoreAves.
 
 ## A separate kind of record: GBIF Literature
 

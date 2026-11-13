@@ -12,6 +12,8 @@ CSS = ROOT / "assets" / "css" / "portfolio.css"
 EXPECTED = {
     "worldlytribe-space-atlas-worldschooling": "space-atlas-worldschooling-guide",
     "nav-ai-koreaves-directory": "koreaves-external-resources",
+    "birdalbum-koreaves-further-reading": "koreaves-external-resources",
+    "kantorilode-koreaves-legacy-links": "koreaves-external-resources",
     "kartoza-awesome-geodata-koreaves": "koreaves-external-resources",
     "birds-photo-10000": "koreaves-published-contributions",
     "suncheon-10000": "koreaves-published-contributions",
@@ -47,7 +49,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 18)
+        self.assertEqual(len(records), 20)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -103,6 +105,46 @@ class EvidenceContextLinksTest(unittest.TestCase):
             sum(record["url"] == listing["url"] for record in records.values()),
             1,
         )
+
+    def test_birdalbum_and_kantorilode_links_keep_exact_public_provenance(self):
+        records = parse_records()
+        checks = {
+            "birdalbum-koreaves-further-reading": (
+                "https://birdalbum.com/countries/kr/", "Bird Album"
+            ),
+            "kantorilode-koreaves-legacy-links": (
+                "https://kantorilode.weebly.com/links.html", "Kantorilode"
+            ),
+        }
+        for record_id, (url, owner) in checks.items():
+            item = records[record_id]
+            self.assertEqual(item["project"], "koreaves")
+            self.assertEqual(item["type"], "listing")
+            self.assertEqual(item["status"], "confirmed")
+            self.assertEqual(item["source"], owner)
+            self.assertEqual(item["url"], url)
+            self.assertNotIn("date", item)
+            self.assertEqual(item["case_en"], "/koreaves-external-resources-en/")
+            self.assertEqual(item["case_ko"], "/koreaves-external-resources-ko/")
+            self.assertEqual(sum(r["url"] == url for r in records.values()), 1)
+            for language in ("en", "ko"):
+                post = (ROOT / f"_posts/folio-koreaves-resources-{language}" /
+                        f"2026-11-02-folio-koreaves-resources-{language}.md").read_text("utf8")
+                self.assertIn(record_id, post)
+                self.assertIn(url, post)
+                self.assertNotIn("\ufffd", post)
+                self.assertNotIn("????", post)
+                self.assertIn("modified: 2026-11-13", post)
+        self.assertIn("legacy", records["kantorilode-koreaves-legacy-links"]["detail"].lower())
+        en = (ROOT / "_posts/folio-koreaves-resources-en" /
+              "2026-11-02-folio-koreaves-resources-en.md").read_text("utf8")
+        ko = (ROOT / "_posts/folio-koreaves-resources-ko" /
+              "2026-11-02-folio-koreaves-resources-ko.md").read_text("utf8")
+        self.assertIn("four", en.lower())
+        self.assertIn("네", ko)
+        self.assertIn("https://kantorilode.com/links.html", en)
+        self.assertIn("https://kantorilode.com/links.html", ko)
+        self.assertNotIn("15 language editions verified", en.lower())
 
     def test_awesome_geodata_koreaves_entry_is_a_directory_link(self):
         records = parse_records()
@@ -258,7 +300,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 18)
+        self.assertEqual(len(records), 20)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -293,7 +335,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 18)
+        self.assertEqual(len(records), 20)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -315,14 +357,14 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 18)
+        self.assertEqual(len(records), 20)
 
     def test_homepage_shows_published_work_before_full_evidence_archive(self):
         records = parse_records()
         published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
         self.assertEqual(len(published), 7)
-        self.assertEqual(len(records), 18)
-        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 10)
+        self.assertEqual(len(records), 20)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 12)
         self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
         homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
