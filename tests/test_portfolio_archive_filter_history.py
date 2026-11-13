@@ -1,6 +1,7 @@
 """Archive filter links stay shareable without replacing the evidence ledger."""
 from pathlib import Path
 import subprocess
+import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,7 +14,11 @@ class PortfolioArchiveFilterHistoryTest(unittest.TestCase):
         source = ARCHIVE.read_text(encoding="utf-8")
         for category in ("all", "publication", "listing", "dataset_record", "collaboration"):
             self.assertIn(f'data-filter="{category}"', source)
-        self.assertIn('{% include portfolio-evidence.html %}', source)
+        # The all-records view must prioritize attributable writing before
+        # catalogue entries and self-submitted tool directories.
+        include_order = re.findall(r'{% include portfolio-evidence\.html type="([a-z_]+)" %}', source)
+        self.assertEqual(include_order, ["publication", "dataset_record", "listing", "collaboration"])
+        self.assertNotIn('{% include portfolio-evidence.html %}', source)
         self.assertIn('aria-live="polite"', source)
         self.assertIn('id="folio-filter-empty" hidden', source)
 
