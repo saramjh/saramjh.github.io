@@ -328,11 +328,11 @@ class EvidenceContextLinksTest(unittest.TestCase):
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
         include = INCLUDE.read_text(encoding="utf8")
         self.assertEqual(homepage.count('{% include portfolio-evidence.html type="publication" %}'), 1)
-        self.assertEqual(archive.count('{% include portfolio-evidence.html %}'), 1)
+        self.assertEqual(archive.count('{% include portfolio-evidence.html type="publication" %}'), 1)
         self.assertIn('include.type and record.type != include.type', include)
         self.assertIn('Resource listings and catalogue entries are in the full archive.', homepage)
         self.assertIn('/portfolio/recognition/', homepage)
-        self.assertNotIn('type="publication"', archive)
+        self.assertNotIn('{% include portfolio-evidence.html %}', archive)
         for record_id in ("eusci-space-atlas-diagrams", "one-earth-koreaves-feature",
                           "unsustainable-koreaves-bird-map", "suncheon-10000",
                           "sharemylesson-space-atlas-moon-phases"):
