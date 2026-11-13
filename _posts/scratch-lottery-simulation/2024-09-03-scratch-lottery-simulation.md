@@ -2,7 +2,7 @@
 title: "Scratch Lottery Simulation"
 description: A free scratch-off lottery simulator modeled on real games — Powerball, US $5 scratch-offs, and Korea's Speetto 1000/2000 — with a CDF-based odds engine, fast-forward simulation, and a sourced lottery tax calculator. No real money involved.
 date: 2024-09-03
-modified: 2026-09-18
+modified: 2026-11-13
 tags: ["Lottery", "Scratch Lottery", "Lottery simulation", "Powerball", "Speetto", "RTP", "Lottery tax calculator"]
 permalink: /scratch-lottery-simulation/
 layout: default
@@ -12,7 +12,7 @@ legacy_asset_url: /posts/scratch-lottery-simulation/
 ---
 
 <p style="background: rgba(0, 150, 80, 0.08); border-left: 4px solid #109648; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
-  🔄 <strong>Updated 2026-09-18:</strong> The simulator has been rebuilt since this post was first published. It now models real ticket formats (Powerball, a US $5 scratch-off, Korea's Speetto 1000/2000), draws each result from a proper CDF-based odds engine, and adds fast-forward simulation, a real-world odds comparison table, and a sourced lottery tax calculator. The description below reflects the current version — see what's new further down.
+  <strong>Updated 2026-11-13:</strong> Added a direct path to an interactive probability lesson about expected payout and losing streaks. The 2026-09-18 rebuild introduced the ticket formats, fast simulation and calculator described below.
 </p>
 
 ### Scratch Lottery Simulation — Try your luck!
@@ -44,6 +44,12 @@ A free scratch-off lottery simulator. It reproduces the tactile "scratching" exp
 #### How the odds/RTP are calculated
 
 Each preset defines only a jackpot probability and a per-tier prize table; the ratio between tiers follows a fixed shape shared across all presets. On every scratch, the engine draws one random number in [0, 1) and checks which tier's cumulative-probability range it falls into. Lower-tier prize amounts are calibrated so the resulting RTP lands in the range real lotteries typically use, roughly 50–70%.
+
+#### See how losing streaks affect an independent draw
+
+[Open the interactive probability lesson](https://saramjh.github.io/scratchLottery/math/#independenceLesson) and switch the previous-loss count between 0, 5 and 10. In the lesson's Texas Lottery Game 2755 independent-draw model, the next simulated ticket has a 26.52% chance of any prize in all three cases. Five losses in a row have a 21.42% chance of occurring from the start, but those completed draws do not change the next simulated result.
+
+The same guide shows an expected payout of about $3.23 for each modeled $5 ticket using the [published Game 2755 issue distribution](https://www.texaslottery.com/export/sites/lottery/Games/Scratch_Offs/details.html_252698616.html). The model does not measure which physical tickets remain unsold or estimate today's in-store winning odds.
 
 #### Tech stack
 
