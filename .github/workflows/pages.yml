@@ -27,6 +27,8 @@ jobs:
         run: python3 scripts/check_growth_ownership.py
       - name: Test homepage project directory
         run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Test case-study outbound click privacy
+        run: node --test tests/article_product_outbound_runtime.cjs
       - name: Build
         run: bundle exec jekyll build --trace
         env:
