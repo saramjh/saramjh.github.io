@@ -527,6 +527,32 @@
     color: $gray;
   }
 
+  .project-showcase-proof {
+    margin: 0.75rem 0 0;
+    text-align: right;
+  }
+
+  .project-showcase-proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 44px;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: $text-link-blue;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+
+    &:hover {
+      color: $black;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $text-link-blue;
+      outline-offset: 3px;
+    }
+  }
+
   @include media-query($on-mobile) {
     .project-showcase-list {
       grid-template-columns: 1fr;

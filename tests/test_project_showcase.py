@@ -28,6 +28,23 @@ class ProjectShowcaseTests(unittest.TestCase):
         for icon in icons:
             self.assertTrue((ROOT / icon.lstrip('/')).is_file(), icon)
 
+    def test_source_backed_recognition_archive_is_one_accessible_home_action(self):
+        html = HOME.read_text(encoding='utf-8')
+        light = LAYOUT.read_text(encoding='utf-8')
+        dark = DARK.read_text(encoding='utf-8')
+        self.assertTrue((ROOT / 'portfolio/recognition/index.html').is_file())
+        self.assertEqual(html.count('href="/portfolio/recognition/"'), 1)
+        section = html.split('<section class="project-showcase"', 1)[1].split('</section>', 1)[0]
+        self.assertLess(section.index('</nav>'), section.index('class="project-showcase-proof"'))
+        self.assertIn('Browse publications and resource listings', section)
+        self.assertIn('class="project-showcase-proof-link"', section)
+        self.assertIn('aria-hidden="true"', section)
+        self.assertIn('.project-showcase-proof-link {', light)
+        self.assertIn('min-height: 44px', light)
+        self.assertIn('&:focus-visible', light.split('.project-showcase-proof-link {', 1)[1])
+        self.assertIn('.project-showcase-proof-link {', dark)
+        self.assertEqual(html.count('class="project-showcase-link"'), len(TARGETS))
+
     def test_keyboard_mobile_and_dark_styles(self):
         light = LAYOUT.read_text(encoding='utf-8')
         dark = DARK.read_text(encoding='utf-8')
