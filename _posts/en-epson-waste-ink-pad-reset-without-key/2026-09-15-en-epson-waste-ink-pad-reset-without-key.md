@@ -1,7 +1,7 @@
 ---
 title: "Epson Waste Ink Counter Reset Without a Key: L3106 Case and Model Checks"
 date: 2026-09-15
-modified: 2026-11-09
+modified: 2026-11-14
 tags: ["Epson", "L3100", "L3106", "L3110", "L3150", "L3160", "L1110", "L5190", "Waste Ink Pad Reset", "WIC Reset Alternative", "reinkpy", "Mac Epson Reset", "DIY Printer Repair"]
 permalink: /en-epson-waste-ink-pad-reset-without-key/
 layout: default
@@ -118,19 +118,19 @@ Replacement pads and access procedures differ by model. Verify whether the servi
 
 Physical pad replacement is only half the battle. The internal EEPROM memory in the printer still retains the maximum counter value, which must be reset to 0%.
 
-Instead of paying for proprietary reset keys or hunting down sketchy Windows-only tools, we use **`reinkpy-fix`**, an open-source Python tool that communicates directly with the printer over low-level USB commands.
+The documented case referenced **`reinkpy-fix`**. Its [README](https://github.com/LeFZdev/reinkpy-fix) reports operation for the L3060 series and similar devices, with fixes focused on LAN/SNMP. The USB procedure below is a historical L3106 case description, not independent proof that the same commands work for another model.
 
-You can run the steps manually in your terminal, or **pass the copy-paste prompt below directly to an AI coding assistant** (such as Claude Code, Cursor, Codex, or Antigravity) to automate environment setup, bug patching, device detection, and EEPROM resetting in under 2 minutes.
+The AI coding assistant prompt below is intended for reviewing setup and model support. It instructs the assistant to stop before writing to the printer and ask for separate confirmation after checking physical pad servicing and compatibility.
 
 ---
 
 #### 💡 Ready-to-use AI Agent Prompt (Copy & Paste)
 
-Copy the prompt block below and paste it directly into your AI coding assistant:
+Confirm the exact printer model and physical pad service requirements before using this prompt. It asks the coding assistant to stop for confirmation before resetting anything. Other models cannot be assumed compatible just by changing a model name:
 
-```text
+````text
 My Epson printer (model: L3106 / L3100 or ET-2710 series) is locked due to "waste ink pad at the end of its service life".
-It is connected via USB to my macOS/Linux machine. Please automate the 0% counter reset following these exact steps:
+It is connected via USB to my macOS/Linux machine. Review the following steps, but do not send any reset command to the printer until the exact model's support and physical waste-pad servicing have been confirmed. Explain the findings and ask for my separate approval before any counter write:
 
 1. Clone repository: https://github.com/LeFZdev/reinkpy-fix
 2. Ensure libusb is installed (e.g. run 'brew install libusb' on macOS or 'apt-get install libusb-1.0-0-dev' on Linux).
@@ -150,8 +150,8 @@ print("Configured Model:", driver.spec.model)
 driver.reset_waste()
 print("Waste ink pad counter successfully reset to 0%!")
 ```
-6. Execute with elevated permissions: sudo venv/bin/python3 reinkpy/main.py and verify reset completion.
-```
+6. Do not run sudo venv/bin/python3 reinkpy/main.py yet. Wait until model support and physical pad service are confirmed and I authorize the counter write separately.
+````
 
 ---
 
