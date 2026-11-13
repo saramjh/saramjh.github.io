@@ -29,8 +29,8 @@ seo:
 
 <figure>
   <picture>
-    <source media="(max-width: 560px)" srcset="independent-draws-mobile.svg" width="390" height="780">
-    <img src="independent-draws.svg" alt="이전에 다섯 번 실패한 결과와 오른쪽의 다음 독립 추첨이 분리되어 있으며, 다음 시도는 같은 확률표를 다시 사용하는 원리를 설명한 자체 제작 도식" width="1200" height="630" loading="lazy" style="display:block;width:100%;height:auto">
+    <source media="(max-width: 560px)" srcset="/scratch-lottery-simulation-ko/independent-draws-mobile.svg" width="390" height="780">
+    <img src="/scratch-lottery-simulation-ko/independent-draws.svg" alt="이전에 다섯 번 실패한 결과와 오른쪽의 다음 독립 추첨이 분리되어 있으며, 다음 시도는 같은 확률표를 다시 사용하는 원리를 설명한 자체 제작 도식" width="1200" height="630" loading="lazy" style="display:block;width:100%;height:auto">
   </picture>
   <figcaption>독립 시행을 설명하기 위해 직접 그린 도식이다. 특정 날짜의 실제 복권 결과나 제품 화면 캡처는 아니다.</figcaption>
 </figure>
