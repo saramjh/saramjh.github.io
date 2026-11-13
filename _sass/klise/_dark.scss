@@ -269,6 +269,21 @@ body[data-theme="dark"] {
   }
 }
 
+// Product links stay visible in the explicitly selected dark palette.
+body[data-theme="dark"] {
+  .article-live-demo {
+    border-left-color: $dark-text-link-blue;
+  }
+
+  .article-live-demo-link {
+    color: $dark-text-link-blue;
+
+    &:focus-visible {
+      outline-color: $dark-text-link-blue;
+    }
+  }
+}
+
 // Home project directory retains clear contrast in the dark palette.
 body[data-theme="dark"] {
   .project-showcase {

@@ -245,6 +245,39 @@
   }
 }
 
+// Existing live Spoonie feature links are clear without adding tracking or another page.
+.article-live-demo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 0.8rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.35rem 0 0.35rem 0.85rem;
+  border-left: 3px solid $text-link-blue;
+}
+
+.article-live-demo-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  color: $text-link-blue;
+
+  &:focus-visible {
+    outline: 2px solid $text-link-blue;
+    outline-offset: 3px;
+  }
+}
+
+.article-live-demo-note {
+  display: inline-block;
+  font-size: 0.91rem;
+  opacity: 0.82;
+}
+
 // In-article display ads use publisher-controlled placements, never the author header.
 .blog-inline-ad {
   width: 100%;

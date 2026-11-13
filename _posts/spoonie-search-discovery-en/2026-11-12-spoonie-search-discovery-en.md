@@ -21,6 +21,8 @@ seo:
 
 **I changed Spoonie's recipe search so its results no longer have to stop at the first batch.** [PR #31](https://github.com/saramjh/spoonie/pull/31) merged on November 11, 2026 at 15:33 UTC. The [live search page](https://spoonie.kr/search) serves JavaScript with the new server pagination parameters and separate “show more” controls for Recipes and Recipeed posts.
 
+<p class="article-live-demo"><a class="article-live-demo-link" href="https://spoonie.kr/search">Try Spoonie's public recipe search</a><span class="article-live-demo-note">Search Recipe and Recipeed results in their separate tabs.</span></p>
+
 ## Where the old search stopped
 
 The previous client requested up to twenty matching items, then split that batch into Recipe and Recipeed tabs. When more items matched the term, the interface had no path to the next set. This is an awkward limit for a recipe product: different authors may publish dishes with identical names, and the reader needs to see which version belongs to whom.
