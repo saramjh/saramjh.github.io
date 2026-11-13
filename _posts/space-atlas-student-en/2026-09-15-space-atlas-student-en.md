@@ -100,6 +100,14 @@ Every topic adheres to a 7-step learning framework designed to build scientific 
 
 ---
 
+## Where educators can explore the models
+
+[NCASE's public Programs directory](https://ncase.org/programs/) lists Space Atlas's interactive Moon-phase and Earth-season models. Educators can follow its link to examine the live tools and decide whether they fit a lesson.
+
+I also published a [Grades 4–8 Moon-phases activity on Share My Lesson](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086). Students predict the Moon's appearance, test it in the simulator, then explain what they observed. The [related developer case study](/space-atlas-education-resource-paths-en/) describes the work behind both public resources.
+
+*Original source pages checked November 13, 2026. A directory listing does not establish institutional endorsement or measured classroom outcomes.*
+
 ## Technical Highlights
 
 * **Zero-Dependency Architecture**: No Node.js build overhead; uses standard Python stdlib for builds, keeping CI/CD pipeline execution under 20 seconds.
