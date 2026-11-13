@@ -372,9 +372,15 @@ def _is_exact_unlinked_firstparty_social_jpeg(path, revision):
     # Test both the full path and the filename, including dynamically
     # assembled page templates that might use only the stem/folder.
     folder, name = path.rsplit("/", 1)
+    # Generic names such as card-01.jpg belong to many unrelated pages.
+    # A valid reference to this media must contain its exact public path
+    # or its distinctive folder. Keep basename-only scans for unique names.
+    needles = ["/" + path, folder]
+    if not re.fullmatch(r"card-\d{2}\.jpg", name):
+        needles.append(name)
+    expr = [part for needle in needles for part in ("-e", needle)]
     proc = subprocess.run(
-        ["git", "grep", "-I", "-l", "-F",
-         "-e", "/" + path, "-e", name, "-e", folder, revision, "--"],
+        ["git", "grep", "-I", "-l", "-F", *expr, revision, "--"],
         text=True, capture_output=True,
     )
     if proc.returncode not in (0, 1):
