@@ -256,6 +256,26 @@ with sync_playwright() as p:
                 page.goto(BASE + '/portfolio/recognition/#listing', wait_until='domcontentloaded')
                 page.wait_for_function("document.querySelector('[data-filter=listing]').getAttribute('aria-pressed') === 'true'")
                 assert page.locator('.folio-evidence-item:visible').count() == sum(item['type'] == 'listing' for item in EVIDENCE)
+                # A real browser must distinguish the selected filter from
+                # an inactive or merely hovered filter at every viewport.
+                state = page.evaluate("""() => {
+                    const button = type => document.querySelector('.folio-filter[data-filter="' + type + '"]');
+                    const css = element => {
+                        const s = getComputedStyle(element);
+                        return {background:s.backgroundColor, color:s.color, border:s.borderTopColor,
+                                pressed:element.getAttribute('aria-pressed')};
+                    };
+                    return {listing:css(button('listing')), all:css(button('all'))};
+                }""")
+                assert state['listing'] == {
+                    'background': 'rgb(179, 199, 255)',
+                    'color': 'rgb(16, 26, 54)',
+                    'border': 'rgb(179, 199, 255)',
+                    'pressed': 'true'
+                }, (viewport, 'selected listing contrast', state)
+                assert state['all']['pressed'] == 'false', (viewport, 'inactive all state', state)
+                assert state['all']['background'] != state['listing']['background'], (
+                    viewport, 'inactive filter falsely highlighted', state)
                 page.locator('[data-filter="all"]').click()
                 assert page.url.endswith('/portfolio/recognition/#all')
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)

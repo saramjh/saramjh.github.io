@@ -260,6 +260,86 @@ def _verification_sitemap_only_config_edit(before, after):
     return not removed and added == _VERIFICATION_SITEMAP_ONLY_ADDITIONS
 
 
+def _archive_filter_visual_css_only(before, after):
+    """Skip IndexNow for one existing archive button appearance adjustment.
+
+    This deliberately excludes only the three archive-specific filter rules;
+    all other CSS or any new filter consumer keeps the broad fallback.
+    """
+    css_path = "assets/css/portfolio.css"
+    try:
+        versions = [
+            subprocess.check_output(
+                ["git", "show", f"{revision}:{css_path}"],
+                text=True, stderr=subprocess.PIPE,
+            )
+            for revision in (before, after)
+        ]
+    except (subprocess.CalledProcessError, UnicodeError):
+        return False
+
+    def split_rules(source):
+        changed = []
+        other = []
+        for line in source.splitlines(keepends=True):
+            if (line.startswith(".portfolio-body .folio .folio-filter")
+                    and "{" in line and line.rstrip().endswith("}")):
+                changed.append(line.strip())
+            else:
+                other.append(line)
+        return changed, "".join(other)
+
+    prior, base = split_rules(versions[0])
+    current, later = split_rules(versions[1])
+    if (base != later or len(prior) != 2 or len(current) != 3
+            or prior == current):
+        return False
+    if not (
+        prior[0].startswith(".portfolio-body .folio .folio-filter{")
+        and ".folio-filter.is-active{" in prior[1]
+        and current[0].startswith(".portfolio-body .folio .folio-filter{")
+        and current[1].startswith('.portfolio-body .folio .folio-filter[aria-pressed="false"]:hover{')
+        and current[2].startswith('.portfolio-body .folio .folio-filter[aria-pressed="true"]{')
+    ):
+        return False
+    if ("!important" not in current[1] or "!important" not in current[2]):
+        return False
+
+    # Verify the filter is rendered in exactly one first-party page and is
+    # operated by its original script. Other HTML/CSS/JS consumers fail closed.
+    allowed = {
+        "assets/css/portfolio.css",
+        "assets/js/portfolio.js",
+        "portfolio/recognition/index.html",
+    }
+    for revision in (before, after):
+        proc = subprocess.run(
+            ["git", "grep", "-I", "-l", "-F", "-e", "folio-filter",
+             revision, "--"], text=True, capture_output=True,
+        )
+        if proc.returncode not in (0, 1):
+            return False
+        found = set()
+        for result in proc.stdout.splitlines():
+            first, separator, source = result.partition(":")
+            if not separator or first != revision:
+                return False
+            if source in allowed or _skip_only_source(source):
+                continue
+            if source.endswith((".html", ".md", ".markdown", ".js", ".css")):
+                return False
+            found.add(source)
+        if found:
+            return False
+        if not all(
+            subprocess.run(["git", "cat-file", "-e", f"{revision}:{source}"],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+            for source in allowed
+        ):
+            return False
+    return True
+
+
 def changed_urls(before, after):
     """Return affected URLs, or None for a broad site change.
 
@@ -282,6 +362,11 @@ def changed_urls(before, after):
         # Removing two static verification tokens from sitemap membership does
         # not change the content of a submitted URL. No mass replay.
         if file_path == "_config.yml" and _verification_sitemap_only_config_edit(before, after):
+            continue
+        # This scoped filter appearance change cannot alter any page text,
+        # permalink, canonical or search content; avoid broad IndexNow replay.
+        if (file_path == "assets/css/portfolio.css" and status == "M"
+                and _archive_filter_visual_css_only(before, after)):
             continue
         # For referenced images only, resolve every affected source page.
         # A shared/unknown reference still conservatively uses the sitemap.

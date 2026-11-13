@@ -68,6 +68,41 @@ class ChangeScopeTest(unittest.TestCase):
         self.assertIn("No qualified changed URLs; skipping Bing and IndexNow.", p.stdout)
         self.assertNotIn("Batch 1/", p.stdout)
 
+    def test_only_existing_archive_filter_css_visual_state_skips_notifications(self):
+        self.write("assets/js/portfolio.js",
+                   "document.querySelectorAll('.folio-filter');\n")
+        self.write("portfolio/recognition/index.html",
+                   "---\npermalink: /portfolio/recognition/\n---\n"
+                   '<button class="folio-filter" aria-pressed="false">Listings</button>\n')
+        old = (
+            ".portfolio-body .folio .folio-filter{background:transparent;color:#ddd}\n"
+            ".portfolio-body .folio .folio-filter:hover,.portfolio-body .folio "
+            ".folio-filter.is-active{background:blue;color:navy}\n"
+        )
+        self.write("assets/css/portfolio.css", old)
+        before = self.commit("archive filter original CSS")
+        new = (
+            ".portfolio-body .folio .folio-filter{background:transparent!important;color:#ddd!important}\n"
+            ".portfolio-body .folio .folio-filter[aria-pressed=\"false\"]:hover"
+            "{background:#20242e!important;color:white!important}\n"
+            ".portfolio-body .folio .folio-filter[aria-pressed=\"true\"]"
+            "{background:blue!important;color:navy!important}\n"
+        )
+        self.write("assets/css/portfolio.css", new)
+        after = self.commit("only archive filter appearance")
+        self.assertEqual(sender.changed_urls(before, after), [])
+        with patch.dict(os.environ, {
+            "INDEXNOW_BEFORE_SHA": before, "INDEXNOW_AFTER_SHA": after,
+        }):
+            with patch.object(sender, "get_urls",
+                              side_effect=AssertionError("full sitemap reissue forbidden")):
+                self.assertEqual(sender.get_deploy_urls(), [])
+
+        # A second unrelated CSS change cannot inherit the suppression.
+        self.write("assets/css/portfolio.css", new + ".portfolio-body{font-size:18px}\n")
+        after_global = self.commit("unrelated portfolio CSS change")
+        self.assertIsNone(sender.changed_urls(after, after_global))
+
     def test_portfolio_content_change_submits_one_page(self):
         self.write("portfolio/index.html", "---\npermalink: /portfolio/\n---\nTwo new cards\n")
         self.write("tests/diff_check.py", "# new test\n")
