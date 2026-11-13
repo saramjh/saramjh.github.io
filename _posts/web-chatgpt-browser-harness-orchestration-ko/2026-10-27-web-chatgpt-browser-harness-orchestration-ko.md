@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /web-chatgpt-browser-harness-orchestration-en/
-image: /assets/img/web-chatgpt-browser-harness-orchestration/architecture.svg
-image_width: 1100
-image_height: 680
+image: /assets/img/web-chatgpt-browser-harness-orchestration/architecture-og.png
+image_width: 1200
+image_height: 630
 seo:
   title: "웹 ChatGPT 멀티 에이전트 운영: 브라우저 하네스 아키텍처"
   description: "로컬 LLM과 직접 모델 API 호출 없이 웹 ChatGPT를 실행 환경으로 활용한 브라우저 하네스, 세션 관리, 실행 증빙 아키텍처."

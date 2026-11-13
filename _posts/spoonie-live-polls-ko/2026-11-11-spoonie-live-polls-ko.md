@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-live-polls-en/
-image: /spoonie-live-polls-ko/spoonie-poll-flow.svg
-image_width: 1280
-image_height: 560
+image: /spoonie-live-polls-ko/spoonie-poll-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "Spoonie 레시피 투표 개발: 공개 화면과 회원 글쓰기 공용화"

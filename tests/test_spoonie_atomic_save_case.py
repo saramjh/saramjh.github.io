@@ -19,7 +19,7 @@ class SpoonieAtomicSaveCaseTest(unittest.TestCase):
                           f"alternate_url: /spoonie-atomic-poll-data-{alt}/",
                           "published: true",
                           "https://github.com/saramjh/spoonie/pull/25",
-                          f"image: /{slug}/spoonie-atomic-flow.svg",
+                          f"image: /{slug}/spoonie-atomic-flow-og.png",
                           "save_item_with_poll_atomic", "media_cleanup_pending",
                           "363", "82", "SECURITY INVOKER"):
                 self.assertIn(token,text)

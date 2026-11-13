@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-atomic-poll-data-en/
-image: /spoonie-atomic-poll-data-ko/spoonie-atomic-flow.svg
-image_width: 1280
-image_height: 650
+image: /spoonie-atomic-poll-data-ko/spoonie-atomic-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "스푸니 투표 저장 원자성과 회원 탈퇴 데이터 손실 방지 설계"

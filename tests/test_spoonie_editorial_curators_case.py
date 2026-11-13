@@ -20,7 +20,7 @@ class SpoonieEditorialDirectoryArticleTest(unittest.TestCase):
 
             self.assertTrue(text.startswith("---\n"))
             self.assertIn(f"permalink: /{slug}/", text)
-            self.assertIn(f"image: /{slug}/spoonie-curator-flow.svg", text)
+            self.assertIn(f"image: /{slug}/spoonie-curator-flow-og.png", text)
             self.assertIn(f"lang: {language}", text)
             self.assertIn(f"alternate_lang: {counterpart}", text)
             self.assertIn(f"alternate_url: /{BASE}-{counterpart}/", text)

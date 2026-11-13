@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /recipe-calc-to-spoonie-origin-en/
-image: /spoonie-social-cooking-early-users/recipe-record-flow.svg
+image: /spoonie-social-cooking-early-users/recipe-record-flow-og.png
 image_width: 1200
-image_height: 400
+image_height: 630
 published: true
 seo:
   title: "recipeCalc에서 Spoonie까지: 레시피 계산기를 요리 기록 서비스로 확장한 과정"

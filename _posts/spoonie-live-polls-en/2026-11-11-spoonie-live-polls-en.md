@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /spoonie-live-polls-ko/
-image: /spoonie-live-polls-en/spoonie-poll-flow.svg
-image_width: 1280
-image_height: 560
+image: /spoonie-live-polls-en/spoonie-poll-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "How I built a Spoonie recipe poll and generalized member authoring"
