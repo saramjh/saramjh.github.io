@@ -7,6 +7,8 @@ tags: ["Lottery", "Scratch Lottery", "Lottery simulation", "Powerball", "Speetto
 permalink: /scratch-lottery-simulation/
 layout: default
 lang: en
+alternate_lang: ko
+alternate_url: /scratch-lottery-simulation-ko/
 image: /scratch-lottery-simulation/scratchlottery-2026-desktop.png
 legacy_asset_url: /posts/scratch-lottery-simulation/
 ---
@@ -14,6 +16,8 @@ legacy_asset_url: /posts/scratch-lottery-simulation/
 <p style="background: rgba(0, 150, 80, 0.08); border-left: 4px solid #109648; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
   <strong>Updated 2026-11-13:</strong> Added a direct path to an interactive probability lesson about expected payout and losing streaks. The 2026-09-18 rebuild introduced the ticket formats, fast simulation and calculator described below.
 </p>
+
+> 한국어: [스크래치 복권 시뮬레이터에서 확률과 연속 실패를 실험하기](/scratch-lottery-simulation-ko/)
 
 ### Scratch Lottery Simulation — Try your luck!
 
@@ -44,6 +48,12 @@ A free scratch-off lottery simulator. It reproduces the tactile "scratching" exp
 #### How the odds/RTP are calculated
 
 Each preset defines only a jackpot probability and a per-tier prize table; the ratio between tiers follows a fixed shape shared across all presets. On every scratch, the engine draws one random number in [0, 1) and checks which tier's cumulative-probability range it falls into. Lower-tier prize amounts are calibrated so the resulting RTP lands in the range real lotteries typically use, roughly 50–70%.
+
+#### What I can measure from the live simulator
+
+A read-only report from my own Google Analytics 4 property, queried on November 13, 2026, covered October 15 through November 12, 2026. It recorded **4,773 `scratch_completed` events** across 89 GA4 active users for that event, and **2,576 `run_fast_simulation` events** across 21 active users for that event.
+
+The two event names describe different actions. `scratch_completed` fires after a simulated ticket has been fully revealed; the fast-forward button is counted separately. People can repeat either action, and the two active-user groups may overlap. These figures show tracked interactions, not 4,773 distinct people, lottery purchases, or a measured increase caused by promotion. The report does not establish whether every event came from a human visitor.
 
 #### See how losing streaks affect an independent draw
 

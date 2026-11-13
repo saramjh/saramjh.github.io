@@ -316,5 +316,49 @@ with sync_playwright() as p:
         assert info['hasGtag'] == (dnt == '0'), ('gtag DNT contract', info)
         print('PASS root analytics DNT', dnt, info)
         context.close()
+    # Same original CI Chrome instance checks the author-owned bilingual
+    # probability story. The 390px art must remain legible as a real,
+    # separately composed 390x780 source, not a scaled 1200px diagram.
+    for viewport in (390, 768, 1440):
+        ctx = browser.new_context(viewport={'width': viewport, 'height': 900})
+        ctx.add_init_script("""() => {
+            Object.defineProperty(navigator, 'doNotTrack', {
+                configurable: true, get: () => '1'
+            });
+            window.doNotTrack = '1';
+        }""")
+        ctx.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        ctx.route('https://www.clarity.ms/**', lambda route: route.abort())
+        page = ctx.new_page()
+        route = '/scratch-lottery-simulation-ko/'
+        resp = page.goto(BASE + route, wait_until='load', timeout=20000)
+        assert resp.status == 200, (viewport, route, resp.status)
+        geom = page.evaluate("""() => {
+            const figure = document.querySelector('figure');
+            const source = figure?.querySelector('picture source');
+            const img = figure?.querySelector('picture img');
+            if (!source || !img) throw new Error('Missing responsive original probability diagram');
+            return {
+                pageWidth: document.documentElement.scrollWidth,
+                imageSrc: img.currentSrc,
+                naturalWidth: img.naturalWidth,
+                naturalHeight: img.naturalHeight,
+                renderedWidth: img.getBoundingClientRect().width,
+                sourceMedia: source.getAttribute('media'),
+                headline: document.body.innerText.includes('연속으로 실패하면'),
+                eventCount: document.body.innerText.includes('4,773')
+            };
+        }""")
+        expect_name = 'independent-draws-mobile.svg' if viewport <= 560 else 'independent-draws.svg'
+        expect_size = (390, 780) if viewport <= 560 else (1200, 630)
+        assert geom['imageSrc'].endswith(expect_name), (viewport, 'wrong image source', geom)
+        assert (geom['naturalWidth'], geom['naturalHeight']) == expect_size, (
+            viewport, 'original SVG not decoded', geom)
+        assert geom['renderedWidth'] <= viewport, (viewport, 'image horizontal overflow', geom)
+        assert geom['pageWidth'] <= viewport + 2, (viewport, 'document horizontal overflow', geom)
+        assert geom['sourceMedia'] == '(max-width: 560px)', (viewport, 'wrong mobile source', geom)
+        assert geom['headline'] and geom['eventCount'], (viewport, 'live reader facts missing', geom)
+        print('PASS ScratchLottery KO responsive original illustration', viewport, geom['imageSrc'])
+        ctx.close()
     browser.close()
 print('PASS all browser geometry checks')
