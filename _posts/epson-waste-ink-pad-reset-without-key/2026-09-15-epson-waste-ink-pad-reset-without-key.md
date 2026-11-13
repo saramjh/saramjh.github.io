@@ -212,7 +212,9 @@ from .usbtest import UsbIO
 
 #### 5단계 — main.py를 USB 통신 코드로 교체
 
-`reinkpy/main.py` 파일의 기존 내용을 지우고, 내 프린터와 USB로 통신하여 폐잉크 카운터를 리셋하도록 아래 코드로 교체합니다. (L3100, L3106 등 본인 모델명 지정)
+아래 예제에는 `driver.reset_waste()`가 포함되어 있습니다. 실행하면 프린터에 카운터 변경을 시도하므로, 먼저 **정확한 모델의 도구 지원 여부와 실제 폐잉크 패드 정비 상태**를 확인하세요. L3106은 이 글의 작업 사례이며, 다른 모델명으로 바꾸는 것만으로 호환성이 입증되지는 않습니다.
+
+`reinkpy/main.py` 파일의 기존 내용을 지우고 아래 L3106 사례 코드를 참고합니다. 지원과 정비가 확인되기 전에는 실행하지 마세요.
 
 ```python
 import reinkpy
@@ -222,7 +224,7 @@ printer = reinkpy.Device.from_usb(manufacturer='EPSON')
 
 driver = printer.epson
 if not driver.spec.model:
-    driver.configure("L3106")  # L3100 계열 호환 모델 지정
+    driver.configure("L3106")  # 이 글의 L3106 작업 사례; 다른 모델은 별도 검증
 
 print("연결된 프린터:", printer)
 print("모델:", driver.spec.model)
@@ -233,6 +235,8 @@ print("잉크패드 카운터 초기화 완료")
 ```
 
 #### 6단계 — 관리자 권한으로 실행
+
+**실행 전 최종 확인:** 이 명령은 위 코드의 `driver.reset_waste()`를 실행해 프린터 카운터 변경을 시도합니다. 모델 지원과 실제 폐잉크 패드 정비를 확인하지 못했다면 실행하지 마세요.
 
 USB 디바이스 제어 권한(Raw USB Access)을 위해 `sudo` 권한으로 실행합니다.
 

@@ -208,7 +208,9 @@ from .usbtest import UsbIO
 
 #### Step 5 — Replace main.py with USB Reset Routine
 
-Replace the entire contents of `reinkpy/main.py` with the following clean reset script:
+The sample below calls `driver.reset_waste()`, which attempts to write to the printer counter when run. Before using it, confirm that **reinkpy-fix supports your exact model and the physical waste pads have been serviced**. L3106 is the documented case; replacing its model name does not establish compatibility.
+
+The following is the L3106 example for `reinkpy/main.py`. Do not execute it until those checks are complete:
 
 ```python
 import reinkpy
@@ -218,7 +220,7 @@ printer = reinkpy.Device.from_usb(manufacturer='EPSON')
 
 driver = printer.epson
 if not driver.spec.model:
-    driver.configure("L3106")  # Specify your model or compatible series (e.g. L3100, L3106, L3150)
+    driver.configure("L3106")  # Documented L3106 case; verify other models separately
 
 print("Connected Printer:", printer)
 print("Configured Model:", driver.spec.model)
@@ -230,7 +232,9 @@ print("Waste ink pad counter successfully reset to 0%!")
 
 #### Step 6 — Execute with Elevated Privileges
 
-Raw USB access requires root permissions on macOS/Linux:
+**Before running:** This command executes `driver.reset_waste()` and attempts a counter write on the connected printer. Do not run it unless the exact model support and physical waste-pad servicing have been confirmed.
+
+The documented command uses elevated privileges for raw USB access:
 
 ```bash
 sudo venv/bin/python3 reinkpy/main.py
