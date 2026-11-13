@@ -86,6 +86,46 @@ class ChangeScopeTest(unittest.TestCase):
             other_path, other_commit))
         self.assertIsNone(sender.changed_urls(referenced, other_commit))
 
+    def test_exact_two_original_api_carousel_cards_skip_page_notifications(self):
+        paths = [
+            f"assets/img/dev-social-media-20261113/c563-portfolio-filter-two-card/card-{i:02d}.jpg"
+            for i in (1, 2)
+        ]
+        for image_path in paths:
+            original = Path(sender.__file__).resolve().parents[1] / image_path
+            data = original.read_bytes()
+            output = self.root / image_path
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_bytes(data)
+        after = self.commit("two exact source-owned non-page JPG cards")
+        self.assertEqual(sender.changed_urls(self.base, after), [])
+        for image_path in paths:
+            self.assertTrue(sender._is_exact_unlinked_firstparty_social_jpeg(
+                image_path, after))
+        with patch.dict(os.environ, {"INDEXNOW_BEFORE_SHA": self.base,
+                                     "INDEXNOW_AFTER_SHA": after}):
+            with patch.object(sender, "get_urls",
+                              side_effect=AssertionError("no all-site IndexNow replay")):
+                self.assertEqual(sender.get_deploy_urls(), [])
+
+        # A new page usage is not ignored. The changed HTML gets the exact URL.
+        self.write("portfolio/index.html",
+                   "---\npermalink: /portfolio/\n---\n"
+                   '<img src="/' + paths[0] + '" alt="real before state">\n')
+        uses_card = self.commit("source page now uses original first card")
+        self.assertFalse(sender._is_exact_unlinked_firstparty_social_jpeg(
+            paths[0], uses_card))
+        self.assertEqual(sender.changed_urls(after, uses_card),
+                         ["https://saramjh.github.io/portfolio/"])
+
+        # Changed bytes for an existing protected card do not get a silent skip.
+        original = self.root / paths[1]
+        original.write_bytes(original.read_bytes() + b"not-original")
+        changed = self.commit("original image digest drift")
+        self.assertFalse(sender._is_exact_unlinked_firstparty_social_jpeg(
+            paths[1], changed))
+        self.assertIsNone(sender.changed_urls(uses_card, changed))
+
     def test_source_only_release_skips_all_notifications(self):
         self.write("scripts/example.py", "print('infra changed')\n")
         self.write(".github/workflows/pages.yml", "name: updated workflow\n")

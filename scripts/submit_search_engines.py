@@ -342,19 +342,24 @@ def _archive_filter_visual_css_only(before, after):
 
 
 def _is_exact_unlinked_firstparty_social_jpeg(path, revision):
-    """Only this source-owned standalone JPG is not a changed webpage.
+    """Only these exact source-owned standalone JPGs are not changed webpages.
 
     The image is for an independently authorized social-media preflight URL.
     It is not referenced from public page source. Any source change, new
     reference, hash mismatch or other asset keeps the existing fail-closed
     broader IndexNow path. This is not a provider posting permission.
     """
-    if path != (
-        "assets/img/dev-social-media-20261113/"
-        "portfolio-filter-contrast-c561.jpg"
-    ):
+    expected_by_path = {
+        "assets/img/dev-social-media-20261113/portfolio-filter-contrast-c561.jpg":
+            "e4c5b74f6be888fd582b8d0c924c778e812067d8473e161fdbd8234642556712",
+        "assets/img/dev-social-media-20261113/c563-portfolio-filter-two-card/card-01.jpg":
+            "29e5676fa0f15933cad39b02e101d365c78cd70fb8af0fc47b072da20685d49e",
+        "assets/img/dev-social-media-20261113/c563-portfolio-filter-two-card/card-02.jpg":
+            "5e153eeab0d7d1a56467f6d31e1212f0411b88dba6bc015e4cfee4dac0a4441e",
+    }
+    expected_sha = expected_by_path.get(path)
+    if expected_sha is None:
         return False
-    expected_sha = "e4c5b74f6be888fd582b8d0c924c778e812067d8473e161fdbd8234642556712"
     try:
         raw = subprocess.check_output(
             ["git", "show", f"{revision}:{path}"], stderr=subprocess.PIPE,
