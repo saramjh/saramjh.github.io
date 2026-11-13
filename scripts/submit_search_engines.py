@@ -165,7 +165,33 @@ def _page_urls_for_recognitions(revision):
     data_users = {"_includes/portfolio-evidence.html", "_layouts/project.html"}
     include_users = {"_layouts/project.html", "_layouts/milestone.html",
                      "portfolio/index.html", "portfolio/recognition/index.html"}
-    if tracked("site.data.recognitions") != data_users:
+    actual_data_users = tracked("site.data.recognitions")
+    schema_source = "_includes/seo_schema.html"
+    if actual_data_users == data_users:
+        pass
+    elif actual_data_users == data_users | {schema_source}:
+        # The original project WebApplication schema uses recognition listings
+        # only for project pages already represented in project_sources below.
+        # Any additional recognition consumer or altered guard fails closed.
+        try:
+            schema = subprocess.check_output(
+                ["git", "show", f"{revision}:{schema_source}"],
+                text=True, stderr=subprocess.PIPE,
+            )
+        except subprocess.CalledProcessError:
+            return None
+        guard = "{%- if page.layout == 'project' and page.site_url and page.slug -%}"
+        selector = ("{%- assign verified_listings = site.data.recognitions"
+                    " | where: 'project', page.slug | where: 'type', 'listing'"
+                    " | where: 'status', 'confirmed' -%}")
+        next_branch = "{%- elsif page.date -%}"
+        if (schema.count("site.data.recognitions") != 1
+                or schema.count(guard) != 1
+                or schema.count(selector) != 1
+                or schema.count(next_branch) != 1
+                or not schema.index(guard) < schema.index(selector) < schema.index(next_branch)):
+            return None
+    else:
         return None
     if tracked("portfolio-evidence.html") != include_users:
         return None
