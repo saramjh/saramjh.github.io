@@ -20,6 +20,8 @@ class SpoonieDirectoryProjectCaseTest(unittest.TestCase):
             source = post.read_text(encoding="utf-8")
             self.assertIn(f"permalink: /spoonie-webapps-directory-{locale}/", source)
             self.assertIn("https://webapps.directory/directory/spooniespoonie", source)
+            self.assertEqual(source.count("https://launchfree.io/listings/spoonie.html"), 2)
+            self.assertIn("October 12, 2026" if locale == "en" else "2026년 10월 12일", source)
 
     def test_existing_project_achievements_retained(self):
         case = (ROOT / "_projects/spoonie.md").read_text(encoding="utf-8")
