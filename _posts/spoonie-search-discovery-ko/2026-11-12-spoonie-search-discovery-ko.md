@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-search-discovery-en/
-image: /spoonie-search-discovery-ko/spoonie-search-flow.svg
-image_width: 1280
-image_height: 530
+image: /spoonie-search-discovery-ko/spoonie-search-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "Spoonie 검색 개선: 레시피 정렬·페이지 조회·참고 레시피 선택"

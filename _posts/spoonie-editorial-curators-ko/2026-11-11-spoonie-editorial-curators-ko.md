@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-editorial-curators-en/
-image: /spoonie-editorial-curators-ko/spoonie-curator-flow.svg
-image_width: 1280
-image_height: 600
+image: /spoonie-editorial-curators-ko/spoonie-curator-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "스푸니 공식 편집 프로필 디렉터리 개발 기록"

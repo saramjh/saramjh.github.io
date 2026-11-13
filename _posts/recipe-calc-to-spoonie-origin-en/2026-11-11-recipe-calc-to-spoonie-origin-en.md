@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /recipe-calc-to-spoonie-origin-ko/
-image: /spoonie-social-cooking-early-users/recipe-record-flow.svg
+image: /spoonie-social-cooking-early-users/recipe-record-flow-og.png
 image_width: 1200
-image_height: 400
+image_height: 630
 published: true
 seo:
   title: "From recipeCalc to Spoonie: the development of a cooking record product"

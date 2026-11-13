@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /homepage-project-directory-en/
-image: /homepage-project-directory-ko/directory-ko.svg
+image: /homepage-project-directory-ko/directory-ko-og.png
 image_width: 1200
-image_height: 720
+image_height: 630
 published: true
 ---
 

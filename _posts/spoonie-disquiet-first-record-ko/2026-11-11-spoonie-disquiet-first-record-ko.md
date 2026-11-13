@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-disquiet-first-record-en/
-image: /spoonie-social-cooking-early-users/recipe-record-flow.svg
+image: /spoonie-social-cooking-early-users/recipe-record-flow-og.png
 image_width: 1200
-image_height: 400
+image_height: 630
 published: true
 seo:
   title: "Disquiet에 공개한 Spoonie 개발 회고와 초기 사용자 검증"

@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /spoonie-search-discovery-ko/
-image: /spoonie-search-discovery-en/spoonie-search-flow.svg
-image_width: 1280
-image_height: 530
+image: /spoonie-search-discovery-en/spoonie-search-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "Fixing Spoonie's recipe search, pagination and reference picker"

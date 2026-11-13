@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /web-chatgpt-browser-harness-orchestration-ko/
-image: /assets/img/web-chatgpt-browser-harness-orchestration/architecture.svg
-image_width: 1100
-image_height: 680
+image: /assets/img/web-chatgpt-browser-harness-orchestration/architecture-og.png
+image_width: 1200
+image_height: 630
 seo:
   title: "ChatGPT Web Agents Without Local LLMs: Browser Harness Design"
   description: "How a browser harness, session supervisor, and local orchestrator manage four ChatGPT web agent sessions, with evidence gates and practical limits."

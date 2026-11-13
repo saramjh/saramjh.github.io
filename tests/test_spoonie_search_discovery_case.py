@@ -23,7 +23,7 @@ class SpoonieSearchDiscoveryCaseTest(unittest.TestCase):
                 f"alternate_lang: {other}",
                 f"alternate_url: /{BASE}-{other}/",
                 f"](/{BASE}-{other}/)",
-                f"image: /{slug}/spoonie-search-flow.svg",
+                f"image: /{slug}/spoonie-search-flow-og.png",
                 "published: true",
                 "https://github.com/saramjh/spoonie/pull/31",
                 "https://spoonie.kr/search",

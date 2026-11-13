@@ -8,9 +8,9 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /spoonie-editorial-curators-ko/
-image: /spoonie-editorial-curators-en/spoonie-curator-flow.svg
-image_width: 1280
-image_height: 600
+image: /spoonie-editorial-curators-en/spoonie-curator-flow-og.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "Building Spoonie's verified editorial profile directory"
