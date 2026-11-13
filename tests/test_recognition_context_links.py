@@ -129,7 +129,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertEqual(item["source"], "Nav-AI")
         self.assertEqual(item["url"], "https://nav-ai.net/ai/koreaves")
         self.assertNotIn("date", item)
-        self.assertIn("does not establish independent product testing", item["detail"])
+        self.assertIn("no independent testing or measured adoption", item["detail"])
         for lang in ("en", "ko"):
             self.assertEqual(item[f"case_{lang}"], f"/koreaves-external-resources-{lang}/")
             body = (ROOT / "_posts" / f"folio-koreaves-resources-{lang}" /

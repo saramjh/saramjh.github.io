@@ -48,7 +48,7 @@
   status: confirmed
   source: "Nav-AI"
   title: "KoreAves: An Evidence-First Atlas of South Korean Birds"
-  detail: "A public software-directory overview links to KoreAves and describes its bird evidence atlas based on homepage material. A listing does not establish independent product testing or measured adoption."
+  detail: "Directory entry based on KoreAves homepage text; no independent testing or measured adoption."
   case_ko: "/koreaves-external-resources-ko/"
   case_en: "/koreaves-external-resources-en/"
   url: "https://nav-ai.net/ai/koreaves"
