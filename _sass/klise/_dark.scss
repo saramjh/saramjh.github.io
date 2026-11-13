@@ -293,6 +293,18 @@ body[data-theme="dark"] {
       }
     }
 
+    .project-showcase-proof-link {
+      color: $dark-text-link-blue;
+
+      &:hover {
+        color: $dark-white;
+      }
+
+      &:focus-visible {
+        outline-color: $dark-text-link-blue;
+      }
+    }
+
     .project-showcase-description,
     .project-showcase-arrow {
       color: #aeb6bf;
