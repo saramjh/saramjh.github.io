@@ -2,6 +2,7 @@
 title: "Space Atlas 달 위상 활동지, Share My Lesson에 공개"
 description: "직접 만든 달 위상 시뮬레이터를 4~8학년 대상 예측·실험·설명 활동으로 구성해 Share My Lesson에 공개했다. 웹 학습 도구를 실제 수업 자료로 확장한 개발 과정을 정리한다."
 date: 2026-11-10
+modified: 2026-11-13
 tags: ["Space Atlas", "Share My Lesson", "달의 위상", "교육용 웹 개발", "STEM 교육"]
 permalink: /space-atlas-share-my-lesson-ko/
 layout: default
@@ -45,6 +46,8 @@ seo:
 ## 개발 실적으로서의 의미
 
 Share My Lesson에 학습 자료를 공개한 것은 브라우저의 과학 모델을 교사가 검토할 수 있는 수업 활동으로 확장했다는 기록이다. 해외 교사가 이미 이용하는 교육 자료 플랫폼에서도 이 활동을 발견할 수 있게 됐다.
+
+2026년 11월 13일 확인한 [Share My Lesson 활동지 페이지](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086)에는 **다운로드 7회**가 표시됐다.
 
 앞으로 과학 교사나 교육과정 설계자와 협업할 때 [공개된 활동지](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086)와 [실제 시뮬레이터](https://spaceatlasedu.org/moon/phases/)를 함께 제시할 수 있다. 학습자의 예측을 다루는 방식이나 모델의 설명을 무엇부터 개선해야 할지 구체적으로 논의할 근거가 된다. 실제 수업 채택과 학습 효과는 아직 측정된 성과로 제시할 수 없다.
 

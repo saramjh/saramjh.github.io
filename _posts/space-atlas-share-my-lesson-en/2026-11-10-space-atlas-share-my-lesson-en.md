@@ -2,6 +2,7 @@
 title: "From Space Atlas simulator to a classroom worksheet on Share My Lesson"
 description: "My Moon Phases predict-test-explain activity was published on Share My Lesson. Here is how I connected an interactive astronomy model to a practical Grades 4–8 investigation."
 date: 2026-11-10
+modified: 2026-11-13
 tags: ["Space Atlas", "Share My Lesson", "STEM Education", "Moon Phases", "Education Software"]
 permalink: /space-atlas-share-my-lesson-en/
 layout: default
@@ -45,6 +46,8 @@ The change in my work was methodological. A simulator responds to input, but a l
 ## Why this publication matters
 
 The published Share My Lesson resource makes the project easier for educators to evaluate in a setting where they already look for teaching materials. It also demonstrates a broader software-development capability: taking domain knowledge, implementing it as interactive software and then preparing a usable activity around the experience.
+
+On November 13, 2026, [the Share My Lesson resource page](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086) displayed **7 downloads**.
 
 For a future collaboration with a science teacher or curriculum designer, the [published lesson](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086) and the [live simulation](https://spaceatlasedu.org/moon/phases/) are specific work samples. A potential collaborator can examine both and identify where the model or instructions need refinement. Publication alone does not establish that a class used the material or that learning outcomes improved.
 
