@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import hashlib
 import re
 import sys
 import subprocess
@@ -340,6 +341,48 @@ def _archive_filter_visual_css_only(before, after):
     return True
 
 
+def _is_exact_unlinked_firstparty_social_jpeg(path, revision):
+    """Only this source-owned standalone JPG is not a changed webpage.
+
+    The image is for an independently authorized social-media preflight URL.
+    It is not referenced from public page source. Any source change, new
+    reference, hash mismatch or other asset keeps the existing fail-closed
+    broader IndexNow path. This is not a provider posting permission.
+    """
+    if path != (
+        "assets/img/dev-social-media-20261113/"
+        "portfolio-filter-contrast-c561.jpg"
+    ):
+        return False
+    expected_sha = "e4c5b74f6be888fd582b8d0c924c778e812067d8473e161fdbd8234642556712"
+    try:
+        raw = subprocess.check_output(
+            ["git", "show", f"{revision}:{path}"], stderr=subprocess.PIPE,
+        )
+    except subprocess.CalledProcessError:
+        return False
+    if hashlib.sha256(raw).hexdigest() != expected_sha:
+        return False
+
+    # Test both the full path and the filename, including dynamically
+    # assembled page templates that might use only the stem/folder.
+    folder, name = path.rsplit("/", 1)
+    proc = subprocess.run(
+        ["git", "grep", "-I", "-l", "-F",
+         "-e", "/" + path, "-e", name, "-e", folder, revision, "--"],
+        text=True, capture_output=True,
+    )
+    if proc.returncode not in (0, 1):
+        return False
+    for row in proc.stdout.splitlines():
+        prefix, sep, source = row.partition(":")
+        if not sep or prefix != revision or not source:
+            return False
+        if not _skip_only_source(source):
+            return False
+    return True
+
+
 def changed_urls(before, after):
     """Return affected URLs, or None for a broad site change.
 
@@ -367,6 +410,11 @@ def changed_urls(before, after):
         # permalink, canonical or search content; avoid broad IndexNow replay.
         if (file_path == "assets/css/portfolio.css" and status == "M"
                 and _archive_filter_visual_css_only(before, after)):
+            continue
+        # The one exact standalone Dev-owned HTTPS-hosting JPEG has no
+        # webpage consumer, so submitting all site URLs would be a false replay.
+        if (status == "A" and
+                _is_exact_unlinked_firstparty_social_jpeg(file_path, after)):
             continue
         # For referenced images only, resolve every affected source page.
         # A shared/unknown reference still conservatively uses the sitemap.

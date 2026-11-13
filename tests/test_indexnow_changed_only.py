@@ -49,6 +49,43 @@ class ChangeScopeTest(unittest.TestCase):
         self.git("commit", "-qm", message)
         return self.sha()
 
+    def test_exact_unlinked_firstparty_social_jpeg_no_page_resubmission(self):
+        image_path = ("assets/img/dev-social-media-20261113/"
+                      "portfolio-filter-contrast-c561.jpg")
+        original = Path(sender.__file__).resolve().parents[1] / image_path
+        raw = original.read_bytes()
+        dest = self.root / image_path
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(raw)
+        after = self.commit("original Dev JPG public hosting only")
+        self.assertTrue(sender._is_exact_unlinked_firstparty_social_jpeg(
+            image_path, after))
+        self.assertEqual(sender.changed_urls(self.base, after), [])
+        with patch.dict(os.environ, {"INDEXNOW_BEFORE_SHA": self.base,
+                                     "INDEXNOW_AFTER_SHA": after}):
+            with patch.object(sender, "get_urls",
+                              side_effect=AssertionError("unexpected full sitemap")):
+                self.assertEqual(sender.get_deploy_urls(), [])
+
+        # A referenced image affects the changed page. No source-only skip.
+        self.write("portfolio/index.html",
+                   "---\npermalink: /portfolio/\n---\n"
+                   '<img src="/' + image_path + '" alt="actual filter">\n')
+        referenced = self.commit("public portfolio page now uses JPG")
+        self.assertFalse(sender._is_exact_unlinked_firstparty_social_jpeg(
+            image_path, referenced))
+        self.assertEqual(sender.changed_urls(after, referenced),
+                         ["https://saramjh.github.io/portfolio/"])
+
+        # Any different media, even under the same folder, fails conservatively.
+        other_path = "assets/img/dev-social-media-20261113/other.jpg"
+        other = self.root / other_path
+        other.write_bytes(raw)
+        other_commit = self.commit("different standalone media")
+        self.assertFalse(sender._is_exact_unlinked_firstparty_social_jpeg(
+            other_path, other_commit))
+        self.assertIsNone(sender.changed_urls(referenced, other_commit))
+
     def test_source_only_release_skips_all_notifications(self):
         self.write("scripts/example.py", "print('infra changed')\n")
         self.write(".github/workflows/pages.yml", "name: updated workflow\n")
