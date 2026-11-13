@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="780" viewBox="0 0 390 780" role="img" aria-labelledby="title desc">
+<title id="title">독립 시행에서 과거의 실패와 다음 추첨</title>
+<desc id="desc">모바일 세로 화면의 윗부분에는 이미 끝난 다섯 번의 실패를, 아랫부분에는 이전 결과와 상관없이 같은 확률표를 다시 사용하는 다음 독립 추첨을 표현한다.</desc>
+<rect width="390" height="780" fill="#f4f8fb"/>
+<g font-family="system-ui,Apple SD Gothic Neo,Noto Sans KR,sans-serif">
+<text x="20" y="49" font-size="25" font-weight="700" fill="#153047">다섯 번 실패해도</text>
+<text x="20" y="86" font-size="25" font-weight="700" fill="#153047">다음 확률은 그대로입니다</text>
+<text x="20" y="120" font-size="15" fill="#486174">각 추첨이 독립적이라는 가정 아래</text>
+<rect x="18" y="144" width="354" height="205" rx="14" fill="#fff" stroke="#bed0df" stroke-width="2"/>
+<text x="39" y="181" font-size="22" font-weight="650" fill="#153047">이미 끝난 5번의 시도</text>
+<g text-anchor="middle" font-size="24" fill="#9b3039" font-weight="700">
+<circle cx="63" cy="240" r="26" fill="#fff0f0" stroke="#d79da3" stroke-width="2"/><text x="63" y="249">×</text>
+<circle cx="129" cy="240" r="26" fill="#fff0f0" stroke="#d79da3" stroke-width="2"/><text x="129" y="249">×</text>
+<circle cx="195" cy="240" r="26" fill="#fff0f0" stroke="#d79da3" stroke-width="2"/><text x="195" y="249">×</text>
+<circle cx="261" cy="240" r="26" fill="#fff0f0" stroke="#d79da3" stroke-width="2"/><text x="261" y="249">×</text>
+<circle cx="327" cy="240" r="26" fill="#fff0f0" stroke="#d79da3" stroke-width="2"/><text x="327" y="249">×</text>
+</g>
+<text x="39" y="317" font-size="16" fill="#4e6574">이 결과는 이미 확정됐습니다</text>
+<path d="M195 362 L195 420 M183 409 L195 423 L207 409" fill="none" stroke="#3d657d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="18" y="439" width="354" height="202" rx="14" fill="#eaf5f1" stroke="#68a99b" stroke-width="2"/>
+<text x="39" y="478" font-size="22" font-weight="650" fill="#123f36">다음 1번의 독립 추첨</text>
+<circle cx="80" cy="554" r="33" fill="#fff" stroke="#368c7b" stroke-width="3"/>
+<text x="80" y="563" font-size="27" text-anchor="middle" font-weight="700" fill="#1c6558">?</text>
+<text x="130" y="543" font-size="21" font-weight="650" fill="#153e35">같은 확률표로</text>
+<text x="130" y="575" font-size="21" font-weight="650" fill="#153e35">다시 추첨합니다</text>
+<text x="39" y="618" font-size="15" fill="#3d625a">이전 실패를 보정하지 않음</text>
+<path d="M18 671 L372 671" stroke="#c9d5df" stroke-width="2"/>
+<text x="20" y="701" font-size="16" fill="#2e485a">교육용 독립 시행 모델</text>
+<text x="20" y="728" font-size="16" fill="#2e485a">실제 매장에 남은 티켓 확률을</text>
+<text x="20" y="751" font-size="16" fill="#2e485a">예측하는 자료가 아닙니다</text>
+</g>
+</svg>
