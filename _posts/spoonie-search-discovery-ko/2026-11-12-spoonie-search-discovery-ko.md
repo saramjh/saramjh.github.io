@@ -21,6 +21,8 @@ seo:
 
 **Spoonie의 레시피 검색을 각 유형별로 다음 페이지까지 탐색할 수 있도록 고쳤다.** [PR #31](https://github.com/saramjh/spoonie/pull/31)은 2026년 11월 12일(한국 시간) 병합됐으며, [운영 검색 화면](https://spoonie.kr/search)에서 배포된 검색용 JavaScript가 새 페이지 조회 인자와 ‘더 보기’ 버튼을 제공하는 것을 확인했다.
 
+<p class="article-live-demo"><a class="article-live-demo-link" href="https://spoonie.kr/search">스푸니에서 레시피 검색 직접 해보기</a><span class="article-live-demo-note">레시피와 레시피드 결과를 나누어 찾아볼 수 있습니다.</span></p>
+
 ## 이전 검색이 놓치던 결과
 
 기존 검색 함수는 한 검색어에 대해 최대 20개 항목을 받아 레시피와 레시피드로 나눠 보여줬다. 결과가 그보다 많아도 다음 묶음을 요청할 방법이 없었다. 게다가 같은 제목의 요리는 다른 작성자가 각자의 방법으로 만들 수 있다. 검색에서 제목만 보고 하나로 합치면 별개의 레시피를 찾기 어렵다.

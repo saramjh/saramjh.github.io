@@ -21,6 +21,8 @@ seo:
 
 **스푸니에 공식 큐레이터 프로필을 찾아볼 수 있는 페이지를 만들었다.** [공개 디렉터리](https://spoonie.kr/curators)는 2026년 11월 11일 확인 당시 요리 10개, 디저트 4개, 음료 4개, 모두 18개의 프로필로 연결됐다. 여기서 큐레이터는 **Spoonie가 직접 운영하는 레시피 소개 계정**이다. 실제 요리 전문가 18명이 참여했다거나, 18명의 이용자가 콘텐츠를 발행했다는 뜻은 아니다.
 
+<p class="article-live-demo"><a class="article-live-demo-link" href="https://spoonie.kr/curators">스푸니의 공개 큐레이터 목록 직접 보기</a><span class="article-live-demo-note">요리·디저트·음료별 운영 프로필을 직접 살펴볼 수 있습니다.</span></p>
+
 ## 계정 목록보다 중요한 것은 누구의 계정인지 확인하는 일
 
 프로필 이름을 검색해서 비슷한 계정을 모두 큐레이터로 표시하면, 일반 회원 계정까지 공식 계정처럼 보이게 할 수 있다. 그래서 [구현 PR #16](https://github.com/saramjh/spoonie/pull/16)에서는 사전에 검증한 공개 식별자를 기준으로 조회하도록 만들었다.

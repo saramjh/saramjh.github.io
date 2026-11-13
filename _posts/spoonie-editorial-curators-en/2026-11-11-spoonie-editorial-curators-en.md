@@ -21,6 +21,8 @@ seo:
 
 **I built and shipped a public directory for Spoonie's editorial profiles.** On November 11, 2026, the [live page](https://spoonie.kr/curators) displayed links to 18 profiles: ten for cooking, four for desserts and four for drinks. These are **Spoonie-operated editorial identities** for introducing recipes. They are not evidence that 18 independent chefs signed up, or that 18 contributors are already publishing.
 
+<p class="article-live-demo"><a class="article-live-demo-link" href="https://spoonie.kr/curators">Open Spoonie's public curator directory</a><span class="article-live-demo-note">Browse Spoonie-operated profiles grouped by cooking, desserts and drinks.</span></p>
+
 ## Make official identity something the code checks
 
 A directory can be assembled by searching for matching names. I did not want an ordinary member with a similar profile name to appear as an official Spoonie editor.
