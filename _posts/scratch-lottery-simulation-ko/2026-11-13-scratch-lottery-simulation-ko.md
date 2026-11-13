@@ -8,7 +8,7 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /scratch-lottery-simulation/
-image: /scratch-lottery-simulation-ko/independent-draws.svg
+image: /scratch-lottery-simulation-ko/independent-draws-og.png
 image_width: 1200
 image_height: 630
 published: true

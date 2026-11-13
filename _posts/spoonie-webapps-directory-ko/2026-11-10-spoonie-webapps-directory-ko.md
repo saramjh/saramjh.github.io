@@ -8,9 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-webapps-directory-en/
-image: /spoonie-social-cooking-early-users/recipe-record-flow.svg
+image: /spoonie-social-cooking-early-users/recipe-record-flow-og.png
 image_width: 1200
-image_height: 400
+image_height: 630
 published: true
 seo:
   title: "Spoonie의 Web Apps Directory 음식·요리 분야 등재"
