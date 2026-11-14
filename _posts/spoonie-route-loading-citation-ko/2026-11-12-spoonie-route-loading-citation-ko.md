@@ -10,6 +10,7 @@ alternate_lang: en
 alternate_url: /spoonie-route-loading-citation-en/
 published: true
 modified: 2026-11-14
+last_modified_at: 2026-11-14
 seo:
   title: "Spoonie 화면 전환 로딩·레시피 인용 검색 개선"
   description: "Spoonie 목적지 스켈레톤·숨겨진 입력창 제어·취소된 링크와 지연된 화면 이동 복구의 구현 및 배포 검증."

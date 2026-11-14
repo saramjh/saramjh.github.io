@@ -3,6 +3,7 @@ title: "From Space Atlas simulator to a classroom worksheet on Share My Lesson"
 description: "My Moon Phases predict-test-explain activity was published on Share My Lesson. Here is how I connected an interactive astronomy model to a practical Grades 4–8 investigation."
 date: 2026-11-10
 modified: 2026-11-13
+last_modified_at: 2026-11-13
 tags: ["Space Atlas", "Share My Lesson", "STEM Education", "Moon Phases", "Education Software"]
 permalink: /space-atlas-share-my-lesson-en/
 layout: default

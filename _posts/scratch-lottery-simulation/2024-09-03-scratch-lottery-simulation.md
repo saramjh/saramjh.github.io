@@ -3,6 +3,7 @@ title: "Scratch Lottery Simulation"
 description: A free scratch-off simulation with officially published ticket distributions where available, expected-value lessons, budget experiments and a sourced claims tracker. No real-money play.
 date: 2024-09-03
 modified: 2026-11-14
+last_modified_at: 2026-11-14
 tags: ["Lottery", "Scratch Lottery", "Lottery simulation", "Powerball", "Speetto", "RTP", "Lottery tax calculator"]
 permalink: /scratch-lottery-simulation/
 layout: default

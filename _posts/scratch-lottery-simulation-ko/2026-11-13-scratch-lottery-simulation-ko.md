@@ -3,6 +3,7 @@ title: "스크래치 복권 시뮬레이터로 연속 실패와 확률을 직접
 description: "현금 결제 없는 스크래치 시뮬레이터의 확률 계산과 독립 시행을 설명하고, 2026년 10월 15일~11월 12일 GA4에서 관찰된 실제 조작 이벤트의 범위를 정리합니다."
 date: 2026-11-13
 modified: 2026-11-14
+last_modified_at: 2026-11-14
 tags: ["확률", "독립 시행", "스크래치 복권", "시뮬레이션", "웹 개발", "개발 기록", "Google Analytics"]
 permalink: /scratch-lottery-simulation-ko/
 layout: default

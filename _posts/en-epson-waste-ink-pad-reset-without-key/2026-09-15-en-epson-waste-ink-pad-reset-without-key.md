@@ -2,6 +2,7 @@
 title: "Epson Waste Ink Counter Reset Without a Key: L3106 Case and Model Checks"
 date: 2026-09-15
 modified: 2026-11-14
+last_modified_at: 2026-11-14
 tags: ["Epson", "L3100", "L3106", "L3110", "L3150", "L3160", "L1110", "L5190", "Waste Ink Pad Reset", "WIC Reset Alternative", "reinkpy", "Mac Epson Reset", "DIY Printer Repair"]
 permalink: /en-epson-waste-ink-pad-reset-without-key/
 layout: default

@@ -2,6 +2,7 @@
 title: "엡손 잉크패드 리셋키 없이 초기화하기: L3106 작업 사례와 모델별 주의"
 date: 2026-09-15
 modified: 2026-11-14
+last_modified_at: 2026-11-14
 tags: ["엡손프린터", "엡손잉크패드리셋", "폐잉크패드교체", "엡손리셋키없이", "맥북엡손리셋", "L3100", "L3106", "L3150", "L3160", "L1110", "L5190", "프린터자가수리", "reinkpy"]
 permalink: /epson-waste-ink-pad-reset-without-key/
 layout: default
