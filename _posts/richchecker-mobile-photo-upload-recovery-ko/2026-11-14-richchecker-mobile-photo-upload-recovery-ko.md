@@ -79,4 +79,12 @@ Android 화면 크기와 사용자 에이전트를 모의한 **데스크톱 Chro
 
 원본 변경에는 **브라우저 테스트 24개와 계약 검사 5개 통과**가 기록돼 있고, [GitHub Actions 배포](https://github.com/saramjh/richChecker/actions/runs/43578267276)도 성공했다. 운영 JavaScript가 현재 원본 저장소 `main`과 바이트 단위로 일치하는 것까지 확인했다. 하지만 **실제 안드로이드 기기에서 해결됐다는 증거는 아직 없습니다.** 안내의 정확성을 높인 변경이지, 사용자의 업로드 성공이나 분석 완료가 늘었다는 결과는 아니다.
 
+## 2026-11-15: 배포 후 실제 분석 완료 신호
+
+11월 14일 17:58(KST) [이미지 디코딩 안내 개선 코드](https://github.com/saramjh/richChecker/commit/eede7730408b6aa2ec6afc9b2e4e5d6ab1531609)가 운영에 배포됐다. 다음 날 Richchecker KR **제품 전용** GA4 속성을 다시 조회했다. 운영 코드의 측정 ID와 제품 스트림이 일치하는 것을 먼저 확인했으며, 속성의 시간대는 서울이다.
+
+배포 이후 11월 14일 **19시 3건**, **20시 1건**의 `analysis_complete` 이벤트가 GA4에서 Android Chrome 모바일로 분류됐다. 같은 날 20시에는 Windows Chrome 1건도 기록됐다. 이 날짜의 해당 이벤트 유입 출처는 `google / organic`이었다. 비교를 위해 배포 이전 14시에도 Android Chrome 완료 이벤트 1건이 있었다는 사실을 남긴다.
+
+원본 분석 코드에서는 `renderResults` 호출 뒤에 `analysis_complete`를 전송한다. 따라서 적어도 결과 생성 단계까지 진행됐다는 **제품 계측 신호**가 확인됐다. 다만 **완료 이벤트 4건은 사용자 4명을 뜻하지 않습니다.** GA4의 운영체제 분류만으로 실제 물리 기기를 확인할 수 없고, 동일 사용자 반복 실행이나 자체 테스트 여부도 구별할 수 없다. **기존 오류가 해결됐다는 증거는 아닙니다.** 특히 문제를 일으켰던 사진 제공자·파일 형식과 새 완료 이벤트를 연결할 데이터가 없어 수정 전후 성공률이나 인과관계를 계산하지 않는다.
+
 원본: [Richchecker KR 소스와 테스트](https://github.com/saramjh/richChecker) · [같은 호스트의 서비스별 분석 범위 구분](/gh-pages-analytics-notes-5-followup-kr/)
