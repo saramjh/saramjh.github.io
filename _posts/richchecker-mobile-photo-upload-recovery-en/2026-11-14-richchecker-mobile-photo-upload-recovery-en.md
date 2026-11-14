@@ -66,4 +66,12 @@ These are different calendar-day event aggregates, not matched upload attempts o
 
 **I cannot say the issue is fixed on affected Android phones.** The shipped change improves the file-loading path and exposes a more specific failure stage. An authorized source of file-format evidence and reproduction on a real device are still needed to narrow down the remaining error.
 
+## November 14 follow-up: a format-specific failure hint
+
+Decoding errors remained after the first release. In the [November 14 code change](https://github.com/saramjh/richChecker/commit/eede7730408b6aa2ec6afc9b2e4e5d6ab1531609), I added a more specific recovery hint. An Android photo provider can label a file as JPEG even when its bytes are HEIC or TIFF. That is a **possible explanation**, not a confirmed root cause for the errors previously observed.
+
+The success path is unchanged. Only after an `image_decode` failure, the browser reads the first **16 bytes** locally using `File.slice(0, 16).arrayBuffer()`. If the header identifies HEIC or TIFF, the page suggests saving a JPG or PNG copy before trying again. If the header cannot be read or the read takes more than **250ms**, the ordinary guidance remains. It does not make a second full-size photo copy, upload image bytes to a server, or add identifiable information to analytics.
+
+The source commit records **24 local browser tests and five contract checks passed**, and the [GitHub Actions deployment](https://github.com/saramjh/richChecker/actions/runs/43578267276) succeeded. I also verified that the live JavaScript bytes match the original repository's current `main` source. This **does not establish a fix on affected Android devices**. It improves failure guidance, but there is no verified increase in successful uploads or completed analyses.
+
 Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/)
