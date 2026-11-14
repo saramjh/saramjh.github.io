@@ -12,6 +12,7 @@ CSS = ROOT / "assets" / "css" / "portfolio.css"
 EXPECTED = {
     "worldlytribe-space-atlas-worldschooling": "space-atlas-worldschooling-guide",
     "nav-ai-koreaves-directory": "koreaves-external-resources",
+    "greenus-koreaves-community-tool": "koreaves-external-resources",
     "birdalbum-koreaves-further-reading": "koreaves-external-resources",
     "kantorilode-koreaves-legacy-links": "koreaves-external-resources",
     "kartoza-awesome-geodata-koreaves": "koreaves-external-resources",
@@ -65,8 +66,8 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertIn("Jihun Oh", greenus["detail"])
         self.assertIn("does not establish editorial endorsement", greenus["detail"])
         self.assertNotIn("date", greenus)
-        self.assertNotIn("case_ko", greenus)
-        self.assertNotIn("case_en", greenus)
+        self.assertEqual(greenus["case_ko"], "/koreaves-external-resources-ko/")
+        self.assertEqual(greenus["case_en"], "/koreaves-external-resources-en/")
         self.assertEqual(
             records["eusci-space-atlas-diagrams"]["url"],
             "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/",
@@ -197,7 +198,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn(url, post)
                 self.assertNotIn("\ufffd", post)
                 self.assertNotIn("????", post)
-                self.assertIn("modified: 2026-11-13", post)
+                self.assertIn("modified: 2026-11-15", post)
         self.assertIn("legacy", records["kantorilode-koreaves-legacy-links"]["detail"].lower())
         en = (ROOT / "_posts/folio-koreaves-resources-en" /
               "2026-11-02-folio-koreaves-resources-en.md").read_text("utf8")
@@ -277,7 +278,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                        / f"2026-11-02-folio-koreaves-resources-{lang}.md").read_text(encoding="utf8")
             self.assertIn("kartoza-awesome-geodata-koreaves", article)
             self.assertIn(entry["url"], article)
-            self.assertIn("modified: 2026-11-13", article)
+            self.assertIn("modified: 2026-11-15", article)
             self.assertNotIn("\ufffd", article)
             self.assertNotIn("????", article)
             self.assertIn("koreaves.com", article)

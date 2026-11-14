@@ -96,6 +96,8 @@
   title: "KoreAves — Explore bird occurrence evidence across South Korea"
   detail: "Community-submitted mapping tool publicly listed with Jihun Oh as its independent creator. Listing does not establish editorial endorsement, partnership, or classroom adoption."
   url: "https://greenus.upb.ro/share.php?t=t_35802c3c02e2be7201"
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
 - id: gbif-literature
   project: koreaves
   type: dataset_record
