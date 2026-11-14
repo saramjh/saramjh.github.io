@@ -47,4 +47,10 @@ A separate bug remained: the global click listener treated some canceled links a
 
 If a destination is still pending after 10 seconds, the loading UI now explains the delay and offers **Keep previous screen** or **Try again**, rather than silently dismissing progress. Query-only updates retain their existing behavior. PR #44 reports 407 passing Vitest cases, six media safety checks and an isolated Chromium run covering canceled links, history, keyboard focus, retry and cancellation. The [November 14 production layout bundle](https://spoonie.kr/_next/static/chunks/app/layout-ef63d2df452ac6a9.js) includes the recovery text and navigation feedback; that verifies deployed code, not measured reductions in user frustration or abandonment.
 
+### Regression check against a deployed PR preview
+
+A source-level test can pass without ever opening the page someone will use. [PR #45](https://github.com/saramjh/spoonie/pull/45) adds a GitHub Actions check for navigation-related changes. It waits for Netlify's successful preview status on the **same PR HEAD commit**, verifies the preview URL and then runs the existing Chromium navigation suite against that deployed build. The four Next.js route-loading components are also rendered in tests instead of merely searching their source files for expected names.
+
+This was exercised on the PR itself: [GitHub Actions run #43580339700](https://github.com/saramjh/spoonie/actions/runs/43580339700) verified commit `e4bc2ef` and reported passing browser checks for normal links, back/forward, canceled navigation, timeout recovery, retry and first-photo-tap feedback, with no uncaught page exceptions. The change adds protection for future matching PRs; it is not a speed benchmark or a measurement of visitor outcomes.
+
 [Review the merged change](https://github.com/saramjh/spoonie/pull/34) · [Visit Spoonie](https://spoonie.kr/)

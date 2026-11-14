@@ -47,4 +47,10 @@ Spoonie의 다른 화면 상태 문제는 [계정별 좋아요·저장 캐시 �
 
 목적지 응답이 10초 넘게 지연되면 진행 상태를 그냥 지우지 않고 **이전 화면 유지**와 **다시 시도**를 선택할 수 있게 했다. 쿼리만 바뀌는 이동은 기존 동작을 유지한다. PR #44에는 Vitest 407개·미디어 안전성 검사 6개 통과와 취소된 링크·뒤로 가기·키보드 포커스·재시도를 다룬 Chromium 테스트가 기록돼 있다. [11월 14일 운영 레이아웃 번들](https://spoonie.kr/_next/static/chunks/app/layout-ef63d2df452ac6a9.js)에서도 복구 문구와 화면 전환 구현을 확인했다. 이는 코드의 배포 근거이며 실제 이용자의 이탈 감소를 측정한 결과는 아니다.
 
+### 실제 배포 미리보기에서 회귀검사하기
+
+소스 파일에 특정 문자열이 있는지만 검사해서는 사용자가 보는 화면이 정상인지 알 수 없다. [PR #45](https://github.com/saramjh/spoonie/pull/45)에서는 화면 이동 관련 코드가 바뀐 PR마다 GitHub Actions가 **해당 PR의 정확한 커밋**에 대한 Netlify 배포 미리보기 성공을 확인한 뒤, 배포된 페이지를 Chromium으로 테스트하도록 했다. Next.js의 네 개 `loading.tsx` 컴포넌트도 파일 내용 검색 대신 실제 렌더링 결과로 검증한다.
+
+구현한 PR에서도 검사가 실행됐다. [GitHub Actions 실행 #43580339700](https://github.com/saramjh/spoonie/actions/runs/43580339700)은 `e4bc2ef` 커밋의 미리보기를 확인하고 일반 링크 이동, 뒤로 가기, 취소된 링크, 지연 상태 취소·재시도, 사진 첫 터치 표시를 검사해 통과했다. 브라우저 JavaScript 예외도 없었다. 이는 앞으로 같은 유형의 변경에서 회귀를 발견하기 위한 장치이며, 실제 방문자 속도나 이탈률을 측정한 결과는 아니다.
+
 [원본 변경 사항](https://github.com/saramjh/spoonie/pull/34) · [Spoonie](https://spoonie.kr/)
