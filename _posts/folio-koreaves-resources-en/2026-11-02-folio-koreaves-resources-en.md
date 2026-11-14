@@ -4,6 +4,7 @@ portfolio_ui: true
 published: true
 date: 2026-11-02
 modified: 2026-11-13
+last_modified_at: 2026-11-13
 lang: en
 alternate_lang: ko
 alternate_url: /koreaves-external-resources-ko/

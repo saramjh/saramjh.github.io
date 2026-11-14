@@ -10,6 +10,7 @@ alternate_lang: ko
 alternate_url: /spoonie-route-loading-citation-ko/
 published: true
 modified: 2026-11-14
+last_modified_at: 2026-11-14
 seo:
   title: "Spoonie route loading and recipe citation search"
   description: "Spoonie destination skeletons, safe input handling, canceled links and 10-second navigation recovery, with source and deployment evidence."

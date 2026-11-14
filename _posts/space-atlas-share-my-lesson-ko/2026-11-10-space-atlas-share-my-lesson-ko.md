@@ -3,6 +3,7 @@ title: "Space Atlas 달 위상 활동지, Share My Lesson에 공개"
 description: "직접 만든 달 위상 시뮬레이터를 4~8학년 대상 예측·실험·설명 활동으로 구성해 Share My Lesson에 공개했다. 웹 학습 도구를 실제 수업 자료로 확장한 개발 과정을 정리한다."
 date: 2026-11-10
 modified: 2026-11-13
+last_modified_at: 2026-11-13
 tags: ["Space Atlas", "Share My Lesson", "달의 위상", "교육용 웹 개발", "STEM 교육"]
 permalink: /space-atlas-share-my-lesson-ko/
 layout: default
