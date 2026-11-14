@@ -138,6 +138,15 @@
   case_en: "/space-atlas-eusci-diagrams-en/"
   url: "https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/"
 
+- id: the-home-ed-daily-space-atlas-printable
+  project: space-atlas
+  type: listing
+  status: confirmed
+  source: "The Home Ed Daily"
+  title: "Space Atlas: Test a No-Tilt Earth"
+  detail: "A UK home-education science directory lists the free, two-page adult-led Earth-seasons investigation for ages 10–14 and links directly to the original worksheet. Independent directory inclusion, not measured family use, classroom adoption, or learning outcomes."
+  url: "https://www.thehomeeddaily.co.uk/resources/science"
+
 - id: awesome-homeschooling-space-atlas
   project: space-atlas
   type: listing

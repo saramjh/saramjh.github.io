@@ -49,7 +49,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 26)
+        self.assertEqual(len(records), 27)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -87,6 +87,22 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertTrue(
             all(("case_ko" in r) == ("case_en" in r) for r in records.values())
         )
+
+    def test_the_home_ed_daily_science_directory_is_live_external_listing(self):
+        records = parse_records()
+        item = records["the-home-ed-daily-space-atlas-printable"]
+        self.assertEqual(item["project"], "space-atlas")
+        self.assertEqual(item["type"], "listing")
+        self.assertEqual(item["status"], "confirmed")
+        self.assertEqual(item["source"], "The Home Ed Daily")
+        self.assertEqual(item["url"], "https://www.thehomeeddaily.co.uk/resources/science")
+        self.assertIn("links directly to the original worksheet", item["detail"])
+        self.assertIn("ages 10–14", item["detail"])
+        self.assertIn("not measured family use", item["detail"])
+        self.assertNotIn("date", item)
+        self.assertNotIn("case_ko", item)
+        self.assertNotIn("case_en", item)
+        self.assertEqual(sum(r["url"] == item["url"] for r in records.values()), 1)
 
     def test_six_source_merged_community_space_atlas_listings(self):
         records = parse_records()
@@ -347,7 +363,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 26)
+        self.assertEqual(len(records), 27)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -382,7 +398,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 26)
+        self.assertEqual(len(records), 27)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -404,14 +420,14 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 26)
+        self.assertEqual(len(records), 27)
 
     def test_homepage_shows_published_work_before_full_evidence_archive(self):
         records = parse_records()
         published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
         self.assertEqual(len(published), 7)
-        self.assertEqual(len(records), 26)
-        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 18)
+        self.assertEqual(len(records), 27)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 19)
         self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
         homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
