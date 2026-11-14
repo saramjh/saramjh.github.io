@@ -1,19 +1,26 @@
 ---
 title: "부자 관상 테스트: AI로 나와 닮은 부자 찾기"
 date: 2026-09-12
-modified: 2026-09-30
-last_modified_at: 2026-09-30
+modified: 2026-11-14
+last_modified_at: 2026-11-14
 permalink: /rich-face-test/
 layout: default
 lang: ko
+alternate_lang: en
+alternate_url: /rich-face-test-en/
 tags: ["인공지능", "관상 테스트", "부자 관상", "얼굴 분석", "richChecker"]
 description: "포브스 2026 한국 부자 47인과 6가지 얼굴 비율을 비교해 가장 가까운 Top 3와 두드러진 특징을 확인하는 무료 부자 관상 테스트를 소개합니다."
 image: /rich-face-test/rich-face-test-preview.png
 image_width: 472
 image_height: 900
+seo:
+  title: "부자 관상 테스트 | 브라우저 얼굴 비율 비교와 사진 오류 안내"
+  description: "한국 부자 47인 표본과 6개 얼굴 비율을 비교하는 무료 테스트. Android 사진이 열리지 않을 때의 파일 형식별 안내와 구현 근거."
 ---
 
 # 부자 관상 테스트: AI로 나와 닮은 부자 찾기
+
+English: [Richchecker KR face matching and photo recovery](/rich-face-test-en/)
 
 [무료로 부자 관상 테스트 시작하기](https://saramjh.github.io/richChecker/)
 
@@ -55,6 +62,14 @@ image_height: 900
 얼굴 매칭용 사진은 서버에 업로드하지 않고 사용자의 브라우저에서 처리합니다. 별도 회원가입이나 얼굴 사진 저장 기능은 없습니다.
 
 사이트 이용 통계와 광고 게재를 위해 Google Analytics와 Google AdSense가 사용될 수 있으므로 일반적인 접속 정보와 광고 관련 쿠키는 Google 서비스 정책의 영향을 받을 수 있습니다. 얼굴 사진 자체를 매칭 목적으로 Google Analytics나 AdSense에 보내지는 않습니다.
+
+## 사진이 열리지 않을 때: 11월 14일 후속 개선
+
+Android 파일 제공자가 사진 이름이나 형식을 JPEG로 알려줘도 실제 파일이 HEIC 또는 TIFF일 수 있다. 브라우저가 해당 사진을 열지 못하면 단순히 다시 업로드하라고 안내하는 것보다 **JPG 또는 PNG로 저장한 뒤 재시도**하도록 알려주는 편이 정확하다.
+
+[Richchecker PR #3](https://github.com/saramjh/richChecker/pull/3)에서는 사진 디코딩이 실패했을 때만 파일 앞의 16바이트를 브라우저 안에서 읽어 형식 서명을 확인하도록 했다. 헤더를 읽지 못하거나 응답이 늦으면 250ms 후 기존 일반 안내로 넘어간다. 사진 전체를 다시 복사하거나 서버로 보내지는 않는다. 기존 Blob URL 사진 처리 경로와 개인정보 관련 이벤트 필드도 유지했다.
+
+[공개 서비스의 JavaScript](https://saramjh.github.io/richChecker/js/script.js)에서 수정 코드를 확인했고, PR에는 브라우저 형식·파일 제공자·정리 동작을 포함한 24개 시나리오 통과가 기록돼 있다. 다만 과거 관측된 Android의 `file_read` 실패 원인은 아직 확정되지 않았으며, 이번 변경은 별도 `image_decode` 오류에 대한 **복구 안내 개선**이다. 실제 Android 실기기의 업로드 성공률 변화는 아직 측정되지 않았다.
 
 ## 사용 기술
 
