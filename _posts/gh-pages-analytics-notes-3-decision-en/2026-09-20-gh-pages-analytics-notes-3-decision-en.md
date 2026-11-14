@@ -24,7 +24,15 @@ In mid-September 2026, I merged the GA4 properties that had been split one-per-t
 
 - I retired the separate GA4 properties each tool had been using and consolidated everything into the property the blog was already using (measurement ID `G-4DYFKSNFBG`).
 - Each tool was re-registered as its own web data stream under that one property — richChecker, scratchLottery, SquircleSimulator, pomodorotimerKR/EN, resizeIMG, space_atlas_student, and the rest listed in [Part 1](/gh-pages-analytics-notes-1-problem-en/).
-- When I need per-tool traffic in reports, I filter by `hostName`. While preparing this series I actually queried GA4's Data API by the `hostName` dimension and confirmed `saramjh.github.io` (the blog and most project pages) is cleanly separated from local test traffic (`localhost`, `127.0.0.1`).
+- The `hostName` query distinguished `saramjh.github.io` from local testing (`localhost`, `127.0.0.1`). But **hostName alone cannot separate tools sharing that hostname**. To report on one tool, I also need its `pagePath` and the actual `streamId` or `streamName` recorded with each event.
+
+### Data check on 2026-11-15
+
+I queried my original GA4 property for November 1–15, grouped by `date`, `pagePath`, `streamName` and `eventName`. On November 5, `/richChecker/` recorded one `app_entry` and one `core_warmup_complete` event. Both had the referrer `m.search.naver.com / referral` and were attributed to **`streamName=blog`**. That records an app entry and an initial warmup, not a verified photo upload or completed analysis.
+
+The query returned no rows for the `/scratchLottery/` path or streams whose names contain `scratch` in that period. Missing event rows **does not establish zero actual use**. I cannot infer from these reports alone whether collection, consent, browser blocking, routing or processing accounts for the gap.
+
+My September stream-registration work is still part of the project's history. It does not establish that each tool's events currently reach the intended stream. To measure tool usage properly, I now check `pagePath`, `streamId` and `eventName` together. The definitions are in the [Google Analytics Data API dimensions reference](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema).
 
 Search Console, which had been managed per-project sitemap, is now unified under a single domain property (verifying all of `saramjh.github.io`). Sitemaps themselves are still submitted per tool, each with its own path.
 

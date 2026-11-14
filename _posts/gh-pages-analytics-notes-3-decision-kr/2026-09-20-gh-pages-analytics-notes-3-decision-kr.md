@@ -24,7 +24,15 @@ alternate_url: /gh-pages-analytics-notes-3-decision-en/
 
 - 기존에 도구마다 따로 있던 GA4 속성들을 정리하고, 블로그가 쓰던 속성(측정 ID `G-4DYFKSNFBG`) 하나로 통합했습니다.
 - 각 도구는 이 하나의 속성 아래 별도의 웹 데이터 스트림으로 등록했습니다. [1편](/gh-pages-analytics-notes-1-problem-kr/)에서 나열한 richChecker, scratchLottery, SquircleSimulator, pomodorotimerKR/EN, resizeIMG, space_atlas_student 등이 여기 해당합니다.
-- 리포트에서 도구별 트래픽만 보고 싶을 때는 `hostName`(호스트 이름) 기준으로 필터링합니다. 실제로 이 시리즈를 준비하면서 GA4 Data API로 `hostName` 차원을 기준 삼아 세션을 조회해봤는데, `saramjh.github.io`(블로그 및 프로젝트 페이지 대부분)와 로컬 테스트 트래픽(`localhost`, `127.0.0.1`)이 명확히 구분되어 나오는 걸 확인했습니다.
+- 당시 `hostName`(호스트 이름) 조회로 `saramjh.github.io`와 로컬 테스트(`localhost`, `127.0.0.1`)는 구분했습니다. 하지만 **hostName만으로는 같은 호스트의 도구들을 분리할 수 없습니다.** 도구별 보고서에는 `pagePath`와 실제 수집된 `streamId` 또는 `streamName`도 함께 확인해야 합니다.
+
+### 2026-11-15 데이터 재검증
+
+11월 1~15일의 원본 GA4 속성 보고서를 `date`, `pagePath`, `streamName`, `eventName`으로 나누어 다시 조회했습니다. 11월 5일 `/richChecker/`에서 `app_entry`와 `core_warmup_complete` 이벤트가 각각 1건 기록됐고, 유입 출처는 `m.search.naver.com / referral`이었습니다. 두 이벤트의 데이터 스트림 이름은 **`streamName=blog`**였습니다. 제품 진입과 초기 준비가 계측된 사례이지만, 실제 이미지 업로드나 분석 완료까지 증명하지는 못합니다.
+
+같은 기간 `/scratchLottery/` 경로 및 이름에 `scratch`가 포함된 스트림을 조회했을 때는 행이 반환되지 않았습니다. **측정된 행이 없다는 것은 실제 사용자가 없었다는 의미는 아닙니다.** 측정 코드, 동의 상태, 브라우저 차단, 전송 스트림과 데이터 처리 범위가 원인인지 현재 자료만으로 구별할 수 없습니다.
+
+따라서 9월의 스트림 등록은 당시의 설정 작업 기록으로 남기되, 모든 도구의 이벤트가 각각의 스트림으로 올바르게 전달된다고 단정하지 않겠습니다. 실제 제품별 계측 여부는 `pagePath`·`streamId`·`eventName`을 함께 확인해야 합니다. 필드 정의는 [Google Analytics Data API 공식 측정기준 문서](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema)에 있습니다.
 
 Search Console은 원래도 프로젝트별 사이트맵 제출 방식이었던 걸, 도메인 속성(`saramjh.github.io` 전체 검증) 하나로 관리 단위를 통일했습니다. 사이트맵 자체는 여전히 도구별 경로를 각각 명시해서 제출합니다.
 
