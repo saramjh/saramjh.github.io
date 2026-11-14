@@ -88,6 +88,10 @@
 .portfolio-body .folio-evidence-item h3 a:hover{color:var(--folio-accent)!important}
 .portfolio-body .folio-evidence-item h3 span{color:var(--folio-accent)}
 .portfolio-body .folio-evidence-description{font-size:12px;line-height:1.73;color:var(--folio-muted)!important;margin:0!important}
+.portfolio-body .folio-evidence-item[id^="evidence-"]{scroll-margin-top:96px}
+.portfolio-body .folio .folio-evidence-permalink{display:inline-block;margin-left:8px;color:var(--folio-secondary)!important;font:500 11px var(--folio-mono);text-decoration:underline;text-underline-offset:3px}
+.portfolio-body .folio .folio-evidence-permalink:hover{color:var(--folio-accent)!important}
+.portfolio-body .folio .folio-evidence-permalink:focus-visible{outline:2px solid var(--folio-accent);outline-offset:3px}
 .portfolio-body .folio-evidence-date{font:500 11px var(--folio-mono);color:var(--folio-muted);white-space:nowrap;padding-top:10px}
 .portfolio-body .folio-section-end{margin-top:30px;text-align:right}
 .portfolio-body .folio-section-end a{font-size:13px;font-weight:600;color:var(--folio-accent)!important;border-bottom:1px solid #68779b;padding-bottom:4px}

@@ -7,7 +7,7 @@
     {% if include.ids and include.ids contains record.id %}{% else %}{% if include.ids %}{% assign should_show = false %}{% endif %}{% endif %}
     {% if should_show %}
     {% assign proof_count = proof_count | plus: 1 %}
-    <li class="folio-evidence-item" data-evidence-id="{{ record.id | escape }}" data-evidence-type="{{ record.type | escape }}">
+    <li class="folio-evidence-item" id="evidence-{{ record.id | escape }}" data-evidence-id="{{ record.id | escape }}" data-evidence-type="{{ record.type | escape }}">
       <span class="folio-evidence-kind">{% case record.type %}{% when 'publication' %}Publication{% when 'listing' %}Directory listing{% when 'dataset_record' %}Data record{% when 'collaboration' %}Collaboration{% endcase %}</span>
       <div class="folio-evidence-main">
         <p class="folio-evidence-source">{{ record.source | escape }} <span class="folio-dot-sep" aria-hidden="true">·</span> {% case record.type %}{% when 'publication' %}Published contribution{% when 'listing' %}External listing{% when 'dataset_record' %}Catalogue record{% when 'collaboration' %}Documented collaboration{% endcase %}</p>
@@ -21,6 +21,7 @@
               {% if record.case_en %}<a data-case-lang="en" href="{{ record.case_en | relative_url | escape }}">English</a>{% endif %}
             </span>
           {% endif %}
+          <a class="folio-evidence-permalink" href="{{ '/portfolio/recognition/' | relative_url }}#evidence-{{ record.id | escape }}" aria-label="Direct link to record: {{ record.title | escape }}">Link to record</a>
         </p>
       </div>
       {% if record.date %}<time class="folio-evidence-date" datetime="{{ record.date }}">{{ record.date | date: '%b %-d, %Y' }}</time>{% endif %}
