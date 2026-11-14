@@ -59,6 +59,14 @@ A read-only report from my own Google Analytics 4 property, queried on November 
 
 The two event names describe different actions. `scratch_completed` fires after a simulated ticket has been fully revealed; the fast-forward button is counted separately. People can repeat either action, and the two active-user groups may overlap. These figures show tracked interactions, not 4,773 distinct people, lottery purchases, or a measured increase caused by promotion. The report does not establish whether every event came from a human visitor.
 
+#### Where the recorded interactions came from
+
+I also checked the original GA4 session-source report on November 14, 2026, for October 14–November 11. In sessions labeled `google / organic`, the simulator recorded **2,236 `scratch_completed` events** across **51 GA4 measured users**. The matching Bing organic row had **332 events / 9 measured users**. Sessions labeled `chatgpt.com / ai-assistant` accounted for **355 events / 11 measured users**.
+
+These rows group the same kind of event by a session's attributed source; they are not extra plays to add to the totals above, which cover a slightly different period. For the identical October 14–November 11 window, the original Google Search Console page report showed **95 Google search clicks and 994 impressions** to the simulator URL. Search Console clicks and GA4 events use different counting rules. A GA4 measured user can occur in more than one source row, and the reports cannot distinguish every real visitor from testing or automation. The `chatgpt.com` row records a session-source label; it does not prove an AI recommendation or an endorsement.
+
+Sessions attributed to search and AI assistants included completed scratch interactions. That gives me a concrete reason to keep the starting controls and the source of the odds easy to find.
+
 #### See how losing streaks affect an independent draw
 
 [Open the interactive probability lesson](https://saramjh.github.io/scratchLottery/math/#independenceLesson) and switch the previous-loss count between 0, 5 and 10. In the lesson's Texas Lottery Game 2755 independent-draw model, the next simulated ticket has a 26.52% chance of any prize in all three cases. Five losses in a row have a 21.42% chance of occurring from the start, but those completed draws do not change the next simulated result.
