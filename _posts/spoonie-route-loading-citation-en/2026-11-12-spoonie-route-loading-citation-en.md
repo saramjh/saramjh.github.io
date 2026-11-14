@@ -1,6 +1,6 @@
 ---
 title: "Route loading and recipe citation search in Spoonie"
-description: "An engineering note on Spoonie PR #34, covering route loading and the recipe citation search interface."
+description: "A Spoonie engineering case covering PR #34, immediate destination skeletons in PR #42, and recipe citation search."
 date: 2026-11-12
 tags: ["Spoonie", "Frontend", "User Experience"]
 permalink: /spoonie-route-loading-citation-en/
@@ -9,9 +9,10 @@ lang: en
 alternate_lang: ko
 alternate_url: /spoonie-route-loading-citation-ko/
 published: true
+modified: 2026-11-14
 seo:
   title: "Spoonie route loading and recipe citation search"
-  description: "What Spoonie PR #34 changed in route loading and recipe citation search, with deployment evidence and limits."
+  description: "Spoonie PR #34 citation search and PR #42 instant destination skeletons, with deployment evidence and limits."
 ---
 
 > 한국어: [Spoonie 화면 전환 로딩과 레시피 인용 검색 정비](/spoonie-route-loading-citation-ko/)
@@ -29,5 +30,13 @@ The merged change covers route-loading behavior and the citation-search UI. Comp
 That check establishes deployment of the code. It does not measure perceived loading speed, citation usage, or user retention. Those outcomes have not been independently measured.
 
 For a separate account-specific UI issue, see [Spoonie's viewer-scoped likes and saves cache fix](/spoonie-viewer-cache-isolation-en/).
+
+## November 14 follow-up: show the destination while navigation waits
+
+The progress bar from the earlier fix still left the old homepage in place when the server was slow. In the reproduction for [PR #42](https://github.com/saramjh/spoonie/pull/42), delaying the `/search` response kept that old view visible for more than 700 ms. The follow-up displays a skeleton shaped like the destination as soon as internal navigation starts.
+
+A move to search shows placeholders for the search field and filters; a move to a recipe or post shows a detail-page layout. The top progress indicator remains, and the bottom navigation can interrupt a pending transition. A filter change that only updates query parameters keeps the current screen visible.
+
+In an isolated Chromium test with a delayed route, the destination skeleton was visible at 90, 200, 500 and 950 ms, then disappeared when the route completed. The PR reports 405 passing regression tests and six separate media-cleanup tests. On November 14, the `app/layout` JavaScript served by [Spoonie](https://spoonie.kr/) was byte-identical to the PR #42 Netlify preview and included `data-route-feedback`. That confirms the deployed code, while real visitors' perceived wait times and abandonment have not been measured.
 
 [Review the merged change](https://github.com/saramjh/spoonie/pull/34) · [Visit Spoonie](https://spoonie.kr/)
