@@ -106,6 +106,8 @@ Space Atlas는 **총 27개 핵심 천문학 주제**를 4대 카테고리로 나
 
 별도로 [Share My Lesson에 공개한 4~8학년용 달 위상 수업 활동](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086)은 학생이 먼저 예측하고, 시뮬레이터로 확인한 뒤, 관찰을 설명하도록 구성했습니다. 이 두 공개 경로에 사용한 개발 작업은 [NCASE와 Share My Lesson 사례 기록](/space-atlas-education-resource-paths-ko/)에서 함께 정리했습니다.
 
+북반구와 남반구의 반대 계절을 관찰하는 실습이 필요하다면 [자전축 23.5°와 0°를 비교하는 12~15분 활동지 안내](/earth-seasons-no-tilt-experiment-ko/)를 참고할 수 있습니다.
+
 *2026년 11월 13일 원문 확인. 공개 자료 목록 등재는 기관 인증이나 실제 교실에서의 학습 효과를 입증하는 것은 아닙니다.*
 
 ## 기술적 특징

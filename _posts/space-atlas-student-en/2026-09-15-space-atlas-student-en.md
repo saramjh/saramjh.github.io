@@ -106,6 +106,8 @@ Every topic adheres to a 7-step learning framework designed to build scientific 
 
 I also published a [Grades 4–8 Moon-phases activity on Share My Lesson](https://sharemylesson.com/teaching-resource/moon-phases-predict-test-explain-interactive-grades-4-8-lesson-412086). Students predict the Moon's appearance, test it in the simulator, then explain what they observed. The [related developer case study](/space-atlas-education-resource-paths-en/) describes the work behind both public resources.
 
+For a separate Earth-seasons investigation, the [12–15 minute zero-tilt worksheet guide](/earth-seasons-no-tilt-experiment-en/) explains how to hold the orbit positions fixed while changing only axial tilt.
+
 *Original source pages checked November 13, 2026. A directory listing does not establish institutional endorsement or measured classroom outcomes.*
 
 ## Technical Highlights
