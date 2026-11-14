@@ -42,6 +42,8 @@ For each lesson, I chose the relationships a learner needed to inspect and docum
 
 The result is a [publicly accessible article with an author credit and a named editor](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/). EUSci’s Figure 1 caption reads “Original illustration by Jihun Oh.” I drew it to connect the observer’s viewpoint, Earth’s axial direction and the Moon’s inclined orbit in a single schematic. It gives educators, reviewers and potential collaborators a way to examine my explanation of a problem, then compare it with a working [Moon Phases lesson](https://spaceatlasedu.org/moon/phases/). The byline provides a concrete writing sample alongside the software.
 
+EUSci also links **Space Atlas Student** in the author's credit to [the live project site](https://spaceatlasedu.org/). Readers can move from the article to the interactive models. Visits through that link have not been measured here.
+
 The article discloses AI assistance during drafting and editing and says its scientific explanations were checked against linked NASA references. Publication by EUSci is the verified achievement. It does not demonstrate formal university endorsement, classroom adoption or measured learning gains.
 
 - [Read the EUSci article and editorial credit](https://eusci.org.uk/2026/11/10/three-space-diagrams-three-missing-clues/)
