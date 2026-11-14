@@ -1,5 +1,19 @@
 from pathlib import Path
+from datetime import date
 import re
+
+
+def acquisition_metadata_current(post):
+    front = post.split("---\n", 2)[1]
+    modified = re.search(r"^modified: (\d{4}-\d{2}-\d{2})$", front, re.M)
+    updated = re.search(r"^last_modified_at: (\d{4}-\d{2}-\d{2})$", front, re.M)
+    if not modified or not updated or modified.group(1) != updated.group(1):
+        return False
+    try:
+        return date.fromisoformat(modified.group(1)) >= date(2026, 9, 30)
+    except ValueError:
+        return False
+
 
 root = Path(__file__).resolve().parents[1]
 legacy = (root / "_posts/rich-tester/2024-09-04-rich-tester.md").read_text()
@@ -17,8 +31,8 @@ checks = [
     ('rel="canonical" href="{{ page.redirect_to }}"' in redirect, "redirect canonical missing"),
     ('http-equiv="refresh"' in redirect, "static redirect refresh missing"),
     ("/rich-tester/" not in kr, "current Korean acquisition article must not link back to legacy competitor"),
-    ("modified: 2026-09-30" in kr and "last_modified_at: 2026-09-30" in kr, "Korean acquisition freshness missing"),
-    ("modified: 2026-09-30" in en and "last_modified_at: 2026-09-30" in en, "English acquisition freshness missing"),
+    (acquisition_metadata_current(kr), "Korean acquisition freshness missing"),
+    (acquisition_metadata_current(en), "English acquisition freshness missing"),
     ("https://saramjh.github.io/richChecker/" in llms, "current Korean app missing from llms.txt"),
     ("https://saramjh.github.io/richChecker-us/" in llms, "current global app missing from llms.txt"),
     ("https://saramjh.github.io/rich-tester/" not in llms, "legacy URL must not remain in llms.txt"),
