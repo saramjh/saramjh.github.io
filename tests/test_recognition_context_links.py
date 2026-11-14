@@ -60,7 +60,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertEqual(greenus["status"], "confirmed")
         self.assertEqual(greenus["type"], "listing")
         self.assertEqual(greenus["project"], "koreaves")
-        self.assertEqual(greenus["url"], "https://greenus.upb.ro/resources.php?rp=2")
+        self.assertEqual(greenus["url"], "https://greenus.upb.ro/share.php?t=t_35802c3c02e2be7201")
         self.assertIn("Community-submitted", greenus["detail"])
         self.assertIn("Jihun Oh", greenus["detail"])
         self.assertIn("does not establish editorial endorsement", greenus["detail"])
