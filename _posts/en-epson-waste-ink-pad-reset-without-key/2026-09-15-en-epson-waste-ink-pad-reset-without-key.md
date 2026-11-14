@@ -1,8 +1,8 @@
 ---
 title: "Epson Waste Ink Counter Reset Without a Key: L3106 Case and Model Checks"
 date: 2026-09-15
-modified: 2026-11-14
-last_modified_at: 2026-11-14
+modified: 2026-11-15
+last_modified_at: 2026-11-15
 tags: ["Epson", "L3100", "L3106", "L3110", "L3150", "L3160", "L1110", "L5190", "Waste Ink Pad Reset", "WIC Reset Alternative", "reinkpy", "Mac Epson Reset", "DIY Printer Repair"]
 permalink: /en-epson-waste-ink-pad-reset-without-key/
 layout: default
@@ -37,9 +37,9 @@ alternate_url: /epson-waste-ink-pad-reset-without-key/
 faq_schema: true
 faq:
   - q: "Can I wash and reuse the old waste ink felt pads with water?"
-    a: "Not recommended. Saturated felt pads produce significant hazardous runoff when washed, take days to dry thoroughly, and lose fiber density during washing. Lower fiber density drastically increases the risk of ink leakage onto your desk or printer base. Replacing them with a pre-cut replacement felt pad set (~$5) is by far the safest and cleanest approach."
+    a: "Cleaning used ink pads can release waste ink and is not recommended. But not every Epson model permits owner replacement of the absorber. Check the model-specific Epson guidance before any disassembly; consult authorized service for non-user-replaceable parts. The price shown in the article is historical, not a current repair quote."
   - q: "The red ink and paper lights are still alternately flashing after running the reset script."
-    a: "Immediately after resetting the counter, unplug the printer's power cord completely from the wall outlet for at least 60 seconds, then plug it back in. Also verify that your exact printer model was set in reinkpy/main.py and that the script successfully printed 'Waste ink pad counter reset successfully' without USB endpoint communication errors."
+    a: "If the warning persists, do not run the reset again. Confirm the exact model and actual pad service requirements and consult an Epson service provider. The sample script's success message is only text output; it does not independently verify a changed printer counter or safe operation."
   - q: "What is the technical difference between paid WIC Reset keys and open-source reinkpy-fix?"
     a: "The available sources do not establish that WIC Reset and reinkpy-fix use identical procedures across all Epson models. The open-source fork states confirmed operation for the L3060 series and similar printers only. Verify your exact model, service needs, and software support before attempting a counter write."
 ---
@@ -48,7 +48,7 @@ faq:
   🇰🇷 <strong>한국어 안내:</strong> 한국어 가이드 및 국내 호환 부품 구매 안내는 <a href="/epson-waste-ink-pad-reset-without-key/"><strong>엡손 잉크패드 리셋: L3106 작업 사례와 모델별 주의 (한국어)</strong></a> 포스팅을 참고하세요.
 </p>
 
-> **Compatibility and servicing note (9 Nov 2026):** The [reinkpy-fix repository](https://github.com/LeFZdev/reinkpy-fix) describes a tool for some Epson printers, with confirmed operation on the L3060 series and similar devices. It does not verify support for every one of the 33 variants previously listed here. The L3106 sequence below is the author's original account. [Epson's ink-pad guidance](https://epson.com/support/wa00369) explains that the physical pads may require servicing, and some are not user-serviceable. A software counter reset does not replace physical maintenance. If exact model support is unclear, consult an authorized technician.
+> **Manufacturer cross-check (15 Nov 2026):** The [reinkpy-fix repository](https://github.com/LeFZdev/reinkpy-fix) describes a tool for some Epson printers, with confirmed operation on the L3060 series and similar devices. It does not verify all 33 variants previously listed here. The L3106 sequence below is the author's original account. [Epson's official ink-pad explanation](https://epson.com/support/epson-ink-pad-reset-utility-faqs) states that physical waste pads contain ink from cleaning and printing and may require maintenance or replacement. A software counter reset cannot replace servicing the physical ink pads. Some models do not have user-replaceable waste pads; consult the exact model's service guidance.
 
 ### Exact Epson Waste Ink Pad Error Messages & Symptoms
 
@@ -76,7 +76,7 @@ If you found this page after receiving an ink-pad service alert, the steps below
 
 When searching for solutions online, users typically hit two frustrating roadblocks:
 1. **Software and platform limits**: Commercial reset utilities may charge for a key. Some free alternatives are Windows `.exe` files, which may be difficult to run directly on macOS or Linux. Check vendor documentation and the exact model before selecting software.
-2. **Overpriced plastic assembly**: Buying the entire plastic cartridge housing costs significantly more and creates unnecessary plastic waste, even though the plastic case itself is completely intact and reusable.
+2. **Model-specific parts and cost**: Some cases allow replacing an absorber without discarding the housing, but other designs have non-user-replaceable pads or different service requirements. Verify model compatibility before buying parts or opening the printer.
 
 In the documented case, felt-pad work and an open-source counter-reset attempt were used. The reported cost was about $4–$5 and the process took roughly 10 minutes for that case. Neither the timing nor compatibility is established for other models.
 
@@ -103,7 +103,9 @@ Replacement pads and access procedures differ by model. Verify whether the servi
 
 ---
 
-### 2. Hardware Replacement (Takes 5 Minutes)
+### 2. Hardware Replacement (L3106 Historical Case)
+
+The disassembly sequence below records the author's L3106 case, not a validated procedure for other Epson models. Do not assume the same screws or waste-pad assembly are present. Follow model-specific service instructions; leave parts designated non-user-replaceable to authorized service providers.
 
 **Items needed**: Cross-head screwdriver, disposable gloves (or tweezers), paper towels, new felt pads.
 
@@ -117,7 +119,7 @@ Replacement pads and access procedures differ by model. Verify whether the servi
 
 ### 3. Software Counter Reset via reinkpy-fix (Cross-Platform)
 
-Physical pad replacement is only half the battle. The internal EEPROM memory in the printer still retains the maximum counter value, which must be reset to 0%.
+Physical waste pads collect real discarded ink, while software counters provide service information. Resetting a counter does **not** inspect, empty, replace, or establish the safety of the pads. Even after appropriate physical servicing, any counter adjustment depends on the printer's exact model and supported service procedure. See [Epson's ink-pad service explanation](https://epson.com/support/epson-ink-pad-reset-utility-faqs).
 
 The documented case referenced **`reinkpy-fix`**. Its [README](https://github.com/LeFZdev/reinkpy-fix) reports operation for the L3060 series and similar devices, with fixes focused on LAN/SNMP. The USB procedure below is a historical L3106 case description, not independent proof that the same commands work for another model.
 
@@ -241,7 +243,7 @@ The documented command uses elevated privileges for raw USB access:
 sudo venv/bin/python3 reinkpy/main.py
 ```
 
-You will see output identifying your printer followed by:
+A printed success message alone does not prove the printer counter changed or that physical service was completed. The sample script may print the following text, but the output must not be used as an independent hardware verification:
 ```text
 Connected Printer: <Device EPSON ...>
 Configured Model: L3106
@@ -297,14 +299,14 @@ Identical counter-reset behavior has not been established across these models. P
 <details style="margin-bottom: 1rem; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; padding: 12px 16px;">
   <summary style="font-weight: 700; cursor: pointer; color: inherit;">Q1. Can I wash and reuse the old waste ink felt pads with water?</summary>
   <p style="margin-top: 8px; font-size: 0.95rem; line-height: 1.6;">
-    <strong>Not recommended.</strong> Saturated felt pads produce significant hazardous runoff when washed, take days to dry thoroughly, and lose fiber density during washing. Lower fiber density drastically increases the risk of ink leakage onto your desk or printer base. Replacing them with a pre-cut replacement felt pad set (~$5) is by far the safest and cleanest approach.
+    <strong>Not recommended.</strong> Washing saturated pads can release waste ink. Check model-specific service instructions first, because some absorbers are not user-replaceable parts. The historical $5 absorber cost in this article is not a current quote or proof that DIY replacement is appropriate for another Epson model.
   </p>
 </details>
 
 <details style="margin-bottom: 1rem; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; padding: 12px 16px;">
   <summary style="font-weight: 700; cursor: pointer; color: inherit;">Q2. The red ink and paper lights are still alternately flashing after running the reset script.</summary>
   <p style="margin-top: 8px; font-size: 0.95rem; line-height: 1.6;">
-    Immediately after resetting the counter, <strong>unplug the printer's power cord completely from the wall outlet for at least 60 seconds</strong>, then plug it back in. Also verify that your exact printer model was set in <code>reinkpy/main.py</code> and that the script successfully printed <code>Waste ink pad counter reset successfully</code> without USB endpoint communication errors.
+    <strong>Do not run the reset again</strong> simply because the warning remains. Verify the exact model, follow Epson pad-service instructions and contact authorized support if necessary. The example output text is produced by the script; it is not independent proof that the printer EEPROM changed or the physical waste pads are safe.
   </p>
 </details>
 
