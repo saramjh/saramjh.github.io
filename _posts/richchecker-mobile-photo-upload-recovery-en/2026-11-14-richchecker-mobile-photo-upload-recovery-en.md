@@ -74,4 +74,12 @@ The success path is unchanged. Only after an `image_decode` failure, the browser
 
 The source commit records **24 local browser tests and five contract checks passed**, and the [GitHub Actions deployment](https://github.com/saramjh/richChecker/actions/runs/43578267276) succeeded. I also verified that the live JavaScript bytes match the original repository's current `main` source. This **does not establish a fix on affected Android devices**. It improves failure guidance, but there is no verified increase in successful uploads or completed analyses.
 
+## November 15: a measured result after the release
+
+The [decode-hint change](https://github.com/saramjh/richChecker/commit/eede7730408b6aa2ec6afc9b2e4e5d6ab1531609) reached the live site on November 14 at **17:58 KST**. On November 15, I checked the **Richchecker KR product's own GA4 property**, after matching its live measurement ID to the web data stream. The property's reporting timezone is Seoul.
+
+For November 14 after that deployment, GA4 classified **19:00 (3 events)** and **20:00 (1 event)** as `analysis_complete` on Android Chrome mobile. Another completion was recorded on Windows Chrome at 20:00. The session source for these events was `google / organic`. There was also one earlier Android Chrome completion at 14:00, before the release.
+
+The app calls `renderResults` before tracking `analysis_complete`, so these are source-backed signals that the result-generation code path ran. **Four completion events do not represent four distinct users**. GA4's Android classification does not independently establish the physical device, and repeated attempts or developer testing cannot be ruled out. These data **do not prove that the original Android decoding issue is resolved**: no observation links the particular failing photo provider or file to these later events. I cannot calculate a change in success rate or attribute the completions to the patch.
+
 Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/)
