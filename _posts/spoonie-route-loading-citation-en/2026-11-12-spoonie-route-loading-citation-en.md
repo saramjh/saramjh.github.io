@@ -54,4 +54,10 @@ A source-level test can pass without ever opening the page someone will use. [PR
 
 This was exercised on the PR itself: [GitHub Actions run #43580339700](https://github.com/saramjh/spoonie/actions/runs/43580339700) verified commit `e4bc2ef` and reported passing browser checks for normal links, back/forward, canceled navigation, timeout recovery, retry and first-photo-tap feedback, with no uncaught page exceptions. The change adds protection for future matching PRs; it is not a speed benchmark or a measurement of visitor outcomes.
 
+### Keep one main landmark on the page
+
+Loading feedback is only part of usable navigation. The application shell already supplies a main landmark, but the curator page added another inside it. In [PR #46](https://github.com/saramjh/spoonie/pull/46), I removed the redundant inner `main` elements in the curator page, recipe book and profile editor while retaining their content and styling.
+
+On November 14, the [public curator page](https://spoonie.kr/curators) returned HTTP 200 with exactly one `main` element in its HTML. This verifies the deployed document structure. It does not establish how much the change improved navigation for people using assistive technology.
+
 [Review the merged change](https://github.com/saramjh/spoonie/pull/34) · [Visit Spoonie](https://spoonie.kr/)
