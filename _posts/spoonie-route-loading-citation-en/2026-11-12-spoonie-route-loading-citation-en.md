@@ -1,6 +1,6 @@
 ---
 title: "Route loading and recipe citation search in Spoonie"
-description: "A Spoonie engineering case covering PR #34, immediate destination skeletons in PR #42, and recipe citation search."
+description: "A Spoonie engineering case on recipe citation search, destination skeletons, and input safety during navigation."
 date: 2026-11-12
 tags: ["Spoonie", "Frontend", "User Experience"]
 permalink: /spoonie-route-loading-citation-en/
@@ -12,7 +12,7 @@ published: true
 modified: 2026-11-14
 seo:
   title: "Spoonie route loading and recipe citation search"
-  description: "Spoonie PR #34 citation search and PR #42 instant destination skeletons, with deployment evidence and limits."
+  description: "Spoonie recipe citation search and destination skeleton fixes, including input safety during navigation."
 ---
 
 > 한국어: [Spoonie 화면 전환 로딩과 레시피 인용 검색 정비](/spoonie-route-loading-citation-ko/)
@@ -38,5 +38,11 @@ The progress bar from the earlier fix still left the old homepage in place when 
 A move to search shows placeholders for the search field and filters; a move to a recipe or post shows a detail-page layout. The top progress indicator remains, and the bottom navigation can interrupt a pending transition. A filter change that only updates query parameters keeps the current screen visible.
 
 In an isolated Chromium test with a delayed route, the destination skeleton was visible at 90, 200, 500 and 950 ms, then disappeared when the route completed. The PR reports 405 passing regression tests and six separate media-cleanup tests. On November 14, the `app/layout` JavaScript served by [Spoonie](https://spoonie.kr/) was byte-identical to the PR #42 Netlify preview and included `data-route-feedback`. That confirms the deployed code, while real visitors' perceived wait times and abandonment have not been measured.
+
+### November 14 follow-up: keep the covered page inactive
+
+The destination skeleton covered the old screen, but its search input could still receive keyboard input underneath it. [PR #43](https://github.com/saramjh/spoonie/pull/43) temporarily marks the outgoing `main` element as `inert` during navigation, then restores it when the transition ends. The bottom navigation stays usable. The change also derives header placeholders from the destination rather than storing a duplicate `needsHeader` field.
+
+The same patch keeps a photo's pressed feedback visible if the pointer leaves during its existing 300 ms single-versus-double-tap window. The PR records Chromium checks for both interactions, 405 passing Vitest cases and six safety tests. After the November 14 merge, [Spoonie's public layout bundle](https://spoonie.kr/_next/static/chunks/app/layout-54236469e75425ac.js) contained the new `inert` assignment and no `needsHeader` field. That confirms delivery of the navigation code; changes in visitor behavior have not been measured.
 
 [Review the merged change](https://github.com/saramjh/spoonie/pull/34) · [Visit Spoonie](https://spoonie.kr/)
