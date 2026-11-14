@@ -1,0 +1,96 @@
+{
+  "schema": "DEV_C622_EPSON_SEARCH_ANALYTICS_FIRST_PARTY_V1",
+  "capturedOn": "2026-11-14",
+  "site": "https://saramjh.github.io/",
+  "ga4": {
+    "source": "Original connected GA4 DevTestudinidae blog property, web stream matched site measurement ID",
+    "dateRange": [
+      "2026-10-15",
+      "2026-11-13"
+    ],
+    "propertyTimeZone": "Asia/Seoul",
+    "dimensions": [
+      "landingPage",
+      "sessionSourceMedium"
+    ],
+    "metrics": [
+      "sessions",
+      "engagedSessions"
+    ],
+    "pagePaths": [
+      "/epson-waste-ink-pad-reset-without-key",
+      "/en-epson-waste-ink-pad-reset-without-key"
+    ],
+    "includedSources": "Only Google/Bing/Naver/Yahoo organic; direct and referrals excluded",
+    "channels": [
+      {
+        "name": "Google",
+        "koSessions": 68,
+        "enSessions": 4,
+        "sessions": 72,
+        "engagedSessions": 63
+      },
+      {
+        "name": "Bing",
+        "koSessions": 13,
+        "enSessions": 20,
+        "sessions": 33,
+        "engagedSessions": 28
+      },
+      {
+        "name": "Naver",
+        "koSessions": 3,
+        "enSessions": 0,
+        "sessions": 3,
+        "engagedSessions": 3
+      },
+      {
+        "name": "Yahoo",
+        "koSessions": 0,
+        "enSessions": 2,
+        "sessions": 2,
+        "engagedSessions": 2
+      }
+    ],
+    "totalSessions": 110,
+    "totalEngagedSessions": 96
+  },
+  "gsc": {
+    "source": "Original connected Google Search Console site URL-prefix property",
+    "dateRange": [
+      "2026-10-15",
+      "2026-11-10"
+    ],
+    "dataState": "final",
+    "reportTimeZone": "America/Los_Angeles (Pacific Time)",
+    "dimensions": [
+      "page"
+    ],
+    "searchType": "web",
+    "pages": [
+      {
+        "url": "https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/",
+        "clicks": 68,
+        "impressions": 322
+      },
+      {
+        "url": "https://saramjh.github.io/en-epson-waste-ink-pad-reset-without-key/",
+        "clicks": 5,
+        "impressions": 87
+      }
+    ],
+    "totalClicks": 73,
+    "totalImpressions": 409,
+    "sampleObservedQueries": [
+      "엡손 잉크 패드 리셋 프로그램 무료",
+      "l3156 잉크패드 리셋"
+    ]
+  },
+  "interpretation": "GA4 sessions and Search Console clicks count different things over distinct reporting windows and time zones. Engaged sessions do not show whether a printer was serviced; not unique humans. No causal SEO uplift or printer-model compatibility is inferred.",
+  "originalSafetyContext": "Epson L3106 author record; public reinkpy-fix README does not independently verify all previously listed 33 model variants. Software counter reset does not replace pad servicing.",
+  "definitions": [
+    "https://support.google.com/analytics/answer/12195621?hl=en",
+    "https://support.google.com/webmasters/answer/7042828?hl=en",
+    "https://support.google.com/webmasters/answer/17010575?hl=en"
+  ]
+}
