@@ -1,17 +1,18 @@
 ---
-title: "How to Keep AI Coding Agent Context Across Sessions (Persistent Memory)"
+title: "cokacremote: Carry Coding-Agent Context Across Sessions"
 date: 2026-10-05
+last_modified_at: 2026-11-14
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI coding", "context continuity", "coding agent memory", "project memory"]
 permalink: /en-ai-coding-context-continuity-cokacremote/
 layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /ai-coding-context-continuity-cokacremote/
-description: "Why AI coding agents lose project context between sessions, and how to preserve it with persistent memory, instruction files, checkpoints and on-demand recall. Includes the real Serena, claude-mem, Ponytail and cokacremote design I ended up using."
-excerpt: "Persistent coding-agent memory is not the same as a large context window or an AGENTS.md file. This is the bootstrap, checkpoint and recall lifecycle I built so a fresh session can resume the actual project state."
+description: "How I use cokacremote to resume coding sessions with Git-backed project checkpoints and on-demand memory recall. A documented local implementation and its limits."
+excerpt: "cokacremote gives my local coding workflow a defined starting point in a new session: check Git and project checkpoints, then retrieve older decisions when necessary."
 seo:
-  title: "How to Keep AI Coding Agent Context Across Sessions (Persistent Memory)"
-  description: "Keep AI coding agent context across sessions with persistent memory, instruction files and checkpoints. A practical design using Git truth, Serena, claude-mem and cokacremote."
+  title: "cokacremote: Carry Coding-Agent Context Across Sessions"
+  description: "How I use cokacremote with Git-backed context bootstrap, project checkpoints and on-demand Serena and claude-mem recall to resume AI coding sessions."
   keywords:
     - AI coding context continuity
     - AI coding agent persistent memory
@@ -30,13 +31,15 @@ image_width: 1200
 image_height: 630
 ---
 
-# How to keep AI coding agent context across sessions
+# How I carry coding-agent context across sessions with cokacremote
 
-**The missing piece was not another memory package. It was a lifecycle that decides what a fresh session reloads, what gets checkpointed, and which source wins when historical memory conflicts with the current repository.**
+**In my local cokacremote workflow, a new coding session starts by checking the current repository and project checkpoint. Older decisions are retrieved when needed. This article explains how I put that sequence together, where Serena and claude-mem fit, and what it still cannot recover.**
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
-  🌐 <strong>한국어 버전:</strong> <a href="/ai-coding-context-continuity-cokacremote/">툴을 깔았는데도 새 세션은 프로젝트를 잊었다</a>
+  🌐 <strong>한국어 버전:</strong> <a href="/ai-coding-context-continuity-cokacremote/">cokacremote로 AI 코딩 세션 컨텍스트 복구하기</a>
 </p>
+
+The open-source MCP tool is documented in the [cokacremote GitHub repository](https://github.com/kstost/cokacremote). This article covers the project-context workflow I use locally.
 
 If you searched for `AI coding agent memory`, `persistent memory`, `keep context across coding sessions`, or `context engineering`, start by separating three different things:
 
