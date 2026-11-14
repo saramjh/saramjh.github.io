@@ -1,8 +1,8 @@
 ---
 title: "Scratch Lottery Simulation"
-description: A free scratch-off lottery simulator modeled on real games — Powerball, US $5 scratch-offs, and Korea's Speetto 1000/2000 — with a CDF-based odds engine, fast-forward simulation, and a sourced lottery tax calculator. No real money involved.
+description: A free scratch-off simulation with officially published ticket distributions where available, expected-value lessons, budget experiments and a sourced claims tracker. No real-money play.
 date: 2024-09-03
-modified: 2026-11-13
+modified: 2026-11-14
 tags: ["Lottery", "Scratch Lottery", "Lottery simulation", "Powerball", "Speetto", "RTP", "Lottery tax calculator"]
 permalink: /scratch-lottery-simulation/
 layout: default
@@ -14,7 +14,7 @@ legacy_asset_url: /posts/scratch-lottery-simulation/
 ---
 
 <p style="background: rgba(0, 150, 80, 0.08); border-left: 4px solid #109648; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
-  <strong>Updated 2026-11-13:</strong> Added a direct path to an interactive probability lesson about expected payout and losing streaks. The 2026-09-18 rebuild introduced the ticket formats, fast simulation and calculator described below.
+  <strong>Updated 2026-11-14:</strong> Corrected the description of official printed-issue probabilities versus modeled presets, and linked the current math guide, Experiment Lab and prize-claim tracker. The 2026-09-18 rebuild introduced the ticket formats and simulation tools described below.
 </p>
 
 > 한국어: [스크래치 복권 시뮬레이터에서 확률과 연속 실패를 실험하기](/scratch-lottery-simulation-ko/)
@@ -23,7 +23,7 @@ legacy_asset_url: /posts/scratch-lottery-simulation/
 
 <img src="scratchlottery-2026-desktop.png" alt="Scratch Lottery Simulator desktop screenshot showing a Speetto 1000 ticket, odds table, and fast simulation panel">
 
-A free scratch-off lottery simulator. It reproduces the tactile "scratching" experience using the published odds of real lotteries — Powerball, a typical US $5 scratch-off, and Korea's Speetto 1000/2000 — with no real money ever involved. Try it at [saramjh.github.io/scratchLottery](https://saramjh.github.io/scratchLottery).
+This free scratch-off lottery simulator lets you reveal a ticket and inspect the results without spending real money. Presets with an official printed-issue table, including Texas Game 2755 and Korea's Speetto 1000/2000, use the published issue counts. Other games or custom odds are labeled simulation models, not official lower-tier prize distributions. [Try the simulator](https://saramjh.github.io/scratchLottery/).
 
 #### Who it's for
 
@@ -47,7 +47,11 @@ A free scratch-off lottery simulator. It reproduces the tactile "scratching" exp
 
 #### How the odds/RTP are calculated
 
-Each preset defines only a jackpot probability and a per-tier prize table; the ratio between tiers follows a fixed shape shared across all presets. On every scratch, the engine draws one random number in [0, 1) and checks which tier's cumulative-probability range it falls into. Lower-tier prize amounts are calibrated so the resulting RTP lands in the range real lotteries typically use, roughly 50–70%.
+Presets backed by a verified full issue table calculate each prize tier's probability as the operator's published winning-ticket count divided by the number of printed tickets. Those probabilities form a cumulative distribution: one random draw selects one result, including a possible loss. RTP is the sum of each tier's probability multiplied by its payout, divided by ticket cost. A preset without the full official distribution, including Custom Odds, is explicitly a **simulation model**. The simulated draws are independent and do not estimate which physical tickets remain unsold.
+
+#### Math lesson, Experiment Lab and prize-claim tracker
+
+The [interactive probability lesson](https://saramjh.github.io/scratchLottery/math/) compares expected payout with ticket cost, shows why repeated trials can fluctuate around the theoretical RTP, and demonstrates why a run of losses does not make the next independent draw more likely to win. On the [main simulator](https://saramjh.github.io/scratchLottery/), Experiment Lab connects exact multi-ticket odds, batches and budget-risk projections, while My Lab saves experiment settings on the current device. The Official Prize Tracker follows a bounded set of Texas $5 games using the operator's printed-prize and claimed-prize counts; it does **not** turn unclaimed prizes into live odds or a purchase recommendation.
 
 #### What I can measure from the live simulator
 
@@ -67,7 +71,10 @@ No build tools or frameworks — plain HTML/CSS/JS, deployed as-is via GitHub Pa
 
 - `index.html` — page structure (SEO meta, ticket UI, odds/simulation panels, FAQ)
 - `css/style.css` — all styling
-- `js/script.js` — odds engine, ticket generation/rendering, scratch interaction, charts, localStorage persistence, GA4 event tracking
+- `js/script.js` — ticket generation, scratch interaction, simulated result and chart behavior
+- `js/analytics.js` — scoped interaction-event measurement
+- `js/verified-lottery-models.js` and `js/lottery-math-core.js` — official issue-count inputs and shared probability primitives
+- `math/index.html` and `js/math-of-lottery.js` — interactive expected-value, variance and independent-draw lessons
 
 #### Disclaimer
 
