@@ -38,7 +38,7 @@ The change does not add another image decoder, copy the full photo or send photo
 
 If a photo still fails, save it locally as JPG or PNG, then select the converted copy in [Richchecker KR](https://saramjh.github.io/richChecker/). The [Global Billionaire Face Match](https://saramjh.github.io/richChecker-us/) is a separate English-language version using a different reference sample.
 
-#### Sources and related reading
+## Sources and related reading
 
 - [Richchecker KR source repository](https://github.com/saramjh/richChecker)
 - [PR #3: photo-format recovery](https://github.com/saramjh/richChecker/pull/3)
