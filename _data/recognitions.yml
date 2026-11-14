@@ -157,6 +157,43 @@
   detail: "Creator-submitted link to the original open-source astronomy models merged by the list maintainer. A community directory entry, not scientific peer review or measured adoption."
   url: "https://github.com/wbierbower/awesome-physics/blob/master/README.md#astrophysics"
 
+- id: kids-edutainment-space-atlas
+  project: space-atlas
+  type: listing
+  status: confirmed
+  date: 2026-10-27
+  source: "Kids Edutainment Links"
+  title: "Space Atlas in kids' astronomy learning links"
+  detail: "Creator-submitted interactive Moon phases, Earth seasons and scale models merged by the list maintainer. The directory link does not establish classroom adoption or endorsement."
+  url: "https://github.com/vorburger/kids-edutainment-links/blob/master/README.md"
+- id: awesome-mint-kids-space-atlas
+  project: space-atlas
+  type: listing
+  status: confirmed
+  date: 2026-10-20
+  source: "Awesome MINT Kids Resources"
+  title: "Space Atlas Student in children's science resources"
+  detail: "Creator-submitted browser models and teacher activity link merged by the list maintainer. Its audience is parent- and teacher-guided science; no teaching outcomes were measured."
+  url: "https://github.com/augustunbear/awesome-MINT-Kids-Resources/blob/main/README.md"
+- id: awesome-interactive-learning-space-atlas
+  project: space-atlas
+  type: listing
+  status: confirmed
+  date: 2026-10-16
+  source: "Awesome Interactive Learning"
+  title: "Space Atlas among interactive astronomy resources"
+  detail: "Creator-submitted Moon-phase and Earth-season visual models merged by the list maintainer. The resource link is not a product review or evidence of actual learner use."
+  url: "https://github.com/hamid-moghadam/awesome-interactive-learning/blob/main/README.md"
+- id: student-suite-space-atlas
+  project: space-atlas
+  type: listing
+  status: confirmed
+  date: 2026-10-16
+  source: "StudentSuite Awesome Study Resources"
+  title: "Space Atlas in free interactive study resources"
+  detail: "Creator-submitted astronomy models and teacher activity link merged by the list maintainer. A community resource entry, not a teaching partnership or measured adoption."
+  url: "https://github.com/StudentSuite/awesome-study-resources/blob/main/README.md"
+
 - id: worldlytribe-space-atlas-worldschooling
   project: space-atlas
   type: listing

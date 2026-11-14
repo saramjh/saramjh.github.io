@@ -49,7 +49,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 22)
+        self.assertEqual(len(records), 26)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -88,9 +88,29 @@ class EvidenceContextLinksTest(unittest.TestCase):
             all(("case_ko" in r) == ("case_en" in r) for r in records.values())
         )
 
-    def test_two_source_merged_community_space_atlas_listings(self):
+    def test_six_source_merged_community_space_atlas_listings(self):
         records = parse_records()
         expected = {
+            "kids-edutainment-space-atlas": {
+                "date": "2026-10-27",
+                "source": "Kids Edutainment Links",
+                "url": "https://github.com/vorburger/kids-edutainment-links/blob/master/README.md",
+            },
+            "awesome-mint-kids-space-atlas": {
+                "date": "2026-10-20",
+                "source": "Awesome MINT Kids Resources",
+                "url": "https://github.com/augustunbear/awesome-MINT-Kids-Resources/blob/main/README.md",
+            },
+            "awesome-interactive-learning-space-atlas": {
+                "date": "2026-10-16",
+                "source": "Awesome Interactive Learning",
+                "url": "https://github.com/hamid-moghadam/awesome-interactive-learning/blob/main/README.md",
+            },
+            "student-suite-space-atlas": {
+                "date": "2026-10-16",
+                "source": "StudentSuite Awesome Study Resources",
+                "url": "https://github.com/StudentSuite/awesome-study-resources/blob/main/README.md",
+            },
             "awesome-homeschooling-space-atlas": {
                 "date": "2026-11-06",
                 "source": "Awesome Homeschooling",
@@ -327,7 +347,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 22)
+        self.assertEqual(len(records), 26)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -362,7 +382,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 22)
+        self.assertEqual(len(records), 26)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -384,14 +404,14 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 22)
+        self.assertEqual(len(records), 26)
 
     def test_homepage_shows_published_work_before_full_evidence_archive(self):
         records = parse_records()
         published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
         self.assertEqual(len(published), 7)
-        self.assertEqual(len(records), 22)
-        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 14)
+        self.assertEqual(len(records), 26)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 18)
         self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
         homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
