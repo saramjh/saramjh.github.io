@@ -52,6 +52,18 @@ The changes passed **20 upload and recovery scenarios in desktop Chrome emulatin
 
 The [GitHub Pages deployment](https://github.com/saramjh/richChecker/actions/runs/43371215024) succeeded. On November 14, the JavaScript served by the [live Richchecker KR page](https://saramjh.github.io/richChecker/) was byte-identical to js/script.js in the repository's main branch.
 
-**There is no verified result yet for the affected physical Android devices, or a before-and-after completion-rate comparison.** Removing the old file_read path makes that event disappear by design; it does not prove that every upload now succeeds. The next meaningful measurement is a device-by-device comparison of the new error stages and completed analyses over comparable periods.
+## What the post-deployment events revealed
+
+On November 14, I queried the app's GA4 data again. Android Chrome activity recorded **after the November 13 deployment** still included errors, now classified as `image_decode`.
+
+| Android Chrome event | Nov 12 (before) | Nov 13 (after deployment) |
+| --- | ---: | ---: |
+| Upload started | 9 | 6 |
+| Upload error | 8 (`file_read`) | 5 (`image_decode`, stage `decode`) |
+| Analysis completed | 1 | 1 |
+
+These are different calendar-day event aggregates, not matched upload attempts or a controlled group of users. **The ratios 8/9 and 5/6 are not comparable failure rates.** The new diagnosis tells me that image decoding still fails, but not which photo format or device configuration caused it. File-format reporting is still unavailable because its custom GA4 dimensions could not be registered.
+
+**I cannot say the issue is fixed on affected Android phones.** The shipped change improves the file-loading path and exposes a more specific failure stage. An authorized source of file-format evidence and reproduction on a real device are still needed to narrow down the remaining error.
 
 Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/)
