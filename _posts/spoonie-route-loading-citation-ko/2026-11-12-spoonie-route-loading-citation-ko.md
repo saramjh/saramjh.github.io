@@ -1,6 +1,6 @@
 ---
 title: "Spoonie의 화면 전환 로딩과 레시피 인용 검색 정비"
-description: "Spoonie 레시피 인용 검색, 목적지 스켈레톤과 화면 전환 중 숨겨진 입력 제어의 구현 기록."
+description: "Spoonie 화면 전환 중 잘못된 로딩 표시와 지연 복구를 수정한 사례. 목적지 스켈레톤·입력 제어·레시피 인용 검색을 함께 다룹니다."
 date: 2026-11-12
 tags: ["Spoonie", "Frontend", "User Experience"]
 permalink: /spoonie-route-loading-citation-ko/
@@ -12,7 +12,7 @@ published: true
 modified: 2026-11-14
 seo:
   title: "Spoonie 화면 전환 로딩·레시피 인용 검색 개선"
-  description: "Spoonie 레시피 인용 검색과 화면 전환 스켈레톤, 가려진 입력창 비활성화 및 배포 검증."
+  description: "Spoonie 목적지 스켈레톤·숨겨진 입력창 제어·취소된 링크와 지연된 화면 이동 복구의 구현 및 배포 검증."
 ---
 
 > English: [Route loading and recipe citation search in Spoonie](/spoonie-route-loading-citation-en/)
@@ -39,10 +39,12 @@ Spoonie의 다른 화면 상태 문제는 [계정별 좋아요·저장 캐시 �
 
 지연된 경로를 재현한 로컬 Chromium 테스트에서 스켈레톤은 90·200·500·950ms에 표시됐고, 새 화면이 준비되자 사라졌다. 회귀 테스트 405개와 별도 미디어 테스트 6개도 통과했다. 11월 14일 확인한 [운영 Spoonie](https://spoonie.kr/)의 `app/layout` JavaScript는 PR #42 Netlify 미리보기와 바이트 단위로 같았으며, `data-route-feedback` 구현을 포함했다. 실제 방문자의 체감 속도나 이탈률 변화는 아직 측정하지 않았다.
 
-### 11월 14일 후속 보완: 가려진 화면의 입력 막기
+### 11월 14일 후속 보완: 가려진 입력과 잘못된 로딩 표시 없애기
 
-목적지 스켈레톤이 이전 화면을 덮어도, 뒤에 남은 검색창에는 키보드로 입력할 수 있었다. [PR #43](https://github.com/saramjh/spoonie/pull/43)에서는 화면 이동이 진행되는 동안 이전 `main` 요소에 `inert`를 적용하고, 전환이 끝나면 해제하도록 수정했다. 하단 메뉴는 계속 사용할 수 있다. 헤더 스켈레톤에 필요한 조건도 중복된 `needsHeader` 상태 없이 이동할 경로에서 계산한다.
+목적지 스켈레톤 뒤에 남아 있는 검색창에 키보드로 입력할 수 있는 문제가 있었다. [PR #43](https://github.com/saramjh/spoonie/pull/43)은 화면 이동 중 이전 `main`에 `inert`를 적용해 입력을 막고, 목적지에서 계산할 수 있는 중복 `needsHeader` 상태를 제거했다. 사진 터치 후 포인터가 벗어나더라도 기존 300ms 싱글탭·더블탭 판정 시간에는 눌림 표시가 유지된다.
 
-같은 변경에서 사진을 누른 뒤 포인터가 벗어나도 기존 300ms 싱글탭·더블탭 판정 시간 동안 눌림 표시가 유지되도록 했다. PR에 기록된 Chromium 검증은 두 상호작용을 다뤘고, Vitest 405개와 안전성 테스트 6개가 통과했다. 11월 14일 병합 이후 [운영 Spoonie의 레이아웃 번들](https://spoonie.kr/_next/static/chunks/app/layout-54236469e75425ac.js)에서도 새 `inert` 적용과 `needsHeader` 제거를 확인했다. 화면 전환 코드의 배포를 확인한 결과이며, 실제 이용자의 행동 변화는 아직 측정하지 않았다.
+이후에는 앱에서 취소한 링크도 전역 클릭 감지기가 화면 이동으로 오인하는 문제가 드러났다. 실제로 이동하지 않는데도 전체 스켈레톤이 나타날 수 있었다. [PR #44](https://github.com/saramjh/spoonie/pull/44)는 전역 클릭 감지를 제거하고, 링크의 이동이 취소되지 않았을 때만 Next.js `onNavigate`에서 시작 신호를 보낸다. 코드로 이동하거나 뒤로 가는 동작은 기존 경로를 사용한다.
+
+목적지 응답이 10초 넘게 지연되면 진행 상태를 그냥 지우지 않고 **이전 화면 유지**와 **다시 시도**를 선택할 수 있게 했다. 쿼리만 바뀌는 이동은 기존 동작을 유지한다. PR #44에는 Vitest 407개·미디어 안전성 검사 6개 통과와 취소된 링크·뒤로 가기·키보드 포커스·재시도를 다룬 Chromium 테스트가 기록돼 있다. [11월 14일 운영 레이아웃 번들](https://spoonie.kr/_next/static/chunks/app/layout-ef63d2df452ac6a9.js)에서도 복구 문구와 화면 전환 구현을 확인했다. 이는 코드의 배포 근거이며 실제 이용자의 이탈 감소를 측정한 결과는 아니다.
 
 [원본 변경 사항](https://github.com/saramjh/spoonie/pull/34) · [Spoonie](https://spoonie.kr/)
