@@ -1,6 +1,6 @@
 ---
 title: "Route loading and recipe citation search in Spoonie"
-description: "A Spoonie engineering case on recipe citation search, destination skeletons, and input safety during navigation."
+description: "How Spoonie handles destination loading, canceled navigation and stalled routes, alongside recipe citation search."
 date: 2026-11-12
 tags: ["Spoonie", "Frontend", "User Experience"]
 permalink: /spoonie-route-loading-citation-en/
@@ -12,7 +12,7 @@ published: true
 modified: 2026-11-14
 seo:
   title: "Spoonie route loading and recipe citation search"
-  description: "Spoonie recipe citation search and destination skeleton fixes, including input safety during navigation."
+  description: "Spoonie destination skeletons, safe input handling, canceled links and 10-second navigation recovery, with source and deployment evidence."
 ---
 
 > 한국어: [Spoonie 화면 전환 로딩과 레시피 인용 검색 정비](/spoonie-route-loading-citation-ko/)
@@ -39,10 +39,12 @@ A move to search shows placeholders for the search field and filters; a move to 
 
 In an isolated Chromium test with a delayed route, the destination skeleton was visible at 90, 200, 500 and 950 ms, then disappeared when the route completed. The PR reports 405 passing regression tests and six separate media-cleanup tests. On November 14, the `app/layout` JavaScript served by [Spoonie](https://spoonie.kr/) was byte-identical to the PR #42 Netlify preview and included `data-route-feedback`. That confirms the deployed code, while real visitors' perceived wait times and abandonment have not been measured.
 
-### November 14 follow-up: keep the covered page inactive
+### November 14 follow-ups: prevent hidden input and false navigation
 
-The destination skeleton covered the old screen, but its search input could still receive keyboard input underneath it. [PR #43](https://github.com/saramjh/spoonie/pull/43) temporarily marks the outgoing `main` element as `inert` during navigation, then restores it when the transition ends. The bottom navigation stays usable. The change also derives header placeholders from the destination rather than storing a duplicate `needsHeader` field.
+A skeleton can cover the old screen while leaving its search input reachable by keyboard. [PR #43](https://github.com/saramjh/spoonie/pull/43) marks the outgoing `main` as `inert` until the new route commits. It also removes the duplicate `needsHeader` state and keeps photo-press feedback through the existing 300 ms single-versus-double-tap interval.
 
-The same patch keeps a photo's pressed feedback visible if the pointer leaves during its existing 300 ms single-versus-double-tap window. The PR records Chromium checks for both interactions, 405 passing Vitest cases and six safety tests. After the November 14 merge, [Spoonie's public layout bundle](https://spoonie.kr/_next/static/chunks/app/layout-54236469e75425ac.js) contained the new `inert` assignment and no `needsHeader` field. That confirms delivery of the navigation code; changes in visitor behavior have not been measured.
+A separate bug remained: the global click listener treated some canceled links as navigation, showing a full-screen skeleton even though the app had stopped the move. [PR #44](https://github.com/saramjh/spoonie/pull/44) removed that click listener. Links now report a real Next.js `onNavigate` event after the caller can cancel it. Programmatic routing and browser history keep their existing signals.
+
+If a destination is still pending after 10 seconds, the loading UI now explains the delay and offers **Keep previous screen** or **Try again**, rather than silently dismissing progress. Query-only updates retain their existing behavior. PR #44 reports 407 passing Vitest cases, six media safety checks and an isolated Chromium run covering canceled links, history, keyboard focus, retry and cancellation. The [November 14 production layout bundle](https://spoonie.kr/_next/static/chunks/app/layout-ef63d2df452ac6a9.js) includes the recovery text and navigation feedback; that verifies deployed code, not measured reductions in user frustration or abandonment.
 
 [Review the merged change](https://github.com/saramjh/spoonie/pull/34) · [Visit Spoonie](https://spoonie.kr/)
