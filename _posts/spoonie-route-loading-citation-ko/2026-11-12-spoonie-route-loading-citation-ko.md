@@ -1,6 +1,6 @@
 ---
 title: "Spoonie의 화면 전환 로딩과 레시피 인용 검색 정비"
-description: "Spoonie PR #34와 #42의 화면 전환 피드백, 목적지 스켈레톤, 레시피 인용 검색 개선 기록."
+description: "Spoonie 레시피 인용 검색, 목적지 스켈레톤과 화면 전환 중 숨겨진 입력 제어의 구현 기록."
 date: 2026-11-12
 tags: ["Spoonie", "Frontend", "User Experience"]
 permalink: /spoonie-route-loading-citation-ko/
@@ -12,7 +12,7 @@ published: true
 modified: 2026-11-14
 seo:
   title: "Spoonie 화면 전환 로딩·레시피 인용 검색 개선"
-  description: "Spoonie PR #34의 레시피 인용 검색과 PR #42의 즉시 화면 전환 스켈레톤, 배포 확인 범위."
+  description: "Spoonie 레시피 인용 검색과 화면 전환 스켈레톤, 가려진 입력창 비활성화 및 배포 검증."
 ---
 
 > English: [Route loading and recipe citation search in Spoonie](/spoonie-route-loading-citation-en/)
@@ -38,5 +38,11 @@ Spoonie의 다른 화면 상태 문제는 [계정별 좋아요·저장 캐시 �
 검색 화면으로 이동하면 검색창과 필터 자리부터, 레시피·게시물 상세로 이동하면 상세 화면의 자리 표시부터 보인다. 상단 진행 막대는 그대로 두고, 진행 중에도 하단 메뉴로 다른 화면을 선택할 수 있게 했다. 검색 필터처럼 주소의 쿼리만 바뀌는 경우에는 전체 화면을 가리지 않는다.
 
 지연된 경로를 재현한 로컬 Chromium 테스트에서 스켈레톤은 90·200·500·950ms에 표시됐고, 새 화면이 준비되자 사라졌다. 회귀 테스트 405개와 별도 미디어 테스트 6개도 통과했다. 11월 14일 확인한 [운영 Spoonie](https://spoonie.kr/)의 `app/layout` JavaScript는 PR #42 Netlify 미리보기와 바이트 단위로 같았으며, `data-route-feedback` 구현을 포함했다. 실제 방문자의 체감 속도나 이탈률 변화는 아직 측정하지 않았다.
+
+### 11월 14일 후속 보완: 가려진 화면의 입력 막기
+
+목적지 스켈레톤이 이전 화면을 덮어도, 뒤에 남은 검색창에는 키보드로 입력할 수 있었다. [PR #43](https://github.com/saramjh/spoonie/pull/43)에서는 화면 이동이 진행되는 동안 이전 `main` 요소에 `inert`를 적용하고, 전환이 끝나면 해제하도록 수정했다. 하단 메뉴는 계속 사용할 수 있다. 헤더 스켈레톤에 필요한 조건도 중복된 `needsHeader` 상태 없이 이동할 경로에서 계산한다.
+
+같은 변경에서 사진을 누른 뒤 포인터가 벗어나도 기존 300ms 싱글탭·더블탭 판정 시간 동안 눌림 표시가 유지되도록 했다. PR에 기록된 Chromium 검증은 두 상호작용을 다뤘고, Vitest 405개와 안전성 테스트 6개가 통과했다. 11월 14일 병합 이후 [운영 Spoonie의 레이아웃 번들](https://spoonie.kr/_next/static/chunks/app/layout-54236469e75425ac.js)에서도 새 `inert` 적용과 `needsHeader` 제거를 확인했다. 화면 전환 코드의 배포를 확인한 결과이며, 실제 이용자의 행동 변화는 아직 측정하지 않았다.
 
 [원본 변경 사항](https://github.com/saramjh/spoonie/pull/34) · [Spoonie](https://spoonie.kr/)
