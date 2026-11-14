@@ -1,17 +1,18 @@
 ---
-title: "AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 유지 방법"
+title: "cokacremote로 AI 코딩 에이전트 세션 컨텍스트 복구하기"
 date: 2026-10-05
+last_modified_at: 2026-11-14
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI 코딩", "컨텍스트 유지", "세션 컨텍스트", "개발 에이전트", "프로젝트 메모리"]
 permalink: /ai-coding-context-continuity-cokacremote/
 layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /en-ai-coding-context-continuity-cokacremote/
-description: "AI 코딩 에이전트의 새 세션에서 프로젝트 맥락이 사라지는 이유와 세션 간 컨텍스트를 유지하는 방법을 정리합니다. Persistent memory, instruction file, checkpoint, Serena·claude-mem·cokacremote의 역할을 실제 구현으로 비교합니다."
-excerpt: "AI 코딩 에이전트의 persistent memory는 컨텍스트 윈도우나 AGENTS.md 같은 instruction file과 다릅니다. 새 세션이 실제 프로젝트 상태를 이어받게 만든 bootstrap·checkpoint·recall 구조를 설명합니다."
+description: "cokacremote의 Git 기반 프로젝트 부트스트랩과 체크포인트로 새 코딩 세션의 작업 맥락을 복구한 사례. Serena·claude-mem의 조회 역할과 실제 한계를 설명합니다."
+excerpt: "cokacremote에서 새 코딩 세션의 현재 Git 상태와 체크포인트를 먼저 읽고, 과거 결정은 필요할 때 조회하도록 구성한 실제 프로젝트 컨텍스트 복구 사례입니다."
 seo:
-  title: "AI 코딩 에이전트 세션 컨텍스트 유지 방법: Persistent Memory 실전"
-  description: "AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 persistent memory 설계 방법. instruction file, checkpoint, Serena·claude-mem·cokacremote를 실제 구조로 비교합니다."
+  title: "cokacremote: AI 코딩 세션 컨텍스트 복구 방법"
+  description: "cokacremote에서 현재 Git 상태·프로젝트 체크포인트·필요시 메모리 조회를 연결한 실제 코딩 세션 컨텍스트 복구 구조와 구현 한계."
   keywords:
     - AI 코딩 컨텍스트 유지
     - AI 코딩 에이전트 메모리
@@ -30,13 +31,15 @@ image_width: 1200
 image_height: 630
 ---
 
-# AI 코딩 에이전트가 새 세션에서 컨텍스트를 잊는 이유와 유지 방법
+# cokacremote로 AI 코딩 세션의 프로젝트 맥락을 이어가는 방법
 
-**핵심은 메모리 도구를 많이 설치하는 게 아니라, 새 세션이 무엇을 다시 읽고 어떤 상태를 저장하며 과거 메모리와 현재 Git이 충돌할 때 무엇을 믿을지 정하는 것입니다. Serena·Ponytail·claude-mem을 설치해 놓고도 실패했던 이유를 실제 구현으로 정리했습니다.**
+**제 로컬 cokacremote에서는 새 코딩 세션을 시작할 때 현재 Git 상태와 프로젝트 체크포인트를 확인하고, 과거 결정은 필요한 경우에 조회하도록 구성했습니다. Serena·Ponytail·claude-mem의 역할을 정리하면서 실제로 구현한 부분과 아직 복구하지 못하는 부분을 설명합니다.**
 
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
-  🌐 <strong>English version:</strong> <a href="/en-ai-coding-context-continuity-cokacremote/">How to Keep AI Coding Agent Context Across Sessions</a>
+  🌐 <strong>English version:</strong> <a href="/en-ai-coding-context-continuity-cokacremote/">cokacremote: Carry Coding-Agent Context Across Sessions</a>
 </p>
+
+MCP 도구 자체는 [cokacremote GitHub 저장소](https://github.com/kstost/cokacremote)에서 확인할 수 있습니다. 아래에서는 제 로컬 코딩 작업에서 사용한 프로젝트 컨텍스트 복구 흐름을 설명합니다.
 
 `AI 코딩 에이전트 메모리`, `세션 컨텍스트 유지`, `persistent memory`, `context engineering`을 검색할 때 먼저 구분해야 할 것은 세 가지입니다.
 
