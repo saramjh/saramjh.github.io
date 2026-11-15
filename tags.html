@@ -6,7 +6,13 @@ ads: false
 description: "Browse DevTestudinidae articles grouped by topic tags."
 ---
 
-<div class="archive-tags">
+<div class="tag-topic-filter" id="tag-topic-filter" hidden>
+  <label for="tag-topic-query">Find a topic</label>
+  <input type="search" id="tag-topic-query" aria-controls="tag-topic-links" autocomplete="off" spellcheck="false" placeholder="Search topic names">
+  <p id="tag-topic-status" role="status" aria-live="polite" aria-atomic="true"></p>
+</div>
+
+<div class="archive-tags" id="tag-topic-links">
   <a class="tag-item" href="#">all</a>
   {%- for tag in site.tags -%}
     {%- capture name -%}{{ tag | first }}{%- endcapture -%}
@@ -28,3 +34,4 @@ description: "Browse DevTestudinidae articles grouped by topic tags."
     </article>
   {%- endfor -%}
 {%- endfor -%}
+<script src="{{ '/assets/js/tags-topic-filter.js' | relative_url }}" defer></script>

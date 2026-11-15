@@ -463,6 +463,32 @@
   h2 { margin: 12px 0 9px; }
 }
 
+// The topic index is still usable as plain anchor links without JavaScript.
+.tag-topic-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0 0 18px;
+
+  &[hidden] { display: none; }
+  label { font-size: 0.9rem; }
+  input {
+    flex: 1 1 220px;
+    min-width: 0;
+    max-width: 380px;
+    padding: 9px 12px;
+    border: 1px solid rgba(128, 128, 128, 0.45);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    &:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  }
+  p { margin: 0; font-size: 0.85rem; opacity: 0.8; }
+}
+.archive-tags .tag-item[hidden] { display: none; }
+
 .archive-tags {
   display: flex;
   flex-wrap: wrap;
