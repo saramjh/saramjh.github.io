@@ -83,11 +83,14 @@
   type: listing
   status: confirmed
   source: "Kantorilode"
-  title: "Birds of Japan — East Asia and beyond links (legacy Weebly page)"
-  detail: "The legacy Weebly links page includes KoreAves. The primary .com links page did not show it at verification; no claim of current primary-domain listing or measured use."
+  title: "Birds of Japan — South Korean Birding link on current primary domain"
+  detail: "The current primary .com page and web.app mirror each link SOUTH KOREAN BIRDING to https://koreaves.com/ as verified on 2026-11-15; the legacy Weebly page keeps its historical KoreAves entry. One directory placement, not several endorsements or measured use."
   case_ko: "/koreaves-external-resources-ko/"
   case_en: "/koreaves-external-resources-en/"
-  url: "https://kantorilode.weebly.com/links.html"
+  url: "https://kantorilode.com/links.html"
+  mirror_url: "https://kantorilode.web.app/links.html"
+  legacy_url: "https://kantorilode.weebly.com/links.html"
+  verified_at: "2026-11-15"
 - id: greenus-koreaves-community-tool
   project: koreaves
   type: listing

@@ -177,7 +177,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 "https://birdalbum.com/countries/kr/", "Bird Album"
             ),
             "kantorilode-koreaves-legacy-links": (
-                "https://kantorilode.weebly.com/links.html", "Kantorilode"
+                "https://kantorilode.com/links.html", "Kantorilode"
             ),
         }
         for record_id, (url, owner) in checks.items():
@@ -200,6 +200,12 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertNotIn("????", post)
                 self.assertIn("modified: 2026-11-15", post)
         self.assertIn("legacy", records["kantorilode-koreaves-legacy-links"]["detail"].lower())
+        kantorilode = records["kantorilode-koreaves-legacy-links"]
+        self.assertEqual(kantorilode["mirror_url"], "https://kantorilode.web.app/links.html")
+        self.assertEqual(kantorilode["legacy_url"], "https://kantorilode.weebly.com/links.html")
+        self.assertEqual(kantorilode["verified_at"], "2026-11-15")
+        self.assertIn("SOUTH KOREAN BIRDING", kantorilode["detail"])
+        self.assertIn("one directory placement", kantorilode["detail"].lower())
         en = (ROOT / "_posts/folio-koreaves-resources-en" /
               "2026-11-02-folio-koreaves-resources-en.md").read_text("utf8")
         ko = (ROOT / "_posts/folio-koreaves-resources-ko" /
@@ -208,6 +214,13 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertIn("네", ko)
         self.assertIn("https://kantorilode.com/links.html", en)
         self.assertIn("https://kantorilode.com/links.html", ko)
+        for edition in (ko, en):
+            self.assertIn("https://kantorilode.web.app/links.html", edition)
+            self.assertIn("https://kantorilode.weebly.com/links.html", edition)
+            self.assertIn("https://koreaves.com/", edition)
+            self.assertIn("SOUTH KOREAN BIRDING", edition)
+        self.assertNotIn("did not display the link", en)
+        self.assertNotIn("아직 보이지 않았다", ko)
         self.assertNotIn("15 language editions verified", en.lower())
 
     def test_awesome_geodata_koreaves_entry_is_a_directory_link(self):
