@@ -3,6 +3,10 @@ title: "EDS Book: A Bird-Map Notebook Idea Reached Preparation"
 date: 2026-11-14
 tags: ["EDS Book", "environmental data science", "biodiversity", "GBIF", "reproducible notebooks", "Python", "data provenance"]
 permalink: /eds-book-bird-occurrence-notebook-preparation-en/
+related_urls:
+  - /koreaves-bird-evidence-atlas-en/
+  - /koreaves-unsustainable-bird-map-en/
+  - /koreaves-external-resources-en/
 layout: default
 lang: en
 alternate_lang: ko
