@@ -38,6 +38,8 @@ Both pages now use a left-aligned row containing the profile and author name. Th
 
 On the current public Recipe detail page, the profile and author name appear on the left. The Recipeed page uses the same structure, without a separate type label beside the author name. "Recipeed" remains in the browser document title.
 
+I merged the changes in two pull requests on 9 November 2026: [PR #14](https://github.com/saramjh/spoonie/pull/14) aligned the Recipe author row to the left, and [PR #15](https://github.com/saramjh/spoonie/pull/15) removed the Recipeed type label from its author row. Each PR records 316 passing Vitest tests across 71 files and a passing TypeScript check. The pre-merge checks also include comparisons at 320px and 390px.
+
 ## What the public pages confirm
 
 On November 10, 2026, I opened both public detail pages. Each returned HTTP 200, and both rendered the author link in the same left-aligned position.
