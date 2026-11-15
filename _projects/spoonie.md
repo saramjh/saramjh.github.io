@@ -12,7 +12,7 @@ summary: A cooking-oriented web product exploring useful recipe discovery, perso
 image: /assets/images/portfolio/spoonie-desktop.jpg
 image_alt: Screenshot of the Spoonie cooking and recipes homepage
 site_url: https://spoonie.kr/
-writing_url: /spoonie-privacy-cache-transition-en/
+writing_url: /spoonie-bookmark-privacy-boundary-en/
 status: Product in development
 stack:
   - Next.js 16
@@ -49,6 +49,14 @@ A recipe can become private while another viewer still has a cached copy of its 
 The earlier [PR #37](https://github.com/saramjh/spoonie/pull/37) separated viewer-specific likes and bookmarks. The cache changes in PR #38 cover a different point in the flow: privacy changes and delayed account responses. Both fixes are merged, and the production recipe route was checked against PR #38's deployed browser assets. Authenticated cross-account use in production and audience retention have not been measured.
 
 Read the implementation note in [English](/spoonie-privacy-cache-transition-en/) or [Korean](/spoonie-privacy-cache-transition-ko/). The [viewer-cache follow-up](/spoonie-viewer-cache-isolation-en/) has the earlier source and tests.
+
+## Keeping raw bookmark relationships private
+
+[PR #39](https://github.com/saramjh/spoonie/pull/39) adds a database-level boundary for bookmark records. It removes the broad `All users can view bookmarks` SELECT policy and revokes SELECT from PostgreSQL's `anon` role. The authenticated `Users can manage their bookmarks` policy remains owner-scoped, with `user_id = auth.uid()` in both `USING` and `WITH CHECK`.
+
+On November 15, 2026, the production migration ledger contained version `20261113054444`. RLS was enabled, `anon` had no SELECT privilege, authenticated CRUD privileges remained, and a read-only anonymous REST HEAD request returned HTTP 401. The public `/recipes` route returned HTTP 200. A production two-account session-switching test remains unrun.
+
+Read the [English implementation note](/spoonie-bookmark-privacy-boundary-en/) or [Korean implementation note](/spoonie-bookmark-privacy-boundary-ko/).
 
 ## Finding recipes beyond the first page
 
