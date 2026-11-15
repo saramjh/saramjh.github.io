@@ -385,5 +385,25 @@ with sync_playwright() as p:
         assert geom['headline'] and geom['eventCount'], (viewport, 'live reader facts missing', geom)
         print('PASS ScratchLottery KO responsive original illustration', viewport, geom['imageSrc'])
         ctx.close()
+    # Search the built JSON through the existing archive UI; this is an
+    # on-site navigation check, not a search-engine indexing claim.
+    for viewport in (390, 1440):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        response = page.goto(BASE + '/archive/', wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, (viewport, 'archive search response')
+        page.locator('#search-input').fill('GREENUS')
+        direct = page.locator('#search-results a[href="/portfolio/recognition/#evidence-greenus-koreaves-community-tool"]')
+        direct.wait_for(state='visible', timeout=10000)
+        assert direct.count() == 1, (viewport, 'duplicate GREENUS search result')
+        direct.click()
+        page.wait_for_url('**/portfolio/recognition/#evidence-greenus-koreaves-community-tool')
+        item = page.locator('#evidence-greenus-koreaves-community-tool')
+        assert item.is_visible(), (viewport, 'GREENUS result target not visible')
+        assert page.locator('[data-filter="all"]').get_attribute('aria-pressed') == 'true', (
+            viewport, 'external evidence fragment accidentally changed category')
+        print('PASS verified external evidence search and direct link', viewport)
+        page.close()
     browser.close()
 print('PASS all browser geometry checks')

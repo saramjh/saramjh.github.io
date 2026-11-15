@@ -3,13 +3,30 @@ layout: none
 ---
 
 [
+  {% assign search_separator = '' %}
   {% for post in site.posts %}
+    {{ search_separator }}
     {
       "title"    : "{{ post.title | escape }}",
       "description" : "{{ post.description | escape }}",
       "tags"     : "{{ post.tags | join: ', ' }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date }}"
-    } {% unless forloop.last %},{% endunless %}
+    }
+    {% assign search_separator = ',' %}
+  {% endfor %}
+  {% for record in site.data.recognitions %}
+    {% if record.status == 'confirmed' %}
+      {{ search_separator }}
+      {% capture evidence_search_title %}{{ record.source | escape }} — {{ record.title | escape }}{% endcapture %}
+      {
+        "title"       : {{ evidence_search_title | strip | jsonify }},
+        "description" : {{ record.detail | escape | jsonify }},
+        "tags"        : {{ record.id | append: ' ' | append: record.project | append: ' ' | append: record.source | append: ' ' | append: record.type | jsonify }},
+        "url"         : "{{ site.baseurl }}/portfolio/recognition/#evidence-{{ record.id | escape }}",
+        "date"        : {{ record.date | default: '' | jsonify }}
+      }
+      {% assign search_separator = ',' %}
+    {% endif %}
   {% endfor %}
 ]

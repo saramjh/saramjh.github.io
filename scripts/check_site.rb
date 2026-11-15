@@ -4,6 +4,8 @@ require 'pathname'
 require 'yaml'
 require 'date'
 require 'digest'
+require 'json'
+require 'cgi'
 
 root = Pathname.new(ARGV.fetch(0, '_site')).expand_path
 abort "Build directory missing: #{root}" unless root.directory?
@@ -41,6 +43,35 @@ end
 end
 %w[.context .serena].each do |local_only|
   errors << "Local-only directory leaked into build: #{local_only}" if root.join(local_only).exist?
+end
+
+# A source must be in the search index only after its original evidence
+# ledger marks it confirmed. Reuse stable archive fragments, not provider URLs.
+search_file = root.join('assets/search.json')
+source_ledger = Pathname.new(File.expand_path('..', __dir__)).join('_data/recognitions.yml')
+if !search_file.file?
+  errors << 'Built search index missing'
+else
+  begin
+    search_items = JSON.parse(search_file.read)
+    raise 'Search index must be an array' unless search_items.is_a?(Array)
+    confirmed = YAML.safe_load(source_ledger.read, permitted_classes: [Date, Time]).select { |record| record['status'] == 'confirmed' }
+    original_evidence = search_items.select { |item| item.is_a?(Hash) && item['url'].to_s.start_with?('/portfolio/recognition/#evidence-') }
+    expected_urls = confirmed.map { |record| "/portfolio/recognition/#evidence-#{record.fetch('id')}" }
+    errors << 'Evidence search index count or URL mismatch' unless original_evidence.map { |item| item['url'] }.sort == expected_urls.sort
+    confirmed.each do |record|
+      url = "/portfolio/recognition/#evidence-#{record.fetch('id')}"
+      indexed = original_evidence.find { |item| item['url'] == url }
+      next unless indexed
+      expected_title = "#{record.fetch('source')} — #{record.fetch('title')}"
+      errors << "Evidence search title mismatch: #{record.fetch('id')}" unless CGI.unescapeHTML(indexed['title'].to_s) == expected_title
+      errors << "Evidence search description mismatch: #{record.fetch('id')}" unless CGI.unescapeHTML(indexed['description'].to_s) == record.fetch('detail')
+      errors << "Evidence search ID missing: #{record.fetch('id')}" unless indexed['tags'].to_s.include?(record.fetch('id'))
+    end
+    errors << 'Blog articles missing from search index' unless search_items.any? { |item| item.is_a?(Hash) && item['url'].to_s.start_with?('/') && !item['url'].to_s.start_with?('/portfolio/recognition/#evidence-') }
+  rescue JSON::ParserError, Psych::Exception, KeyError, TypeError => e
+    errors << "Evidence search index invalid: #{e.class}: #{e.message}"
+  end
 end
 
 root.glob('**/*.html').each do |file|
