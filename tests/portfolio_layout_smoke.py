@@ -548,6 +548,16 @@ with sync_playwright() as p:
                 viewport,route,'focus did not return to toggle')
             toggle.check(force=True)
             page.set_viewport_size({'width': 1024, 'height': 900})
+            # CSS media-query change events can arrive after the resize call.
+            # Wait for the actual transition, not one synchronous tick.
+            page.wait_for_function('''() => {
+                const toggle = document.querySelector('#menu-trigger');
+                const areas = document.querySelectorAll(
+                    'body > .wrapper, body > .folio, body > .folio-footer');
+                return !window.matchMedia('(max-width: 768px)').matches &&
+                    !toggle.checked && toggle.getAttribute('aria-expanded') === 'false' &&
+                    [...areas].every(node => !node.inert);
+            }''', timeout=5000)
             assert not toggle.is_checked(), (viewport,route,'desktop resize left overlay open')
             assert page.evaluate(
                 'sel => [...document.querySelectorAll(sel)].every(node=>!node.inert)',
