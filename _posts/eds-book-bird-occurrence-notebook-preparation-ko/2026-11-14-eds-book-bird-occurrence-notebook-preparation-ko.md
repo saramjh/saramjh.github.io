@@ -67,6 +67,14 @@ image_height: 341
 
 이 숫자는 **입력 데이터의 선별·그리기 시험 결과**입니다. 새의 개체 수나 분포 범위, 연도별 증감, 생물학적 부재를 나타내지 않습니다. 1,000 m라는 기준도 수업에서 필터 선택의 영향을 설명하려고 사용한 예시일 뿐, 모든 연구에 적용되는 표준으로 제시하지 않았습니다.
 
+<figure>
+  <picture>
+    <source media="(max-width: 560px)" type="image/svg+xml" srcset="/assets/images/dev/eds-notebook-grid-20261115/grid-comparison-ko-mobile.svg">
+    <img src="/assets/images/dev/eds-notebook-grid-20261115/grid-comparison-ko.svg" alt="같은 GBIF 관측 기록 50건을 10 km 격자(표시된 칸 12개)와 50 km 격자(8개)로 그린 비교. 빈 칸은 새가 없음을 뜻하지 않음." width="1152" height="680" loading="lazy" decoding="async" style="display:block;max-width:100%;height:auto;">
+  </picture>
+  <figcaption>같은 기록의 다른 집계 단위입니다. 조사 범위나 종의 분포를 보여주는 지도는 아닙니다. <a href="https://github.com/saramjh/bird-records-not-absence-notebook/blob/6c411e0b7159897b164621143bb863537a606994/data/first-page-grids-20261026.json">원본 집계와 조회 조건</a>.</figcaption>
+</figure>
+
 10 km에서 12개였던 표시 칸이 50 km에서 8개로 줄었다고 해서 새가 이동한 것도 아닙니다. 같은 기록에 다른 공간 집계 단위를 적용한 결과입니다.
 
 ### 노트북 실행과 원본 데이터 재현성은 별도 검증
