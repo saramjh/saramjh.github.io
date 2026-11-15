@@ -3,6 +3,10 @@ title: "EDS Book에서 조류 관측 지도 교육 노트북의 준비 단계로
 date: 2026-11-14
 tags: ["EDS Book", "환경 데이터 과학", "조류 관측", "GBIF", "재현 가능한 노트북", "Python", "데이터 출처"]
 permalink: /eds-book-bird-occurrence-notebook-preparation-ko/
+related_urls:
+  - /koreaves-bird-evidence-atlas/
+  - /koreaves-unsustainable-bird-map-ko/
+  - /koreaves-external-resources-ko/
 layout: default
 lang: ko
 alternate_lang: en

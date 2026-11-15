@@ -3,6 +3,25 @@
 {%- assign max_related = 4 -%}
 {%- assign count = 0 -%}
 {%- capture related_items -%}
+  {%- if page.related_urls and page.related_urls != empty -%}
+    {%- for target in page.related_urls -%}
+      {%- assign post = site.posts | where: 'url', target | first -%}
+      {%- if post and post.url != page.url and count < max_related -%}
+        {%- assign post_lang = post.lang | default: site.lang | split: '-' | first -%}
+        {%- if post_lang == current_lang -%}
+          <li style="margin-bottom: 0.85rem; line-height: 1.45;">
+            <a href="{{ post.url | relative_url }}" style="font-weight: 600; text-decoration: none; font-size: 0.98rem;">
+              {{ post.title }}
+            </a>
+            <span style="font-size: 0.82rem; color: #888; display: block; margin-top: 0.2rem;">
+              {{ post.date | date: "%b %d, %Y" }}
+            </span>
+          </li>
+          {%- assign count = count | plus: 1 -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
   {%- for post in site.posts -%}
     {%- if post.url != page.url and count < max_related -%}
       {%- assign post_lang = post.lang | default: site.lang | split: '-' | first -%}
@@ -28,6 +47,7 @@
       {%- endif -%}
     {%- endif -%}
   {%- endfor -%}
+  {%- endif -%}
 {%- endcapture -%}
 {%- if count > 0 -%}
 <div class="related-posts" style="margin-top: 3.5rem; margin-bottom: 2rem; border-top: 1px solid rgba(128, 128, 128, 0.2); padding-top: 1.8rem;">

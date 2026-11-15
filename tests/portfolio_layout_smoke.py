@@ -452,5 +452,32 @@ with sync_playwright() as p:
             assert state['alt'] and ('50' in state['alt']), (viewport,lang,'missing source-grounded alt',state)
             print('PASS EDS source-bound responsive image',viewport,lang)
         context.close()
+    # Editorially curated context: the EDS Book post should lead the reader
+    # to relevant bird-data sources, not unrelated posts sharing 'Python'.
+    expected_eds_related = {
+        'en': ['/koreaves-bird-evidence-atlas-en/',
+               '/koreaves-unsustainable-bird-map-en/',
+               '/koreaves-external-resources-en/'],
+        'ko': ['/koreaves-bird-evidence-atlas/',
+               '/koreaves-unsustainable-bird-map-ko/',
+               '/koreaves-external-resources-ko/'],
+    }
+    for viewport in (390, 1440):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        for lang, expected in expected_eds_related.items():
+            url = '/eds-book-bird-occurrence-notebook-preparation-'+lang+'/'
+            response = page.goto(BASE+url,wait_until='domcontentloaded',timeout=20000)
+            assert response.status == 200, (viewport,lang,'EDS article unavailable')
+            related = page.locator('.related-posts a')
+            observed = related.evaluate_all('els => els.map(a => new URL(a.href).pathname)')
+            assert observed == expected, (viewport,lang,'off-topic or wrong-language reading path',observed)
+            assert page.evaluate('document.documentElement.scrollWidth') <= viewport+2, (
+                viewport,lang,'related links cause horizontal overflow')
+            for item in related.all():
+                assert item.inner_text().strip(),(viewport,lang,'empty source title')
+            print('PASS source-curated EDS related reading',viewport,lang,observed)
+        page.close()
     browser.close()
 print('PASS all browser geometry checks')
