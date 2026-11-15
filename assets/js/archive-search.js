@@ -9,12 +9,14 @@
   const articleSection = document.getElementById('search-article-section');
   const evidenceList = document.getElementById('evidence-search-results');
   const articleList = document.getElementById('search-results');
+  const moreArticles = document.getElementById('search-more-articles');
   if (!input || !status || !evidenceSection || !articleSection ||
-      !evidenceList || !articleList) return;
+      !evidenceList || !articleList || !moreArticles) return;
 
   const EVIDENCE_PREFIX = '/portfolio/recognition/#evidence-';
   let records = null;
   let failed = false;
+  let visibleArticles = MAX_ARTICLES;
   const decoder = document.createElement('textarea');
 
   function readable(value) {
@@ -51,6 +53,7 @@
     const words = input.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
     evidenceSection.hidden = true;
     articleSection.hidden = true;
+    moreArticles.hidden = true;
     if (words.length === 0) {
       status.textContent = '';
       evidenceList.replaceChildren();
@@ -71,7 +74,10 @@
     const evidenceMatches = matched.filter(isEvidence);
     const articleMatches = matched.filter(function (item) { return !isEvidence(item); });
     renderList(evidenceList, evidenceMatches);
-    renderList(articleList, articleMatches.slice(0, MAX_ARTICLES));
+    const shownArticles = Math.min(articleMatches.length, visibleArticles);
+    renderList(articleList, articleMatches.slice(0, shownArticles));
+    moreArticles.hidden = shownArticles === articleMatches.length;
+    moreArticles.textContent = 'Show ' + Math.min(MAX_ARTICLES, articleMatches.length - shownArticles) + ' more articles';
     evidenceSection.hidden = evidenceMatches.length === 0;
     articleSection.hidden = articleMatches.length === 0;
     if (matched.length === 0) {
@@ -79,11 +85,18 @@
       return;
     }
     status.textContent = 'Verified external records: ' + evidenceMatches.length +
-      '. Articles: ' + Math.min(articleMatches.length, MAX_ARTICLES) +
+      '. Articles: ' + shownArticles +
       ' of ' + articleMatches.length + '.';
   }
 
-  input.addEventListener('input', render);
+  input.addEventListener('input', function () {
+    visibleArticles = MAX_ARTICLES;
+    render();
+  });
+  moreArticles.addEventListener('click', function () {
+    visibleArticles += MAX_ARTICLES;
+    render();
+  });
   fetch('/assets/search.json', { credentials: 'same-origin' })
     .then(function (response) {
       if (!response.ok) throw new Error('Search index unavailable');

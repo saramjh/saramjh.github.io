@@ -412,6 +412,28 @@ with sync_playwright() as p:
                 viewport, query, 'article group hidden')
             width = page.evaluate('document.documentElement.scrollWidth')
             assert width <= viewport + 2, (viewport, query, 'horizontal overflow', width)
+        # Readers must reach older article matches without losing all confirmed
+        # external evidence or replacing the intentionally compact first page.
+        page.locator('#search-input').fill('Spoonie')
+        articles = page.locator('#search-results a')
+        more = page.locator('#search-more-articles')
+        assert articles.count() == 10, (viewport, 'initial article count')
+        assert more.is_visible(), (viewport, 'additional matching articles unavailable')
+        assert page.locator('#evidence-search-results a').count() == 3
+        prior = articles.count()
+        for _ in range(20):
+            if not more.is_visible():
+                break
+            more.click()
+            assert articles.count() > prior, (viewport, 'show more did not reveal entries')
+            prior = articles.count()
+        assert not more.is_visible(), (viewport, 'article results not exhaustible')
+        assert prior > 10, (viewport, 'search still hides older matching articles')
+        assert 'of ' + str(prior) in page.locator('#search-result-status').inner_text()
+        assert page.locator('#evidence-search-results a').count() == 3
+        assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2
+        page.locator('#search-input').fill('KoreAves')
+        assert 0 < articles.count() <= 10, (viewport, 'query did not reset article count')
         # Jekyll HTML-escapes apostrophes and ampersands in its JSON source.
         # The visible title is decoded; the searchable corpus must be as well.
         for query, original_url in (
