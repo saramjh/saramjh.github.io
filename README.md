@@ -22,6 +22,15 @@ GitHub Actions가 빌드·검사 후 GitHub Pages에 배포합니다.
 ruby scripts/new_post.rb rich-checker-renewal "부자 관상 테스트를 새로 만들었습니다"
 ```
 
+외부 PR·기고·기관 등재처럼 원본 URL이 있는 **성과 글**은 작성 전에 같은 URL로 기존 글을 확인합니다.
+
+```sh
+python3 scripts/check_achievement_source_coverage.py --source-url "https://github.com/koajs/session/pull/240"
+ruby scripts/new_post.rb --achievement-source "https://github.com/koajs/session/pull/240" fresh-story "새로운 성과의 제목"
+```
+
+검사 종료 코드 3은 해당 원본을 참조한 기존 글이 있다는 뜻입니다. 검출된 글이 같은 성과를 다뤘는지 확인하고 중복이면 새 글을 만들지 않습니다. 링크가 발견되지 않아도 새 글의 독창성·사용권·발행 권한까지 검증된 것은 아닙니다. 새 글은 기존 한·영문 편집 규칙에 따라 각각 완성합니다.
+
 생성된 Markdown 파일 옆에 이미지를 넣고 파일명으로 참조합니다.
 
 ```text
