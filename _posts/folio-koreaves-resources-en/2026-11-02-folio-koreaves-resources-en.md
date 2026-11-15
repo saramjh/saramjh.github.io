@@ -50,6 +50,12 @@ The lists serve different readers. GREENUS places the map in an environmental da
 
 Bird Album's country reference offers a bird-information route alongside the older software and geodata directories. Bird Album's [data-source explanation](https://birdalbum.com/about/) uses IOC World Bird List 15.2, while the [KoreAves dataset notes](https://koreaves.com/dataset/) describe a Korean national checklist foundation. A link between the projects does not make their taxon concepts identical. None of these listings measures actual reader visits to KoreAves.
 
+## A birdwatching guide cites the evidence map
+
+[Daily Korea's November 15, 2026 guide to first-time birdwatching at Suncheon Bay](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/) links to the [KoreAves regional evidence map](https://koreaves.com/gis/) and [guide to reading occurrence records](https://koreaves.com/guide/) while discussing how to look for Hooded Cranes. It explains that a shaded region indicates qualifying records, not a population count.
+
+The article is credited to *Daily Korea Editorial*. I did not author or co-write it. Its use of KoreAves as a linked reference is independently visible, but the link does not measure visits to the atlas.
+
 ## A separate kind of record: GBIF Literature
 
 The [GBIF Literature API record](https://api.gbif.org/v1/literature/dc2c4f8b-062c-3eb1-8073-8a15529823b5) identifies KoreAves as a `WEB_PAGE`, with the project website as the linked resource. This is a **catalogue/data-use record**. It should not be read as a peer-reviewed publication, a quality certification, or an institutional endorsement by GBIF.

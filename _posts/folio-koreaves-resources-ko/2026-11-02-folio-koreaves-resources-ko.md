@@ -48,6 +48,12 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 
 Bird Album의 국가별 조류 정보 페이지는 기존 소프트웨어·지리공간 자료 목록과 다른 방식으로 KoreAves를 발견할 경로다. [Bird Album의 자료 설명](https://birdalbum.com/about/)은 IOC 15.2 목록을 사용한다고 밝히고, [KoreAves 데이터 설명](https://koreaves.com/dataset/)은 한국 국가목록을 기준으로 한다. 두 사이트가 연결됐다고 동일한 분류 개념을 적용한다는 뜻은 아니다. 링크를 통한 실제 방문이나 사용자 수는 확인되지 않았다. 최초 게재일 근거가 없는 항목에는 날짜를 붙이지 않았다.
 
+## 순천만 탐조 기사에서 참고한 지도
+
+[Daily Korea의 2026년 11월 15일 순천만 첫 탐조 안내](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/)는 처음 방문하는 사람이 흑두루미를 관찰할 때 참고할 자료로 [KoreAves 지역 기록 지도](https://koreaves.com/gis/)와 [기록 읽는 법](https://koreaves.com/guide/)을 연결한다. 기사에서는 지역에 색이 있다는 사실이 해당 조건의 관찰 기록을 뜻하며, 기록 수를 개체 수로 해석해서는 안 된다는 점도 설명한다.
+
+글의 발행 주체는 *Daily Korea Editorial*이다. 내가 기고하거나 공동 작성한 기사가 아니라, 외부 편집 기사에서 프로젝트의 자료가 인용된 사례다. 이 링크만으로 실제 방문자 수는 알 수 없다.
+
 ## GBIF Literature 기록은 무엇을 뜻할까
 
 [GBIF 공개 API](https://api.gbif.org/v1/literature/dc2c4f8b-062c-3eb1-8073-8a15529823b5)에서 KoreAves라는 제목의 기록을 확인할 수 있으며 자료 유형은 `WEB_PAGE`다. 즉 GBIF 자료 이용을 기록하는 체계 안에 웹페이지가 등록되어 있다는 의미이지, **학술 논문 게재나 GBIF의 공식 품질 인증을 받았다는 뜻은 아니다.**
