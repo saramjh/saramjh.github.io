@@ -2,6 +2,8 @@
 title: "KoreAves: Explore South Korean Bird Records with Sources and Regional Evidence"
 description: "A free bird evidence atlas for South Korea's 597 species and 20 subspecies. Explore qualifying source-linked occurrence evidence across 17 regions without confusing records with population or biological range."
 date: 2026-10-12
+modified: 2026-11-16
+last_modified_at: 2026-11-16
 tags: ["KoreAves", "South Korea birds", "Korean bird checklist", "GBIF", "birding", "biodiversity data", "GIS", "citizen science", "provenance"]
 permalink: /koreaves-bird-evidence-atlas-en/
 layout: default
@@ -35,6 +37,12 @@ The map carries explicit limitations:
 - **Regional overlap is not co-occurrence.** Two taxa documented within one large division may have been recorded at unrelated places and times.
 
 These distinctions matter when maps are read by visitors, educators, birders and researchers. The interface tries to keep those caveats close to the claims rather than hiding them exclusively in a methodology document.
+
+## November 16 update: Region searches now show only matching birds
+
+In the [Seoul regional bird catalog](https://koreaves.com/regions/seoul/), a search could reduce the result count while leaving unrelated bird cards visible. The filter was marking nonmatches with `hidden`, but the cards' `display: grid` rule overrode the browser's default hiding behavior. I corrected that CSS rule and tightened the regional summary and card spacing on small screens.
+
+I checked the published page in Chrome at 390px and 1440px. Searching for `Accipiter gularis` now leaves **one matching bird** out of Seoul's 280 listed taxa; clearing the search restores all 280. The same visibility rule also covers the [full species catalog](https://koreaves.com/species/browse/). This was a repair to the way filtered results appear, not a change to the underlying source records or eligibility rules. Any change in actual reader use has not been measured.
 
 ## Trace the sources rather than accepting a map on trust
 
