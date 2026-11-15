@@ -515,5 +515,44 @@ with sync_playwright() as p:
                 assert item.inner_text().strip(),(viewport,lang,'empty source title')
             print('PASS source-curated EDS related reading',viewport,lang,observed)
         page.close()
+    # Mobile keyboard focus must stay within the overlay on both site layouts:
+    # normal pages have .wrapper; portfolio pages use .folio plus .folio-footer.
+    for viewport in (390, 768):
+        for route in ('/', '/portfolio/'):
+            page = browser.new_page(viewport={'width': viewport, 'height': 900})
+            page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+            page.route('https://www.clarity.ms/**', lambda route: route.abort())
+            response = page.goto(BASE+route, wait_until='domcontentloaded', timeout=20000)
+            assert response.status == 200, (viewport, route, 'mobile nav unavailable')
+            toggle = page.locator('#menu-trigger')
+            toggle.check(force=True)
+            assert toggle.is_checked()
+            assert toggle.get_attribute('aria-expanded') == 'true'
+            assert page.locator('#primary-navigation').is_visible()
+            regions = 'body > .wrapper, body > .folio, body > .folio-footer'
+            assert page.evaluate(
+                'sel => {const areas=[...document.querySelectorAll(sel)];return areas.length>0&&areas.every(node=>node.inert)}',
+                regions), (viewport,route,'background still focusable')
+            for _ in range(12):
+                page.keyboard.press('Tab')
+                assert not page.evaluate(
+                    'document.activeElement?.closest(".wrapper, .folio, .folio-footer") !== null'), (
+                        viewport,route,'focus behind full-screen nav')
+            page.keyboard.press('Escape')
+            assert not toggle.is_checked(), (viewport,route,'Escape did not close')
+            assert toggle.get_attribute('aria-expanded') == 'false'
+            assert page.evaluate(
+                'sel => [...document.querySelectorAll(sel)].every(node=>!node.inert)',
+                regions), (viewport,route,'background focus not restored')
+            assert toggle.evaluate('node => document.activeElement === node'), (
+                viewport,route,'focus did not return to toggle')
+            toggle.check(force=True)
+            page.set_viewport_size({'width': 1024, 'height': 900})
+            assert not toggle.is_checked(), (viewport,route,'desktop resize left overlay open')
+            assert page.evaluate(
+                'sel => [...document.querySelectorAll(sel)].every(node=>!node.inert)',
+                regions), (viewport,route,'desktop resize stranded inert page')
+            print('PASS mobile menu focus isolation, Escape and resize',viewport,route)
+            page.close()
     browser.close()
 print('PASS all browser geometry checks')

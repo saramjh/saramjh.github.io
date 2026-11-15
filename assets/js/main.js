@@ -19,16 +19,38 @@
     toggleTheme(localStorage.getItem("theme"))
   );
 
-  // Blur the content when the menu is open
+  // Keep keyboard focus inside the full-screen mobile menu.
   const cbox = document.getElementById("menu-trigger");
 
   if (cbox) {
-    cbox.addEventListener("change", function () {
-      const area = document.querySelector(".wrapper");
-      this.checked
-        ? area.classList.add("blurry")
-        : area.classList.remove("blurry");
+    const backgrounds = document.querySelectorAll(
+      "body > .wrapper, body > .folio, body > .folio-footer"
+    );
+    const mobile = window.matchMedia("(max-width: 768px)");
+    const syncMenu = () => {
+      const open = cbox.checked && mobile.matches;
+      backgrounds.forEach((area) => {
+        if (area.classList.contains("wrapper")) {
+          area.classList.toggle("blurry", open);
+        }
+        area.inert = open;
+      });
+      cbox.setAttribute("aria-expanded", String(open));
+    };
+
+    cbox.addEventListener("change", syncMenu);
+    window.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !cbox.checked || !mobile.matches) return;
+      cbox.checked = false;
+      syncMenu();
+      cbox.focus();
+      event.preventDefault();
     });
+    mobile.addEventListener("change", () => {
+      if (!mobile.matches) cbox.checked = false;
+      syncMenu();
+    });
+    syncMenu();
   }
 
   // Dynamic Image Contract: Prioritize first image (LCP), lazy-load subsequent images
