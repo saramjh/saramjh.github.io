@@ -2,7 +2,7 @@
 title: "Koa Session: Node 18 지원을 유지하며 패키지 검증 오류를 고친 PR"
 description: "Koa Session의 attw 패키지 검사 오류를 재현하고, 취약한 첫 우회 수정을 교정해 Node 18을 유지한 오픈소스 기여. 수정안의 공식 CI와 미병합 상태를 구분했다."
 date: 2026-11-15
-tags: ["Koa", "Node.js", "Open Source", "Dependency Security"]
+tags: ["Koa", "Node.js", "Open Source", "Dependency Security", "fflate", "Zod 4", "CVE-2026-45820"]
 permalink: /koajs-attw-security-repair-ko/
 layout: default
 lang: ko
