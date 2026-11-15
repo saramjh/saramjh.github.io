@@ -12,7 +12,7 @@ class DailyKoreaKoreAvesEditorialReferenceTest(unittest.TestCase):
             text=path.read_text(encoding="utf8")
             self.assertEqual(text.count(URL),1,lang)
             self.assertIn("alternate_url:",text)
-            self.assertIn("modified: 2026-11-15",text)
+            self.assertIn("modified: 2026-11-16",text)
             self.assertIn("2026",text)
 
     def test_exact_first_party_resource_links_in_both_languages(self):

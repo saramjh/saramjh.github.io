@@ -32,6 +32,17 @@
   title: "Online Field Guides resource listing"
   detail: "KoreAves appears in the online field-guide list."
   url: "https://www.bearybirding.com/resources"
+- id: wli-migratory-birds-koreaves
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Wetland Link International"
+  title: "Migratory birds — KoreAves resource link"
+  detail: "WLI's public Migratory birds resource page links directly to KoreAves as a guide to Korean bird records in English with source evidence. This is one resource listing, not WLI membership, partnership, endorsement or measured use."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
+  url: "https://wli.wwt.org.uk/resources/priority-theme-resources/migratory-birds/"
+  verified_at: "2026-11-16"
 - id: kartoza-awesome-geodata-koreaves
   project: koreaves
   type: listing

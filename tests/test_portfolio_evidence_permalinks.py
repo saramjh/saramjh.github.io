@@ -12,7 +12,7 @@ IDS = re.findall(r'^- id: ([^\n]+)', LEDGER, flags=re.M)
 
 class ExternalEvidencePermalinks(unittest.TestCase):
     def test_confirmed_source_ids_are_unique_and_safe_fragments(self):
-        self.assertEqual(len(IDS), 27)
+        self.assertEqual(len(IDS), 28)
         self.assertEqual(len(set(IDS)), len(IDS))
         self.assertTrue(all(re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', item) for item in IDS))
 

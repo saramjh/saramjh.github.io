@@ -13,6 +13,7 @@ EXPECTED = {
     "worldlytribe-space-atlas-worldschooling": "space-atlas-worldschooling-guide",
     "nav-ai-koreaves-directory": "koreaves-external-resources",
     "greenus-koreaves-community-tool": "koreaves-external-resources",
+    "wli-migratory-birds-koreaves": "koreaves-external-resources",
     "birdalbum-koreaves-further-reading": "koreaves-external-resources",
     "kantorilode-koreaves-legacy-links": "koreaves-external-resources",
     "kartoza-awesome-geodata-koreaves": "koreaves-external-resources",
@@ -50,7 +51,7 @@ def parse_records():
 class EvidenceContextLinksTest(unittest.TestCase):
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 27)
+        self.assertEqual(len(records), 28)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -198,7 +199,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn(url, post)
                 self.assertNotIn("\ufffd", post)
                 self.assertNotIn("????", post)
-                self.assertIn("modified: 2026-11-15", post)
+                self.assertIn("modified: 2026-11-16", post)
         self.assertIn("legacy", records["kantorilode-koreaves-legacy-links"]["detail"].lower())
         kantorilode = records["kantorilode-koreaves-legacy-links"]
         self.assertEqual(kantorilode["mirror_url"], "https://kantorilode.web.app/links.html")
@@ -291,7 +292,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                        / f"2026-11-02-folio-koreaves-resources-{lang}.md").read_text(encoding="utf8")
             self.assertIn("kartoza-awesome-geodata-koreaves", article)
             self.assertIn(entry["url"], article)
-            self.assertIn("modified: 2026-11-15", article)
+            self.assertIn("modified: 2026-11-16", article)
             self.assertNotIn("\ufffd", article)
             self.assertNotIn("????", article)
             self.assertIn("koreaves.com", article)
@@ -377,7 +378,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 27)
+        self.assertEqual(len(records), 28)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -412,7 +413,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 27)
+        self.assertEqual(len(records), 28)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -434,14 +435,14 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 27)
+        self.assertEqual(len(records), 28)
 
     def test_homepage_shows_published_work_before_full_evidence_archive(self):
         records = parse_records()
         published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
         self.assertEqual(len(published), 7)
-        self.assertEqual(len(records), 27)
-        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 19)
+        self.assertEqual(len(records), 28)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 20)
         self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
         homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")

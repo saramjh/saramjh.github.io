@@ -3,20 +3,20 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
-modified: 2026-11-15
-last_modified_at: 2026-11-15
+modified: 2026-11-16
+last_modified_at: 2026-11-16
 lang: ko
 alternate_lang: en
 alternate_url: /koreaves-external-resources-en/
 permalink: /koreaves-external-resources-ko/
 title: "KoreAves가 해외 탐조·지리공간 자료 목록에 소개되기까지"
-description: "GREENUS 교육 도구 목록과 Bird Album·해외 탐조·지리공간 목록에 실린 KoreAves의 원문, 지도 활용 방법, 증빙 범위를 확인한다."
+description: "WLI 철새 자료와 GREENUS 교육 목록, Bird Album·해외 탐조·지리공간 목록의 KoreAves 근거와 지도 활용 범위를 확인한다."
 kicker: "KoreAves / 해외 자료 목록"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "KoreAves 조류 데이터 사이트의 실제 데스크톱 화면"
 image_caption: "직접 개발한 KoreAves의 화면. 외부 등재 여부는 본문과 하단의 원문 링크에서 확인할 수 있습니다."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, birdalbum-koreaves-further-reading, kantorilode-koreaves-legacy-links, greenus-koreaves-community-tool, gbif-literature]
+evidence_ids: [beary-resource, wli-migratory-birds-koreaves, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, birdalbum-koreaves-further-reading, kantorilode-koreaves-legacy-links, greenus-koreaves-community-tool, gbif-literature]
 tags: [KoreAves, 개발회고, 포트폴리오, 조류데이터, 해외등재]
 ---
 
@@ -32,9 +32,10 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 
 ![실제 KoreAves 사이트 화면](/assets/images/portfolio/koreaves-desktop.jpg)
 
-## 외부에서 확인되는 여덟 가지 연결
+## 외부에서 확인되는 아홉 가지 연결
 
 - **[Beary Birding](https://www.bearybirding.com/resources)**: *Online Field Guides* 항목에서 KoreAves를 소개한다. 해당 페이지에는 다른 국제 조류 관찰 도구도 함께 정리되어 있다.
+- **[Wetland Link International(WLI)의 철새 자료](https://wli.wwt.org.uk/resources/priority-theme-resources/migratory-birds/)** (wli-migratory-birds-koreaves): *Migratory birds* 자료 페이지에서 KoreAves를 한국 조류 기록을 영어로 살펴보면서 원출처를 확인할 수 있는 사이트로 소개하고 [공식 홈페이지](https://koreaves.com/)에 직접 연결한다. 외부 자료 페이지의 수록 사실이며, WLI 회원 자격이나 기관의 공식 제휴·추천을 의미하지 않는다.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)**: 외부 조류 관련 링크 목록에 KoreAves를 한국 조류 증거 아틀라스로 연결해 놓았다.
 - **[FMHY Educational Wiki](https://github.com/fmhy/FMHY/wiki/Educational)**: 교육 위키의 생물학 리소스 목록에서 KoreAves를 볼 수 있다.
 - **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)**: 한국 지리공간 자료를 모은 공개 README에 KoreAves 링크가 있다. 해당 설명은 지역별 GIS 화면과 출처를 확인할 수 있는 조류 출현 기록 아틀라스라고 소개한다. 지리공간 자료를 찾는 사람에게도 프로젝트로 이어지는 경로가 생긴 셈이다. 목록에 있다는 사실만으로 추천이나 실사용을 입증할 수는 없다.

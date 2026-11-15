@@ -3,20 +3,20 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
-modified: 2026-11-15
-last_modified_at: 2026-11-15
+modified: 2026-11-16
+last_modified_at: 2026-11-16
 lang: en
 alternate_lang: ko
 alternate_url: /koreaves-external-resources-ko/
 permalink: /koreaves-external-resources-en/
 title: "Where KoreAves appears in international birding and geodata resources"
-description: "Original GREENUS, Bird Album, birding and geodata listings for KoreAves, including its educational map use, working source links and evidence limits."
+description: "Original WLI migratory-bird, GREENUS education, Bird Album and geodata resource links to KoreAves, with evidence and use limits."
 kicker: "KoreAves / independent listings"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "Actual KoreAves website displayed in a desktop browser"
 image_caption: "KoreAves public interface. The independent directory listings are documented in the source links below."
 project_id: koreaves
-evidence_ids: [beary-resource, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, birdalbum-koreaves-further-reading, kantorilode-koreaves-legacy-links, greenus-koreaves-community-tool, gbif-literature]
+evidence_ids: [beary-resource, wli-migratory-birds-koreaves, nzbirds-resource, fmhy-resource, kartoza-awesome-geodata-koreaves, nav-ai-koreaves-directory, birdalbum-koreaves-further-reading, kantorilode-koreaves-legacy-links, greenus-koreaves-community-tool, gbif-literature]
 tags: [KoreAves, biodiversity, portfolio, milestones, birding]
 ---
 
@@ -34,9 +34,10 @@ The atlas covers a reference of 597 species and 20 subspecies, 617 taxa in total
 
 ## Where the project appears
 
-Eight public source pages link readers to KoreAves, with different audiences and publication status:
+Nine public source pages link readers to KoreAves, with different audiences and publication status:
 
 - **[Beary Birding](https://www.bearybirding.com/resources)** includes KoreAves under *Online Field Guides*, alongside other bird-reference tools. This is an external resource listing, not a review or formal endorsement.
+- **[Wetland Link International (WLI) — Migratory birds](https://wli.wwt.org.uk/resources/priority-theme-resources/migratory-birds/)** (wli-migratory-birds-koreaves): The resource page describes KoreAves as a way to explore Korean bird records in English while keeping the underlying evidence visible. It links directly to [the original atlas](https://koreaves.com/). This is a public resource link, not WLI membership, a partnership, endorsement or measured use.
 - **[New Zealand Birds](https://www.nzbirds.com/bar/links.html)** links to the project on its birding links page and labels it a Korean bird evidence atlas.
 - **[FMHY Educational Wiki](https://github.com/fmhy/FMHY/wiki/Educational)** includes KoreAves in its biology learning resources. This is a community-maintained directory entry.
 - **[Kartoza Awesome Geodata](https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr)** links to KoreAves in its South Korea section. The public README describes a free bird occurrence-evidence atlas with regional GIS views and source links. Its geodata focus gives GIS readers a different way to encounter the atlas. The listing does not document a formal endorsement or measured use.
