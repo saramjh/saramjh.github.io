@@ -438,6 +438,20 @@
   li { text-align: left; }
 }
 
+#search-more-articles {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  &:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  &[hidden] { display: none; }
+}
+
 #search-result-status {
   margin: 0 0 12px;
   font-size: 0.9rem;
