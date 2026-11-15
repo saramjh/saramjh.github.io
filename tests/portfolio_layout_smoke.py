@@ -393,8 +393,27 @@ with sync_playwright() as p:
         page.route('https://www.clarity.ms/**', lambda route: route.abort())
         response = page.goto(BASE + '/archive/', wait_until='domcontentloaded', timeout=20000)
         assert response.status == 200, (viewport, 'archive search response')
+        # The old minified search capped all results at ten before sorting.
+        # Broad queries used to bury original evidence behind blog articles.
+        for query, expected_evidence in [('KoreAves', 13), ('Spoonie', 3), ('Space Atlas', 9)]:
+            page.locator('#search-input').fill(query)
+            evidence = page.locator('#evidence-search-results a')
+            page.wait_for_function(
+                "expected => document.querySelectorAll('#evidence-search-results a').length >= expected",
+                arg=expected_evidence,
+                timeout=10000)
+            assert evidence.count() >= expected_evidence, (
+                viewport, query, 'verified achievements still hidden by ten-article limit')
+            articles = page.locator('#search-results a')
+            assert 0 < articles.count() <= 10, (viewport, query, 'article result cap changed')
+            assert page.locator('#search-evidence-section').is_visible(), (
+                viewport, query, 'evidence group hidden')
+            assert page.locator('#search-article-section').is_visible(), (
+                viewport, query, 'article group hidden')
+            width = page.evaluate('document.documentElement.scrollWidth')
+            assert width <= viewport + 2, (viewport, query, 'horizontal overflow', width)
         page.locator('#search-input').fill('GREENUS')
-        direct = page.locator('#search-results a[href="/portfolio/recognition/#evidence-greenus-koreaves-community-tool"]')
+        direct = page.locator('#evidence-search-results a[href="/portfolio/recognition/#evidence-greenus-koreaves-community-tool"]')
         direct.wait_for(state='visible', timeout=10000)
         assert direct.count() == 1, (viewport, 'duplicate GREENUS search result')
         direct.click()
