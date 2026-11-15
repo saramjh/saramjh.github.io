@@ -2,7 +2,7 @@
 title: "Koa Session: fixing package checks without dropping Node 18"
 description: "An upstream Koa Session contribution that repaired attw packaging checks, caught a security issue in the first workaround, and kept Node 18 compatibility."
 date: 2026-11-15
-tags: ["Koa", "Node.js", "Open Source", "Dependency Security"]
+tags: ["Koa", "Node.js", "Open Source", "Dependency Security", "fflate", "Zod 4", "CVE-2026-45820"]
 permalink: /koajs-attw-security-repair-en/
 layout: default
 lang: en
