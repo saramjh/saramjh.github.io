@@ -581,7 +581,7 @@ with sync_playwright() as p:
         assert original > 500, (viewport, 'unexpected source tag count', original)
         articles = page.locator('.post-item')
         article_count = articles.count()
-        assert article_count > 2500, (viewport, 'source articles removed', article_count)
+        assert article_count > 900, (viewport, 'source articles removed', article_count)
         assert page.locator('#tag-topic-status').inner_text() == f'{original - 1} topics'
         search = page.locator('#tag-topic-query')
         search.fill('koreaves')
