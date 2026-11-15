@@ -66,8 +66,7 @@
       return;
     }
     const matched = records.filter(function (item) {
-      const text = [item.title, item.description, item.tags].join(' ').toLocaleLowerCase();
-      return words.every(function (word) { return text.includes(word); });
+      return words.every(function (word) { return item.searchText.includes(word); });
     });
     const evidenceMatches = matched.filter(isEvidence);
     const articleMatches = matched.filter(function (item) { return !isEvidence(item); });
@@ -94,6 +93,11 @@
       if (!Array.isArray(items)) throw new Error('Search index is not an array');
       records = items.filter(function (item) {
         return item && typeof item === 'object' && validLocalUrl(item.url);
+      }).map(function (item) {
+        // Decode once: displayed titles and search terms must use the same text.
+        item.searchText = [item.title, item.description, item.tags]
+          .map(readable).join(' ').toLocaleLowerCase();
+        return item;
       });
       render();
     })

@@ -412,6 +412,20 @@ with sync_playwright() as p:
                 viewport, query, 'article group hidden')
             width = page.evaluate('document.documentElement.scrollWidth')
             assert width <= viewport + 2, (viewport, query, 'horizontal overflow', width)
+        # Jekyll HTML-escapes apostrophes and ampersands in its JSON source.
+        # The visible title is decoded; the searchable corpus must be as well.
+        for query, original_url in (
+            ("Spoonie's", '/spoonie-search-discovery-en/'),
+            ("NCASE's", '/space-atlas-ncase-programs-en/'),
+            ('Spoonie 사이트맵 XML 오류: 이미지 URL의 &를 수정한 이유',
+             '/spoonie-sitemap-xml-image-escaping-ko/'),
+        ):
+            page.locator('#search-input').fill(query)
+            target = page.locator(f'#search-results a[href="{original_url}"]')
+            target.wait_for(state='visible', timeout=10000)
+            assert target.count() == 1, (
+                viewport, query, 'original HTML-escaped title missing from archive search')
+            assert page.locator('#search-article-section').is_visible()
         page.locator('#search-input').fill('GREENUS')
         direct = page.locator('#evidence-search-results a[href="/portfolio/recognition/#evidence-greenus-koreaves-community-tool"]')
         direct.wait_for(state='visible', timeout=10000)
