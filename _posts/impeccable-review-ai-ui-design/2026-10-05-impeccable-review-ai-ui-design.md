@@ -1,6 +1,7 @@
 ---
 title: "Impeccable 사용 후기: AI 코딩 UI 디자인에 실제로 써보니"
 date: 2026-10-05
+last_modified_at: 2026-11-16
 tags: ["Impeccable", "AI UI", "AI 코딩", "UI UX", "frontend design", "Codex", "Claude Code", "Cursor", "AI slop", "디자인 리뷰"]
 permalink: /impeccable-review-ai-ui-design/
 layout: default
@@ -69,7 +70,7 @@ npx impeccable install
    에이전트에게 “UI 좀 예쁘게 해”라고 던지는 대신 `critique`, `harden`, `adapt`, `polish`처럼 작업의 종류를 좁힙니다.
 
 2. **Deterministic detector**
-   HTML, CSS, JSX, TSX 등의 반복적인 디자인 반패턴을 규칙으로 검사합니다. 현재 공식 npm 설명은 61개의 deterministic rule을 안내합니다.
+   HTML, CSS, JSX, TSX 등의 디자인 반패턴을 정해진 규칙으로 검사합니다. 2026년 11월 16일 [npm 패키지 설명](https://www.npmjs.com/package/impeccable)에서 확인한 최신 버전은 `4.9.1`, 탐지 규칙은 62개입니다. 아래 Profit Scratch 검사 스크립트의 `4.1.0`은 당시 실제로 사용한 버전 그대로 유지했습니다. 4.9.1에서 다시 검사한 결과는 아닙니다.
 
 즉 LLM의 감상문만 받는 구조가 아닙니다.
 
