@@ -281,6 +281,31 @@ with sync_playwright() as p:
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)
                 page.locator('.folio-evidence-list').scroll_into_view_if_needed()
                 page.screenshot(path=f'/tmp/folio-evidence-fixed-{viewport}.png')
+                # Each source must have a stable archive fragment that is
+                # directly shareable without changing source or GA4 semantics.
+                links = page.locator('.folio-evidence-item').evaluate_all("""items => items.map(row => {
+                    const link = row.querySelector('.folio-evidence-permalink');
+                    return {id:row.id,source:row.dataset.evidenceId,
+                      href:link?.getAttribute('href'),label:link?.getAttribute('aria-label')};
+                })""")
+                assert len(links) == len(EVIDENCE), (viewport, 'permalink count', links)
+                assert len({row['id'] for row in links}) == len(EVIDENCE), (viewport, 'permalink IDs')
+                for row in links:
+                    assert row['id'] == 'evidence-' + row['source'], (viewport, 'wrong source-bound ID', row)
+                    assert row['href'] == '/portfolio/recognition/#' + row['id'], (viewport, 'wrong canonical target', row)
+                    assert row['label'] and row['source'], (viewport, 'no accessible permalink label', row)
+                anchor = 'evidence-greenus-koreaves-community-tool'
+                page.goto(BASE + '/portfolio/recognition/#' + anchor, wait_until='load')
+                page.wait_for_function("document.getElementById('evidence-greenus-koreaves-community-tool') !== null")
+                target = page.locator('#' + anchor)
+                assert target.is_visible(), (viewport, 'deep-linked GREENUS row hidden')
+                assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE), (
+                    viewport, 'evidence fragment incorrectly activated category filter')
+                assert page.locator('[data-filter="all"]').get_attribute('aria-pressed') == 'true', (
+                    viewport, 'fragment must not change original filter state')
+                bounds = target.bounding_box()
+                assert bounds and bounds['y'] < 900 and bounds['y'] + bounds['height'] > 0, (
+                    viewport, 'record fragment did not bring target into view', bounds)
             if errors:
                 raise AssertionError((viewport,path,errors))
             print('PASS',viewport,path)

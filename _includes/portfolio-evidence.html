@@ -7,11 +7,11 @@
     {% if include.ids and include.ids contains record.id %}{% else %}{% if include.ids %}{% assign should_show = false %}{% endif %}{% endif %}
     {% if should_show %}
     {% assign proof_count = proof_count | plus: 1 %}
-    <li class="folio-evidence-item" data-evidence-id="{{ record.id | escape }}" data-evidence-type="{{ record.type | escape }}">
+    <li class="folio-evidence-item" id="evidence-{{ record.id | escape }}" data-evidence-id="{{ record.id | escape }}" data-evidence-type="{{ record.type | escape }}">
       <span class="folio-evidence-kind">{% case record.type %}{% when 'publication' %}Publication{% when 'listing' %}Directory listing{% when 'dataset_record' %}Data record{% when 'collaboration' %}Collaboration{% endcase %}</span>
       <div class="folio-evidence-main">
         <p class="folio-evidence-source">{{ record.source | escape }} <span class="folio-dot-sep" aria-hidden="true">·</span> {% case record.type %}{% when 'publication' %}Published contribution{% when 'listing' %}External listing{% when 'dataset_record' %}Catalogue record{% when 'collaboration' %}Documented collaboration{% endcase %}</p>
-        <h3><a href="{{ record.url | escape }}" target="_blank" rel="noopener noreferrer">{{ record.title | escape }} <span class="folio-external-arrow" aria-hidden="true">↗</span></a></h3>
+        <h3><a href="{{ record.url | escape }}" target="_blank" rel="noopener noreferrer">{{ record.title | escape }} <span class="folio-external-arrow" aria-hidden="true">↗</span></a> <a class="folio-evidence-permalink" href="{{ '/portfolio/recognition/' | relative_url }}#evidence-{{ record.id | escape }}" aria-label="Direct link to record: {{ record.title | escape }}" title="Direct link to this record">#</a></h3>
         <p class="folio-evidence-description">{{ record.detail | escape }}
           {% if record.case_ko or record.case_en %}
             <span class="folio-evidence-context">
