@@ -12,9 +12,9 @@ LEDGER = (ROOT / '_data/recognitions.yml').read_text(encoding='utf-8')
 class EvidenceSearchIndex(unittest.TestCase):
     def test_exact_original_confirmed_inventory_is_source_bound(self):
         ids = re.findall(r'(?m)^- id: ([a-z0-9-]+)$', LEDGER)
-        self.assertEqual(len(ids), 27)
-        self.assertEqual(len(set(ids)), 27)
-        self.assertEqual(len(re.findall(r'(?m)^  status: confirmed$', LEDGER)), 27)
+        self.assertEqual(len(ids), 28)
+        self.assertEqual(len(set(ids)), 28)
+        self.assertEqual(len(re.findall(r'(?m)^  status: confirmed$', LEDGER)), 28)
 
     def test_existing_170_blog_posts_remain_indexed(self):
         self.assertIn('{% for post in site.posts %}', SEARCH)
