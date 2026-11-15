@@ -515,5 +515,39 @@ with sync_playwright() as p:
                 assert item.inner_text().strip(),(viewport,lang,'empty source title')
             print('PASS source-curated EDS related reading',viewport,lang,observed)
         page.close()
+    # The mobile menu covers the whole viewport. Keyboard users must not
+    # tab into blurred links beneath it, and Escape must restore the toggle.
+    for viewport in (390, 768):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        response = page.goto(BASE+'/', wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, (viewport, 'homepage mobile nav unavailable')
+        toggle = page.locator('#menu-trigger')
+        toggle.check(force=True)
+        assert toggle.is_checked()
+        assert toggle.get_attribute('aria-expanded') == 'true'
+        assert page.locator('#primary-navigation').is_visible()
+        assert page.locator('.wrapper').evaluate('node => node.inert'), (
+            viewport, 'hidden background remains keyboard-accessible')
+        for _ in range(12):
+            page.keyboard.press('Tab')
+            assert not page.evaluate(
+                'document.activeElement?.closest(".wrapper") !== null'), (
+                    viewport, 'focus moved behind full-screen navigation')
+        page.keyboard.press('Escape')
+        assert not toggle.is_checked(), (viewport, 'Escape did not close menu')
+        assert toggle.get_attribute('aria-expanded') == 'false'
+        assert not page.locator('.wrapper').evaluate('node => node.inert'), (
+            viewport, 'background focus not restored')
+        assert toggle.evaluate('node => document.activeElement === node'), (
+            viewport, 'focus did not return to menu toggle')
+        toggle.check(force=True)
+        page.set_viewport_size({'width': 1024, 'height': 900})
+        assert not toggle.is_checked(), (viewport, 'desktop resize left menu open')
+        assert not page.locator('.wrapper').evaluate('node => node.inert'), (
+            viewport, 'desktop resize stranded content inert')
+        print('PASS full-screen nav keyboard isolation, Escape and resize', viewport)
+        page.close()
     browser.close()
 print('PASS all browser geometry checks')
