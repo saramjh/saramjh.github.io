@@ -35,6 +35,9 @@ class BalancedSearch(unittest.TestCase):
         self.assertIn('document.createElement', text)
         self.assertIn('.textContent', text)
         self.assertNotIn('results.innerHTML', text)
+        self.assertIn('item.searchText.includes(word)', text)
+        self.assertIn('.map(readable).join(', text)
+        self.assertNotIn("[item.title, item.description, item.tags].join(' ')", text)
 
     def test_legacy_date_archive_remains_accessible(self):
         self.assertIn('{%- for post in site.posts -%}', ARCHIVE)
