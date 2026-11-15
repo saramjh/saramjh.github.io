@@ -205,7 +205,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertEqual(kantorilode["legacy_url"], "https://kantorilode.weebly.com/links.html")
         self.assertEqual(kantorilode["verified_at"], "2026-11-15")
         self.assertIn("SOUTH KOREAN BIRDING", kantorilode["detail"])
-        self.assertIn("one directory placement", kantorilode["detail"].lower())
+        self.assertIn("one listing", kantorilode["detail"].lower())
         en = (ROOT / "_posts/folio-koreaves-resources-en" /
               "2026-11-02-folio-koreaves-resources-en.md").read_text("utf8")
         ko = (ROOT / "_posts/folio-koreaves-resources-ko" /
