@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820">
+<rect width="1280" height="820" fill="#F3F6FA"/>
+<rect x="64" y="54" width="7" height="34" rx="3" fill="#3478A8"/>
+<text x="90" y="80" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2" fill="#315A76">SPACE ATLAS / 보안 제보 경로</text>
+<text x="64" y="160" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="48" font-weight="700" fill="#142B3A">보안 문제를 알릴 수 있는 경로</text>
+<text x="64" y="202" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="23" fill="#526675">공개 안내 파일에서 시작해 일반 연락을 남기고, 비공개 채널을 마련한 뒤 기술 정보를 전달합니다.</text>
+<rect x="64" y="252" width="720" height="450" rx="20" fill="#FFFFFF" stroke="#D8E1E9" stroke-width="2"/>
+<rect x="64" y="252" width="720" height="62" rx="20" fill="#E8F0F6"/>
+<path d="M64 294 H784 V314 H64 Z" fill="#E8F0F6"/>
+<circle cx="96" cy="283" r="7" fill="#7A9BB3"/><circle cx="120" cy="283" r="7" fill="#7A9BB3"/><circle cx="144" cy="283" r="7" fill="#7A9BB3"/>
+<text x="176" y="290" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="20" font-weight="700" fill="#315A76">실제 공개 파일 · 주요 항목</text>
+<text x="94" y="360" font-family="Menlo, Consolas, monospace" font-size="18" fill="#647789">/.well-known/security.txt</text>
+<line x1="94" y1="382" x2="750" y2="382" stroke="#E3E9EF" stroke-width="2"/>
+<text x="94" y="428" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1D3546">Contact: github.com/saramjh/space_atlas_student/issues/new</text>
+<text x="94" y="474" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1D3546">Expires: 2027-05-01T00:00:00Z</text>
+<text x="94" y="520" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1D3546">Canonical: spaceatlasedu.org/.well-known/security.txt</text>
+<text x="94" y="566" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1D3546">Policy: github.com/saramjh/space_atlas_student/</text>
+<text x="94" y="590" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1D3546">        blob/main/SECURITY.md</text>
+<text x="94" y="636" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1D3546">Preferred-Languages: en, ko</text>
+<text x="94" y="674" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="15" fill="#6A7D8C">RFC 9116 · 정식 도메인에서 제공</text>
+<rect x="814" y="252" width="402" height="450" rx="20" fill="#FFFFFF" stroke="#D8E1E9" stroke-width="2"/>
+<text x="850" y="292" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="1" fill="#315A76">제보 진행 순서</text>
+<rect x="850" y="332" width="330" height="86" rx="12" fill="#EDF4F8"/>
+<circle cx="880" cy="375" r="18" fill="#3478A8"/><text x="880" y="382" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">1</text>
+<text x="914" y="366" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="18" font-weight="700" fill="#1D3546">경로 확인</text>
+<text x="914" y="392" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="15" fill="#5B6F7E">security.txt에서 정책 안내</text>
+<path d="M880 418 V446" stroke="#8CA7B9" stroke-width="3" stroke-linecap="round"/>
+<path d="M872 438 L880 448 L888 438" fill="none" stroke="#8CA7B9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="850" y="454" width="330" height="86" rx="12" fill="#EDF4F8"/>
+<circle cx="880" cy="497" r="18" fill="#3478A8"/><text x="880" y="504" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">2</text>
+<text x="914" y="488" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="18" font-weight="700" fill="#1D3546">일반 연락만 공개</text>
+<text x="914" y="514" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="15" fill="#5B6F7E">공개 이슈에 기술 정보 금지</text>
+<path d="M880 540 V568" stroke="#8CA7B9" stroke-width="3" stroke-linecap="round"/>
+<path d="M872 560 L880 570 L888 560" fill="none" stroke="#8CA7B9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="850" y="576" width="330" height="86" rx="12" fill="#E6F1EB"/>
+<circle cx="880" cy="619" r="18" fill="#3C8064"/><text x="880" y="626" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">3</text>
+<text x="914" y="610" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="18" font-weight="700" fill="#1D3546">비공개 채널 마련</text>
+<text x="914" y="636" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="15" fill="#526D61">채널을 정한 뒤 기술 세부사항 전달</text>
+<text x="64" y="758" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="18" font-weight="700" fill="#8B4D35">공개 이슈에 공격 절차, 인증 정보, 비밀이 포함된 URL, 학생 정보를 올리지 마세요.</text>
+<text x="64" y="790" font-family="Apple SD Gothic Neo, Arial, sans-serif" font-size="14" fill="#718391">spaceatlasedu.org · 2026년 11월 15일 실제 경로 확인</text>
+</svg>
