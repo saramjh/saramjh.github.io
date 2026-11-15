@@ -113,6 +113,17 @@ posts.each do |permalink, metadata|
   errors << "#{permalink}: rendered lang #{html_lang.inspect} != source #{source_lang.inspect}" unless html_lang == source_lang
 
   source_tags = Array(metadata['tags'])
+  curated_urls = metadata['related_urls']
+  if metadata.key?('related_urls')
+    if !curated_urls.is_a?(Array) || curated_urls.empty? || curated_urls.length > 4 ||
+       curated_urls.uniq.length != curated_urls.length ||
+       curated_urls.any? { |url| !url.is_a?(String) || !url.match?(%r{\A/[^/]+/\z}) || url == permalink }
+      errors << "#{permalink}: invalid curated related_urls (unique same-site permalink list of 1..4 required)"
+      curated_urls = []
+    end
+  else
+    curated_urls = []
+  end
   semantic_candidates = posts.select do |target_url, target|
     next false if target_url == permalink || target['published'] == false || target['redirect_to']
     target_lang = target['lang'].to_s.split('-').first
@@ -120,19 +131,26 @@ posts.each do |permalink, metadata|
   end
 
   related = doc.css('.related-posts a[href]')
-  errors << "#{permalink}: related section missing despite semantic matches" if !semantic_candidates.empty? && related.empty?
-  errors << "#{permalink}: unrelated section rendered without semantic matches" if semantic_candidates.empty? && doc.at_css('.related-posts')
+  rendered_related_urls = related.map { |link| link['href'].to_s }
+  if curated_urls.empty?
+    errors << "#{permalink}: related section missing despite semantic matches" if !semantic_candidates.empty? && related.empty?
+    errors << "#{permalink}: unrelated section rendered without semantic matches" if semantic_candidates.empty? && doc.at_css('.related-posts')
+  elsif rendered_related_urls != curated_urls
+    errors << "#{permalink}: curated related list differs from rendered links"
+  end
 
   related.each do |link|
     target_url = link['href'].to_s
     target = posts[target_url]
-    if target.nil?
+    if target.nil? || target['published'] == false || target['redirect_to']
       errors << "#{permalink}: related link target is not a published post: #{target_url}"
       next
     end
     target_lang = target['lang'].to_s.split('-').first
     errors << "#{permalink}: related link language mismatch: #{target_url}" unless target_lang == source_lang
-    errors << "#{permalink}: related link has no shared tag: #{target_url}" if (source_tags & Array(target['tags'])).empty?
+    if curated_urls.empty? && (source_tags & Array(target['tags'])).empty?
+      errors << "#{permalink}: related link has no shared tag: #{target_url}"
+    end
   end
 
   errors << "#{permalink}: more than 4 related links rendered" if related.length > 4

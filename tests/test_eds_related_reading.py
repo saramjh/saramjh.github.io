@@ -33,6 +33,20 @@ class RelatedReadingTests(unittest.TestCase):
         self.assertIn('post_lang == current_lang',src)
         self.assertIn('max_related',src)
 
+    def test_seo_checks_curated_list_exactly_as_rendered(self):
+        source=(ROOT/'scripts/check_seo.rb').read_text('utf8')
+        self.assertIn("metadata['related_urls']",source)
+        self.assertIn('curated_urls.uniq',source)
+        self.assertIn('rendered_related_urls != curated_urls',source)
+        self.assertIn('curated related list differs from rendered links',source)
+
+    def test_curated_seo_does_not_disable_default_shared_tag_contract(self):
+        source=(ROOT/'scripts/check_seo.rb').read_text('utf8')
+        self.assertIn('if curated_urls.empty?',source)
+        self.assertIn("source_tags & Array(target['tags'])",source)
+        self.assertIn('related link language mismatch',source)
+        self.assertIn('related link target is not a published post',source)
+
     def test_unrelated_posts_keep_original_tag_fallback(self):
         src=(ROOT/'_includes/related_posts.html').read_text('utf8')
         self.assertIn('for post in site.posts',src)
