@@ -14,7 +14,15 @@ comments: false
   <input type="search" id="search-input" placeholder="Search articles and verified external records" aria-label="Search articles and verified external records">
 </div>
 
-<ul id="search-results"></ul>
+<p id="search-result-status" role="status" aria-live="polite" aria-atomic="true"></p>
+<section id="search-evidence-section" aria-labelledby="search-evidence-heading" hidden>
+  <h2 id="search-evidence-heading">Verified external records</h2>
+  <ul id="evidence-search-results"></ul>
+</section>
+<section id="search-article-section" aria-labelledby="search-article-heading" hidden>
+  <h2 id="search-article-heading">Articles</h2>
+  <ul id="search-results"></ul>
+</section>
 
 {%- for post in site.posts -%}
   {%- capture current_year -%}{{ post.date | date: "%Y" }}{%- endcapture -%}
