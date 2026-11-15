@@ -85,6 +85,12 @@ The visible change from 12 occupied cells to eight comes from choosing different
 
 My [draft PR's author-side test record](https://github.com/saramjh/bird-records-not-absence-notebook/pull/1) reports that the default offline path executed all four notebook code cells on Binder at a specified commit. I inspected the rendered figure and corrected overlapping and low-contrast map labels. The draft also documents separate historical offline tests. Those are implementation checks performed by the author, not editorial or independent scientific review.
 
+### Catching broken rows before drawing the map
+
+While working toward a citable dataset, I also checked how the parser handled malformed files. [Preparation PR #2](https://github.com/saramjh/bird-records-not-absence-notebook/pull/2) makes the prospective GBIF DwC-A archive audit reject duplicate TSV column names and rows with missing or extra fields. Python's `csv.DictReader` can otherwise overwrite duplicate keys or fill unmatched fields with `None`, leaving damaged records in a calculation.
+
+Three synthetic cases reproduced the problems. After the fix, the author's complete **81-test offline suite passed**. This improves the archive checks without changing the lesson's current teaching data.
+
 The remaining data dependency matters more than another clean CI run. The current teaching aggregate came from a bounded, mutable API first page. The notebook needs a properly specified, stable occurrence selection and a citable GBIF occurrence-download record, together with the contributing dataset information and licensing checks. An individual dataset DOI does not automatically cite a particular selection of occurrence records.
 
 [GBIF's citation guidance](https://www.gbif.org/citation-guidelines) explains the distinction between dataset citations, occurrence downloads, and derived datasets. Its [API download documentation](https://techdocs.gbif.org/en/data-use/api-downloads) also states that issuing a new occurrence download requires a registered account and authenticated request. I have not represented that download as completed.
@@ -111,4 +117,4 @@ The next substantive step is to replace the mutable trial selection with a versi
 
 **Primary evidence:** [EDS Book idea and editor discussion](https://github.com/eds-book/notebooks-ideas/issues/14) · [Author-owned preparation PR](https://github.com/saramjh/bird-records-not-absence-notebook/pull/1) · [EDS Book guide](https://edsbook.org/guidelines-authors) · [GBIF data citation guidance](https://www.gbif.org/citation-guidelines).
 
-*Status checked November 14, 2026. This is an author-side preparation case, not a publication or endorsement.*
+*Status checked November 15, 2026. This is an author-side preparation case, not a publication or endorsement.*

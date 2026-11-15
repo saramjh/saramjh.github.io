@@ -85,6 +85,12 @@ image_height: 341
 
 [초안 PR의 작성자 측 검증 기록](https://github.com/saramjh/bird-records-not-absence-notebook/pull/1)에는 특정 커밋에서 기본 오프라인 노트북의 코드 셀 네 개를 Binder로 실행한 결과가 남아 있습니다. 지도 범례와 표시 가독성 문제도 실제 출력 화면을 보고 고쳤습니다. 과거 단위 테스트 기록 역시 PR에 정리돼 있습니다. 이는 작성자의 실행 검증이지 외부 과학 심사는 아닙니다.
 
+### 잘못된 원본 행은 집계 전에 거부하기
+
+데이터 출처를 고정하려는 과정에서 파서 자체도 검사했습니다. [준비 저장소 PR #2](https://github.com/saramjh/bird-records-not-absence-notebook/pull/2)에서는 GBIF DwC-A 압축파일의 TSV 열 이름이 중복되거나 행에 필드가 빠지거나 추가되면 오류로 거부하도록 했습니다. 기존 Python `csv.DictReader`는 중복된 열 이름의 값을 덮어쓰거나 행 길이가 맞지 않을 때 `None`을 넣을 수 있어, 원본 데이터가 훼손됐는데도 집계가 이어질 수 있었습니다.
+
+세 가지 잘못된 형식을 작성자 측 합성 테스트로 재현했고, 수정 후 전체 오프라인 테스트 **81개가 통과**했습니다. 이 변경은 앞으로 인용할 관측 파일을 검사하는 코드의 무결성을 높인 것입니다. 현재 수업의 입력 자료는 바꾸지 않았습니다.
+
 남은 핵심은 데이터입니다. 지금 수업 입력은 변경될 수 있는 GBIF API 첫 페이지에서 만든 제한된 자료입니다. 정식 검토를 요청하기 전에는 조회 조건과 데이터를 재현할 수 있도록 고정하고, 해당 관측 다운로드의 인용 정보와 원본 기여 데이터셋의 출처·이용 조건을 확인해야 합니다. 개별 데이터셋의 DOI만 있다고 해서 **이번에 선택한 관측 기록 자체가 DOI로 고정된 것은 아닙니다.**
 
 [GBIF의 인용 지침](https://www.gbif.org/citation-guidelines)은 데이터셋·관측 다운로드·파생 데이터의 인용 방법을 구분합니다. [공식 API 문서](https://techdocs.gbif.org/en/data-use/api-downloads)에 따르면 새 관측 다운로드를 요청하려면 등록된 GBIF 계정 인증도 필요합니다. 이번 초안에 그러한 다운로드가 이미 준비됐다고 주장하지 않습니다.
@@ -111,4 +117,4 @@ image_height: 341
 
 **근거:** [EDS Book 제안 및 편집자 대화](https://github.com/eds-book/notebooks-ideas/issues/14) · [공개 초안 PR](https://github.com/saramjh/bird-records-not-absence-notebook/pull/1) · [저자 가이드](https://edsbook.org/guidelines-authors) · [GBIF 출처 인용 지침](https://www.gbif.org/citation-guidelines).
 
-*2026년 11월 14일 확인. 정식 게재나 편집 승인으로 표현하지 않은 작성자 측 준비 사례입니다.*
+*2026년 11월 15일 확인. 정식 게재나 편집 승인으로 표현하지 않은 작성자 측 준비 사례입니다.*
