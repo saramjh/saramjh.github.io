@@ -27,7 +27,9 @@ seo:
 
 The previous client requested up to twenty matching items, then split that batch into Recipe and Recipeed tabs. When more items matched the term, the interface had no path to the next set. This is an awkward limit for a recipe product: different authors may publish dishes with identical names, and the reader needs to see which version belongs to whom.
 
-Each tab now makes its own server request. The client asks for 21 rows, displays the first twenty, and uses the extra row to determine whether another page exists. A later request carries the result offset. The corresponding button appears only while more matches remain.
+The earlier [PR #24](https://github.com/saramjh/spoonie/pull/24), merged on November 11, removed a misleading infinite-scroll implementation. At that point, `search_items_optimized` accepted a maximum result count but no page offset. The client was splitting one response into apparent pages, so scrolling couldn't retrieve additional matches. I removed that extra `useSWRInfinite` and IntersectionObserver machinery and returned the search to a single request.
+
+[PR #31](https://github.com/saramjh/spoonie/pull/31) then added pagination to the server function itself. Each tab now makes its own request: the client asks for 21 rows, displays the first twenty, and uses the extra row to determine whether another page exists. A later request carries the result offset. The corresponding button appears only while more matches remain.
 
 <figure>
   <img src="/spoonie-search-discovery-en/spoonie-search-flow.svg" alt="Developer-authored diagram of a search query feeding server-side ranking and separate twenty-item Recipe and Recipeed pages with conditional show-more controls" width="1280" height="530" loading="lazy" style="display:block;width:100%;height:auto;">

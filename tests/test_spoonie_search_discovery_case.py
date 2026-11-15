@@ -25,6 +25,7 @@ class SpoonieSearchDiscoveryCaseTest(unittest.TestCase):
                 f"](/{BASE}-{other}/)",
                 f"image: /{slug}/spoonie-search-flow-og.png",
                 "published: true",
+                "https://github.com/saramjh/spoonie/pull/24",
                 "https://github.com/saramjh/spoonie/pull/31",
                 "https://spoonie.kr/search",
                 "/portfolio/spoonie/",
