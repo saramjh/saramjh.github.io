@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1152" height="680" viewBox="0 0 1152 680" lang="ko" role="img" aria-labelledby="figtitle figdesc" data-source-sha256="0fb26d2974897882ff3cc952727c1449026e982faa51fbda3854d7229bf40ab4" data-selection-first-page-records="100" data-records-accepted="50" data-unknown-uncertainty="39" data-over-threshold="11">
+<title id="figtitle">같은 기록, 서로 다른 격자</title>
+<desc id="figdesc">같은 50건의 첫 페이지 조류 관측 기록을 10 km 격자와 50 km 격자로 집계했습니다. 기록이 표시된 칸은 각각 12개와 8개입니다. 빈 칸은 새의 부재를 뜻하지 않습니다.</desc>
+<metadata>Derived exclusively from first-party aggregated snapshot https://github.com/saramjh/bird-records-not-absence-notebook/blob/6c411e0b7159897b164621143bb863537a606994/data/first-page-grids-20261026.json, commit 6c411e0b7159897b164621143bb863537a606994; nonrandom mutable first-page trial, UTM zone 52N, no occurrence-download DOI.</metadata>
+<rect x="0" y="0" width="1152" height="680" rx="15" fill="#f8fafc"/>
+<text x="40" y="56" font-family="Arial,Apple SD Gothic Neo,sans-serif" font-size="30" font-weight="700" fill="#153549">같은 기록, 서로 다른 격자</text>
+<text x="40" y="89" font-family="Arial,Apple SD Gothic Neo,sans-serif" font-size="17" fill="#48616d">2024년 GBIF 첫 조회 100건 · 좌표 불확실성 예시 기준 1 km</text>
+<rect x="40" y="106" width="342" height="62" rx="8" fill="#e0f3ec"/>
+<text x="55" y="144" font-size="28" font-weight="700" font-family="Arial,sans-serif" fill="#153e4d">50</text>
+<text x="129" y="143" font-size="16" font-family="Arial,Apple SD Gothic Neo,sans-serif" fill="#27424f">기준 통과</text>
+<rect x="407" y="106" width="342" height="62" rx="8" fill="#f9eed7"/>
+<text x="422" y="144" font-size="28" font-weight="700" font-family="Arial,sans-serif" fill="#153e4d">39</text>
+<text x="496" y="143" font-size="16" font-family="Arial,Apple SD Gothic Neo,sans-serif" fill="#27424f">불확실성 누락</text>
+<rect x="774" y="106" width="342" height="62" rx="8" fill="#f6e5e1"/>
+<text x="789" y="144" font-size="28" font-weight="700" font-family="Arial,sans-serif" fill="#153e4d">11</text>
+<text x="863" y="143" font-size="16" font-family="Arial,Apple SD Gothic Neo,sans-serif" fill="#27424f">기준 초과</text>
+<rect x="40" y="185" width="524" height="408" rx="9" fill="#ffffff" stroke="#dbe7ea"/>
+<text x="58" y="222" font-size="23" font-weight="700" fill="#153549" font-family="Arial,Apple SD Gothic Neo,sans-serif">10 km 격자</text>
+<text x="544" y="222" text-anchor="end" font-size="16" fill="#287282" font-family="Arial,Apple SD Gothic Neo,sans-serif">12 표시된 칸</text>
+<rect x="223.14" y="227.00" width="157.73" height="347.00" fill="#f1f5f7"/>
+<path d="M223.14 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M254.68 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M286.23 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M317.77 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M349.32 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M380.86 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 574.00h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 542.45h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 510.91h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 479.36h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 447.82h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 416.27h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 384.73h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 353.18h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 321.64h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 290.09h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 258.55h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M223.14 227.00h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<g data-grid-km="10" data-occupied-cells="12">
+<rect x="248.37" y="296.40" width="6.31" height="6.31" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="3"/>
+<rect x="248.37" y="290.09" width="6.31" height="6.31" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="2"/>
+<rect x="254.68" y="567.69" width="6.31" height="6.31" fill="#173c67" stroke="#254d60" stroke-width="0.8" data-count="22"/>
+<rect x="267.30" y="290.09" width="6.31" height="6.31" fill="#acd9d3" stroke="#254d60" stroke-width="0.8" data-count="1"/>
+<rect x="273.61" y="271.16" width="6.31" height="6.31" fill="#acd9d3" stroke="#254d60" stroke-width="0.8" data-count="1"/>
+<rect x="279.92" y="290.09" width="6.31" height="6.31" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="4"/>
+<rect x="279.92" y="283.78" width="6.31" height="6.31" fill="#acd9d3" stroke="#254d60" stroke-width="0.8" data-count="1"/>
+<rect x="279.92" y="233.31" width="6.31" height="6.31" fill="#277b84" stroke="#254d60" stroke-width="0.8" data-count="6"/>
+<rect x="286.23" y="290.09" width="6.31" height="6.31" fill="#acd9d3" stroke="#254d60" stroke-width="0.8" data-count="1"/>
+<rect x="286.23" y="233.31" width="6.31" height="6.31" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="2"/>
+<rect x="374.55" y="454.13" width="6.31" height="6.31" fill="#277b84" stroke="#254d60" stroke-width="0.8" data-count="5"/>
+<rect x="374.55" y="447.82" width="6.31" height="6.31" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="2"/>
+</g>
+<text x="302" y="578" text-anchor="middle" font-size="12" fill="#677d87" font-family="Arial,sans-serif">UTM zone 52N · aggregate cells</text>
+<rect x="588" y="185" width="524" height="408" rx="9" fill="#ffffff" stroke="#dbe7ea"/>
+<text x="606" y="222" font-size="23" font-weight="700" fill="#153549" font-family="Arial,Apple SD Gothic Neo,sans-serif">50 km 격자</text>
+<text x="1092" y="222" text-anchor="end" font-size="16" fill="#287282" font-family="Arial,Apple SD Gothic Neo,sans-serif">8 표시된 칸</text>
+<rect x="771.14" y="227.00" width="157.73" height="347.00" fill="#f1f5f7"/>
+<path d="M771.14 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M802.68 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M834.23 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M865.77 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M897.32 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M928.86 227.00v347.00" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 574.00h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 542.45h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 510.91h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 479.36h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 447.82h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 416.27h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 384.73h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 353.18h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 321.64h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 290.09h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 258.55h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<path d="M771.14 227.00h157.73" stroke="#d6e3e8" stroke-width="0.7"/>
+<g data-grid-km="50" data-occupied-cells="8">
+<rect x="771.14" y="290.09" width="31.55" height="31.55" fill="#277b84" stroke="#254d60" stroke-width="0.8" data-count="5"/>
+<text x="786.91" y="310.86" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">5</text>
+<rect x="802.68" y="542.45" width="31.55" height="31.55" fill="#173c67" stroke="#254d60" stroke-width="0.8" data-count="22"/>
+<text x="818.45" y="563.23" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff" font-family="Arial,sans-serif">22</text>
+<rect x="802.68" y="290.09" width="31.55" height="31.55" fill="#277b84" stroke="#254d60" stroke-width="0.8" data-count="5"/>
+<text x="818.45" y="310.86" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">5</text>
+<rect x="802.68" y="258.55" width="31.55" height="31.55" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="2"/>
+<text x="818.45" y="279.32" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">2</text>
+<rect x="802.68" y="227.00" width="31.55" height="31.55" fill="#277b84" stroke="#254d60" stroke-width="0.8" data-count="6"/>
+<text x="818.45" y="247.77" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">6</text>
+<rect x="834.23" y="290.09" width="31.55" height="31.55" fill="#acd9d3" stroke="#254d60" stroke-width="0.8" data-count="1"/>
+<text x="850.00" y="310.86" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">1</text>
+<rect x="834.23" y="227.00" width="31.55" height="31.55" fill="#5ab3a9" stroke="#254d60" stroke-width="0.8" data-count="2"/>
+<text x="850.00" y="247.77" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">2</text>
+<rect x="897.32" y="447.82" width="31.55" height="31.55" fill="#277b84" stroke="#254d60" stroke-width="0.8" data-count="7"/>
+<text x="913.09" y="468.59" text-anchor="middle" font-size="13" font-weight="700" fill="#123342" font-family="Arial,sans-serif">7</text>
+</g>
+<text x="850" y="578" text-anchor="middle" font-size="12" fill="#677d87" font-family="Arial,sans-serif">UTM zone 52N · aggregate cells</text>
+<text x="40" y="616" font-size="14" fill="#415d68" font-family="Arial,Apple SD Gothic Neo,sans-serif">Records / cell:</text>
+<rect x="175" y="601" width="21" height="17" fill="#acd9d3" stroke="#254d60" stroke-width="0.5"/>
+<text x="205" y="615" font-size="14" fill="#415d68" font-family="Arial,sans-serif">1</text>
+<rect x="300" y="601" width="21" height="17" fill="#5ab3a9" stroke="#254d60" stroke-width="0.5"/>
+<text x="330" y="615" font-size="14" fill="#415d68" font-family="Arial,sans-serif">2–4</text>
+<rect x="425" y="601" width="21" height="17" fill="#277b84" stroke="#254d60" stroke-width="0.5"/>
+<text x="455" y="615" font-size="14" fill="#415d68" font-family="Arial,sans-serif">5–9</text>
+<rect x="550" y="601" width="21" height="17" fill="#173c67" stroke="#254d60" stroke-width="0.5"/>
+<text x="580" y="615" font-size="14" fill="#415d68" font-family="Arial,sans-serif">10+</text>
+<text x="40" y="641" font-size="17" font-weight="700" fill="#153549" font-family="Arial,Apple SD Gothic Neo,sans-serif">빈 칸은 새가 없다는 증거가 아닙니다. 실제 조사 범위는 표시되지 않았습니다.</text>
+<text x="40" y="666" font-size="13" fill="#596b79" font-family="Arial,Apple SD Gothic Neo,sans-serif">작성자 측 파생 격자 · 비무작위 첫 페이지 · 관측 다운로드 DOI 없음</text>
+</svg>

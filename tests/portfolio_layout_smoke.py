@@ -424,5 +424,33 @@ with sync_playwright() as p:
             viewport, 'external evidence fragment accidentally changed category')
         print('PASS verified external evidence search and direct link', viewport)
         page.close()
+    # Source-bound EDS Book notebook figures are native responsive art.
+    # An actual browser must choose the 390px illustration rather than
+    # downscaling the 1152px desktop grid and hiding its source caveat.
+    for viewport in (390, 1440):
+        context = browser.new_context(viewport={'width': viewport, 'height': 900})
+        context.add_init_script("""() => {
+          Object.defineProperty(navigator, 'doNotTrack', {configurable:true,get:()=>'1'});
+          window.doNotTrack='1';
+        }""")
+        context.route('https://www.googletagmanager.com/**',lambda route:route.abort())
+        context.route('https://www.clarity.ms/**',lambda route:route.abort())
+        page=context.new_page()
+        for lang in ('ko','en'):
+            route='/eds-book-bird-occurrence-notebook-preparation-'+lang+'/'
+            resp=page.goto(BASE+route,wait_until='load',timeout=20000)
+            assert resp.status==200,(viewport,lang,'source article unavailable')
+            img=page.locator('picture img[src*="/eds-notebook-grid-20261115/"]')
+            assert img.count()==1,(viewport,lang,'wrong image count')
+            img.scroll_into_view_if_needed()
+            img.evaluate('img => img.decode()')
+            state=img.evaluate('img=>({current:img.currentSrc,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,renderedWidth:img.getBoundingClientRect().width,alt:img.alt,pageWidth:document.documentElement.scrollWidth})')
+            assert state['naturalWidth']==(390 if viewport==390 else 1152),(viewport,lang,'wrong responsive source',state)
+            assert state['naturalHeight']==(1000 if viewport==390 else 680),(viewport,lang,'wrong image height',state)
+            assert state['renderedWidth']<=viewport,(viewport,lang,'image overflow',state)
+            assert state['pageWidth']<=viewport+2,(viewport,lang,'document overflow',state)
+            assert state['alt'] and ('50' in state['alt']), (viewport,lang,'missing source-grounded alt',state)
+            print('PASS EDS source-bound responsive image',viewport,lang)
+        context.close()
     browser.close()
 print('PASS all browser geometry checks')

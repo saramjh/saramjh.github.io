@@ -67,6 +67,14 @@ My original preparation notes record a first-page check of 100 GBIF human-observ
 
 These are **test-input and plotting results**, not a census, estimated abundance, geographic range, or year-on-year change. The 1,000 m threshold was chosen to teach a screening decision; it is not presented as a universal scientific standard. The record set was not designed to represent the country's bird population.
 
+<figure>
+  <picture>
+    <source media="(max-width: 560px)" type="image/svg+xml" srcset="/assets/images/dev/eds-notebook-grid-20261115/grid-comparison-en-mobile.svg">
+    <img src="/assets/images/dev/eds-notebook-grid-20261115/grid-comparison-en.svg" alt="The same 50 screened GBIF records on a 10 km grid (12 occupied cells) and 50 km grid (eight). Empty cells do not show species absence." width="1152" height="680" loading="lazy" decoding="async" style="display:block;max-width:100%;height:auto;">
+  </picture>
+  <figcaption>Two grid scales for the same records, not a map of survey coverage or species range. <a href="https://github.com/saramjh/bird-records-not-absence-notebook/blob/6c411e0b7159897b164621143bb863537a606994/data/first-page-grids-20261026.json">Original aggregate and search conditions</a>.</figcaption>
+</figure>
+
 The visible change from 12 occupied cells to eight comes from choosing different aggregation units for the *same* screened records. No new observations were added. That is the precise lesson the exercise can demonstrate.
 
 ### Working notebook versus reproducible scientific input
