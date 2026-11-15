@@ -31,6 +31,8 @@ jobs:
         run: node --test tests/article_product_outbound_runtime.cjs
       - name: Test mobile navigation keyboard and background focus
         run: node tests/mobile_navigation_focus_runtime.cjs
+      - name: Test topic index search without hiding source articles
+        run: node tests/tags_topic_filter_runtime.cjs
       - name: Test archive search progressive results
         run: node tests/archive_search_progressive_results_runtime.cjs
       - name: Build

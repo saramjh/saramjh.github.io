@@ -564,5 +564,57 @@ with sync_playwright() as p:
                 regions), (viewport,route,'desktop resize stranded inert page')
             print('PASS mobile menu focus isolation, Escape and resize',viewport,route)
             page.close()
+    # With 500+ tag choices, readers should find the intended topic without
+    # losing original direct fragments or the complete article groups.
+    for viewport in (390, 1440):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        errors = []
+        page.on('pageerror', lambda exc: errors.append(str(exc)))
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        response = page.goto(BASE+'/tags/', wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, (viewport, 'topic index unavailable')
+        panel = page.locator('#tag-topic-filter')
+        assert panel.is_visible(), (viewport, 'topic search not enhanced')
+        links = page.locator('#tag-topic-links .tag-item')
+        original = links.count()
+        assert original > 500, (viewport, 'unexpected source tag count', original)
+        articles = page.locator('.post-item')
+        article_count = articles.count()
+        assert article_count > 2500, (viewport, 'source articles removed', article_count)
+        assert page.locator('#tag-topic-status').inner_text() == f'{original - 1} topics'
+        search = page.locator('#tag-topic-query')
+        search.fill('koreaves')
+        found = page.locator('#tag-topic-links .tag-item:visible')
+        assert 0 < found.count() < original, (viewport,'topic filtering ineffective')
+        names = found.all_inner_texts()
+        assert all('koreaves' in name.casefold() for name in names), (viewport,'wrong topics visible',names)
+        assert page.locator('#tag-topic-status').inner_text() == (
+            f'{found.count()} of {original - 1} topics')
+        first_href = found.first.get_attribute('href')
+        assert first_href.startswith('#')
+        assert page.evaluate(
+            'href => Boolean(document.getElementById(decodeURIComponent(href.slice(1))))',
+            first_href), (viewport,'existing tag fragment target missing',first_href)
+        search.fill('no-topic-matches-c727-2026')
+        assert page.locator('#tag-topic-links .tag-item:visible').count() == 0
+        assert page.locator('#tag-topic-status').inner_text() == f'0 of {original - 1} topics'
+        search.fill('')
+        assert page.locator('#tag-topic-links .tag-item:visible').count() == original
+        assert articles.count() == article_count, (viewport,'tag search removed source articles')
+        assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2
+        assert not errors, (viewport,'topic search JS exceptions',errors)
+        print('PASS topic finder and all original anchors',viewport,original,article_count)
+        page.close()
+    # No JavaScript: the original complete tag navigation must remain usable.
+    nojs = browser.new_context(viewport={'width': 390, 'height': 900},
+                              java_script_enabled=False)
+    page = nojs.new_page()
+    response = page.goto(BASE+'/tags/', wait_until='domcontentloaded', timeout=20000)
+    assert response.status == 200
+    assert page.locator('#tag-topic-filter').is_hidden()
+    assert page.locator('#tag-topic-links .tag-item:visible').count() > 500
+    page.close()
+    nojs.close()
     browser.close()
 print('PASS all browser geometry checks')
