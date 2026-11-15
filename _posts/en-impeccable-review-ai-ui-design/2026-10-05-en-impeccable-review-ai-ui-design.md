@@ -1,6 +1,7 @@
 ---
 title: "Impeccable Review 2026: I Used It on Two Real AI-Coded Products"
 date: 2026-10-05
+last_modified_at: 2026-11-16
 tags: ["Impeccable", "AI UI", "AI coding", "UI UX", "frontend design", "Codex", "Claude Code", "Cursor", "AI slop", "design review"]
 permalink: /en-impeccable-review-ai-ui-design/
 layout: default
@@ -69,7 +70,7 @@ The useful part is that it has two distinct layers.
    Instead of asking an agent to “make the UI better,” you can scope the job to critique, hardening, responsive adaptation, polishing, and so on.
 
 2. **Deterministic detector**
-   The CLI scans frontend source for recurring design anti-patterns. The current npm description documents 61 deterministic rules.
+   The CLI scans frontend source for recurring design anti-patterns. On November 16, 2026, [npm listed version 4.9.1 with 62 deterministic rules](https://www.npmjs.com/package/impeccable). The Profit Scratch check below remains pinned to `4.1.0`, the version I tested. I have not rerun that project with 4.9.1.
 
 That matters because the workflow is not purely an LLM giving aesthetic opinions.
 
