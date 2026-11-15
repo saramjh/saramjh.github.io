@@ -21,7 +21,7 @@ class ExternalEvidencePermalinks(unittest.TestCase):
         self.assertIn('href="{{ \'/portfolio/recognition/\' | relative_url }}#evidence-{{ record.id | escape }}"', INCLUDE)
         self.assertIn('class="folio-evidence-permalink"', INCLUDE)
         self.assertIn('aria-label="Direct link to record: {{ record.title | escape }}"', INCLUDE)
-        self.assertIn('>Link to record</a>', INCLUDE)
+        self.assertIn('title="Direct link to this record">#</a>', INCLUDE)
 
     def test_original_external_proof_and_case_links_remain_authoritative(self):
         self.assertIn('href="{{ record.url | escape }}"', INCLUDE)
