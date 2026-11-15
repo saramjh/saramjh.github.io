@@ -23,12 +23,18 @@
   const cbox = document.getElementById("menu-trigger");
 
   if (cbox) {
-    const area = document.querySelector(".wrapper");
+    const backgrounds = document.querySelectorAll(
+      "body > .wrapper, body > .folio, body > .folio-footer"
+    );
     const mobile = window.matchMedia("(max-width: 768px)");
     const syncMenu = () => {
       const open = cbox.checked && mobile.matches;
-      area.classList.toggle("blurry", open);
-      area.inert = open;
+      backgrounds.forEach((area) => {
+        if (area.classList.contains("wrapper")) {
+          area.classList.toggle("blurry", open);
+        }
+        area.inert = open;
+      });
       cbox.setAttribute("aria-expanded", String(open));
     };
 

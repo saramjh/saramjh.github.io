@@ -6,7 +6,7 @@ const vm = require('node:vm');
 
 const script = fs.readFileSync(path.join(__dirname, '../assets/js/main.js'), 'utf8');
 
-function makeUI(isMobile = true) {
+function makeUI(isMobile = true, layout = 'default') {
   const listeners = {};
   const classes = new Set();
   const body = {
@@ -23,17 +23,23 @@ function makeUI(isMobile = true) {
     focus() {this.focusCount++;}
   };
   const lamp = {listeners:{}, addEventListener(name, cb) {this.listeners[name] = cb;}};
-  const wrapper = {
-    inert: false,
-    classList: {
-      add(name) {classes.add(name);},
-      remove(name) {classes.delete(name);},
-      toggle(name, force) {
-        if (force) classes.add(name);
-        else classes.delete(name);
+  function region(name) {
+    return {
+      name, inert: false,
+      classList: {
+        contains(key) {return key === name;},
+        add(key) {classes.add(key);},
+        remove(key) {classes.delete(key);},
+        toggle(key, force) {
+          if (force) classes.add(key);
+          else classes.delete(key);
+        }
       }
-    }
-  };
+    };
+  }
+  const wrapper = region('wrapper');
+  const portfolio = [region('folio'), region('folio-footer')];
+  const backgrounds = layout === 'portfolio' ? portfolio : [wrapper];
   const media = {
     matches: isMobile, listeners: {},
     addEventListener(name, cb) {this.listeners[name] = cb;}
@@ -43,13 +49,10 @@ function makeUI(isMobile = true) {
     getElementById(id) {
       return {'mode':lamp,'menu-trigger':input}[id] || null;
     },
-    querySelector(selector) {
-      assert.equal(selector, '.wrapper');
-      return wrapper;
-    },
     querySelectorAll(selector) {
-      assert.equal(selector, 'main img:not(.author-avatar)');
-      return [];
+      if (selector === 'main img:not(.author-avatar)') return [];
+      assert.equal(selector, 'body > .wrapper, body > .folio, body > .folio-footer');
+      return backgrounds;
     }
   };
   const window = {
@@ -61,7 +64,7 @@ function makeUI(isMobile = true) {
   };
   const localStorage = {getItem() {return 'dark';}, setItem() {}};
   vm.runInNewContext(script, {document, window, localStorage, setTimeout() {}}, {timeout:1000});
-  return {input,wrapper,classes,media,listeners};
+  return {input,wrapper,backgrounds,classes,media,listeners};
 }
 
 const mobile = makeUI();
@@ -87,7 +90,19 @@ mobile.media.listeners.change();
 assert.equal(mobile.input.checked, false, 'crossing desktop breakpoint closes open overlay');
 assert.equal(mobile.wrapper.inert, false, 'resizing cannot strand entire page inert');
 
+const portfolioPage = makeUI(true, 'portfolio');
+portfolioPage.input.checked = true;
+portfolioPage.input.listeners.change.call(portfolioPage.input);
+assert.equal(portfolioPage.backgrounds.length, 2, 'portfolio includes main and footer');
+for (const area of portfolioPage.backgrounds) {
+  assert.equal(area.inert, true, 'portfolio main and footer cannot stay focusable');
+}
+portfolioPage.listeners.keydown({key:'Escape', preventDefault() {}});
+for (const area of portfolioPage.backgrounds) {
+  assert.equal(area.inert, false, 'portfolio main and footer recover after close');
+}
+
 const desktop = makeUI(false);
 assert.equal(desktop.wrapper.inert, false);
 assert.equal(desktop.input.attrs['aria-expanded'], 'false');
-console.log('PASS mobile nav inert focus isolation, Escape close, state and responsive reset');
+console.log('PASS normal and portfolio mobile nav focus isolation, Escape, state and responsive reset');
