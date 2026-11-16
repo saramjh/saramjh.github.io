@@ -50,6 +50,16 @@ def parse_records():
 
 
 class EvidenceContextLinksTest(unittest.TestCase):
+    def test_bilingual_evidence_notes_do_not_split_between_languages(self):
+        css = CSS.read_text(encoding="utf8")
+        match = re.search(r"\.folio-evidence-context\{([^}]+)\}", css)
+        self.assertIsNotNone(match, "Existing contextual notes CSS is missing")
+        self.assertRegex(
+            match.group(1),
+            r"(?:^|;)\s*white-space:\s*nowrap\s*(?:;|$)",
+            "Korean and English evidence links must stay together on narrow screens",
+        )
+
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
         self.assertEqual(len(records), 28)
