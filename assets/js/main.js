@@ -4,14 +4,15 @@
   const lamp = document.getElementById("mode");
 
   const toggleTheme = (state) => {
-    if (state === "dark") {
+    const current = state === "dark" || state === "light"
+      ? state
+      : body.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    if (current === "dark") {
       localStorage.setItem("theme", "light");
       body.removeAttribute("data-theme");
-    } else if (state === "light") {
+    } else {
       localStorage.setItem("theme", "dark");
       body.setAttribute("data-theme", "dark");
-    } else {
-      initTheme(state);
     }
   };
 

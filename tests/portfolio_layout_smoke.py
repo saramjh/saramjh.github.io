@@ -616,5 +616,40 @@ with sync_playwright() as p:
     assert page.locator('#tag-topic-links .tag-item:visible').count() > 500
     page.close()
     nojs.close()
+    # The portfolio layout does not declare the normal article layout's
+    # initTheme function. The first click must work without saved preferences.
+    for route in ('/portfolio/', '/'):
+        context = browser.new_context(viewport={'width': 1024, 'height': 900})
+        page = context.new_page()
+        errors = []
+        page.on('pageerror', lambda exc: errors.append(str(exc)))
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        response = page.goto(BASE + route, wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, (route, 'theme route unavailable')
+        theme = page.locator('#mode')
+        assert theme.is_visible(), (route, 'theme control unavailable')
+        before_dark = page.evaluate(
+            'document.body.getAttribute("data-theme") === "dark"')
+        stored_before = page.evaluate('localStorage.getItem("theme")')
+        if route == '/portfolio/':
+            assert stored_before is None, (
+                route, 'fresh portfolio must begin without a stored preference')
+        theme.click()
+        after_dark = page.evaluate(
+            'document.body.getAttribute("data-theme") === "dark"')
+        stored_after = page.evaluate('localStorage.getItem("theme")')
+        assert after_dark != before_dark, (
+            route, 'first color theme click had no visible effect')
+        assert stored_after == ('dark' if after_dark else 'light'), (
+            route, 'first click did not save theme preference')
+        assert not errors, (route, 'first theme click raised a JS error', errors)
+        page.reload(wait_until='domcontentloaded')
+        assert page.evaluate(
+            'document.body.getAttribute("data-theme") === "dark"') == after_dark, (
+                route, 'saved theme preference not restored on reload')
+        assert not errors, (route, 'theme reload raised a JS error', errors)
+        print('PASS first theme click and reload persistence',route)
+        context.close()
     browser.close()
 print('PASS all browser geometry checks')
