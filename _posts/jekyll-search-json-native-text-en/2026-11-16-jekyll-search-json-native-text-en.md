@@ -57,7 +57,7 @@ The [source diff](https://github.com/saramjh/saramjh.github.io/pull/175/files) r
 ~~~
 {% endraw %}
 
-The external-record title and source use the same approach, and its detail field now uses record.detail | jsonify. The search client no longer calls decoder.innerHTML. Result labels still use the DOM textContent property, so there is no need to interpret them as HTML.
+The external-record title and source use the same approach, and its detail field now uses `record.detail | jsonify`. The search client no longer calls decoder.innerHTML. Result labels still use the DOM textContent property, so there is no need to interpret them as HTML.
 
 HTML templates still need HTML escaping. This change is about one specific output context: a JSON endpoint.
 
