@@ -55,6 +55,23 @@ class ShippedSearchIndexStory(unittest.TestCase):
                 self.assertEqual(png[:8], bytes([137, 80, 78, 71, 13, 10, 26, 10]))
                 self.assertEqual(struct.unpack(">II", png[16:24]), (1200, 630))
 
+    def test_inline_liquid_filter_is_literal_code_not_markdown_table(self):
+        for lang in ("ko", "en"):
+            f = ROOT / "_posts" / f"{SLUG}-{lang}" / f"2026-11-16-{SLUG}-{lang}.md"
+            with self.subTest(lang=lang):
+                source = f.read_text(encoding="utf-8")
+                code_span = chr(96) + "record.detail | jsonify" + chr(96)
+                self.assertIn(code_span, source)
+                lines = source.splitlines()
+                in_fence = False
+                for line in lines:
+                    if line.startswith("~~~"):
+                        in_fence = not in_fence
+                        continue
+                    if not in_fence and "record.detail | jsonify" in line:
+                        self.assertIn(code_span, line)
+                        self.assertFalse(line.startswith("|"), "Unexpected Markdown table cell")
+
     def test_live_code_is_already_deployed_fixed(self):
         index = (ROOT / "assets/search.json").read_text(encoding="utf-8")
         runtime = (ROOT / "assets/js/archive-search.js").read_text(encoding="utf-8")

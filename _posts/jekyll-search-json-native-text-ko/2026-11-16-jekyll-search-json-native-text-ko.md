@@ -57,7 +57,7 @@ seo:
 ~~~
 {% endraw %}
 
-외부 성과의 출처·제목 역시 먼저 HTML로 이스케이프하지 않고 JSON으로 직렬화했다. 상세 설명은 record.detail | jsonify로 처리했다. 브라우저 코드에서는 decoder.innerHTML 보정을 삭제했다. 결과 제목은 기존처럼 textContent 속성에 들어가므로 HTML 파서가 필요하지 않다.
+외부 성과의 출처·제목 역시 먼저 HTML로 이스케이프하지 않고 JSON으로 직렬화했다. 상세 설명은 `record.detail | jsonify`로 처리했다. 브라우저 코드에서는 decoder.innerHTML 보정을 삭제했다. 결과 제목은 기존처럼 textContent 속성에 들어가므로 HTML 파서가 필요하지 않다.
 
 HTML 문서를 만들 때 필요한 HTML 이스케이프까지 없앤 것은 아니다. 수정 범위는 **JSON 문맥으로 내보내는 데이터**와 그 데이터를 읽는 검색 클라이언트다.
 
