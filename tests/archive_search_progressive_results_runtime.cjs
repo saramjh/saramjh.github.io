@@ -32,7 +32,11 @@ const sources = Array.from({length: 2}, (_, i) => ({
   title: 'Spoonie source ' + (i + 1), description: 'verified source', tags: 'Spoonie',
   url: '/portfolio/recognition/#evidence-spoonie-' + (i + 1)
 }));
-const fetch = async () => ({ok: true, json: async () => [...articles, ...sources]});
+const literalEntityRecord = {
+  title: 'Literal &amp; text', description: 'The source intentionally contains &amp;',
+  tags: 'literal &amp;', url: '/literal-entity-text/'
+};
+const fetch = async () => ({ok: true, json: async () => [...articles, ...sources, literalEntityRecord]});
 vm.runInNewContext(script, {document, fetch}, {timeout: 1000});
 const loaded = async () => { await new Promise(resolve => setImmediate(resolve)); };
 (async () => {
@@ -65,6 +69,11 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   input.listeners.input();
   assert.equal(articleList.children.length, 0);
   assert.equal(more.hidden, true);
+  input.value = '&amp;';
+  input.listeners.input();
+  assert.equal(articleList.children.length, 1, 'literal entity text should remain searchable without HTML parsing');
+  assert.equal(articleList.children[0].children[0].textContent, 'Literal &amp; text',
+    'public JSON is plain text, not HTML to decode');
   input.value = '';
   input.listeners.input();
   assert.equal(articleList.children.length, 0);

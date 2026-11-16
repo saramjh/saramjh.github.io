@@ -17,12 +17,8 @@
   let records = null;
   let failed = false;
   let visibleArticles = MAX_ARTICLES;
-  const decoder = document.createElement('textarea');
-
   function readable(value) {
-    // The original Jekyll search JSON entity-escapes some post titles.
-    decoder.innerHTML = String(value == null ? '' : value);
-    return decoder.value;
+    return String(value == null ? '' : value);
   }
 
   function validLocalUrl(value) {
@@ -107,7 +103,6 @@
       records = items.filter(function (item) {
         return item && typeof item === 'object' && validLocalUrl(item.url);
       }).map(function (item) {
-        // Decode once: displayed titles and search terms must use the same text.
         item.searchText = [item.title, item.description, item.tags]
           .map(readable).join(' ').toLocaleLowerCase();
         return item;
