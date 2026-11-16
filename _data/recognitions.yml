@@ -31,6 +31,8 @@
   source: "Beary Birding"
   title: "Online Field Guides resource listing"
   detail: "KoreAves appears in the online field-guide list."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
   url: "https://www.bearybirding.com/resources"
 - id: wli-migratory-birds-koreaves
   project: koreaves
@@ -70,6 +72,8 @@
   source: "New Zealand Birds"
   title: "International links listing"
   detail: "KoreAves appears in the site's birding links directory."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
   url: "https://www.nzbirds.com/bar/links.html"
 - id: fmhy-resource
   project: koreaves
@@ -78,6 +82,8 @@
   source: "FMHY Educational Wiki"
   title: "Biology learning resource listing"
   detail: "KoreAves is linked among bird information resources."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
   url: "https://github.com/fmhy/FMHY/wiki/Educational"
 - id: birdalbum-koreaves-further-reading
   project: koreaves
@@ -119,6 +125,8 @@
   source: "GBIF Literature"
   title: "KoreAves web resource recorded in data-use literature"
   detail: "A literature/data-use catalogue record; not an academic publication, award, or endorsement."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
   url: "https://api.gbif.org/v1/literature/dc2c4f8b-062c-3eb1-8073-8a15529823b5"
 - id: one-earth-koreaves-feature
   project: koreaves

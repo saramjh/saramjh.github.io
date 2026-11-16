@@ -27,6 +27,10 @@ EXPECTED = {
     "ncase-space-atlas-programs": "space-atlas-ncase-programs",
     "sharemylesson-space-atlas-moon-phases": "space-atlas-share-my-lesson",
     "disquiet-spoonie-first-record": "spoonie-disquiet-first-record",
+    "beary-resource": "koreaves-external-resources",
+    "nzbirds-resource": "koreaves-external-resources",
+    "fmhy-resource": "koreaves-external-resources",
+    "gbif-literature": "koreaves-external-resources",
 }
 
 
@@ -179,6 +183,42 @@ class EvidenceContextLinksTest(unittest.TestCase):
             self.assertNotIn("case_ko", record)
             self.assertNotIn("case_en", record)
             self.assertEqual(sum(r["url"] == proof["url"] for r in records.values()), 1)
+
+    def test_remaining_koreaves_resource_records_link_to_existing_bilingual_context(self):
+        records = parse_records()
+        expected = {
+            "beary-resource": (
+                "listing", "https://www.bearybirding.com/resources"
+            ),
+            "nzbirds-resource": (
+                "listing", "https://www.nzbirds.com/bar/links.html"
+            ),
+            "fmhy-resource": (
+                "listing", "https://github.com/fmhy/FMHY/wiki/Educational"
+            ),
+            "gbif-literature": (
+                "dataset_record",
+                "https://api.gbif.org/v1/literature/dc2c4f8b-062c-3eb1-8073-8a15529823b5",
+            ),
+        }
+        for record_id, (kind, url) in expected.items():
+            item = records[record_id]
+            self.assertEqual(item["project"], "koreaves")
+            self.assertEqual(item["type"], kind)
+            self.assertEqual(item["status"], "confirmed")
+            self.assertEqual(item["url"], url)
+            self.assertEqual(item["case_ko"], "/koreaves-external-resources-ko/")
+            self.assertEqual(item["case_en"], "/koreaves-external-resources-en/")
+            self.assertEqual(sum(r["url"] == url for r in records.values()), 1)
+            for lang in ("ko", "en"):
+                post = (
+                    ROOT / f"_posts/folio-koreaves-resources-{lang}"
+                    / f"2026-11-02-folio-koreaves-resources-{lang}.md"
+                ).read_text(encoding="utf8")
+                self.assertIn(record_id, post)
+                self.assertIn(url, post)
+                self.assertNotIn("\ufffd", post)
+                self.assertNotIn("????", post)
 
     def test_launchfree_spoonie_listing_is_a_precise_directory_record(self):
         records = parse_records()
