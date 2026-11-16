@@ -1,10 +1,10 @@
 ---
 title: "Richchecker KR·US: Android 사진 업로드 복구"
-description: "Android Chrome의 사진 읽기·디코딩 오류에서 시작해 Richchecker KR·US에 브라우저 내부 복구와 HEIC 변환을 배포한 개발 사례. 자동화 테스트와 실기기 확인 범위를 구분했다."
+description: "Android Chrome의 사진 읽기·디코딩 오류를 계기로 Richchecker KR·US에 HEIC·TIFF 브라우저 내부 복구와 취소 처리를 배포한 개발 기록. 테스트 범위와 실기기 검증 한계를 함께 설명한다."
 date: 2026-11-14
-modified: 2026-11-16
-last_modified_at: 2026-11-16
-tags: ["Richchecker", "Frontend", "Android Chrome", "HEIC", "Debugging"]
+modified: 2026-11-17
+last_modified_at: 2026-11-17
+tags: ["Richchecker", "Frontend", "Android Chrome", "HEIC", "TIFF", "Debugging"]
 permalink: /richchecker-mobile-photo-upload-recovery-ko/
 layout: default
 lang: ko
@@ -13,7 +13,7 @@ alternate_url: /richchecker-mobile-photo-upload-recovery-en/
 published: true
 seo:
   title: "Richchecker KR·US Android 사진 업로드 복구"
-  description: "Android Chrome의 file_read·image_decode 오류를 계기로 KR·US 양쪽에 브라우저 내부 사진 복구와 HEIC 변환을 배포했다. 회귀 테스트와 실기기 검증 한계를 기록한다."
+  description: "Android Chrome의 file_read·image_decode 오류를 계기로 KR·US 양쪽에 HEIC·TIFF 브라우저 내부 복구와 취소 처리를 배포했다. 회귀 테스트와 실기기 검증 한계를 기록한다."
 ---
 
 > English: [Android photo upload recovery in both Richchecker editions](/richchecker-mobile-photo-upload-recovery-en/)
@@ -99,6 +99,21 @@ Android 화면 크기와 사용자 에이전트를 모의한 **데스크톱 Chro
 
 네 PR은 모두 main에 병합됐다. 각 PR에 기록된 브라우저 회귀 테스트는 KR native 복구 28/28, US native 복구 29/29, KR HEIC 복구 29/29, US HEIC 복구 30/30이다. 네 변경 모두 실제 MediaPipe 분석 E2E와 결과 렌더링을 확인했고, 기존 계약 검사도 통과했다. [KR native 배포](https://github.com/saramjh/richChecker/actions/runs/43821895201), [US native 배포](https://github.com/saramjh/richChecker-us/actions/runs/43824121306), [KR HEIC 배포](https://github.com/saramjh/richChecker/actions/runs/43842302246), [US HEIC 배포](https://github.com/saramjh/richChecker-us/actions/runs/43842311161)는 모두 성공했다. 운영 중인 [KR판](https://saramjh.github.io/richChecker/)과 [US판](https://saramjh.github.io/richChecker-us/), 양쪽 JavaScript 및 HEIC 변환 파일도 HTTP 200으로 확인했다.
 
-640×640 HEIC 테스트 파일은 별도의 재현 가능한 HEIC 실패 경로를 확인한 것이다. 이것이 앞서 관측한 KR 13건이나 US 2건의 원인이라는 증거는 없다. 실제 문제가 발생한 Android 기기에서 재현하지 못했고, 사진 갤러리·클라우드 제공자와 원본 파일도 아직 확인하지 못했다. 11월 16일 배포 이후의 GA4 결과도 아직 조회하지 않았다. 따라서 해당 기기에서 수정이 확인됐다고 말할 수 없으며 운영 P0를 닫지 않는다.
+640×640 HEIC 테스트 파일은 별도의 재현 가능한 HEIC 실패 경로를 확인한 것이다. 이것이 앞서 관측한 KR 13건이나 US 2건의 원인이라는 증거는 없다. 실제 문제가 발생한 Android 기기에서 재현하지 못했고, 사진 갤러리·클라우드 제공자와 원본 파일도 아직 확인하지 못했다. 따라서 해당 기기에서 수정이 확인됐다고 말할 수 없으며 운영 P0를 닫지 않는다.
 
-원본: [Richchecker KR 소스와 테스트](https://github.com/saramjh/richChecker) · [Richchecker US 소스](https://github.com/saramjh/richChecker-us) · [같은 호스트의 서비스별 분석 범위 구분](/gh-pages-analytics-notes-5-followup-kr/)
+
+## 2026-11-16: TIFF 복구와 이전 작업 취소
+
+11월 16일 [KR PR #6](https://github.com/saramjh/richChecker/pull/6)과 [US PR #3](https://github.com/saramjh/richChecker-us/pull/3)을 main에 병합했다. 사진을 다시 선택하거나 도구를 초기화하면 이전 사진 제공자 읽기 요청, 이미지 디코딩, MediaPipe 모듈·모델 로딩 대기를 취소한다. 마지막에 선택한 사진만 미리보기와 분석을 이어간다.
+
+TIFF는 취소할 수 있는 Web Worker에서 브라우저 내부로 변환한다. 변환 전 IFD 메타데이터와 타일·스트립 개수를 확인한다. 디코딩 제한은 8MP/32MiB이며 원본 파일은 12MiB 이하로 제한한다. Deflate 압축 해제 결과에도 출력 크기 제한을 적용한다. HEIC와 TIFF 복구 과정에서 사진 바이트를 서버로 보내지 않는다.
+
+각 저장소의 회귀 테스트에서 이미지 형식·실패·적대적 입력 38/38, 취소·재선택·초기화·모델 대기 9/9가 통과했다. 실제 JPEG, HEIC, TIFF를 사용한 MediaPipe E2E와 얼굴이 없는 이미지의 제어된 오류 처리 및 로딩 정리도 확인했고, 페이지 오류는 0건이었다. 테스트 환경은 macOS Chrome에 Android 14/Pixel 8 사용자 에이전트와 모바일 뷰포트를 적용한 것이며, 실제 Android 기기 테스트는 아니다.
+
+[KR 배포 작업](https://github.com/saramjh/richChecker/actions/runs/43888945586)은 2026-11-16 14:45:15 UTC, [US 배포 작업](https://github.com/saramjh/richChecker-us/actions/runs/43888946580)은 14:45:18 UTC에 성공했다. 운영 KR·US 페이지와 각 `js/script.js`, `tiff-worker.js`, `utif.js`, `pako_inflate.min.js`는 모두 HTTP 200을 반환했다. 두 제품의 JavaScript에서 TIFF 복구 함수와 취소 상태 코드를 확인했다.
+
+최종 배포 이후의 짧은 GA4 구간도 다시 조회했다. KR은 11월 16일 23:45 KST부터 11월 17일 01:25 KST까지, US는 11월 16일 06:45부터 08:25까지(로스앤젤레스 속성 시간) Android 모바일의 `upload_started`, `upload_error`, `analysis_started`, `analysis_complete`, `upload_decode_recovered`, `photo_picker_opened` 이벤트를 조회했다. 두 속성 모두 일치하는 행이 없었다. 이전 조회의 19:57 KST와 02:59 PST 이벤트는 이 두 배포보다 먼저 발생했으므로 새 코드의 결과로 계산하지 않았다. 짧은 조회 구간에서 행이 없었다는 사실만으로 사용자 활동이나 오류가 없었다고 판단할 수 없다.
+
+실제 영향을 받은 Android 기기와 사진 제공자, 원본 사진은 여전히 확인하지 못했다. 테스트는 TIFF 처리와 취소 경로가 구현됐다는 점을 확인했으며, 해당 기기에서 업로드가 복구됐다는 증거는 없다. 운영 P0는 계속 열린 상태다.
+
+원본: [Richchecker KR 소스와 테스트](https://github.com/saramjh/richChecker) · [Richchecker US 소스](https://github.com/saramjh/richChecker-us) · [같은 호스트의 서비스별 분석 범위 구분](/gh-pages-analytics-notes-5-followup-kr/) · [KR PR #6](https://github.com/saramjh/richChecker/pull/6) · [US PR #3](https://github.com/saramjh/richChecker-us/pull/3) · [KR 배포](https://github.com/saramjh/richChecker/actions/runs/43888945586) · [US 배포](https://github.com/saramjh/richChecker-us/actions/runs/43888946580)

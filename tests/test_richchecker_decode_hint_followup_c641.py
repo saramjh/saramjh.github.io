@@ -1,4 +1,4 @@
-"""First-party bilingual article regression for Nov 14 RichChecker decode hint.
+"""First-party bilingual article regression for RichChecker photo recovery updates through Nov 17.
 
 This test reads only original author posts; no image, personal data, provider,
 analytics service or separate product repository is accessed or modified.
@@ -60,8 +60,8 @@ class OriginalRichCheckerDecodeHintFollowup(unittest.TestCase):
         for lang, source in self.parts.items():
             with self.subTest(lang=lang):
                 self.assertIn("date: 2026-11-14", source)
-                self.assertIn("modified: 2026-11-16", source)
-                self.assertIn("last_modified_at: 2026-11-16", source)
+                self.assertIn("modified: 2026-11-17", source)
+                self.assertIn("last_modified_at: 2026-11-17", source)
                 for link in pull_requests + deployments:
                     self.assertIn(link, source)
                 self.assertIn("https://saramjh.github.io/richChecker/", source)
@@ -89,9 +89,49 @@ class OriginalRichCheckerDecodeHintFollowup(unittest.TestCase):
         self.assertIn("운영 P0를 닫지 않는다", ko)
         self.assertIn("physical Android device", en)
         self.assertIn("production P0 remains open", en)
-        self.assertIn("post-release GA4", en)
+        self.assertIn("post-deployment window", en)
         self.assertIn("13", ko)
         self.assertIn("2", en)
+
+    def test_november_16_tiff_recovery_and_cancellation_followup(self):
+        pull_requests = [
+            "https://github.com/saramjh/richChecker/pull/6",
+            "https://github.com/saramjh/richChecker-us/pull/3",
+        ]
+        deployments = [
+            "https://github.com/saramjh/richChecker/actions/runs/43888945586",
+            "https://github.com/saramjh/richChecker-us/actions/runs/43888946580",
+        ]
+        for lang, source in self.parts.items():
+            with self.subTest(lang=lang):
+                for link in pull_requests + deployments:
+                    self.assertIn(link, source)
+                for phrase in ["38/38", "9/9", "Deflate", "tiff-worker.js", "utif.js"]:
+                    self.assertIn(phrase, source)
+                if lang == "ko":
+                    for limit in ["8MP", "32MiB", "12MiB"]:
+                        self.assertIn(limit, source)
+                else:
+                    for limit in ["8 MP", "32 MiB", "12 MiB"]:
+                        self.assertIn(limit, source)
+                if lang == "ko":
+                    self.assertIn("실제 Android 기기 테스트는 아니다", source)
+                    self.assertIn("운영 P0는 계속 열린 상태다", source)
+                else:
+                    self.assertIn("No physical Android device was used", source)
+                    self.assertIn("production P0 remains open", source)
+
+    def test_post_final_deployment_ga4_window_is_scoped_and_not_a_success_claim(self):
+        for lang, source in self.parts.items():
+            with self.subTest(lang=lang):
+                for boundary in ["23:45 KST", "01:25 KST", "06:45", "08:25"]:
+                    self.assertIn(boundary, source)
+                if lang == "ko":
+                    self.assertIn("두 속성 모두 일치하는 행이 없었다", source)
+                    self.assertIn("짧은 조회 구간에서 행이 없었다는 사실만으로", source)
+                else:
+                    self.assertIn("No matching rows were returned", source)
+                    self.assertIn("A zero-row result over this short interval does not establish", source)
 
 if __name__ == "__main__":
     unittest.main()

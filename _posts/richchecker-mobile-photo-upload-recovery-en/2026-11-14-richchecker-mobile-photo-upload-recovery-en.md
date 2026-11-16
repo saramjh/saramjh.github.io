@@ -1,10 +1,10 @@
 ---
 title: "Richchecker KR and US: Android photo upload recovery"
-description: "Android Chrome file-read and decode errors led to browser-local recovery in both Richchecker editions, including tested HEIC conversion and explicit device-validation limits."
+description: "Both Richchecker editions now recover HEIC and TIFF photos in the browser and cancel stale processing. Verification on the affected physical Android device remains open."
 date: 2026-11-14
-modified: 2026-11-16
-last_modified_at: 2026-11-16
-tags: ["Richchecker", "Frontend", "Android Chrome", "HEIC", "Debugging"]
+modified: 2026-11-17
+last_modified_at: 2026-11-17
+tags: ["Richchecker", "Frontend", "Android Chrome", "HEIC", "TIFF", "Debugging"]
 permalink: /richchecker-mobile-photo-upload-recovery-en/
 layout: default
 lang: en
@@ -13,7 +13,7 @@ alternate_url: /richchecker-mobile-photo-upload-recovery-ko/
 published: true
 seo:
   title: "Richchecker KR and US Android photo upload recovery"
-  description: "Both Richchecker editions now have bounded browser-local image recovery and tested HEIC conversion, with deployment receipts and the remaining physical-device verification gap."
+  description: "Both Richchecker editions have bounded browser-local HEIC and TIFF recovery, cancellation handling and deployment receipts. Physical-device verification remains open."
 ---
 
 > 한국어: [Richchecker KR·US Android 사진 업로드 복구](/richchecker-mobile-photo-upload-recovery-ko/)
@@ -94,6 +94,21 @@ A real 640×640 ISO HEIC fixture also failed Chrome's normal image decoder and n
 
 All four PRs were merged into main. The browser regression suites recorded 28/28 passing cases for KR native recovery, 29/29 for US native recovery, 29/29 for KR HEIC recovery and 30/30 for US HEIC recovery. Each change also passed the repository contract checks and an unmocked MediaPipe E2E that reached a visible result. All four [KR native](https://github.com/saramjh/richChecker/actions/runs/43821895201), [US native](https://github.com/saramjh/richChecker-us/actions/runs/43824121306), [KR HEIC](https://github.com/saramjh/richChecker/actions/runs/43842302246) and [US HEIC](https://github.com/saramjh/richChecker-us/actions/runs/43842311161) deployment runs succeeded. The live [KR edition](https://saramjh.github.io/richChecker/) and [US edition](https://saramjh.github.io/richChecker-us/), their runtime scripts and both decoder bundles returned HTTP 200 in a direct release check.
 
-The 640×640 fixture proves a separate reproducible HEIC failure path. It does not identify the cause of the earlier 13 KR image_decode events or two US file_read events. The affected physical Android device, its gallery or cloud provider and the original photo remain unknown. I have not reproduced the issue on that device, and post-release GA4 has not yet been checked. The production P0 remains open.
+The 640×640 fixture reproduces a separate HEIC failure path. It does not identify the cause of the earlier 13 KR image_decode events or two US file_read events. The affected Android device, its gallery or cloud provider, and the original photo remain unknown. I have not reproduced the issue on that device. The production P0 remains open.
 
-Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Richchecker US repository](https://github.com/saramjh/richChecker-us) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/)
+
+## November 16: TIFF recovery and cancellation of stale work
+
+[KR PR #6](https://github.com/saramjh/richChecker/pull/6) and [US PR #3](https://github.com/saramjh/richChecker-us/pull/3) merged into main on November 16. Selecting another photo or resetting the tool now cancels earlier provider reads, image-decode waits, and MediaPipe module or model waits. The most recently selected file controls the preview and analysis.
+
+TIFF conversion runs in a cancellable Web Worker in the browser. Before decoding, the worker checks IFD metadata and tile or strip counts. The decoded-data limits are 8 MP and 32 MiB, and source files are capped at 12 MiB. Deflate decompression also has an output-size bound. HEIC and TIFF recovery keeps the photo bytes in the browser.
+
+Each repository's regression runs passed 38/38 format, failure and adversarial-input cases and 9/9 cancellation, reselection, reset and model-stall cases. An unmocked MediaPipe E2E passed with JPEG, actual HEIC and actual TIFF, plus a controlled no-face error and loader cleanup. The browser reported zero page errors. These tests ran in Chrome on macOS with an Android 14/Pixel 8 user agent and mobile viewport. No physical Android device was used.
+
+The [KR deployment run](https://github.com/saramjh/richChecker/actions/runs/43888945586) completed at 14:45:15 UTC, and the [US deployment run](https://github.com/saramjh/richChecker-us/actions/runs/43888946580) completed at 14:45:18 UTC. Both live editions and their `js/script.js`, `tiff-worker.js`, `utif.js` and `pako_inflate.min.js` assets returned HTTP 200. Both product scripts contained the TIFF recovery function and cancellation state code.
+
+I queried a short post-deployment window in each product's own GA4 property. For KR, the window ran from 23:45 KST on November 16 to 01:25 KST on November 17. For US, it ran from 06:45 to 08:25 on November 16 in the Los Angeles property timezone. The query covered Android mobile `upload_started`, `upload_error`, `analysis_started`, `analysis_complete`, `upload_decode_recovered` and `photo_picker_opened` events. No matching rows were returned. The 19:57 KST and 02:59 PST events in the earlier readback occurred before these deployments and are not evidence for the new code. A zero-row result over this short interval does not establish that there were no users or errors.
+
+The affected Android device, photo provider and original photo remain unknown. The test results cover the TIFF and cancellation paths. They do not establish recovery on the affected device, so the production P0 remains open.
+
+Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Richchecker US repository](https://github.com/saramjh/richChecker-us) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/) · [KR PR #6](https://github.com/saramjh/richChecker/pull/6) · [US PR #3](https://github.com/saramjh/richChecker-us/pull/3) · [KR deployment](https://github.com/saramjh/richChecker/actions/runs/43888945586) · [US deployment](https://github.com/saramjh/richChecker-us/actions/runs/43888946580)
