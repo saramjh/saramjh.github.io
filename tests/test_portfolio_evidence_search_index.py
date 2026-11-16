@@ -24,7 +24,7 @@ class EvidenceSearchIndex(unittest.TestCase):
         self.assertIn('{% for record in site.data.recognitions %}', SEARCH)
         self.assertIn("{% if record.status == 'confirmed' %}", SEARCH)
         self.assertIn('/portfolio/recognition/#evidence-{{ record.id | escape }}', SEARCH)
-        self.assertIn('record.detail | escape | jsonify', SEARCH)
+        self.assertIn('record.detail | jsonify', SEARCH)
         self.assertIn('record.source', SEARCH)
         self.assertIn('record.title', SEARCH)
         self.assertIn('record.id', SEARCH)
