@@ -161,6 +161,8 @@
   source: "The Home Ed Daily"
   title: "Space Atlas: Test a No-Tilt Earth"
   detail: "A UK home-education science directory lists the free, two-page adult-led Earth-seasons investigation for ages 10–14 and links directly to the original worksheet. Independent directory inclusion, not measured family use, classroom adoption, or learning outcomes."
+  case_ko: "/earth-seasons-no-tilt-experiment-ko/"
+  case_en: "/earth-seasons-no-tilt-experiment-en/"
   url: "https://www.thehomeeddaily.co.uk/resources/science"
 
 - id: awesome-homeschooling-space-atlas

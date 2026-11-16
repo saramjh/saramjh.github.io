@@ -11,6 +11,7 @@ CSS = ROOT / "assets" / "css" / "portfolio.css"
 
 EXPECTED = {
     "worldlytribe-space-atlas-worldschooling": "space-atlas-worldschooling-guide",
+    "the-home-ed-daily-space-atlas-printable": "earth-seasons-no-tilt-experiment",
     "nav-ai-koreaves-directory": "koreaves-external-resources",
     "greenus-koreaves-community-tool": "koreaves-external-resources",
     "wli-migratory-birds-koreaves": "koreaves-external-resources",
@@ -49,6 +50,32 @@ def parse_records():
 
 
 class EvidenceContextLinksTest(unittest.TestCase):
+    def test_bilingual_evidence_notes_do_not_split_between_languages(self):
+        css = CSS.read_text(encoding="utf8")
+        match = re.search(r"\.folio-evidence-context\{([^}]+)\}", css)
+        self.assertIsNotNone(match, "Existing contextual notes CSS is missing")
+        self.assertRegex(
+            match.group(1),
+            r"(?:^|;)\s*white-space:\s*nowrap\s*(?:;|$)",
+            "Korean and English evidence links must stay together on narrow screens",
+        )
+
+    def test_tablet_rows_without_dates_use_the_full_content_column(self):
+        css = CSS.read_text(encoding="utf8")
+        start = css.index("@media(max-width:940px){")
+        end = css.index("@media(max-width:680px){", start)
+        tablet_rules = css[start:end]
+        include = INCLUDE.read_text(encoding="utf8")
+        self.assertIn(
+            'class="folio-evidence-item{% unless record.date %} folio-evidence-item-no-date{% endunless %}"',
+            include,
+        )
+        self.assertRegex(
+            tablet_rules,
+            r"\.folio-evidence-item-no-date\s*\{[^}]*grid-template-columns:\s*142px\s+minmax\(0,\s*1fr\)",
+            "Rows without a date should not reserve an empty tablet-width column",
+        )
+
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
         self.assertEqual(len(records), 28)
@@ -102,8 +129,8 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertIn("ages 10–14", item["detail"])
         self.assertIn("not measured family use", item["detail"])
         self.assertNotIn("date", item)
-        self.assertNotIn("case_ko", item)
-        self.assertNotIn("case_en", item)
+        self.assertEqual(item["case_ko"], "/earth-seasons-no-tilt-experiment-ko/")
+        self.assertEqual(item["case_en"], "/earth-seasons-no-tilt-experiment-en/")
         self.assertEqual(sum(r["url"] == item["url"] for r in records.values()), 1)
 
     def test_six_source_merged_community_space_atlas_listings(self):
