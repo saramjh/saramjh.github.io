@@ -10,6 +10,6 @@
   <script>window.location.replace({{ page.redirect_to | jsonify }});</script>
 </head>
 <body>
-  <p>이 페이지는 현재 버전으로 이동했습니다. <a href="{{ page.redirect_to }}">현재 부자 관상 테스트 열기</a></p>
+  <p>{% if page.lang == 'en' %}This page has moved.{% else %}이 페이지는 이동했습니다.{% endif %} <a href="{{ page.redirect_to | escape }}">{% if page.lang == 'en' %}Open the current page{% else %}현재 페이지 열기{% endif %}</a></p>
 </body>
 </html>
