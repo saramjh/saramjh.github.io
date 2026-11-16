@@ -11,6 +11,7 @@ CSS = ROOT / "assets" / "css" / "portfolio.css"
 
 EXPECTED = {
     "worldlytribe-space-atlas-worldschooling": "space-atlas-worldschooling-guide",
+    "the-home-ed-daily-space-atlas-printable": "earth-seasons-no-tilt-experiment",
     "nav-ai-koreaves-directory": "koreaves-external-resources",
     "greenus-koreaves-community-tool": "koreaves-external-resources",
     "wli-migratory-birds-koreaves": "koreaves-external-resources",
@@ -102,8 +103,8 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertIn("ages 10–14", item["detail"])
         self.assertIn("not measured family use", item["detail"])
         self.assertNotIn("date", item)
-        self.assertNotIn("case_ko", item)
-        self.assertNotIn("case_en", item)
+        self.assertEqual(item["case_ko"], "/earth-seasons-no-tilt-experiment-ko/")
+        self.assertEqual(item["case_en"], "/earth-seasons-no-tilt-experiment-en/")
         self.assertEqual(sum(r["url"] == item["url"] for r in records.values()), 1)
 
     def test_six_source_merged_community_space_atlas_listings(self):
