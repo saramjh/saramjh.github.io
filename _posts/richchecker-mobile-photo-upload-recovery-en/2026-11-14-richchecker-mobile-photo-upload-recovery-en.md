@@ -1,8 +1,10 @@
 ---
-title: "Richchecker KR: repairing a photo upload path that failed on Android Chrome"
-description: "Real Android Chrome file-read errors led to a different image-loading path, safer file checks and more useful diagnostics in Richchecker KR."
+title: "Richchecker KR and US: Android photo upload recovery"
+description: "Android Chrome file-read and decode errors led to browser-local recovery in both Richchecker editions, including tested HEIC conversion and explicit device-validation limits."
 date: 2026-11-14
-tags: ["Richchecker", "Frontend", "Android Chrome", "Debugging"]
+modified: 2026-11-16
+last_modified_at: 2026-11-16
+tags: ["Richchecker", "Frontend", "Android Chrome", "HEIC", "Debugging"]
 permalink: /richchecker-mobile-photo-upload-recovery-en/
 layout: default
 lang: en
@@ -10,11 +12,11 @@ alternate_lang: ko
 alternate_url: /richchecker-mobile-photo-upload-recovery-ko/
 published: true
 seo:
-  title: "Richchecker KR Android photo upload reliability fix"
-  description: "Eight Android file-read error events led to a Blob URL change, file validation, browser testing and a verified Richchecker KR release."
+  title: "Richchecker KR and US Android photo upload recovery"
+  description: "Both Richchecker editions now have bounded browser-local image recovery and tested HEIC conversion, with deployment receipts and the remaining physical-device verification gap."
 ---
 
-> 한국어: [Richchecker KR 안드로이드 사진 업로드 오류 개선](/richchecker-mobile-photo-upload-recovery-ko/)
+> 한국어: [Richchecker KR·US Android 사진 업로드 복구](/richchecker-mobile-photo-upload-recovery-ko/)
 
 **I shipped a revised photo upload path in [Richchecker KR](https://saramjh.github.io/richChecker/) on November 13, 2026.** Some Android Chrome visits had recorded an error before photo analysis could start. I removed the full-file Base64 conversion and added checks for unsupported or oversized photos. The implementation is in [PR #1](https://github.com/saramjh/richChecker/pull/1) and [PR #2](https://github.com/saramjh/richChecker/pull/2).
 
@@ -36,7 +38,7 @@ The previous picker used FileReader.readAsDataURL(file) to convert the entire ph
 
 The new path rejects empty files, obvious non-images, SVG and files over 50 MiB before loading. It uses URL.createObjectURL(file) to create a browser-local Blob URL, waits for the image to decode, and checks the decoded pixel count before sending the image through the existing MediaPipe flow. Images over 50 million pixels are stopped before canvas processing.
 
-The old Blob URL is released with URL.revokeObjectURL() when the user replaces a photo, resets the tool or hits an error. An image load gets a 20-second timeout. If HEIC cannot be decoded by the browser, the page suggests saving a JPG copy. The selected photo still stays in the browser instead of being uploaded to an analysis server.
+The old Blob URL is released with URL.revokeObjectURL() when the user replaces a photo, resets the tool or hits an error. An image load gets a 20-second timeout. When the browser's normal decoder cannot open HEIC, the later recovery path tries a bounded local conversion for supported HEIC/HEIF files. Unsupported, corrupt or oversized files still receive a JPG/PNG retry hint. The selected photo stays in the browser instead of being uploaded to an analysis server.
 
 ## Making errors useful without collecting the photo
 
@@ -82,4 +84,16 @@ For November 14 after that deployment, GA4 classified **19:00 (3 events)** and *
 
 The app calls `renderResults` before tracking `analysis_complete`, so these are source-backed signals that the result-generation code path ran. **Four completion events do not represent four distinct users**. GA4's Android classification does not independently establish the physical device, and repeated attempts or developer testing cannot be ruled out. These data **do not prove that the original Android decoding issue is resolved**: no observation links the particular failing photo provider or file to these later events. I cannot calculate a change in success rate or attribute the completions to the patch.
 
-Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/)
+## November 16: local photo recovery in both editions
+
+The KR product's own GA4 data for Android Chrome mobile at 06:00 KST on November 15 showed one measured user, 15 upload_started events, 13 image_decode events and two analysis_complete events. For the US edition, GA4 recorded two file_read upload errors for one measured Android Chrome user at 19:00 Los Angeles property time on November 4. The GA4 records did not identify the original photos or their providers. Event counts cannot be treated as file counts or an upload failure rate.
+
+[KR PR #4](https://github.com/saramjh/richChecker/pull/4) keeps the normal Blob URL decode path. If the image element fails, it makes one recovery attempt with createImageBitmap(file, { imageOrientation: "from-image" }). The input limit is 20 MiB, decoding is limited to seven seconds, and images above 50 megapixels are rejected. The recovered image is encoded as JPEG with a longest side of at most 2,200 pixels and a five-second encode limit. It reuses the existing MediaPipe analysis, preview and share flow. Late bitmaps are closed and unused Blob URLs are revoked. The photo is not uploaded, and this native fallback adds no new dependency. [US PR #1](https://github.com/saramjh/richChecker-us/pull/1) removes the full-photo Base64 FileReader path and uses a browser-local Blob URL with a recovery-only native ImageBitmap fallback.
+
+A real 640×640 ISO HEIC fixture also failed Chrome's normal image decoder and native ImageBitmap. [KR PR #5](https://github.com/saramjh/richChecker/pull/5) and [US PR #2](https://github.com/saramjh/richChecker-us/pull/2) add a lazy, self-hosted MIT-licensed heic2any@0.0.4 conversion path for this failure. After a decode error, the app inspects at most 16 header bytes and loads the decoder only for genuine HEIC/HEIF, including HEIC bytes reported with a JPEG MIME type. The input limit is 12 MiB, conversion waits up to ten seconds, and the output JPEG is limited to 20 MiB under the existing 50MP cap. Normal JPEG, PNG and WebP uploads do not load the decoder. Photo bytes never leave the browser.
+
+All four PRs were merged into main. The browser regression suites recorded 28/28 passing cases for KR native recovery, 29/29 for US native recovery, 29/29 for KR HEIC recovery and 30/30 for US HEIC recovery. Each change also passed the repository contract checks and an unmocked MediaPipe E2E that reached a visible result. All four [KR native](https://github.com/saramjh/richChecker/actions/runs/43821895201), [US native](https://github.com/saramjh/richChecker-us/actions/runs/43824121306), [KR HEIC](https://github.com/saramjh/richChecker/actions/runs/43842302246) and [US HEIC](https://github.com/saramjh/richChecker-us/actions/runs/43842311161) deployment runs succeeded. The live [KR edition](https://saramjh.github.io/richChecker/) and [US edition](https://saramjh.github.io/richChecker-us/), their runtime scripts and both decoder bundles returned HTTP 200 in a direct release check.
+
+The 640×640 fixture proves a separate reproducible HEIC failure path. It does not identify the cause of the earlier 13 KR image_decode events or two US file_read events. The affected physical Android device, its gallery or cloud provider and the original photo remain unknown. I have not reproduced the issue on that device, and post-release GA4 has not yet been checked. The production P0 remains open.
+
+Sources: [Richchecker KR repository](https://github.com/saramjh/richChecker) · [Richchecker US repository](https://github.com/saramjh/richChecker-us) · [Separating app and blog analytics on a shared host](/gh-pages-analytics-notes-5-followup-en/)

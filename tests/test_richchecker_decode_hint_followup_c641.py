@@ -44,5 +44,54 @@ class OriginalRichCheckerDecodeHintFollowup(unittest.TestCase):
             self.assertIn("FileReader.readAsDataURL(file)", s)
             self.assertIn("https://saramjh.github.io/richChecker/", s)
 
+    def test_november_16_kr_and_us_recovery_sources_and_deployments(self):
+        pull_requests = [
+            "https://github.com/saramjh/richChecker/pull/4",
+            "https://github.com/saramjh/richChecker/pull/5",
+            "https://github.com/saramjh/richChecker-us/pull/1",
+            "https://github.com/saramjh/richChecker-us/pull/2",
+        ]
+        deployments = [
+            "https://github.com/saramjh/richChecker/actions/runs/43821895201",
+            "https://github.com/saramjh/richChecker-us/actions/runs/43824121306",
+            "https://github.com/saramjh/richChecker/actions/runs/43842302246",
+            "https://github.com/saramjh/richChecker-us/actions/runs/43842311161",
+        ]
+        for lang, source in self.parts.items():
+            with self.subTest(lang=lang):
+                self.assertIn("date: 2026-11-14", source)
+                self.assertIn("modified: 2026-11-16", source)
+                self.assertIn("last_modified_at: 2026-11-16", source)
+                for link in pull_requests + deployments:
+                    self.assertIn(link, source)
+                self.assertIn("https://saramjh.github.io/richChecker/", source)
+                self.assertIn("https://saramjh.github.io/richChecker-us/", source)
+                self.assertIn("createImageBitmap", source)
+                self.assertIn("heic2any@0.0.4", source)
+                self.assertIn("MIT", source)
+                for limit in ["20 MiB", "12 MiB", "2,200", "50MP"]:
+                    self.assertIn(limit, source)
+                if lang == "en":
+                    for limit in ["seven seconds", "five-second", "ten seconds"]:
+                        self.assertIn(limit, source)
+                    self.assertIn("physical Android device", source)
+                else:
+                    for limit in ["7초", "5초", "10초"]:
+                        self.assertIn(limit, source)
+                    self.assertIn("실제 문제가 발생한 Android 기기에서 재현하지 못했고", source)
+                self.assertNotIn("\ufffd", source)
+                self.assertNotIn("????", source)
+
+    def test_november_16_claims_keep_production_uncertainty_open(self):
+        ko = self.parts["ko"]
+        en = self.parts["en"]
+        self.assertIn("실제 문제가 발생한 Android 기기에서 재현하지 못했고", ko)
+        self.assertIn("운영 P0를 닫지 않는다", ko)
+        self.assertIn("physical Android device", en)
+        self.assertIn("production P0 remains open", en)
+        self.assertIn("post-release GA4", en)
+        self.assertIn("13", ko)
+        self.assertIn("2", en)
+
 if __name__ == "__main__":
     unittest.main()
