@@ -1,8 +1,10 @@
 ---
-title: "Richchecker KR: 안드로이드 사진 업로드가 멈추던 경로를 바꾸다"
-description: "Android Chrome의 사진 읽기 오류를 분석하고 Richchecker KR의 FileReader 경로를 Blob URL로 바꾼 개발 사례. 테스트와 운영 확인 범위를 구분했다."
+title: "Richchecker KR·US: Android 사진 업로드 복구"
+description: "Android Chrome의 사진 읽기·디코딩 오류에서 시작해 Richchecker KR·US에 브라우저 내부 복구와 HEIC 변환을 배포한 개발 사례. 자동화 테스트와 실기기 확인 범위를 구분했다."
 date: 2026-11-14
-tags: ["Richchecker", "Frontend", "Android Chrome", "Debugging"]
+modified: 2026-11-16
+last_modified_at: 2026-11-16
+tags: ["Richchecker", "Frontend", "Android Chrome", "HEIC", "Debugging"]
 permalink: /richchecker-mobile-photo-upload-recovery-ko/
 layout: default
 lang: ko
@@ -10,11 +12,11 @@ alternate_lang: en
 alternate_url: /richchecker-mobile-photo-upload-recovery-en/
 published: true
 seo:
-  title: "Richchecker KR 안드로이드 사진 업로드 오류 개선"
-  description: "GA4의 file_read 오류 8건에서 시작한 Richchecker KR 사진 업로드 수정: Blob URL, 파일 사전검사, Chrome 회귀 테스트와 실제 배포 검증."
+  title: "Richchecker KR·US Android 사진 업로드 복구"
+  description: "Android Chrome의 file_read·image_decode 오류를 계기로 KR·US 양쪽에 브라우저 내부 사진 복구와 HEIC 변환을 배포했다. 회귀 테스트와 실기기 검증 한계를 기록한다."
 ---
 
-> English: [Fixing the photo upload path in Richchecker KR](/richchecker-mobile-photo-upload-recovery-en/)
+> English: [Android photo upload recovery in both Richchecker editions](/richchecker-mobile-photo-upload-recovery-en/)
 
 **2026년 11월 13일, [Richchecker KR](https://saramjh.github.io/richChecker/)의 사진 업로드 경로를 수정해 배포했다.** Android Chrome에서 사진 선택 후 분석으로 넘어가지 못한 오류 기록을 확인하고, 파일 전체를 Base64로 복사하던 코드를 제거했다. 파일 형식 검사와 실패 단계별 진단도 추가했다. 구현과 테스트 기록은 [PR #1](https://github.com/saramjh/richChecker/pull/1)과 [PR #2](https://github.com/saramjh/richChecker/pull/2)에 남아 있다.
 
@@ -41,7 +43,7 @@ file_read 오류 8회는 모두 국내 모바일 **Android Chrome**에서 기록
 3. 디코딩한 이미지가 5천만 픽셀을 넘는지 검사하고, 적합하면 기존 MediaPipe 분석으로 넘긴다.
 4. 사진 재선택·초기화·실패 시 URL.revokeObjectURL()로 더는 쓰지 않는 URL을 해제한다.
 
-이미지 로딩은 20초를 초과하면 타임아웃으로 처리한다. HEIC를 현재 브라우저에서 디코딩할 수 없으면 JPG로 다시 저장하라고 안내한다. **선택한 얼굴 사진을 분석 서버로 업로드하지 않는 기존 구조**는 유지했다.
+이미지 로딩은 20초를 초과하면 타임아웃으로 처리한다. 기본 디코더가 HEIC를 열지 못하면 지원 가능한 HEIC/HEIF의 브라우저 내부 변환을 시도한다. 변환이 실패하거나 제한을 넘는 파일은 JPG 또는 PNG로 저장해 다시 선택하도록 안내한다. **선택한 얼굴 사진을 분석 서버로 업로드하지 않는 구조**는 유지했다.
 
 ## 실패가 발생한 지점을 알 수 있도록
 
@@ -87,4 +89,16 @@ Android 화면 크기와 사용자 에이전트를 모의한 **데스크톱 Chro
 
 원본 분석 코드에서는 `renderResults` 호출 뒤에 `analysis_complete`를 전송한다. 따라서 적어도 결과 생성 단계까지 진행됐다는 **제품 계측 신호**가 확인됐다. 다만 **완료 이벤트 4건은 사용자 4명을 뜻하지 않습니다.** GA4의 운영체제 분류만으로 실제 물리 기기를 확인할 수 없고, 동일 사용자 반복 실행이나 자체 테스트 여부도 구별할 수 없다. **기존 오류가 해결됐다는 증거는 아닙니다.** 특히 문제를 일으켰던 사진 제공자·파일 형식과 새 완료 이벤트를 연결할 데이터가 없어 수정 전후 성공률이나 인과관계를 계산하지 않는다.
 
-원본: [Richchecker KR 소스와 테스트](https://github.com/saramjh/richChecker) · [같은 호스트의 서비스별 분석 범위 구분](/gh-pages-analytics-notes-5-followup-kr/)
+## 2026-11-16: KR·US 에디션에 로컬 사진 복구 추가
+
+11월 15일 KR 제품 전용 GA4의 Android Chrome 모바일 06시 집계에는 측정 사용자 1명, upload_started 15건, image_decode 13건, analysis_complete 2건이 기록됐다. US판에서는 11월 4일 19시(로스앤젤레스 속성 시간)에 측정 사용자 1명의 Android Chrome에서 file_read 오류 2건이 발생했다. GA4 기록만으로는 원본 사진과 파일 제공자를 식별할 수 없었다. 이벤트 수를 파일 수나 업로드 실패율로 해석할 수는 없다.
+
+[KR PR #4](https://github.com/saramjh/richChecker/pull/4)는 정상 Blob URL 디코딩을 유지하고, 이미지 로드가 실패한 경우에만 createImageBitmap(file, { imageOrientation: "from-image" })를 한 번 시도한다. 입력 파일은 20 MiB 이하, 디코딩은 7초 이내, 픽셀 수는 5천만 이하로 제한한다. 복구 이미지는 긴 변 2,200px 이하의 JPEG로 만들며 인코딩 제한은 5초다. 결과 이미지는 기존 MediaPipe 분석과 미리보기·공유 흐름에 연결한다. 늦게 끝난 bitmap은 닫고 사용이 끝난 Blob URL도 해제한다. 사진을 서버로 전송하지 않으며 native 복구 경로에는 새 의존성을 추가하지 않았다. [US PR #1](https://github.com/saramjh/richChecker-us/pull/1)은 전체 사진을 Base64로 읽던 FileReader 경로를 제거하고 브라우저 내부 Blob URL과 실패 시 native ImageBitmap 복구를 적용했다.
+
+별도로 확인한 640×640 ISO HEIC 파일은 Chrome의 기본 이미지 로더와 native ImageBitmap에서 모두 열리지 않았다. [KR PR #5](https://github.com/saramjh/richChecker/pull/5)와 [US PR #2](https://github.com/saramjh/richChecker-us/pull/2)는 이 경우에만 셀프 호스팅한 MIT 라이선스 heic2any@0.0.4를 늦게 불러와 HEIC/HEIF를 브라우저 안에서 JPEG로 변환한다. 디코딩 실패 뒤 파일 헤더는 최대 16바이트만 확인한다. 원본 HEIC는 12 MiB 이하, 변환 대기는 10초, 출력 JPEG는 20 MiB 이하이며 기존 50MP(5천만 픽셀) 제한도 적용한다. JPEG·PNG·WebP의 정상 경로에서는 변환 라이브러리를 불러오지 않는다. 사진 바이트는 네트워크로 전송하지 않는다.
+
+네 PR은 모두 main에 병합됐다. 각 PR에 기록된 브라우저 회귀 테스트는 KR native 복구 28/28, US native 복구 29/29, KR HEIC 복구 29/29, US HEIC 복구 30/30이다. 네 변경 모두 실제 MediaPipe 분석 E2E와 결과 렌더링을 확인했고, 기존 계약 검사도 통과했다. [KR native 배포](https://github.com/saramjh/richChecker/actions/runs/43821895201), [US native 배포](https://github.com/saramjh/richChecker-us/actions/runs/43824121306), [KR HEIC 배포](https://github.com/saramjh/richChecker/actions/runs/43842302246), [US HEIC 배포](https://github.com/saramjh/richChecker-us/actions/runs/43842311161)는 모두 성공했다. 운영 중인 [KR판](https://saramjh.github.io/richChecker/)과 [US판](https://saramjh.github.io/richChecker-us/), 양쪽 JavaScript 및 HEIC 변환 파일도 HTTP 200으로 확인했다.
+
+640×640 HEIC 테스트 파일은 별도의 재현 가능한 HEIC 실패 경로를 확인한 것이다. 이것이 앞서 관측한 KR 13건이나 US 2건의 원인이라는 증거는 없다. 실제 문제가 발생한 Android 기기에서 재현하지 못했고, 사진 갤러리·클라우드 제공자와 원본 파일도 아직 확인하지 못했다. 11월 16일 배포 이후의 GA4 결과도 아직 조회하지 않았다. 따라서 해당 기기에서 수정이 확인됐다고 말할 수 없으며 운영 P0를 닫지 않는다.
+
+원본: [Richchecker KR 소스와 테스트](https://github.com/saramjh/richChecker) · [Richchecker US 소스](https://github.com/saramjh/richChecker-us) · [같은 호스트의 서비스별 분석 범위 구분](/gh-pages-analytics-notes-5-followup-kr/)
