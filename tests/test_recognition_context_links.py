@@ -60,6 +60,22 @@ class EvidenceContextLinksTest(unittest.TestCase):
             "Korean and English evidence links must stay together on narrow screens",
         )
 
+    def test_tablet_rows_without_dates_use_the_full_content_column(self):
+        css = CSS.read_text(encoding="utf8")
+        start = css.index("@media(max-width:940px){")
+        end = css.index("@media(max-width:680px){", start)
+        tablet_rules = css[start:end]
+        include = INCLUDE.read_text(encoding="utf8")
+        self.assertIn(
+            'class="folio-evidence-item{% unless record.date %} folio-evidence-item-no-date{% endunless %}"',
+            include,
+        )
+        self.assertRegex(
+            tablet_rules,
+            r"\.folio-evidence-item-no-date\s*\{[^}]*grid-template-columns:\s*142px\s+minmax\(0,\s*1fr\)",
+            "Rows without a date should not reserve an empty tablet-width column",
+        )
+
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
         self.assertEqual(len(records), 28)
