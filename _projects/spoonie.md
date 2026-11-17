@@ -29,6 +29,10 @@ A community is difficult to build before users can consistently find something w
 
 Spoonie combines recipe discovery, recipe books, and community-oriented cooking records. Recent product decisions have focused on recipe usefulness and responsible curation rather than growth claims.
 
+## Recent product work
+
+On November 16, 2026, I fixed Spoonie's search-state restoration and Home Screen update checks. Search queries and selected tabs now persist in the URL when a reader opens a recipe and returns with Back. Results show the loaded count as soon as the first page arrives, then use N+ while more pages remain. Installed Home Screen apps check for service-worker updates after registration, when the browser comes online, on `pageshow` and when the app returns to the foreground; checks are limited to once per minute. Read the [Korean case study](/spoonie-pwa-search-state-recovery-ko/) or the [English case study](/spoonie-pwa-search-state-recovery-en/) for the implementation and browser tests. The regressions passed in remote Chromium; no physical iPhone verification or usage-impact measurement was recorded.
+
 ## An outside directory listing
 
 On October 25, 2026, [Web Apps Directory catalogued Spoonie](https://webapps.directory/directory/spooniespoonie). The entry links to the live Korean-language service and describes recipe search, serving adjustments and cooking records. I built those features around the Recipe and Recipeed workflow so a visitor can find a dish and keep a record of cooking it. Referral traffic and repeat use from the directory have not been measured.
