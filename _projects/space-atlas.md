@@ -50,7 +50,7 @@ These are verifiable publications and discovery routes. They do not establish sc
 
 ## Earth seasons activity
 
-The [English case study](/earth-seasons-no-tilt-experiment-en/) and [Korean edition](/earth-seasons-no-tilt-experiment-ko/) describe a guided 12–15-minute activity for grades 5–8. Students compare Earth's usual 23.5° axial tilt with a hypothetical 0° tilt using a globe and an LED lamp. The original [two-page worksheet](https://spaceatlasedu.org/assets/handouts/earth-seasons-no-tilt.html) is available on Space Atlas. The case studies also document its appearance in The Home Ed Daily's science directory; they do not establish classroom use or an original listing date.
+The [English case study](/earth-seasons-no-tilt-experiment-en/) and [Korean edition](/earth-seasons-no-tilt-experiment-ko/) describe a guided 12–15-minute activity for grades 5–8. Students compare Earth's usual 23.5° axial tilt with a hypothetical 0° tilt using a globe and an LED lamp. The original [two-page worksheet](https://spaceatlasedu.org/assets/handouts/earth-seasons-no-tilt.html) is available on Space Atlas. For the interactive model, open the [Earth seasons simulator](https://spaceatlasedu.org/earth/seasons/?utm_source=saramjh_portfolio&utm_medium=referral&utm_campaign=space_atlas_earth_seasons). The case studies also document its appearance in The Home Ed Daily's science directory; they do not establish classroom use or an original listing date.
 
 ## Explore a model
 
