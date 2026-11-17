@@ -3,14 +3,14 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
-modified: 2026-11-16
-last_modified_at: 2026-11-16
+modified: 2026-11-18
+last_modified_at: 2026-11-18
 lang: ko
 alternate_lang: en
 alternate_url: /koreaves-external-resources-en/
 permalink: /koreaves-external-resources-ko/
 title: "KoreAves가 해외 탐조·지리공간 자료 목록에 소개되기까지"
-description: "WLI 철새 자료와 GREENUS 교육 목록, Bird Album·해외 탐조·지리공간 목록의 KoreAves 근거와 지도 활용 범위를 확인한다."
+description: "해외 탐조·지리공간 자료 목록의 KoreAves 등재와 Daily Korea 순천만 안내의 지도 설명 검토를 원문 근거와 함께 기록한다."
 kicker: "KoreAves / 해외 자료 목록"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "KoreAves 조류 데이터 사이트의 실제 데스크톱 화면"
@@ -49,11 +49,11 @@ KoreAves는 한국 조류의 이름과 분류, 지역별 출현 기록, 데이�
 
 Bird Album의 국가별 조류 정보 페이지는 기존 소프트웨어·지리공간 자료 목록과 다른 방식으로 KoreAves를 발견할 경로다. [Bird Album의 자료 설명](https://birdalbum.com/about/)은 IOC 15.2 목록을 사용한다고 밝히고, [KoreAves 데이터 설명](https://koreaves.com/dataset/)은 한국 국가목록을 기준으로 한다. 두 사이트가 연결됐다고 동일한 분류 개념을 적용한다는 뜻은 아니다. 링크를 통한 실제 방문이나 사용자 수는 확인되지 않았다. 최초 게재일 근거가 없는 항목에는 날짜를 붙이지 않았다.
 
-## 순천만 탐조 기사에서 참고한 지도
+## 순천만 탐조 안내에서 지도 설명을 검토하다
 
 [Daily Korea의 2026년 11월 15일 순천만 첫 탐조 안내](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/)는 처음 방문하는 사람이 흑두루미를 관찰할 때 참고할 자료로 [KoreAves 지역 기록 지도](https://koreaves.com/gis/)와 [기록 읽는 법](https://koreaves.com/guide/)을 연결한다. 기사에서는 지역에 색이 있다는 사실이 해당 조건의 관찰 기록을 뜻하며, 기록 수를 개체 수로 해석해서는 안 된다는 점도 설명한다.
 
-글의 발행 주체는 *Daily Korea Editorial*이다. 내가 기고하거나 공동 작성한 기사가 아니라, 외부 편집 기사에서 프로젝트의 자료가 인용된 사례다. 이 링크만으로 실제 방문자 수는 알 수 없다.
+나는 초보 탐조객을 위한 순천만 안내를 제안했고, 한국어 초안을 검토해 KoreAves 지도 설명의 수정 문구를 전달했다. 편집진은 지도 설명을 고쳐, 색이 칠해진 광역 행정구역에 기준을 충족한 조류 관찰 기록이 있다는 뜻이라고 밝혔다. 이 표시는 순천만 안에서 현재 새를 볼 수 있다는 예측이나 개체 수를 나타내지 않는다. 겨울 입장 시간과 순천역 출발 투어 정보는 편집진이 운영자의 최신 예약 정보와 별도로 대조했다. 공개 페이지의 발행 주체는 *Daily Korea Editorial*이다. 내 역할은 지도 해석에 대한 사실 검토였고, 기고나 공동 집필 크레딧은 없다. 기사에서 KoreAves로 유입된 방문은 측정하지 않았다.
 
 ## GBIF Literature 기록은 무엇을 뜻할까
 

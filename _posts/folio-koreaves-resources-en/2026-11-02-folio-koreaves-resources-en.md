@@ -3,14 +3,14 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
-modified: 2026-11-16
-last_modified_at: 2026-11-16
+modified: 2026-11-18
+last_modified_at: 2026-11-18
 lang: en
 alternate_lang: ko
 alternate_url: /koreaves-external-resources-ko/
 permalink: /koreaves-external-resources-en/
 title: "Where KoreAves appears in international birding and geodata resources"
-description: "Original WLI migratory-bird, GREENUS education, Bird Album and geodata resource links to KoreAves, with evidence and use limits."
+description: "KoreAves listings in birding and geodata resources, plus a fact-check contribution to Daily Korea's Suncheon Bay guide, with source and use limits."
 kicker: "KoreAves / independent listings"
 image: /assets/images/portfolio/koreaves-desktop.jpg
 image_alt: "Actual KoreAves website displayed in a desktop browser"
@@ -51,11 +51,11 @@ The lists serve different readers. GREENUS places the map in an environmental da
 
 Bird Album's country reference offers a bird-information route alongside the older software and geodata directories. Bird Album's [data-source explanation](https://birdalbum.com/about/) uses IOC World Bird List 15.2, while the [KoreAves dataset notes](https://koreaves.com/dataset/) describe a Korean national checklist foundation. A link between the projects does not make their taxon concepts identical. None of these listings measures actual reader visits to KoreAves.
 
-## A birdwatching guide cites the evidence map
+## Fact-checking the map explanation in a Suncheon Bay guide
 
 [Daily Korea's November 15, 2026 guide to first-time birdwatching at Suncheon Bay](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/) links to the [KoreAves regional evidence map](https://koreaves.com/gis/) and [guide to reading occurrence records](https://koreaves.com/guide/) while discussing how to look for Hooded Cranes. It explains that a shaded region indicates qualifying records, not a population count.
 
-The article is credited to *Daily Korea Editorial*. I did not author or co-write it. Its use of KoreAves as a linked reference is independently visible, but the link does not measure visits to the atlas.
+I suggested a beginner's guide to Suncheon Bay and reviewed the Korean draft, sending corrected wording for the KoreAves map explanation. The editors revised the section to explain that a shaded administrative region has qualifying bird records. The shading does not predict current sightings inside the wetland or represent a population count. The editorial team separately checked winter admission hours and the station-departure tour against the operator's current booking information. The published page is credited to *Daily Korea Editorial*. My contribution was a fact-check of the map interpretation; I have no author or co-author credit. Visits from the article to KoreAves have not been measured.
 
 ## A separate kind of record: GBIF Literature
 

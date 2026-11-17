@@ -12,7 +12,7 @@ class DailyKoreaKoreAvesEditorialReferenceTest(unittest.TestCase):
             text=path.read_text(encoding="utf8")
             self.assertEqual(text.count(URL),1,lang)
             self.assertIn("alternate_url:",text)
-            self.assertIn("modified: 2026-11-16",text)
+            self.assertIn("modified: 2026-11-18",text)
             self.assertIn("2026",text)
 
     def test_exact_first_party_resource_links_in_both_languages(self):
@@ -25,8 +25,8 @@ class DailyKoreaKoreAvesEditorialReferenceTest(unittest.TestCase):
     def test_not_owner_byline_or_independent_directory_record(self):
         ledger=(ROOT/"_data/recognitions.yml").read_text(encoding="utf8")
         self.assertNotIn(URL,ledger)
-        self.assertIn("내가 기고하거나 공동 작성한 기사가 아니라",POSTS["ko"].read_text(encoding="utf8"))
-        self.assertIn("I did not author or co-write it",POSTS["en"].read_text(encoding="utf8"))
+        self.assertIn("내 역할은 지도 해석에 대한 사실 검토였고",POSTS["ko"].read_text(encoding="utf8"))
+        self.assertIn("My contribution was a fact-check of the map interpretation",POSTS["en"].read_text(encoding="utf8"))
 
     def test_previous_listing_evidence_and_unicode_intact(self):
         for path in POSTS.values():
