@@ -36,6 +36,10 @@ KoreAves connects bird profiles, regional evidence views, source documentation, 
 - Treat image reuse rights and taxon identity as separate checks.
 - Explain source and sampling limitations directly beside maps.
 
+## Recent production work
+
+On November 16, 2026, I fixed a CSS rule that kept non-matching region cards visible after a search and adjusted the catalogue's mobile spacing. The production release changed 19 HTML pages and a content-hashed stylesheet; the other 3,874 files in the previous 3,894-file deployment manifest retained their hashes. Live browser checks covered 32 cases across five viewport widths and all 17 regional detail pages. Read the [Korean case study](/koreaves-region-search-mobile-hotfix-ko/) or the [English case study](/koreaves-region-search-mobile-hotfix-en/).
+
 ## Published explanations beyond the project
 
 [One Earth published my KoreAves article on October 28, 2026](https://www.oneearth.org/koreaves/). It describes the evidence-linked bird atlas for readers encountering the project outside its own site. In [English](/koreaves-oneearth-author-achievement-en/) and [Korean](/koreaves-oneearth-author-achievement-ko/), I explain how its taxonomy, source records and regional views fit together.
