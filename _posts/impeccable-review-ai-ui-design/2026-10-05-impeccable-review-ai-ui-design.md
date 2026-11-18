@@ -1,7 +1,8 @@
 ---
 title: "Impeccable 사용 후기: AI 코딩 UI 디자인에 실제로 써보니"
 date: 2026-10-05
-last_modified_at: 2026-11-16
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Impeccable", "AI UI", "AI 코딩", "UI UX", "frontend design", "Codex", "Claude Code", "Cursor", "AI slop", "디자인 리뷰"]
 permalink: /impeccable-review-ai-ui-design/
 layout: default

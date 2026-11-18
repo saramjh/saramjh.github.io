@@ -1,7 +1,8 @@
 ---
 title: "cokacremote: Carry Coding-Agent Context Across Sessions"
 date: 2026-10-05
-last_modified_at: 2026-11-14
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI coding", "context continuity", "coding agent memory", "project memory"]
 permalink: /en-ai-coding-context-continuity-cokacremote/
 layout: default

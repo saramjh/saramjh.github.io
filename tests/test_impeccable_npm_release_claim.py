@@ -18,7 +18,13 @@ class ImpeccableNpmVersionSourceTest(unittest.TestCase):
         for lang,path in POSTS.items():
             data=path.read_text(encoding="utf8")
             self.assertGreaterEqual(data.count(OFFICIAL),1,lang)
-            self.assertIn("last_modified_at: 2026-11-16",data)
+            self.assertIn("last_modified_at: 2026-11-19",data)
+            self.assertIn("modified: 2026-11-19",data)
+            # Last revised Nov 19, but the npm version observation was Nov 16.
+            self.assertIn(
+                "On November 16, 2026" if lang=="en" else "2026년 11월 16일",
+                data,
+            )
             self.assertIn("4.9.1",data)
             self.assertIn("62",data)
 
