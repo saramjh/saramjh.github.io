@@ -321,3 +321,4 @@ Identical counter-reset behavior has not been established across these models. P
   </p>
 </details>
 
+<script src="/assets/js/epson-official-support-click.js" defer></script>

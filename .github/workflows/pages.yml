@@ -29,6 +29,8 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_*.py'
       - name: Test case-study outbound click privacy
         run: node --test tests/article_product_outbound_runtime.cjs
+      - name: Test Epson documentation selection privacy and scope
+        run: node --test tests/epson_official_support_click_runtime.cjs
       - name: Test first-party Space Atlas outbound selection
         run: node --test tests/portfolio_space_atlas_outbound_runtime.cjs
       - name: Test mobile navigation keyboard and background focus
@@ -64,6 +66,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python tests/portfolio_layout_smoke.py
+          python tests/epson_official_support_browser.py
       - name: Test post assets
         run: bundle exec ruby tests/post_assets_test.rb
       - uses: actions/upload-pages-artifact@v4

@@ -324,3 +324,5 @@ sudo venv/bin/python3 reinkpy/main.py
     <code>reinkpy-fix</code>는 일부 Epson 모델을 대상으로 한 공개 도구이며, 상용 WIC Reset과 동일한 프로토콜이나 모든 모델의 성공을 보장한다는 근거는 확인되지 않았습니다. <a href="https://github.com/LeFZdev/reinkpy-fix">원본 저장소의 지원 범위</a>와 <a href="https://epson.com/support/wa00369">Epson의 패드 정비 안내</a>를 함께 확인하세요.
   </p>
 </details>
+
+<script src="/assets/js/epson-official-support-click.js" defer></script>
