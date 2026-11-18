@@ -1,7 +1,8 @@
 ---
 title: "cokacremote로 AI 코딩 에이전트 세션 컨텍스트 복구하기"
 date: 2026-10-05
-last_modified_at: 2026-11-14
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI 코딩", "컨텍스트 유지", "세션 컨텍스트", "개발 에이전트", "프로젝트 메모리"]
 permalink: /ai-coding-context-continuity-cokacremote/
 layout: default

@@ -1,7 +1,8 @@
 ---
 title: "Impeccable Review 2026: I Used It on Two Real AI-Coded Products"
 date: 2026-10-05
-last_modified_at: 2026-11-16
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Impeccable", "AI UI", "AI coding", "UI UX", "frontend design", "Codex", "Claude Code", "Cursor", "AI slop", "design review"]
 permalink: /en-impeccable-review-ai-ui-design/
 layout: default

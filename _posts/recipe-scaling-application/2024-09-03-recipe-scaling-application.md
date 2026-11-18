@@ -3,6 +3,7 @@ title: "Recipe Scaling Calculator: Adjust Ingredient Amounts"
 description: "A free ingredient calculator for adjusting recipe quantities from one ingredient you have. See a worked scaling example, how to enter a recipe, and the tool's limits."
 date: 2024-09-03
 modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Recipe", "Recipe calculator", "ingredient amount", "recipe scaling", "ingredient ratio"]
 permalink: /recipe-scaling-application/
 layout: default
