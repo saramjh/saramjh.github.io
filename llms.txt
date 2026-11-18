@@ -17,7 +17,11 @@
 - [NCASE 프로그램 목록 기록 (한국어)](https://saramjh.github.io/space-atlas-ncase-programs-ko/): Space Atlas 외부 프로그램 목록 수록 사실과 확인 가능한 범위.
 - [Share My Lesson Moon phases resource (English)](https://saramjh.github.io/space-atlas-share-my-lesson-en/): An author-contributed teaching resource and the related interactive model.
 - [Share My Lesson 달 위상 자료 (한국어)](https://saramjh.github.io/space-atlas-share-my-lesson-ko/): 작성자 등록 자료와 Space Atlas 달 위상 모델에 관한 한국어 기록.
+- [Earth seasons no-tilt classroom experiment (English)](https://saramjh.github.io/earth-seasons-no-tilt-experiment-en/): A timed globe-and-lamp comparison of Earth's 23.5° tilt with zero tilt, including a printable worksheet.
+- [지구 자전축 0° 계절 실험 (한국어)](https://saramjh.github.io/earth-seasons-no-tilt-experiment-ko/): 지구본과 LED 램프로 자전축 23.5°와 0°를 비교하고 관찰 내용을 기록하는 수업 활동.
 - [KoreAves credited external writing](https://saramjh.github.io/koreaves-published-contributions-en/): Source-linked bylined contributions to an external birding publication.
+- [Spoonie iPhone PWA and search-state recovery (English)](https://saramjh.github.io/spoonie-pwa-search-state-recovery-en/): A PR #47 case study about Home Screen update checks and keeping search results after returning from a recipe detail view.
+- [Spoonie iPhone PWA·검색 상태 복원 (한국어)](https://saramjh.github.io/spoonie-pwa-search-state-recovery-ko/): 홈 화면 앱의 업데이트 확인과 레시피 상세 화면에서 돌아올 때 검색 결과를 유지한 PR #47 수정 기록.
 
 ## Hardware & macOS Troubleshooting Guides
 - [Epson Waste Ink Pad Reset Without Key (Korean)](https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/): Complete cross-platform guide to resetting Epson waste ink counter for free across 33 models (L3100~L3168, L1110, L5190) on macOS/Linux/Windows using open-source reinkpy-fix and replacing only inner felt pads for ~$4.

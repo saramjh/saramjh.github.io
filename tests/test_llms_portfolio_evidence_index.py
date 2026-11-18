@@ -19,7 +19,11 @@ EXPECTED = {
     "/space-atlas-ncase-programs-ko/": ROOT / "_posts/space-atlas-ncase-programs-ko/2026-11-10-space-atlas-ncase-programs-ko.md",
     "/space-atlas-share-my-lesson-en/": ROOT / "_posts/space-atlas-share-my-lesson-en/2026-11-10-space-atlas-share-my-lesson-en.md",
     "/space-atlas-share-my-lesson-ko/": ROOT / "_posts/space-atlas-share-my-lesson-ko/2026-11-10-space-atlas-share-my-lesson-ko.md",
+    "/earth-seasons-no-tilt-experiment-en/": ROOT / "_posts/earth-seasons-no-tilt-experiment-en/2026-11-15-earth-seasons-no-tilt-experiment-en.md",
+    "/earth-seasons-no-tilt-experiment-ko/": ROOT / "_posts/earth-seasons-no-tilt-experiment-ko/2026-11-15-earth-seasons-no-tilt-experiment-ko.md",
     "/koreaves-published-contributions-en/": ROOT / "_posts/folio-koreaves-publications-en/2026-11-02-folio-koreaves-publications-en.md",
+    "/spoonie-pwa-search-state-recovery-en/": ROOT / "_posts/spoonie-pwa-search-state-recovery-en/2026-11-16-spoonie-pwa-search-state-recovery-en.md",
+    "/spoonie-pwa-search-state-recovery-ko/": ROOT / "_posts/spoonie-pwa-search-state-recovery-ko/2026-11-16-spoonie-pwa-search-state-recovery-ko.md",
 }
 
 
