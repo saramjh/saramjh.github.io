@@ -394,6 +394,89 @@ def _is_exact_unlinked_firstparty_social_jpeg(path, revision):
     return True
 
 
+
+def _page_urls_for_portfolio_js(revision):
+    """Resolve the full verified consumer graph of the portfolio-only JS.
+
+    Require the literal script inclusion in the original portfolio layout,
+    the exact two inheriting layouts and every source page using them.
+    Any new/unknown consumer, missing route, or incomplete source graph
+    fails closed to the existing broad sitemap branch.
+    """
+    def source(path):
+        return subprocess.check_output(
+            ["git", "show", f"{revision}:{path}"],
+            text=True, stderr=subprocess.PIPE,
+        )
+
+    def front_layout(path):
+        content = source(path)
+        front = re.match(r"\A---\s*\n(.*?)\n---", content, re.S)
+        if front is None:
+            return None
+        value = re.search(r"(?m)^layout:\s*([a-z0-9_-]+)\s*$", front.group(1))
+        return value.group(1) if value else None
+
+    layout = source("_layouts/portfolio.html")
+    if (front_layout("_layouts/portfolio.html") != "compress"
+            or layout.count('<script src="/assets/js/portfolio.js" defer></script>') != 1):
+        return None
+    if any(front_layout(p) != "portfolio" for p in (
+            "_layouts/project.html", "_layouts/milestone.html")):
+        return None
+
+    def grep_files(needle, regex=False):
+        proc = subprocess.run(
+            ["git", "grep", "-I", "-l",
+             "-E" if regex else "-F", "-e", needle, revision, "--"],
+            text=True, capture_output=True,
+        )
+        if proc.returncode not in (0, 1):
+            raise ValueError("Cannot verify portfolio script dependency graph")
+        paths = set()
+        for line in proc.stdout.splitlines():
+            prefix, sep, path = line.partition(":")
+            if not sep or prefix != revision or not path:
+                raise ValueError("Unexpected portfolio source record")
+            if not _skip_only_source(path):
+                paths.add(path)
+        return paths
+
+    # A second inline, global footer, or dynamically referenced consumer is
+    # not a justified 11-page subset. Keep the conservative fallback.
+    if grep_files("portfolio.js") != {"_layouts/portfolio.html"}:
+        return None
+    users = grep_files(r"^layout: (portfolio|project|milestone)$", regex=True)
+    expected_layouts = {"_layouts/project.html", "_layouts/milestone.html"}
+    expected_direct = {"portfolio/index.html", "portfolio/recognition/index.html"}
+    if not (expected_layouts | expected_direct) <= users:
+        return None
+
+    pages = set()
+    for path in users:
+        layout_type = front_layout(path)
+        if path in expected_layouts:
+            if layout_type != "portfolio":
+                return None
+            continue
+        if path in expected_direct:
+            if layout_type != "portfolio":
+                return None
+        elif path.startswith("_projects/"):
+            if layout_type != "project":
+                return None
+        elif path.startswith("_posts/"):
+            if layout_type != "milestone":
+                return None
+        else:
+            return None
+        page_url = _permalink_from_source(path, revision)
+        if page_url is None:
+            return None
+        pages.add(page_url)
+    # An empty or incomplete graph is not proof of no impacted pages.
+    return pages or None
+
 def changed_urls(before, after):
     """Return affected URLs, or None for a broad site change.
 
@@ -426,6 +509,17 @@ def changed_urls(before, after):
         # webpage consumer, so submitting all site URLs would be a false replay.
         if (status == "A" and
                 _is_exact_unlinked_firstparty_social_jpeg(file_path, after)):
+            continue
+        # The portfolio-only script is loaded by a bounded, verified layout
+        # tree. Unknown/new consumers still take the broad sitemap fallback.
+        if file_path == "assets/js/portfolio.js":
+            pages = set()
+            for revision in (before, after):
+                resolved = _page_urls_for_portfolio_js(revision)
+                if resolved is None:
+                    return None
+                pages.update(resolved)
+            touched.update(pages)
             continue
         # For referenced images only, resolve every affected source page.
         # A shared/unknown reference still conservatively uses the sitemap.
