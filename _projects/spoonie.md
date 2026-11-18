@@ -1,6 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
+last_modified_at: 2026-11-17T21:31:15+09:00
 title: "Spoonie | Project case study"
 description: "A cooking-oriented web product exploring useful recipe discovery, personal recipe records, and community participation."
 slug: spoonie

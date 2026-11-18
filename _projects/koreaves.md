@@ -1,6 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
+last_modified_at: 2026-11-17T21:18:41+09:00
 title: "KoreAves | Project case study"
 description: "An independent source-linked reference connecting taxon identities, regional occurrence evidence, and media provenance without equating records with populations."
 slug: koreaves
