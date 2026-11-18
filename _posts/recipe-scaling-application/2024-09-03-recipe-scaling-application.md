@@ -1,60 +1,68 @@
 ---
-title: "Recipe Scaling Application"
-description: Don't be embarrassed if you have not enough ingredient. This utility helps you cook by calculating each ingredient, how much you have a ingredient.
+title: "Recipe Scaling Calculator: Adjust Ingredient Amounts"
+description: "A free ingredient calculator for adjusting recipe quantities from one ingredient you have. See a worked scaling example, how to enter a recipe, and the tool's limits."
 date: 2024-09-03
-tags: ["Recipe", "Recipe calculator", "ingredient amount"]
+modified: 2026-11-19
+tags: ["Recipe", "Recipe calculator", "ingredient amount", "recipe scaling", "ingredient ratio"]
 permalink: /recipe-scaling-application/
 layout: default
 lang: en
+alternate_lang: ko
+alternate_url: /ko-recipe-scaling-application/
 image: /recipe-scaling-application/recipescalingapplication.jpg
 legacy_asset_url: /posts/recipe-scaling-application/
+seo:
+  title: "Recipe Ingredient Calculator: Worked Scaling Example"
+  description: "Scale a recipe by the ingredient you have. Enter flour, water and sugar, choose the available amount, and calculate the rest. Includes limits and a free tool."
 ---
 
-### Recipe Scaling Application
+# Recipe scaling calculator: adjust ingredients from what you have
 
-<img src="recipescalingapplication.jpg" alt="Recipe Scaling Application">
+<p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 22px; border-radius: 4px; font-size: 0.95rem;">
+  <strong>한국어 안내:</strong> <a href="/ko-recipe-scaling-application/">재료 비율 계산기 사용법</a>
+</p>
 
-#### Needs
+I made a small [recipe scaling calculator](https://saramjh.github.io/recipeCalc/) for a common cooking problem: you have a different amount of one ingredient than the recipe calls for, but you want to keep the original proportions.
 
-- Who has not enough an ingredient comparing to recipe.
-- Who wants to cook big amount of dish based on typical recipe.
-- Who needs to calculate amount of ingredient to fix balance.
-- Who wants to maintain the proportion and control the amount of ingredients.
+The tool takes the ingredients you enter, lets you choose one as the reference, and adjusts the rest by the same multiplier. It is useful for a smaller batch or for cooking with a particular amount already on hand.
 
-#### Usage
+<img src="recipescalingapplication.jpg" alt="Original Recipe Scaling Application screenshot showing ingredient entry and the recipe calculator interface">
 
-1. Adding Ingredients
+## Worked example: from 100g flour to 150g
 
-- **Single Ingredient**: Enter the name, amount, and unit of the ingredient in the provided fields, then click `Add`.
-- **Multiple Ingredients**: Enter multiple ingredients at once by typing them in the multiline text area with each ingredient on a new line.
+Suppose the original recipe contains **100g flour**, **200ml water**, and **20g sugar**. You have 150g of flour.
 
-2. Scaling the Recipe
-   1. Select an ingredient from the dropdown menu.
-   2. Enter the available amount you have for that ingredient.
-   3. The app will automatically adjust the amounts of all other ingredients in the recipe.
-3. Editing and Deleting Ingredients
+Enter the original quantities in the *Add Multiple Ingredients* field, one per line:
 
-- **Edit**: Click the `Edit` button next to an ingredient to change its details.
-- **Delete**: Click the `Delete` button to remove an ingredient from the list.
+```text
+100g flour
+200ml water
+20g sugar
+```
 
-4. Reset the Form
-   Use the `Reset` button to clear the form and start over.
+Press **Add**, select **Flour** under *Available Ingredients*, and enter **150** as the available amount. The multiplier is `150 / 100 = 1.5`. The calculator then gives:
 
-## Features
+| Ingredient | Original | Adjusted |
+|---|---:|---:|
+| Flour | 100g | 150g |
+| Water | 200ml | 300ml |
+| Sugar | 20g | 30g |
 
-- **Add Ingredients**: Users can add ingredients with specified amounts and units to a recipe.
-- **Multiple Ingredients Input**: Allows bulk input of ingredients with a single input area.
-- **Recipe Scaling**: Automatically scales the recipe based on the selected available amount of a specific ingredient.
-- **Edit and Delete Ingredients**: Modify or remove ingredients from the recipe.
-- **Responsive Design**: Optimized for both desktop and mobile devices.
+The formula is `adjusted amount = original amount × (available reference amount / original reference amount)`. This is the same proportion used for every ingredient.
 
-## Technologies Used
+## Entering and editing a recipe
 
-- **HTML5**: Structure and content of the web pages.
-- **CSS3**: Styling, layout, and responsive design.
-- **JavaScript**: Core functionality, including adding, editing, deleting ingredients, and scaling the recipe.
+You can add ingredients one at a time or paste several lines into the bulk input. The app has **Edit** and **Delete** controls for individual ingredients. **Reset** reloads the page so you can start another recipe.
 
-#### Links
+The live calculator and its source code are available here:
 
-- [Recipe Scaling Application](https://saramjh.github.io/recipeCalc)
-- [Github Repository: Recipe Scaling Application](https://github.com/saramjh/recipeCalc)
+- [Open the Recipe Scaling Application](https://saramjh.github.io/recipeCalc/)
+- [View the original project on GitHub](https://github.com/saramjh/recipeCalc)
+
+## Limits to know before cooking
+
+The calculator keeps the units attached to each ingredient. It does **not perform unit conversion** between grams, cups, milliliters or other measures, and it does not estimate nutrition or cooking yield. Use consistent units for each ingredient when checking your result.
+
+In bulk input, the current parser reads a leading decimal number. Writing `1/2tbsp` does not reliably represent half a tablespoon; write `0.5tbsp` instead. The single-ingredient form also has its own numeric input constraints. The project is a ratio helper, so you should still review the result for the way ingredients behave in a real recipe.
+
+I built it with plain HTML, CSS and JavaScript. The scaling calculation and the input behavior can be checked against the [original implementation](https://github.com/saramjh/recipeCalc/blob/main/js/script.js). This walkthrough describes the existing tool; it is not a record of a new app release.
