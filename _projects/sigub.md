@@ -1,6 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
+last_modified_at: 2026-11-02T16:29:10+09:00
 title: "Sigub | Project case study"
 description: "A focused calculator for estimating pay from hourly wages and work hours."
 slug: sigub

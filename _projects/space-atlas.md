@@ -1,6 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
+last_modified_at: 2026-11-17T22:14:23+09:00
 title: "Space Atlas | Project case study"
 description: "Browser-based space-science models that let students change variables and inspect why textbook diagrams simplify reality."
 slug: space-atlas

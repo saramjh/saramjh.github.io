@@ -1,6 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
+last_modified_at: 2026-11-19T00:31:29+09:00
 title: "AI Agent Systems | Project case study"
 description: "Local orchestration experiments around browser AI sessions, context continuity, deduplicated actions, and project-specific agent workflows."
 slug: ai-agent-systems
