@@ -478,6 +478,63 @@ def _page_urls_for_portfolio_js(revision):
     return pages or None
 
 
+def _page_urls_for_epson_support_js(revision):
+    """Resolve exactly the two original articles using the approved Epson JS.
+
+    A missing script in a previous revision is allowed only when no source
+    refers to it. Unknown or dynamically widened consumers stay broad.
+    """
+    asset = "assets/js/epson-official-support-click.js"
+    filename = "epson-official-support-click.js"
+    expected_sha = "551277490fc542f2d6a9749ba5be1a7788b96f3a6ad4a9be051207918281a87a"
+    expected = {
+        "_posts/epson-waste-ink-pad-reset-without-key/2026-09-15-epson-waste-ink-pad-reset-without-key.md":
+            ("/epson-waste-ink-pad-reset-without-key/", "ko"),
+        "_posts/en-epson-waste-ink-pad-reset-without-key/2026-09-15-en-epson-waste-ink-pad-reset-without-key.md":
+            ("/en-epson-waste-ink-pad-reset-without-key/", "en"),
+    }
+    needle = '<script src="/assets/js/epson-official-support-click.js" defer></script>'
+    proc = subprocess.run(
+        ["git", "grep", "-I", "-l", "-F", "-e", filename, revision, "--"],
+        text=True, capture_output=True,
+    )
+    if proc.returncode not in (0, 1):
+        raise ValueError("Cannot verify Epson JS consumer graph")
+    consumers = set()
+    for row in proc.stdout.splitlines():
+        prefix, sep, path = row.partition(":")
+        if not sep or prefix != revision or not path:
+            raise ValueError("Unexpected Epson JS source reference")
+        if not _skip_only_source(path):
+            consumers.add(path)
+    raw = subprocess.run(
+        ["git", "show", f"{revision}:{asset}"],
+        capture_output=True,
+    )
+    if raw.returncode != 0:
+        return set() if not consumers else None
+    if hashlib.sha256(raw.stdout).hexdigest() != expected_sha:
+        return None
+    if consumers != set(expected):
+        return None
+    urls = set()
+    for source, (permalink, language) in expected.items():
+        try:
+            text = subprocess.check_output(
+                ["git", "show", f"{revision}:{source}"],
+                text=True, stderr=subprocess.PIPE,
+            )
+            resolved = _permalink_from_source(source, revision)
+        except (OSError, subprocess.CalledProcessError, UnicodeError):
+            return None
+        if (resolved != BASE_URL + permalink or text.count(needle) != 1
+                or not re.search(r"(?m)^layout: default\s*$", text)
+                or not re.search(r"(?m)^lang: " + language + r"\s*$", text)):
+            return None
+        urls.add(resolved)
+    return urls if len(urls) == len(expected) else None
+
+
 def _page_urls_for_project_layout(revision):
     """Resolve only verified first-party consumers of the project layout.
 
@@ -581,6 +638,19 @@ def changed_urls(before, after):
                 if resolved is None:
                     return None
                 pages.update(resolved)
+            touched.update(pages)
+            continue
+        # The Epson reference-selection script has exactly two verified
+        # first-party article consumers. Unknown source changes remain broad.
+        if file_path == "assets/js/epson-official-support-click.js":
+            pages = set()
+            for revision in (before, after):
+                resolved = _page_urls_for_epson_support_js(revision)
+                if resolved is None:
+                    return None
+                pages.update(resolved)
+            if not pages:
+                return None
             touched.update(pages)
             continue
         # For referenced images only, resolve every affected source page.
