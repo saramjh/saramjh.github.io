@@ -74,6 +74,19 @@ npx impeccable install
 
 즉 LLM의 감상문만 받는 구조가 아닙니다.
 
+### 2026년 11월 CLI 설정 확인
+
+아래 Profit Scratch 검사 스크립트의 `impeccable@4.1.0`은 당시 사용한 버전으로 고정돼 있습니다. 위에 적은 4.9.1의 규칙 수는 당시 npm 안내를 확인한 기록입니다. 공식 [릴리스 목록](https://github.com/pbakaus/impeccable/releases)에는 **2026-11-16** 공개된 CLI **4.9.2**도 있습니다. 지금 이 글을 따라 한다면 설치된 버전과 규칙 목록부터 확인할 수 있습니다.
+
+```bash
+npx impeccable --version
+npx impeccable detect --list-rules
+npx impeccable detect src/
+npx impeccable detect http://localhost:5173
+```
+
+[공식 저장소 안내](https://github.com/pbakaus/impeccable)에 따르면 `npx impeccable install`에서 프로젝트/전역 설치 범위를 고를 수 있고, 지원하는 에이전트에 디자인 hook을 연결할 수 있습니다. Codex에서는 `/hooks`의 승인이 필요합니다. 코드 검사만으로는 실제 화면의 명도 대비나 작은 글자 문제를 확인할 수 없어 렌더링 URL 검사도 필요합니다. 4.1.0 실험을 4.9.2에서 재실행한 것은 아니며, 어떤 버전의 검사 결과도 제품 출시 승인을 대신하지 않습니다.
+
 ## 실제 사용 1: Spoonie — 생각보다 세게 맞았다
 
 Spoonie 전체 `src`를 critique했을 때 결과는 **21/40**, P0 1개, P1 3개였습니다.
