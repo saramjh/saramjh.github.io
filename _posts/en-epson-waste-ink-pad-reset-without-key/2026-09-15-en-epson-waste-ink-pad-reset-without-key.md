@@ -1,8 +1,8 @@
 ---
 title: "Epson Waste Ink Counter Reset Without a Key: L3106 Case and Model Checks"
 date: 2026-09-15
-modified: 2026-11-15
-last_modified_at: 2026-11-15
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Epson", "L3100", "L3106", "L3110", "L3150", "L3160", "L1110", "L5190", "Waste Ink Pad Reset", "WIC Reset Alternative", "reinkpy", "Mac Epson Reset", "DIY Printer Repair"]
 permalink: /en-epson-waste-ink-pad-reset-without-key/
 layout: default
@@ -49,6 +49,10 @@ faq:
 </p>
 
 > **Manufacturer cross-check (15 Nov 2026):** The [reinkpy-fix repository](https://github.com/LeFZdev/reinkpy-fix) describes a tool for some Epson printers, with confirmed operation on the L3060 series and similar devices. It does not verify all 33 variants previously listed here. The L3106 sequence below is the author's original account. [Epson's official ink-pad explanation](https://epson.com/support/epson-ink-pad-reset-utility-faqs) states that physical waste pads contain ink from cleaning and printing and may require maintenance or replacement. A software counter reset cannot replace servicing the physical ink pads. Some models do not have user-replaceable waste pads; consult the exact model's service guidance.
+
+### If your printer is an L3100 or L3156
+
+The steps below come from my L3106 work record. I have not verified that `reinkpy-fix` can reset an L3100 or L3156. Changing the model name in the sample code would be an untested counter write. Check [Epson's waste-ink-pad guidance](https://epson.com/support/epson-ink-pad-reset-utility-faqs) and the service instructions for your exact printer first. Resetting a counter cannot replace maintenance of the ink absorber.
 
 ### Exact Epson Waste Ink Pad Error Messages & Symptoms
 
