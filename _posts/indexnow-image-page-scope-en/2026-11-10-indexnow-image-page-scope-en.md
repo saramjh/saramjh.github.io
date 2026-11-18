@@ -2,6 +2,8 @@
 title: "One image change sent 120 URLs to IndexNow"
 description: "A GitHub Pages deployment sent a full sitemap after one portfolio PNG changed. How I traced the notification and limited it to source pages."
 date: 2026-11-10
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["IndexNow", "GitHub Pages", "Jekyll", "Python", "Deployment"]
 permalink: /indexnow-image-page-scope-en/
 layout: default
