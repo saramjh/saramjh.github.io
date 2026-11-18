@@ -37,4 +37,8 @@ An evolving set of local orchestration tools and experiments for keeping multipl
 
 ## Further reading
 
-Read the [browser-harness engineering write-up](/web-chatgpt-browser-harness-orchestration-en/). This is a changing development record, not a guarantee that every discussed feature is deployed.
+Read the [browser-harness engineering write-up](/web-chatgpt-browser-harness-orchestration-en/) for the broader architecture. This is a changing development record, not a guarantee that every discussed feature is deployed.
+
+For the practical problem of resuming work after a new coding session, see [how I use cokacremote with Git and checkpoints](/en-ai-coding-context-continuity-cokacremote/). It explains which state to trust first, rather than assuming older chat memory is current.
+
+A separate quality problem comes up when agents edit user interfaces. In [my hands-on Impeccable review](/en-impeccable-review-ai-ui-design/), I show how critique and deterministic design checks helped with two products, including detector false positives. That is a design-review workflow, not a Session Supervisor feature.
