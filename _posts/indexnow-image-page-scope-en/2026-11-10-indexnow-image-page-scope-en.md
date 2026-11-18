@@ -84,6 +84,16 @@ The narrow resolver passed 227 Python tests and the site's deployed build and Ch
 
 This is useful beyond my blog: before notifying a search engine about a changed asset, verify where it is rendered. A single shared script might reach several pages without reaching the entire sitemap. The change improved my notification selection, but I have not measured additional indexing, visitors, or conversions from it.
 
+## November 19 follow-up: the documentation looked like a script consumer
+
+The next regression came from a detail in this article itself. On November 19, I added a click-only measurement for the portfolio's public contact link in [PR #208](https://github.com/saramjh/saramjh.github.io/pull/208). The [original deployment log](https://github.com/saramjh/saramjh.github.io/actions/runs/44386020085) shows **195 URLs submitted to IndexNow**, with one batch returning **HTTP 200 Accepted**. The site's dependency checker had already learned to trace the shared portfolio script to 11 pages. Why did it select the full sitemap again?
+
+The Git reference search also found the two language editions of this case study. Each mentions the script's filename inside Markdown inline code to explain the earlier fix. Those words appear on the page as text; neither article loads the script. The resolver could not distinguish an explanation *about* a file from an executable reference *to* it, so it used the conservative fallback.
+
+In [PR #209](https://github.com/saramjh/saramjh.github.io/pull/209), I made that distinction narrow: only these two known documentation pages qualify, with their original permalinks, languages, layouts and single inline-code references checked. An extra mention, a real script inclusion or an unknown consumer still triggers the broader fallback. A **read-only replay** of the PR #208 Git difference then selected the **11 verified portfolio pages**; it did **not** submit another request. The [separate PR #209 deployment](https://github.com/saramjh/saramjh.github.io/actions/runs/44387509083) selected **zero** changed page URLs and skipped Bing and IndexNow.
+
+The earlier 195-URL provider receipt remains part of the record. A passing build and even a valid dependency rule are not enough if source-search matches can include prose written to document that very rule. This follow-up establishes the corrected selection and actual skip behavior, not improved indexing or reader growth.
+
 ## The check I will keep
 
 A successful deployment proves that the site built. It does not prove that the notification list describes the pages that changed. I now check the selected URLs separately, including the conservative fallback and the case where no published content URL changed.
