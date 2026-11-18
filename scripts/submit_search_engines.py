@@ -477,6 +477,68 @@ def _page_urls_for_portfolio_js(revision):
     # An empty or incomplete graph is not proof of no impacted pages.
     return pages or None
 
+
+def _page_urls_for_project_layout(revision):
+    """Resolve only verified first-party consumers of the project layout.
+
+    The public project collection is rendered through _layouts/project.html.
+    Check every current and previous source, route and Jekyll collection mapping
+    before narrowing a notification. An extra or unrecognized consumer keeps
+    the existing conservative full-sitemap path.
+    """
+    try:
+        layout = subprocess.check_output(
+            ["git", "show", f"{revision}:_layouts/project.html"],
+            text=True, stderr=subprocess.PIPE,
+        )
+        front = re.match(r"\A---\s*\n(.*?)\n---", layout, re.S)
+        if front is None or not re.search(
+            r"(?m)^layout: portfolio\s*$", front.group(1)
+        ) or not re.search(
+            r"(?m)^portfolio_ui: true\s*$", front.group(1)
+        ):
+            return None
+
+        project_sources = set(subprocess.check_output(
+            ["git", "ls-tree", "-r", "--name-only", revision, "--", "_projects"],
+            text=True, stderr=subprocess.PIPE,
+        ).splitlines())
+        if not project_sources:
+            return None
+
+        # Jekyll can also load a layout through non-project front matter or
+        # collection defaults. Do not miss quoted/default/unknown consumers.
+        proc = subprocess.run(
+            ["git", "grep", "-I", "-l", "-E", "-e",
+             r"layout:[[:space:]]*['\"]?project", revision, "--"],
+            text=True, capture_output=True,
+        )
+        if proc.returncode not in (0, 1):
+            raise ValueError("Cannot verify project layout consumers")
+        consumers = set()
+        for row in proc.stdout.splitlines():
+            prefix, sep, source = row.partition(":")
+            if not sep or prefix != revision or not source:
+                raise ValueError("Unrecognized project-layout reference")
+            if not _skip_only_source(source):
+                consumers.add(source)
+        if consumers != project_sources:
+            return None
+
+        pages = set()
+        for source in project_sources:
+            if not re.fullmatch(
+                r"_projects/[a-z0-9][a-z0-9-]*\.(?:md|html)", source
+            ):
+                return None
+            url = _permalink_from_source(source, revision)
+            if url is None:
+                return None
+            pages.add(url)
+        return pages if len(pages) == len(project_sources) else None
+    except (OSError, subprocess.CalledProcessError, UnicodeError):
+        raise ValueError("Cannot resolve exact project layout consumer graph") from None
+
 def changed_urls(before, after):
     """Return affected URLs, or None for a broad site change.
 
@@ -545,6 +607,18 @@ def changed_urls(before, after):
             pages = set()
             for revision in (before, after):
                 resolved = _page_urls_for_recognitions(revision)
+                if resolved is None:
+                    return None
+                pages.update(resolved)
+            touched.update(pages)
+            continue
+        # The project layout has a verifiable, bounded collection of
+        # first-party page consumers. Compare both revisions so removed
+        # consumers are also notified; any graph uncertainty stays broad.
+        if file_path == "_layouts/project.html" and status == "M":
+            pages = set()
+            for revision in (before, after):
+                resolved = _page_urls_for_project_layout(revision)
                 if resolved is None:
                     return None
                 pages.update(resolved)
