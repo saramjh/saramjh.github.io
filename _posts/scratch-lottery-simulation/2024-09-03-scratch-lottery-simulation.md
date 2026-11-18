@@ -2,8 +2,8 @@
 title: "Scratch Lottery Simulation"
 description: A free scratch-off simulation with officially published ticket distributions where available, expected-value lessons, budget experiments and a sourced claims tracker. No real-money play.
 date: 2024-09-03
-modified: 2026-11-14
-last_modified_at: 2026-11-14
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["Lottery", "Scratch Lottery", "Lottery simulation", "Powerball", "Speetto", "RTP", "Lottery tax calculator"]
 permalink: /scratch-lottery-simulation/
 layout: default
@@ -25,6 +25,10 @@ legacy_asset_url: /posts/scratch-lottery-simulation/
 <img src="scratchlottery-2026-desktop.png" alt="Scratch Lottery Simulator desktop screenshot showing a Speetto 1000 ticket, odds table, and fast simulation panel">
 
 This free scratch-off lottery simulator lets you reveal a ticket and inspect the results without spending real money. Presets with an official printed-issue table, including Texas Game 2755 and Korea's Speetto 1000/2000, use the published issue counts. Other games or custom odds are labeled simulation models, not official lower-tier prize distributions. [Try the simulator](https://saramjh.github.io/scratchLottery/).
+
+#### An earlier Trend Hunter write-up
+
+On March 27, 2025, Ellen Smith described this simulator in [Trend Hunter](https://www.trendhunter.com/trends/scratch-lottery-simulation-program). The article links directly to the app and discusses scratch-ticket simulation with adjustable winning odds. That early version let people change probabilities and try tickets in a browser without spending real money. The official printed-issue calculations, Experiment Lab and prize-claim tracker discussed here arrived in later updates. I have not measured visits or continued use attributable to the 2025 article.
 
 #### Who it's for
 
