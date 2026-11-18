@@ -11,6 +11,8 @@ ARTICLES = {
 LINKS = {
     "ink_pad_faq": "https://epson.com/support/epson-ink-pad-reset-utility-faqs",
     "waste_ink_service": "https://epson.com/support/wa00369",
+    "kr_l3106_maintenance": "https://www.epson.co.kr/faq/SPT_C11CG88513~EKL_FAQ_0871",
+    "kr_customer_support": "https://www.epson.co.kr/cs",
 }
 
 with sync_playwright() as playwright:
@@ -32,7 +34,9 @@ with sync_playwright() as playwright:
             events = page.evaluate("""() => {
               const links = {
                 ink_pad_faq: 'https://epson.com/support/epson-ink-pad-reset-utility-faqs',
-                waste_ink_service: 'https://epson.com/support/wa00369'
+                waste_ink_service: 'https://epson.com/support/wa00369',
+                kr_l3106_maintenance: 'https://www.epson.co.kr/faq/SPT_C11CG88513~EKL_FAQ_0871',
+                kr_customer_support: 'https://www.epson.co.kr/cs'
               };
               const values = [];
               const oldGtag = window.gtag;
@@ -60,7 +64,7 @@ with sync_playwright() as playwright:
                 for reference in LINKS
             ]
             assert events["values"] == expected, (lang, viewport, events)
-            assert events["beforeDnt"] == 2, (lang, viewport, events)
+            assert events["beforeDnt"] == 4, (lang, viewport, events)
             assert not errors, (lang, viewport, errors)
             page.close()
     browser.close()

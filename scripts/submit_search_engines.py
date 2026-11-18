@@ -517,7 +517,12 @@ def _page_urls_for_epson_support_js(revision):
     """
     asset = "assets/js/epson-official-support-click.js"
     filename = "epson-official-support-click.js"
-    expected_sha = "551277490fc542f2d6a9749ba5be1a7788b96f3a6ad4a9be051207918281a87a"
+    # Admit only the two audited script generations across an upgrade.
+    # Old and new consumers are still independently verified in both commits.
+    expected_shas = {
+        "551277490fc542f2d6a9749ba5be1a7788b96f3a6ad4a9be051207918281a87a",
+        "7aa880e45227a457f89c86204560904b014a2e2afaf39eb97035acc2f4a90090",
+    }
     expected = {
         "_posts/epson-waste-ink-pad-reset-without-key/2026-09-15-epson-waste-ink-pad-reset-without-key.md":
             ("/epson-waste-ink-pad-reset-without-key/", "ko"),
@@ -544,7 +549,7 @@ def _page_urls_for_epson_support_js(revision):
     )
     if raw.returncode != 0:
         return set() if not consumers else None
-    if hashlib.sha256(raw.stdout).hexdigest() != expected_sha:
+    if hashlib.sha256(raw.stdout).hexdigest() not in expected_shas:
         return None
     if consumers != set(expected):
         return None
