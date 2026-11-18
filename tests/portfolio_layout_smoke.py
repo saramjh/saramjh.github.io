@@ -66,6 +66,21 @@ with sync_playwright() as p:
             })''')
             assert info['docWidth'] <= viewport + 2, (viewport, path, 'overflow', info)
             assert (info['ads'] == 0) == path.startswith('/portfolio/'), (viewport, path, 'ads', info)
+            # A public contact email is accessible without auto-sending a message.
+            # Test the real rendered Liquid config, not a guessed root site.email.
+            if path == '/portfolio/':
+                contact = page.locator('.folio-hero .folio-contact-cta')
+            elif path.startswith('/portfolio/') and path != '/portfolio/recognition/':
+                contact = page.locator('.folio-project-page .folio-next .folio-contact-cta')
+            else:
+                contact = None
+            if contact is not None:
+                assert contact.count() == 1, (viewport, path, 'missing/duplicate contact')
+                assert contact.get_attribute('href') == 'mailto:devtestudinidae@gmail.com', (viewport, path, 'wrong contact owner')
+                assert contact.is_visible(), (viewport, path, 'contact not visible')
+                box = contact.bounding_box()
+                assert box and box['width'] >= 85, (viewport, path, 'contact too small', box)
+                assert box['x'] >= -2 and box['x'] + box['width'] <= viewport + 2, (viewport, path, 'contact viewport overflow', box)
             records = page.locator('.folio-evidence-item')
             expected = expected_evidence_count(path)
             assert records.count() == expected, (viewport, path, 'evidence count', expected, records.count())

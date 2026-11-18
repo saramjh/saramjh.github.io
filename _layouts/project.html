@@ -33,5 +33,5 @@ ads: false
     {% assign matches = site.data.recognitions | where: 'project', page.slug | where: 'status', 'confirmed' %}
     {% if matches.size > 0 %}<ol class="folio-evidence-list">{% include portfolio-evidence.html project=page.slug %}</ol>{% else %}<p class="folio-empty-note">No third-party source recorded for this project yet. Its absence is not a judgement about the project.</p>{% endif %}
   </section>
-  <div class="folio-next"><a href="/portfolio/">Explore all projects <span aria-hidden="true">→</span></a><a href="/portfolio/recognition/">Explore recognition archive <span aria-hidden="true">→</span></a></div>
+  <div class="folio-next"><a href="/portfolio/">Explore all projects <span aria-hidden="true">→</span></a><a href="/portfolio/recognition/">Explore recognition archive <span aria-hidden="true">→</span></a><a class="folio-contact-cta" href="mailto:{{ site.author.email | escape }}">Email the developer <span aria-hidden="true">↗</span></a></div>
 </div>
