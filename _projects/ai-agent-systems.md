@@ -10,7 +10,7 @@ subtitle: Browser-based agent operations and continuity
 field: AI systems / operational reliability
 summary: Local orchestration experiments around browser AI sessions, context continuity, deduplicated actions, and project-specific agent workflows.
 image: /assets/images/portfolio/agent-architecture.svg
-image_alt: Conceptual diagram of a supervisor connecting four independent project agents
+image_alt: Conceptual diagram of a local Session Supervisor coordinating five separately scoped project workers, including Dev
 writing_url: /web-chatgpt-browser-harness-orchestration-en/
 status: Evolving engineering work
 stack:

@@ -1,1 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="t d"><title id="t">Agent workflow architecture concept</title><desc id="d">A local supervisor coordinates four separate project agents, with a persistent evidence ledger below.</desc><rect width="1200" height="750" fill="#141927"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#303e64"/><stop offset="1" stop-color="#151c2e"/></linearGradient></defs><path d="M600 278V344M165 344H1035M165 344V402M455 344V402M745 344V402M1035 344V402M600 344V581" stroke="#91a9e7" stroke-opacity=".72" stroke-width="3" fill="none"/><rect x="380" y="107" width="440" height="171" rx="16" fill="url(#g)" stroke="#a6b9ed" stroke-width="2"/><text x="600" y="176" font-size="23" fill="#b8c8f9" text-anchor="middle" font-family="Arial,sans-serif">LOCAL OPERATIONS</text><text x="600" y="219" font-size="41" fill="#f1f4fb" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold">Session Supervisor</text><g fill="#252f47" stroke="#6279a6" stroke-width="2"><rect x="45" y="402" width="240" height="119" rx="12"/><rect x="335" y="402" width="240" height="119" rx="12"/><rect x="625" y="402" width="240" height="119" rx="12"/><rect x="915" y="402" width="240" height="119" rx="12"/></g><g fill="#f0f2fb" font-family="Arial,sans-serif" font-size="31" text-anchor="middle"><text x="165" y="472">KoreAves</text><text x="455" y="472">Space Atlas</text><text x="745" y="472">Spoonie</text><text x="1035" y="472">Riff</text></g><g fill="#a5b5d7" font-family="Arial,sans-serif" font-size="17" text-anchor="middle"><text x="165" y="502">Evidence / outreach</text><text x="455" y="502">Learning resources</text><text x="745" y="502">Recipe discovery</text><text x="1035" y="502">Product research</text></g><rect x="377" y="582" width="446" height="95" rx="14" fill="#171e2e" stroke="#516a9c" stroke-width="2"/><text x="600" y="623" font-size="22" fill="#b2c6f8" text-anchor="middle" font-family="Arial,sans-serif">Persistent execution ledger</text><text x="600" y="653" font-size="18" fill="#e7eaf5" text-anchor="middle" font-family="Arial,sans-serif">state · evidence · continuity</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="t d">
+  <title id="t">Five specialist worker lanes under a Session Supervisor</title>
+  <desc id="d">A conceptual diagram of a local supervisor coordinating five separate project workers: Ave for KoreAves, Orion for Space Atlas, Soy for Spoonie, Riff for Social Relations Lab, and Dev for Maker Log. A persistent execution ledger is shown below. This is not a live runtime status display.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#303e64"/><stop offset="1" stop-color="#151c2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="#141927"/>
+  <path d="M600 284V352 M136 352H1064 M136 352V401 M368 352V401 M600 352V401 M832 352V401 M1064 352V401 M600 544V581" stroke="#a8baed" stroke-opacity=".78" stroke-width="3" fill="none"/>
+  <rect x="377" y="102" width="446" height="182" rx="16" fill="url(#g)" stroke="#a6b9ed" stroke-width="2"/>
+  <g fill="#f1f4fb" font-family="Arial,sans-serif" text-anchor="middle">
+    <text x="600" y="169" font-size="24" fill="#b8c8f9">LOCAL OPERATIONS</text>
+    <text x="600" y="215" font-size="39" font-weight="bold">Session Supervisor</text>
+    <text x="600" y="254" font-size="17" fill="#c1cff2">Separate accounts · original receipts</text>
+  </g>
+  <g fill="#f0f2fb" text-anchor="middle" font-family="Arial,sans-serif">
+  <g data-worker="ave">
+    <rect x="26" y="401" width="220" height="143" rx="12" fill="#252f47" stroke="#8295c4" stroke-width="2"/>
+    <text x="136" y="442" font-size="30" font-weight="bold">Ave</text>
+    <text x="136" y="477" font-size="21">KoreAves</text>
+    <text x="136" y="511" font-size="16" fill="#c1cff2">Bird evidence</text>
+  </g>
+  <g data-worker="orion">
+    <rect x="258" y="401" width="220" height="143" rx="12" fill="#252f47" stroke="#8295c4" stroke-width="2"/>
+    <text x="368" y="442" font-size="30" font-weight="bold">Orion</text>
+    <text x="368" y="477" font-size="21">Space Atlas</text>
+    <text x="368" y="511" font-size="16" fill="#c1cff2">Science education</text>
+  </g>
+  <g data-worker="soy">
+    <rect x="490" y="401" width="220" height="143" rx="12" fill="#252f47" stroke="#8295c4" stroke-width="2"/>
+    <text x="600" y="442" font-size="30" font-weight="bold">Soy</text>
+    <text x="600" y="477" font-size="21">Spoonie</text>
+    <text x="600" y="511" font-size="16" fill="#c1cff2">Recipe community</text>
+  </g>
+  <g data-worker="riff">
+    <rect x="722" y="401" width="220" height="143" rx="12" fill="#252f47" stroke="#8295c4" stroke-width="2"/>
+    <text x="832" y="442" font-size="30" font-weight="bold">Riff</text>
+    <text x="832" y="477" font-size="18">Social Relations Lab</text>
+    <text x="832" y="511" font-size="16" fill="#c1cff2">Audience relations</text>
+  </g>
+  <g data-worker="dev">
+    <rect x="954" y="401" width="220" height="143" rx="12" fill="#252f47" stroke="#8295c4" stroke-width="2"/>
+    <text x="1064" y="442" font-size="30" font-weight="bold">Dev</text>
+    <text x="1064" y="477" font-size="21">Maker Log</text>
+    <text x="1064" y="511" font-size="16" fill="#c1cff2">Engineering writing</text>
+  </g>
+  </g>
+  <rect x="365" y="581" width="470" height="100" rx="14" fill="#171e2e" stroke="#7187b8" stroke-width="2"/>
+  <g fill="#e7eaf5" text-anchor="middle" font-family="Arial,sans-serif">
+    <text x="600" y="622" font-size="22" fill="#b2c6f8">Persistent execution ledger</text>
+    <text x="600" y="655" font-size="18">state · evidence · continuity</text>
+  </g>
+</svg>
