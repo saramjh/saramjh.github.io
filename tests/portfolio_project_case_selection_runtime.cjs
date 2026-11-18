@@ -25,6 +25,7 @@ function setup(){
   ];
   const calls=[];
   const document={querySelectorAll(query){
+    if(query==='.folio-contact-cta[href^="mailto:"]')return [];
     if(query===selector)return links;
     if(query==='.folio-evidence-item'||query==='.folio-writing-card[data-case-id]'||query==='.folio-filter'||query==='#folio-records .folio-evidence-item')return [];
     throw Error('Unexpected selector: '+query);

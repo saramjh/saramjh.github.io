@@ -31,6 +31,8 @@ jobs:
         run: node --test tests/article_product_outbound_runtime.cjs
       - name: Test Epson documentation selection privacy and scope
         run: node --test tests/epson_official_support_click_runtime.cjs
+      - name: Test developer contact-link selection without sending mail
+        run: node --test tests/portfolio_contact_selection_runtime.cjs
       - name: Test first-party Space Atlas outbound selection
         run: node --test tests/portfolio_space_atlas_outbound_runtime.cjs
       - name: Test mobile navigation keyboard and background focus
@@ -67,6 +69,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python tests/portfolio_layout_smoke.py
           python tests/epson_official_support_browser.py
+          python tests/portfolio_contact_selection_browser.py
       - name: Test post assets
         run: bundle exec ruby tests/post_assets_test.rb
       - uses: actions/upload-pages-artifact@v4

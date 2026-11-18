@@ -2,6 +2,19 @@
   'use strict';
   // Measure a visitor's selection of a public evidence link, not use of its destination.
   // Reuse the existing site's GA4 integration. No extra tracker is loaded.
+  // A contact-link selection is not evidence that an email was sent or read.
+  // Only the original public developer address and two existing CTA surfaces.
+  Array.from(document.querySelectorAll('.folio-contact-cta[href^="mailto:"]')).forEach(function(link){
+    if(link.getAttribute('href')!=='mailto:devtestudinidae@gmail.com')return;
+    var surface=link.closest('.folio-hero')?'portfolio_home':
+      link.closest('.folio-next')?'project_case':null;
+    if(!surface)return;
+    link.addEventListener('click',function(){
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
+      if(typeof window.gtag!=='function')return;
+      window.gtag('event','developer_contact_link_select',{contact_surface:surface});
+    });
+  });
   Array.from(document.querySelectorAll('.folio-evidence-item')).forEach(function(entry){
     var link=entry.querySelector('.folio-evidence-main h3 a[href]');
     if(!link)return;
