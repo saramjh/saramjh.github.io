@@ -66,6 +66,24 @@ The middle row is an **offline result**, not a second IndexNow submission. The f
 
 The tests cover an image referenced by one page, the same image used on multiple pages, references from a global template, and assets whose usage cannot be mapped reliably. These cases matter because narrowing every image to a single page would introduce a different notification error.
 
+## Follow-up, November 18: a JavaScript change reached 11 pages, not 194
+
+A second deployment exposed a different dependency problem. I added a source-side click event for a [Space Atlas portfolio link](/portfolio/space-atlas/) in [PR #193](https://github.com/saramjh/saramjh.github.io/pull/193). The event records selection of that specific link on this blog. It cannot tell me whether the visitor arrived at Space Atlas or used the simulator.
+
+The changed file was `assets/js/portfolio.js`. Unlike the PNG in the first case, this script is loaded through `_layouts/portfolio.html`. That layout serves the portfolio index and recognition archive, five project pages, and four published milestone pages. The old notifier did not recognize the script's page consumers. It treated the edit as a shared-asset change and submitted **194 sitemap URLs** to IndexNow in the [original Pages run](https://github.com/saramjh/saramjh.github.io/actions/runs/44317892057). The provider returned HTTP 200 Accepted.
+
+In [PR #194](https://github.com/saramjh/saramjh.github.io/pull/194), I extended the Git-diff resolver to check the exact script inclusion, the project and milestone layout inheritance, and each source page's permalink **in both revisions**. If a new consumer cannot be verified, the broader sitemap fallback remains. A new shared script must not be declared page-local merely because this particular edit had 11 known consumers.
+
+| Verification | Selected URLs | What actually happened |
+|---|---:|---|
+| November 18 live deployment of PR #193 | 194 | One IndexNow batch was accepted: [Actions #44317892057](https://github.com/saramjh/saramjh.github.io/actions/runs/44317892057) |
+| Offline replay of the same Git difference with the PR #194 resolver | 11 | Only the verified portfolio layout consumers were selected in regression tests; no new request |
+| PR #194's separate source-only deployment | 0 | The notifier skipped Bing and IndexNow: [Actions #44321890015](https://github.com/saramjh/saramjh.github.io/actions/runs/44321890015) |
+
+The narrow resolver passed 227 Python tests and the site's deployed build and Chrome checks. More importantly, the original deployment log confirms **no second IndexNow submission** for the code-only repair. The earlier accepted batch stays in the audit history.
+
+This is useful beyond my blog: before notifying a search engine about a changed asset, verify where it is rendered. A single shared script might reach several pages without reaching the entire sitemap. The change improved my notification selection, but I have not measured additional indexing, visitors, or conversions from it.
+
 ## The check I will keep
 
 A successful deployment proves that the site built. It does not prove that the notification list describes the pages that changed. I now check the selected URLs separately, including the conservative fallback and the case where no published content URL changed.
