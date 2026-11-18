@@ -74,6 +74,19 @@ The useful part is that it has two distinct layers.
 
 That matters because the workflow is not purely an LLM giving aesthetic opinions.
 
+### November 2026 CLI setup note
+
+The Profit Scratch script below still pins `impeccable@4.1.0`. The 4.9.1 rule count above is a dated npm observation, not a retest of that project. The official [release history](https://github.com/pbakaus/impeccable/releases) lists CLI **4.9.2**, released on **2026-11-16**. When following this review on a newer installation, first check the installed version and rule catalog:
+
+```bash
+npx impeccable --version
+npx impeccable detect --list-rules
+npx impeccable detect src/
+npx impeccable detect http://localhost:5173
+```
+
+The [official repository instructions](https://github.com/pbakaus/impeccable) explain that `npx impeccable install` offers project or global scope and a design hook for supported agents. Codex requires hook approval in `/hooks`. A source scan cannot check rendered contrast or tiny text; those rules require a page URL. Neither scan substitutes for product and release testing, and I have not repeated the original 4.1.0 experiment on 4.9.2.
+
 ## Real use #1: Spoonie — the critique was harsher than expected
 
 A whole-`src` critique of Spoonie scored **21/40**, with one P0 and three P1 findings.
