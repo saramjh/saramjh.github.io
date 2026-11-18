@@ -242,6 +242,26 @@ The goal is not to dump the entire transcript.
 
 The goal is to preserve **the semantic state that prevents the next session from heading in the wrong direction.**
 
+### A portable checkpoint for the next coding agent
+
+When I switch between coding assistants, I do not assume the next client can read the previous conversation. I give it a short project note and ask it to compare that note with the current repository before acting.
+
+This is a human-readable example, not the file format used internally by `project_context_checkpoint`:
+
+~~~text
+Goal: Keep saved values in an existing form.
+Branch / HEAD: <current branch> / <verified commit SHA>
+Decision: Reuse the form; defer a database schema change.
+Verified: <test command>, <result>, <date and time>
+Held / unknown: A previous deployment result is unconfirmed; do not repeat it.
+Next action: Check the original deployment receipt before editing.
+Evidence: <source file>, <test or issue>, <original receipt>
+~~~
+
+I fill in each field from actual evidence. At the next session boundary, `git status --short` and `git rev-parse HEAD` help check whether the note still matches the working tree. Project conventions can live in repository instruction files, provided each coding client is configured to read them; those files do not carry the current task state by themselves. Keep credentials and private contact details out of notes that might be shared.
+
+My cokacremote setup automates some of this capture and reload. The plain-text note is a manual fallback when a different coding client has no connection to that lifecycle.
+
 ## 3. Deep recall only when the current state is insufficient
 
 `project_context_recall` is deliberately not the default path.
