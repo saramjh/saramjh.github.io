@@ -8,6 +8,9 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /spoonie-pwa-search-state-recovery-en/
+image: /assets/img/dev/spoonie-pr47-pwa-og-20261118/spoonie-pr47-ko.png
+image_width: 1200
+image_height: 630
 published: true
 seo:
   title: "Spoonie iPhone PWA와 검색 상태 복원"
