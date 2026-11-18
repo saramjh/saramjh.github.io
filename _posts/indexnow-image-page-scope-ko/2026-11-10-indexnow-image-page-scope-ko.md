@@ -2,6 +2,8 @@
 title: "이미지 한 장을 바꿨는데 IndexNow에는 URL 120개가 전송됐다"
 description: "GitHub Pages에서 이미지 변경을 사이트 전체 변경으로 판단한 문제를 재현하고, 실제 참조 페이지로 전송 범위를 좁힌 개발 기록."
 date: 2026-11-10
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 tags: ["IndexNow", "GitHub Pages", "Jekyll", "Python", "배포 자동화"]
 permalink: /indexnow-image-page-scope-ko/
 layout: default
