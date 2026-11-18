@@ -124,6 +124,58 @@ class ScopedPortfolioJS(unittest.TestCase):
                               side_effect=AssertionError("Full sitemap replay forbidden")):
                 self.assertEqual(sender.get_deploy_urls(), [])
 
+    def _add_bilingual_portfolio_js_documentation(self):
+        docs = {
+            "_posts/indexnow-image-page-scope-en/2026-11-10-indexnow-image-page-scope-en.md":
+                ("/indexnow-image-page-scope-en/", "en"),
+            "_posts/indexnow-image-page-scope-ko/2026-11-10-indexnow-image-page-scope-ko.md":
+                ("/indexnow-image-page-scope-ko/", "ko"),
+        }
+        for path, (permalink, language) in docs.items():
+            self.write(path, (
+                "---\npermalink: " + permalink + "\nlayout: default\nlang: " +
+                language + "\n---\n\nThis file was `assets/js/portfolio.js`.\n"
+            ))
+        return docs
+
+    def test_original_documented_script_names_are_not_live_consumers(self):
+        self._add_bilingual_portfolio_js_documentation()
+        before = self.commit("two native articles with only inert inline documentation")
+        after = self.modify_script()
+        self.assertEqual(sender.changed_urls(before, after), self.expected())
+
+    def test_known_document_with_additional_real_html_consumer_fails_closed(self):
+        docs = self._add_bilingual_portfolio_js_documentation()
+        source = list(docs)[0]
+        self.write(source, (
+            "---\npermalink: /indexnow-image-page-scope-en/\nlayout: default\nlang: en\n---\n"
+            "This file was `assets/js/portfolio.js`.\n"
+            '<script src="/assets/js/portfolio.js"></script>\n'
+        ))
+        before = self.commit("known source now actually includes JS")
+        after = self.modify_script()
+        self.assertIsNone(sender.changed_urls(before, after))
+
+    def test_unknown_markdown_prose_mention_still_fails_closed(self):
+        self.write("_posts/unrelated/2026-11-03-unrelated.md",
+                   "---\nlayout: post\npermalink: /unrelated/\n---\n"
+                   "This file was `assets/js/portfolio.js`.\n")
+        before = self.commit("unknown prose mentioning active JS")
+        after = self.modify_script()
+        self.assertIsNone(sender.changed_urls(before, after))
+
+    def test_real_original_c869_deploy_diff_selects_verified_consumers(self):
+        before = "7c8cb779d1827021682ed0536db8f0ae2bd8c05e"
+        after = "9c3c5f876a40c72eeea7d80c29c5aa99069cb7f0"
+        for sha in (before, after):
+            if subprocess.run(
+                ["git", "cat-file", "-e", f"{sha}^{{commit}}"],
+                cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            ).returncode:
+                self.skipTest("Historical original native SHA absent in shallow checkout")
+        os.chdir(ROOT)
+        self.assertEqual(sender.changed_urls(before, after), self.expected())
+
     def test_extra_unverified_js_consumer_falls_back(self):
         self.write("_includes/footer.html",
                    '<script src="/assets/js/portfolio.js"></script>\n')

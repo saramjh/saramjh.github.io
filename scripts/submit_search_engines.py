@@ -442,9 +442,40 @@ def _page_urls_for_portfolio_js(revision):
                 paths.add(path)
         return paths
 
-    # A second inline, global footer, or dynamically referenced consumer is
-    # not a justified 11-page subset. Keep the conservative fallback.
-    if grep_files("portfolio.js") != {"_layouts/portfolio.html"}:
+    # Two existing bilingual incident reports name this JS in inline code,
+    # not an executable <script>. Verify the exact owner-owned Markdown,
+    # original route, and its sole inert mention on BOTH Git revisions.
+    # A new tag, additional mention, unknown article, or changed layout
+    # still fails closed to the original full-sitemap fallback.
+    documentation_only = {
+        "_posts/indexnow-image-page-scope-en/2026-11-10-indexnow-image-page-scope-en.md":
+            ("/indexnow-image-page-scope-en/", "en"),
+        "_posts/indexnow-image-page-scope-ko/2026-11-10-indexnow-image-page-scope-ko.md":
+            ("/indexnow-image-page-scope-ko/", "ko"),
+    }
+
+    def inert_documentation_only(path):
+        if path not in documentation_only:
+            return False
+        expected_permalink, language = documentation_only[path]
+        body = source(path)
+        front = re.match(r"\A---\s*\n(.*?)\n---", body, re.S)
+        if front is None or front_layout(path) != "default":
+            return False
+        if (not re.search(r"(?m)^lang:\s*" + language + r"\s*$", front.group(1))
+                or _permalink_from_source(path, revision) != BASE_URL + expected_permalink):
+            return False
+        # Markdown backticks render the filename as text; a second mention or
+        # any raw script tag is no longer the original verified doc-only case.
+        return (body.count("portfolio.js") == 1
+                and body.count("`assets/js/portfolio.js`") == 1
+                and not re.search(r"<script\b", body, re.I))
+
+    references = grep_files("portfolio.js")
+    if "_layouts/portfolio.html" not in references:
+        return None
+    if any(not inert_documentation_only(path)
+           for path in references - {"_layouts/portfolio.html"}):
         return None
     users = grep_files(r"^layout: (portfolio|project|milestone)$", regex=True)
     expected_layouts = {"_layouts/project.html", "_layouts/milestone.html"}
