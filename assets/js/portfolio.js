@@ -48,7 +48,21 @@
   // Track only first-party static paths; no destination text, query or user data.
   Array.from(document.querySelectorAll('.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')).forEach(function(link){
     var href=link.getAttribute('href');
-    if(!href||!/^\/[a-z0-9][a-z0-9-]*\/$/.test(href))return;
+    if(!href)return;
+    // This original tagged source link measures a selection on the portfolio,
+    // not a visit, session, enrolment or result on Space Atlas.
+    if(href==='https://spaceatlasedu.org/earth/seasons/?utm_source=saramjh_portfolio&utm_medium=referral&utm_campaign=space_atlas_earth_seasons'){
+      link.addEventListener('click',function(){
+        if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
+        if(typeof window.gtag!=='function')return;
+        window.gtag('event','portfolio_space_atlas_click',{
+          content_type:'portfolio_outbound_project',
+          item_id:'space_atlas_earth_seasons'
+        });
+      });
+      return;
+    }
+    if(!/^\/[a-z0-9][a-z0-9-]*\/$/.test(href))return;
     var slug=href.slice(1,-1);
     link.addEventListener('click',function(){
       if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;

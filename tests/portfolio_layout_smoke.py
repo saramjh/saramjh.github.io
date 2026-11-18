@@ -168,6 +168,42 @@ with sync_playwright() as p:
                 ], (viewport, 'case and contextual source IDs', tracked)
                 assert tracked['countAfterDnt'] == 8, (viewport, 'DNT guard failed', tracked)
                 assert tracked['totalCount'] == 8, (viewport, 'gtag unavailable guard failed', tracked)
+            if path == '/portfolio/space-atlas/':
+                # Exercise the original source URL in Chrome, without navigation
+                # or an actual GA4 provider request.
+                outbound = page.evaluate("""() => {
+                  const expected = 'https://spaceatlasedu.org/earth/seasons/?utm_source=saramjh_portfolio&utm_medium=referral&utm_campaign=space_atlas_earth_seasons';
+                  const link = [...document.querySelectorAll('.folio-project-article a[href]')]
+                    .find(a => a.getAttribute('href') === expected);
+                  if (!link) throw new Error('Original UTM source is missing');
+                  const priorGtag = window.gtag;
+                  const priorDnt = window.doNotTrack;
+                  const calls = [];
+                  window.doNotTrack = '0';
+                  window.gtag = function(){ calls.push(Array.from(arguments)); };
+                  function safeClick(){
+                    link.addEventListener('click', e => e.preventDefault(), {once:true});
+                    link.click();
+                  }
+                  safeClick();
+                  const enabled = calls.slice();
+                  window.doNotTrack = '1';
+                  safeClick();
+                  const afterDnt = calls.length;
+                  window.doNotTrack = '0';
+                  window.gtag = undefined;
+                  safeClick();
+                  const afterMissingGA4 = calls.length;
+                  window.gtag = priorGtag;
+                  window.doNotTrack = priorDnt;
+                  return {href:link.getAttribute('href'),enabled,afterDnt,afterMissingGA4};
+                }""")
+                assert outbound['enabled'] == [['event', 'portfolio_space_atlas_click', {
+                    'content_type': 'portfolio_outbound_project',
+                    'item_id': 'space_atlas_earth_seasons'
+                }]], (viewport, 'original Space Atlas source outbound event', outbound)
+                assert outbound['afterDnt'] == 1, (viewport, 'outbound DNT leakage', outbound)
+                assert outbound['afterMissingGA4'] == 1, (viewport, 'outbound missing GA4 guard', outbound)
             if path == '/portfolio/recognition/':
                 # New c431 bilingual developer-note links reuse the existing GA4
                 # event route; every test click stays inside this page.

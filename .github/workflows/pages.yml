@@ -29,6 +29,8 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_*.py'
       - name: Test case-study outbound click privacy
         run: node --test tests/article_product_outbound_runtime.cjs
+      - name: Test first-party Space Atlas outbound selection
+        run: node --test tests/portfolio_space_atlas_outbound_runtime.cjs
       - name: Test mobile navigation keyboard and background focus
         run: node tests/mobile_navigation_focus_runtime.cjs
       - name: Test topic index search without hiding source articles
