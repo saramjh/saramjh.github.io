@@ -60,6 +60,6 @@ Most GA4 and SEO guides I found assume one of two setups:
 
 My situation sat in between: **one person, one root domain, a growing pile of small tools with no shared audience or purpose, that happen to share URL space.** I couldn't find guidance written for that middle case, and that gap is why I'm writing this series.
 
-Next up: the reasoning I worked through with an AI — how GA4 properties and data streams actually relate to each other, how Search Console verification works at the domain level, and what root-domain trust signals do and don't share.
+Next up: the reasoning I worked through with an AI: how GA4 properties and data streams are organized, how Search Console's Domain and URL-prefix properties differ in coverage and verification, and how Clarity project boundaries shape the data you see.
 
 → [Continue to Part 2: Reasoning](/gh-pages-analytics-notes-2-reasoning-en/)
