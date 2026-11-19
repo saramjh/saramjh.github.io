@@ -690,6 +690,35 @@ with sync_playwright() as p:
         assert not errors, (viewport,'topic search JS exceptions',errors)
         print('PASS topic finder and all original anchors',viewport,original,article_count)
         page.close()
+    # The project images must stay inside their grid cards even below 360px.
+    # A 150px minimum height previously widened 280/320px links beyond the card.
+    for viewport in (280, 320, 360):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        response = page.goto(BASE+'/portfolio/', wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, (viewport, 'project portfolio unavailable')
+        links = page.locator('.folio-project-card a.folio-project-image')
+        assert links.count() >= 5, (viewport, 'project cards missing')
+        for link in links.all():
+            geometry = link.evaluate("""a => {
+              const image = a.getBoundingClientRect();
+              const card = a.closest('.folio-project-card').getBoundingClientRect();
+              return {right:image.right, cardRight:card.right, left:image.left,
+                      width:image.width, height:image.height};
+            }""")
+            assert geometry['right'] <= geometry['cardRight'] + 1, (
+                viewport, 'thumbnail extends beyond project card', geometry)
+            assert geometry['width'] >= 180 and geometry['height'] >= 140, (
+                viewport, 'thumbnail lost its useful click area', geometry)
+            link.scroll_into_view_if_needed()
+            target = link.evaluate("""a => {
+              const r=a.getBoundingClientRect();
+              const el=document.elementFromPoint(Math.min(innerWidth-25,r.right-8),
+                  r.top + r.height/2);
+              return el===a || a.contains(el);
+            }""")
+            assert target, (viewport, 'thumbnail link clipped or blocked')
+        print('PASS project thumbnail bounds and hit targets', viewport, links.count())
+        page.close()
     # No JavaScript: the original complete tag navigation must remain usable.
     nojs = browser.new_context(viewport={'width': 390, 'height': 900},
                               java_script_enabled=False)
