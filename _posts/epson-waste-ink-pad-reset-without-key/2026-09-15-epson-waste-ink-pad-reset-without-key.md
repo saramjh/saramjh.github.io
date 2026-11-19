@@ -1,8 +1,8 @@
 ---
 title: "엡손 잉크패드 리셋키 없이 초기화하기: L3106 작업 사례와 모델별 주의"
 date: 2026-09-15
-modified: 2026-11-19
-last_modified_at: 2026-11-19
+modified: 2026-11-20
+last_modified_at: 2026-11-20
 tags: ["엡손프린터", "엡손잉크패드리셋", "폐잉크패드교체", "엡손리셋키없이", "맥북엡손리셋", "L3100", "L3106", "L3150", "L3160", "L1110", "L5190", "프린터자가수리", "reinkpy"]
 permalink: /epson-waste-ink-pad-reset-without-key/
 layout: default
@@ -43,6 +43,10 @@ faq:
     a: "WIC Reset과 reinkpy-fix의 내부 동작이 동일하고 모든 모델을 지원한다는 근거는 확인되지 않았습니다. reinkpy-fix 공개 저장소는 일부 Epson 프린터용이며 L3060 계열의 동작을 확인했다고 설명합니다. 정확한 모델 지원 여부와 실제 잉크패드 정비 필요성을 먼저 확인하세요."
 ---
 
+### L3100·L3156에서 리셋하려는 경우
+
+L3100이나 L3156의 잉크패드 경고 때문에 이 글을 찾았다면, 아래 프로그램 실행 방법을 그대로 적용하지 마세요. 제가 직접 작업한 프린터는 **L3106**입니다. `reinkpy-fix`의 L3100·L3156 호환성과 카운터 변경 성공 여부는 확인되지 않았습니다. 먼저 [Epson의 폐잉크 패드 안내](https://epson.com/support/epson-ink-pad-reset-utility-faqs)와 해당 모델의 서비스 문서에서 정비 방법을 확인하세요. 실제 잉크 흡수재 정비가 필요한 상황이라면 카운터만 변경해서는 해결되지 않습니다.
+
 <p style="background: rgba(0, 120, 212, 0.08); border-left: 4px solid #0078d4; padding: 10px 14px; margin-bottom: 24px; border-radius: 4px; font-size: 0.95rem;">
   🌐 <strong>English Edition available:</strong> Looking for the English step-by-step guide? Read <a href="/en-epson-waste-ink-pad-reset-without-key/"><strong>Epson Waste Ink Counter Reset: L3106 Case and Model Checks</strong></a>.
 </p>
@@ -52,10 +56,6 @@ faq:
 ### 국내 L3106 사용자가 확인할 한국엡손 안내
 
 [한국엡손의 L3106 파워 클리닝 FAQ](https://www.epson.co.kr/faq/SPT_C11CG88513~EKL_FAQ_0871)는 헤드 청소 과정에서도 폐잉크가 패드에 모이고, 패드 교체가 필요하면 사용자 직접 교체가 아닌 서비스 점검을 통해 처리해야 한다고 안내합니다. **이 FAQ는 폐잉크 카운터 초기화 방법이나 다른 기종의 리셋 호환성을 보증하는 문서가 아닙니다.** 실제 잉크패드 수명 경고를 받았다면 [한국엡손 고객지원](https://www.epson.co.kr/cs)에서 해당 모델의 상담·서비스센터 정보를 먼저 확인하세요. 아래 과정은 작성자의 L3106 작업 기록입니다.
-
-### L3100·L3156에서 리셋하려는 경우
-
-L3100이나 L3156의 잉크패드 경고 때문에 이 글을 찾았다면, 아래 프로그램 실행 방법을 그대로 적용하지 마세요. 제가 직접 작업한 프린터는 **L3106**입니다. `reinkpy-fix`의 L3100·L3156 호환성과 카운터 변경 성공 여부는 확인되지 않았습니다. 먼저 [Epson의 폐잉크 패드 안내](https://epson.com/support/epson-ink-pad-reset-utility-faqs)와 해당 모델의 서비스 문서에서 정비 방법을 확인하세요. 실제 잉크 흡수재 정비가 필요한 상황이라면 카운터만 변경해서는 해결되지 않습니다.
 
 ### 엡손 프린터 잉크 패드 서비스 수명 에러 메시지 정확한 문구와 증상
 
