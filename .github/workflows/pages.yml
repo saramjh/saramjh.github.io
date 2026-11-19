@@ -53,6 +53,8 @@ jobs:
           JEKYLL_ENV: production
       - name: Check images and sitemap
         run: bundle exec ruby scripts/check_site.rb
+      - name: Check rendered article product-link measurement coverage
+        run: python3 tests/article_product_outbound_rendered.py
       - name: Check local navigation links and fragments
         run: python3 scripts/check_internal_links.py
       - name: Check SEO contracts
@@ -83,6 +85,7 @@ jobs:
           python tests/gsc_property_truth_browser.py
           python tests/analytics_tool_boundaries_browser.py
           python tests/portfolio_contact_selection_browser.py
+          python tests/article_product_outbound_browser.py
       - name: Test post assets
         run: bundle exec ruby tests/post_assets_test.rb
       - uses: actions/upload-pages-artifact@v4

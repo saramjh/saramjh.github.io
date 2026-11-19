@@ -69,7 +69,7 @@
 </script>
 {%- endif -%}
 
-{%- if site.google_analytics and page.tracking != false and page.date and page.url contains '/spoonie-' -%}
+{%- if site.google_analytics and page.tracking != false and page.date and page.content contains 'https://spoonie.kr' -%}
 <script src="/assets/js/article-product-outbound.js" defer="defer"></script>
 {%- endif -%}
 
