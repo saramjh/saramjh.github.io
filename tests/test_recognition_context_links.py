@@ -302,7 +302,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn(url, post)
                 self.assertNotIn("\ufffd", post)
                 self.assertNotIn("????", post)
-                self.assertIn("modified: 2026-11-18", post)
+                self.assertIn("modified: 2026-11-19", post)
         self.assertIn("legacy", records["kantorilode-koreaves-legacy-links"]["detail"].lower())
         kantorilode = records["kantorilode-koreaves-legacy-links"]
         self.assertEqual(kantorilode["mirror_url"], "https://kantorilode.web.app/links.html")
@@ -395,7 +395,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                        / f"2026-11-02-folio-koreaves-resources-{lang}.md").read_text(encoding="utf8")
             self.assertIn("kartoza-awesome-geodata-koreaves", article)
             self.assertIn(entry["url"], article)
-            self.assertIn("modified: 2026-11-18", article)
+            self.assertIn("modified: 2026-11-19", article)
             self.assertNotIn("\ufffd", article)
             self.assertNotIn("????", article)
             self.assertIn("koreaves.com", article)

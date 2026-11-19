@@ -12,8 +12,18 @@ class DailyKoreaKoreAvesEditorialReferenceTest(unittest.TestCase):
             text=path.read_text(encoding="utf8")
             self.assertEqual(text.count(URL),1,lang)
             self.assertIn("alternate_url:",text)
-            self.assertIn("modified: 2026-11-18",text)
+            self.assertIn("modified: 2026-11-19",text)
             self.assertIn("2026",text)
+
+    def test_current_publisher_date_not_presented_as_original_release_date(self):
+        ko=POSTS["ko"].read_text(encoding="utf8")
+        en=POSTS["en"].read_text(encoding="utf8")
+        self.assertIn("현재 2026년 11월 19일로 날짜가 표시된",ko)
+        self.assertIn("currently dated November 19, 2026 by the publisher",en)
+        self.assertNotIn("Daily Korea의 2026년 11월 15일",ko)
+        self.assertNotIn("Daily Korea's November 15, 2026",en)
+        self.assertIn("last_modified_at: 2026-11-19",ko)
+        self.assertIn("last_modified_at: 2026-11-19",en)
 
     def test_exact_first_party_resource_links_in_both_languages(self):
         for path in POSTS.values():

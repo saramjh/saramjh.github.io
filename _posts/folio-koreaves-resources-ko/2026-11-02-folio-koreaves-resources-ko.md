@@ -3,8 +3,8 @@ layout: milestone
 portfolio_ui: true
 published: true
 date: 2026-11-02
-modified: 2026-11-18
-last_modified_at: 2026-11-18
+modified: 2026-11-19
+last_modified_at: 2026-11-19
 lang: ko
 alternate_lang: en
 alternate_url: /koreaves-external-resources-en/
@@ -51,7 +51,7 @@ Bird Album의 국가별 조류 정보 페이지는 기존 소프트웨어·지�
 
 ## 순천만 탐조 안내에서 지도 설명을 검토하다
 
-[Daily Korea의 2026년 11월 15일 순천만 첫 탐조 안내](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/)는 처음 방문하는 사람이 흑두루미를 관찰할 때 참고할 자료로 [KoreAves 지역 기록 지도](https://koreaves.com/gis/)와 [기록 읽는 법](https://koreaves.com/guide/)을 연결한다. 기사에서는 지역에 색이 있다는 사실이 해당 조건의 관찰 기록을 뜻하며, 기록 수를 개체 수로 해석해서는 안 된다는 점도 설명한다.
+[현재 2026년 11월 19일로 날짜가 표시된 Daily Korea의 순천만 첫 탐조 안내](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/)는 처음 방문하는 사람이 흑두루미를 관찰할 때 참고할 자료로 [KoreAves 지역 기록 지도](https://koreaves.com/gis/)와 [기록 읽는 법](https://koreaves.com/guide/)을 연결한다. 기사에서는 지역에 색이 있다는 사실이 해당 조건의 관찰 기록을 뜻하며, 기록 수를 개체 수로 해석해서는 안 된다는 점도 설명한다.
 
 나는 초보 탐조객을 위한 순천만 안내를 제안했고, 한국어 초안을 검토해 KoreAves 지도 설명의 수정 문구를 전달했다. 편집진은 지도 설명을 고쳐, 색이 칠해진 광역 행정구역에 기준을 충족한 조류 관찰 기록이 있다는 뜻이라고 밝혔다. 이 표시는 순천만 안에서 현재 새를 볼 수 있다는 예측이나 개체 수를 나타내지 않는다. 겨울 입장 시간과 순천역 출발 투어 정보는 편집진이 운영자의 최신 예약 정보와 별도로 대조했다. 공개 페이지의 발행 주체는 *Daily Korea Editorial*이다. 내 역할은 지도 해석에 대한 사실 검토였고, 기고나 공동 집필 크레딧은 없다. 기사에서 KoreAves로 유입된 방문은 측정하지 않았다.
 
