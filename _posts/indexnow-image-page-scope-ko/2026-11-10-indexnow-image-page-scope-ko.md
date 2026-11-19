@@ -56,11 +56,15 @@ seo:
 
 ## 실제 제출과 오프라인 검사 구분하기
 
+<div class="overflow-table" markdown="1" role="region" tabindex="0" aria-label="IndexNow 최초 전송과 오프라인 재검사 근거">
+
 | 확인 상황 | URL 선정 결과 | 근거 |
 |---|---|---|
 | 수정 전 실제 배포 | 120개 URL 전송, HTTP 200 Accepted | [Actions #42760722178](https://github.com/saramjh/saramjh.github.io/actions/runs/42760722178) |
 | 수정된 코드로 당시 변경분을 재검사 | <code>/portfolio/</code> 한 페이지 | [PR #39 회귀 테스트](https://github.com/saramjh/saramjh.github.io/pull/39/files) |
 | 수정 코드만 배포한 최종 실행 | 변경 페이지 URL 0개, Bing·IndexNow 전송 생략 | [Actions #42761734284](https://github.com/saramjh/saramjh.github.io/actions/runs/42761734284) |
+
+</div>
 
 두 번째 행은 **오프라인 재검사 결과**다. 수정 뒤 실제로 URL 한 개를 IndexNow에 다시 보냈다는 뜻이 아니다.
 
@@ -74,11 +78,15 @@ seo:
 
 [PR #194](https://github.com/saramjh/saramjh.github.io/pull/194)에서는 변경 전후 Git 리비전의 스크립트 참조, 레이아웃 상속 관계, 페이지 permalink를 검사하도록 알림 범위 계산기를 고쳤다. 새로운 사용처가 나타나거나 경로를 확정할 수 없을 때는 기존처럼 사이트맵 전체를 대상으로 삼는다. 이번에 11개를 찾았다고 해서 앞으로 모든 공통 스크립트를 11개 URL에만 연결하면 안 된다.
 
+<div class="overflow-table" markdown="1" role="region" tabindex="0" aria-label="IndexNow JavaScript 변경과 URL 선정 근거">
+
 | 확인 상황 | 선정 URL | 실제 결과 |
 |---|---:|---|
 | 11월 18일 PR #193의 실제 배포 | 194개 | IndexNow 한 배치 접수: [Actions #44317892057](https://github.com/saramjh/saramjh.github.io/actions/runs/44317892057) |
 | 동일한 Git 차이를 PR #194 코드로 오프라인 재검사 | 11개 | 레이아웃 사용 페이지를 확인한 테스트 결과. 새 알림 전송 없음 |
 | PR #194의 코드 수정만 반영한 별도 배포 | 0개 | Bing과 IndexNow 전송 생략: [Actions #44321890015](https://github.com/saramjh/saramjh.github.io/actions/runs/44321890015) |
+
+</div>
 
 수정한 로직은 Python 테스트 227개와 GitHub Actions의 빌드·Chrome 검사를 통과했다. 무엇보다 배포 로그에 **새 IndexNow 요청이 없었다는 점**이 남았다. 앞서 접수된 194개 URL의 원본 기록도 그대로 유지했다.
 
