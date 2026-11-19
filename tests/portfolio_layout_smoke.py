@@ -483,6 +483,18 @@ with sync_playwright() as p:
         assert 'of ' + str(prior) in page.locator('#search-result-status').inner_text()
         assert page.locator('#evidence-search-results a').count() == 3
         assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2
+        # Reload must not erase a reader's search or their already expanded
+        # article results. The query is retained in this entry, not the URL.
+        assert '?q=' not in page.url, (viewport, 'archive query leaked into URL')
+        page.reload(wait_until='domcontentloaded', timeout=20000)
+        page.wait_for_function(
+            "expected => document.querySelectorAll('#search-results a').length === expected",
+            arg=prior, timeout=10000)
+        assert page.locator('#search-input').input_value() == 'Spoonie', (
+            viewport, 'archive search lost after reload')
+        assert page.locator('#evidence-search-results a').count() == 3, (
+            viewport, 'original evidence missing after reload')
+        assert page.url.endswith('/archive/'), (viewport, 'archive query leaked into URL')
         page.locator('#search-input').fill('KoreAves')
         assert 0 < articles.count() <= 10, (viewport, 'query did not reset article count')
         # Jekyll HTML-escapes apostrophes and ampersands in its JSON source.

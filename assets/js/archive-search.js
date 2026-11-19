@@ -17,6 +17,45 @@
   let records = null;
   let failed = false;
   let visibleArticles = MAX_ARTICLES;
+  // Keep this tab's search in its current history entry, not a URL, storage,
+  // or analytics event. Back/Forward and reload restore it without a new visit.
+  const SEARCH_ENTRY_KEY = '__devArchiveSearch';
+  function currentHistory() {
+    return typeof window === 'object' && window.history ? window.history : null;
+  }
+  function restoreEntrySearch() {
+    const history = currentHistory();
+    const state = history && history.state;
+    const saved = state && typeof state === 'object' && !Array.isArray(state) &&
+      state[SEARCH_ENTRY_KEY];
+    if (!saved || typeof saved.query !== 'string' || saved.query.length > 2048 ||
+        typeof saved.visibleArticles !== 'number' ||
+        !Number.isInteger(saved.visibleArticles) ||
+        saved.visibleArticles < MAX_ARTICLES || saved.visibleArticles > 10000 ||
+        saved.visibleArticles % MAX_ARTICLES !== 0) return;
+    input.value = saved.query;
+    visibleArticles = saved.visibleArticles;
+  }
+  function rememberEntrySearch() {
+    const history = currentHistory();
+    if (!history || typeof history.replaceState !== 'function' ||
+        input.value.length > 2048) return;
+    const previous = history.state;
+    // Do not overwrite an unrelated primitive or array state.
+    if (previous !== null && (typeof previous !== 'object' ||
+        Array.isArray(previous))) return;
+    try {
+      history.replaceState(Object.assign({}, previous || {}, {
+        [SEARCH_ENTRY_KEY]: {
+          query: input.value,
+          visibleArticles: Math.min(10000, visibleArticles)
+        }
+      }), '');
+    } catch (_) {
+      // Search remains functional even if history state is unavailable.
+    }
+  }
+  restoreEntrySearch();
   function readable(value) {
     return String(value == null ? '' : value);
   }
@@ -87,10 +126,12 @@
 
   input.addEventListener('input', function () {
     visibleArticles = MAX_ARTICLES;
+    rememberEntrySearch();
     render();
   });
   moreArticles.addEventListener('click', function () {
     visibleArticles += MAX_ARTICLES;
+    rememberEntrySearch();
     render();
   });
   fetch('/assets/search.json', { credentials: 'same-origin' })

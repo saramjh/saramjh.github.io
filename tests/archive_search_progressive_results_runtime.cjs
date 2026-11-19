@@ -78,5 +78,50 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   input.listeners.input();
   assert.equal(articleList.children.length, 0);
   assert.equal(more.hidden, true);
+  // State belongs to the current history entry, not a URL or third-party
+  // storage. Preserve unrelated history values and restore on script reload.
+  const history = {
+    state: {unrelated: 'keep'},
+    calls: [],
+    replaceState(next, unused) {
+      assert.equal(unused, '');
+      this.state = next;
+      this.calls.push(next);
+    }
+  };
+  const second = Object.fromEntries(Object.keys(elements).map(id => [id, element(id)]));
+  const secondDocument = {
+    getElementById: id => second[id] || null,
+    createElement: element,
+    createDocumentFragment: () => element('fragment')
+  };
+  const secondWindow = {history};
+  vm.runInNewContext(script, {document: secondDocument, window: secondWindow, fetch}, {timeout: 1000});
+  await loaded();
+  second['search-input'].value = 'Spoonie';
+  second['search-input'].listeners.input();
+  assert.equal(second['search-results'].children.length, 10);
+  second['search-more-articles'].listeners.click();
+  assert.equal(second['search-results'].children.length, 20);
+  assert.equal(history.state.unrelated, 'keep');
+  assert.equal(history.state.__devArchiveSearch.query, 'Spoonie');
+  assert.equal(history.state.__devArchiveSearch.visibleArticles, 20);
+  // Fresh VM/context models a full document reload with a retained
+  // history entry, not a BFCache restore of the old DOM.
+  const third = Object.fromEntries(Object.keys(elements).map(id => [id, element(id)]));
+  const thirdDocument = {
+    getElementById: id => third[id] || null,
+    createElement: element,
+    createDocumentFragment: () => element('fragment')
+  };
+  vm.runInNewContext(script, {document: thirdDocument, window: secondWindow, fetch}, {timeout: 1000});
+  await loaded();
+  assert.equal(third['search-input'].value, 'Spoonie');
+  assert.equal(third['search-results'].children.length, 20);
+  assert.equal(third['evidence-search-results'].children.length, 2);
+  assert.equal(history.state.unrelated, 'keep');
+  third['search-input'].value = 'Article';
+  third['search-input'].listeners.input();
+  assert.equal(history.state.__devArchiveSearch.visibleArticles, 10);
   console.log('PASS archive progressive results, evidence isolation, query reset, empty query');
 })().catch(error => { console.error(error); process.exitCode = 1; });
