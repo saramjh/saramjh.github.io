@@ -100,12 +100,16 @@ In the documented case, felt-pad work and an open-source counter-reset attempt w
 
 A maintenance box or waste ink pad assembly can differ by printer model. Felt pads collect discarded ink, and the owner should not assume every casing is reusable or every ink pad is a user-serviceable part.
 
+<div class="overflow-table" markdown="1" role="region" tabindex="0" aria-label="Maintenance parts and cost comparison">
+
 | Aspect | Full Maintenance Box Assembly | Felt Absorber Pads Only (model-dependent) |
 | :--- | :--- | :--- |
 | **Typical Cost** | \$7 – \$10 + shipping | **\$4 – \$5 (Free shipping available online)** |
 | **Hardware Work** | Remove 1 screw, swap box | Remove 1 screw, swap inner felt pads |
 | **Time in the example** | ~3 minutes | ~5 minutes |
 | **Eco Impact** | Throws away durable plastic | Reuses plastic housing, zero extra plastic waste |
+
+</div>
 
 Replacement pads and access procedures differ by model. Verify whether the service is intended for users before purchasing parts or opening the printer. The costs shown above are historical examples, not current prices.
 
