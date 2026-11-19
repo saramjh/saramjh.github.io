@@ -17,19 +17,20 @@ alternate_url: /kr-logi-option-infinite-loading-solution/
 ### Logi Options+ Infinite Loading Issue: Guidance for Apple Device Users
 <img src="001.png" alt="Logitech Infinite Loading">
 
-The infinite loading issue that has long plagued many Apple device users has been resolved. Logitech has released an official installer that fixes this issue, and you can now use the features normally.
+On January 7, 2026, Logitech published a patch installer for a Logi Options+ loading-screen issue on macOS. Logitech lists macOS 26 Tahoe, macOS 15 Sequoia, macOS 14 Sonoma, and macOS 13 Ventura for this fix.
 
 #### Current Status
 
-Previously, the app would hang during the authentication process at startup, showing only an infinite loading screen. This could not be fixed by standard reinstallation, but the newly released dedicated installer resolves it.
+Logitech traced the January 2026 startup failure to an expired certificate used for communication between app processes. The recommended fix is to run the patch over the existing installation.
 
 #### Logitech's Official Stance and Solution
 
-Logitech has officially started providing the latest version of the installer that addresses this issue. Please click the link below to download and install it.
+Use Logitech's patch installer for the affected macOS versions:
 
-**[Download Logi Options+ Latest Installer]**
-[https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip](https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip)
+[Download the Logi Options+ patch installer (Logitech)](https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip)
+
+[Read Logitech's January 7, 2026 instructions](https://www.logitech.com/blog/2026/01/07/restoring-access-to-options-and-g-hub-on-macos/)
 
 #### Advice for Users
 
-If your existing app is not working correctly, we recommend running the installer from the link above to overwrite or reinstall it. After installation, you will be able to manage your Logitech device settings smoothly again.
+**Do not uninstall Logi Options+ before applying the patch.** Logitech warns that uninstalling can erase saved profiles and customizations. Run the installer over the existing app instead. If you already removed the app, Settings Backup may restore your settings if it was enabled; otherwise you will need to set up your customizations again. This patch addresses the January 2026 certificate issue, not every possible cause of an infinite loading screen.

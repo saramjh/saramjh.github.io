@@ -17,19 +17,20 @@ alternate_url: /en-logi-option-infinite-loading-solution/
 ### Logi Options+ 무한 로딩 문제: Apple 기기 사용자들을 위한 안내
 <img src="001.png" alt="로지텍 무한 로딩">
 
-그동안 많은 Apple 기기 사용자들을 괴롭혔던 Logi Options+ 애플리케이션의 무한 로딩 문제가 해결되었습니다. 로지텍에서 해당 문제를 수정한 공식 인스톨러를 배포하였으며, 이제 정상적으로 기능을 이용하실 수 있습니다.
+Logitech은 2026년 1월 7일 macOS용 Logi Options+의 시작 화면 무한 로딩 문제에 대응하는 패치 설치 프로그램을 공개했습니다. 안내된 적용 대상은 macOS 26 Tahoe, macOS 15 Sequoia, macOS 14 Sonoma, macOS 13 Ventura입니다.
 
 #### 문제 현황
 
-기존에는 앱 시작 시 인증 과정에서 멈춰 무한 로딩 화면만 표시되는 현상이 있었습니다. 이는 일반적인 재설치로는 해결되지 않았으나, 이번에 새로 배포된 전용 인스톨러를 통해 해결이 가능합니다.
+Logitech에 따르면 이 문제는 앱 프로세스 간 통신에 쓰이는 인증서가 만료되어 발생했습니다. 기존 앱을 삭제하지 않고 패치 설치 프로그램을 실행하는 방식으로 해결하도록 안내합니다.
 
 #### 로지텍의 공식 입장 및 해결 방안
 
-로지텍은 해당 문제를 해결한 최신 버전의 인스톨러를 공식적으로 제공하기 시작했습니다. 아래의 링크를 클릭하여 인스톨러를 다운로드하고 설치를 진행해 주시기 바랍니다.
+해당 macOS 버전에 적용할 패치 설치 프로그램은 다음 Logitech 공식 주소에서 받을 수 있습니다.
 
-**[Logi Options+ 최신 인스톨러 다운로드]**
-[https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip](https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip)
+[Logi Options+ 패치 설치 프로그램 내려받기 (Logitech)](https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip)
+
+[Logitech의 2026년 1월 7일 공식 안내](https://www.logitech.com/blog/2026/01/07/restoring-access-to-options-and-g-hub-on-macos/)
 
 #### 사용자들을 위한 조언
 
-기존에 설치되어 있던 앱이 정상적으로 작동하지 않는다면, 위 링크에서 다운로드한 인스톨러를 실행하여 덮어쓰거나 재설치하는 것을 권장합니다. 설치 후에는 다시 원활하게 로지텍 기기들의 설정을 관리하실 수 있습니다.
+**패치 적용 전에 Logi Options+를 삭제하지 마세요.** Logitech은 앱을 삭제하면 기존 프로필과 사용자 설정이 사라질 수 있다고 설명합니다. 기존 설치 상태에서 패치 설치 프로그램을 실행하세요. 이미 삭제했다면 Settings Backup을 사용했던 경우 이전 설정을 복원할 수 있지만, 그렇지 않으면 다시 설정해야 합니다. 이 패치는 2026년 1월 인증서 문제에 대한 것으로, 모든 무한 로딩 원인에 적용되는 해결책은 아닙니다.
