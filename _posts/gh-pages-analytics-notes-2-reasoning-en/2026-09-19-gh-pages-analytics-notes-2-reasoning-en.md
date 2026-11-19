@@ -39,12 +39,12 @@ Google's own recommendation for organizations that want several sites or apps tr
 
 ## Search Console: domain-level vs. URL-prefix verification is the crux
 
-Search Console supports two verification methods:
+Search Console has two property types, with different coverage and verification requirements:
 
-- **Domain property**: verifies all of `saramjh.github.io` at once — every subdomain, every protocol (http/https), and every subpath like `/scratchLottery/` or `/richChecker/` falls under this one property automatically.
-- **URL-prefix property**: verifies one exact path, e.g. `https://saramjh.github.io/scratchLottery/`.
+- **Domain property**: includes subdomains, protocols and paths, but **requires DNS verification**. A GitHub Pages repository doesn't let me edit the DNS records for GitHub's default `saramjh.github.io` hostname.
+- **URL-prefix property**: `https://saramjh.github.io/` includes the HTTPS pages for every project below that host. A narrower prefix such as `https://saramjh.github.io/scratchLottery/` includes only that path and its descendants. An HTML file or tag can be used to verify a URL-prefix property.
 
-Registering a sitemap per project, as I'd been doing, is closer to the URL-prefix pattern. If everything sits on the same domain anyway, consolidating into a single domain property removes the redundancy in verification and reporting. Sitemaps themselves can still be submitted per project (each tool's sitemap path listed separately in `robots.txt`), but the property overseeing them only needs to be the one domain-level property.
+**Correction (2026-11-20).** My earlier conclusion that one Domain property was the straightforward way to consolidate this setup missed the DNS requirement. With the default GitHub Pages address, a **site-root URL-prefix property** can provide the shared HTTPS path coverage. Submitting separate project sitemaps doesn't tell us which property type was verified. I haven't independently recovered the original Search Console ownership receipt, so the **account's actual verified property type remains unknown**. Google's [property coverage](https://support.google.com/webmasters/answer/34592?hl=en) and [verification instructions](https://support.google.com/webmasters/answer/9008080?hl=en) explain the distinction.
 
 ## What "a shared root domain shares trust" actually means — and its limits
 

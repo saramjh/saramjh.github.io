@@ -34,7 +34,7 @@ The query returned no rows for the `/scratchLottery/` path or streams whose name
 
 My September stream-registration work is still part of the project's history. It does not establish that each tool's events currently reach the intended stream. To measure tool usage properly, I now check `pagePath`, `streamId` and `eventName` together. The definitions are in the [Google Analytics Data API dimensions reference](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema).
 
-Search Console, which had been managed per-project sitemap, is now unified under a single domain property (verifying all of `saramjh.github.io`). Sitemaps themselves are still submitted per tool, each with its own path.
+**Correction (2026-11-20) — Search Console ownership.** My September notes described the setup as a single verified Domain property, but I don't have the original account's property-type verification receipt to support that label. A Domain property requires DNS verification, while a root **URL-prefix property** at `https://saramjh.github.io/` covers this site's HTTPS project paths and allows HTML-based verification. The earlier project-by-project sitemap history doesn't establish which type was verified. **The original Search Console property type remains unverified here.** This corrects the Search Console claim without changing the GA4 work recorded above. See Google's [property coverage](https://support.google.com/webmasters/answer/34592?hl=en) and [ownership methods](https://support.google.com/webmasters/answer/9008080?hl=en).
 
 ## What I left alone
 

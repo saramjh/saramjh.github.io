@@ -47,7 +47,7 @@ If you're running several GitHub Pages project pages without custom domains, at 
 
 1. Whether your custom-domain-free projects really do all sit under the same root domain (`https://<account>.github.io/<repo>/`)
 2. Whether you're actually distinguishing "property" from "data stream" in GA4, or repeating my old habit of spinning up a new property every time
-3. Whether Search Console is verified as a domain property, or per-project via URL-prefix
+3. Whether the site-root **URL-prefix property** at `https://saramjh.github.io/` is verified. It covers same-host HTTPS project paths; a Domain property instead requires **DNS** control ([Google property coverage](https://support.google.com/webmasters/answer/34592?hl=en)).
 
 This series doesn't hand you a definitive answer, but I think those three questions are worth checking for yourself regardless. If traffic grows or I learn something that changes the picture, I'll keep adding to this record.
 
