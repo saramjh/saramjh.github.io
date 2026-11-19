@@ -67,5 +67,53 @@ with sync_playwright() as playwright:
             assert events["beforeDnt"] == 4, (lang, viewport, events)
             assert not errors, (lang, viewport, errors)
             page.close()
+    # Keep the original markdown table semantic while allowing narrow readers
+    # to scroll all three columns without page-level horizontal overflow.
+    for lang, path in ARTICLES.items():
+        for viewport in (240, 280, 320, 390, 768):
+            page = browser.new_page(viewport={"width": viewport, "height": 900})
+            page.route("**/*", lambda route: route.continue_()
+                       if route.request.url.startswith(BASE + "/")
+                       else route.abort())
+            response = page.goto(BASE + path, wait_until="domcontentloaded", timeout=20000)
+            assert response and response.status == 200, (lang, viewport, "article")
+            region = page.locator('main .overflow-table[role="region"][tabindex="0"]')
+            assert region.count() == 1, (lang, viewport, "missing scroll region")
+            assert region.locator('table').count() == 1, (lang, viewport, "markdown table not rendered")
+            assert region.locator('th').count() == 3, (lang, viewport, "comparison headers")
+            assert region.locator('tbody tr').count() == (5 if lang == 'ko' else 4), (
+                lang, viewport, "original comparison body changed")
+            geometry = region.evaluate("""el => {
+              const wrapper = el.getBoundingClientRect();
+              const table = el.querySelector('table').getBoundingClientRect();
+              const before = {
+                left: wrapper.left, right: wrapper.right,
+                scrollWidth: el.scrollWidth, clientWidth: el.clientWidth,
+                tableRight: table.right,
+                documentWidth: document.documentElement.scrollWidth,
+                viewport: innerWidth,
+                overflow: getComputedStyle(el).overflowX
+              };
+              el.scrollLeft = el.scrollWidth;
+              const last = el.querySelector('tbody tr:last-child td:last-child').getBoundingClientRect();
+              return {...before, scrollLeft: el.scrollLeft, lastCellRight: last.right};
+            }""")
+            assert geometry['overflow'] == 'auto', (lang, viewport, geometry)
+            assert geometry['left'] >= -1 and geometry['right'] <= viewport + 1, (
+                lang, viewport, 'comparison outside viewport', geometry)
+            assert geometry['documentWidth'] <= viewport + 2, (
+                lang, viewport, 'page horizontal overflow', geometry)
+            assert geometry['lastCellRight'] <= geometry['right'] + 1, (
+                lang, viewport, 'last comparison column clipped', geometry)
+            if lang == 'en' and viewport <= 280:
+                assert geometry['scrollWidth'] > geometry['clientWidth'], (
+                    lang, viewport, 'missing horizontal scroll', geometry)
+                assert geometry['scrollLeft'] > 0, (
+                    lang, viewport, 'comparison cannot reach last column', geometry)
+            region.focus()
+            assert region.evaluate('el => document.activeElement === el'), (
+                lang, viewport, 'comparison keyboard focus unavailable')
+            page.close()
+            print('PASS accessible Epson comparison', lang, viewport)
     browser.close()
 print("epson-official-support-browser: PASS KO/EN actual Jekyll page, mobile/desktop, no external requests")
