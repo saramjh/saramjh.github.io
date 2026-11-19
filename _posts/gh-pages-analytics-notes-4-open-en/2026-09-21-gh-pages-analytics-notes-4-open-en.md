@@ -32,13 +32,17 @@ Splitting sessions by `hostName` in the merged GA4 property over the trailing 90
 | 127.0.0.1 (local testing) | 16 | 16 |
 | localhost (local testing) | 1 | 1 |
 
-This confirms exactly one thing: **the hostname filter works as intended.** Local development traffic is cleanly separated from real user traffic, so the "narrow down only when needed" design from [Part 2](/gh-pages-analytics-notes-2-reasoning-en/) at least holds up functionally. These numbers don't represent the merge's "effect" — there's no comparable pre-merge period measured the same way to compare them against.
+These historical numbers show that the report separates production-host URLs from localhost rows. They do not classify the production-host sessions as human users; automation and short unengaged sessions remain possible. The snapshot alone also cannot measure the effect of the September property change.
+
+### Original account check on 2026-11-20
+
+The `blog` GA4 property has **one current web stream**, also named `blog` (measurement ID `G-4DYFKSNFBG`). Search Console lists the root HTTPS URL-prefix `https://saramjh.github.io/` as `siteOwner` and the Domain entry `sc-domain:saramjh.github.io` as `siteUnverifiedUser`. This resolves the present-day stream count and URL-prefix ownership question. It cannot reconstruct the September account state or confirm how individual tools send events and retain user identity across visits.
 
 ## What I still don't know
 
 - **Whether this actually affected SEO.** As noted in [Part 2](/gh-pages-analytics-notes-2-reasoning-en/), shared root-domain trust has never had a proven causal chain behind it. I'd need to watch Search Console's indexing and impression trends over months before I could say anything — and right now there's no basis to judge.
 - **When to consolidate Clarity.** I deferred it because traffic is low right now, but I haven't set a concrete threshold for when to revisit that call.
-- **Whether this structure holds up if the number of tools grows a lot more.** If data streams go from around ten to several dozen, whether managing them all under one property is still the right call is worth re-examining — along with the free-tier data thresholds at that point.
+- **How to manage more tools:** The current property has one web stream, not the roughly ten I had previously assumed. If I add more tools, I need to verify their actual tracking tags, event paths and reporting needs before deciding whether to create additional streams or properties. Traffic and data-threshold effects remain unmeasured.
 - **Whether this problem is even specific to "solo developer, many small projects, one root domain."** A team running multiple products is a different situation, so I'd be cautious about generalizing this series' conclusions beyond that specific setup.
 
 ## For anyone in the same situation
