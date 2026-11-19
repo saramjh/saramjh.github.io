@@ -9,8 +9,8 @@ lang: ko
 alternate_lang: en
 alternate_url: /spoonie-route-loading-citation-en/
 published: true
-modified: 2026-11-14
-last_modified_at: 2026-11-14
+modified: 2026-11-20
+last_modified_at: 2026-11-20
 seo:
   title: "Spoonie 화면 전환 로딩·레시피 인용 검색 개선"
   description: "Spoonie 목적지 스켈레톤·숨겨진 입력창 제어·취소된 링크와 지연된 화면 이동 복구의 구현 및 배포 검증."
@@ -46,7 +46,7 @@ Spoonie의 다른 화면 상태 문제는 [계정별 좋아요·저장 캐시 �
 
 이후에는 앱에서 취소한 링크도 전역 클릭 감지기가 화면 이동으로 오인하는 문제가 드러났다. 실제로 이동하지 않는데도 전체 스켈레톤이 나타날 수 있었다. [PR #44](https://github.com/saramjh/spoonie/pull/44)는 전역 클릭 감지를 제거하고, 링크의 이동이 취소되지 않았을 때만 Next.js `onNavigate`에서 시작 신호를 보낸다. 코드로 이동하거나 뒤로 가는 동작은 기존 경로를 사용한다.
 
-목적지 응답이 10초 넘게 지연되면 진행 상태를 그냥 지우지 않고 **이전 화면 유지**와 **다시 시도**를 선택할 수 있게 했다. 쿼리만 바뀌는 이동은 기존 동작을 유지한다. PR #44에는 Vitest 407개·미디어 안전성 검사 6개 통과와 취소된 링크·뒤로 가기·키보드 포커스·재시도를 다룬 Chromium 테스트가 기록돼 있다. [11월 14일 운영 레이아웃 번들](https://spoonie.kr/_next/static/chunks/app/layout-ef63d2df452ac6a9.js)에서도 복구 문구와 화면 전환 구현을 확인했다. 이는 코드의 배포 근거이며 실제 이용자의 이탈 감소를 측정한 결과는 아니다.
+목적지 응답이 10초 넘게 지연되면 진행 상태를 그냥 지우지 않고 **이전 화면 유지**와 **다시 시도**를 선택할 수 있게 했다. 쿼리만 바뀌는 이동은 기존 동작을 유지한다. PR #44에는 Vitest 407개·미디어 안전성 검사 6개 통과와 취소된 링크·뒤로 가기·키보드 포커스·재시도를 다룬 Chromium 테스트가 기록돼 있다. 11월 14일 운영 레이아웃 번들에서 복구 문구와 화면 전환 구현을 확인했다. 당시 빌드에 연결된 자산 URL은 현재 열리지 않는다. 구현 내용은 [PR #44 병합 커밋의 NavigationProgress 소스](https://github.com/saramjh/spoonie/blob/6f84ed861176eedc43412a12834adda51c4e1d0b/src/components/layout/NavigationProgress.tsx)에서 확인할 수 있다. 당시 운영 확인은 코드 배포 근거이며, 실제 이용자의 이탈 감소를 측정한 결과는 아니다.
 
 ### 실제 배포 미리보기에서 회귀검사하기
 
