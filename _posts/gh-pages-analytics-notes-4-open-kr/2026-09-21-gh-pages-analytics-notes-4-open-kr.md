@@ -47,7 +47,7 @@ alternate_url: /gh-pages-analytics-notes-4-open-en/
 
 1. 실제로 커스텀 도메인을 안 붙인 프로젝트들이 전부 같은 루트 도메인 아래 있는지 (`https://<계정>.github.io/<레포>/` 형태인지)
 2. GA4에서 "속성"과 "데이터 스트림"을 구분해서 쓰고 있는지, 아니면 저처럼 매번 속성을 새로 만들고 있었는지
-3. Search Console을 도메인 속성으로 검증했는지, URL 접두사로 프로젝트마다 따로 검증했는지
+3. `https://saramjh.github.io/`의 사이트 루트 **URL 접두사 속성(URL-prefix property)**이 검증됐는지. 같은 HTTPS 호스트의 프로젝트 경로를 포함하며, 도메인 속성은 별도로 **DNS 검증**이 필요합니다([Google 공식 속성 범위](https://support.google.com/webmasters/answer/34592?hl=en)).
 
 이 시리즈가 정답을 제시하지는 못했지만, 적어도 이 세 가지 질문 자체는 확인해볼 가치가 있다고 생각합니다. 저도 트래픽이 늘거나 새로운 사실을 알게 되면, 이 시리즈에 이어서 다시 기록을 남기겠습니다.
 

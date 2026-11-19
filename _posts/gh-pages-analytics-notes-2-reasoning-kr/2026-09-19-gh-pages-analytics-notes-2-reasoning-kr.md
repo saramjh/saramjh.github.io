@@ -39,12 +39,12 @@ GA4 구조를 이해하는 데 가장 헷갈렸던 지점은 "속성"과 "데이
 
 ## Search Console: 검증 단위가 도메인이냐 URL 접두사냐가 핵심
 
-Search Console은 두 가지 검증(verification) 방식을 지원합니다.
+Search Console에는 검증 범위와 조건이 다른 두 가지 속성 유형이 있습니다.
 
-- **도메인 속성(Domain property)**: `saramjh.github.io` 전체를 한 번에 검증. 서브도메인, 프로토콜(http/https), 그리고 `/scratchLottery/`, `/richChecker/` 같은 모든 하위 경로가 자동으로 이 하나의 속성 아래 포함됩니다.
-- **URL 접두사 속성(URL-prefix property)**: `https://saramjh.github.io/scratchLottery/`처럼 특정 경로만 정확히 검증.
+- **도메인 속성(Domain property)**: 서브도메인·프로토콜·하위 경로를 포함하지만, 소유권을 확인하려면 **DNS 검증**이 필요합니다. GitHub Pages 저장소에서는 기본 주소인 `saramjh.github.io`의 DNS 레코드를 직접 수정할 수 없습니다.
+- **URL 접두사 속성(URL-prefix property)**: `https://saramjh.github.io/`를 등록하면 같은 HTTPS 호스트 아래의 프로젝트 경로까지 포함합니다. `https://saramjh.github.io/scratchLottery/`처럼 좁게 지정하면 해당 경로 아래만 포함됩니다. HTML 파일이나 태그로 소유권을 확인할 수 있습니다.
 
-제가 프로젝트마다 사이트맵을 따로 등록해온 건 URL 접두사 방식에 가까웠는데, 전부 같은 도메인이라면 애초에 도메인 속성 하나로 통합해서 관리하는 편이 검증·데이터 관리 측면에서 중복이 없습니다. 사이트맵 자체는 여전히 프로젝트별로 나눠 제출할 수 있지만(`robots.txt`에 각 도구의 사이트맵 경로를 각각 명시하는 식으로), 이를 감독하는 속성은 도메인 단위 하나로 충분합니다.
+**2026-11-20 정정.** 앞서 도메인 속성 하나로 통합하면 된다고 썼지만, DNS 검증 조건을 빠뜨렸습니다. 기본 GitHub Pages 주소에서는 **사이트 루트 URL 접두사 속성**으로도 같은 HTTPS 하위 경로를 묶을 수 있습니다. 프로젝트마다 사이트맵을 제출했는지는 속성 유형과 별개의 문제입니다. 실제 Search Console 계정에서 어떤 유형이 검증됐는지는 원본 소유권 확인 영수증을 확보하지 못했으므로 **확실하지 않습니다**. [Google의 속성 범위 안내](https://support.google.com/webmasters/answer/34592?hl=en)와 [소유권 확인 방법](https://support.google.com/webmasters/answer/9008080?hl=en)을 근거로 수정했습니다.
 
 ## "루트 도메인이 신뢰를 공유한다"는 말의 의미와 한계
 

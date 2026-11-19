@@ -34,7 +34,7 @@ alternate_url: /gh-pages-analytics-notes-3-decision-en/
 
 따라서 9월의 스트림 등록은 당시의 설정 작업 기록으로 남기되, 모든 도구의 이벤트가 각각의 스트림으로 올바르게 전달된다고 단정하지 않겠습니다. 실제 제품별 계측 여부는 `pagePath`·`streamId`·`eventName`을 함께 확인해야 합니다. 필드 정의는 [Google Analytics Data API 공식 측정기준 문서](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema)에 있습니다.
 
-Search Console은 원래도 프로젝트별 사이트맵 제출 방식이었던 걸, 도메인 속성(`saramjh.github.io` 전체 검증) 하나로 관리 단위를 통일했습니다. 사이트맵 자체는 여전히 도구별 경로를 각각 명시해서 제출합니다.
+**2026-11-20 정정 — Search Console 소유권 확인.** 9월 기록에서는 Search Console을 검증된 도메인 속성 하나로 통합했다고 적었지만, 현재 원본 계정의 속성 유형을 증명하는 소유권 확인 영수증은 확보하지 못했습니다. 도메인 속성은 **DNS 검증**이 필요하고, `https://saramjh.github.io/`를 기준으로 하는 **URL 접두사 속성(URL-prefix property)**도 같은 HTTPS 호스트의 프로젝트 경로를 포함하면서 HTML 방식으로 검증할 수 있습니다. 프로젝트별 사이트맵 제출 이력만으로는 속성 유형을 알 수 없습니다. **당시 실제로 검증된 Search Console 속성 유형은 확실하지 않습니다.** 위에 기록한 GA4 통합 작업과는 별개의 정정입니다. [Google의 속성 범위 안내](https://support.google.com/webmasters/answer/34592?hl=en)와 [소유권 확인 방법](https://support.google.com/webmasters/answer/9008080?hl=en)을 참고했습니다.
 
 ## 바꾸지 않은 것
 
