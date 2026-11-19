@@ -79,6 +79,7 @@ jobs:
           python tests/epson_official_support_browser.py
           python tests/logitech_patch_browser.py
           python tests/indexnow_mobile_tables_browser.py
+          python tests/inline_code_mobile_browser.py
           python tests/portfolio_contact_selection_browser.py
       - name: Test post assets
         run: bundle exec ruby tests/post_assets_test.rb

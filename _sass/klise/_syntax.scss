@@ -22,6 +22,11 @@ code {
   }
 }
 
+// Break long inline paths and URLs on narrow screens, not fenced code blocks.
+main :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+
 // Codeblock Theme
 .highlighter-rouge {
   margin: 1.5rem 0;
