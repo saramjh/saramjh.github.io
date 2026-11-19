@@ -215,3 +215,12 @@
  .portfolio-body .folio .folio-evidence-main{grid-column:1;grid-row:2;width:100%}
  .portfolio-body .folio .folio-evidence-date{grid-column:1;grid-row:3;justify-self:start;padding:0}
 }
+
+/* At 320px, aspect-ratio plus 150px min-height can force project image links past their grid column. */
+@media (max-width: 560px) {
+  .portfolio-body .folio .folio-project-image {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
