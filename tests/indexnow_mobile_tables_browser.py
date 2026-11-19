@@ -61,8 +61,12 @@ with sync_playwright() as playwright:
                 assert region.evaluate("el => document.activeElement === el"), (
                     lang, viewport, i, "keyboard focus")
             for receipt in RECEIPTS:
-                assert page.locator(f'main a[href*="/actions/runs/{receipt}"]').count() == 1, (
-                    lang, viewport, receipt, "original native receipt changed")
+                # Original receipts can appear in both prose and table; enforce
+                # exactly one link in the corresponding evidence table only.
+                index = 0 if receipt in RECEIPTS[:2] else 1
+                assert regions.nth(index).locator(
+                    f'a[href*="/actions/runs/{receipt}"]').count() == 1, (
+                    lang, viewport, receipt, "original table receipt missing")
             assert not errors, (lang, viewport, "JS errors", errors)
             print("PASS original IndexNow evidence table and native receipts", lang, viewport)
             page.close()
