@@ -78,6 +78,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python tests/portfolio_layout_smoke.py
+          python tests/archive_search_browser.py
           python tests/epson_official_support_browser.py
           python tests/logitech_patch_browser.py
           python tests/indexnow_mobile_tables_browser.py

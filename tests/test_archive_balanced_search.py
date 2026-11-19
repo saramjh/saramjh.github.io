@@ -39,6 +39,12 @@ class BalancedSearch(unittest.TestCase):
         self.assertIn('.map(readable).join(', text)
         self.assertNotIn("[item.title, item.description, item.tags].join(' ')", text)
 
+    def test_search_has_separate_browse_fallback_and_no_javascript_archive(self):
+        self.assertIn('id="archive-browse-section"', ARCHIVE)
+        self.assertIn('aria-label="Browse articles by year"', ARCHIVE)
+        self.assertIn("document.getElementById('archive-browse-section')", SCRIPT.read_text('utf8'))
+        self.assertIn('archiveBrowse.hidden', SCRIPT.read_text('utf8'))
+
     def test_legacy_date_archive_remains_accessible(self):
         self.assertIn('{%- for post in site.posts -%}', ARCHIVE)
         self.assertIn('href="{{ post.url }}"', ARCHIVE)

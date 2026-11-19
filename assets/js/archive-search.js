@@ -10,8 +10,9 @@
   const evidenceList = document.getElementById('evidence-search-results');
   const articleList = document.getElementById('search-results');
   const moreArticles = document.getElementById('search-more-articles');
+  const archiveBrowse = document.getElementById('archive-browse-section');
   if (!input || !status || !evidenceSection || !articleSection ||
-      !evidenceList || !articleList || !moreArticles) return;
+      !evidenceList || !articleList || !moreArticles || !archiveBrowse) return;
 
   const EVIDENCE_PREFIX = '/portfolio/recognition/#evidence-';
   let records = null;
@@ -86,6 +87,9 @@
 
   function render() {
     const words = input.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+    // The dated archive is the no-query/no-JS fallback. Keep it visible if
+    // the search index fails, but do not mix it with filtered results.
+    archiveBrowse.hidden = words.length > 0 && !failed;
     evidenceSection.hidden = true;
     articleSection.hidden = true;
     moreArticles.hidden = true;
@@ -134,6 +138,8 @@
     rememberEntrySearch();
     render();
   });
+  // Hide the unfiltered archive immediately for a restored search entry.
+  render();
   fetch('/assets/search.json', { credentials: 'same-origin' })
     .then(function (response) {
       if (!response.ok) throw new Error('Search index unavailable');
