@@ -71,6 +71,17 @@ class EvidenceContextLinksTest(unittest.TestCase):
             "Korean and English evidence links must stay together on narrow screens",
         )
 
+    def test_tablet_bilingual_context_rows_remain_compact(self):
+        css = CSS.read_text(encoding="utf8")
+        tablet = css.split("@media(max-width:940px){", 1)[1].split(
+            "@media(max-width:680px){", 1
+        )[0]
+        self.assertIn("column-gap:18px;padding:9px 0", tablet)
+        self.assertIn(
+            ".folio-evidence-main .folio-evidence-description{line-height:1.55}",
+            tablet,
+        )
+
     def test_tablet_rows_without_dates_use_the_full_content_column(self):
         css = CSS.read_text(encoding="utf8")
         start = css.index("@media(max-width:940px){")
