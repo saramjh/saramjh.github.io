@@ -44,6 +44,8 @@ Preparing an explanation for that audience exercised a skill I use in software d
 
 For an educator, this offers a concrete example of how records, names and maps interact. For a potential collaborator, it is a public account of the choices behind an accessible biodiversity tool. I can demonstrate that the project and its methods are understandable outside its original developer documentation.
 
+On November 20, 2026, I also found a card linking to the same article on the [One Earth homepage](https://www.oneearth.org/). That gives the published piece another visible entry point. It is not a second publication, and I cannot verify when the card first appeared or whether it brought more readers to KoreAves.
+
 The article is a **contributor-published explanation hosted by One Earth**. Its presence confirms the external publication and author credit. It does not establish an institutional partnership, independent product evaluation or adoption by schools. Any audience or referral outcome would need separate measurement.
 
 The [original article and author credit](https://www.oneearth.org/koreaves/) are the primary evidence. The [public portfolio archive](/portfolio/recognition/) records the contribution, and my [KoreAves technical overview](/koreaves-bird-evidence-atlas-en/) shows how the evidence atlas works. A later [Unsustainable Magazine contribution](https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/) examines the specific problem of reading observation maps as population counts.
