@@ -654,11 +654,32 @@ with sync_playwright() as p:
         assert all('koreaves' in name.casefold() for name in names), (viewport,'wrong topics visible',names)
         assert page.locator('#tag-topic-status').inner_text() == (
             f'{found.count()} of {original - 1} topics')
+        # Searching 579 topics must not be lost to refresh; no URL query is added.
+        before_count = found.count()
+        page.reload(wait_until='domcontentloaded', timeout=20000)
+        search = page.locator('#tag-topic-query')
+        assert search.input_value() == 'koreaves', (viewport, 'topic query lost on reload')
+        found = page.locator('#tag-topic-links .tag-item:visible')
+        assert found.count() == before_count
+        assert page.locator('#tag-topic-status').inner_text() == (
+            f'{before_count} of {original - 1} topics')
+        assert page.url.endswith('/tags/'), (viewport, 'topic query leaked to URL', page.url)
         first_href = found.first.get_attribute('href')
         assert first_href.startswith('#')
         assert page.evaluate(
             'href => Boolean(document.getElementById(decodeURIComponent(href.slice(1))))',
             first_href), (viewport,'existing tag fragment target missing',first_href)
+        # Native #tag navigation has a NEW history entry; preserve the same
+        # filtered search across its refresh and restore the previous entry.
+        found.first.click()
+        assert page.url.endswith(first_href), (viewport, 'tag deep link broken', page.url)
+        page.reload(wait_until='domcontentloaded', timeout=20000)
+        search = page.locator('#tag-topic-query')
+        assert search.input_value() == 'koreaves', (viewport, 'tag hash refresh dropped filter')
+        assert page.locator('#tag-topic-links .tag-item:visible').count() == before_count
+        page.go_back(wait_until='domcontentloaded')
+        assert page.url.endswith('/tags/'), (viewport, 'tag Back target changed', page.url)
+        assert search.input_value() == 'koreaves', (viewport, 'tag Back lost previous filter')
         search.fill('no-topic-matches-c727-2026')
         assert page.locator('#tag-topic-links .tag-item:visible').count() == 0
         assert page.locator('#tag-topic-status').inner_text() == f'0 of {original - 1} topics'
