@@ -18,7 +18,7 @@ function element(type) {
 }
 const elements = Object.fromEntries([
   'search-input', 'search-result-status', 'search-evidence-section',
-  'search-article-section', 'evidence-search-results', 'search-results', 'search-more-articles'
+  'search-article-section', 'evidence-search-results', 'search-results', 'search-more-articles', 'archive-browse-section'
 ].map(id => [id, element(id)]));
 const document = {
   getElementById: id => elements[id] || null,
@@ -41,13 +41,16 @@ vm.runInNewContext(script, {document, fetch}, {timeout: 1000});
 const loaded = async () => { await new Promise(resolve => setImmediate(resolve)); };
 (async () => {
   await loaded();
+  const browse = elements['archive-browse-section'];
   const input = elements['search-input'];
   const more = elements['search-more-articles'];
   const status = elements['search-result-status'];
   const articleList = elements['search-results'];
   const evidenceList = elements['evidence-search-results'];
+  browse.hidden = false; // Server-rendered archive is visible without JavaScript.
   input.value = 'Spoonie';
   input.listeners.input();
+  assert.equal(browse.hidden, true, 'typing hides unrelated dated archive listings');
   assert.equal(articleList.children.length, 10, 'initial page stays compact');
   assert.equal(evidenceList.children.length, 2, 'all evidence rows stay visible');
   assert.equal(more.hidden, false, 'readers can discover additional matches');
@@ -69,6 +72,7 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   input.listeners.input();
   assert.equal(articleList.children.length, 0);
   assert.equal(more.hidden, true);
+  assert.equal(browse.hidden, true, 'no-match message must not show unfiltered archive');
   input.value = '&amp;';
   input.listeners.input();
   assert.equal(articleList.children.length, 1, 'literal entity text should remain searchable without HTML parsing');
@@ -78,6 +82,7 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   input.listeners.input();
   assert.equal(articleList.children.length, 0);
   assert.equal(more.hidden, true);
+  assert.equal(browse.hidden, false, 'clearing search restores dated archive');
   // State belongs to the current history entry, not a URL or third-party
   // storage. Preserve unrelated history values and restore on script reload.
   const history = {
@@ -90,6 +95,7 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
     }
   };
   const second = Object.fromEntries(Object.keys(elements).map(id => [id, element(id)]));
+  second['archive-browse-section'].hidden = false;
   const secondDocument = {
     getElementById: id => second[id] || null,
     createElement: element,
@@ -109,6 +115,7 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   // Fresh VM/context models a full document reload with a retained
   // history entry, not a BFCache restore of the old DOM.
   const third = Object.fromEntries(Object.keys(elements).map(id => [id, element(id)]));
+  third['archive-browse-section'].hidden = false;
   const thirdDocument = {
     getElementById: id => third[id] || null,
     createElement: element,
@@ -118,10 +125,25 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   await loaded();
   assert.equal(third['search-input'].value, 'Spoonie');
   assert.equal(third['search-results'].children.length, 20);
+  assert.equal(third['archive-browse-section'].hidden, true, 'restored search hides full archive');
   assert.equal(third['evidence-search-results'].children.length, 2);
   assert.equal(history.state.unrelated, 'keep');
   third['search-input'].value = 'Article';
   third['search-input'].listeners.input();
   assert.equal(history.state.__devArchiveSearch.visibleArticles, 10);
+  // A failed index must expose the server-rendered browse fallback.
+  const fallback = Object.fromEntries(Object.keys(elements).map(id => [id, element(id)]));
+  fallback['archive-browse-section'].hidden = false;
+  const fallbackDoc = {
+    getElementById: id => fallback[id] || null,
+    createElement: element,
+    createDocumentFragment: () => element('fragment')
+  };
+  const failWindow = {history:{state:{__devArchiveSearch:{query:'Spoonie',visibleArticles:10}}}};
+  vm.runInNewContext(script, {document:fallbackDoc,window:failWindow,fetch:async()=>{throw Error('offline');}}, {timeout:1000});
+  await loaded();
+  assert.match(fallback['search-result-status'].textContent,/unavailable/);
+  assert.equal(fallback['archive-browse-section'].hidden,false,'failed search shows normal dated archive');
+
   console.log('PASS archive progressive results, evidence isolation, query reset, empty query');
 })().catch(error => { console.error(error); process.exitCode = 1; });
