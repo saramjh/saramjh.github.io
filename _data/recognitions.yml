@@ -181,6 +181,8 @@
   source: "Awesome Homeschooling"
   title: "Space Atlas in homeschooling science resources"
   detail: "Creator-submitted Space Atlas resource link merged by the list maintainer. A community science listing, not verified classroom use or institutional endorsement."
+  case_ko: "/space-atlas-community-list-merges-ko/"
+  case_en: "/space-atlas-community-list-merges-en/"
   url: "https://github.com/muriloime/awesome-homeschooling/blob/master/README.md#science"
 - id: awesome-physics-space-atlas
   project: space-atlas
@@ -190,6 +192,8 @@
   source: "Awesome Physics"
   title: "Space Atlas in the astrophysics resource list"
   detail: "Creator-submitted link to the original open-source astronomy models merged by the list maintainer. A community directory entry, not scientific peer review or measured adoption."
+  case_ko: "/space-atlas-community-list-merges-ko/"
+  case_en: "/space-atlas-community-list-merges-en/"
   url: "https://github.com/wbierbower/awesome-physics/blob/master/README.md#astrophysics"
 
 - id: kids-edutainment-space-atlas
@@ -200,6 +204,8 @@
   source: "Kids Edutainment Links"
   title: "Space Atlas in kids' astronomy learning links"
   detail: "Creator-submitted interactive Moon phases, Earth seasons and scale models merged by the list maintainer. The directory link does not establish classroom adoption or endorsement."
+  case_ko: "/space-atlas-community-list-merges-ko/"
+  case_en: "/space-atlas-community-list-merges-en/"
   url: "https://github.com/vorburger/kids-edutainment-links/blob/master/README.md"
 - id: awesome-mint-kids-space-atlas
   project: space-atlas
@@ -209,6 +215,8 @@
   source: "Awesome MINT Kids Resources"
   title: "Space Atlas Student in children's science resources"
   detail: "Creator-submitted browser models and teacher activity link merged by the list maintainer. Its audience is parent- and teacher-guided science; no teaching outcomes were measured."
+  case_ko: "/space-atlas-community-list-merges-ko/"
+  case_en: "/space-atlas-community-list-merges-en/"
   url: "https://github.com/augustunbear/awesome-MINT-Kids-Resources/blob/main/README.md"
 - id: awesome-interactive-learning-space-atlas
   project: space-atlas
@@ -218,6 +226,8 @@
   source: "Awesome Interactive Learning"
   title: "Space Atlas among interactive astronomy resources"
   detail: "Creator-submitted Moon-phase and Earth-season visual models merged by the list maintainer. The resource link is not a product review or evidence of actual learner use."
+  case_ko: "/space-atlas-community-list-merges-ko/"
+  case_en: "/space-atlas-community-list-merges-en/"
   url: "https://github.com/hamid-moghadam/awesome-interactive-learning/blob/main/README.md"
 - id: student-suite-space-atlas
   project: space-atlas
@@ -227,6 +237,8 @@
   source: "StudentSuite Awesome Study Resources"
   title: "Space Atlas in free interactive study resources"
   detail: "Creator-submitted astronomy models and teacher activity link merged by the list maintainer. A community resource entry, not a teaching partnership or measured adoption."
+  case_ko: "/space-atlas-community-list-merges-ko/"
+  case_en: "/space-atlas-community-list-merges-en/"
   url: "https://github.com/StudentSuite/awesome-study-resources/blob/main/README.md"
 
 - id: worldlytribe-space-atlas-worldschooling
@@ -279,6 +291,8 @@
   source: "LaunchFree.io"
   title: "Spoonie — practical recipes and cooking notes"
   detail: "Spoonie appears as a Community / Beta product in LaunchFree's public launch directory; this listing does not establish independent endorsement or product adoption."
+  case_ko: "/spoonie-webapps-directory-ko/"
+  case_en: "/spoonie-webapps-directory-en/"
   url: "https://launchfree.io/listings/spoonie.html"
 
 - id: disquiet-spoonie-first-record

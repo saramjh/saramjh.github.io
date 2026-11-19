@@ -10,6 +10,13 @@ INCLUDE = ROOT / "_includes" / "portfolio-evidence.html"
 CSS = ROOT / "assets" / "css" / "portfolio.css"
 
 EXPECTED = {
+    "awesome-homeschooling-space-atlas": "space-atlas-community-list-merges",
+    "awesome-physics-space-atlas": "space-atlas-community-list-merges",
+    "kids-edutainment-space-atlas": "space-atlas-community-list-merges",
+    "awesome-mint-kids-space-atlas": "space-atlas-community-list-merges",
+    "awesome-interactive-learning-space-atlas": "space-atlas-community-list-merges",
+    "student-suite-space-atlas": "space-atlas-community-list-merges",
+    "launchfree-spoonie-beta-listing": "spoonie-webapps-directory",
     "worldlytribe-space-atlas-worldschooling": "space-atlas-worldschooling-guide",
     "the-home-ed-daily-space-atlas-printable": "earth-seasons-no-tilt-experiment",
     "nav-ai-koreaves-directory": "koreaves-external-resources",
@@ -62,6 +69,17 @@ class EvidenceContextLinksTest(unittest.TestCase):
             match.group(1),
             r"(?:^|;)\s*white-space:\s*nowrap\s*(?:;|$)",
             "Korean and English evidence links must stay together on narrow screens",
+        )
+
+    def test_tablet_bilingual_context_rows_remain_compact(self):
+        css = CSS.read_text(encoding="utf8")
+        tablet = css.split("@media(max-width:940px){", 1)[1].split(
+            "@media(max-width:680px){", 1
+        )[0]
+        self.assertIn("column-gap:18px;padding:9px 0", tablet)
+        self.assertIn(
+            ".folio-evidence-main .folio-evidence-description{line-height:1.55}",
+            tablet,
         )
 
     def test_tablet_rows_without_dates_use_the_full_content_column(self):
@@ -120,6 +138,24 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertTrue(
             all(("case_ko" in r) == ("case_en" in r) for r in records.values())
         )
+
+    def test_every_public_recognition_links_an_existing_bilingual_case(self):
+        records = parse_records()
+        self.assertEqual(len(records), 28)
+        permalink_sources = {}
+        for source in (ROOT / "_posts").rglob("*.md"):
+            match = re.search(
+                r"(?m)^permalink:\s*['\"]?(/[^'\"\s]+/)",
+                source.read_text(encoding="utf8"),
+            )
+            if match:
+                permalink_sources.setdefault(match.group(1), []).append(source)
+        for record in records.values():
+            self.assertEqual(record["status"], "confirmed")
+            for lang in ("ko", "en"):
+                self.assertIn("case_" + lang, record)
+                target = record["case_" + lang]
+                self.assertEqual(len(permalink_sources.get(target, [])), 1, target)
 
     def test_the_home_ed_daily_science_directory_is_live_external_listing(self):
         records = parse_records()
@@ -180,8 +216,8 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertEqual(record[key], value)
             self.assertIn("Creator-submitted", record["detail"])
             self.assertIn("merged by the list maintainer", record["detail"])
-            self.assertNotIn("case_ko", record)
-            self.assertNotIn("case_en", record)
+            self.assertEqual(record["case_ko"], "/space-atlas-community-list-merges-ko/")
+            self.assertEqual(record["case_en"], "/space-atlas-community-list-merges-en/")
             self.assertEqual(sum(r["url"] == proof["url"] for r in records.values()), 1)
 
     def test_remaining_koreaves_resource_records_link_to_existing_bilingual_context(self):
@@ -231,8 +267,8 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertEqual(listing["url"], "https://launchfree.io/listings/spoonie.html")
         self.assertIn("Community / Beta", listing["detail"])
         self.assertIn("does not establish independent endorsement or product adoption", listing["detail"])
-        self.assertNotIn("case_ko", listing)
-        self.assertNotIn("case_en", listing)
+        self.assertEqual(listing["case_ko"], "/spoonie-webapps-directory-ko/")
+        self.assertEqual(listing["case_en"], "/spoonie-webapps-directory-en/")
         self.assertEqual(
             sum(record["url"] == listing["url"] for record in records.values()),
             1,
