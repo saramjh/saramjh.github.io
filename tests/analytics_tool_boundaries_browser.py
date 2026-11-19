@@ -22,6 +22,8 @@ PAGES = [
     ("2", "ko", "/gh-pages-analytics-notes-2-reasoning-kr/"),
     ("3", "en", "/gh-pages-analytics-notes-3-decision-en/"),
     ("3", "ko", "/gh-pages-analytics-notes-3-decision-kr/"),
+    ("4", "en", "/gh-pages-analytics-notes-4-open-en/"),
+    ("4", "ko", "/gh-pages-analytics-notes-4-open-kr/"),
 ]
 NEXT = {
     ("1", "en"): "/gh-pages-analytics-notes-2-reasoning-en/",
@@ -30,6 +32,8 @@ NEXT = {
     ("2", "ko"): "/gh-pages-analytics-notes-3-decision-kr/",
     ("3", "en"): "/gh-pages-analytics-notes-4-open-en/",
     ("3", "ko"): "/gh-pages-analytics-notes-4-open-kr/",
+    ("4", "en"): "/gh-pages-analytics-notes-5-followup-en/",
+    ("4", "ko"): "/gh-pages-analytics-notes-5-followup-kr/",
 }
 WIDTHS = (240, 280, 390, 768)
 
@@ -79,7 +83,7 @@ with sync_playwright() as pw:
                             SUBDOMAIN_FAQ, CRAWL_BUDGET, CRAWL_MYTHS, LINKS, RANKING, DOMAIN_AGE):
                     assert main.locator(f'a[href="{url}"]').count() >= 1, (
                         part, lang, width, "official source link", url)
-            else:
+            elif part == "3":
                 required = (
                     ("reporting choice", "not a general GA4 recommendation",
                      "does not automatically join users across streams",
@@ -96,6 +100,22 @@ with sync_playwright() as pw:
                 for url in (GA4, GA4_CROSS, GSC, VERIFY):
                     assert main.locator(f'a[href="{url}"]').count() >= 1, (
                         part, lang, width, "official source link", url)
+            else:
+                required = (
+                    ("one current web stream", "siteOwner", "siteUnverifiedUser",
+                     "2026-11-20", "672", "651")
+                    if lang == "en" else
+                    ("현재 웹 스트림은 1개", "siteOwner", "siteUnverifiedUser",
+                     "2026-11-20", "672", "651")
+                )
+                for phrase in required:
+                    assert phrase in text, (part, lang, width, "missing text", phrase)
+                assert main.locator(f'a[href="{GSC}"]').count() >= 1, (
+                    part, lang, width, "official source link", GSC)
+            if part in ("2", "3", "4"):
+                for phrase in ("G-4DYFKSNFBG", "sc-domain:saramjh.github.io",
+                               "siteOwner", "siteUnverifiedUser"):
+                    assert phrase in text, (part, lang, width, "current native source", phrase)
             layout = page.evaluate("""() => ({
               width: document.documentElement.scrollWidth,
               viewport: window.innerWidth
@@ -109,4 +129,4 @@ with sync_playwright() as pw:
     browser.close()
 
 print(f"PASS {passed} analytics article Chrome cases")
-assert passed == 24, passed
+assert passed == 32, passed

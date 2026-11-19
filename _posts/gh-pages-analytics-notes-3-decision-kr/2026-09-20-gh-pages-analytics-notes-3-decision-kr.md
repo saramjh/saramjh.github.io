@@ -23,10 +23,10 @@ alternate_url: /gh-pages-analytics-notes-3-decision-en/
 2026년 9월 중순, 도구별로 나눠뒀던 GA4 속성들을 블로그와 도구 데이터를 한곳에서 비교하기 위해 하나의 속성으로 병합했습니다. 이는 보고 목적에 따른 제 설정이며, 같은 호스트를 사용한다는 사실만으로 각 사이트가 하나의 논리적 사용자 집단에 속한다고 볼 수는 없습니다. 구체적으로는:
 
 - 기존에 도구마다 따로 있던 GA4 속성들을 정리하고, 블로그가 쓰던 속성(측정 ID `G-4DYFKSNFBG`) 하나로 통합했습니다.
-- 각 도구는 이 하나의 속성 아래 별도의 웹 데이터 스트림으로 등록했습니다. [1편](/gh-pages-analytics-notes-1-problem-kr/)에서 나열한 richChecker, scratchLottery, SquircleSimulator, pomodorotimerKR/EN, resizeIMG, space_atlas_student 등이 여기 해당합니다.
+- 9월 당시 기록에는 richChecker, scratchLottery, SquircleSimulator, pomodorotimerKR/EN, resizeIMG, space_atlas_student 등을 각각 별도 스트림으로 등록했다고 적었습니다. 이는 당시 작업 기록이며, 현재의 도구별 스트림 상태를 증명하는 목록은 아닙니다.
 - 당시 `hostName`(호스트 이름) 조회로 `saramjh.github.io`와 로컬 테스트(`localhost`, `127.0.0.1`)는 구분했습니다. 하지만 **hostName만으로는 같은 호스트의 도구들을 분리할 수 없습니다.** 도구별 보고서에는 `pagePath`와 실제 수집된 `streamId` 또는 `streamName`도 함께 확인해야 합니다.
 
-**2026-11-20 보충.** Google은 일반적으로 속성당 웹 스트림 하나를 권장합니다. 위의 여러 스트림 구성은 제가 실제로 설정한 방식이지, GA4의 일반 권장안은 아닙니다. 하나의 속성만으로 여러 스트림 사이의 사용자 여정이 자동으로 연결되지는 않습니다. 교차 도메인 측정에는 각 도메인에 같은 웹 스트림의 같은 태그 ID를 사용해야 합니다 ([Google 계정 구조 안내](https://support.google.com/analytics/answer/9679158?hl=en); [교차 도메인 측정 안내](https://support.google.com/analytics/answer/10071811?hl=en)).
+**2026-11-20 GA4 원본 계정 확인.** Google은 일반적으로 속성당 웹 스트림 하나를 권장합니다. 9월의 다중 스트림 기록은 GA4 일반 권장안은 아닙니다. 현재 `blog` GA4 속성의 **현재 웹 스트림은 1개**입니다. 스트림 이름은 `blog`, 측정 ID는 `G-4DYFKSNFBG`입니다. 속성 하나로 여러 스트림의 사용자 여정이 자동으로 연결되지는 않습니다. 교차 도메인 측정에는 각 도메인에 같은 웹 스트림의 같은 태그 ID를 써야 합니다. 현재 목록만으로 과거 스트림의 생성·삭제 내역은 재구성할 수 없습니다 ([Google 계정 구조 안내](https://support.google.com/analytics/answer/9679158?hl=en); [교차 도메인 측정 안내](https://support.google.com/analytics/answer/10071811?hl=en)).
 
 ### 2026-11-15 데이터 재검증
 
@@ -36,7 +36,7 @@ alternate_url: /gh-pages-analytics-notes-3-decision-en/
 
 따라서 9월의 스트림 등록은 당시의 설정 작업 기록으로 남기되, 모든 도구의 이벤트가 각각의 스트림으로 올바르게 전달된다고 단정하지 않겠습니다. 실제 제품별 계측 여부는 `pagePath`·`streamId`·`eventName`을 함께 확인해야 합니다. 필드 정의는 [Google Analytics Data API 공식 측정기준 문서](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema)에 있습니다.
 
-**2026-11-20 정정 — Search Console 소유권 확인.** 9월 기록에서는 Search Console을 검증된 도메인 속성 하나로 통합했다고 적었지만, 현재 원본 계정의 속성 유형을 증명하는 소유권 확인 영수증은 확보하지 못했습니다. 도메인 속성은 **DNS 검증**이 필요하고, `https://saramjh.github.io/`를 기준으로 하는 **URL 접두사 속성(URL-prefix property)**도 같은 HTTPS 호스트의 프로젝트 경로를 포함하면서 HTML 방식으로 검증할 수 있습니다. 프로젝트별 사이트맵 제출 이력만으로는 속성 유형을 알 수 없습니다. **당시 실제로 검증된 Search Console 속성 유형은 확실하지 않습니다.** 위에 기록한 GA4 통합 작업과는 별개의 정정입니다. [Google의 속성 범위 안내](https://support.google.com/webmasters/answer/34592?hl=en)와 [소유권 확인 방법](https://support.google.com/webmasters/answer/9008080?hl=en)을 참고했습니다.
+**2026-11-20 Search Console 원본 계정 조회.** 9월 글에는 검증된 도메인 속성 하나로 통합했다고 적었지만, 현재 원본 계정에서 `https://saramjh.github.io/`은 `siteOwner`, `sc-domain:saramjh.github.io`은 `siteUnverifiedUser`입니다. 현재는 사이트 루트 **URL 접두사 속성(URL-prefix property)** 소유권이 확인되고 도메인 속성 소유권은 확인되지 않습니다. 도메인 속성에는 DNS 검증이 필요하며, 루트 HTTPS URL 접두사는 같은 호스트의 프로젝트 경로를 포함합니다. 9월 당시 실제 검증 절차와 속성 유형은 과거 영수증이 없어 **확실하지 않습니다**. 당시 사이트맵 제출 이력만으로도 판단할 수 없습니다 ([Google 속성 범위](https://support.google.com/webmasters/answer/34592?hl=en); [소유권 확인 방법](https://support.google.com/webmasters/answer/9008080?hl=en)).
 
 ## 바꾸지 않은 것
 
