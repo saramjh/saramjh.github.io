@@ -45,6 +45,18 @@ class SpoonieRscPrefetchCaseTest(unittest.TestCase):
                 self.assertIn("<figcaption>", source)
                 self.assertNotIn("\ufffd", source)
 
+    def test_language_switch_labels_match_real_localized_titles(self):
+        source_en = POSTS["en"].read_text(encoding="utf-8")
+        source_ko = POSTS["ko"].read_text(encoding="utf-8")
+        self.assertIn(
+            "[Spoonie가 레시피를 미리 불러오는 시점을 사용자 선택에 맞췄다](/spoonie-rsc-prefetch-20261119-ko/)",
+            source_en,
+        )
+        self.assertIn(
+            "[I made Spoonie wait until a reader chose a recipe](/spoonie-rsc-prefetch-20261119-en/)",
+            source_ko,
+        )
+
     def test_original_sources_and_measurement_limits_are_present(self):
         for lang, path in POSTS.items():
             source = path.read_text(encoding="utf-8")
@@ -91,6 +103,14 @@ class SpoonieRscPrefetchCaseTest(unittest.TestCase):
                 self.assertIn(b"IDAT", chunks)
                 self.assertEqual(chunks[-1], b"IEND")
                 self.assertFalse(set(chunks) & {b"tEXt", b"iTXt", b"eXIf"})
+
+    def test_original_diagram_scopes_http_410_to_preview(self):
+        generator = (ROOT / "scripts/dev-spoonie-rsc-prefetch-20261119-og.swift").read_text(encoding="utf-8")
+        self.assertIn("PR #50 preview: old URLs returned HTTP 410", generator)
+        self.assertIn("PR #50 미리보기에서 이전 URL은 HTTP 410", generator)
+        self.assertNotIn("Former function URLs now return HTTP 410", generator)
+        self.assertNotIn("기존 함수 주소는 HTTP 410 반환", generator)
+        self.assertIn("stripTransportMetadata(data)", generator)
 
     def test_source_diagram_does_not_claim_quota_recovery(self):
         for lang, path in POSTS.items():

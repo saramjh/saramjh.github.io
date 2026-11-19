@@ -66,7 +66,7 @@ if isKorean {
         scheduleBeforeTitle: "레시피 공개 1일 3회",
         scheduleBeforeBody: "구형 Instagram 재시도 1일 4회",
         scheduleAfterTitle: "두 예약 작업 제거",
-        scheduleAfterBody: "기존 함수 주소는 HTTP 410 반환",
+        scheduleAfterBody: "PR #50 미리보기에서 이전 URL은 HTTP 410",
         caveat: "390×844 모바일 Chromium 회귀 테스트 · 월간 함수 사용량 변화는 미측정"
     )
 } else {
@@ -80,7 +80,7 @@ if isKorean {
         scheduleBeforeTitle: "3 Recipe releases per day",
         scheduleBeforeBody: "4 legacy Instagram retries per day",
         scheduleAfterTitle: "Both schedules retired",
-        scheduleAfterBody: "Former function URLs now return HTTP 410",
+        scheduleAfterBody: "PR #50 preview: old URLs returned HTTP 410",
         caveat: "390×844 mobile Chromium regression · monthly function usage change not measured"
     )
 }
@@ -149,6 +149,45 @@ NSGraphicsContext.restoreGraphicsState()
 guard let data = bitmap.representation(using: .png, properties: [:]) else {
     fatalError("Unable to encode PNG")
 }
+// AppKit can attach a machine-generated eXIf chunk even to a drawing made
+// entirely from primitives. Remove ancillary transport metadata without
+// changing the image pixels or rewriting any PNG image-data chunks.
+func stripTransportMetadata(_ png: Data) -> Data {
+    let bytes = [UInt8](png)
+    let signature: [UInt8] = [137, 80, 78, 71, 13, 10, 26, 10]
+    guard bytes.count >= 8, Array(bytes.prefix(8)) == signature else {
+        fatalError("Invalid generated PNG")
+    }
+    var output = Data(bytes.prefix(8))
+    var offset = 8
+    var sawEnd = false
+    while offset + 12 <= bytes.count {
+        let length =
+            (UInt32(bytes[offset]) << 24) |
+            (UInt32(bytes[offset + 1]) << 16) |
+            (UInt32(bytes[offset + 2]) << 8) |
+            UInt32(bytes[offset + 3])
+        let size = Int(length)
+        guard size <= bytes.count - offset - 12 else {
+            fatalError("Invalid generated PNG chunk")
+        }
+        let type = String(bytes: bytes[(offset + 4)..<(offset + 8)],
+                          encoding: .ascii) ?? ""
+        if !["eXIf", "tEXt", "iTXt"].contains(type) {
+            output.append(contentsOf: bytes[offset..<(offset + size + 12)])
+        }
+        offset += size + 12
+        if type == "IEND" {
+            sawEnd = true
+            break
+        }
+    }
+    guard sawEnd, offset == bytes.count else {
+        fatalError("PNG data after IEND")
+    }
+    return output
+}
+
 let destination = URL(fileURLWithPath: root)
     .appendingPathComponent("assets/img/dev/spoonie-rsc-prefetch-20261119", isDirectory: true)
 try FileManager.default.createDirectory(
@@ -157,5 +196,6 @@ try FileManager.default.createDirectory(
 )
 let filename = isKorean ? "spoonie-rsc-prefetch-ko.png" : "spoonie-rsc-prefetch-en.png"
 let output = destination.appendingPathComponent(filename)
-try data.write(to: output, options: .atomic)
-print("\(output.path) \(data.count) bytes")
+let cleanData = stripTransportMetadata(data)
+try cleanData.write(to: output, options: .atomic)
+print("\(output.path) \(cleanData.count) bytes")

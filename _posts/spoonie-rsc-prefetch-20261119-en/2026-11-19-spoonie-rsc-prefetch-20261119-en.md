@@ -1,5 +1,5 @@
 ---
-title: "I stopped Spoonie prefetching recipes before a reader chose one"
+title: "I made Spoonie wait until a reader chose a recipe"
 description: "PRs #48, #49 and #50 make recipe prefetch follow mouse and keyboard intent, prevent touch-scroll requests, and retire two legacy Netlify schedules."
 date: 2026-11-19
 tags: ["Spoonie", "Next.js", "Performance", "Netlify"]
@@ -13,19 +13,19 @@ image_width: 1200
 image_height: 630
 published: true
 seo:
-  title: "Spoonie: stop recipe prefetch before a reader taps"
+  title: "Spoonie: prefetch a recipe after a reader chooses it"
   description: "I changed Next.js RSC prefetch to follow pointer and keyboard intent, removed touch-scroll requests, and retired two legacy Netlify schedules."
 ---
 
-> 한국어판: [Spoonie에서 레시피 상세 요청을 사용자 입력에 맞췄다](/spoonie-rsc-prefetch-20261119-ko/)
+> 한국어판: [Spoonie가 레시피를 미리 불러오는 시점을 사용자 선택에 맞췄다](/spoonie-rsc-prefetch-20261119-ko/)
 
-Scrolling a recipe list should not request the detail page for every card a reader passes. Spoonie now disables default navigation prefetch. Hover or keyboard focus warms the selected recipe; a touch scroll does not. [PR #48](https://github.com/saramjh/spoonie/pull/48) introduced intent-based prefetch, [PR #49](https://github.com/saramjh/spoonie/pull/49) removed `touchstart` from the intent signals, and [PR #50](https://github.com/saramjh/spoonie/pull/50) retired two legacy Netlify schedules.
+Scrolling a recipe list should not request the detail page for every card a reader passes. The merged Spoonie changes disable default navigation prefetch. Hover or keyboard focus warms the selected recipe; touch scrolling does not trigger a prefetch. [PR #48](https://github.com/saramjh/spoonie/pull/48) introduced intent-based prefetch, [PR #49](https://github.com/saramjh/spoonie/pull/49) removed `touchstart` from the intent signals, and [PR #50](https://github.com/saramjh/spoonie/pull/50) retired two legacy Netlify schedules.
 
 ## The request I reproduced
 
 On November 18, Netlify's dashboard reported that Spoonie had exceeded its monthly allowance of 125,000 Functions. In a fresh 390×844 mobile Chromium session, I blocked service workers and made no pointer, keyboard, or touch input. The home page showed 40 recipe detail links and sent ten Next.js React Server Component (RSC) prefetch requests. Those requests included `/recipes`, `/search`, `/login`, `/`, and individual recipe routes.
 
-The `___netlify-server-handler` duration logs recorded about 54 executions in two minutes. They contained no request path or client identifier, so they cannot show how many of those executions came from RSC prefetch. I used the reproducible browser requests as the test case for the navigation change.
+The `___netlify-server-handler` duration logs recorded about 54 executions in two minutes. They contained no request path or client identifier, so they cannot show how many of those executions came from RSC prefetch.
 
 <figure>
   <img src="/assets/img/dev/spoonie-rsc-prefetch-20261119/spoonie-rsc-prefetch-en.png" alt="Before and after diagram of Spoonie's RSC prefetch behavior: ten idle requests and touch-start prefetch before the changes, then hover or keyboard-focus intent and retired scheduled endpoints." width="1200" height="630" loading="lazy" style="display:block;width:100%;height:auto;">
@@ -38,23 +38,19 @@ The `___netlify-server-handler` duration logs recorded about 54 executions in tw
 
 On a phone, `touchstart` fires when a reader begins a swipe. That meant a scroll could request a recipe page the reader never opened. [PR #49](https://github.com/saramjh/spoonie/pull/49) removed `touchstart` from the prefetch signals. Hover and keyboard focus still prepare the selected destination, and tapping a recipe still opens its detail page.
 
-[PR #50](https://github.com/saramjh/spoonie/pull/50) removed two old Netlify schedules: three queued Recipe releases per day and four legacy Instagram retries per day. The former `release-queued-recipes` and `retry-instagram-posts` function URLs now return HTTP 410. The existing queue records remain in place. No recipes were bulk-published and no Instagram action was replayed.
+[PR #50](https://github.com/saramjh/spoonie/pull/50) removed two old Netlify schedules: three queued Recipe releases per day and four legacy Instagram retries per day. The former `release-queued-recipes` and `retry-instagram-posts` handlers return HTTP 410 in the PR's Netlify Deploy Preview. The existing queue records remain in place; the change did not bulk-publish recipes or replay Instagram actions.
 
 ## Verification
 
-The browser test against the old production behavior recorded ten idle RSC prefetch requests. The local production build after PR #48 recorded zero idle prefetches in its idle-state test. Hover warmed the selected destination, and clicking still navigated. PR #49 added checks for mobile touch start, swipe, and tap navigation.
+The local production build after PR #48 recorded zero idle prefetches in its idle-state test. Hover warmed the selected destination, and clicking still navigated. PR #49 added checks for mobile touch start, swipe, and tap navigation.
 
 PRs #48 and #49 passed 409 Vitest tests across 95 suites, plus six Node safety checks. TypeScript, touched-file ESLint, and the Next.js production build passed as well. PR #50 added 13 tests for the retired schedules and endpoint behavior. The latest attempts of all three Chromium workflows passed after their matching Netlify Deploy Previews were ready: [run 44244452809](https://github.com/saramjh/spoonie/actions/runs/44244452809), [run 44255793226](https://github.com/saramjh/spoonie/actions/runs/44255793226), and [run 44338009228](https://github.com/saramjh/spoonie/actions/runs/44338009228).
 
-On November 19, the live [Spoonie home page](https://spoonie.kr/) and [search page](https://spoonie.kr/search) returned HTTP 200. Both retired function endpoints returned HTTP 410.
-
-## What readers experience
-
-Scrolling past a recipe card no longer triggers its detail-page prefetch. Hover and keyboard focus prepare a destination before it opens, while a tap still navigates to the recipe. The old scheduled release and retry functions have been removed, and their queue records remain untouched.
+On November 19, the live [Spoonie home page](https://spoonie.kr/) and [search page](https://spoonie.kr/search) returned HTTP 200. In the PR #50 Netlify Deploy Preview, both retired function endpoints returned HTTP 410.
 
 ## Measurement limits
 
-The ten-request count comes from one controlled browser session. Monthly Functions usage has not been compared after release, so the status of the quota overage and any monthly saving remain unknown. The 54 executions in the duration log also lack the route information needed to attribute them to prefetch.
+The ten idle requests came from one controlled browser session. Monthly Functions usage has not been compared after release, so quota recovery and monthly savings remain unknown. The retired endpoints returned HTTP 410 in the PR #50 Deploy Preview; production endpoint behavior remains unverified.
 
 ## Sources and related work
 
