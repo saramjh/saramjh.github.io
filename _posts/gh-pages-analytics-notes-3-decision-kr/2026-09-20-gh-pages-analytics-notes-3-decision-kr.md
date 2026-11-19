@@ -20,11 +20,13 @@ alternate_url: /gh-pages-analytics-notes-3-decision-en/
 
 ## 무엇을 바꿨나
 
-2026년 9월 중순, 도구별로 나눠뒀던 GA4 속성들을 `saramjh.github.io` 도메인을 대표하는 하나의 GA4 속성으로 병합했습니다. 구체적으로는:
+2026년 9월 중순, 도구별로 나눠뒀던 GA4 속성들을 블로그와 도구 데이터를 한곳에서 비교하기 위해 하나의 속성으로 병합했습니다. 이는 보고 목적에 따른 제 설정이며, 같은 호스트를 사용한다는 사실만으로 각 사이트가 하나의 논리적 사용자 집단에 속한다고 볼 수는 없습니다. 구체적으로는:
 
 - 기존에 도구마다 따로 있던 GA4 속성들을 정리하고, 블로그가 쓰던 속성(측정 ID `G-4DYFKSNFBG`) 하나로 통합했습니다.
 - 각 도구는 이 하나의 속성 아래 별도의 웹 데이터 스트림으로 등록했습니다. [1편](/gh-pages-analytics-notes-1-problem-kr/)에서 나열한 richChecker, scratchLottery, SquircleSimulator, pomodorotimerKR/EN, resizeIMG, space_atlas_student 등이 여기 해당합니다.
 - 당시 `hostName`(호스트 이름) 조회로 `saramjh.github.io`와 로컬 테스트(`localhost`, `127.0.0.1`)는 구분했습니다. 하지만 **hostName만으로는 같은 호스트의 도구들을 분리할 수 없습니다.** 도구별 보고서에는 `pagePath`와 실제 수집된 `streamId` 또는 `streamName`도 함께 확인해야 합니다.
+
+**2026-11-20 보충.** Google은 일반적으로 속성당 웹 스트림 하나를 권장합니다. 위의 여러 스트림 구성은 제가 실제로 설정한 방식이지, GA4의 일반 권장안은 아닙니다. 하나의 속성만으로 여러 스트림 사이의 사용자 여정이 자동으로 연결되지는 않습니다. 교차 도메인 측정에는 각 도메인에 같은 웹 스트림의 같은 태그 ID를 사용해야 합니다 ([Google 계정 구조 안내](https://support.google.com/analytics/answer/9679158?hl=en); [교차 도메인 측정 안내](https://support.google.com/analytics/answer/10071811?hl=en)).
 
 ### 2026-11-15 데이터 재검증
 

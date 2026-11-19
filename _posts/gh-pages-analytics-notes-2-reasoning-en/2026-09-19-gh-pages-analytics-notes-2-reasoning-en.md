@@ -27,17 +27,17 @@ The reasoning below is not a verbatim quote from the AI conversation I actually 
 The most confusing part of GA4's structure, for me, was realizing that "property" and "data stream" are not the same thing.
 
 - **Property**: the top-level unit where data is aggregated. Reports, data retention, free-tier data thresholds, and the BigQuery link are all independent per property.
-- **Data stream**: an individual source feeding data into a property — one website, one app. A single property can hold multiple web data streams.
+- **Data stream**: a source sending data to a property from a website or app. A property can contain multiple streams, although Google's general best practice is one web data stream per property in most cases.
 
-In other words, my habit of "a new property for every tool" was splitting things one layer higher than necessary — a case where **a new data stream per tool might have been enough**.
+At the time, I assumed a separate property per tool was more granular than necessary. Whether that was true depends on whether the tools share a logical user base and should be analyzed together; a separate stream is not always a substitute for a separate property.
 
-Google's own recommendation for organizations that want several sites or apps tracked as one brand is exactly this: one property, multiple data streams. With that structure:
+**Correction (2026-11-20):** I described one property with multiple web streams as Google's general recommendation. That was too broad. Google says a property represents a user base: data that should be analyzed together can share a property, while separate logical user bases may need separate properties. In most cases, Google recommends one web stream per property. The multi-stream setup I chose for these tools is the historical configuration recorded in Part 3, not a universal recommendation ([account-structure guidance](https://support.google.com/analytics/answer/9679158?hl=en)).
 
-- A user who reads a blog post and then moves to a tool can be followed as a single journey within the same property (assuming cross-domain measurement is configured).
+Putting several streams under one property makes their data available in the same property's reports. It does not by itself join users across streams. Cross-domain measurement requires the same tag ID from the same web stream on each domain ([Google's cross-domain setup](https://support.google.com/analytics/answer/10071811?hl=en)). Because Part 3 records a separate web stream for each tool, the shared property alone does not establish that a blog-to-tool visit is stitched into one journey. That needs to be checked against the actual tags and reports.
 - Hostname or stream name can be used as a dimension, and exploration/comparison features let you filter down to "just this tool" or "just the blog" when needed — the same principle behind querying sessions by `hostName`, as I did earlier in this series' data pull.
 - Splitting into separate properties, by contrast, means each one burns through its own free-tier thresholds and retention window separately, and the user journey is cut off at the property boundary by design.
 
-## Search Console: domain-level vs. URL-prefix verification is the crux
+## Search Console: Domain and URL-prefix properties differ in coverage and verification
 
 Search Console has two property types, with different coverage and verification requirements:
 
@@ -46,30 +46,34 @@ Search Console has two property types, with different coverage and verification 
 
 **Correction (2026-11-20).** My earlier conclusion that one Domain property was the straightforward way to consolidate this setup missed the DNS requirement. With the default GitHub Pages address, a **site-root URL-prefix property** can provide the shared HTTPS path coverage. Submitting separate project sitemaps doesn't tell us which property type was verified. I haven't independently recovered the original Search Console ownership receipt, so the **account's actual verified property type remains unknown**. Google's [property coverage](https://support.google.com/webmasters/answer/34592?hl=en) and [verification instructions](https://support.google.com/webmasters/answer/9008080?hl=en) explain the distinction.
 
-## What "a shared root domain shares trust" actually means — and its limits
+## What a shared root domain does — and doesn't — establish
 
-This is the part that calls for the most caution. The claim that "sites under the same root domain share trust/authority" gets repeated often in SEO circles, but Google hasn't published exactly how — or whether — this is reflected algorithmically. What's comparatively well-supported:
+Google's public guidance supports several narrower facts, not a general rule that every path under one domain inherits the same ranking authority:
 
-- Subdirectories (path-based structures like `/scratchLottery/`) are more easily read by search engines as part of the same site than subdomains or entirely separate domains would be — and this already applied to my project pages by default, since none of them had a custom domain attached.
-- Site-wide signals like crawl budget, backlinks, and domain age accumulate at the domain level. But "Google factors this into ranking" and "exactly how much it factors in" are two separate claims, and the second one is hard to verify externally.
-- Conversely, sharing trust doesn't mean rankings improve for unrelated search intents — each tool still has to earn relevance for its own content and query space.
+- **Subdirectories and subdomains:** Google says it has no indexing or ranking preference between them. Choose the structure that's easier to organize and manage. Its crawl-budget documentation defines a site by a unique hostname, so subdomains have separate crawl budgets. This is a crawling boundary, not a ranking advantage.
+- **Crawl budget:** It is the set of URLs Google can and wants to crawl. Google says crawling itself is not a ranking signal, and the guidance is mainly intended for very large or frequently updated sites.
+- **Links and ranking:** Google uses links to discover pages and as relevance signals. Its ranking systems primarily evaluate pages, while also using some site-wide signals. This does not establish a blanket trust score that transfers to every path under a root domain.
+- **Domain age:** I removed it from the list of supported ranking signals; the evidence here does not establish registration age as a ranking advantage.
 
-Net takeaway: "one root domain means shared trust" isn't wrong, exactly, but it's better described as **a reasonable, industry-accepted explanation, not something with a proven causal chain behind it**.
+For §https://saramjh.github.io/§, the tools share one hostname and use different paths. They therefore share a host-level crawl-budget boundary, but that does not prove that Google combines their relevance or rankings into one score ([subfolder vs. subdomain FAQ](https://developers.google.com/search/help/crawling-index-faq?hl=en); [crawl-budget guide](https://developers.google.com/crawling/docs/crawl-budget?hl=en); [crawling myths](https://developers.google.com/crawling/docs/myths-about-crawling); [link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable); [ranking systems guide](https://developers.google.com/search/docs/appearance/ranking-systems-guide); [Google Search Central's domain-age video](https://www.youtube.com/watch?v=-pnpg00FWJY)).
+
+Net takeaway: a shared hostname is a fact about URL and crawl structure, not proof of shared ranking trust. Each page still has to earn relevance for its own content and search intent.
 
 ## Clarity: really a question of what you want to see together, not a principle
 
-Unlike GA4 or Search Console, Clarity has no concept of domain-level verification. Technically, one Clarity project code works fine embedded across multiple domains or paths. So this wasn't really a matter of principle — it was closer to **an operating decision**.
+Clarity does not use Search Console's Domain/URL-prefix verification model. A project can collect data from multiple sites when its tracking code is installed on each, and the same script can be installed on multiple subdomains. Microsoft recommends a separate project for each different domain. For tools under one host, the choice is whether their recordings and heatmaps should be grouped together ([Clarity FAQ](https://learn.microsoft.com/en-us/clarity/faq/); [setup guide](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-setup)).
 
 - One shared project: every tool's session replays and heatmaps land in a single dashboard, but a low-traffic tool's sessions can get lost in the noise of a higher-traffic one.
 - Separate projects per tool: cleaner per-tool analysis, at the cost of a dashboard to check for every tool you ship.
 
 ## Putting it together
 
-Across all three tools, the same shape kept recurring:
+**Clarification (2026-11-20):** GA4, Search Console and Clarity each use different boundaries for grouping data.
 
-1. **Verify / create at the broadest reasonable unit (the whole domain)**
-2. **Narrow down only when needed, using filters like subpath or hostname within that unit**
+- **GA4:** Choose a property according to whether the data belongs to a logical user base that should be analyzed together. Google generally recommends one web stream per property. Multiple streams in one property share reporting, but do not automatically stitch users across streams; cross-domain measurement requires the same tag ID from the same web stream on each domain ([account-structure guidance](https://support.google.com/analytics/answer/9679158?hl=en); [cross-domain setup](https://support.google.com/analytics/answer/10071811?hl=en)).
+- **Search Console:** A Domain property includes subdomains, protocols and paths but requires DNS verification. A URL-prefix property covers only its exact prefix, so `https://saramjh.github.io/` includes HTTPS project paths on this host ([property types](https://support.google.com/webmasters/answer/34592?hl=en); [verification methods](https://support.google.com/webmasters/answer/9008080?hl=en)).
+- **Clarity:** A project can collect data from multiple sites when its tracking code is installed on each. Microsoft recommends separate projects for different domains. For paths under this same host, the choice is whether to group their recordings and heatmaps together ([Clarity FAQ](https://learn.microsoft.com/en-us/clarity/faq/); [setup guide](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-setup)).
 
-That's the direction I actually ended up taking. Next: how I applied this in practice — what got merged, and when.
+Part 3 records which settings I changed and which I left alone.
 
 → [Continue to Part 3: The Decision](/gh-pages-analytics-notes-3-decision-en/)

@@ -20,11 +20,13 @@ alternate_url: /gh-pages-analytics-notes-3-decision-kr/
 
 ## What actually changed
 
-In mid-September 2026, I merged the GA4 properties that had been split one-per-tool into a single property representing the `saramjh.github.io` domain. Concretely:
+In mid-September 2026, I merged the GA4 properties that had been split one-per-tool into a single property so I could compare the blog and tool data together. That was my reporting choice; sharing a hostname does not by itself make the sites one logical user base. Concretely:
 
 - I retired the separate GA4 properties each tool had been using and consolidated everything into the property the blog was already using (measurement ID `G-4DYFKSNFBG`).
 - Each tool was re-registered as its own web data stream under that one property — richChecker, scratchLottery, SquircleSimulator, pomodorotimerKR/EN, resizeIMG, space_atlas_student, and the rest listed in [Part 1](/gh-pages-analytics-notes-1-problem-en/).
 - The `hostName` query distinguished `saramjh.github.io` from local testing (`localhost`, `127.0.0.1`). But **hostName alone cannot separate tools sharing that hostname**. To report on one tool, I also need its `pagePath` and the actual `streamId` or `streamName` recorded with each event.
+
+**Clarification (2026-11-20):** Google generally recommends one web stream per property. The multi-stream arrangement above records what I configured, not a general GA4 recommendation. A single property does not automatically join users across streams; cross-domain measurement uses the same tag ID from the same web stream on each domain ([account-structure guidance](https://support.google.com/analytics/answer/9679158?hl=en); [cross-domain setup](https://support.google.com/analytics/answer/10071811?hl=en)).
 
 ### Data check on 2026-11-15
 
