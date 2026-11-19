@@ -58,11 +58,15 @@ Unknown references still trigger the conservative full-sitemap fallback, as do i
 
 ## Separate provider receipts from offline tests
 
+<div class="overflow-table" markdown="1" role="region" tabindex="0" aria-label="IndexNow original submission and offline verification evidence">
+
 | Case | URL selection | Evidence |
 |---|---|---|
 | Original live deployment | 120 URLs sent; HTTP 200 Accepted | [Actions #42760722178](https://github.com/saramjh/saramjh.github.io/actions/runs/42760722178) |
 | Offline replay of that change with the fix | One page: <code>/portfolio/</code> | [PR #39 regression tests](https://github.com/saramjh/saramjh.github.io/pull/39/files) |
 | Script-only deployment after the fix | Zero changed page URLs; Bing and IndexNow skipped | [Actions #42761734284](https://github.com/saramjh/saramjh.github.io/actions/runs/42761734284) |
+
+</div>
 
 The middle row is an **offline result**, not a second IndexNow submission. The fix passed 26 Python tests and the subsequent GitHub Pages build and deployment succeeded.
 
@@ -76,11 +80,15 @@ The changed file was `assets/js/portfolio.js`. Unlike the PNG in the first case,
 
 In [PR #194](https://github.com/saramjh/saramjh.github.io/pull/194), I extended the Git-diff resolver to check the exact script inclusion, the project and milestone layout inheritance, and each source page's permalink **in both revisions**. If a new consumer cannot be verified, the broader sitemap fallback remains. A new shared script must not be declared page-local merely because this particular edit had 11 known consumers.
 
+<div class="overflow-table" markdown="1" role="region" tabindex="0" aria-label="IndexNow JavaScript change and URL-selection evidence">
+
 | Verification | Selected URLs | What actually happened |
 |---|---:|---|
 | November 18 live deployment of PR #193 | 194 | One IndexNow batch was accepted: [Actions #44317892057](https://github.com/saramjh/saramjh.github.io/actions/runs/44317892057) |
 | Offline replay of the same Git difference with the PR #194 resolver | 11 | Only the verified portfolio layout consumers were selected in regression tests; no new request |
 | PR #194's separate source-only deployment | 0 | The notifier skipped Bing and IndexNow: [Actions #44321890015](https://github.com/saramjh/saramjh.github.io/actions/runs/44321890015) |
+
+</div>
 
 The narrow resolver passed 227 Python tests and the site's deployed build and Chrome checks. More importantly, the original deployment log confirms **no second IndexNow submission** for the code-only repair. The earlier accepted batch stays in the audit history.
 
