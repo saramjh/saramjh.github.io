@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      enable_search_engine_notifications:
+        description: "Submit changed URLs to Bing and IndexNow for this run."
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -102,6 +108,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Notify Search Engines (Bing API & IndexNow)
+        if: github.event_name == 'workflow_dispatch' && inputs.enable_search_engine_notifications == true
         run: python3 scripts/submit_search_engines.py
         env:
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
