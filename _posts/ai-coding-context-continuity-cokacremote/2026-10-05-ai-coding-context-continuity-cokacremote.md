@@ -1,5 +1,5 @@
 ---
-title: "cokacremote로 AI 코딩 에이전트 세션 컨텍스트 복구하기"
+title: "AI 코딩 에이전트의 세션 맥락 이어가기: cokacremote"
 date: 2026-10-05
 modified: 2026-11-19
 last_modified_at: 2026-11-19
@@ -9,11 +9,11 @@ layout: default
 lang: ko
 alternate_lang: en
 alternate_url: /en-ai-coding-context-continuity-cokacremote/
-description: "cokacremote의 Git 기반 프로젝트 부트스트랩과 체크포인트로 새 코딩 세션의 작업 맥락을 복구한 사례. Serena·claude-mem의 조회 역할과 실제 한계를 설명합니다."
+description: "새 코딩 세션에서 Git 상태와 프로젝트 체크포인트를 먼저 확인하고, 이전 결정은 필요할 때 조회하는 cokacremote 구성과 실제 한계를 설명합니다."
 excerpt: "cokacremote에서 새 코딩 세션의 현재 Git 상태와 체크포인트를 먼저 읽고, 과거 결정은 필요할 때 조회하도록 구성한 실제 프로젝트 컨텍스트 복구 사례입니다."
 seo:
-  title: "cokacremote: AI 코딩 세션 컨텍스트 복구 방법"
-  description: "cokacremote에서 현재 Git 상태·프로젝트 체크포인트·필요시 메모리 조회를 연결한 실제 코딩 세션 컨텍스트 복구 구조와 구현 한계."
+  title: "AI 코딩 에이전트 세션 맥락 유지 | cokacremote"
+  description: "AI 코딩 세션을 이어갈 때 Git 상태와 프로젝트 체크포인트를 확인하고 필요한 과거 결정을 조회하는 로컬 구현 사례와 한계."
   keywords:
     - AI 코딩 컨텍스트 유지
     - AI 코딩 에이전트 메모리

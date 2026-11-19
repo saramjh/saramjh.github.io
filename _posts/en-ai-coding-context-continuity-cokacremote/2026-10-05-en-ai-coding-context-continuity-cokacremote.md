@@ -1,5 +1,5 @@
 ---
-title: "cokacremote: Carry Coding-Agent Context Across Sessions"
+title: "Keep AI Coding Context Across Sessions with cokacremote"
 date: 2026-10-05
 modified: 2026-11-19
 last_modified_at: 2026-11-19
@@ -9,11 +9,11 @@ layout: default
 lang: en
 alternate_lang: ko
 alternate_url: /ai-coding-context-continuity-cokacremote/
-description: "How I use cokacremote to resume coding sessions with Git-backed project checkpoints and on-demand memory recall. A documented local implementation and its limits."
+description: "A local way to resume AI coding work: check the current Git state and project checkpoint, then retrieve earlier decisions when needed. My cokacremote setup and limits."
 excerpt: "cokacremote gives my local coding workflow a defined starting point in a new session: check Git and project checkpoints, then retrieve older decisions when necessary."
 seo:
-  title: "cokacremote: Carry Coding-Agent Context Across Sessions"
-  description: "How I use cokacremote with Git-backed context bootstrap, project checkpoints and on-demand Serena and claude-mem recall to resume AI coding sessions."
+  title: "Keep AI Coding Context Across Sessions | cokacremote"
+  description: "How I resume AI coding sessions by checking Git state and project checkpoints before recalling past decisions. A practical local setup with limits."
   keywords:
     - AI coding context continuity
     - AI coding agent persistent memory
