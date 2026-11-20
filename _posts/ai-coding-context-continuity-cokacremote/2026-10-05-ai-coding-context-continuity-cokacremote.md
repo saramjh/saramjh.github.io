@@ -1,8 +1,8 @@
 ---
 title: "AI 코딩 에이전트의 세션 맥락 이어가기: cokacremote"
 date: 2026-10-05
-modified: 2026-11-19
-last_modified_at: 2026-11-19
+modified: 2026-11-20
+last_modified_at: 2026-11-20
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI 코딩", "컨텍스트 유지", "세션 컨텍스트", "개발 에이전트", "프로젝트 메모리"]
 permalink: /ai-coding-context-continuity-cokacremote/
 layout: default
@@ -258,6 +258,29 @@ Evidence: <소스 파일>, <테스트 또는 이슈>, <원본 실행 기록>
 ~~~
 
 각 항목에는 확인한 값만 적습니다. 다음 세션에서 `git status --short`, `git rev-parse HEAD`로 메모와 현재 코드 상태가 맞는지 확인합니다. 반복되는 개발 규칙은 저장소의 지침 파일에 두고 각 도구에서 읽게 할 수 있습니다. 다만 그 지침 파일이 진행 중인 작업 상태까지 자동으로 전달해 주지는 않습니다. 공유될 수 있는 메모에는 인증 정보나 비공개 연락처를 넣지 않습니다.
+
+### Claude Code, Cursor, Codex에서 프로젝트 규칙 공유하기
+
+클라이언트를 바꿔도 유지할 팀 규칙은 Git으로 관리하는 저장소 지침 파일에 두는 편이 좋습니다. 다만 각 도구가 파일을 찾는 방식은 서로 다릅니다.
+
+- `Codex`는 저장소 루트부터 현재 작업 디렉터리까지 `AGENTS.md`를 읽습니다. 같은 위치의 `AGENTS.override.md`가 우선하며, 하위 디렉터리 파일로 영역별 규칙을 둘 수 있습니다.
+- `Cursor`는 프로젝트 루트와 하위 디렉터리의 `AGENTS.md`를 읽습니다. 파일 경로나 조건에 따라 적용하려면 `.cursor/rules/*.mdc`를 사용합니다.
+- `Claude Code`는 프로젝트의 `CLAUDE.md`를 읽습니다. 공통 규칙을 가져오려면 `CLAUDE.md`에 `@AGENTS.md`를 적고, 경로별 규칙은 `.claude/rules/*.md`에 둡니다.
+
+기본 파일 구조는 다음과 같습니다.
+
+```text
+AGENTS.md
+CLAUDE.md
+.cursor/rules/
+.claude/rules/
+```
+
+프로젝트 `CLAUDE.md`의 첫 줄에 `@AGENTS.md`를 넣고, 그 아래에는 Claude Code 전용 내용만 추가합니다. Codex와 Cursor는 `AGENTS.md`를 직접 읽고, Claude Code는 import를 통해 공통 규칙을 불러옵니다. Cursor도 루트의 `CLAUDE.md`와 `AGENTS.md`를 읽으므로 공통 규칙을 두 파일에 반복해서 적지 말고, 현재 버전에서 실제로 적용된 지침을 확인하세요. Claude Code에서는 `/context`로 로드된 파일을 확인할 수 있고, Codex에는 어떤 지침 파일을 읽었는지 목록을 요청할 수 있습니다.
+
+팀이 공유할 규칙은 저장소에 커밋해 두는 편이 안전합니다. 여러 저장소에서 쓸 개인 기본값은 도구별 사용자 설정에 둡니다. Codex는 `~/.codex/AGENTS.md`, Claude Code는 `~/.claude/CLAUDE.md`, Cursor는 Customize의 User Rules를 사용합니다. 세 설정은 서로 자동으로 공유되지 않습니다. Cursor User Rules는 계정과 함께 동기화되지만 Codex와 Claude의 홈 디렉터리 파일은 해당 환경에 저장됩니다. Claude Code의 auto memory도 로컬 머신에 저장되며 다른 컴퓨터나 클라우드 환경과 공유되지 않습니다. 진행 중인 작업 상태는 별도의 checkpoint에 기록하세요.
+
+지침 파일은 모델의 행동을 안내합니다. 반드시 지켜야 하는 검사는 CI, hook, 도구의 권한 설정으로 강제해야 합니다. 자세한 내용은 공식 [Codex AGENTS.md 안내](https://developers.openai.com/codex/guides/agents-md), [Cursor Rules 안내](https://cursor.com/docs/rules), [Claude Code 메모리 안내](https://code.claude.com/docs/en/memory)를 참고하세요.
 
 제 환경에서는 cokacremote가 이런 저장과 복구 중 일부를 자동화합니다. 연동되지 않은 다른 코딩 도구로 옮길 때도 위와 같은 메모를 직접 전달할 수 있습니다.
 

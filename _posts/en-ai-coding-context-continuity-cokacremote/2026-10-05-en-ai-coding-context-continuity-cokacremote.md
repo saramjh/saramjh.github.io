@@ -1,8 +1,8 @@
 ---
 title: "Keep AI Coding Context Across Sessions with cokacremote"
 date: 2026-10-05
-modified: 2026-11-19
-last_modified_at: 2026-11-19
+modified: 2026-11-20
+last_modified_at: 2026-11-20
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI coding", "context continuity", "coding agent memory", "project memory"]
 permalink: /en-ai-coding-context-continuity-cokacremote/
 layout: default
@@ -260,6 +260,29 @@ Evidence: <source file>, <test or issue>, <original receipt>
 ~~~
 
 I fill in each field from actual evidence. At the next session boundary, `git status --short` and `git rev-parse HEAD` help check whether the note still matches the working tree. Project conventions can live in repository instruction files, provided each coding client is configured to read them; those files do not carry the current task state by themselves. Keep credentials and private contact details out of notes that might be shared.
+
+### Share project conventions across Claude Code, Cursor, and Codex
+
+A Git-tracked instruction file is a portable place for rules that should survive a client switch. Each client discovers project instructions differently:
+
+- `Codex` reads `AGENTS.md` from the repository root through the current directory. An `AGENTS.override.md` takes precedence at the same level; nested files can hold directory-specific rules.
+- `Cursor` reads root and nested `AGENTS.md` files. Use `.cursor/rules/*.mdc` for file-scoped or conditional rules.
+- `Claude Code` reads `CLAUDE.md`. Put `@AGENTS.md` in the project `CLAUDE.md` to import shared rules, and use `.claude/rules/*.md` for path-scoped rules.
+
+Use this starting layout:
+
+```text
+AGENTS.md
+CLAUDE.md
+.cursor/rules/
+.claude/rules/
+```
+
+Put `@AGENTS.md` at the top of the project `CLAUDE.md`, then add only Claude-specific notes below it. Codex and Cursor can use `AGENTS.md` directly. Claude Code loads the shared content through the import. Cursor also reads a root `CLAUDE.md`, so keep that adapter short and check the active instructions for duplicate text. In Claude Code, run `/context` to confirm which files loaded. In Codex, ask the session to list its instruction sources.
+
+Keep stable team conventions in files committed with the repository. For personal defaults across repositories, use each client's own user-level store: `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, or Cursor's User Rules in Customize. These settings are separate; Cursor syncs its User Rules with the account, while the Codex and Claude files live in their respective home directories. Claude Code's auto memory is also local to the machine and is not shared across machines or cloud environments. Continue to record the current task state in a checkpoint.
+
+Use instruction files for behavioral guidance. Enforce mandatory checks in CI, hooks, or the tool's permission controls. See the official [Codex AGENTS.md guide](https://developers.openai.com/codex/guides/agents-md), [Cursor Rules guide](https://cursor.com/docs/rules), and [Claude Code memory guide](https://code.claude.com/docs/en/memory).
 
 My cokacremote setup automates some of this capture and reload. The plain-text note is a manual fallback when a different coding client has no connection to that lifecycle.
 
