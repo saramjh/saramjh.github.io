@@ -43,6 +43,8 @@ jobs:
         run: node --test tests/portfolio_space_atlas_outbound_runtime.cjs
       - name: Test mobile navigation keyboard and background focus
         run: node tests/mobile_navigation_focus_runtime.cjs
+      - name: Test theme toggle on first visit and restricted storage
+        run: node tests/theme-toggle-runtime.cjs
       - name: Test topic search and article-group fallback
         run: node tests/tags_topic_filter_runtime.cjs
       - name: Test archive search progressive results
