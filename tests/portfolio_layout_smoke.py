@@ -28,6 +28,7 @@ def confirmed_evidence():
 
 
 EVIDENCE = confirmed_evidence()
+FEATURED_HOME_LISTINGS = ("ncase-space-atlas-programs", "webapps-spoonie-listing")
 POST = (ROOT / '_posts' / 'folio-koreaves-resources-ko' / '2026-11-02-folio-koreaves-resources-ko.md').read_text(encoding='utf-8')
 EVIDENCE_IDS_MATCH = re.search(r'(?m)^evidence_ids: \[([^\]]+)\]$', POST)
 assert EVIDENCE_IDS_MATCH, 'Milestone article evidence list missing'
@@ -36,7 +37,7 @@ POST_EVIDENCE_IDS = {value.strip() for value in EVIDENCE_IDS_MATCH.group(1).spli
 
 def expected_evidence_count(path):
     if path == '/portfolio/':
-        return sum(item['type'] == 'publication' for item in EVIDENCE)
+        return sum(item['type'] == 'publication' or item['id'] in FEATURED_HOME_LISTINGS for item in EVIDENCE)
     if path == '/portfolio/recognition/':
         return len(EVIDENCE)
     if path == '/koreaves-external-resources-ko/':
@@ -104,11 +105,17 @@ with sync_playwright() as p:
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
             if path == '/portfolio/':
-                # The homepage emphasizes original published contributions. The archive
-                # still retains the full independently documented evidence inventory.
-                home_types = page.locator('.folio-evidence-item').evaluate_all(
-                    '(items) => items.map(item => item.dataset.evidenceType)')
-                assert home_types == ['publication'] * expected, (viewport, 'homepage evidence types', home_types)
+                # The homepage keeps all publications and highlights exactly two
+                # verified listings; all other directory records stay in the archive.
+                home_rows = page.locator('.folio-evidence-item').evaluate_all(
+                    '(items) => items.map(item => ({id:item.dataset.evidenceId,type:item.dataset.evidenceType}))')
+                publication_count = sum(item['type'] == 'publication' for item in EVIDENCE)
+                assert [item['type'] for item in home_rows] == (
+                    ['publication'] * publication_count + ['listing'] * len(FEATURED_HOME_LISTINGS)
+                ), (viewport, 'homepage evidence types', home_rows)
+                assert tuple(item['id'] for item in home_rows if item['type'] == 'listing') == (
+                    FEATURED_HOME_LISTINGS
+                ), (viewport, 'homepage source-bound listing IDs', home_rows)
                 # Synthetic selections only. Prevent real navigation and network measurement.
                 tracked = page.evaluate("""() => {
                   const cards = Array.from(document.querySelectorAll('.folio-writing-card'));

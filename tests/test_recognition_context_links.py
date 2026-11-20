@@ -553,7 +553,11 @@ class EvidenceContextLinksTest(unittest.TestCase):
         self.assertEqual(homepage.count('{% include portfolio-evidence.html type="publication" %}'), 1)
         self.assertEqual(archive.count('{% include portfolio-evidence.html type="publication" %}'), 1)
         self.assertIn('include.type and record.type != include.type', include)
-        self.assertIn('Resource listings and catalogue entries are in the full archive.', homepage)
+        self.assertIn('The full archive keeps these record types distinct.', homepage)
+        self.assertEqual(
+            homepage.count('{% include portfolio-evidence.html type="listing" ids="ncase-space-atlas-programs,webapps-spoonie-listing" %}'),
+            1,
+        )
         self.assertIn('/portfolio/recognition/', homepage)
         self.assertNotIn('{% include portfolio-evidence.html %}', archive)
         for record_id in ("eusci-space-atlas-diagrams", "one-earth-koreaves-feature",
