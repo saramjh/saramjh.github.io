@@ -101,7 +101,10 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
     createElement: element,
     createDocumentFragment: () => element('fragment')
   };
-  const secondWindow = {history};
+  const secondWindow = {
+    history, events: {},
+    addEventListener(kind, callback) { this.events[kind] = callback; }
+  };
   vm.runInNewContext(script, {document: secondDocument, window: secondWindow, fetch}, {timeout: 1000});
   await loaded();
   second['search-input'].value = 'Spoonie';
@@ -131,6 +134,26 @@ const loaded = async () => { await new Promise(resolve => setImmediate(resolve))
   third['search-input'].value = 'Article';
   third['search-input'].listeners.input();
   assert.equal(history.state.__devArchiveSearch.visibleArticles, 10);
+  // Navigating between native same-document history entries must restore
+  // the query and pagination associated with the entry being revisited.
+  history.state = {unrelated: 'keep', __devArchiveSearch: {query:'Spoonie', visibleArticles:20}};
+  assert.equal(typeof secondWindow.events.popstate, 'function',
+    'archive search must subscribe to native Back/Forward state changes');
+  secondWindow.events.popstate({state:history.state});
+  assert.equal(third['search-input'].value, 'Spoonie');
+  assert.equal(third['search-results'].children.length, 20);
+  assert.equal(third['evidence-search-results'].children.length, 2);
+  assert.equal(third['archive-browse-section'].hidden, true);
+  assert.equal(history.state.unrelated, 'keep');
+  // The preceding entry may never have been searched. It must show the
+  // dated archive instead of carrying search results from a later entry.
+  history.state = {unrelated: 'keep'};
+  secondWindow.events.popstate({state:history.state});
+  assert.equal(third['search-input'].value, '');
+  assert.equal(third['search-results'].children.length, 0);
+  assert.equal(third['archive-browse-section'].hidden, false);
+  assert.equal(third['search-more-articles'].hidden, true);
+  assert.equal(history.state.unrelated, 'keep');
   // A failed index must expose the server-rendered browse fallback.
   const fallback = Object.fromEntries(Object.keys(elements).map(id => [id, element(id)]));
   fallback['archive-browse-section'].hidden = false;
