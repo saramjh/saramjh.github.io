@@ -48,17 +48,19 @@ The primary objectives of this tool are:
 
 ## Installation and Use
 
-1. **Download**: Get the latest release from the [Program download](https://github.com/saramjh/pycounter/archive/refs/heads/main.zip).
-2. **Unzip**: Extract the downloaded file.
-3. **Run**: Execute the `pycounter` file for your operating system.
+1. **Download**: Get the [source archive](https://github.com/saramjh/pycounter/archive/refs/heads/main.zip) for the repository's `main` branch. This is a source snapshot, not a versioned release.
+2. **Unzip**: Extract the downloaded archive.
+3. **Run**: Use Python 3 with Tkinter as shown below. The `dist/` directory also contains built files, but their compatibility depends on your operating system.
 
-Alternatively, if Python is installed, you can run the source code directly:
+To run the source directly:
 
 ```bash
 git clone https://github.com/saramjh/pycounter.git
-# pip install -r requirements.txt (if necessary)
-python pycounter.py
+cd pycounter
+python3 pycounter.py
 ```
+
+The original source uses Tkinter and does not include a separate pip requirements file. Your Python installation needs Tkinter support to open the GUI.
 
 ## Conclusion
 
