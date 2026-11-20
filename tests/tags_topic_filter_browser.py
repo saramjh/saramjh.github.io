@@ -20,8 +20,10 @@ with sync_playwright() as playwright:
         tag_links = page.locator("#tag-topic-links .tag-item")
         groups = page.locator("#tag-topic-post-groups .tag-topic-group")
         assert panel.is_visible()
-        assert groups.count() == tag_links.count() - 1
-        assert groups.count() > 100
+        expected_group_count = groups.count()
+        expected_link_count = tag_links.count()
+        assert expected_group_count == expected_link_count - 1
+        assert expected_group_count > 100
         assert page.locator("#tag-topic-post-groups .tag-topic-group:visible").count() == groups.count()
 
         field.fill("__unmatched_topic_928736")
@@ -56,8 +58,8 @@ with sync_playwright() as playwright:
         fallback = static.goto(base + "/tags/", wait_until="domcontentloaded", timeout=20000)
         assert fallback.status == 200
         assert static.locator("#tag-topic-filter").is_hidden()
-        assert static.locator("#tag-topic-post-groups .tag-topic-group:visible").count() == groups.count()
-        assert static.locator("#tag-topic-links .tag-item:visible").count() == tag_links.count()
+        assert static.locator("#tag-topic-post-groups .tag-topic-group:visible").count() == expected_group_count
+        assert static.locator("#tag-topic-links .tag-item:visible").count() == expected_link_count
         no_js.close()
     browser.close()
 print("PASS topic groups match search; clear/reload/hash/no-JS and 280/375/1440 widths")
