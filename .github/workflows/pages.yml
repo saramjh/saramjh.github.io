@@ -43,7 +43,7 @@ jobs:
         run: node --test tests/portfolio_space_atlas_outbound_runtime.cjs
       - name: Test mobile navigation keyboard and background focus
         run: node tests/mobile_navigation_focus_runtime.cjs
-      - name: Test topic index search without hiding source articles
+      - name: Test topic search and article-group fallback
         run: node tests/tags_topic_filter_runtime.cjs
       - name: Test archive search progressive results
         run: node tests/archive_search_progressive_results_runtime.cjs
@@ -79,6 +79,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python tests/portfolio_layout_smoke.py
           python tests/archive_search_browser.py
+          python tests/tags_topic_filter_browser.py
           python tests/epson_official_support_browser.py
           python tests/logitech_patch_browser.py
           python tests/indexnow_mobile_tables_browser.py

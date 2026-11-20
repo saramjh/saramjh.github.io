@@ -7,7 +7,8 @@
   const links = [...document.querySelectorAll("#tag-topic-links .tag-item")];
   const all = links.find((link) => link.getAttribute("href") === "#");
   const topics = links.filter((link) => link !== all);
-  if (!topics.length) return;
+  const groups = [...document.querySelectorAll("#tag-topic-post-groups .tag-topic-group")];
+  if (!topics.length || topics.length !== groups.length) return;
 
   const normalize = (value) => String(value).normalize("NFKC").toLocaleLowerCase().trim();
   const names = topics.map((link) => normalize(link.textContent));
@@ -59,6 +60,7 @@
     topics.forEach((link, i) => {
       const matches = !query || names[i].includes(query);
       link.hidden = !matches;
+      groups[i].hidden = !matches;
       if (matches) count++;
     });
     if (all) all.hidden = Boolean(query);

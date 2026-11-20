@@ -14,6 +14,8 @@ assert.match(template, /id="tag-topic-filter"/);
 assert.match(template, /id="tag-topic-query"/);
 assert.match(template, /id="tag-topic-status"/);
 assert.match(template, /id="tag-topic-links"/);
+assert.match(template, /id="tag-topic-post-groups"/);
+assert.match(template, /class="tag-topic-group"/);
 assert.match(template, /tags-topic-filter\.js/);
 assert.match(template, /<h2 id=/, 'original tag deep links are retained');
 assert.match(template, /site\.tags\[name\]/, 'original grouped article list remains');
@@ -38,6 +40,7 @@ function setup({state = null, rejectHistory = false} = {}) {
     makeAnchor('한국어 학습','#한국어-학습'),
     makeAnchor('Data engineering','#Data-engineering')
   ];
+  const groups = anchors.slice(1).map(anchor => ({hidden:false, tagName:anchor.textContent}));
   const topicLinks={listeners:{},contains(x){return anchors.includes(x);},
     addEventListener(name,fn){this.listeners[name]=fn;}};
   const doc = {
@@ -46,8 +49,9 @@ function setup({state = null, rejectHistory = false} = {}) {
               'tag-topic-links':topicLinks}[id] || null;
     },
     querySelectorAll(selector) {
-      assert.equal(selector,'#tag-topic-links .tag-item');
-      return anchors;
+      if (selector === '#tag-topic-links .tag-item') return anchors;
+      if (selector === '#tag-topic-post-groups .tag-topic-group') return groups;
+      assert.fail('Unexpected selector: ' + selector);
     }
   };
   const history = {
@@ -69,7 +73,8 @@ function setup({state = null, rejectHistory = false} = {}) {
     input.callbacks.input();
   };
   const visible = () => anchors.filter(x=>!x.hidden).map(x=>x.textContent);
-  return {panel,input,status,anchors,type,visible,events,history,window,topicLinks,
+  const visibleGroups = () => groups.filter(x=>!x.hidden).map(x=>x.tagName);
+  return {panel,input,status,anchors,groups,type,visible,visibleGroups,events,history,window,topicLinks,
           reload:()=>setup({state:history.state})};
 }
 
@@ -80,6 +85,7 @@ assert.deepEqual(ui.visible(),['all','KoreAves','Spoonie','한국어 학습','Da
 ui.type('KOREAVES');
 assert.deepEqual(ui.visible(),['KoreAves']);
 assert.equal(ui.status.textContent,'1 of 4 topics');
+assert.deepEqual(ui.visibleGroups(), ['KoreAves']);
 ui.type('한 국 어');
 assert.deepEqual(ui.visible(),[]);
 ui.type('한국어');
@@ -88,10 +94,12 @@ ui.type('  DAta   ');
 assert.deepEqual(ui.visible(),['Data engineering']);
 ui.type('___no_existing_topic___');
 assert.deepEqual(ui.visible(),[]);
+assert.deepEqual(ui.visibleGroups(),[], 'No-match query must hide every grouped article section');
 assert.equal(ui.status.textContent,'0 of 4 topics');
 ui.type('');
 assert.deepEqual(ui.visible(),['all','KoreAves','Spoonie','한국어 학습','Data engineering']);
 assert.equal(ui.status.textContent,'4 topics');
+assert.equal(ui.visibleGroups().length,4,'Clearing the query restores all groups');
 console.log('PASS topic filter progressive disclosure, source anchors, case/KO match, zero result, clear restore');
 
 // Original user intent survives a real document reload in the same history entry.
