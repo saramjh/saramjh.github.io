@@ -33,9 +33,10 @@
         typeof saved.visibleArticles !== 'number' ||
         !Number.isInteger(saved.visibleArticles) ||
         saved.visibleArticles < MAX_ARTICLES || saved.visibleArticles > 10000 ||
-        saved.visibleArticles % MAX_ARTICLES !== 0) return;
+        saved.visibleArticles % MAX_ARTICLES !== 0) return false;
     input.value = saved.query;
     visibleArticles = saved.visibleArticles;
+    return true;
   }
   function rememberEntrySearch() {
     const history = currentHistory();
@@ -138,6 +139,16 @@
     rememberEntrySearch();
     render();
   });
+  if (typeof window === 'object' && window &&
+      typeof window.addEventListener === 'function') {
+    window.addEventListener('popstate', function () {
+      if (!restoreEntrySearch()) {
+        input.value = '';
+        visibleArticles = MAX_ARTICLES;
+      }
+      render();
+    });
+  }
   // Hide the unfiltered archive immediately for a restored search entry.
   render();
   fetch('/assets/search.json', { credentials: 'same-origin' })

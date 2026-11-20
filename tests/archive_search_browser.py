@@ -45,6 +45,32 @@ with sync_playwright() as p:
         )
         assert field.input_value() == "Spoonie", ("history query lost", width)
         assert browse.is_hidden(), ("restored query exposed full archive", width)
+        # Native same-document Back/Forward changes the active history entry
+        # without reloading this page or re-running its initial search setup.
+        page.evaluate("() => history.pushState({unrelated:'keep'}, '', '#native-query')")
+        field.fill("KoreAves")
+        page.wait_for_function(
+            "() => document.querySelector('#search-result-status').textContent.includes('Articles:')"
+        )
+        page.go_back()
+        page.wait_for_function(
+            "() => document.querySelector('#search-input').value === 'Spoonie'"
+        )
+        assert browse.is_hidden(), ("Back lost the archived query", width)
+        page.go_forward()
+        page.wait_for_function(
+            "() => document.querySelector('#search-input').value === 'KoreAves'"
+        )
+        page.evaluate("() => history.pushState({unrelated:'keep'}, '', '#fresh-browse')")
+        page.go_back()
+        page.wait_for_function(
+            "() => document.querySelector('#search-input').value === 'KoreAves'"
+        )
+        page.go_forward()
+        page.wait_for_function(
+            "() => document.querySelector('#search-input').value === ''"
+        )
+        assert browse.is_visible(), ("fresh history entry inherited stale search", width)
         assert not errors, (width, errors)
         page.close()
 
