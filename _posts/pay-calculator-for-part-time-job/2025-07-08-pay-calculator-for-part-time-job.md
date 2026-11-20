@@ -119,7 +119,7 @@ React와 Supabase를 기반으로 빠르게 프로토타입을 구현했으며, 
 1.  **저장소 클론:**
 
     ```bash
-    git clone https://github.com/your-username/szwagecalc.git
+    git clone https://github.com/saramjh/szwagecalc.git
     cd szwagecalc
     ```
 
@@ -156,10 +156,10 @@ npm run build
 
 ### 4. 배포
 
-`npm run deploy` 스크립트를 실행하여 GitHub Pages에 배포할 수 있습니다.
+원본 저장소의 `package.json`에는 `deploy:manual` 스크립트가 정의되어 있습니다. GitHub Pages 배포에는 해당 저장소의 배포 권한과 설정이 필요합니다.
 
 ```bash
-npm run deploy
+npm run deploy:manual
 ```
 
 ### 5. 데이터베이스 스키마 (Supabase)
