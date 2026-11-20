@@ -487,7 +487,8 @@
   }
   p { margin: 0; font-size: 0.85rem; opacity: 0.8; }
 }
-.archive-tags .tag-item[hidden] { display: none; }
+.archive-tags .tag-item[hidden],
+#tag-topic-post-groups .tag-topic-group[hidden] { display: none; }
 
 .archive-tags {
   display: flex;
