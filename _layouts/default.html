@@ -16,11 +16,13 @@ layout: compress
       } else if (state === "light") {
         body.removeAttribute("data-theme");
       } else {
-        localStorage.setItem("theme", data);
+        try { localStorage.setItem("theme", data); } catch (_) {}
       }
     };
 
-    initTheme(localStorage.getItem("theme"));
+    let storedTheme = null;
+    try { storedTheme = localStorage.getItem("theme"); } catch (_) {}
+    initTheme(storedTheme);
 
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>

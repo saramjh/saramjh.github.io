@@ -3,21 +3,18 @@
   const body = document.body;
   const lamp = document.getElementById("mode");
 
-  const toggleTheme = (state) => {
-    if (state === "dark") {
-      localStorage.setItem("theme", "light");
-      body.removeAttribute("data-theme");
-    } else if (state === "light") {
-      localStorage.setItem("theme", "dark");
-      body.setAttribute("data-theme", "dark");
-    } else {
-      initTheme(state);
+  const toggleTheme = () => {
+    const wasDark = body.getAttribute("data-theme") === "dark";
+    if (wasDark) body.removeAttribute("data-theme");
+    else body.setAttribute("data-theme", "dark");
+    try {
+      localStorage.setItem("theme", wasDark ? "light" : "dark");
+    } catch (_) {
+      // The on-page switch still works when browser storage is restricted.
     }
   };
 
-  lamp.addEventListener("click", () =>
-    toggleTheme(localStorage.getItem("theme"))
-  );
+  if (lamp) lamp.addEventListener("click", toggleTheme);
 
   // Keep keyboard focus inside the full-screen mobile menu.
   const cbox = document.getElementById("menu-trigger");
