@@ -24,6 +24,8 @@ EXPECTED = {
     "/koreaves-published-contributions-en/": ROOT / "_posts/folio-koreaves-publications-en/2026-11-02-folio-koreaves-publications-en.md",
     "/spoonie-pwa-search-state-recovery-en/": ROOT / "_posts/spoonie-pwa-search-state-recovery-en/2026-11-16-spoonie-pwa-search-state-recovery-en.md",
     "/spoonie-pwa-search-state-recovery-ko/": ROOT / "_posts/spoonie-pwa-search-state-recovery-ko/2026-11-16-spoonie-pwa-search-state-recovery-ko.md",
+    "/spoonie-rsc-prefetch-20261119-en/": ROOT / "_posts/spoonie-rsc-prefetch-20261119-en/2026-11-19-spoonie-rsc-prefetch-20261119-en.md",
+    "/spoonie-rsc-prefetch-20261119-ko/": ROOT / "_posts/spoonie-rsc-prefetch-20261119-ko/2026-11-19-spoonie-rsc-prefetch-20261119-ko.md",
 }
 
 
@@ -48,6 +50,8 @@ class LLMsPortfolioEvidenceIndexTest(unittest.TestCase):
         self.assertIn("A public programs-directory entry", SECTION)
         self.assertIn("An author-contributed teaching resource", SECTION)
         self.assertNotRegex(SECTION.lower(), r"university endorsed|measured adoption|guaranteed traffic")
+        self.assertIn("Monthly Functions savings were not measured.", SECTION)
+        self.assertIn("월간 Functions 절감 효과는 확인되지 않았다.", SECTION)
         self.assertIn("## Hardware & macOS Troubleshooting Guides", LLMS)
         self.assertIn("## Web Utilities & Interactive Tools", LLMS)
 
