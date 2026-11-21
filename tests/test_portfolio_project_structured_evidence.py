@@ -19,6 +19,23 @@ class ProjectStructuredEvidenceTest(unittest.TestCase):
         self.assertNotIn('"review"', schema)
         self.assertNotIn('"offers"', schema)
 
+    def test_spoonie_portfolio_connects_verified_newer_cases_bilingually(self):
+        source = (ROOT / '_projects' / 'spoonie.md').read_text(encoding='utf8')
+        for slug, lang in (
+            ('spoonie-rsc-prefetch-20261119-en', 'en'),
+            ('spoonie-rsc-prefetch-20261119-ko', 'ko'),
+        ):
+            self.assertIn(f'/{slug}/', source)
+            posts = list((ROOT / '_posts' / slug).glob('*.md'))
+            self.assertEqual(len(posts), 1)
+            article = posts[0].read_text(encoding='utf8')
+            self.assertIn(f'permalink: /{slug}/', article)
+            self.assertIn(f'lang: {lang}', article)
+            self.assertIn('published: true', article)
+        for pr_number in (48, 49, 50):
+            self.assertIn(f'https://github.com/saramjh/spoonie/pull/{pr_number}', source)
+        self.assertIn('monthly Functions savings and reader retention have not been measured', source)
+
     def test_original_project_name_and_destination_are_source_bound(self):
         for slug, url, name in (
             ('koreaves', 'https://koreaves.com/', 'KoreAves'),

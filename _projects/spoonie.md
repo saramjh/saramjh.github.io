@@ -1,7 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
-last_modified_at: 2026-11-17T21:31:15+09:00
+last_modified_at: 2026-11-21
 title: "Spoonie | Project case study"
 description: "A cooking-oriented web product exploring useful recipe discovery, personal recipe records, and community participation."
 slug: spoonie
@@ -33,6 +33,8 @@ Spoonie combines recipe discovery, recipe books, and community-oriented cooking 
 ## Recent product work
 
 On November 16, 2026, I fixed Spoonie's search-state restoration and Home Screen update checks. Search queries and selected tabs now persist in the URL when a reader opens a recipe and returns with Back. Results show the loaded count as soon as the first page arrives, then use N+ while more pages remain. Installed Home Screen apps check for service-worker updates after registration, when the browser comes online, on `pageshow` and when the app returns to the foreground; checks are limited to once per minute. Read the [Korean case study](/spoonie-pwa-search-state-recovery-ko/) or the [English case study](/spoonie-pwa-search-state-recovery-en/) for the implementation and browser tests. The regressions passed in remote Chromium; no physical iPhone verification or usage-impact measurement was recorded.
+
+A separate [English implementation record](/spoonie-rsc-prefetch-20261119-en/) and [Korean record](/spoonie-rsc-prefetch-20261119-ko/) document three more merged changes. [PR #48](https://github.com/saramjh/spoonie/pull/48) moved recipe prefetch to hover or keyboard focus; [PR #49](https://github.com/saramjh/spoonie/pull/49) stopped touch scrolling from triggering prefetch; and [PR #50](https://github.com/saramjh/spoonie/pull/50) retired two legacy Netlify schedules. The source and browser checks establish the implementation, but monthly Functions savings and reader retention have not been measured.
 
 ## An outside directory listing
 

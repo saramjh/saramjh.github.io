@@ -71,9 +71,11 @@ class SpoonieRscPrefetchCaseTest(unittest.TestCase):
                 self.assertIn("44255793226", source)
                 self.assertIn("44338009228", source)
 
-    def test_project_page_reference_remains_unchanged_and_case_links_back(self):
+    def test_project_page_now_links_case_and_preserves_other_references(self):
         project = (ROOT / "_projects/spoonie.md").read_text(encoding="utf-8")
-        self.assertIn("last_modified_at: 2026-11-17T21:31:15+09:00", project)
+        self.assertIn("last_modified_at: 2026-11-21", project)
+        self.assertIn("/spoonie-rsc-prefetch-20261119-en/", project)
+        self.assertIn("/spoonie-rsc-prefetch-20261119-ko/", project)
         self.assertIn("writing_url: /spoonie-bookmark-privacy-boundary-en/", project)
         for lang, path in POSTS.items():
             with self.subTest(lang=lang):
