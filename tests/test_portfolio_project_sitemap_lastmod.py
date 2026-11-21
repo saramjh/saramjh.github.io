@@ -6,13 +6,13 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# Last substantive _projects/* source commits on the unmodified C889 base.
+# Dates of the last verified _projects/* source changes (not deployment times).
 SOURCE_LASTMOD = {
     "ai-agent-systems": "2026-11-19T00:31:29+09:00",
     "koreaves": "2026-11-17T21:18:41+09:00",
     "sigub": "2026-11-02T16:29:10+09:00",
     "space-atlas": "2026-11-17T22:14:23+09:00",
-    "spoonie": "2026-11-17T21:31:15+09:00",
+    "spoonie": "2026-11-21",
 }
 
 
