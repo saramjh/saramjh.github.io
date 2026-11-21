@@ -2,6 +2,8 @@
 title: "Running Several GitHub Pages Sites Solo: An Analytics Dilemma (Part 3 — The Decision)"
 description: "In September 2026 I merged separate per-project GA4 properties into one. What actually changed, why I stopped short of changing more, and what I'm still not confident about."
 date: 2026-09-18
+modified: 2026-11-21
+last_modified_at: 2026-11-21
 tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-3-decision-en/
 layout: default
@@ -35,6 +37,8 @@ I queried my original GA4 property for November 1–15, grouped by `date`, `page
 The query returned no rows for the `/scratchLottery/` path or streams whose names contain `scratch` in that period. Missing event rows **does not establish zero actual use**. I cannot infer from these reports alone whether collection, consent, browser blocking, routing or processing accounts for the gap.
 
 My September stream-registration work is still part of the project's history. It does not establish that each tool's events currently reach the intended stream. To measure tool usage properly, I now check `pagePath`, `streamId` and `eventName` together. The definitions are in the [Google Analytics Data API dimensions reference](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema).
+
+**ScratchLottery routing correction (2026-11-21).** The September consolidation described above was a decision at the time, not the final setup for every project. On October 11, a [later ScratchLottery source change](https://github.com/saramjh/scratchLottery/commit/fbbeb0b1e5b3fc7c439d4a219fd0cb4016339121) deliberately restored its dedicated GA4 tag, `G-ERNG0LEKY9`, and updated the code's regression check. I verified that same tag in the public `/scratchLottery/` HTML and in its original GA4 web stream on November 21. The blog still uses a different stream, `G-4DYFKSNFBG`. For November 13–20, the ScratchLottery property returned 554 `scratch_completed` and 660 `run_fast_simulation` events; the blog property returned no rows for those events on `/scratchLottery/`. So the earlier empty blog-property report does not describe the product's actual event collection. These counts are repeated actions, not verified distinct people or product adoption.
 
 **Search Console account readback (2026-11-20).** My September notes claimed a verified Domain property, but the original account now reports `https://saramjh.github.io/` as `siteOwner` and `sc-domain:saramjh.github.io` as `siteUnverifiedUser`. Current URL-prefix ownership is confirmed; Domain ownership remains unverified in this account. A Domain property needs DNS verification, while the root HTTPS URL-prefix covers the blog's project paths. The September Domain-property claim remains unverified by a historical receipt, and project sitemap submissions cannot establish that older ownership method ([property coverage](https://support.google.com/webmasters/answer/34592?hl=en); [ownership methods](https://support.google.com/webmasters/answer/9008080?hl=en)).
 
