@@ -2,6 +2,8 @@
 title: "혼자 여러 GitHub Pages를 굴리다 보니 생긴 애널리틱스 고민 (3) — 결정과 적용"
 description: "2026년 9월, 프로젝트마다 나눠뒀던 GA4 속성을 하나로 병합했습니다. 무엇을 바꿨고, 왜 이 정도까지만 바꿨는지, 그리고 여전히 자신 없는 부분은 무엇인지 기록합니다."
 date: 2026-09-18
+modified: 2026-11-21
+last_modified_at: 2026-11-21
 tags: ["GA4", "Google Analytics", "Search Console", "Microsoft Clarity", "GitHub Pages", "SEO"]
 permalink: /gh-pages-analytics-notes-3-decision-kr/
 layout: default
@@ -35,6 +37,8 @@ alternate_url: /gh-pages-analytics-notes-3-decision-en/
 같은 기간 `/scratchLottery/` 경로 및 이름에 `scratch`가 포함된 스트림을 조회했을 때는 행이 반환되지 않았습니다. **측정된 행이 없다는 것은 실제 사용자가 없었다는 의미는 아닙니다.** 측정 코드, 동의 상태, 브라우저 차단, 전송 스트림과 데이터 처리 범위가 원인인지 현재 자료만으로 구별할 수 없습니다.
 
 따라서 9월의 스트림 등록은 당시의 설정 작업 기록으로 남기되, 모든 도구의 이벤트가 각각의 스트림으로 올바르게 전달된다고 단정하지 않겠습니다. 실제 제품별 계측 여부는 `pagePath`·`streamId`·`eventName`을 함께 확인해야 합니다. 필드 정의는 [Google Analytics Data API 공식 측정기준 문서](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema)에 있습니다.
+
+**2026-11-21 ScratchLottery 계측 경로 정정.** 위의 9월 통합은 당시의 결정이지, 모든 프로젝트의 현재 설정은 아닙니다. 10월 11일 [ScratchLottery 원본 커밋](https://github.com/saramjh/scratchLottery/commit/fbbeb0b1e5b3fc7c439d4a219fd0cb4016339121)은 전용 GA4 태그 `G-ERNG0LEKY9`로 명시적으로 되돌리고 회귀 테스트도 바꿨습니다. 11월 21일 공개 `/scratchLottery/` HTML과 원본 GA4 웹 스트림에서도 같은 태그를 확인했습니다. 블로그는 별도 스트림 `G-4DYFKSNFBG`를 사용합니다. 11월 13~20일 ScratchLottery 전용 속성에는 `scratch_completed` 554건과 `run_fast_simulation` 660건이 기록됐지만, 같은 기간 블로그 속성의 해당 경로에서는 두 이벤트의 행이 반환되지 않았습니다. 따라서 위에서 블로그 속성으로 조회한 빈 결과를 제품 전체의 미계측으로 해석해서는 안 됩니다. 이벤트 수는 서로 다른 실제 사람의 수나 제품 채택 실적이 아닙니다.
 
 **2026-11-20 Search Console 원본 계정 조회.** 9월 글에는 검증된 도메인 속성 하나로 통합했다고 적었지만, 현재 원본 계정에서 `https://saramjh.github.io/`은 `siteOwner`, `sc-domain:saramjh.github.io`은 `siteUnverifiedUser`입니다. 현재는 사이트 루트 **URL 접두사 속성(URL-prefix property)** 소유권이 확인되고 도메인 속성 소유권은 확인되지 않습니다. 도메인 속성에는 DNS 검증이 필요하며, 루트 HTTPS URL 접두사는 같은 호스트의 프로젝트 경로를 포함합니다. 9월 당시 실제 검증 절차와 속성 유형은 과거 영수증이 없어 **확실하지 않습니다**. 당시 사이트맵 제출 이력만으로도 판단할 수 없습니다 ([Google 속성 범위](https://support.google.com/webmasters/answer/34592?hl=en); [소유권 확인 방법](https://support.google.com/webmasters/answer/9008080?hl=en)).
 
