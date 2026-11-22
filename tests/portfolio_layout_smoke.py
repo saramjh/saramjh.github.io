@@ -624,7 +624,7 @@ with sync_playwright() as p:
             assert toggle.is_checked()
             assert toggle.get_attribute('aria-expanded') == 'true'
             assert page.locator('#primary-navigation').is_visible()
-            regions = 'body > .wrapper, body > .folio, body > .folio-footer'
+            regions = 'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link'
             assert page.evaluate(
                 'sel => {const areas=[...document.querySelectorAll(sel)];return areas.length>0&&areas.every(node=>node.inert)}',
                 regions), (viewport,route,'background still focusable')
@@ -648,7 +648,7 @@ with sync_playwright() as p:
             page.wait_for_function('''() => {
                 const toggle = document.querySelector('#menu-trigger');
                 const areas = document.querySelectorAll(
-                    'body > .wrapper, body > .folio, body > .folio-footer');
+                    'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link');
                 return !window.matchMedia('(max-width: 768px)').matches &&
                     !toggle.checked && toggle.getAttribute('aria-expanded') === 'false' &&
                     [...areas].every(node => !node.inert);

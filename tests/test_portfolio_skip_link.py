@@ -27,6 +27,12 @@ class PortfolioSkipLinkTest(unittest.TestCase):
         self.assertIn("top:12px", focus)
         self.assertIn("outline:3px", focus)
 
+    def test_mobile_overlay_inerts_bypass_link_with_other_backgrounds(self):
+        nav = (ROOT / "assets/js/main.js").read_text(encoding="utf8")
+        self.assertIn("body > .folio-skip-link", nav)
+        browser = (ROOT / "tests/portfolio_layout_smoke.py").read_text(encoding="utf8")
+        self.assertIn("body > .folio-skip-link", browser)
+
     def test_visible_link_inherits_existing_high_contrast_portfolio_tokens(self):
         rule = CSS.split(".portfolio-body .folio-skip-link{", 1)[1].split("}", 1)[0]
         self.assertIn("background:var(--folio-accent)", rule)

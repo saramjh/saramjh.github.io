@@ -21,7 +21,7 @@
 
   if (cbox) {
     const backgrounds = document.querySelectorAll(
-      "body > .wrapper, body > .folio, body > .folio-footer"
+      "body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link"
     );
     const mobile = window.matchMedia("(max-width: 768px)");
     const syncMenu = () => {
