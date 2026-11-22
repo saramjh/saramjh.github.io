@@ -3,6 +3,12 @@
   const body = document.body;
   const lamp = document.getElementById("mode");
 
+  const syncThemeState = () => {
+    if (lamp) {
+      lamp.setAttribute("aria-pressed", String(body.getAttribute("data-theme") === "dark"));
+    }
+  };
+
   const toggleTheme = () => {
     const wasDark = body.getAttribute("data-theme") === "dark";
     if (wasDark) body.removeAttribute("data-theme");
@@ -12,9 +18,13 @@
     } catch (_) {
       // The on-page switch still works when browser storage is restricted.
     }
+    syncThemeState();
   };
 
-  if (lamp) lamp.addEventListener("click", toggleTheme);
+  if (lamp) {
+    syncThemeState();
+    lamp.addEventListener("click", toggleTheme);
+  }
 
   // Keep keyboard focus inside the full-screen mobile menu.
   const cbox = document.getElementById("menu-trigger");

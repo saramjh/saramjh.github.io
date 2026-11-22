@@ -35,7 +35,12 @@ function exercise(layout, storedPreference, storageBlocked = false) {
       written.push(value);
     },
   };
-  const lamp = { addEventListener: (event, callback) => { handlers[event] = callback; } };
+  const buttonAttrs = new Map();
+  const lamp = {
+    addEventListener: (event, callback) => { handlers[event] = callback; },
+    setAttribute: (name, value) => buttonAttrs.set(name, value),
+    getAttribute: name => buttonAttrs.get(name),
+  };
   const context = vm.createContext({
     document: {
       body,
@@ -53,10 +58,13 @@ function exercise(layout, storedPreference, storageBlocked = false) {
 
   const initialDark = body.getAttribute('data-theme') === 'dark';
   assert.equal(initialDark, storedPreference !== 'light', layout + ': initial preference');
+  assert.equal(lamp.getAttribute('aria-pressed'), String(initialDark), layout + ': initial accessibility state');
   assert.doesNotThrow(() => handlers.click(), layout + ': first click');
   assert.equal(body.getAttribute('data-theme') === 'dark', !initialDark, layout + ': first toggle');
+  assert.equal(lamp.getAttribute('aria-pressed'), String(!initialDark), layout + ': first accessibility toggle');
   assert.doesNotThrow(() => handlers.click(), layout + ': second click');
   assert.equal(body.getAttribute('data-theme') === 'dark', initialDark, layout + ': second toggle');
+  assert.equal(lamp.getAttribute('aria-pressed'), String(initialDark), layout + ': second accessibility toggle');
   if (!storageBlocked) {
     assert.equal(written.at(-1), initialDark ? 'dark' : 'light');
   }
@@ -67,4 +75,6 @@ for (const layout of layouts) {
   exercise(layout, 'light', false);
   exercise(layout, null, true);
 }
-console.log('PASS: 5 layouts × 3 storage states × 2 theme clicks');
+const navbar = fs.readFileSync(path.join(root, '_includes/navbar.html'), 'utf8');
+assert.match(navbar, /id="mode" aria-label="\{% if page\.lang == 'ko' %\}다크 모드\{% else %\}Dark mode\{% endif %\}" aria-pressed="\{% if site\.mode == 'dark' %\}true\{% else %\}false\{% endif %\}"/);
+console.log('PASS: 5 layouts × 3 storage states × 2 theme clicks with accessible state');

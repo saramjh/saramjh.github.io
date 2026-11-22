@@ -22,7 +22,11 @@ function makeUI(isMobile = true, layout = 'default') {
     setAttribute(name, value) {this.attrs[name] = String(value);},
     focus() {this.focusCount++;}
   };
-  const lamp = {listeners:{}, addEventListener(name, cb) {this.listeners[name] = cb;}};
+  const lamp = {
+    attrs: {}, listeners: {},
+    addEventListener(name, cb) {this.listeners[name] = cb;},
+    setAttribute(name, value) {this.attrs[name] = String(value);}
+  };
   function region(name) {
     return {
       name, inert: false,
@@ -65,10 +69,11 @@ function makeUI(isMobile = true, layout = 'default') {
   };
   const localStorage = {getItem() {return 'dark';}, setItem() {}};
   vm.runInNewContext(script, {document, window, localStorage, setTimeout() {}}, {timeout:1000});
-  return {input,wrapper,siteSkip,backgrounds,classes,media,listeners};
+  return {input,wrapper,siteSkip,backgrounds,classes,media,listeners,lamp};
 }
 
 const mobile = makeUI();
+assert.equal(mobile.lamp.attrs['aria-pressed'], 'true', 'menu scripts preserve initial dark-mode accessible state');
 mobile.input.checked = true;
 mobile.input.listeners.change.call(mobile.input);
 assert.equal(mobile.classes.has('blurry'), true, 'existing visual blur preserved');
