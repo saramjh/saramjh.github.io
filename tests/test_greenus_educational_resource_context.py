@@ -30,16 +30,16 @@ class GreenusResourceContext(unittest.TestCase):
                 self.assertIn("greenus-koreaves-community-tool", t)
                 self.assertIn(SRC, t)
                 self.assertIn("https://koreaves.com/gis/", t)
-                self.assertIn("modified: 2026-11-19", t)
-                self.assertIn("last_modified_at: 2026-11-19", t)
+                self.assertIn("modified: 2026-11-22", t)
+                self.assertIn("last_modified_at: 2026-11-22", t)
                 self.assertNotIn("https://koreaves.com/explorer/", t)
                 self.assertNotIn("\ufffd", t)
                 self.assertNotIn("????", t)
 
-    def test_nine_listing_count_and_existing_pairs_remain(self):
+    def test_ten_listing_count_and_existing_pairs_remain(self):
         ko, en = (POSTS[l].read_text("utf-8") for l in ("ko", "en"))
-        self.assertIn("아홉 가지", ko)
-        self.assertIn("Nine public", en)
+        self.assertIn("열 가지", ko)
+        self.assertIn("Ten public", en)
         self.assertIn("alternate_url: /koreaves-external-resources-en/", ko)
         self.assertIn("alternate_url: /koreaves-external-resources-ko/", en)
         self.assertIn("GBIF Literature", ko)
