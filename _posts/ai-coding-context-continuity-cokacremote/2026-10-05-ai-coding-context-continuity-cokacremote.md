@@ -1,8 +1,8 @@
 ---
 title: "AI 코딩 에이전트의 세션 맥락 이어가기: cokacremote"
 date: 2026-10-05
-modified: 2026-11-20
-last_modified_at: 2026-11-20
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI 코딩", "컨텍스트 유지", "세션 컨텍스트", "개발 에이전트", "프로젝트 메모리"]
 permalink: /ai-coding-context-continuity-cokacremote/
 layout: default
@@ -41,6 +41,8 @@ image_height: 630
 </p>
 
 MCP 도구 자체는 [cokacremote GitHub 저장소](https://github.com/kstost/cokacremote)에서 확인할 수 있습니다. 아래에서는 제 로컬 코딩 작업에서 사용한 프로젝트 컨텍스트 복구 흐름을 설명합니다.
+
+**공개 버전과 제 로컬 확장은 다릅니다.** 2026년 11월 23일 확인한 공개 `kstost/cokacremote`는 원격 명령·파일 작업을 위한 MCP 서버입니다. 이 글에서 소개하는 `project_context_bootstrap`, `project_context_checkpoint`, `project_context_recall`은 제가 로컬에서 덧붙인 프로젝트 맥락 관리 기능으로, 공개 저장소를 그대로 설치해도 제공되지 않습니다. 동일한 확장이 없다면 아래의 [수동 인계 메모](#다음-코딩-에이전트를-위한-인계-메모)처럼 Git 상태와 결정을 직접 기록하고 다음 세션에서 확인해야 합니다.
 
 `AI 코딩 에이전트 메모리`, `세션 컨텍스트 유지`, `persistent memory`, `context engineering`을 검색할 때 먼저 구분해야 할 것은 세 가지입니다.
 
