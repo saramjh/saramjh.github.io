@@ -34,17 +34,17 @@ class WliMigratoryResourceEvidenceTest(unittest.TestCase):
             text = page.read_text(encoding="utf8")
             self.assertEqual(text.count(URL), 1, lang)
             self.assertIn(ID, text)
-            self.assertIn("modified: 2026-11-19", text)
-            self.assertIn("last_modified_at: 2026-11-19", text)
+            self.assertIn("modified: 2026-11-22", text)
+            self.assertIn("last_modified_at: 2026-11-22", text)
             self.assertNotIn("\ufffd", text)
             self.assertNotIn("????", text)
             self.assertIn("https://koreaves.com/", text)
 
-    def test_nine_distinct_listings_preserve_the_older_ones(self):
+    def test_ten_distinct_listings_preserve_the_older_ones(self):
         ko = POSTS["ko"].read_text(encoding="utf8")
         en = POSTS["en"].read_text(encoding="utf8")
-        self.assertIn("외부에서 확인되는 아홉 가지 연결", ko)
-        self.assertIn("Nine public source pages", en)
+        self.assertIn("외부에서 확인되는 열 가지 연결", ko)
+        self.assertIn("Ten public source pages", en)
         self.assertIn("WLI 회원 자격이나 기관의 공식 제휴", ko)
         self.assertIn("not WLI membership, a partnership", en)
         for record_id in (

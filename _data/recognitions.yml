@@ -55,6 +55,16 @@
   case_ko: "/koreaves-external-resources-ko/"
   case_en: "/koreaves-external-resources-en/"
   url: "https://github.com/kartoza/awesome-geodata/blob/main/README.md#kr"
+- id: fatbirder-koreaves-republic-of-korea
+  project: koreaves
+  type: listing
+  status: confirmed
+  source: "Fat Birder"
+  title: "Republic of Korea — birding organisations"
+  detail: "Fat Birder’s Republic of Korea birding guide lists and links KoreAves under Organisations. An independent resource link, not a partnership, endorsement or verified user adoption."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
+  url: "https://fatbirder.com/world-birding/asia/republic-of-korea/"
 - id: nav-ai-koreaves-directory
   project: koreaves
   type: listing
