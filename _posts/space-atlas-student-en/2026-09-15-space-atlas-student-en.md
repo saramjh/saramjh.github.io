@@ -2,6 +2,8 @@
 title: "Space Atlas: 3D Interactive Astronomy Reference for Students"
 description: "An open-source interactive astronomy reference covering 27 topics from a 3D solar system to Newton's cannonball orbital simulation, Moon phases, eclipses, and black holes."
 date: 2026-09-15
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 permalink: /space-atlas-student-en/
 layout: default
 lang: en
@@ -28,7 +30,7 @@ When students learn astronomy, the two biggest hurdles are the **unimaginable ph
 
 [Launch Space Atlas](https://spaceatlasedu.org/)
 
-### Try the interactive astronomy tools directly
+## Try the interactive astronomy tools directly
 
 * [Moon Phase Simulator — interactive Sun-Earth-Moon model](https://spaceatlasedu.org/moon/phases/)
 * [Seasons Simulator — compare Earth's 23.5° tilt with 0° tilt](https://spaceatlasedu.org/earth/seasons/)

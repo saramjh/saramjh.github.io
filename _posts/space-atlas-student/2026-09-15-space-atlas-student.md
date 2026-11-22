@@ -2,6 +2,8 @@
 title: "Space Atlas: 3D 인터랙티브 우주 과학 아틀라스 프로젝트"
 description: "태양계 3D 모델부터 뉴턴의 대포알 궤도 시뮬레이션, 달의 위상과 일식, 블랙홀까지 27개 주제를 직접 조작하며 배우는 오픈소스 우주 과학 참조 도구 'Space Atlas'를 소개합니다."
 date: 2026-09-15
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 permalink: /space-atlas-student/
 layout: default
 lang: ko
@@ -28,7 +30,7 @@ image_height: 820
 
 [Space Atlas 바로가기](https://spaceatlasedu.org/)
 
-### 주요 인터랙티브 도구 바로가기
+## 주요 인터랙티브 도구 바로가기
 
 * [달 위상 시뮬레이터 (Moon Phase Simulator)](https://spaceatlasedu.org/moon/phases/)
 * [계절 시뮬레이터 — 지구 자전축 23.5°와 0° 비교](https://spaceatlasedu.org/earth/seasons/)
