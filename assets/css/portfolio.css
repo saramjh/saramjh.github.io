@@ -83,6 +83,7 @@
 .portfolio-body .folio-stack-tools{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
 .portfolio-body .folio-stack-tools li,.portfolio-body .folio-tech-list li{font:500 11px var(--folio-mono);color:var(--folio-secondary);padding:7px 10px;border:1px solid #454b5a;background:#1b202a;border-radius:2px}
 .portfolio-body .folio-recognition-preview{position:relative;margin:0 calc(50% - 50vw);padding:100px max(28px,calc((100vw - 1194px)/2))!important;background:#181c25!important;border-top:1px solid #343b49}
+.portfolio-body .folio-archive-outline-heading{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .portfolio-body .folio-evidence-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--folio-border)}
 .portfolio-body .folio-evidence-item{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:22px;align-items:start;padding:23px 0;border-bottom:1px solid var(--folio-border);list-style:none;min-width:0}
 .portfolio-body .folio-evidence-glyph{border:1px solid #5b6884;width:31px;height:31px;border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--folio-accent);font:650 13px var(--folio-mono)}
