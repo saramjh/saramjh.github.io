@@ -32,7 +32,7 @@ layout: compress
   <a class="site-skip-link" href="#main-content">{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문으로 건너뛰기{% else %}Skip to main content{% endif %}</a>
   {% include navbar.html %}
   <div class="wrapper post">
-    <main class="page-content" id="main-content" tabindex="-1" aria-label="Content">
+    <main class="page-content" id="main-content" tabindex="-1" aria-label="{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문{% else %}Content{% endif %}">
       <article itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="header">

@@ -36,7 +36,7 @@ layout: compress
     <header class="header">
       <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
     </header>
-    <main class="page-content" id="main-content" tabindex="-1" aria-label="Content">
+    <main class="page-content" id="main-content" tabindex="-1" aria-label="{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문{% else %}Content{% endif %}">
       {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=4 h_max=4 %}
     </main>
 

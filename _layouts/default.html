@@ -32,7 +32,7 @@ layout: compress
   {% include navbar.html %}
   <div class="wrapper">
     {% include author.html %}
-    <main id="main-content" tabindex="-1" aria-label="Content">
+    <main id="main-content" tabindex="-1" aria-label="{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문{% else %}Content{% endif %}">
       {% if page.date and page.redirect_to == nil %}
       {% unless content contains '<h1' %}
       <h1 class="header-title">{{ page.title | escape }}</h1>
