@@ -52,6 +52,34 @@ with sync_playwright() as p:
     # Local runs keep Playwright's bundled Chromium unless explicitly opted in.
     browser_channel = os.environ.get("BLOG_TEST_BROWSER_CHANNEL") or None
     browser = p.chromium.launch(headless=True, channel=browser_channel)
+    # Non-portfolio keyboard bypass must work on the original blog layouts.
+    # Test only built first-party pages; no external navigation or real analytics.
+    for viewport in (390, 768, 1440):
+        for route in ('/', '/about/', '/archive/', '/epson-waste-ink-pad-reset-without-key/'):
+            page = browser.new_page(viewport={'width': viewport, 'height': 900})
+            page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+            page.route('https://www.clarity.ms/**', lambda route: route.abort())
+            response = page.goto(BASE + route, wait_until='domcontentloaded', timeout=20000)
+            assert response.status == 200, (viewport, route, 'original blog skip route unavailable')
+            bypass = page.locator('.site-skip-link')
+            assert bypass.count() == 1, (viewport, route, 'skip link missing')
+            assert bypass.get_attribute('href') == '#main-content'
+            expected_label = ('본문으로 건너뛰기' if route.startswith('/epson-')
+                              else 'Skip to main content')
+            assert bypass.inner_text().strip() == expected_label, (
+                viewport, route, 'wrong blog-language skip label')
+            assert bypass.bounding_box()['y'] < 0, (viewport, route, 'skip link visible without focus')
+            page.keyboard.press('Tab')
+            assert bypass.evaluate('el => document.activeElement === el'), (
+                viewport, route, 'skip link not first keyboard focus')
+            bounds = bypass.bounding_box()
+            assert bounds and bounds['y'] >= 0 and bounds['x'] >= 0, (
+                viewport, route, 'skip link not revealed on focus', bounds)
+            page.keyboard.press('Enter')
+            page.wait_for_function("document.activeElement?.id === 'main-content'", timeout=5000)
+            assert page.evaluate("window.location.hash") == '#main-content'
+            page.close()
+            print('PASS original blog keyboard bypass', viewport, route)
     # Real Chrome keyboard bypass regression for the portfolio-only layout.
     # This runs against the built local site, never a visitor or public profile.
     for viewport in (390, 768, 1440):
@@ -624,7 +652,7 @@ with sync_playwright() as p:
             assert toggle.is_checked()
             assert toggle.get_attribute('aria-expanded') == 'true'
             assert page.locator('#primary-navigation').is_visible()
-            regions = 'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link'
+            regions = 'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link, body > .site-skip-link'
             assert page.evaluate(
                 'sel => {const areas=[...document.querySelectorAll(sel)];return areas.length>0&&areas.every(node=>node.inert)}',
                 regions), (viewport,route,'background still focusable')
@@ -648,7 +676,7 @@ with sync_playwright() as p:
             page.wait_for_function('''() => {
                 const toggle = document.querySelector('#menu-trigger');
                 const areas = document.querySelectorAll(
-                    'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link');
+                    'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link, body > .site-skip-link');
                 return !window.matchMedia('(max-width: 768px)').matches &&
                     !toggle.checked && toggle.getAttribute('aria-expanded') === 'false' &&
                     [...areas].every(node => !node.inert);

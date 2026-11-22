@@ -38,8 +38,9 @@ function makeUI(isMobile = true, layout = 'default') {
     };
   }
   const wrapper = region('wrapper');
+  const siteSkip = region('site-skip-link');
   const portfolio = [region('folio'), region('folio-footer'), region('folio-skip-link')];
-  const backgrounds = layout === 'portfolio' ? portfolio : [wrapper];
+  const backgrounds = layout === 'portfolio' ? portfolio : [wrapper, siteSkip];
   const media = {
     matches: isMobile, listeners: {},
     addEventListener(name, cb) {this.listeners[name] = cb;}
@@ -51,7 +52,7 @@ function makeUI(isMobile = true, layout = 'default') {
     },
     querySelectorAll(selector) {
       if (selector === 'main img:not(.author-avatar)') return [];
-      assert.equal(selector, 'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link');
+      assert.equal(selector, 'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link, body > .site-skip-link');
       return backgrounds;
     }
   };
@@ -64,7 +65,7 @@ function makeUI(isMobile = true, layout = 'default') {
   };
   const localStorage = {getItem() {return 'dark';}, setItem() {}};
   vm.runInNewContext(script, {document, window, localStorage, setTimeout() {}}, {timeout:1000});
-  return {input,wrapper,backgrounds,classes,media,listeners};
+  return {input,wrapper,siteSkip,backgrounds,classes,media,listeners};
 }
 
 const mobile = makeUI();
@@ -72,6 +73,7 @@ mobile.input.checked = true;
 mobile.input.listeners.change.call(mobile.input);
 assert.equal(mobile.classes.has('blurry'), true, 'existing visual blur preserved');
 assert.equal(mobile.wrapper.inert, true, 'open full-screen nav must not leave background focusable');
+assert.equal(mobile.siteSkip.inert, true, 'new bypass link must stay inside focus trap');
 assert.equal(mobile.input.attrs['aria-expanded'], 'true', 'expanded nav state is announced');
 
 let prevented = false;
@@ -79,6 +81,7 @@ mobile.listeners.keydown({key:'Escape', preventDefault() {prevented=true;}});
 assert.equal(prevented, true);
 assert.equal(mobile.input.checked, false, 'Esc should close the mobile menu');
 assert.equal(mobile.wrapper.inert, false, 'background focus restored after closing');
+assert.equal(mobile.siteSkip.inert, false, 'new bypass link focus restored after closing');
 assert.equal(mobile.classes.has('blurry'), false, 'blur removed after closing');
 assert.equal(mobile.input.attrs['aria-expanded'], 'false');
 assert.equal(mobile.input.focusCount, 1, 'keyboard focus returned to menu toggle');
