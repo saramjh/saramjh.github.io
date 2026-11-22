@@ -418,7 +418,17 @@ with sync_playwright() as p:
                 assert bounds and bounds['y'] < 900 and bounds['y'] + bounds['height'] > 0, (
                     viewport, 'record fragment did not bring target into view', bounds)
             if errors:
-                raise AssertionError((viewport,path,errors))
+                # Distinguish malformed Jekyll inline source from a fetched
+                # script error before modifying the original site again.
+                inline_errors = page.evaluate('''() => [...document.scripts]
+                  .filter(el => !el.src && el.type !== 'module')
+                  .map((el, i) => {
+                    try { new Function(el.textContent); return null; }
+                    catch (e) { return {index:i,reason:String(e),
+                      first:el.textContent.slice(0,100),
+                      last:el.textContent.slice(-100)}; }
+                  }).filter(Boolean)''')
+                raise AssertionError((viewport,path,errors,inline_errors))
             print('PASS',viewport,path)
             page.close()
     # Root-portfolio analytics must respect an explicit browser Do Not Track signal.
