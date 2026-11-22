@@ -177,6 +177,10 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const isKorean = (document.documentElement.lang || "").toLowerCase().startsWith("ko");
+    const copyLabels = isKorean
+      ? { ready: "복사", action: "코드 복사", copied: "복사됨!", selected: "선택됨: Ctrl+C / ⌘C", unavailable: "복사할 수 없음" }
+      : { ready: "Copy", action: "Copy code", copied: "Copied!", selected: "Selected: Ctrl+C / ⌘C", unavailable: "Copy unavailable" };
     document.querySelectorAll("div.highlighter-rouge").forEach((wrapper) => {
       if (wrapper.querySelector(".code-header") || wrapper.classList.contains("language-mermaid")) return;
       const pre = wrapper.querySelector("pre");
@@ -194,9 +198,9 @@
       header.className = "code-header";
       header.innerHTML = `
         <span class="code-lang">${lang}</span>
-        <button class="code-copy-btn" type="button" aria-label="Copy code">
+        <button class="code-copy-btn" type="button" aria-label="${copyLabels.action}">
           <svg class="copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          <span class="copy-text" aria-live="polite">Copy</span>
+          <span class="copy-text" aria-live="polite">${copyLabels.ready}</span>
         </button>
       `;
 
@@ -207,11 +211,11 @@
         clearTimeout(statusReset);
         copyBtn.classList.toggle("copied", success);
         copyStatus.textContent = message;
-        copyBtn.setAttribute("aria-label", message === "Copy" ? "Copy code" : message);
+        copyBtn.setAttribute("aria-label", message === copyLabels.ready ? copyLabels.action : message);
         statusReset = setTimeout(() => {
           copyBtn.classList.remove("copied");
-          copyStatus.textContent = "Copy";
-          copyBtn.setAttribute("aria-label", "Copy code");
+          copyStatus.textContent = copyLabels.ready;
+          copyBtn.setAttribute("aria-label", copyLabels.action);
         }, 4000);
       }
 
@@ -223,7 +227,7 @@
             throw new Error("Clipboard API unavailable");
           }
           await navigator.clipboard.writeText(codeText);
-          showCopyStatus("Copied!", true);
+          showCopyStatus(copyLabels.copied, true);
         } catch (e) {
           /* Clipboard access may be denied. Select the original code so the
              reader can copy it manually instead of silently losing the action. */
@@ -240,7 +244,7 @@
           } catch (_) {
             /* A readable failure remains if code selection is also restricted. */
           }
-          showCopyStatus(selected ? "Selected: Ctrl+C / ⌘C" : "Copy unavailable", false);
+          showCopyStatus(selected ? copyLabels.selected : copyLabels.unavailable, false);
           console.error("Copy failed", e);
         }
       });
