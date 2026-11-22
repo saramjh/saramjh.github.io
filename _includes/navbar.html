@@ -1,7 +1,8 @@
 <div class="navbar" role="navigation">
   <nav class="menu">
     {% if page.portfolio_ui %}<a class="folio-nav-brand" href="/portfolio/" aria-label="DevTestudinidae portfolio home">DevTestudinidae</a>{% endif %}
-    <input type="checkbox" id="menu-trigger" class="menu-trigger" aria-label="Toggle navigation menu" aria-controls="primary-navigation" />
+    {% assign menu_lang = page.lang | default: site.lang | default: 'en' %}
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" aria-label="{% if menu_lang == 'ko' or menu_lang == 'ko-KR' %}탐색 메뉴 열기 또는 닫기{% else %}Toggle navigation menu{% endif %}" aria-controls="primary-navigation" />
     <label for="menu-trigger">
       <span class="menu-icon">
         <svg
