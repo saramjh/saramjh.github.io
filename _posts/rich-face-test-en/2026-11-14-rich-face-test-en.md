@@ -2,6 +2,8 @@
 title: "Richchecker KR: face matching and photo recovery"
 description: "A browser-only face comparison with a 47-person Korean reference sample, and practical guidance when Android photos are mislabeled."
 date: 2026-11-14
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 tags: ["Richchecker", "Browser Engineering", "Image Processing"]
 permalink: /rich-face-test-en/
 layout: default
@@ -11,7 +13,7 @@ alternate_url: /rich-face-test/
 published: true
 seo:
   title: "Richchecker KR | Face proportions and Android photo troubleshooting"
-  description: "Compare six facial ratios locally and learn how failed HEIC/TIFF image decoding gets a useful retry hint."
+  description: "What a Richchecker resemblance percentage means, how to read result labels, and what to do when HEIC/TIFF photos fail."
 ---
 
 # Richchecker KR: compare facial proportions in your browser
@@ -23,6 +25,12 @@ seo:
 Richchecker KR is a playful face-proportion comparison. It measures six ratios from a photo—forehead height, eye spacing, nose length, mouth width, lower-face length and face aspect ratio—and compares them with a 47-person Korean public-figure reference sample. Results show the three closest matches, a six-feature radar chart and individual feature comparisons. They do **not** predict wealth, success or personality.
 
 Face landmarks and matching run in the browser. The matching photo is not sent to an image-analysis server. The site may use ordinary analytics and advertising services; those are separate from local image matching. No account is required.
+
+## What does a 38% match mean?
+
+An anonymous writer in a [public Korean forum post](https://gall.dcinside.com/board/view/?id=physiognomy&no=52237) dated September 11, 2026 said they tried Richchecker and saw a 38% resemblance result with a themed label. The post links to the app. It is one public account, not independently verified user activity or a measure of how many people tried the site.
+
+A percentage on this screen compares facial proportions with the reference sample. It is not the probability of becoming wealthy. The themed result label does not predict finances or personality either. Check the six-feature breakdown to see what the comparison actually covers.
 
 ## If your photo will not open
 
