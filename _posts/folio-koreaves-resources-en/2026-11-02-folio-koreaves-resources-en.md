@@ -54,7 +54,7 @@ Bird Album's country reference offers a bird-information route alongside the old
 
 ## Fact-checking the map explanation in a Suncheon Bay guide
 
-[Daily Korea's Suncheon Bay birdwatching guide (currently dated November 19, 2026 by the publisher)](https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/) links to the [KoreAves regional evidence map](https://koreaves.com/gis/) and [guide to reading occurrence records](https://koreaves.com/guide/) while discussing how to look for Hooded Cranes. It explains that a shaded region indicates qualifying records, not a population count.
+[Daily Korea's Suncheon Bay birdwatching guide (currently dated November 19, 2026 by the publisher)](https://dailykorea.net/en/travel/suncheon-bay-first-birdwatching/) links to the [KoreAves regional evidence map](https://koreaves.com/gis/) and [guide to reading occurrence records](https://koreaves.com/guide/) while discussing how to look for Hooded Cranes. It explains that a shaded region indicates qualifying records, not a population count.
 
 I suggested a beginner's guide to Suncheon Bay and reviewed the Korean draft, sending corrected wording for the KoreAves map explanation. The editors revised the section to explain that a shaded administrative region has qualifying bird records. The shading does not predict current sightings inside the wetland or represent a population count. The editorial team separately checked winter admission hours and the station-departure tour against the operator's current booking information. The published page is credited to *Daily Korea Editorial*. My contribution was a fact-check of the map interpretation; I have no author or co-author credit. Visits from the article to KoreAves have not been measured.
 
