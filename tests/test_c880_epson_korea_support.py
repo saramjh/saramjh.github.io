@@ -23,8 +23,11 @@ class EpsonKoreaFirstPartyResource(unittest.TestCase):
                 self.assertEqual(body.count('<script src="/assets/js/epson-official-support-click.js" defer></script>'),1)
                 self.assertNotIn("\ufffd",body)
                 self.assertNotIn("????",body)
-                self.assertEqual(body.count("modified: 2026-11-20"),1)
-                self.assertEqual(body.count("last_modified_at: 2026-11-20"),1)
+                modified = re.findall(r"(?m)^modified: (\d{4}-\d{2}-\d{2})$", body)
+                last_modified = re.findall(r"(?m)^last_modified_at: (\d{4}-\d{2}-\d{2})$", body)
+                self.assertEqual(len(modified), 1)
+                self.assertEqual(modified, last_modified)
+                self.assertGreaterEqual(modified[0], "2026-11-20")
         ko, en = [p.read_text(encoding="utf8") for p in PAGES]
         self.assertIn("사용자가 직접 교체할 수 없",ko)
         self.assertIn("not a counter-reset",en)

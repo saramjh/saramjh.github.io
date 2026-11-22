@@ -1,8 +1,8 @@
 ---
 title: "Epson Waste Ink Counter Reset Without a Key: L3106 Case and Model Checks"
 date: 2026-09-15
-modified: 2026-11-20
-last_modified_at: 2026-11-20
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 tags: ["Epson", "L3100", "L3106", "L3110", "L3150", "L3160", "L1110", "L5190", "Waste Ink Pad Reset", "WIC Reset Alternative", "reinkpy", "Mac Epson Reset", "DIY Printer Repair"]
 permalink: /en-epson-waste-ink-pad-reset-without-key/
 layout: default
@@ -44,7 +44,7 @@ faq:
     a: "The available sources do not establish that WIC Reset and reinkpy-fix use identical procedures across all Epson models. The open-source fork states confirmed operation for the L3060 series and similar printers only. Verify your exact model, service needs, and software support before attempting a counter write."
 ---
 
-### If your printer is an L3100 or L3156
+## If your printer is an L3100 or L3156
 
 The steps below come from my L3106 work record. I have not verified that `reinkpy-fix` can reset an L3100 or L3156. Changing the model name in the sample code would be an untested counter write. Check [Epson's waste-ink-pad guidance](https://epson.com/support/epson-ink-pad-reset-utility-faqs) and the service instructions for your exact printer first. Resetting a counter cannot replace maintenance of the ink absorber.
 
@@ -54,11 +54,11 @@ The steps below come from my L3106 work record. I have not verified that `reinkp
 
 > **Manufacturer cross-check (15 Nov 2026):** The [reinkpy-fix repository](https://github.com/LeFZdev/reinkpy-fix) describes a tool for some Epson printers, with confirmed operation on the L3060 series and similar devices. It does not verify all 33 variants previously listed here. The L3106 sequence below is the author's original account. [Epson's official ink-pad explanation](https://epson.com/support/epson-ink-pad-reset-utility-faqs) states that physical waste pads contain ink from cleaning and printing and may require maintenance or replacement. A software counter reset cannot replace servicing the physical ink pads. Some models do not have user-replaceable waste pads; consult the exact model's service guidance.
 
-### Epson Korea support for L3106 owners
+## Epson Korea support for L3106 owners
 
 [Epson Korea's L3106 power-cleaning FAQ](https://www.epson.co.kr/faq/SPT_C11CG88513~EKL_FAQ_0871) explains that cleaning sends waste ink to the pads and that pads requiring replacement must be handled through service rather than direct user replacement. It is **not a counter-reset guide** and does not prove compatibility with other printer models. For service options in South Korea, use [Epson Korea customer support](https://www.epson.co.kr/cs). The steps below remain a record of the author's L3106 work, not an Epson-authorized repair procedure.
 
-### Exact Epson Waste Ink Pad Error Messages & Symptoms
+## Exact Epson Waste Ink Pad Error Messages & Symptoms
 
 <picture>
   <source type="image/webp" srcset="epson-printer-400.webp 400w, epson-printer-800.webp 800w, epson-printer.webp 1200w" sizes="(max-width: 690px) calc(100vw - 40px), (max-width: 768px) 650px, 660px">
@@ -90,7 +90,7 @@ In the documented case, felt-pad work and an open-source counter-reset attempt w
 
 ---
 
-### 1. Cost & Waste Comparison: Full Assembly vs. Felt Pads Only
+## 1. Cost & Waste Comparison: Full Assembly vs. Felt Pads Only
 
 <picture>
   <source type="image/webp" srcset="epson-maintenance-box-400.webp 400w, epson-maintenance-box-800.webp 800w, epson-maintenance-box.webp 895w" sizes="(max-width: 690px) calc(100vw - 40px), (max-width: 768px) 650px, 660px">
@@ -115,7 +115,7 @@ Replacement pads and access procedures differ by model. Verify whether the servi
 
 ---
 
-### 2. Hardware Replacement (L3106 Historical Case)
+## 2. Hardware Replacement (L3106 Historical Case)
 
 The disassembly sequence below records the author's L3106 case, not a validated procedure for other Epson models. Do not assume the same screws or waste-pad assembly are present. Follow model-specific service instructions; leave parts designated non-user-replaceable to authorized service providers.
 
@@ -129,7 +129,7 @@ The disassembly sequence below records the author's L3106 case, not a validated 
 
 ---
 
-### 3. Software Counter Reset via reinkpy-fix (Cross-Platform)
+## 3. Software Counter Reset via reinkpy-fix (Cross-Platform)
 
 Physical waste pads collect real discarded ink, while software counters provide service information. Resetting a counter does **not** inspect, empty, replace, or establish the safety of the pads. Even after appropriate physical servicing, any counter adjustment depends on the printer's exact model and supported service procedure. See [Epson's ink-pad service explanation](https://epson.com/support/epson-ink-pad-reset-utility-faqs).
 
@@ -139,7 +139,7 @@ The AI coding assistant prompt below is intended for reviewing setup and model s
 
 ---
 
-#### 💡 Ready-to-use AI Agent Prompt (Copy & Paste)
+### 💡 Ready-to-use AI Agent Prompt (Copy & Paste)
 
 Confirm the exact printer model and physical pad service requirements before using this prompt. It asks the coding assistant to stop for confirmation before resetting anything. Other models cannot be assumed compatible just by changing a model name:
 
@@ -170,11 +170,11 @@ print("Waste ink pad counter successfully reset to 0%!")
 
 ---
 
-#### 🛠 Step-by-Step Manual Terminal Guide
+### 🛠 Step-by-Step Manual Terminal Guide
 
 If you prefer executing the commands manually without an AI assistant:
 
-#### Step 1 — Clone the Repository
+### Step 1 — Clone the Repository
 
 Clone the patched repository locally:
 
@@ -183,7 +183,7 @@ git clone https://github.com/LeFZdev/reinkpy-fix
 cd reinkpy-fix
 ```
 
-#### Step 2 — Install libusb
+### Step 2 — Install libusb
 
 `libusb` is required for raw USB device communication on macOS and Linux.
 
@@ -197,7 +197,7 @@ On Ubuntu/Debian Linux:
 sudo apt-get install libusb-1.0-0-dev
 ```
 
-#### Step 3 — Create Virtual Environment & Install Dependencies
+### Step 3 — Create Virtual Environment & Install Dependencies
 
 ```bash
 python3 -m venv venv
@@ -205,7 +205,7 @@ venv/bin/pip install pyusb pysnmp zeroconf
 venv/bin/pip install -e .
 ```
 
-#### Step 4 — Fix Library Import Bug (Crucial Step!)
+### Step 4 — Fix Library Import Bug (Crucial Step!)
 
 In the current `reinkpy-fix` repository commit, running the script immediately results in an `ImportError`. The underlying file `usb.py` was renamed to `usbtest.py`, but `reinkpy/__init__.py` was not updated.
 
@@ -221,7 +221,7 @@ from .usbtest import UsbIO
 
 *(If you are using an AI coding agent, simply tell it: "Fix the UsbIO import in reinkpy/__init__.py to import from .usbtest", and it will patch the file instantly.)*
 
-#### Step 5 — Replace main.py with USB Reset Routine
+### Step 5 — Replace main.py with USB Reset Routine
 
 The sample below calls `driver.reset_waste()`, which attempts to write to the printer counter when run. Before using it, confirm that **reinkpy-fix supports your exact model and the physical waste pads have been serviced**. L3106 is the documented case; replacing its model name does not establish compatibility.
 
@@ -245,7 +245,7 @@ driver.reset_waste()
 print("Waste ink pad counter successfully reset to 0%!")
 ```
 
-#### Step 6 — Execute with Elevated Privileges
+### Step 6 — Execute with Elevated Privileges
 
 **Before running:** This command executes `driver.reset_waste()` and attempts a counter write on the connected printer. Do not run it unless the exact model support and physical waste-pad servicing have been confirmed.
 
@@ -266,11 +266,11 @@ If the waste ink counter action appears successful but the alert remains, avoid 
 
 ---
 
-### Epson model names to check individually (not a verified compatibility list)
+## Epson model names to check individually (not a verified compatibility list)
 
 The following printer names are a reference list from the earlier version of this guide. **They are not a verified list of models supported by reinkpy-fix.** The public fork describes confirmed work on the L3060 series and similar printers; it does not establish all the variants below.
 
-#### 1) Asian / domestic L-series examples (verify each model)
+### 1) Asian / domestic L-series examples (verify each model)
 - **L3100 Models**: L3100, L3101, L3104, L3105, L3106, L3107, L3108, L3109
 - **L3110 Models**: L3110, L3111, L3114, L3115, L3116, L3117, L3118, L3119
 - **L3150 Models (Wi-Fi)**: L3150, L3151, L3152, L3153, L3156, L3158
@@ -278,7 +278,7 @@ The following printer names are a reference list from the earlier version of thi
 - **L1110 Models (Single-function)**: L1110, L1118, L1119
 - **L5190 Models (Fax / ADF)**: L5190, L5196, L5198
 
-#### 2) North American & European Models (EcoTank / ET Series)
+### 2) North American & European Models (EcoTank / ET Series)
 EcoTank model names or similarities do not verify identical EEPROM layouts, firmware behavior, or counter-reset support. Check the model-specific information before attempting any writes.
 - **ET-1110 ~ ET-1118** (Global equivalent of L1110)
 - **ET-2710 ~ ET-2728** (Global equivalent of L3110 / L3150)
@@ -288,7 +288,7 @@ EcoTank model names or similarities do not verify identical EEPROM layouts, firm
 
 ---
 
-### Important: Physical Disassembly Nuances by Model
+## Important: Physical Disassembly Nuances by Model
 
 Identical counter-reset behavior has not been established across these models. Physical teardown steps can also vary, and the relevant service documentation takes precedence:
 
@@ -298,7 +298,7 @@ Identical counter-reset behavior has not been established across these models. P
 
 ---
 
-### Summary: Cost and time reported for this case
+## Summary: Cost and time reported for this case
 
 - **Reported felt-pad expense**: roughly $5 in the original case; not a current quote or a verified price for other printers.
 - **Reported time**: about five minutes each for pad work and software reset in the original account. This is not a general repair estimate.
@@ -306,7 +306,7 @@ Identical counter-reset behavior has not been established across these models. P
 
 ---
 
-### Frequently Asked Questions (FAQ)
+## Frequently Asked Questions (FAQ)
 
 <details style="margin-bottom: 1rem; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; padding: 12px 16px;">
   <summary style="font-weight: 700; cursor: pointer; color: inherit;">Q1. Can I wash and reuse the old waste ink felt pads with water?</summary>

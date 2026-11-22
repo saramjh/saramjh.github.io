@@ -20,15 +20,15 @@ class EpsonModelWarningPlacementTest(unittest.TestCase):
         for lang, path in POSTS.items():
             with self.subTest(lang=lang):
                 text = path.read_text(encoding="utf-8")
-                heading = ("### L3100·L3156에서 리셋하려는 경우" if lang == "ko"
-                           else "### If your printer is an L3100 or L3156")
+                heading = ("## L3100·L3156에서 리셋하려는 경우" if lang == "ko"
+                           else "## If your printer is an L3100 or L3156")
                 banner = "English Edition available:" if lang == "ko" else "한국어 안내:"
                 source_check = ("2026-11-15 제조사 기준 재검증" if lang == "ko"
                                 else "Manufacturer cross-check (15 Nov 2026)")
                 self.assertEqual(text.count(heading), 1)
                 self.assertLess(text.index(heading), text.index(banner))
                 self.assertLess(text.index(banner), text.index(source_check))
-                self.assertLess(text.index(heading), text.index("### 1. "))
+                self.assertLess(text.index(heading), text.index("## 1. "))
                 self.assertIn("L3106", text[text.index(heading):text.index(banner)])
                 self.assertIn("L3156", text[text.index(heading):text.index(banner)])
                 self.assertIn("https://epson.com/support/epson-ink-pad-reset-utility-faqs", text)
@@ -43,8 +43,8 @@ class EpsonModelWarningPlacementTest(unittest.TestCase):
         self.assertIn("A software counter reset cannot replace servicing", en)
         self.assertIn("alternate_url: /en-epson-waste-ink-pad-reset-without-key/", ko)
         self.assertIn("alternate_url: /epson-waste-ink-pad-reset-without-key/", en)
-        self.assertIn("modified: 2026-11-20", ko)
-        self.assertIn("modified: 2026-11-20", en)
+        self.assertRegex(ko, r"(?m)^modified: \d{4}-\d{2}-\d{2}$")
+        self.assertRegex(en, r"(?m)^modified: \d{4}-\d{2}-\d{2}$")
 
 
 if __name__ == "__main__":
