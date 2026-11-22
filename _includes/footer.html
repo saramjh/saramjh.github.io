@@ -73,6 +73,12 @@
 <script src="/assets/js/article-product-outbound.js" defer="defer"></script>
 {%- endif -%}
 
+{%- if site.google_analytics and page.tracking != false and page.date -%}
+{%- if page.url == '/earth-seasons-no-tilt-experiment-ko/' or page.url == '/earth-seasons-no-tilt-experiment-en/' -%}
+<script src="/assets/js/no-tilt-worksheet-outbound.js" defer="defer"></script>
+{%- endif -%}
+{%- endif -%}
+
 {%- if page.tracking != false -%}
 <script>
   (function (w, d, name, id) {
