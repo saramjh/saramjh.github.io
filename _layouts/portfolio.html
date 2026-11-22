@@ -6,8 +6,9 @@ layout: compress
 {% include header.html %}
 <body data-theme="{{ site.mode }}" class="portfolio-body notransition">
   <script>try{if(localStorage.getItem('theme')==='light')document.body.removeAttribute('data-theme')}catch(e){}</script>
+  <a class="folio-skip-link" href="#main-content">Skip to main content</a>
   {% include navbar.html %}
-  <main class="folio" id="main-content" aria-label="{{ page.title | escape }}">{{ content }}</main>
+  <main class="folio" id="main-content" tabindex="-1" aria-label="{{ page.title | escape }}">{{ content }}</main>
   <div class="folio-footer"><div class="folio-footer-inner">{% include footer.html %}</div></div>
   <script src="/assets/js/portfolio.js" defer></script>
   <script>setTimeout(function(){document.body.classList.remove('notransition')},75)</script>
