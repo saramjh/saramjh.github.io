@@ -101,7 +101,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
 
     def test_canonical_records_only_and_original_source_retained(self):
         records = parse_records()
-        self.assertEqual(len(records), 29)
+        self.assertEqual(len(records), 30)
         for record_id, slug in EXPECTED.items():
             item = records[record_id]
             self.assertEqual(item["status"], "confirmed")
@@ -159,7 +159,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
 
     def test_every_public_recognition_links_an_existing_bilingual_case(self):
         records = parse_records()
-        self.assertEqual(len(records), 29)
+        self.assertEqual(len(records), 30)
         permalink_sources = {}
         for source in (ROOT / "_posts").rglob("*.md"):
             match = re.search(
@@ -499,7 +499,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("nothing reliable about total readership or KoreAves adoption", text)
         # A comment is not an additional externally published author contribution.
         records = parse_records()
-        self.assertEqual(len(records), 29)
+        self.assertEqual(len(records), 30)
         self.assertEqual(records["birds-photo-10000"]["type"], "publication")
 
     def test_eusci_byline_has_one_attributed_source_and_uses_owned_visual(self):
@@ -534,7 +534,7 @@ class EvidenceContextLinksTest(unittest.TestCase):
             else:
                 self.assertIn("not evidence of scientific peer review", source)
         records = parse_records()
-        self.assertEqual(len(records), 29)
+        self.assertEqual(len(records), 30)
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["date"], "2026-11-06")
         self.assertEqual(records["unsustainable-koreaves-bird-map"]["type"], "publication")
 
@@ -556,19 +556,21 @@ class EvidenceContextLinksTest(unittest.TestCase):
                 self.assertIn("Figure 1 caption reads", post)
         # This is one article, not a new external publication or directory record.
         records = parse_records()
-        self.assertEqual(len(records), 29)
+        self.assertEqual(len(records), 30)
 
     def test_homepage_shows_published_work_before_full_evidence_archive(self):
         records = parse_records()
         published = [r for r in records.values() if r["status"] == "confirmed" and r["type"] == "publication"]
         self.assertEqual(len(published), 7)
-        self.assertEqual(len(records), 29)
+        self.assertEqual(len([r for r in records.values() if r["type"] == "coverage"]), 1)
+        self.assertEqual(len(records), 30)
         self.assertEqual(len([r for r in records.values() if r["type"] == "listing"]), 21)
         self.assertEqual(len([r for r in records.values() if r["type"] == "dataset_record"]), 1)
         homepage = (ROOT / "portfolio/index.html").read_text(encoding="utf8")
         archive = (ROOT / "portfolio/recognition/index.html").read_text(encoding="utf8")
         include = INCLUDE.read_text(encoding="utf8")
         self.assertEqual(homepage.count('{% include portfolio-evidence.html type="publication" %}'), 1)
+        self.assertIn('{% include portfolio-evidence.html type="coverage" ids="trendhunter-scratch-lottery-2025" %}', homepage)
         self.assertEqual(archive.count('{% include portfolio-evidence.html type="publication" %}'), 1)
         self.assertIn('include.type and record.type != include.type', include)
         self.assertIn('The full archive keeps these record types distinct.', homepage)
