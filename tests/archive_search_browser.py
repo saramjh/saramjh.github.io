@@ -20,6 +20,14 @@ with sync_playwright() as p:
         field = page.locator("#search-input")
         assert browse.is_visible(), ("initial archive hidden", width)
         assert browse.locator("article").count() > 10
+        assert browse.locator('a[href="/rich-tester/"]').count() == 0, (
+            "legacy redirect must not appear as an archive article", width
+        )
+        index_response = page.request.get(BASE + "/assets/search.json")
+        assert index_response.status == 200
+        assert not any(row["url"] == "/rich-tester/" for row in index_response.json()), (
+            "legacy redirect must not appear in article search", width
+        )
         field.fill("Spoonie")
         page.wait_for_function(
             "() => document.querySelector('#search-result-status').textContent.includes('Articles:')"

@@ -5,6 +5,7 @@ layout: none
 [
   {% assign search_separator = '' %}
   {% for post in site.posts %}
+    {% unless post.layout == 'redirect' %}
     {{ search_separator }}
     {
       "title"    : {{ post.title | jsonify }},
@@ -14,6 +15,7 @@ layout: none
       "date"     : "{{ post.date }}"
     }
     {% assign search_separator = ',' %}
+    {% endunless %}
   {% endfor %}
   {% for record in site.data.recognitions %}
     {% if record.status == 'confirmed' %}
