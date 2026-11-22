@@ -13,17 +13,17 @@ legacy_asset_url: /posts/pay-calculator-for-part-time-job/
 
 **내 시급, 내 근무 기록, 내 수입을 한눈에!**
 
-<img src="Screenshot%202025-07-08%20at%2023.38.18.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.39.36.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.39.52.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.40.05.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.40.20.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.40.36.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.41.04.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.41.41.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.41.56.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.42.15.JPG" alt="app view">
-<img src="Screenshot%202025-07-08%20at%2023.42.33.JPG" alt="app view">
+<img src="Screenshot%202025-07-08%20at%2023.38.18.JPG" alt="시급이요 로그인 화면과 Google 로그인 버튼">
+<img src="Screenshot%202025-07-08%20at%2023.39.36.JPG" alt="직업 관리 창에 등록된 카페알바와 새 직업 추가 버튼">
+<img src="Screenshot%202025-07-08%20at%2023.39.52.JPG" alt="2025년 7월 근무 달력과 시급 설정·월급 확인 버튼">
+<img src="Screenshot%202025-07-08%20at%2023.40.05.JPG" alt="앱 메뉴에 다크 모드, 직업 관리, 홈 화면에 추가 항목 표시">
+<img src="Screenshot%202025-07-08%20at%2023.40.20.JPG" alt="7월 3일 근무 기록이 없는 날짜 상세 창과 추가 버튼">
+<img src="Screenshot%202025-07-08%20at%2023.40.36.JPG" alt="새 근무 기록 창에서 카페알바 시급 12,000원과 출퇴근 시간 입력">
+<img src="Screenshot%202025-07-08%20at%2023.41.04.JPG" alt="7월 3일 카페알바 근무 11시간과 일급 132,000원 상세 내역">
+<img src="Screenshot%202025-07-08%20at%2023.41.41.JPG" alt="7월 달력에서 3일과 4일 근무 시간이 표시된 화면">
+<img src="Screenshot%202025-07-08%20at%2023.41.56.JPG" alt="2025년 7월 월급 보고서의 총 근무 21시간과 총 수입 252,000원">
+<img src="Screenshot%202025-07-08%20at%2023.42.15.JPG" alt="카페알바 시급 설정에서 2025년 7월 1일 적용 시급 12,000원 입력">
+<img src="Screenshot%202025-07-08%20at%2023.42.33.JPG" alt="새 직업 추가 창의 직업 이름·설명·월급일·색상 입력 항목">
 
 시급이요는 여러 아르바이트의 급여를 가장 편리하게 계산하고 관리할 수 있도록 돕는 웹 애플리케이션입니다. 복잡한 엑셀 시트나 수기 계산 없이, 직관적인 UI로 당신의 소중한 시간을 아껴보세요.
 
