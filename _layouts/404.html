@@ -29,9 +29,11 @@ layout: compress
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
+  {% assign skip_lang = page.lang | default: site.lang | default: 'en' %}
+  <a class="site-skip-link" href="#main-content">{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문으로 건너뛰기{% else %}Skip to main content{% endif %}</a>
   {% include navbar.html %}
   <div class="wrapper">
-    <main aria-label="Content">
+    <main id="main-content" tabindex="-1" aria-label="{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문{% else %}Content{% endif %}">
       <div class="not-found">
         <div class="container">
           <h1 class="title">404</h1>
