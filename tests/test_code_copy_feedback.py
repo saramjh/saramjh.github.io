@@ -1,6 +1,7 @@
 """First-party code copy reports both success and clipboard permission failure."""
 from pathlib import Path
 import unittest
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 FOOTER = (ROOT / "_includes/footer.html").read_text(encoding="utf8")
@@ -26,6 +27,16 @@ class CopyFeedbackTest(unittest.TestCase):
         self.assertIn('copyBtn.classList.toggle("copied", success);', FOOTER)
         self.assertIn('copyBtn.setAttribute("aria-label"', FOOTER)
         self.assertIn('copyStatus.textContent = "Copy";', FOOTER)
+
+    def test_inline_script_avoids_line_comments_during_jekyll_compaction(self):
+        # The production Jekyll output compacts script newlines: a JavaScript
+        # // comment would swallow the next statement and break every page.
+        script = re.search(
+            r'<script>\s*document.addEventListener\("DOMContentLoaded"[\s\S]*?</script>',
+            FOOTER,
+        )
+        self.assertIsNotNone(script)
+        self.assertIsNone(re.search(r"(?m)^\s*//", script.group()))
 
     def test_original_real_chrome_suite_covers_denial_and_absence(self):
         for state in ('allowed', 'denied', 'unavailable'):

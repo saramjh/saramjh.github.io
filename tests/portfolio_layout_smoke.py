@@ -421,7 +421,7 @@ with sync_playwright() as p:
                 # Distinguish malformed Jekyll inline source from a fetched
                 # script error before modifying the original site again.
                 inline_errors = page.evaluate('''() => [...document.scripts]
-                  .filter(el => !el.src && el.type !== 'module')
+                  .filter(el => !el.src && (!el.type || el.type === 'text/javascript'))
                   .map((el, i) => {
                     try { new Function(el.textContent); return null; }
                     catch (e) { return {index:i,reason:String(e),

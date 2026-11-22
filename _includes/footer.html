@@ -204,8 +204,8 @@
           await navigator.clipboard.writeText(codeText);
           showCopyStatus("Copied!", true);
         } catch (e) {
-          // Clipboard access may be denied. Select the original code so the
-          // reader can copy it manually instead of silently losing the action.
+          /* Clipboard access may be denied. Select the original code so the
+             reader can copy it manually instead of silently losing the action. */
           let selected = false;
           try {
             const selection = window.getSelection();
@@ -217,7 +217,7 @@
               selected = selection.toString().length > 0;
             }
           } catch (_) {
-            // A readable failure remains if code selection is also restricted.
+            /* A readable failure remains if code selection is also restricted. */
           }
           showCopyStatus(selected ? "Selected: Ctrl+C / ⌘C" : "Copy unavailable", false);
           console.error("Copy failed", e);
