@@ -11,22 +11,35 @@ BROWSER = (ROOT / "tests/inline_code_mobile_browser.py").read_text(encoding="utf
 class CopyFeedbackTest(unittest.TestCase):
     def test_success_is_reported_only_after_clipboard_write(self):
         self.assertLess(FOOTER.index('await navigator.clipboard.writeText(codeText);'),
-                        FOOTER.index('showCopyStatus("Copied!", true);'))
+                        FOOTER.index('showCopyStatus(copyLabels.copied, true);'))
         self.assertIn('class="copy-text" aria-live="polite"', FOOTER)
 
     def test_failure_selects_original_code_and_reports_a_visible_action(self):
         self.assertIn('range.selectNodeContents(codeEl || pre);', FOOTER)
         self.assertIn('selection.addRange(range);', FOOTER)
-        self.assertIn('Selected: Ctrl+C / ⌘C', FOOTER)
+        self.assertIn('selected: "Selected: Ctrl+C / ⌘C"', FOOTER)
+        self.assertIn('selected: "선택됨: Ctrl+C / ⌘C"', FOOTER)
         self.assertIn('showCopyStatus(selected ?', FOOTER)
-        self.assertIn('Copy unavailable', FOOTER)
-        self.assertIn('showCopyStatus("Copied!", true);', FOOTER)
+        self.assertIn('unavailable: "Copy unavailable"', FOOTER)
+        self.assertIn('unavailable: "복사할 수 없음"', FOOTER)
+        self.assertIn('showCopyStatus(copyLabels.copied, true);', FOOTER)
 
     def test_copy_button_status_resets_and_updates_accessible_name(self):
         self.assertIn('clearTimeout(statusReset);', FOOTER)
         self.assertIn('copyBtn.classList.toggle("copied", success);', FOOTER)
         self.assertIn('copyBtn.setAttribute("aria-label"', FOOTER)
-        self.assertIn('copyStatus.textContent = "Copy";', FOOTER)
+        self.assertIn('copyStatus.textContent = copyLabels.ready;', FOOTER)
+
+    def test_korean_and_english_feedback_follows_original_page_language(self):
+        self.assertIn('document.documentElement.lang', FOOTER)
+        self.assertIn('startsWith("ko")', FOOTER)
+        for english, korean in (("Copy", "복사"), ("Copy code", "코드 복사"),
+                                ("Copied!", "복사됨!"), ("Copy unavailable", "복사할 수 없음")):
+            self.assertIn('"' + english + '"', FOOTER)
+            self.assertIn('"' + korean + '"', FOOTER)
+        self.assertIn('aria-label="${copyLabels.action}"', FOOTER)
+        self.assertIn('showCopyStatus(copyLabels.copied, true);', FOOTER)
+        self.assertIn('showCopyStatus(selected ? copyLabels.selected : copyLabels.unavailable, false);', FOOTER)
 
     def test_inline_script_avoids_line_comments_during_jekyll_compaction(self):
         # The production Jekyll output compacts script newlines: a JavaScript
