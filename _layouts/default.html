@@ -27,10 +27,12 @@ layout: compress
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
+  {% assign skip_lang = page.lang | default: site.lang | default: 'en' %}
+  <a class="site-skip-link" href="#main-content">{% if skip_lang == 'ko' or skip_lang == 'ko-KR' %}본문으로 건너뛰기{% else %}Skip to main content{% endif %}</a>
   {% include navbar.html %}
   <div class="wrapper">
     {% include author.html %}
-    <main aria-label="Content">
+    <main id="main-content" tabindex="-1" aria-label="Content">
       {% if page.date and page.redirect_to == nil %}
       {% unless content contains '<h1' %}
       <h1 class="header-title">{{ page.title | escape }}</h1>

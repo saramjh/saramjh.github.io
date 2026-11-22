@@ -1,3 +1,13 @@
+// Keep the keyboard bypass legible in the original dark palette.
+body[data-theme="dark"] .site-skip-link {
+  background: $dark-white;
+  color: $dark-black;
+  border-color: $dark-black;
+  &:focus, &:focus-visible {
+    outline-color: $dark-text-link-blue;
+  }
+}
+
 body[data-theme="dark"] {
   color: $dark-text-base-color;
   background-color: $dark-black;
