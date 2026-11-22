@@ -14,7 +14,7 @@ class DefaultBlogSkipLinkTest(unittest.TestCase):
                 self.assertEqual(src.count('class="site-skip-link"'), 1)
                 self.assertLess(src.index('href="#main-content"'), src.index('{% include navbar.html %}'))
                 self.assertEqual(src.count('id="main-content"'), 1)
-                self.assertIn('tabindex="-1" aria-label="Content"', src)
+                self.assertIn('tabindex="-1" aria-label="{% if skip_lang ==', src)
 
     def test_language_specific_fallback_labels(self):
         for name in LAYOUTS:
