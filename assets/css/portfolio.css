@@ -8,6 +8,10 @@
 .portfolio-body .folio a{color:inherit;text-decoration:none;border:0}
 .portfolio-body .folio a:hover{color:var(--folio-accent)}
 .portfolio-body .folio a:focus-visible,.portfolio-body .folio button:focus-visible,.portfolio-body .navbar a:focus-visible{outline:2px solid var(--folio-accent);outline-offset:5px}
+/* Keyboard users can bypass navigation without shifting the normal layout. */
+.portfolio-body .folio-skip-link{position:fixed;top:-100px;left:16px;z-index:9999;display:inline-block;padding:10px 16px;background:var(--folio-accent);color:var(--folio-accent-ink);border:2px solid var(--folio-accent-ink);border-radius:3px;font:650 14px Inter,system-ui,sans-serif;line-height:1.3;text-decoration:none}
+.portfolio-body .folio-skip-link:focus,.portfolio-body .folio-skip-link:focus-visible{top:12px;outline:3px solid var(--folio-text);outline-offset:3px}
+
 .portfolio-body .folio h1,.portfolio-body .folio h2,.portfolio-body .folio h3,.portfolio-body .folio h4,.portfolio-body .folio h5,.portfolio-body .folio h6{color:var(--folio-text)!important;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:650;letter-spacing:-.052em;line-height:1.1;margin-top:0}
 .portfolio-body .folio h1 a,.portfolio-body .folio h2 a,.portfolio-body .folio h3 a{color:inherit!important}
 .portfolio-body .folio h1 em,.portfolio-body .folio h2 em{font-style:normal;font-weight:450;color:var(--folio-accent)!important}

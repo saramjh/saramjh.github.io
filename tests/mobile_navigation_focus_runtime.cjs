@@ -38,7 +38,7 @@ function makeUI(isMobile = true, layout = 'default') {
     };
   }
   const wrapper = region('wrapper');
-  const portfolio = [region('folio'), region('folio-footer')];
+  const portfolio = [region('folio'), region('folio-footer'), region('folio-skip-link')];
   const backgrounds = layout === 'portfolio' ? portfolio : [wrapper];
   const media = {
     matches: isMobile, listeners: {},
@@ -51,7 +51,7 @@ function makeUI(isMobile = true, layout = 'default') {
     },
     querySelectorAll(selector) {
       if (selector === 'main img:not(.author-avatar)') return [];
-      assert.equal(selector, 'body > .wrapper, body > .folio, body > .folio-footer');
+      assert.equal(selector, 'body > .wrapper, body > .folio, body > .folio-footer, body > .folio-skip-link');
       return backgrounds;
     }
   };
@@ -93,13 +93,14 @@ assert.equal(mobile.wrapper.inert, false, 'resizing cannot strand entire page in
 const portfolioPage = makeUI(true, 'portfolio');
 portfolioPage.input.checked = true;
 portfolioPage.input.listeners.change.call(portfolioPage.input);
-assert.equal(portfolioPage.backgrounds.length, 2, 'portfolio includes main and footer');
+assert.equal(portfolioPage.backgrounds.length, 3, 'portfolio includes main, footer and keyboard skip link');
+assert.equal(portfolioPage.backgrounds[2].name, 'folio-skip-link', 'new bypass link protected by full-screen nav');
 for (const area of portfolioPage.backgrounds) {
-  assert.equal(area.inert, true, 'portfolio main and footer cannot stay focusable');
+  assert.equal(area.inert, true, 'portfolio main, footer and bypass cannot stay focusable');
 }
 portfolioPage.listeners.keydown({key:'Escape', preventDefault() {}});
 for (const area of portfolioPage.backgrounds) {
-  assert.equal(area.inert, false, 'portfolio main and footer recover after close');
+  assert.equal(area.inert, false, 'portfolio main, footer and bypass recover after close');
 }
 
 const desktop = makeUI(false);
