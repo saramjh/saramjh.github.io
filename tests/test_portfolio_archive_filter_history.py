@@ -12,12 +12,12 @@ RUNTIME = ROOT / "tests" / "portfolio_archive_filter_history_runtime.cjs"
 class PortfolioArchiveFilterHistoryTest(unittest.TestCase):
     def test_original_evidence_filters_remain_labels_not_new_records(self):
         source = ARCHIVE.read_text(encoding="utf-8")
-        for category in ("all", "publication", "listing", "dataset_record", "collaboration"):
+        for category in ("all", "publication", "coverage", "listing", "dataset_record", "collaboration"):
             self.assertIn(f'data-filter="{category}"', source)
         # The all-records view must prioritize attributable writing before
         # catalogue entries and self-submitted tool directories.
         include_order = re.findall(r'{% include portfolio-evidence\.html type="([a-z_]+)" %}', source)
-        self.assertEqual(include_order, ["publication", "dataset_record", "listing", "collaboration"])
+        self.assertEqual(include_order, ["publication", "coverage", "dataset_record", "listing", "collaboration"])
         self.assertNotIn('{% include portfolio-evidence.html %}', source)
         self.assertIn('aria-live="polite"', source)
         self.assertIn('id="folio-filter-empty" hidden', source)

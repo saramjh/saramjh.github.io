@@ -29,6 +29,7 @@ def confirmed_evidence():
 
 EVIDENCE = confirmed_evidence()
 FEATURED_HOME_LISTINGS = ("ncase-space-atlas-programs", "webapps-spoonie-listing")
+FEATURED_HOME_COVERAGE = ("trendhunter-scratch-lottery-2025",)
 POST = (ROOT / '_posts' / 'folio-koreaves-resources-ko' / '2026-11-02-folio-koreaves-resources-ko.md').read_text(encoding='utf-8')
 EVIDENCE_IDS_MATCH = re.search(r'(?m)^evidence_ids: \[([^\]]+)\]$', POST)
 assert EVIDENCE_IDS_MATCH, 'Milestone article evidence list missing'
@@ -37,7 +38,7 @@ POST_EVIDENCE_IDS = {value.strip() for value in EVIDENCE_IDS_MATCH.group(1).spli
 
 def expected_evidence_count(path):
     if path == '/portfolio/':
-        return sum(item['type'] == 'publication' or item['id'] in FEATURED_HOME_LISTINGS for item in EVIDENCE)
+        return sum(item['type'] == 'publication' or item['id'] in FEATURED_HOME_LISTINGS or item['id'] in FEATURED_HOME_COVERAGE for item in EVIDENCE)
     if path == '/portfolio/recognition/':
         return len(EVIDENCE)
     if path == '/koreaves-external-resources-ko/':
@@ -158,14 +159,19 @@ with sync_playwright() as p:
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
             if path == '/portfolio/':
-                # The homepage keeps all publications and highlights exactly two
-                # verified listings; all other directory records stay in the archive.
+                # The homepage keeps authored publications first, then a selected
+                # third-party feature and exactly two verified resource listings.
                 home_rows = page.locator('.folio-evidence-item').evaluate_all(
                     '(items) => items.map(item => ({id:item.dataset.evidenceId,type:item.dataset.evidenceType}))')
                 publication_count = sum(item['type'] == 'publication' for item in EVIDENCE)
                 assert [item['type'] for item in home_rows] == (
-                    ['publication'] * publication_count + ['listing'] * len(FEATURED_HOME_LISTINGS)
+                    ['publication'] * publication_count
+                    + ['coverage'] * len(FEATURED_HOME_COVERAGE)
+                    + ['listing'] * len(FEATURED_HOME_LISTINGS)
                 ), (viewport, 'homepage evidence types', home_rows)
+                assert tuple(item['id'] for item in home_rows if item['type'] == 'coverage') == (
+                    FEATURED_HOME_COVERAGE
+                ), (viewport, 'homepage source-bound feature ID', home_rows)
                 assert tuple(item['id'] for item in home_rows if item['type'] == 'listing') == (
                     FEATURED_HOME_LISTINGS
                 ), (viewport, 'homepage source-bound listing IDs', home_rows)
@@ -351,6 +357,9 @@ with sync_playwright() as p:
                     'item_id': evidence_event['id']
                 }], (viewport, 'event lacks exact source ID')
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)
+                page.locator('[data-filter="coverage"]').click()
+                assert page.url.endswith('/portfolio/recognition/#coverage')
+                assert page.locator('.folio-evidence-item:visible').count() == 1
                 page.locator('[data-filter="publication"]').click()
                 pub_count = sum(item['type'] == 'publication' for item in EVIDENCE)
                 assert page.url.endswith('/portfolio/recognition/#publication')

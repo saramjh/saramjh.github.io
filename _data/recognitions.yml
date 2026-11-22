@@ -1,7 +1,19 @@
 # Public evidence ledger. Add only verifiable claims and exact external proof URLs.
-# type: publication | listing | dataset_record | collaboration
+# type: publication | coverage | listing | dataset_record | collaboration
 # status: confirmed (public); pending entries are not shown anywhere publicly.
 # Dates should be omitted unless the source confirms the date.
+- id: trendhunter-scratch-lottery-2025
+  project: scratch-lottery
+  type: coverage
+  status: confirmed
+  date: 2025-03-27
+  source: "Trend Hunter"
+  title: "Scratch Lottery Simulation Program Customizes Odds and Scratch Tickets"
+  detail: "Ellen Smith's March 2025 article describes the original ScratchLottery simulator and its adjustable odds. It does not document later printed-issue features or measured visits."
+  case_ko: "/scratch-lottery-simulation-ko/"
+  case_en: "/scratch-lottery-simulation/"
+  url: "https://www.trendhunter.com/trends/scratch-lottery-simulation-program"
+  verified_at: "2026-11-23"
 - id: birds-photo-10000
   project: koreaves
   type: publication
