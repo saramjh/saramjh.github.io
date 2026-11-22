@@ -1,3 +1,5 @@
+@use "../tokens" as *;
+
 // Keep the keyboard bypass legible in the original dark palette.
 body[data-theme="dark"] .site-skip-link {
   background: $dark-white;
