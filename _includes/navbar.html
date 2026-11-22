@@ -16,7 +16,7 @@
         </svg>
       </span>
     </label>
-    <button type="button" id="mode" aria-label="Toggle color theme">
+    <button type="button" id="mode" aria-label="{% if page.lang == 'ko' %}다크 모드{% else %}Dark mode{% endif %}" aria-pressed="{% if site.mode == 'dark' %}true{% else %}false{% endif %}">
       <svg
         class="mode-sunny"
         xmlns="http://www.w3.org/2000/svg"
