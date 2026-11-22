@@ -159,14 +159,19 @@ with sync_playwright() as p:
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
             if path == '/portfolio/':
-                # The homepage keeps all publications and highlights exactly two
-                # verified listings; all other directory records stay in the archive.
+                # The homepage keeps authored publications first, then a selected
+                # third-party feature and exactly two verified resource listings.
                 home_rows = page.locator('.folio-evidence-item').evaluate_all(
                     '(items) => items.map(item => ({id:item.dataset.evidenceId,type:item.dataset.evidenceType}))')
                 publication_count = sum(item['type'] == 'publication' for item in EVIDENCE)
                 assert [item['type'] for item in home_rows] == (
-                    ['publication'] * publication_count + ['listing'] * len(FEATURED_HOME_LISTINGS)
+                    ['publication'] * publication_count
+                    + ['coverage'] * len(FEATURED_HOME_COVERAGE)
+                    + ['listing'] * len(FEATURED_HOME_LISTINGS)
                 ), (viewport, 'homepage evidence types', home_rows)
+                assert tuple(item['id'] for item in home_rows if item['type'] == 'coverage') == (
+                    FEATURED_HOME_COVERAGE
+                ), (viewport, 'homepage source-bound feature ID', home_rows)
                 assert tuple(item['id'] for item in home_rows if item['type'] == 'listing') == (
                     FEATURED_HOME_LISTINGS
                 ), (viewport, 'homepage source-bound listing IDs', home_rows)
