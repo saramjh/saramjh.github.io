@@ -65,6 +65,59 @@ with sync_playwright() as playwright:
     assert sample["overflowX"] == "auto" and sample["codeWhitespace"] == "pre", (
         "fenced code block style regressed", sample)
     page.close()
+
+    # Real Chrome verification of the first-party code-copy failure path.
+    # Mock the clipboard only in an isolated test page; never read or write a
+    # user's actual clipboard or disturb the occupied browser profile.
+    copy_page = "/koajs-attw-security-repair-ko/"
+    for clipboard_case in ("allowed", "denied", "unavailable"):
+        for width in (320, 1440):
+            page = browser.new_page(viewport={"width": width, "height": 844})
+            page.route("**/*", lambda route: route.continue_()
+                       if route.request.url.startswith(BASE + "/") else route.abort())
+            page.add_init_script("""(() => {
+                const mode = '__COPY_MODE__';
+                window.__copyPayload = null;
+                const api = mode === 'unavailable' ? undefined : {
+                    writeText: async text => {
+                        if (mode === 'denied') throw Error('Clipboard denied');
+                        window.__copyPayload = text;
+                    }
+                };
+                Object.defineProperty(navigator, 'clipboard', {
+                    configurable: true, value: api
+                });
+            })();""".replace('__COPY_MODE__', clipboard_case))
+            response = page.goto(BASE + copy_page, wait_until="domcontentloaded",
+                                 timeout=20000)
+            assert response is not None and response.status == 200
+            btn = page.locator(".highlighter-rouge .code-copy-btn").first
+            source = page.locator(".highlighter-rouge pre code").first
+            assert btn.count() == 1 and source.count() == 1, (
+                clipboard_case, width, "original code block absent")
+            original_text = source.inner_text().strip()
+            assert original_text, (clipboard_case, width, "empty source code")
+            btn.click()
+            label = btn.locator(".copy-text")
+            if clipboard_case == "allowed":
+                page.wait_for_function(
+                    "() => document.querySelector('.code-copy-btn .copy-text').textContent === 'Copied!'")
+                assert page.evaluate("window.__copyPayload").strip() == original_text
+                assert "copied" in (btn.get_attribute("class") or "")
+            else:
+                page.wait_for_function(
+                    "() => document.querySelector('.code-copy-btn .copy-text').textContent.startsWith('Selected:')")
+                assert "copied" not in (btn.get_attribute("class") or "")
+                assert page.evaluate("window.getSelection().toString()").strip() == original_text, (
+                    clipboard_case, width, "fallback did not select source")
+                assert "Ctrl+C" in label.inner_text() and "⌘C" in label.inner_text()
+                assert btn.get_attribute("aria-label") == label.inner_text()
+                assert label.evaluate("el => getComputedStyle(el).visibility") == "visible"
+            assert not page.evaluate(
+                "() => document.documentElement.scrollWidth > window.innerWidth + 2"), (
+                clipboard_case, width, "copy status caused horizontal overflow")
+            print("PASS original code-copy", clipboard_case, width)
+            page.close()
     browser.close()
 
-print("PASS 20 bilingual original long-inline-code viewports and fenced-block preservation")
+print("PASS original inline code and keyboard copy failure fallback")

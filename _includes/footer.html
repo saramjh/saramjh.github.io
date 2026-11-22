@@ -175,23 +175,51 @@
         <span class="code-lang">${lang}</span>
         <button class="code-copy-btn" type="button" aria-label="Copy code">
           <svg class="copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          <span class="copy-text">Copy</span>
+          <span class="copy-text" aria-live="polite">Copy</span>
         </button>
       `;
 
       const copyBtn = header.querySelector(".code-copy-btn");
+      const copyStatus = copyBtn.querySelector(".copy-text");
+      let statusReset;
+      function showCopyStatus(message, success) {
+        clearTimeout(statusReset);
+        copyBtn.classList.toggle("copied", success);
+        copyStatus.textContent = message;
+        copyBtn.setAttribute("aria-label", message === "Copy" ? "Copy code" : message);
+        statusReset = setTimeout(() => {
+          copyBtn.classList.remove("copied");
+          copyStatus.textContent = "Copy";
+          copyBtn.setAttribute("aria-label", "Copy code");
+        }, 4000);
+      }
+
       copyBtn.addEventListener("click", async () => {
         const codeEl = pre.querySelector("code");
         const codeText = codeEl ? codeEl.innerText : pre.innerText;
         try {
+          if (!navigator.clipboard || typeof navigator.clipboard.writeText !== "function") {
+            throw new Error("Clipboard API unavailable");
+          }
           await navigator.clipboard.writeText(codeText);
-          copyBtn.classList.add("copied");
-          copyBtn.querySelector(".copy-text").innerText = "Copied!";
-          setTimeout(() => {
-            copyBtn.classList.remove("copied");
-            copyBtn.querySelector(".copy-text").innerText = "Copy";
-          }, 2000);
+          showCopyStatus("Copied!", true);
         } catch (e) {
+          // Clipboard access may be denied. Select the original code so the
+          // reader can copy it manually instead of silently losing the action.
+          let selected = false;
+          try {
+            const selection = window.getSelection();
+            if (selection && codeText) {
+              const range = document.createRange();
+              range.selectNodeContents(codeEl || pre);
+              selection.removeAllRanges();
+              selection.addRange(range);
+              selected = selection.toString().length > 0;
+            }
+          } catch (_) {
+            // A readable failure remains if code selection is also restricted.
+          }
+          showCopyStatus(selected ? "Selected: Ctrl+C / ⌘C" : "Copy unavailable", false);
           console.error("Copy failed", e);
         }
       });
