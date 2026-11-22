@@ -1,3 +1,5 @@
+@use "../tokens" as *;
+
 // Reset some basic elements
 * {
   -webkit-transition: background-color 75ms ease-in, border-color 75ms ease-in;
@@ -283,7 +285,6 @@ blockquote {
   margin-left: auto;
   padding-right: $spacing-full;
   padding-left: $spacing-full;
-  @extend %clearfix;
 
   @include media-query($on-mobile) {
     max-width: -webkit-calc(#{$narrow-size} - (#{$spacing-full}));
@@ -344,7 +345,9 @@ table {
 }
 
 // Clearfix
-%clearfix:after {
+.post-item:after,
+.navbar:after,
+.wrapper:after {
   content: "";
   display: table;
   clear: both;

@@ -1,3 +1,6 @@
+@use "../tokens" as *;
+@use "base" as *;
+
 // Non-portfolio pages need an early, visible-on-focus keyboard bypass.
 body:not(.portfolio-body) .site-skip-link {
   position: fixed;
@@ -30,7 +33,6 @@ body:not(.portfolio-body) .site-skip-link {
   margin-left: auto;
   border-bottom: 1px solid $light;
   padding: $spacing-full - 15px $spacing-full;
-  @extend %clearfix;
 }
 
 // Navigation
@@ -320,7 +322,6 @@ body:not(.portfolio-body) .site-skip-link {
   display: flex;
   padding-top: 5px;
   padding-bottom: 6px;
-  @extend %clearfix;
 
   &:not(:first-child) {
     border-top: 1px solid $light;
