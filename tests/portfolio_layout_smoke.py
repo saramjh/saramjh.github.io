@@ -52,6 +52,31 @@ with sync_playwright() as p:
     # Local runs keep Playwright's bundled Chromium unless explicitly opted in.
     browser_channel = os.environ.get("BLOG_TEST_BROWSER_CHANNEL") or None
     browser = p.chromium.launch(headless=True, channel=browser_channel)
+    # Real Chrome keyboard bypass regression for the portfolio-only layout.
+    # This runs against the built local site, never a visitor or public profile.
+    for viewport in (390, 768, 1440):
+        for route in ('/portfolio/', '/portfolio/recognition/'):
+            page = browser.new_page(viewport={'width': viewport, 'height': 900})
+            page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+            page.route('https://www.clarity.ms/**', lambda route: route.abort())
+            response = page.goto(BASE + route, wait_until='domcontentloaded', timeout=20000)
+            assert response.status == 200, (viewport, route, 'portfolio skip route unavailable')
+            bypass = page.locator('.folio-skip-link')
+            assert bypass.count() == 1, (viewport, route, 'skip link missing')
+            assert bypass.get_attribute('href') == '#main-content'
+            assert bypass.bounding_box()['y'] < 0, (viewport, route, 'skip link visible without focus')
+            page.keyboard.press('Tab')
+            assert bypass.evaluate('el => document.activeElement === el'), (
+                viewport, route, 'skip link not first keyboard focus')
+            bounds = bypass.bounding_box()
+            assert bounds and bounds['y'] >= 0 and bounds['x'] >= 0, (
+                viewport, route, 'focused skip link is off screen', bounds)
+            page.keyboard.press('Enter')
+            page.wait_for_function("document.activeElement?.id === 'main-content'", timeout=5000)
+            assert page.evaluate("window.location.hash") == '#main-content', (
+                viewport, route, 'skip link did not reach main target')
+            page.close()
+            print('PASS portfolio keyboard bypass', viewport, route)
     for viewport in (390, 768, 1440):
         for path in PAGES:
             page = browser.new_page(viewport={'width': viewport, 'height': 900})
