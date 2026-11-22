@@ -5,8 +5,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES = {
-    "_posts/ai-coding-context-continuity-cokacremote/2026-10-05-ai-coding-context-continuity-cokacremote.md": ("2026-10-05", "2026-11-20"),
-    "_posts/en-ai-coding-context-continuity-cokacremote/2026-10-05-en-ai-coding-context-continuity-cokacremote.md": ("2026-10-05", "2026-11-20"),
+    "_posts/ai-coding-context-continuity-cokacremote/2026-10-05-ai-coding-context-continuity-cokacremote.md": ("2026-10-05", "2026-11-23"),
+    "_posts/en-ai-coding-context-continuity-cokacremote/2026-10-05-en-ai-coding-context-continuity-cokacremote.md": ("2026-10-05", "2026-11-23"),
     "_posts/impeccable-review-ai-ui-design/2026-10-05-impeccable-review-ai-ui-design.md": ("2026-10-05", "2026-11-19"),
     "_posts/en-impeccable-review-ai-ui-design/2026-10-05-en-impeccable-review-ai-ui-design.md": ("2026-10-05", "2026-11-19"),
     "_posts/recipe-scaling-application/2024-09-03-recipe-scaling-application.md": ("2024-09-03", "2026-11-19"),

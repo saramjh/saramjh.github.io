@@ -1,8 +1,8 @@
 ---
 title: "Keep AI Coding Context Across Sessions with cokacremote"
 date: 2026-10-05
-modified: 2026-11-20
-last_modified_at: 2026-11-20
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 tags: ["Serena", "Ponytail", "claude-mem", "cokacremote", "ChatGPT MCP", "AI coding", "context continuity", "coding agent memory", "project memory"]
 permalink: /en-ai-coding-context-continuity-cokacremote/
 layout: default
@@ -41,6 +41,8 @@ image_height: 630
 </p>
 
 The open-source MCP tool is documented in the [cokacremote GitHub repository](https://github.com/kstost/cokacremote). This article covers the project-context workflow I use locally.
+
+**The public server and my local extension are different.** As checked on November 23, 2026, the public `kstost/cokacremote` repository provides an MCP server for remote commands and file operations. The `project_context_bootstrap`, `project_context_checkpoint` and `project_context_recall` tools below belong to my local project-context extension; cloning the public repository alone does not install them. Without that extension, use the [portable handoff note](#a-portable-checkpoint-for-the-next-coding-agent) below and verify Git state and prior decisions manually at the next session.
 
 If you searched for `AI coding agent memory`, `persistent memory`, `keep context across coding sessions`, or `context engineering`, start by separating three different things:
 
