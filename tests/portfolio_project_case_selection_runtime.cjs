@@ -28,7 +28,7 @@ function setup(){
     if(query==='.folio-contact-cta[href^="mailto:"]')return [];
     if(query==='.folio-project-page .folio-project-header .folio-primary-cta[href]')return [];
     if(query===selector)return links;
-    if(query==='.folio-evidence-item'||query==='.folio-writing-card[data-case-id]'||query==='.folio-filter'||query==='#folio-records .folio-evidence-item')return [];
+    if(query==='.folio-evidence-item'||query==='.folio-writing-card[data-case-id]'||query==='.folio-filter'||query==='.folio-project-filter'||query==='#folio-records .folio-evidence-item')return [];
     throw Error('Unexpected selector: '+query);
   }};
   const navigator={doNotTrack:'0',msDoNotTrack:'0'};
