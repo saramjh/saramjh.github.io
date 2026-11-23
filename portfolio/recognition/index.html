@@ -4,15 +4,15 @@ portfolio_ui: true
 ads: false
 permalink: /portfolio/recognition/
 title: External publications and recognition archive
-description: A source-linked record of external publications, independent resource listings, catalogue records, and verified collaborations.
+description: A source-linked record of external publications, independent source citations, resource listings, catalogue records, and verified collaborations.
 lang: en
 alternate_url: /portfolio/recognition/ko/
 alternate_lang: ko
 ---
 <div class="folio-container folio-archive">
   <div class="folio-backline"><a href="/portfolio/">← Portfolio</a><span> / Recognition archive</span> <span aria-hidden="true">·</span> <a href="/portfolio/recognition/ko/" hreflang="ko" lang="ko">한국어로 보기</a></div>
-  <header class="folio-archive-header"><p class="folio-kicker">External record / evidence-led</p><h1>Outside the codebase.<br><em>On the record.</em></h1><p class="folio-lede">Not every mention means the same thing. This archive separates developer contributions, third-party features, resource listings, dataset records and documented collaborations. Only independently documented public outcomes appear as confirmed.</p></header>
-  <div class="folio-filterbar" role="group" aria-label="Filter external records"><button type="button" class="folio-filter is-active" data-filter="all" aria-pressed="true">All records</button><button type="button" class="folio-filter" data-filter="publication" aria-pressed="false">Published writing</button><button type="button" class="folio-filter" data-filter="coverage" aria-pressed="false">Third-party features</button><button type="button" class="folio-filter" data-filter="listing" aria-pressed="false">Listings</button><button type="button" class="folio-filter" data-filter="dataset_record" aria-pressed="false">Catalogue records</button><button type="button" class="folio-filter" data-filter="collaboration" aria-pressed="false">Collaborations</button></div>
+  <header class="folio-archive-header"><p class="folio-kicker">External record / evidence-led</p><h1>Outside the codebase.<br><em>On the record.</em></h1><p class="folio-lede">Not every mention means the same thing. This archive separates developer contributions, third-party features, source citations, resource listings, dataset records and documented collaborations. Only independently documented public outcomes appear as confirmed.</p></header>
+  <div class="folio-filterbar" role="group" aria-label="Filter external records"><button type="button" class="folio-filter is-active" data-filter="all" aria-pressed="true">All records</button><button type="button" class="folio-filter" data-filter="publication" aria-pressed="false">Published writing</button><button type="button" class="folio-filter" data-filter="coverage" aria-pressed="false">Third-party features</button><button type="button" class="folio-filter" data-filter="citation" aria-pressed="false">Source citations</button><button type="button" class="folio-filter" data-filter="listing" aria-pressed="false">Listings</button><button type="button" class="folio-filter" data-filter="dataset_record" aria-pressed="false">Catalogue records</button><button type="button" class="folio-filter" data-filter="collaboration" aria-pressed="false">Collaborations</button></div>
   <div class="folio-project-filterbar" role="group" aria-label="Filter evidence by project">
     <span class="folio-filter-group-label">Project</span>
     <button type="button" class="folio-project-filter is-active" data-project-filter="all" aria-pressed="true">All projects</button>
@@ -26,10 +26,11 @@ alternate_lang: ko
   <ol class="folio-evidence-list" id="folio-records" aria-labelledby="folio-records-heading">
     {% include portfolio-evidence.html type="publication" %}
     {% include portfolio-evidence.html type="coverage" %}
+    {% include portfolio-evidence.html type="citation" %}
     {% include portfolio-evidence.html type="dataset_record" %}
     {% include portfolio-evidence.html type="listing" %}
     {% include portfolio-evidence.html type="collaboration" %}
   </ol>
   <p class="folio-empty-note" id="folio-filter-empty" hidden>No publicly confirmed records match these filters. Private discussions and pending enquiries remain excluded.</p>
-  <div class="folio-record-note"><strong>How this archive is classified</strong><p><b>Publication</b> means original work appeared in an external publication. <b>Third-party feature</b> means an outside author described a project; it is not a developer byline or evidence of adoption. <b>Listing</b> means another directory linked to a project. <b>Catalogue record</b> is an index entry, not research publication or approval. <b>Collaboration</b> requires a documented joint activity—not merely a reply, outreach email or possible future agreement.</p></div>
+  <div class="folio-record-note"><strong>How this archive is classified</strong><p><b>Publication</b> means original work appeared in an external publication. <b>Third-party feature</b> means an outside author described a project; it is not a developer byline or evidence of adoption. <b>Source citation</b> means an external editorial article uses the project as a referenced source. This does not establish authorship, endorsement or verified audience. <b>Listing</b> means another directory linked to a project. <b>Catalogue record</b> is an index entry, not research publication or approval. <b>Collaboration</b> requires a documented joint activity—not merely a reply, outreach email or possible future agreement.</p></div>
 </div>

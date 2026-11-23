@@ -33,9 +33,9 @@ class KoreanRecognitionArchiveTests(unittest.TestCase):
             self.assertNotIn("\ufffd",localized_detail.group(1))
             self.assertRegex(localized_detail.group(1),r"[가-힣]")
             self.assertIn("  status: confirmed",block)
-        self.assertEqual(len(found),30)
-        self.assertEqual(len(set(found)),30)
-        self.assertEqual(source.count("  detail_ko: "),30)
+        self.assertEqual(len(found),31)
+        self.assertEqual(len(set(found)),31)
+        self.assertEqual(source.count("  detail_ko: "),31)
         self.assertNotIn("\ufffd",source)
 
     def test_bilingual_route_and_hreflang(self):
@@ -49,7 +49,7 @@ class KoreanRecognitionArchiveTests(unittest.TestCase):
         self.assertIn("alternate_lang: ko",en)
         self.assertIn('href="/portfolio/recognition/ko/" hreflang="ko"',en)
         self.assertIn('href="/portfolio/recognition/" hreflang="en"',ko)
-        for kind in ("publication","coverage","dataset_record","listing","collaboration"):
+        for kind in ("publication","coverage","citation","dataset_record","listing","collaboration"):
             for page in (en,ko):
                 self.assertEqual(page.count('include portfolio-evidence.html type="'+kind+'"'),1)
 
