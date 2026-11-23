@@ -104,6 +104,9 @@
 .portfolio-body .folio-evidence-item{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:22px;align-items:start;padding:23px 0;border-bottom:1px solid var(--folio-border);list-style:none;min-width:0}
 .portfolio-body .folio-evidence-glyph{border:1px solid #5b6884;width:31px;height:31px;border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--folio-accent);font:650 13px var(--folio-mono)}
 .portfolio-body .folio-evidence-source{color:var(--folio-accent)!important;font:550 10px var(--folio-mono);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px!important}
+/* These are owned project icons, not third-party publisher logos. */
+.portfolio-body .folio .folio-evidence-source .folio-evidence-project-mark{display:inline-block;vertical-align:middle;object-fit:contain;width:22px;height:22px;box-sizing:border-box;padding:2px;margin-right:8px;border:1px solid #53617c;border-radius:3px;background:#21283a}
+
 .portfolio-body .folio-dot-sep{margin:0 6px;color:var(--folio-muted)}
 .portfolio-body .folio-evidence-item h3{font-size:17px;line-height:1.45;letter-spacing:-.018em;margin:0 0 6px;font-weight:600}
 .portfolio-body .folio-evidence-item h3 a:hover{color:var(--folio-accent)!important}
@@ -212,7 +215,7 @@
 /* Source-linked recognition ledger: category | evidence | date. */
 .portfolio-body .folio .folio-evidence-item{
  display:grid;grid-template-columns:170px minmax(0,1fr) 118px;
- align-items:start;column-gap:31px;row-gap:8px;padding:27px 0 29px;
+ align-items:start;column-gap:31px;row-gap:8px;padding:16px 0 18px;
  min-height:112px;position:relative;list-style:none
 }
 .portfolio-body .folio .folio-evidence-kind{
@@ -237,7 +240,7 @@
  .portfolio-body .folio .folio-evidence-main h3{font-size:17px}
 }
 @media(max-width:680px){
- .portfolio-body .folio .folio-evidence-item{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:25px 0;min-height:0}
+ .portfolio-body .folio .folio-evidence-item{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:18px 0;min-height:0}
  .portfolio-body .folio .folio-evidence-kind{grid-column:1;grid-row:1;margin:0;font-size:10px;padding:6px 9px}
  .portfolio-body .folio .folio-evidence-main{grid-column:1;grid-row:2;width:100%}
  .portfolio-body .folio .folio-evidence-date{grid-column:1;grid-row:3;justify-self:start;padding:0}
