@@ -21,15 +21,19 @@ abort "Already exists: #{directory}" if File.exist?(directory)
 if source_url
   script = File.join(__dir__, 'check_achievement_source_coverage.py')
   stdout, stderr, status = Open3.capture3(
-    'python3', script, '--posts-root', File.join(root, '_posts'), '--source-url', source_url
+    'python3', script, '--posts-root', File.join(root, '_posts'),
+    '--recognitions-file', File.join(root, '_data', 'recognitions.yml'), '--source-url', source_url
   )
   case status.exitstatus
   when 3
     report = JSON.parse(stdout)
-    matches = report.fetch('sources').flat_map { |source| source.fetch('matches').map { |match| match['permalink'] || match['postPath'] } }
+    matches = report.fetch('sources').flat_map do |source|
+      source.fetch('matches').map { |match| match['permalink'] || match['postPath'] } +
+        source.fetch('ledgerMatches').map { |record| "evidence:#{record['recordId']} (#{record['recordType']})" }
+    end
     abort "Existing source coverage requires editorial review before another story: #{matches.uniq.join(', ')}"
   when 0
-    warn 'No exact source URL in existing posts. Manual source, rights and editorial review is still required.'
+    warn 'No exact source URL in original posts or evidence ledger. Manual source, rights and editorial review is still required.'
   else
     abort "Source coverage check unavailable; no post created: #{stderr.strip[0, 180]}"
   end

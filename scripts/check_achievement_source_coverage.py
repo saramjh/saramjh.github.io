@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Read-only source-URL coverage audit before drafting an achievement article.
+"""Read-only source-URL coverage audit against existing posts and the evidence ledger.
 
-An exact source match is a review flag: a link in an existing article can be
-background rather than the main subject. No result grants publication rights.
+An exact match requires source and editorial review. It grants no publication rights.
 """
 from __future__ import annotations
 
@@ -20,6 +19,8 @@ FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})")
 INLINE_CODE_RE = re.compile(r"`+[^`\n]*`+")
 META_RE = re.compile(r"^([A-Za-z_][\w-]*):\s*(.*?)\s*$")
 TRACKING = {"fbclid", "gclid", "mc_cid", "mc_eid", "igshid"}
+RECORD_START = re.compile(r"^- id: ([a-z0-9][a-z0-9-]*)$", re.MULTILINE)
+FIELD = re.compile(r"^  ([a-z_]+): (.+)$", re.MULTILINE)
 
 
 def normalize_url(raw: str) -> str:
@@ -95,11 +96,58 @@ def find_links(text: str) -> set[str]:
     return links
 
 
-def scan(posts: Path, source_urls: list[str]) -> tuple[int, dict]:
+def read_original_ledger(file: Path) -> tuple[list[dict], str]:
+    """Read only exact source IDs/URLs. Refuse incomplete or malformed records."""
+    if file.is_symlink() or not file.is_file():
+        raise ValueError("MISSING_OR_SYMLINK_RECOGNITIONS_LEDGER")
+    try:
+        raw = file.read_bytes()
+        content = raw.decode("utf-8", errors="strict")
+    except (OSError, UnicodeDecodeError) as exc:
+        raise ValueError("UNREADABLE_RECOGNITIONS_LEDGER") from exc
+    starts = list(RECORD_START.finditer(content))
+    if not starts:
+        raise ValueError("EMPTY_OR_MALFORMED_RECOGNITIONS_LEDGER")
+    # Every top-level record must use the exact "- id:" form.
+    if len(starts) != sum(line.startswith("- ") for line in content.splitlines()):
+        raise ValueError("MALFORMED_RECOGNITIONS_LEDGER_RECORD")
+    records = []
+    seen = set()
+    for i, marker in enumerate(starts):
+        record_id = marker.group(1)
+        block = content[marker.end():starts[i + 1].start() if i + 1 < len(starts) else None]
+        fields = {}
+        for match in FIELD.finditer(block):
+            fields.setdefault(match.group(1), []).append(match.group(2).strip())
+        if record_id in seen or any(len(fields.get(k, [])) != 1 for k in ("url", "type", "status")):
+            raise ValueError("DUPLICATE_OR_INCOMPLETE_RECOGNITIONS_LEDGER_RECORD")
+        seen.add(record_id)
+        url = fields["url"][0]
+        if url.startswith(('"', "'")):
+            if len(url) < 2 or url[-1] != url[0]:
+                raise ValueError("MALFORMED_RECOGNITIONS_LEDGER_URL")
+            url = url[1:-1]
+        elif '"' in url or "'" in url:
+            raise ValueError("MALFORMED_RECOGNITIONS_LEDGER_URL")
+        try:
+            normalized = normalize_url(url)
+        except ValueError as exc:
+            raise ValueError("INVALID_RECOGNITIONS_LEDGER_URL") from exc
+        records.append({
+            "recordId": record_id,
+            "normalized": normalized,
+            "recordType": fields["type"][0].strip('"'),
+            "status": fields["status"][0].strip('"'),
+            "project": (fields.get("project") or [None])[0],
+        })
+    return records, hashlib.sha256(raw).hexdigest()
+
+
+def scan(posts: Path, source_urls: list[str], recognitions_file: Path | None = None) -> tuple[int, dict]:
     sources = []
     try:
         for value in source_urls:
-            sources.append({"sourceUrl": value, "normalized": normalize_url(value), "matches": []})
+            sources.append({"sourceUrl": value, "normalized": normalize_url(value), "matches": [], "ledgerMatches": []})
     except ValueError:
         return 2, {"status": "INVALID_SOURCE_URL", "publicationAuthorized": False}
 
@@ -131,17 +179,40 @@ def scan(posts: Path, source_urls: list[str]) -> tuple[int, dict]:
     if count == 0:
         return 2, {"status": "NO_POSTS_TO_REVIEW", "publicationAuthorized": False}
 
-    covered = any(source["matches"] for source in sources)
+    ledger_records = []
+    ledger_sha = None
+    if recognitions_file is not None:
+        try:
+            ledger_records, ledger_sha = read_original_ledger(recognitions_file)
+        except ValueError as exc:
+            return 2, {
+                "status": str(exc),
+                "publicationAuthorized": False,
+                "nativeProviderWrites": 0,
+            }
+        for record in ledger_records:
+            for source in sources:
+                if source["normalized"] != record["normalized"]:
+                    continue
+                source["ledgerMatches"].append({
+                    key: value for key, value in record.items() if key != "normalized"
+                })
+    covered = any(source["matches"] or source["ledgerMatches"] for source in sources)
     return (3 if covered else 0), {
-        "schema": "DEV_BLOG_SOURCE_COVERAGE_PRECREATE_V1",
-        "status": "ALREADY_COVERED_REVIEW_REQUIRED" if covered else "NOT_IN_SCANNED_POSTS_UNVERIFIED",
+        "schema": "DEV_BLOG_SOURCE_COVERAGE_PRECREATE_V2",
+        "status": ("ALREADY_COVERED_REVIEW_REQUIRED" if covered else
+                   "NOT_IN_SCANNED_POSTS_OR_LEDGER_UNVERIFIED" if recognitions_file is not None
+                   else "NOT_IN_SCANNED_POSTS_UNVERIFIED"),
         "scannedPosts": count,
+        "scannedRecognitionRecords": len(ledger_records),
+        "recognitionsLedgerScanned": recognitions_file is not None,
+        "recognitionsLedgerSha256": ledger_sha,
         "sources": sources,
         "publicationAuthorized": False,
         "requiresSourceAndEditorialReview": True,
         "nativeProviderWrites": 0,
-        "note": "A link match may be background context; review before creating a new story. "
-                "No match does not prove originality, permission or delivery.",
+        "note": "A blog link may be background material; a ledger match is an existing record. "
+                "Both require editorial review. No match does not prove originality or permission.",
     }
 
 
@@ -151,8 +222,13 @@ def main(argv: list[str] | None = None) -> int:
                         help="Exact original external achievement URL; repeat for multiple sources.")
     parser.add_argument("--posts-root", type=Path, default=ROOT / "_posts",
                         help="Read-only existing local blog _posts root.")
+    parser.add_argument("--recognitions-file", type=Path,
+                        help="Original _data/recognitions.yml. Missing or malformed files fail closed.")
     args = parser.parse_args(argv)
-    code, report = scan(args.posts_root, args.source_url)
+    ledger = args.recognitions_file
+    if ledger is None and args.posts_root.resolve() == (ROOT / "_posts").resolve():
+        ledger = ROOT / "_data" / "recognitions.yml"
+    code, report = scan(args.posts_root, args.source_url, ledger)
     print(json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2))
     return code
 

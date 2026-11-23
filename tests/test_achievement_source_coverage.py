@@ -15,6 +15,16 @@ class SourceCoverageTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.posts = Path(self.temp.name) / "_posts"
         self.posts.mkdir()
+        self.ledger = Path(self.temp.name) / "_data" / "recognitions.yml"
+        self.ledger.parent.mkdir()
+        self.ledger.write_text(
+            "- id: existing-fixture-record\n"
+            "  project: test\n"
+            "  type: listing\n"
+            "  status: confirmed\n"
+            '  url: "https://example.net/fixture-record"\n',
+            encoding="utf-8",
+        )
 
     def tearDown(self):
         self.temp.cleanup()
@@ -130,6 +140,21 @@ class SourceCoverageTests(unittest.TestCase):
         self.assertNotEqual(run.returncode, 0)
         self.assertIn("existing", (run.stdout + run.stderr).lower())
         self.assertFalse((self.posts / "same-evidence").exists())
+
+    @unittest.skipUnless(shutil.which("ruby"), "Ruby CLI unavailable")
+    def test_new_post_already_in_ledger_blocks_before_creating_file(self):
+        self.post("unrelated", "https://example.org/new")
+        scripts = Path(self.temp.name) / "scripts"
+        scripts.mkdir()
+        shutil.copyfile(SCRIPT, scripts / SCRIPT.name)
+        shutil.copyfile(ROOT / "scripts" / "new_post.rb", scripts / "new_post.rb")
+        run = subprocess.run([
+            "ruby", str(scripts / "new_post.rb"), "--achievement-source",
+            "https://example.net/fixture-record", "old-in-ledger", "Not new",
+        ], capture_output=True, text=True, timeout=15)
+        self.assertNotEqual(run.returncode, 0, run.stdout)
+        self.assertIn("existing-fixture-record", run.stderr)
+        self.assertFalse((self.posts / "old-in-ledger").exists())
 
     @unittest.skipUnless(shutil.which("ruby"), "Ruby CLI unavailable")
     def test_new_post_new_achievement_source_creates_only_requested_slug(self):
