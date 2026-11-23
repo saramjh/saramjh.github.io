@@ -110,11 +110,12 @@
   if(!buttons.length||!entries.length)return;
   var count=document.getElementById('folio-filter-count');
   var empty=document.getElementById('folio-filter-empty');
+  var koreanArchive=!!(count&&typeof count.getAttribute==='function'&&count.getAttribute('data-recognition-lang')==='ko');
   function applyFilter(category){
     var visible=0;
     entries.forEach(function(entry){var show=category==='all'||entry.dataset.evidenceType===category;entry.hidden=!show;if(show)visible++;});
     buttons.forEach(function(button){var selected=button.dataset.filter===category;button.classList.toggle('is-active',selected);button.setAttribute('aria-pressed',String(selected));});
-    if(count)count.textContent=visible+' documented '+(visible===1?'record':'records')+' shown';
+    if(count)count.textContent=koreanArchive?'출처 확인 기록 '+visible+'건 표시':visible+' documented '+(visible===1?'record':'records')+' shown';
     if(empty)empty.hidden=visible!==0;
   }
   // Category links should remain useful when copied or reached with Back/Forward.

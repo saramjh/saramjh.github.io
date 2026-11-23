@@ -1,3 +1,4 @@
+{% assign folio_locale_ko = false %}{% if page.lang == 'ko' %}{% assign folio_locale_ko = true %}{% endif %}
 {% assign proof_count = 0 %}
 {% for record in site.data.recognitions %}
   {% if record.status == 'confirmed' %}
@@ -8,14 +9,14 @@
     {% if should_show %}
     {% assign proof_count = proof_count | plus: 1 %}
     <li class="folio-evidence-item{% unless record.date %} folio-evidence-item-no-date{% endunless %}" id="evidence-{{ record.id | escape }}" data-evidence-id="{{ record.id | escape }}" data-evidence-type="{{ record.type | escape }}">
-      <span class="folio-evidence-kind">{% case record.type %}{% when 'publication' %}Publication{% when 'coverage' %}Third-party feature{% when 'listing' %}Directory listing{% when 'dataset_record' %}Data record{% when 'collaboration' %}Collaboration{% endcase %}</span>
+      <span class="folio-evidence-kind">{% if folio_locale_ko %}{% case record.type %}{% when 'publication' %}외부 게재{% when 'coverage' %}외부 소개{% when 'listing' %}자료 목록 등재{% when 'dataset_record' %}자료 목록 기록{% when 'collaboration' %}협업{% endcase %}{% else %}{% case record.type %}{% when 'publication' %}Publication{% when 'coverage' %}Third-party feature{% when 'listing' %}Directory listing{% when 'dataset_record' %}Data record{% when 'collaboration' %}Collaboration{% endcase %}{% endif %}</span>
       <div class="folio-evidence-main">
-        <p class="folio-evidence-source">{{ record.source | escape }} <span class="folio-dot-sep" aria-hidden="true">·</span> {% case record.type %}{% when 'publication' %}Published contribution{% when 'coverage' %}External article{% when 'listing' %}External listing{% when 'dataset_record' %}Catalogue record{% when 'collaboration' %}Documented collaboration{% endcase %}</p>
-        <h3><a href="{{ record.url | escape }}" target="_blank" rel="noopener noreferrer">{{ record.title | escape }} <span class="folio-external-arrow" aria-hidden="true">↗</span></a> <a class="folio-evidence-permalink" href="{{ '/portfolio/recognition/' | relative_url }}#evidence-{{ record.id | escape }}" aria-label="Direct link to record: {{ record.title | escape }}" title="Direct link to this record">#</a></h3>
-        <p class="folio-evidence-description">{{ record.detail | escape }}
+        <p class="folio-evidence-source">{{ record.source | escape }} <span class="folio-dot-sep" aria-hidden="true">·</span> {% if folio_locale_ko %}{% case record.type %}{% when 'publication' %}원고 또는 자료 게재{% when 'coverage' %}외부 작성 기사{% when 'listing' %}외부 자료 등재{% when 'dataset_record' %}카탈로그 항목{% when 'collaboration' %}근거가 있는 협업{% endcase %}{% else %}{% case record.type %}{% when 'publication' %}Published contribution{% when 'coverage' %}External article{% when 'listing' %}External listing{% when 'dataset_record' %}Catalogue record{% when 'collaboration' %}Documented collaboration{% endcase %}{% endif %}</p>
+        <h3><a href="{{ record.url | escape }}" target="_blank" rel="noopener noreferrer">{{ record.title | escape }} <span class="folio-external-arrow" aria-hidden="true">↗</span></a> {% if folio_locale_ko %}<a class="folio-evidence-permalink" href="{{ '/portfolio/recognition/ko/' | relative_url }}#evidence-{{ record.id | escape }}" aria-label="기록 바로가기: {{ record.title | escape }}" title="이 기록의 링크">#</a>{% else %}<a class="folio-evidence-permalink" href="{{ '/portfolio/recognition/' | relative_url }}#evidence-{{ record.id | escape }}" aria-label="Direct link to record: {{ record.title | escape }}" title="Direct link to this record">#</a>{% endif %}</h3>
+        <p class="folio-evidence-description">{% if folio_locale_ko %}{{ record.detail_ko | default: record.detail | escape }}{% else %}{{ record.detail | escape }}{% endif %}
           {% if record.case_ko or record.case_en %}
             <span class="folio-evidence-context">
-              <span>Developer notes:</span>
+              <span>{% if folio_locale_ko %}개발 기록:{% else %}Developer notes:{% endif %}</span>
               {% if record.case_ko %}<a data-case-lang="ko" href="{{ record.case_ko | relative_url | escape }}">한국어</a>{% endif %}
               {% if record.case_ko and record.case_en %}<span aria-hidden="true"> / </span>{% endif %}
               {% if record.case_en %}<a data-case-lang="en" href="{{ record.case_en | relative_url | escape }}">English</a>{% endif %}
@@ -23,7 +24,7 @@
           {% endif %}
         </p>
       </div>
-      {% if record.date %}<time class="folio-evidence-date" datetime="{{ record.date }}">{{ record.date | date: '%b %-d, %Y' }}</time>{% endif %}
+      {% if record.date %}<time class="folio-evidence-date" datetime="{{ record.date }}">{% if folio_locale_ko %}{{ record.date | date: '%Y년 %-m월 %-d일' }}{% else %}{{ record.date | date: '%b %-d, %Y' }}{% endif %}</time>{% endif %}
     </li>
     {% endif %}
   {% endif %}
