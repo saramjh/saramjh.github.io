@@ -42,6 +42,7 @@ function harness() {
     if ([
       '.folio-evidence-item',
       '.folio-writing-card[data-case-id]',
+      '.folio-project-page .folio-project-header .folio-primary-cta[href]',
       '.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]',
       '.folio-filter',
       '#folio-records .folio-evidence-item'

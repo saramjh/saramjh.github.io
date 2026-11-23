@@ -25,6 +25,7 @@ function setup(initialHash){
  const document={
    querySelectorAll(selector){
      if(selector==='.folio-contact-cta[href^="mailto:"]')return [];
+     if(selector==='.folio-project-page .folio-project-header .folio-primary-cta[href]')return [];
      if(selector==='.folio-evidence-item')return [];
      if(selector==='.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')return [];
      if(selector==='.folio-writing-card[data-case-id]')return [];

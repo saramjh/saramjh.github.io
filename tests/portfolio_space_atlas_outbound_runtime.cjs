@@ -26,6 +26,7 @@ const navigator={doNotTrack:'0',msDoNotTrack:'0'};
 const window={doNotTrack:'0',gtag:(...args)=>calls.push(args)};
 const document={querySelectorAll(selector){
  if(selector==='.folio-contact-cta[href^="mailto:"]')return [];
+     if(selector==='.folio-project-page .folio-project-header .folio-primary-cta[href]')return [];
  if(selector==='.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')return all;
  if(['.folio-evidence-item','.folio-writing-card[data-case-id]','.folio-filter','#folio-records .folio-evidence-item'].includes(selector))return [];
  throw Error('Unexpected DOM query '+selector);

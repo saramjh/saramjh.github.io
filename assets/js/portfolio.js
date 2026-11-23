@@ -86,6 +86,25 @@
       });
     });
   });
+  // This event records a portfolio CTA selection, not use of the destination.
+  var originalProjects={
+    'https://koreaves.com/':'koreaves',
+    'https://spaceatlasedu.org/':'space_atlas',
+    'https://spoonie.kr/':'spoonie'
+  };
+  Array.from(document.querySelectorAll('.folio-project-page .folio-project-header .folio-primary-cta[href]')).forEach(function(link){
+    var href=link.getAttribute('href');
+    if(!Object.prototype.hasOwnProperty.call(originalProjects,href))return;
+    var id=originalProjects[href];
+    link.addEventListener('click',function(){
+      if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.msDoNotTrack==='1')return;
+      if(typeof window.gtag!=='function')return;
+      window.gtag('event','portfolio_live_project_select',{
+        content_type:'portfolio_live_project',
+        item_id:id
+      });
+    });
+  });
   var buttons=Array.from(document.querySelectorAll('.folio-filter'));
   var entries=Array.from(document.querySelectorAll('#folio-records .folio-evidence-item'));
   if(!buttons.length||!entries.length)return;
