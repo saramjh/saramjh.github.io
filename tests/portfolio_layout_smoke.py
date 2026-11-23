@@ -893,7 +893,15 @@ with sync_playwright() as p:
         assert all((page.locator('.folio-evidence-permalink').nth(i).get_attribute('href')
                     == '/portfolio/recognition/ko/#evidence-' + source_ids[i])
                    for i in range(31)), (viewport, 'Korean share links incorrect')
-        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 30건 표시'
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 31건 표시'
+        page.locator('.folio-filter[data-filter="citation"]').click()
+        assert page.url.endswith('/portfolio/recognition/ko/#citation')
+        citation = page.locator('#folio-records .folio-evidence-item:visible')
+        assert citation.count() == 1, (viewport, 'source citation filter must show one real record')
+        assert citation.first.get_attribute('data-evidence-id') == 'daily-korea-suncheon-koreaves-citation'
+        assert citation.first.locator('.folio-evidence-main h3 a').first.get_attribute('href') == (
+            'https://dailykorea.net/en/travel/suncheon-bay-first-birdwatching/')
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 1건 표시'
         page.locator('.folio-filter[data-filter="listing"]').click()
         assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 21건 표시'
         assert page.locator('#folio-records .folio-evidence-item:visible').count() == 21
