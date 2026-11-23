@@ -47,11 +47,11 @@ class OriginalLedgerCoverageTests(unittest.TestCase):
         self.assertRegex(data["recognitionsLedgerSha256"], r"^[0-9a-f]{64}$")
         self.assertFalse(data["publicationAuthorized"])
 
-    def test_original_31_ledger_records_are_read(self):
+    def test_original_32_ledger_records_are_read(self):
         self.ledger = ROOT / "_data/recognitions.yml"
         code, data = self.check("https://www.bearybirding.com/resources/")
         self.assertEqual(code, 3, data)
-        self.assertEqual(data["scannedRecognitionRecords"], 31)
+        self.assertEqual(data["scannedRecognitionRecords"], 32)
         self.assertEqual(data["sources"][0]["ledgerMatches"][0]["recordId"], "beary-resource")
         self.assertEqual(data["sources"][0]["matches"], [])
 

@@ -109,7 +109,7 @@ with sync_playwright() as p:
             ko.click()
             page.wait_for_url('**/portfolio/recognition/ko/')
             assert page.locator('html').get_attribute('lang') == 'ko'
-            assert page.locator('#folio-records .folio-evidence-item').count() == 31
+            assert page.locator('#folio-records .folio-evidence-item').count() == 32
         print('PASS homepage bilingual source-backed archive navigation',viewport)
         page.close()
     # Real Chrome keyboard bypass regression for the portfolio-only layout.
@@ -331,7 +331,7 @@ with sync_playwright() as p:
                 assert outbound['afterDnt'] == 1, (viewport, 'outbound DNT leakage', outbound)
                 assert outbound['afterMissingGA4'] == 1, (viewport, 'outbound missing GA4 guard', outbound)
             if path == '/portfolio/recognition/':
-                # New c431 bilingual developer-note links reuse the existing GA4
+                # New c432 bilingual developer-note links reuse the existing GA4
                 # event route; every test click stays inside this page.
                 case_event = page.evaluate("""() => {
                   const item = document.querySelector('.folio-evidence-item[data-evidence-id="birds-photo-10000"]');
@@ -447,17 +447,17 @@ with sync_playwright() as p:
                 # Original source types and projects intersect without altering evidence links.
                 page.locator('[data-project-filter="koreaves"]').click()
                 assert page.url.endswith('/portfolio/recognition/#project-koreaves')
-                assert page.locator('.folio-evidence-item:visible').count() == 16
+                assert page.locator('.folio-evidence-item:visible').count() == 17
                 page.locator('[data-filter="listing"]').click()
                 assert page.url.endswith('/portfolio/recognition/#project-koreaves--listing')
                 assert page.locator('.folio-evidence-item:visible').count() == 10
                 assert page.locator('[data-project-filter="koreaves"]').get_attribute('aria-pressed') == 'true'
                 page.go_back()
                 page.wait_for_function("document.querySelector('[data-filter=all]').getAttribute('aria-pressed') === 'true'")
-                assert page.locator('.folio-evidence-item:visible').count() == 16
+                assert page.locator('.folio-evidence-item:visible').count() == 17
                 page.locator('[data-project-filter="all"]').click()
                 assert page.url.endswith('/portfolio/recognition/#all')
-                assert page.locator('.folio-evidence-item:visible').count() == 31
+                assert page.locator('.folio-evidence-item:visible').count() == 32
                 page.locator('.folio-evidence-list').scroll_into_view_if_needed()
                 page.screenshot(path=f'/tmp/folio-evidence-fixed-{viewport}.png')
                 # Each source must have a stable archive fragment that is
@@ -885,15 +885,15 @@ with sync_playwright() as p:
         assert page.locator('link[rel="alternate"][hreflang="ko"]').get_attribute('href') == (
             'https://saramjh.github.io/portfolio/recognition/ko/')
         rows = page.locator('#folio-records .folio-evidence-item')
-        assert rows.count() == len(EVIDENCE) == 31, (viewport, 'Korean records missing')
+        assert rows.count() == len(EVIDENCE) == 32, (viewport, 'Korean records missing')
         source_ids = rows.evaluate_all(
             '(nodes) => nodes.map(n => n.dataset.evidenceId)')
         assert set(source_ids) == {r['id'] for r in EVIDENCE}, (viewport, 'source IDs differ')
-        assert page.locator('.folio-evidence-permalink').count() == 31
+        assert page.locator('.folio-evidence-permalink').count() == 32
         assert all((page.locator('.folio-evidence-permalink').nth(i).get_attribute('href')
                     == '/portfolio/recognition/ko/#evidence-' + source_ids[i])
-                   for i in range(31)), (viewport, 'Korean share links incorrect')
-        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 31건 표시'
+                   for i in range(32)), (viewport, 'Korean share links incorrect')
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 32건 표시'
         page.locator('.folio-filter[data-filter="citation"]').click()
         assert page.url.endswith('/portfolio/recognition/ko/#citation')
         citation = page.locator('#folio-records .folio-evidence-item:visible')
@@ -912,7 +912,7 @@ with sync_playwright() as p:
         assert page.locator('#folio-records .folio-evidence-item:visible').count() == 0
         assert page.locator('#folio-filter-empty').is_visible()
         page.locator('.folio-filter[data-filter="all"]').click()
-        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 31
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 32
         page.locator('.folio-project-filter[data-project-filter="spoonie"]').click()
         assert page.url.endswith('/portfolio/recognition/ko/#project-spoonie')
         assert page.locator('#folio-records .folio-evidence-item:visible').count() == 3
@@ -923,7 +923,7 @@ with sync_playwright() as p:
         assert page.url.endswith('/portfolio/recognition/ko/#listing')
         assert page.locator('#folio-records .folio-evidence-item:visible').count() == 21
         page.locator('.folio-filter[data-filter="all"]').click()
-        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 31
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 32
         assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2, (
             viewport, 'Korean mobile horizontal overflow')
         assert not errors, (viewport, 'Korean archive JavaScript errors', errors)

@@ -33,9 +33,9 @@ class WorldlyTribeAttributionTests(unittest.TestCase):
     def test_original_public_record_count_and_type_unchanged(self):
         source=LEDGER.read_text("utf8")
         chunks=re.split(r"(?m)^- id: ",source)[1:]
-        self.assertEqual(len(chunks),31)
+        self.assertEqual(len(chunks),32)
         ids=[x.splitlines()[0].strip() for x in chunks]
-        self.assertEqual(len(set(ids)),31)
+        self.assertEqual(len(set(ids)),32)
         found=[x for x in chunks if x.startswith("worldlytribe-space-atlas-worldschooling\n")]
         self.assertEqual(len(found),1)
         block=found[0]
@@ -46,6 +46,6 @@ class WorldlyTribeAttributionTests(unittest.TestCase):
         self.assertIn("source links",block)
         self.assertIn("실제 사용을 입증하지 않습니다",block)
         self.assertNotIn("  date: ",block)
-        self.assertEqual(source.count("  detail_ko: "),31)
+        self.assertEqual(source.count("  detail_ko: "),32)
 
 if __name__=="__main__": unittest.main()

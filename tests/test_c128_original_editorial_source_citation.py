@@ -15,8 +15,8 @@ ID='daily-korea-suncheon-koreaves-citation'
 class OriginalDailyKoreaEditorialSourceCitationTests(unittest.TestCase):
     def test_one_original_article_cited_in_one_source_record(self):
         blocks=re.split(r'(?m)^- id: ',LEDGER)[1:]
-        self.assertEqual(len(blocks),31)
-        self.assertEqual(len({b.splitlines()[0] for b in blocks}),31)
+        self.assertEqual(len(blocks),32)
+        self.assertEqual(len({b.splitlines()[0] for b in blocks}),32)
         citations=[b for b in blocks if re.search(r'(?m)^  type: citation$',b)]
         self.assertEqual(len(citations),1)
         record=citations[0]
@@ -55,9 +55,9 @@ class OriginalDailyKoreaEditorialSourceCitationTests(unittest.TestCase):
         types=[re.search(r'(?m)^  type: (\S+)$',b).group(1) for b in recs]
         projects=[re.search(r'(?m)^  project: (\S+)$',b).group(1) for b in recs]
         self.assertEqual({t:types.count(t) for t in set(types)},{
-           'publication':7,'coverage':1,'citation':1,'listing':21,'dataset_record':1})
+           'publication':8,'coverage':1,'citation':1,'listing':21,'dataset_record':1})
         self.assertEqual({n:projects.count(n) for n in set(projects)},{
-           'koreaves':16,'space-atlas':11,'spoonie':3,'scratch-lottery':1})
+           'koreaves':17,'space-atlas':11,'spoonie':3,'scratch-lottery':1})
         for page,name,label in ((EN,'EN','Source citations'),(KO,'KO','자료 인용')):
             self.assertIn('data-filter="citation"',page,name)
             self.assertIn('>'+label+'</button>',page,name)
