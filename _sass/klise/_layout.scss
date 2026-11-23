@@ -635,14 +635,19 @@ body:not(.portfolio-body) .site-skip-link {
   }
 
   .project-showcase-proof {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.25rem 1rem;
     margin: 0.75rem 0 0;
-    text-align: right;
   }
 
   .project-showcase-proof-link {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    max-width: 100%;
     min-height: 44px;
     font-size: 0.84rem;
     line-height: 1.5;

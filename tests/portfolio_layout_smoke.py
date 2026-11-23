@@ -81,6 +81,37 @@ with sync_playwright() as p:
             assert page.evaluate("window.location.hash") == '#main-content'
             page.close()
             print('PASS original blog keyboard bypass', viewport, route)
+    # Both original-source archive languages must be reachable from the actual
+    # homepage. This uses local pages only; analytics/network calls are blocked.
+    for viewport in (390, 768, 1440):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        response = page.goto(BASE+'/', wait_until='domcontentloaded', timeout=20000)
+        assert response.status == 200, (viewport, 'original homepage missing')
+        links = page.locator('.project-showcase-proof-link[data-recognition-locale]')
+        assert links.count() == 2, (viewport, 'bilingual archive entry missing')
+        assert [a.get_attribute('href') for a in links.all()] == [
+            '/portfolio/recognition/', '/portfolio/recognition/ko/'
+        ]
+        assert page.locator('.project-showcase-link').count() == 7
+        for link in links.all():
+            link.scroll_into_view_if_needed()
+            rect = link.bounding_box()
+            assert rect and rect['width'] > 40 and rect['height'] >= 40
+            assert rect['x'] >= 0 and rect['x']+rect['width'] <= viewport+2, (
+                viewport, 'archive link outside mobile viewport', rect)
+        assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2, (
+            viewport, 'homepage archive navigation widened screen')
+        if viewport == 390:
+            ko = page.locator('.project-showcase-proof-link[data-recognition-locale="ko"]')
+            assert ko.get_attribute('hreflang') == 'ko'
+            ko.click()
+            page.wait_for_url('**/portfolio/recognition/ko/')
+            assert page.locator('html').get_attribute('lang') == 'ko'
+            assert page.locator('#folio-records .folio-evidence-item').count() == 30
+        print('PASS homepage bilingual source-backed archive navigation',viewport)
+        page.close()
     # Real Chrome keyboard bypass regression for the portfolio-only layout.
     # This runs against the built local site, never a visitor or public profile.
     for viewport in (390, 768, 1440):
