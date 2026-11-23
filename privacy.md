@@ -9,7 +9,7 @@ ads: false
 tracking: false
 ---
 
-Last updated: **November 10, 2026**
+Last updated: **November 23, 2026**
 
 This page explains the third-party services used by **DevTestudinidae** (saramjh.github.io) and the information those services may process when you use the root blog.
 
