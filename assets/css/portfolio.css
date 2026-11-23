@@ -215,7 +215,7 @@
 /* Source-linked recognition ledger: category | evidence | date. */
 .portfolio-body .folio .folio-evidence-item{
  display:grid;grid-template-columns:170px minmax(0,1fr) 118px;
- align-items:start;column-gap:31px;row-gap:8px;padding:27px 0 29px;
+ align-items:start;column-gap:31px;row-gap:8px;padding:23px 0 25px;
  min-height:112px;position:relative;list-style:none
 }
 .portfolio-body .folio .folio-evidence-kind{
@@ -240,7 +240,7 @@
  .portfolio-body .folio .folio-evidence-main h3{font-size:17px}
 }
 @media(max-width:680px){
- .portfolio-body .folio .folio-evidence-item{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:25px 0;min-height:0}
+ .portfolio-body .folio .folio-evidence-item{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:18px 0;min-height:0}
  .portfolio-body .folio .folio-evidence-kind{grid-column:1;grid-row:1;margin:0;font-size:10px;padding:6px 9px}
  .portfolio-body .folio .folio-evidence-main{grid-column:1;grid-row:2;width:100%}
  .portfolio-body .folio .folio-evidence-date{grid-column:1;grid-row:3;justify-self:start;padding:0}
