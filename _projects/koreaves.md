@@ -43,6 +43,8 @@ On November 16, 2026, I fixed a CSS rule that kept non-matching region cards vis
 
 ## Published explanations beyond the project
 
+On November 23, 2026, the [British Ornithologists’ Union (BOU) published *When Records Become Maps* under my byline](https://bou.org.uk/blog-oh-when-records-become-maps/). The article links to KoreAves, its methodology and source records, and explains why a recorded occurrence should not be read as a population estimate. Read the [English case note](/koreaves-bou-when-records-become-maps-en/) or the [Korean edition](/koreaves-bou-when-records-become-maps-ko/). This is an author-credited BOU blog contribution, not peer-reviewed research, a formal partnership, or evidence of measured adoption.
+
 [One Earth published my KoreAves article on October 28, 2026](https://www.oneearth.org/koreaves/). It describes the evidence-linked bird atlas for readers encountering the project outside its own site. In [English](/koreaves-oneearth-author-achievement-en/) and [Korean](/koreaves-oneearth-author-achievement-ko/), I explain how its taxonomy, source records and regional views fit together.
 
 On November 6, [Unsustainable Magazine published my essay about the limits of bird observation maps](https://www.unsustainablemagazine.com/why-a-bird-map-is-not-a-bird-count/). It builds on the same mapping decisions: a recorded observation cannot on its own establish a region's bird population. The [English article note](/koreaves-unsustainable-bird-map-en/) and [Korean edition](/koreaves-unsustainable-bird-map-ko/) link the editorial credit to the source-backed GIS implementation.
