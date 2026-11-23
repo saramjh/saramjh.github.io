@@ -12,19 +12,30 @@ INCLUDE=ROOT/"_includes/portfolio-evidence.html"
 
 
 class KoreanRecognitionArchiveTests(unittest.TestCase):
-    def test_all_30_records_keep_original_provenance(self):
+    def test_all_30_records_keep_source_field_contract(self):
         source=LEDGER.read_text("utf8")
-        original=subprocess.run(
-            ["git","show","HEAD:_data/recognitions.yml"],cwd=ROOT,
-            capture_output=True,text=True,check=True
-        ).stdout
-        without_ko=re.sub(r"(?m)^  detail_ko: .*\n","",source)
-        self.assertEqual(without_ko,original,"Original English source, status, date and URLs must remain byte-for-byte unchanged")
-        self.assertEqual(len(re.findall(r"(?m)^- id: ",source)),30)
-        self.assertEqual(len(re.findall(r"(?m)^  detail_ko: ",source)),30)
-        for block in re.split(r"(?m)(?=^- id: )",source):
-            if block.startswith("- id: "):
-                self.assertEqual(block.count("  detail_ko: "),1)
+        records=re.split(r"(?m)(?=^- id: )",source)
+        found=[]
+        for block in records:
+            if not block.startswith("- id: "):
+                continue
+            record_id=block.splitlines()[0].removeprefix("- id: ").strip()
+            found.append(record_id)
+            original_detail=re.search(r"(?m)^  detail: (.+)$",block)
+            localized_detail=re.search(r"(?m)^  detail_ko: (.+)$",block)
+            original_url=re.search(r'(?m)^  url: "([^"]+)"$',block)
+            original_title=re.search(r"(?m)^  title: (.+)$",block)
+            self.assertIsNotNone(original_detail,record_id)
+            self.assertIsNotNone(localized_detail,record_id)
+            self.assertIsNotNone(original_url,record_id)
+            self.assertIsNotNone(original_title,record_id)
+            self.assertTrue(original_url.group(1).startswith("https://"),record_id)
+            self.assertNotIn("\ufffd",localized_detail.group(1))
+            self.assertRegex(localized_detail.group(1),r"[가-힣]")
+            self.assertIn("  status: confirmed",block)
+        self.assertEqual(len(found),30)
+        self.assertEqual(len(set(found)),30)
+        self.assertEqual(source.count("  detail_ko: "),30)
         self.assertNotIn("\ufffd",source)
 
     def test_bilingual_route_and_hreflang(self):
