@@ -56,6 +56,15 @@ HTML도 `<img src="screenshot.jpg" alt="관상 테스트 화면">`처럼 사용�
 
 `.ruby-version`의 Ruby 3.4.6을 사용합니다. macOS 기본 Ruby 2.6은 사용하지 않습니다.
 
+RVM에 Ruby 3.4.6이 없어도 Homebrew에 같은 버전이 설치돼 있다면 아래 명령으로 별도 임시 위치에 프로덕션 사이트를 빌드할 수 있습니다.
+
+~~~sh
+scripts/build-blog-local.sh doctor
+scripts/build-blog-local.sh build
+~~~
+
+빌드 스크립트는 전역 RVM 설정과 원본 파일을 변경하지 않습니다. 의존성이 없다면 scripts/build-blog-local.sh install을 명시적으로 실행하세요. 세부 경로와 설정은 [로컬 Jekyll 빌드 안내](docs/LOCAL_JEKYLL_BUILD.md)에 있습니다.
+
 ```sh
 bundle install
 bundle exec jekyll serve
