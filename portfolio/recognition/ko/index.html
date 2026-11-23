@@ -1,0 +1,41 @@
+---
+layout: portfolio
+portfolio_ui: true
+ads: false
+permalink: /portfolio/recognition/ko/
+title: 외부 기고와 성과 근거 아카이브
+description: 독립 개발자의 외부 기고, 외부 소개, 자료 목록 등재와 카탈로그 기록을 원본 출처에 연결해 구분합니다.
+lang: ko
+alternate_url: /portfolio/recognition/
+alternate_lang: en
+---
+<div class="folio-container folio-archive">
+  <div class="folio-backline"><a href="/portfolio/">← 포트폴리오</a><span> / 외부 기록</span> <span aria-hidden="true">·</span> <a href="/portfolio/recognition/" hreflang="en" lang="en">English</a></div>
+  <header class="folio-archive-header">
+    <p class="folio-kicker">외부 기록 / 원본 출처 확인</p>
+    <h1>내 사이트 밖에<br><em>남은 기록.</em></h1>
+    <p class="folio-lede">외부 매체의 기고, 제3자의 소개, 제작자가 제출한 링크의 등재, 카탈로그 기록을 구분했습니다. 원문 제목은 출처에 쓰인 그대로 두고, 각 항목에 한국어 설명과 원본 링크를 붙였습니다. 등재만으로 기관의 추천이나 실제 사용 성과를 뜻하지는 않습니다.</p>
+  </header>
+  <div class="folio-filterbar" role="group" aria-label="외부 기록 종류별 필터">
+    <button type="button" class="folio-filter is-active" data-filter="all" aria-pressed="true">전체</button>
+    <button type="button" class="folio-filter" data-filter="publication" aria-pressed="false">외부 게재</button>
+    <button type="button" class="folio-filter" data-filter="coverage" aria-pressed="false">외부 소개</button>
+    <button type="button" class="folio-filter" data-filter="listing" aria-pressed="false">자료 목록 등재</button>
+    <button type="button" class="folio-filter" data-filter="dataset_record" aria-pressed="false">카탈로그 기록</button>
+    <button type="button" class="folio-filter" data-filter="collaboration" aria-pressed="false">협업</button>
+  </div>
+  <p class="folio-filter-count" id="folio-filter-count" data-recognition-lang="ko" aria-live="polite">공개 출처로 확인된 기록을 표시합니다.</p>
+  <h2 class="folio-archive-outline-heading" id="folio-records-heading">외부 기록 목록</h2>
+  <ol class="folio-evidence-list" id="folio-records" aria-labelledby="folio-records-heading">
+    {% include portfolio-evidence.html type="publication" %}
+    {% include portfolio-evidence.html type="coverage" %}
+    {% include portfolio-evidence.html type="dataset_record" %}
+    {% include portfolio-evidence.html type="listing" %}
+    {% include portfolio-evidence.html type="collaboration" %}
+  </ol>
+  <p class="folio-empty-note" id="folio-filter-empty" hidden>이 분류에 공개 출처로 확인된 기록은 없습니다. 개인적 연락이나 아직 확인되지 않은 제안은 포함하지 않습니다.</p>
+  <div class="folio-record-note">
+    <strong>기록을 분류하는 기준</strong>
+    <p><b>외부 게재</b>는 다른 매체에 게재된 글이나 자료입니다. 여기에는 직접 제출한 글도 포함되므로 독립적인 언론 평가와 구분해야 합니다. <b>외부 소개</b>는 제3자가 작성한 기사입니다. <b>자료 목록 등재</b>는 다른 사이트가 프로젝트 링크를 실었다는 뜻입니다. <b>카탈로그 기록</b>은 자료 색인 항목으로 학술 발표나 기관 인증이 아닙니다. <b>협업</b>은 공동 작업의 공개 근거가 있을 때만 기록합니다.</p>
+  </div>
+</div>

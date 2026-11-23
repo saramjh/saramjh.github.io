@@ -808,5 +808,59 @@ with sync_playwright() as p:
     assert page.locator('#tag-topic-links .tag-item:visible').count() > 500
     page.close()
     nojs.close()
+    # Korean archive uses the same original source links and evidence IDs.
+    # Run only against the built local preview with ephemeral headless Chrome.
+    for viewport in (390, 768, 1440):
+        page = browser.new_page(viewport={'width': viewport, 'height': 900})
+        page.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+        page.route('https://www.clarity.ms/**', lambda route: route.abort())
+        errors = []
+        page.on('pageerror', lambda error: errors.append(str(error)))
+        response = page.goto(BASE + '/portfolio/recognition/ko/', wait_until='load', timeout=20000)
+        assert response.status == 200, (viewport, 'Korean recognition route not rendered')
+        assert page.locator('html').get_attribute('lang') == 'ko'
+        assert page.locator('link[rel="canonical"]').get_attribute('href') == (
+            'https://saramjh.github.io/portfolio/recognition/ko/')
+        assert page.locator('link[rel="alternate"][hreflang="en"]').get_attribute('href') == (
+            'https://saramjh.github.io/portfolio/recognition/')
+        assert page.locator('link[rel="alternate"][hreflang="ko"]').get_attribute('href') == (
+            'https://saramjh.github.io/portfolio/recognition/ko/')
+        rows = page.locator('#folio-records .folio-evidence-item')
+        assert rows.count() == len(EVIDENCE) == 30, (viewport, 'Korean records missing')
+        source_ids = rows.evaluate_all(
+            '(nodes) => nodes.map(n => n.dataset.evidenceId)')
+        assert set(source_ids) == {r['id'] for r in EVIDENCE}, (viewport, 'source IDs differ')
+        assert page.locator('.folio-evidence-permalink').count() == 30
+        assert all((page.locator('.folio-evidence-permalink').nth(i).get_attribute('href')
+                    == '/portfolio/recognition/ko/#evidence-' + source_ids[i])
+                   for i in range(30)), (viewport, 'Korean share links incorrect')
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 30건 표시'
+        page.locator('.folio-filter[data-filter="listing"]').click()
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 21건 표시'
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 21
+        assert page.url.endswith('/portfolio/recognition/ko/#listing')
+        page.locator('.folio-filter[data-filter="coverage"]').click()
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 1건 표시'
+        page.locator('.folio-filter[data-filter="collaboration"]').click()
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 0
+        assert page.locator('#folio-filter-empty').is_visible()
+        page.locator('.folio-filter[data-filter="all"]').click()
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 30
+        assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2, (
+            viewport, 'Korean mobile horizontal overflow')
+        assert not errors, (viewport, 'Korean archive JavaScript errors', errors)
+        if viewport == 390:
+            korean_sources = rows.evaluate_all("""(nodes) => nodes.map(n =>
+                [n.dataset.evidenceId, n.querySelector('.folio-evidence-main h3 a').getAttribute('href')])""")
+            english = browser.new_page(viewport={'width': 390, 'height': 900})
+            english.route('https://www.googletagmanager.com/**', lambda route: route.abort())
+            resp = english.goto(BASE + '/portfolio/recognition/', wait_until='load', timeout=20000)
+            assert resp.status == 200
+            english_sources = english.locator('#folio-records .folio-evidence-item').evaluate_all("""(nodes) => nodes.map(n =>
+                [n.dataset.evidenceId, n.querySelector('.folio-evidence-main h3 a').getAttribute('href')])""")
+            assert english_sources == korean_sources, 'Korean archive source URLs must equal English'
+            english.close()
+        print('PASS Korean recognition source, locale, filter, mobile', viewport)
+        page.close()
     browser.close()
 print('PASS all browser geometry checks')
