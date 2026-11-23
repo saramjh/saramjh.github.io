@@ -33,9 +33,9 @@ class KoreanRecognitionArchiveTests(unittest.TestCase):
             self.assertNotIn("\ufffd",localized_detail.group(1))
             self.assertRegex(localized_detail.group(1),r"[가-힣]")
             self.assertIn("  status: confirmed",block)
-        self.assertEqual(len(found),31)
-        self.assertEqual(len(set(found)),31)
-        self.assertEqual(source.count("  detail_ko: "),31)
+        self.assertEqual(len(found),32)
+        self.assertEqual(len(set(found)),32)
+        self.assertEqual(source.count("  detail_ko: "),32)
         self.assertNotIn("\ufffd",source)
 
     def test_bilingual_route_and_hreflang(self):

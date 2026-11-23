@@ -53,8 +53,8 @@ class TrendHunterCoverageTest(unittest.TestCase):
         self.assertIn("{% when 'coverage' %}Third-party feature", INCLUDE)
         self.assertIn("{% when 'coverage' %}External article", INCLUDE)
         self.assertIn('not a developer byline or evidence of adoption', ARCHIVE)
-        self.assertEqual(len(re.findall(r'(?m)^- id: ', LEDGER)), 31)
-        self.assertEqual(len(re.findall(r'(?m)^  type: publication$', LEDGER)), 7)
+        self.assertEqual(len(re.findall(r'(?m)^- id: ', LEDGER)), 32)
+        self.assertEqual(len(re.findall(r'(?m)^  type: publication$', LEDGER)), 8)
         self.assertEqual(len(re.findall(r'(?m)^  type: coverage$', LEDGER)), 1)
 
 

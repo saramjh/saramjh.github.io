@@ -53,6 +53,19 @@
   url: "https://dailykorea.net/en/travel/suncheon-bay-first-birdwatching/"
   mirror_url: "https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/"
   verified_at: "2026-11-23"
+- id: bou-when-records-become-maps
+  project: koreaves
+  type: publication
+  status: confirmed
+  date: 2026-11-23
+  source: "British Ornithologists' Union"
+  title: "When Records Become Maps"
+  detail: "Jihun Oh is credited on this BOU blog article, which links KoreAves, its methodology and sources. No peer review or partnership implied."
+  detail_ko: "Jihun Oh 명의의 BOU 기고문에 KoreAves·방법론·출처 링크가 있습니다. 학술 검증이나 제휴 실적은 아닙니다."
+  case_ko: "/koreaves-bou-when-records-become-maps-ko/"
+  case_en: "/koreaves-bou-when-records-become-maps-en/"
+  url: "https://bou.org.uk/blog-oh-when-records-become-maps/"
+  verified_at: "2026-11-23"
 - id: beary-resource
   project: koreaves
   type: listing

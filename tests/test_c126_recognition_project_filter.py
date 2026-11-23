@@ -20,11 +20,11 @@ class ArchiveProjectFilterTests(unittest.TestCase):
     def test_original_id_and_project_counts_not_inflated(self):
         ledger=(ROOT/"_data/recognitions.yml").read_text("utf8")
         rows=re.split(r"(?m)^- id: ",ledger)[1:]
-        self.assertEqual(len(rows),31)
+        self.assertEqual(len(rows),32)
         projects=[re.search(r"(?m)^  project: (.+)$",r).group(1) for r in rows]
         self.assertEqual({p:projects.count(p) for p in set(projects)},{
-            "koreaves":16,"space-atlas":11,"spoonie":3,"scratch-lottery":1})
-        self.assertEqual(len({r.splitlines()[0] for r in rows}),31)
+            "koreaves":17,"space-atlas":11,"spoonie":3,"scratch-lottery":1})
+        self.assertEqual(len({r.splitlines()[0] for r in rows}),32)
     def test_runtime_navigation_and_no_network(self):
         run=subprocess.run(["node","tests/portfolio_archive_project_filter_runtime.cjs"],
                            cwd=ROOT,capture_output=True,text=True,timeout=20)
