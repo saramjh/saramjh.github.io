@@ -106,9 +106,11 @@
     });
   });
   var buttons=Array.from(document.querySelectorAll('.folio-filter'));
-  var projectButtons=Array.from(document.querySelectorAll('.folio-project-filter'));
   var entries=Array.from(document.querySelectorAll('#folio-records .folio-evidence-item'));
   if(!buttons.length||!entries.length)return;
+  // This selector is archive-only; non-archive portfolio pages retain their
+  // original project-link and contact analytics behavior unchanged.
+  var projectButtons=Array.from(document.querySelectorAll('.folio-project-filter'));
   var count=document.getElementById('folio-filter-count');
   var empty=document.getElementById('folio-filter-empty');
   var koreanArchive=!!(count&&typeof count.getAttribute==='function'&&count.getAttribute('data-recognition-lang')==='ko');
