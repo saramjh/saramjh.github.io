@@ -1,5 +1,5 @@
 # Public evidence ledger. Add only verifiable claims and exact external proof URLs.
-# type: publication | coverage | listing | dataset_record | collaboration
+# type: publication | coverage | citation | listing | dataset_record | collaboration
 # status: confirmed (public); pending entries are not shown anywhere publicly.
 # Dates should be omitted unless the source confirms the date.
 - id: trendhunter-scratch-lottery-2025
@@ -39,6 +39,20 @@
   case_ko: "/koreaves-published-contributions-ko/"
   case_en: "/koreaves-published-contributions-en/"
   url: "https://www.10000birds.com/suncheon-bay-wetland-south-korea-profile-for-birders.htm"
+- id: daily-korea-suncheon-koreaves-citation
+  project: koreaves
+  type: citation
+  status: confirmed
+  date: 2026-11-19
+  source: "Daily Korea"
+  title: "A first birdwatch at Suncheon Bay, from the reeds to the hooded cranes"
+  detail: "Daily Korea Editorial's Suncheon Bay travel article cites and links the KoreAves regional evidence map and guide to explain what a qualifying bird record means. This is one source citation, not an author credit, independent review, partnership, endorsement or verified visits."
+  detail_ko: "Daily Korea 편집진의 순천만 첫 탐조 기사에서 KoreAves의 지역별 기록 지도와 해설을 자료로 인용·연결합니다. 외부 기사에서 출처로 인용한 기록 1건이며 작성자 크레딧, 독립적 제품 평가, 제휴, 추천 또는 실제 유입 실적을 의미하지 않습니다."
+  case_ko: "/koreaves-external-resources-ko/"
+  case_en: "/koreaves-external-resources-en/"
+  url: "https://dailykorea.net/en/travel/suncheon-bay-first-birdwatching/"
+  mirror_url: "https://dailykorea.net/ko/travel/suncheon-bay-first-birdwatching/"
+  verified_at: "2026-11-23"
 - id: beary-resource
   project: koreaves
   type: listing

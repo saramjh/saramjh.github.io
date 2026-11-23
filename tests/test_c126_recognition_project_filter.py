@@ -12,7 +12,7 @@ class ArchiveProjectFilterTests(unittest.TestCase):
             page=(ROOT/suffix).read_text("utf8")
             for project in PROJECTS:
                 self.assertIn('data-project-filter="'+project+'"',page)
-            self.assertEqual(page.count("portfolio-evidence.html type="),5)
+            self.assertEqual(page.count("portfolio-evidence.html type="),6)
             self.assertIn('<ol class="folio-evidence-list"',page)
             self.assertNotIn('hidden="hidden"',page)
         include=(ROOT/"_includes/portfolio-evidence.html").read_text("utf8")
@@ -20,11 +20,11 @@ class ArchiveProjectFilterTests(unittest.TestCase):
     def test_original_id_and_project_counts_not_inflated(self):
         ledger=(ROOT/"_data/recognitions.yml").read_text("utf8")
         rows=re.split(r"(?m)^- id: ",ledger)[1:]
-        self.assertEqual(len(rows),30)
+        self.assertEqual(len(rows),31)
         projects=[re.search(r"(?m)^  project: (.+)$",r).group(1) for r in rows]
         self.assertEqual({p:projects.count(p) for p in set(projects)},{
-            "koreaves":15,"space-atlas":11,"spoonie":3,"scratch-lottery":1})
-        self.assertEqual(len({r.splitlines()[0] for r in rows}),30)
+            "koreaves":16,"space-atlas":11,"spoonie":3,"scratch-lottery":1})
+        self.assertEqual(len({r.splitlines()[0] for r in rows}),31)
     def test_runtime_navigation_and_no_network(self):
         run=subprocess.run(["node","tests/portfolio_archive_project_filter_runtime.cjs"],
                            cwd=ROOT,capture_output=True,text=True,timeout=20)

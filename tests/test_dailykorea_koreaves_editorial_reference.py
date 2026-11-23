@@ -33,10 +33,19 @@ class DailyKoreaKoreAvesEditorialReferenceTest(unittest.TestCase):
             self.assertIn("https://koreaves.com/guide/",text)
             self.assertIn("Daily Korea Editorial",text)
 
-    def test_not_owner_byline_or_independent_directory_record(self):
+    def test_exact_source_citation_without_owner_byline_directory_or_partnership(self):
         ledger=(ROOT/"_data/recognitions.yml").read_text(encoding="utf8")
-        for url in URL_BY_LANG.values():
-            self.assertNotIn(url,ledger)
+        blocks=[block for block in ledger.split("- id: ") if block.startswith("daily-korea-suncheon-koreaves-citation\n")]
+        self.assertEqual(len(blocks),1)
+        record=blocks[0]
+        self.assertIn("  type: citation",record)
+        self.assertIn('  source: "Daily Korea"',record)
+        self.assertIn('  url: "'+URL_BY_LANG["en"]+'"',record)
+        self.assertIn('  mirror_url: "'+URL_BY_LANG["ko"]+'"',record)
+        self.assertIn("not an author credit",record)
+        self.assertNotIn("  type: publication",record)
+        self.assertNotIn("  type: listing",record)
+        self.assertNotIn("  type: collaboration",record)
         self.assertIn("내 역할은 지도 해석에 대한 사실 검토였고",POSTS["ko"].read_text(encoding="utf8"))
         self.assertIn("My contribution was a fact-check of the map interpretation",POSTS["en"].read_text(encoding="utf8"))
 
