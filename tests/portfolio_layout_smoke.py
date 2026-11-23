@@ -190,6 +190,20 @@ with sync_playwright() as p:
                         if coords['date']:
                             assert coords['date']['top'] >= coords['main']['bottom'], (viewport, path, 'mobile date overlap', coords)
             if path == '/portfolio/':
+                measured=page.locator('#measured-search')
+                assert measured.count()==1, (viewport,'first-party Search Console result panel missing')
+                assert measured.locator('.folio-search-tally strong').inner_text().strip()=='300'
+                assert '3,601 impressions' in measured.locator('.folio-search-tally p').inner_text()
+                rows=measured.locator('.folio-search-ranking dl>div')
+                assert rows.count()==3
+                assert [x.strip() for x in rows.locator('dd').all_inner_texts()]==[
+                    '120 clicks','88 clicks','73 clicks']
+                assert [x.get_attribute('href') for x in rows.locator('dt a').all()]==[
+                    '/scratchLottery/','/epson-waste-ink-pad-reset-without-key/','/richChecker/']
+                assert measured.locator('a[href="/independent-tools-google-search-results-en/"]').count()==1
+                assert measured.locator('a[href="/independent-tools-google-search-results-ko/"]').count()==1
+                bounds=measured.bounding_box()
+                assert bounds and bounds['width']>250 and bounds['x']>=-2 and bounds['x']+bounds['width']<=viewport+2, (viewport,'search proof overflow',bounds)
                 # The homepage keeps authored publications first, then a selected
                 # third-party feature and exactly two verified resource listings.
                 home_rows = page.locator('.folio-evidence-item').evaluate_all(

@@ -56,6 +56,22 @@
 .portfolio-body .folio-section-heading .folio-kicker{grid-column:1/-1;margin-bottom:-12px}
 .portfolio-body .folio-section-heading h2{font-size:clamp(36px,4.25vw,64px);margin:0;max-width:730px}
 .portfolio-body .folio-section-heading>p:last-child{color:var(--folio-muted)!important;font-size:14px;line-height:1.85;max-width:430px;margin:0 0 4px}
+/* First-party search results are a measured outcome, separate from external editorial records. */
+.portfolio-body .folio-search-results{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:64px;border-top:1px solid var(--folio-border);border-bottom:1px solid var(--folio-border);padding:32px 0 28px;align-items:start}
+.portfolio-body .folio-search-tally{min-width:0}
+.portfolio-body .folio-search-tally strong{display:block;color:var(--folio-accent)!important;font:500 clamp(72px,8.5vw,112px)/1 var(--folio-mono);letter-spacing:-.075em;font-variant-numeric:tabular-nums;margin:0 0 12px}
+.portfolio-body .folio-search-tally>span{font:550 14px Inter,system-ui,sans-serif;color:var(--folio-text)}
+.portfolio-body .folio-search-tally p{font:500 12px var(--folio-mono);color:var(--folio-muted)!important;margin:18px 0 0}
+.portfolio-body .folio-search-ranking h3{font:600 17px Inter,system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 18px}
+.portfolio-body .folio-search-ranking dl{margin:0;padding:0}
+.portfolio-body .folio-search-ranking dl>div{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--folio-border)}
+.portfolio-body .folio-search-ranking dt{font:500 14px Inter,system-ui,sans-serif;min-width:0}
+.portfolio-body .folio-search-ranking dt a{color:var(--folio-secondary)!important;border-bottom:1px solid #68779b}
+.portfolio-body .folio-search-ranking dt a:hover{color:var(--folio-accent)!important}
+.portfolio-body .folio-search-ranking dd{margin:0;color:var(--folio-text);white-space:nowrap;font:550 19px var(--folio-mono);font-variant-numeric:tabular-nums}
+.portfolio-body .folio-search-ranking dd small{font:500 11px var(--folio-mono);color:var(--folio-muted)}
+.portfolio-body .folio-search-limits{font:500 12px/1.75 Inter,system-ui,sans-serif;color:var(--folio-muted)!important;max-width:920px;margin:22px 0 0}
+@media(max-width:780px){.portfolio-body .folio-search-results{grid-template-columns:1fr;gap:32px}.portfolio-body .folio-search-ranking dl>div{gap:12px}}
 /* An indexed case-study directory scales to dozens of projects without a card grid becoming repetitive. */
 .portfolio-body .folio-projects{display:block;border-top:1px solid var(--folio-border)}
 .portfolio-body .folio-project-card{display:grid;grid-template-columns:38px minmax(0,.98fr) minmax(0,1fr);gap:28px;align-items:center;border:0;border-bottom:1px solid var(--folio-border);padding:33px 5px 35px;min-width:0;transition:background .2s}

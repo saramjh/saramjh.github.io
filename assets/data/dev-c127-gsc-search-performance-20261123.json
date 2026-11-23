@@ -1,0 +1,51 @@
+{
+  "schema": "DEV_FIRST_PARTY_GSC_WEB_SEARCH_SNAPSHOT_V1",
+  "status": "first_party_measured_not_independently_publicly_accessible",
+  "verified_on": "2026-11-23",
+  "source_provider": "Google Search Console Search Analytics API",
+  "property": "https://saramjh.github.io/",
+  "property_scope": "URL-prefix property; some tools are independently hosted under this hostname",
+  "search_type": "web",
+  "data_state": "final",
+  "start_date": "2026-10-15",
+  "end_date": "2026-11-20",
+  "date_note": "Search Console finalized web search reporting dates; not GA4 session dates",
+  "site_aggregation": {
+    "aggregation_type": "byProperty",
+    "clicks": 300,
+    "impressions": 3601,
+    "ctr": 0.0833101916134407,
+    "average_position": 19.231324632046654
+  },
+  "page_breakdown": {
+    "aggregation_type": "byPage",
+    "rows": [
+      {
+        "url": "https://saramjh.github.io/scratchLottery/",
+        "clicks": 120,
+        "impressions": 1416
+      },
+      {
+        "url": "https://saramjh.github.io/epson-waste-ink-pad-reset-without-key/",
+        "clicks": 88,
+        "impressions": 485
+      },
+      {
+        "url": "https://saramjh.github.io/richChecker/",
+        "clicks": 73,
+        "impressions": 236
+      }
+    ],
+    "aggregation_note": "Per-page Search Console clicks may not sum to the property-level clicks. Each set has a different aggregation level and is not a complete site page report."
+  },
+  "limits": [
+    "Click means interaction with a Google web search result, not a unique person, task success or app adoption.",
+    "The report covers the original verified URL-prefix property. It does not include other domains such as koreaves.com, spoonie.kr or spaceatlasedu.org.",
+    "Search Console's property and page aggregations may differ; do not subtract the displayed page counts from the property total to infer the remainder.",
+    "This is first-party private-property data, not a third-party editorial acceptance, public independent audit, or human testimonial.",
+    "Google Search Console and GA4 measure different things; their reports must not be combined as a conversion funnel without a matched definition."
+  ],
+  "data_access": "The originating GSC property is private; published summary permits provenance review, not independent reproduction without owner access.",
+  "privacy": "Only aggregate non-identifying counts and original public page paths are published; no searcher or session identifiers.",
+  "no_synthetic_events": true
+}
