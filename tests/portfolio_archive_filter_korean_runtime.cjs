@@ -30,6 +30,7 @@ function setup(initialHash){
      if(selector==='.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]')return [];
      if(selector==='.folio-writing-card[data-case-id]')return [];
      if(selector==='.folio-filter')return buttons;
+     if(selector==='.folio-project-filter')return [];
      if(selector==='#folio-records .folio-evidence-item')return entries;
      throw Error('Unexpected selector '+selector);
    },

@@ -25,7 +25,7 @@ const document={querySelectorAll(q){
  if(q===selector)return [...allowed,...denied];
  if(['.folio-contact-cta[href^="mailto:"]','.folio-evidence-item','.folio-writing-card[data-case-id]',
  '.folio-project-page .folio-project-article a[href], .folio-project-page .folio-project-header .folio-text-cta[href]',
- '.folio-filter','#folio-records .folio-evidence-item'].includes(q))return [];
+ '.folio-filter','.folio-project-filter','#folio-records .folio-evidence-item'].includes(q))return [];
  throw Error('Unexpected selector '+q);
 }};
 vm.runInNewContext(source,{document,window,navigator,Array,Object},{timeout:1500});
