@@ -215,7 +215,7 @@
 /* Source-linked recognition ledger: category | evidence | date. */
 .portfolio-body .folio .folio-evidence-item{
  display:grid;grid-template-columns:170px minmax(0,1fr) 118px;
- align-items:start;column-gap:31px;row-gap:8px;padding:23px 0 25px;
+ align-items:start;column-gap:31px;row-gap:8px;padding:16px 0 18px;
  min-height:112px;position:relative;list-style:none
 }
 .portfolio-body .folio .folio-evidence-kind{

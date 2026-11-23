@@ -61,7 +61,7 @@ class ProjectMarkTests(unittest.TestCase):
         self.assertIn("object-fit:contain", self.css)
         self.assertIn("vertical-align:middle", self.css)
         self.assertIn("grid-template-columns:170px minmax(0,1fr) 118px", self.css)
-        self.assertIn("column-gap:31px;row-gap:8px;padding:23px 0 25px", self.css)
+        self.assertIn("column-gap:31px;row-gap:8px;padding:16px 0 18px", self.css)
         self.assertIn("@media(max-width:680px)", self.css)
         self.assertIn("row-gap:10px;padding:18px 0;min-height:0", self.css)
 
