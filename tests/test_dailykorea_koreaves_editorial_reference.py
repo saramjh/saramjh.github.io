@@ -42,7 +42,7 @@ class DailyKoreaKoreAvesEditorialReferenceTest(unittest.TestCase):
         self.assertIn('  source: "Daily Korea"',record)
         self.assertIn('  url: "'+URL_BY_LANG["en"]+'"',record)
         self.assertIn('  mirror_url: "'+URL_BY_LANG["ko"]+'"',record)
-        self.assertIn("not an author credit",record)
+        self.assertIn("not a developer byline",record)
         self.assertNotIn("  type: publication",record)
         self.assertNotIn("  type: listing",record)
         self.assertNotIn("  type: collaboration",record)

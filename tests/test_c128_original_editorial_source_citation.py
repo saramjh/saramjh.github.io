@@ -31,9 +31,9 @@ class OriginalDailyKoreaEditorialSourceCitationTests(unittest.TestCase):
           '  case_en: "/koreaves-external-resources-en/"',
           '  case_ko: "/koreaves-external-resources-ko/"',
           '  verified_at: "2026-11-23"',
-          'not an author credit',
-          '작성자 크레딧',
-          'not an author credit, independent review, partnership, endorsement or verified visits',
+          'not a developer byline',
+          '기고자 표기',
+          'not a developer byline, endorsement or measured use',
         ):
           self.assertIn(required,record)
         self.assertNotIn('Jihun Oh',record)
