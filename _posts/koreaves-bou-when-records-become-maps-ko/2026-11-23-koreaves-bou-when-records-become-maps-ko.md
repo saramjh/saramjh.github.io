@@ -47,3 +47,5 @@ KoreAves에서는 한 종의 이름에서 지역별 관찰 근거로 이동할 �
 원문에서 확인되는 실적은 **작성자 명의의 외부 기고 게재**다. 학술 동료심사, BOU와의 공식 제휴나 기관 추천, 실제 독자 수 또는 환경 보전 성과까지 입증하는 자료는 아니다.
 
 이미 [10,000 Birds 기고](/koreaves-published-contributions-ko/)에서는 사진 사용 권리와 지역 소개를, [Unsustainable Magazine 기고](/koreaves-unsustainable-bird-map-ko/)에서는 관찰 지도와 개체 수 해석을 다뤘다. 이번 BOU 글은 한 종의 이름에서 지도와 근거 자료까지 이어지는 구조에 초점을 맞췄다. 구체적인 구현은 [KoreAves 개발 기록](/koreaves-bird-evidence-atlas/)에서 확인할 수 있다.
+
+<script src="/assets/js/bou-original-source-select.js" defer></script>

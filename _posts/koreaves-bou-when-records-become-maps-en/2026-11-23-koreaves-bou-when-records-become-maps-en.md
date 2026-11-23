@@ -47,3 +47,5 @@ For a data engineer or software collaborator, the useful question is whether the
 The [BOU publication](https://bou.org.uk/blog-oh-when-records-become-maps/) establishes an author-credited external contribution. It does not establish peer-reviewed scientific validation, a formal institutional partnership, endorsement, measured referral traffic or verified conservation impact.
 
 Two other published essays approached related problems from different angles: [image rights and a field-guide photograph](/koreaves-published-contributions-en/) and [why a bird map is not a bird count](/koreaves-unsustainable-bird-map-en/). For the system behind these explanations, see the [KoreAves development case](/koreaves-bird-evidence-atlas-en/) or open the [live project](https://koreaves.com/).
+
+<script src="/assets/js/bou-original-source-select.js" defer></script>
