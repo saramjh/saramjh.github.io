@@ -430,6 +430,20 @@ with sync_playwright() as p:
                 page.locator('[data-filter="all"]').click()
                 assert page.url.endswith('/portfolio/recognition/#all')
                 assert page.locator('.folio-evidence-item:visible').count() == len(EVIDENCE)
+                # Original source types and projects intersect without altering evidence links.
+                page.locator('[data-project-filter="koreaves"]').click()
+                assert page.url.endswith('/portfolio/recognition/#project-koreaves')
+                assert page.locator('.folio-evidence-item:visible').count() == 15
+                page.locator('[data-filter="listing"]').click()
+                assert page.url.endswith('/portfolio/recognition/#project-koreaves--listing')
+                assert page.locator('.folio-evidence-item:visible').count() == 10
+                assert page.locator('[data-project-filter="koreaves"]').get_attribute('aria-pressed') == 'true'
+                page.go_back()
+                page.wait_for_function("document.querySelector('[data-filter=all]').getAttribute('aria-pressed') === 'true'")
+                assert page.locator('.folio-evidence-item:visible').count() == 15
+                page.locator('[data-project-filter="all"]').click()
+                assert page.url.endswith('/portfolio/recognition/#all')
+                assert page.locator('.folio-evidence-item:visible').count() == 30
                 page.locator('.folio-evidence-list').scroll_into_view_if_needed()
                 page.screenshot(path=f'/tmp/folio-evidence-fixed-{viewport}.png')
                 # Each source must have a stable archive fragment that is
@@ -875,6 +889,17 @@ with sync_playwright() as p:
         page.locator('.folio-filter[data-filter="collaboration"]').click()
         assert page.locator('#folio-records .folio-evidence-item:visible').count() == 0
         assert page.locator('#folio-filter-empty').is_visible()
+        page.locator('.folio-filter[data-filter="all"]').click()
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 30
+        page.locator('.folio-project-filter[data-project-filter="spoonie"]').click()
+        assert page.url.endswith('/portfolio/recognition/ko/#project-spoonie')
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 3
+        page.locator('.folio-filter[data-filter="listing"]').click()
+        assert page.locator('#folio-filter-count').inner_text() == '출처 확인 기록 2건 표시'
+        assert page.url.endswith('/portfolio/recognition/ko/#project-spoonie--listing')
+        page.locator('.folio-project-filter[data-project-filter="all"]').click()
+        assert page.url.endswith('/portfolio/recognition/ko/#listing')
+        assert page.locator('#folio-records .folio-evidence-item:visible').count() == 21
         page.locator('.folio-filter[data-filter="all"]').click()
         assert page.locator('#folio-records .folio-evidence-item:visible').count() == 30
         assert page.evaluate('document.documentElement.scrollWidth') <= viewport + 2, (

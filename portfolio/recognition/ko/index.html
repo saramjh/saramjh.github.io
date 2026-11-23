@@ -24,6 +24,14 @@ alternate_lang: en
     <button type="button" class="folio-filter" data-filter="dataset_record" aria-pressed="false">카탈로그 기록</button>
     <button type="button" class="folio-filter" data-filter="collaboration" aria-pressed="false">협업</button>
   </div>
+  <div class="folio-project-filterbar" role="group" aria-label="프로젝트별 외부 기록 필터">
+    <span class="folio-filter-group-label">프로젝트</span>
+    <button type="button" class="folio-project-filter is-active" data-project-filter="all" aria-pressed="true">전체 프로젝트</button>
+    <button type="button" class="folio-project-filter" data-project-filter="koreaves" aria-pressed="false">KoreAves</button>
+    <button type="button" class="folio-project-filter" data-project-filter="space-atlas" aria-pressed="false">Space Atlas</button>
+    <button type="button" class="folio-project-filter" data-project-filter="spoonie" aria-pressed="false">Spoonie</button>
+    <button type="button" class="folio-project-filter" data-project-filter="scratch-lottery" aria-pressed="false">Scratch Lottery</button>
+  </div>
   <p class="folio-filter-count" id="folio-filter-count" data-recognition-lang="ko" aria-live="polite">공개 출처로 확인된 기록을 표시합니다.</p>
   <h2 class="folio-archive-outline-heading" id="folio-records-heading">외부 기록 목록</h2>
   <ol class="folio-evidence-list" id="folio-records" aria-labelledby="folio-records-heading">
@@ -33,7 +41,7 @@ alternate_lang: en
     {% include portfolio-evidence.html type="listing" %}
     {% include portfolio-evidence.html type="collaboration" %}
   </ol>
-  <p class="folio-empty-note" id="folio-filter-empty" hidden>이 분류에 공개 출처로 확인된 기록은 없습니다. 개인적 연락이나 아직 확인되지 않은 제안은 포함하지 않습니다.</p>
+  <p class="folio-empty-note" id="folio-filter-empty" hidden>선택한 필터 조합에 맞는 공개 확인 기록은 없습니다. 개인적 연락이나 아직 확인되지 않은 제안은 포함하지 않습니다.</p>
   <div class="folio-record-note">
     <strong>기록을 분류하는 기준</strong>
     <p><b>외부 게재</b>는 다른 매체에 게재된 글이나 자료입니다. 여기에는 직접 제출한 글도 포함되므로 독립적인 언론 평가와 구분해야 합니다. <b>외부 소개</b>는 제3자가 작성한 기사입니다. <b>자료 목록 등재</b>는 다른 사이트가 프로젝트 링크를 실었다는 뜻입니다. <b>카탈로그 기록</b>은 자료 색인 항목으로 학술 발표나 기관 인증이 아닙니다. <b>협업</b>은 공동 작업의 공개 근거가 있을 때만 기록합니다.</p>

@@ -106,33 +106,71 @@
     });
   });
   var buttons=Array.from(document.querySelectorAll('.folio-filter'));
+  var projectButtons=Array.from(document.querySelectorAll('.folio-project-filter'));
   var entries=Array.from(document.querySelectorAll('#folio-records .folio-evidence-item'));
   if(!buttons.length||!entries.length)return;
   var count=document.getElementById('folio-filter-count');
   var empty=document.getElementById('folio-filter-empty');
   var koreanArchive=!!(count&&typeof count.getAttribute==='function'&&count.getAttribute('data-recognition-lang')==='ko');
-  function applyFilter(category){
+  var activeCategory='all';
+  var activeProject='all';
+  function hasCategory(category){return buttons.some(function(button){return button.dataset.filter===category;});}
+  function hasProject(project){return project==='all'||projectButtons.some(function(button){return button.dataset.projectFilter===project;});}
+  function applyFilter(category,project){
+    activeCategory=hasCategory(category)?category:'all';
+    activeProject=hasProject(project)?project:'all';
     var visible=0;
-    entries.forEach(function(entry){var show=category==='all'||entry.dataset.evidenceType===category;entry.hidden=!show;if(show)visible++;});
-    buttons.forEach(function(button){var selected=button.dataset.filter===category;button.classList.toggle('is-active',selected);button.setAttribute('aria-pressed',String(selected));});
+    entries.forEach(function(entry){
+      var categoryMatch=activeCategory==='all'||entry.dataset.evidenceType===activeCategory;
+      var projectMatch=activeProject==='all'||entry.dataset.evidenceProject===activeProject;
+      var show=categoryMatch&&projectMatch;
+      entry.hidden=!show;
+      if(show)visible++;
+    });
+    buttons.forEach(function(button){
+      var selected=button.dataset.filter===activeCategory;
+      button.classList.toggle('is-active',selected);
+      button.setAttribute('aria-pressed',String(selected));
+    });
+    projectButtons.forEach(function(button){
+      var selected=button.dataset.projectFilter===activeProject;
+      button.classList.toggle('is-active',selected);
+      button.setAttribute('aria-pressed',String(selected));
+    });
     if(count)count.textContent=koreanArchive?'출처 확인 기록 '+visible+'건 표시':visible+' documented '+(visible===1?'record':'records')+' shown';
     if(empty)empty.hidden=visible!==0;
   }
-  // Category links should remain useful when copied or reached with Back/Forward.
-  // Only existing filter values are accepted; unrelated fragments show all records.
-  function categoryFromUrl(){
-    var hash=window.location.hash.slice(1);
-    return buttons.some(function(button){return button.dataset.filter===hash;})?hash:'all';
+  function hashFor(category,project){
+    if(project==='all')return '#'+category;
+    return '#project-'+project+(category==='all'?'':'--'+category);
   }
-  function restoreFilter(){applyFilter(categoryFromUrl());}
-  buttons.forEach(function(button){
-    button.addEventListener('click',function(){
-      var category=button.dataset.filter;
-      if(window.location.hash!=='#'+category){
-        window.history.pushState(null,'','#'+category);
+  // Keep older #publication and #listing links, preserve browser Back/Forward,
+  // and never let an unknown fragment hide source-linked records.
+  function filtersFromUrl(){
+    var hash=window.location.hash.slice(1);
+    if(hasCategory(hash))return {category:hash,project:'all'};
+    if(hash.indexOf('project-')===0){
+      var parts=hash.slice(8).split('--');
+      if(parts.length<=2&&hasProject(parts[0])&&(parts.length===1||hasCategory(parts[1]))){
+        return {category:parts[1]||'all',project:parts[0]};
       }
-      applyFilter(category);
-    });
+    }
+    return {category:'all',project:'all'};
+  }
+  function restoreFilter(){
+    var selected=filtersFromUrl();
+    applyFilter(selected.category,selected.project);
+  }
+  function updateHash(category,project){
+    var hash=hashFor(category,project);
+    if(window.location.hash!==hash)window.history.pushState(null,'',hash);
+    applyFilter(category,project);
+  }
+  buttons.forEach(function(button){
+    button.addEventListener('click',function(){updateHash(button.dataset.filter,activeProject);});
+  });
+  projectButtons.forEach(function(button){
+    button.addEventListener('click',function(){updateHash(activeCategory,button.dataset.projectFilter);});
   });
   window.addEventListener('popstate',restoreFilter);
   window.addEventListener('hashchange',restoreFilter);
