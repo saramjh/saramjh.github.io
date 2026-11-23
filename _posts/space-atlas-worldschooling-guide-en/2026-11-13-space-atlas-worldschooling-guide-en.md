@@ -2,6 +2,8 @@
 title: "Space Atlas appears in a worldschooling science guide"
 description: "WorldlyTribe lists Space Atlas among free science tools for travelling families. A source-linked look at the interactive astronomy models behind that entry."
 date: 2026-11-13
+modified: 2026-11-23
+last_modified_at: 2026-11-23
 tags: ["Space Atlas", "Worldschooling", "Homeschooling", "Astronomy", "STEM Education", "Developer Portfolio"]
 permalink: /space-atlas-worldschooling-guide-en/
 layout: default
@@ -41,6 +43,8 @@ The WorldlyTribe guide labels Space Atlas as a free science resource for older c
 ## What the external listing establishes
 
 WorldlyTribe collects more than 90 online learning options and explains that many have been researched rather than personally used by its family. Its Space Atlas entry is a public third-party discovery link. The guide does not report that a family completed an activity with the model, or provide referral traffic or learning outcomes. The date the Space Atlas entry first appeared is not established by the page.
+
+WorldlyTribe also notes that the models describe their simplifications and link to NASA or ESA source material. It calls that practice "a brilliant habit to teach." The remark is an editorial assessment of the public site, not evidence that the writer tested the models with children or that a class used them.
 
 For my development portfolio, the useful evidence is the route from a working, source-linked astronomy interface to a family-oriented education directory. This reaches a different type of reader from the [NCASE Programs listing](/space-atlas-ncase-programs-en/) and the [Share My Lesson Moon-phase activity](/space-atlas-share-my-lesson-en/).
 

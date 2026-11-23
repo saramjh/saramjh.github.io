@@ -293,8 +293,8 @@
   status: confirmed
   source: "WorldlyTribe"
   title: "Online homeschool programs for travelling families"
-  detail: "WorldlyTribe lists Space Atlas as a free science resource for ages 9–14 in its travelling-family guide."
-  detail_ko: "WorldlyTribe가 여행하는 가정을 위한 안내에서 Space Atlas를 9~14세 대상 무료 과학 자료로 소개합니다."
+  detail: "WorldlyTribe lists Space Atlas for ages 9–14 and favorably describes the models’ explicit simplifications and NASA/ESA source links. This is the guide’s editorial assessment, not verified family or classroom use."
+  detail_ko: "WorldlyTribe는 Space Atlas를 9~14세 대상 자료로 소개하며 모델의 단순화 설명과 NASA·ESA 출처 연결을 긍정적으로 평가합니다. 외부 작성자의 평가이며 가정·교실의 실제 사용을 입증하지 않습니다."
   case_ko: "/space-atlas-worldschooling-guide-ko/"
   case_en: "/space-atlas-worldschooling-guide-en/"
   url: "https://worldlytribe.com/the-complete-guide-to-online-programs-for-homeschoolers-worldschoolers/"
