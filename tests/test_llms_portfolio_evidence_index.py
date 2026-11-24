@@ -22,6 +22,8 @@ EXPECTED = {
     "/earth-seasons-no-tilt-experiment-en/": ROOT / "_posts/earth-seasons-no-tilt-experiment-en/2026-11-15-earth-seasons-no-tilt-experiment-en.md",
     "/earth-seasons-no-tilt-experiment-ko/": ROOT / "_posts/earth-seasons-no-tilt-experiment-ko/2026-11-15-earth-seasons-no-tilt-experiment-ko.md",
     "/koreaves-published-contributions-en/": ROOT / "_posts/folio-koreaves-publications-en/2026-11-02-folio-koreaves-publications-en.md",
+    "/koreaves-bou-when-records-become-maps-en/": ROOT / "_posts/koreaves-bou-when-records-become-maps-en/2026-11-23-koreaves-bou-when-records-become-maps-en.md",
+    "/koreaves-bou-when-records-become-maps-ko/": ROOT / "_posts/koreaves-bou-when-records-become-maps-ko/2026-11-23-koreaves-bou-when-records-become-maps-ko.md",
     "/spoonie-pwa-search-state-recovery-en/": ROOT / "_posts/spoonie-pwa-search-state-recovery-en/2026-11-16-spoonie-pwa-search-state-recovery-en.md",
     "/spoonie-pwa-search-state-recovery-ko/": ROOT / "_posts/spoonie-pwa-search-state-recovery-ko/2026-11-16-spoonie-pwa-search-state-recovery-ko.md",
     "/spoonie-rsc-prefetch-20261119-en/": ROOT / "_posts/spoonie-rsc-prefetch-20261119-en/2026-11-19-spoonie-rsc-prefetch-20261119-en.md",
@@ -44,6 +46,16 @@ class LLMsPortfolioEvidenceIndexTest(unittest.TestCase):
                 self.assertIn("layout: project", body)
             else:
                 self.assertIn("permalink: " + path, body, (path, source))
+
+    def test_bou_pair_has_reciprocal_locales_and_original_publication(self):
+        for lang, alternate in (("en", "ko"), ("ko", "en")):
+            path = f"/koreaves-bou-when-records-become-maps-{lang}/"
+            other = f"/koreaves-bou-when-records-become-maps-{alternate}/"
+            body = EXPECTED[path].read_text(encoding="utf-8")
+            self.assertIn(f"lang: {lang}\n", body)
+            self.assertIn(f"alternate_url: {other}\n", body)
+            self.assertIn("https://bou.org.uk/blog-oh-when-records-become-maps/", body)
+            self.assertIn(f"https://saramjh.github.io{path}", SECTION)
 
     def test_index_describes_source_categories_without_claiming_adoption(self):
         self.assertIn("External writing, resource listings and catalogue records", SECTION)
