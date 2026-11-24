@@ -20,6 +20,8 @@
 - [Earth seasons no-tilt classroom experiment (English)](https://saramjh.github.io/earth-seasons-no-tilt-experiment-en/): A timed globe-and-lamp comparison of Earth's 23.5° tilt with zero tilt, including a printable worksheet.
 - [지구 자전축 0° 계절 실험 (한국어)](https://saramjh.github.io/earth-seasons-no-tilt-experiment-ko/): 지구본과 LED 램프로 자전축 23.5°와 0°를 비교하고 관찰 내용을 기록하는 수업 활동.
 - [KoreAves credited external writing](https://saramjh.github.io/koreaves-published-contributions-en/): Source-linked bylined contributions to an external birding publication.
+- [KoreAves article on the British Ornithologists' Union blog (English)](https://saramjh.github.io/koreaves-bou-when-records-become-maps-en/): The published guest article When Records Become Maps and the engineering behind tracing regional bird records to their sources.
+- [영국 조류학회 BOU 기고와 KoreAves 개발 기록 (한국어)](https://saramjh.github.io/koreaves-bou-when-records-become-maps-ko/): When Records Become Maps 기고문과 지역별 조류 기록을 지도 및 원본 출처에 연결한 개발 과정을 소개한다.
 - [Spoonie iPhone PWA and search-state recovery (English)](https://saramjh.github.io/spoonie-pwa-search-state-recovery-en/): A PR #47 case study about Home Screen update checks and keeping search results after returning from a recipe detail view.
 - [Spoonie iPhone PWA·검색 상태 복원 (한국어)](https://saramjh.github.io/spoonie-pwa-search-state-recovery-ko/): 홈 화면 앱의 업데이트 확인과 레시피 상세 화면에서 돌아올 때 검색 결과를 유지한 PR #47 수정 기록.
 - [Spoonie: intent-based RSC prefetch and retired schedules (English)](https://saramjh.github.io/spoonie-rsc-prefetch-20261119-en/): Original PRs #48–#50 document hover/keyboard-focus prefetch, touch-scroll request prevention and retirement of legacy Netlify schedules. Monthly Functions savings were not measured.
