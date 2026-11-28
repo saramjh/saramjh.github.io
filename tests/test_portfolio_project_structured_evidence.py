@@ -36,6 +36,23 @@ class ProjectStructuredEvidenceTest(unittest.TestCase):
             self.assertIn(f'https://github.com/saramjh/spoonie/pull/{pr_number}', source)
         self.assertIn('monthly Functions savings and reader retention have not been measured', source)
 
+    def test_koreaves_portfolio_links_published_label_cases_bilingually(self):
+        source = (ROOT / '_projects' / 'koreaves.md').read_text(encoding='utf8')
+        index = (ROOT / 'llms.txt').read_text(encoding='utf8')
+        for lang, alternate in (('en', 'ko'), ('ko', 'en')):
+            slug = f'koreaves-english-display-labels-{lang}'
+            url = f'/{slug}/'
+            self.assertEqual(source.count(f']({url})'), 1)
+            self.assertEqual(index.count(f'https://saramjh.github.io{url}'), 1)
+            article = (ROOT / '_posts' / slug / f'2026-11-28-{slug}.md').read_text(encoding='utf8')
+            self.assertIn(f'permalink: {url}', article)
+            self.assertIn(f'lang: {lang}', article)
+            self.assertIn(f'alternate_url: /koreaves-english-display-labels-{alternate}/', article)
+            self.assertIn('published: true', article)
+            self.assertIn('https://koreaves.com/updates/english-display-names/', article)
+        self.assertIn('all 617 checklist taxa', source)
+        self.assertIn('Twelve subspecies use a composite', source)
+
     def test_original_project_name_and_destination_are_source_bound(self):
         for slug, url, name in (
             ('koreaves', 'https://koreaves.com/', 'KoreAves'),

@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # Dates of the last verified _projects/* source changes (not deployment times).
 SOURCE_LASTMOD = {
     "ai-agent-systems": "2026-11-19T00:31:29+09:00",
-    "koreaves": "2026-11-17T21:18:41+09:00",
+    "koreaves": "2026-11-28",
     "sigub": "2026-11-02T16:29:10+09:00",
     "space-atlas": "2026-11-21",
     "spoonie": "2026-11-21",

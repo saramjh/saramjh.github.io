@@ -1,7 +1,7 @@
 ---
 layout: project
 portfolio_ui: true
-last_modified_at: 2026-11-17T21:18:41+09:00
+last_modified_at: 2026-11-28
 title: "KoreAves | Project case study"
 description: "An independent source-linked reference connecting taxon identities, regional occurrence evidence, and media provenance without equating records with populations."
 slug: koreaves
@@ -40,6 +40,8 @@ KoreAves connects bird profiles, regional evidence views, source documentation, 
 ## Recent production work
 
 On November 16, 2026, I fixed a CSS rule that kept non-matching region cards visible after a search and adjusted the catalogue's mobile spacing. The production release changed 19 HTML pages and a content-hashed stylesheet; the other 3,874 files in the previous 3,894-file deployment manifest retained their hashes. Live browser checks covered 32 cases across five viewport widths and all 17 regional detail pages. Read the [Korean case study](/koreaves-region-search-mobile-hotfix-ko/) or the [English case study](/koreaves-region-search-mobile-hotfix-en/).
+
+The November 26 release added English display labels for all 617 checklist taxa. Twelve subspecies use a composite of the parent species name and subspecies epithet. The [English case study](/koreaves-english-display-labels-en/) and [Korean edition](/koreaves-english-display-labels-ko/) explain how the display layer preserves taxonomic rank and source context.
 
 ## Published explanations beyond the project
 
