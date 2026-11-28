@@ -20,6 +20,8 @@
 - [Earth seasons no-tilt classroom experiment (English)](https://saramjh.github.io/earth-seasons-no-tilt-experiment-en/): A timed globe-and-lamp comparison of Earth's 23.5° tilt with zero tilt, including a printable worksheet.
 - [지구 자전축 0° 계절 실험 (한국어)](https://saramjh.github.io/earth-seasons-no-tilt-experiment-ko/): 지구본과 LED 램프로 자전축 23.5°와 0°를 비교하고 관찰 내용을 기록하는 수업 활동.
 - [KoreAves credited external writing](https://saramjh.github.io/koreaves-published-contributions-en/): Source-linked bylined contributions to an external birding publication.
+- [KoreAves English display labels (English)](https://saramjh.github.io/koreaves-english-display-labels-en/): The November 26 release covers all 617 checklist taxa, including 12 composite subspecies display labels.
+- [KoreAves 영문 표시명 (한국어)](https://saramjh.github.io/koreaves-english-display-labels-ko/): 617개 분류군의 영문 표시명과 12개 조합형 아종 표시명의 의미를 설명한다.
 - [KoreAves article on the British Ornithologists' Union blog (English)](https://saramjh.github.io/koreaves-bou-when-records-become-maps-en/): The published guest article When Records Become Maps and the engineering behind tracing regional bird records to their sources.
 - [영국 조류학회 BOU 기고와 KoreAves 개발 기록 (한국어)](https://saramjh.github.io/koreaves-bou-when-records-become-maps-ko/): When Records Become Maps 기고문과 지역별 조류 기록을 지도 및 원본 출처에 연결한 개발 과정을 소개한다.
 - [Spoonie iPhone PWA and search-state recovery (English)](https://saramjh.github.io/spoonie-pwa-search-state-recovery-en/): A PR #47 case study about Home Screen update checks and keeping search results after returning from a recipe detail view.
