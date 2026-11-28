@@ -23,6 +23,8 @@ EXPECTED = {
     "/earth-seasons-no-tilt-experiment-ko/": ROOT / "_posts/earth-seasons-no-tilt-experiment-ko/2026-11-15-earth-seasons-no-tilt-experiment-ko.md",
     "/koreaves-english-display-labels-en/": ROOT / "_posts/koreaves-english-display-labels-en/2026-11-28-koreaves-english-display-labels-en.md",
     "/koreaves-english-display-labels-ko/": ROOT / "_posts/koreaves-english-display-labels-ko/2026-11-28-koreaves-english-display-labels-ko.md",
+    "/koreaves-regional-catalogue-enumeration-en/": ROOT / "_posts/koreaves-regional-catalogue-enumeration-en/2026-11-28-koreaves-regional-catalogue-enumeration-en.md",
+    "/koreaves-regional-catalogue-enumeration-ko/": ROOT / "_posts/koreaves-regional-catalogue-enumeration-ko/2026-11-28-koreaves-regional-catalogue-enumeration-ko.md",
     "/koreaves-published-contributions-en/": ROOT / "_posts/folio-koreaves-publications-en/2026-11-02-folio-koreaves-publications-en.md",
     "/koreaves-bou-when-records-become-maps-en/": ROOT / "_posts/koreaves-bou-when-records-become-maps-en/2026-11-23-koreaves-bou-when-records-become-maps-en.md",
     "/koreaves-bou-when-records-become-maps-ko/": ROOT / "_posts/koreaves-bou-when-records-become-maps-ko/2026-11-23-koreaves-bou-when-records-become-maps-ko.md",

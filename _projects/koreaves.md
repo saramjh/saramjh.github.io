@@ -43,6 +43,8 @@ On November 16, 2026, I fixed a CSS rule that kept non-matching region cards vis
 
 The November 26 release added English display labels for all 617 checklist taxa. Twelve subspecies use a composite of the parent species name and subspecies epithet. The [English case study](/koreaves-english-display-labels-en/) and [Korean edition](/koreaves-english-display-labels-ko/) explain how the display layer preserves taxonomic rank and source context.
 
+On November 28, I checked all 17 regional catalogue pages. The 5,464 region-taxon entries matched the regional counts, with a taxon identity, source note, media-credit slot and distinct detail link for each entry. See the [regional counts and audit method in English](/koreaves-regional-catalogue-enumeration-en/) or [Korean](/koreaves-regional-catalogue-enumeration-ko/).
+
 ## Published explanations beyond the project
 
 On November 23, 2026, the [British Ornithologists’ Union (BOU) published *When Records Become Maps* under my byline](https://bou.org.uk/blog-oh-when-records-become-maps/). The article links to KoreAves, its methodology and source records, and explains why a recorded occurrence should not be read as a population estimate. Read the [English case note](/koreaves-bou-when-records-become-maps-en/) or the [Korean edition](/koreaves-bou-when-records-become-maps-ko/). This is an author-credited BOU blog contribution, not peer-reviewed research, a formal partnership, or evidence of measured adoption.
