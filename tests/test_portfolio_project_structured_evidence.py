@@ -53,6 +53,24 @@ class ProjectStructuredEvidenceTest(unittest.TestCase):
         self.assertIn('all 617 checklist taxa', source)
         self.assertIn('Twelve subspecies use a composite', source)
 
+    def test_koreaves_portfolio_links_regional_catalogue_audit_bilingually(self):
+        source = (ROOT / '_projects' / 'koreaves.md').read_text(encoding='utf8')
+        index = (ROOT / 'llms.txt').read_text(encoding='utf8')
+        for lang, alternate in (('en', 'ko'), ('ko', 'en')):
+            slug = f'koreaves-regional-catalogue-enumeration-{lang}'
+            url = f'/{slug}/'
+            self.assertEqual(source.count(f']({url})'), 1)
+            self.assertEqual(index.count(f'https://saramjh.github.io{url}'), 1)
+            article = (ROOT / '_posts' / slug / f'2026-11-28-{slug}.md').read_text(encoding='utf8')
+            self.assertIn(f'permalink: {url}', article)
+            self.assertIn(f'lang: {lang}', article)
+            self.assertIn(f'alternate_url: /koreaves-regional-catalogue-enumeration-{alternate}/', article)
+            self.assertIn('published: true', article)
+            self.assertIn('5,464', article)
+            self.assertIn('https://koreaves.com/updates/regional-discovery-and-search/', article)
+        self.assertIn('all 17 regional catalogue pages', source)
+        self.assertIn('5,464 region-taxon entries', source)
+
     def test_original_project_name_and_destination_are_source_bound(self):
         for slug, url, name in (
             ('koreaves', 'https://koreaves.com/', 'KoreAves'),
